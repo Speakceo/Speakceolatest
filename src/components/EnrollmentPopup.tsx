@@ -481,7 +481,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                       Understanding their aspirations helps us create the perfect learning path
                     </p>
-                  </div>
+                    </div>
                   
                   <div className="space-y-6 max-w-2xl mx-auto">
                     <div className="space-y-2">
@@ -663,7 +663,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
 
               {/* Step 5: Success */}
               {step === 5 && (
-                <motion.div 
+                  <motion.div 
                   key="step5"
                   initial="hidden"
                   animate="visible"
@@ -679,7 +679,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
 
                   <div>
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                      🎉 Welcome to SpeakCEO!
+                      🎉 Welcome to ORBIT!
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
                       Thank you for choosing us to guide {formData.childName || 'your child'}'s entrepreneurial journey! 
@@ -716,7 +716,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
                     </div>
                   </div>
 
-                  <motion.div
+                  <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
@@ -782,7 +782,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
                   ) : (
                     <>
                       Continue
-                      <ChevronRight className="ml-2 h-5 w-5" />
+                  <ChevronRight className="ml-2 h-5 w-5" />
                     </>
                   )}
                 </button>

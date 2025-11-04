@@ -26,7 +26,7 @@ interface BrandState {
 }
 
 const initialBrand: BrandData = {
-  name: 'SpeakCEO',
+  name: 'Orbit Student',
   tagline: 'Empowering Young Leaders',
   description: 'Transforming young minds into future business leaders through immersive learning experiences.',
   logoUrl: '',

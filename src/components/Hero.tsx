@@ -85,7 +85,7 @@ export default function Hero() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
       </div>
-
+      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Hero Content */}
@@ -101,36 +101,36 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span className="text-emerald-300 font-medium">Live Classes Available Now</span>
-            </div>
-
+              </div>
+              
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Transform Your Child Into a
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">
                 Future Business Leader
               </span>
-            </h1>
-
+              </h1>
+              
             <p className="text-xl text-white/90 mb-8 max-w-2xl">
               Our 90-day program combines hands-on projects, mentorship, and cutting-edge tools to nurture the next generation of entrepreneurs.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <button
+                <button
                 onClick={() => window.location.href = '/enroll'}
                 className="group px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5 inline-block transform group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
+                </button>
+                <button
                 onClick={() => window.location.href = '/demo'}
                 className="group px-8 py-4 bg-white/10 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/20 hover:border-white/30 transform hover:scale-105"
-              >
+                >
                 Watch Demo
                 <Play className="ml-2 h-5 w-5 inline-block" />
-              </button>
+                </button>
             </div>
-
+            
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 text-center lg:text-left">
               <div>

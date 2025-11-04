@@ -1,4 +1,4 @@
-# SpeakCEO - Young Entrepreneurship Program
+# ORBIT - Young Entrepreneurship Program
 
 A comprehensive platform for teaching entrepreneurship to young minds through an interactive 90-day program.
 

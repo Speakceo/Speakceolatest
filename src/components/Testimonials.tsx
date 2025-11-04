@@ -8,7 +8,7 @@ const testimonials = [
     role: 'Student, Age 14',
     location: 'Mumbai, India',
     image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
-    content: 'SpeakCEO helped me launch my first online business selling handmade crafts! The mentors are amazing and really understand how to teach complex business concepts to young entrepreneurs like me.',
+    content: 'Orbit Student helped me launch my first online business selling handmade crafts! The mentors are amazing and really understand how to teach complex business concepts to young entrepreneurs like me.',
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const testimonials = [
     role: 'Student, Age 13',
     location: 'Barcelona, Spain',
     image: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
-    content: 'SpeakCEO made learning about business fun! I never thought I could understand financial concepts, but the interactive lessons and games made everything click. Now I\'m saving to start my own café!',
+    content: 'Orbit Student made learning about business fun! I never thought I could understand financial concepts, but the interactive lessons and games made everything click. Now I\'m saving to start my own café!',
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ const testimonials = [
     role: 'Parent',
     location: 'Bangalore, India',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
-    content: 'My son was always interested in business, but I didn\'t know how to nurture that passion. SpeakCEO provided the perfect structure and mentorship. His confidence has grown tremendously!',
+    content: 'My son was always interested in business, but I didn\'t know how to nurture that passion. Orbit Student provided the perfect structure and mentorship. His confidence has grown tremendously!',
   },
   {
     id: 6,
@@ -48,7 +48,7 @@ const testimonials = [
     role: 'Student, Age 16',
     location: 'Sydney, Australia',
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80',
-    content: 'The global community aspect of SpeakCEO is amazing! I\'ve connected with young entrepreneurs from India, Singapore, and the US. We even collaborated on a cross-border project. This experience is priceless!',
+    content: 'The global community aspect of Orbit Student is amazing! I\'ve connected with young entrepreneurs from India, Singapore, and the US. We even collaborated on a cross-border project. This experience is priceless!',
   },
 ];
 

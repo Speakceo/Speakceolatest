@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Use environment variables for Supabase configuration
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'http://127.0.0.1:54321';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJle HAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://jjiqzubfdtbtdicyicmn.supabase.co';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpqaXF6dWJmZHRidGRpY3lpY21uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIxODE3MzcsImV4cCI6MjA3Nzc1NzczN30.8u8cmKy4wUrfG0u3n-9es_7_ZPbldFjNxtyI_AOrfBo';
 
 console.log('Initializing Supabase client with URL:', supabaseUrl.includes('127.0.0.1') ? 'LOCAL' : 'ONLINE');
 
@@ -53,7 +53,13 @@ supabase.auth.onAuthStateChange((event, session) => {
 // Debug function to check Supabase connection
 export const checkSupabaseConnection = async () => {
   try {
-    const { data, error } = await supabase.from('profiles').select('count').limit(1);
+    // Try a simple query that should work on any Supabase project
+    const { data, error } = await supabase.from('orbit_accounts').select('count').limit(1);
+    if (error && error.code === 'PGRST116') {
+      // Table doesn't exist, but connection is working
+      console.log('Supabase connected - orbit_accounts table needs to be created');
+      return true;
+    }
     if (error) {
       console.error('Supabase connection error:', error);
       return false;
@@ -85,6 +91,297 @@ export const checkUserSession = async () => {
 export type AuthError = {
   message: string;
 };
+
+// ORBIT ID Authentication System
+export async function loginWithOrbitId(orbitId: string) {
+  try {
+    console.log('Attempting login with ORBIT ID:', orbitId);
+    
+    // Check if ORBIT account exists
+    const { data: orbitAccount, error: fetchError } = await supabase
+      .from('orbit_accounts')
+      .select('*')
+      .eq('orbit_id', orbitId)
+      .single();
+
+    if (fetchError && fetchError.code !== 'PGRST116') {
+      throw new Error('Database error: ' + fetchError.message);
+    }
+
+    if (!orbitAccount) {
+      // Create new ORBIT account
+      const newAccount = await createOrbitAccount(orbitId);
+      return {
+        isFirstTime: true,
+        orbitId: orbitId,
+        studentName: null,
+        account: newAccount
+      };
+    }
+
+    // Set current session
+    localStorage.setItem('orbit_session', JSON.stringify({
+      orbitId: orbitAccount.orbit_id,
+      studentName: orbitAccount.student_name,
+      createdAt: orbitAccount.created_at
+    }));
+
+    return {
+      isFirstTime: !orbitAccount.student_name,
+      orbitId: orbitAccount.orbit_id,
+      studentName: orbitAccount.student_name,
+      account: orbitAccount
+    };
+  } catch (error: any) {
+    console.error('ORBIT login error:', error);
+    throw new Error(error.message || 'Login failed');
+  }
+}
+
+export async function createOrbitAccount(orbitId: string) {
+  try {
+    console.log('Creating new ORBIT account:', orbitId);
+    
+    const { data, error } = await supabase
+      .from('orbit_accounts')
+      .insert({
+        orbit_id: orbitId,
+        student_name: null,
+        is_active: true,
+        created_at: new Date().toISOString(),
+        last_login: new Date().toISOString()
+      })
+      .select()
+      .single();
+
+    if (error) {
+      throw new Error('Failed to create ORBIT account: ' + error.message);
+    }
+
+    // Create associated user progress record
+    await supabase
+      .from('user_progress')
+      .insert({
+        orbit_id: orbitId,
+        completed_lessons: {},
+        completed_tasks: {},
+        last_activity: new Date().toISOString(),
+        streak: 0,
+        total_points: 0,
+        tool_usage: {}
+      });
+
+    // Create profile record
+    await supabase
+      .from('profiles')
+      .insert({
+        orbit_id: orbitId,
+        email: `${orbitId.toLowerCase()}@orbitstudent.com`,
+        progress: 0,
+        points: 0,
+        xp_points: 0,
+        level: 1,
+        streak_count: 0,
+        total_tasks_completed: 0,
+        updated_at: new Date().toISOString()
+      });
+
+    console.log('✅ ORBIT account created successfully');
+    return data;
+  } catch (error: any) {
+    console.error('Error creating ORBIT account:', error);
+    throw new Error(error.message || 'Failed to create account');
+  }
+}
+
+export async function updateStudentName(orbitId: string, studentName: string) {
+  try {
+    console.log('Updating student name for:', orbitId, studentName);
+    
+    // Update ORBIT account with student name
+    const { error: updateError } = await supabase
+      .from('orbit_accounts')
+      .update({
+        student_name: studentName,
+        last_login: new Date().toISOString()
+      })
+      .eq('orbit_id', orbitId);
+
+    if (updateError) {
+      throw new Error('Failed to update student name: ' + updateError.message);
+    }
+
+    // Update profile with student name
+    await supabase
+      .from('profiles')
+      .update({
+        display_name: studentName,
+        updated_at: new Date().toISOString()
+      })
+      .eq('orbit_id', orbitId);
+
+    // Update session
+    localStorage.setItem('orbit_session', JSON.stringify({
+      orbitId: orbitId,
+      studentName: studentName,
+      updatedAt: new Date().toISOString()
+    }));
+
+    console.log('✅ Student name updated successfully');
+    return true;
+  } catch (error: any) {
+    console.error('Error updating student name:', error);
+    throw new Error(error.message || 'Failed to update name');
+  }
+}
+
+export async function getCurrentOrbitUser() {
+  try {
+    const session = localStorage.getItem('orbit_session');
+    if (!session) return null;
+
+    const { orbitId } = JSON.parse(session);
+    
+    const { data, error } = await supabase
+      .from('orbit_accounts')
+      .select('*')
+      .eq('orbit_id', orbitId)
+      .single();
+
+    if (error) {
+      console.error('Error fetching ORBIT user:', error);
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error getting current ORBIT user:', error);
+    return null;
+  }
+}
+
+export async function logoutOrbitUser() {
+  try {
+    localStorage.removeItem('orbit_session');
+    console.log('✅ ORBIT user logged out');
+    return true;
+  } catch (error) {
+    console.error('Error logging out ORBIT user:', error);
+    return false;
+  }
+}
+
+// Create database tables and setup
+export async function setupOrbitDatabase() {
+  try {
+    console.log('🚀 Setting up ORBIT database...');
+
+    // First, create the orbit_accounts table using SQL
+    const createTableSQL = `
+      -- Create orbit_accounts table
+      CREATE TABLE IF NOT EXISTS orbit_accounts (
+        id SERIAL PRIMARY KEY,
+        orbit_id VARCHAR(20) UNIQUE NOT NULL,
+        student_name VARCHAR(255),
+        is_active BOOLEAN DEFAULT true,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+        last_login TIMESTAMP WITH TIME ZONE,
+        metadata JSONB DEFAULT '{}'::jsonb
+      );
+
+      -- Create indexes
+      CREATE INDEX IF NOT EXISTS idx_orbit_accounts_orbit_id ON orbit_accounts(orbit_id);
+      CREATE INDEX IF NOT EXISTS idx_orbit_accounts_active ON orbit_accounts(is_active);
+
+      -- Enable RLS
+      ALTER TABLE orbit_accounts ENABLE ROW LEVEL SECURITY;
+
+      -- Create RLS policies
+      DROP POLICY IF EXISTS "Allow public access to orbit_accounts" ON orbit_accounts;
+      CREATE POLICY "Allow public access to orbit_accounts" ON orbit_accounts
+        FOR ALL USING (true);
+
+      -- Update existing tables
+      ALTER TABLE user_progress ADD COLUMN IF NOT EXISTS orbit_id VARCHAR(20);
+      ALTER TABLE profiles ADD COLUMN IF NOT EXISTS orbit_id VARCHAR(20);
+
+      -- Create indexes for new columns
+      CREATE INDEX IF NOT EXISTS idx_user_progress_orbit_id ON user_progress(orbit_id);
+      CREATE INDEX IF NOT EXISTS idx_profiles_orbit_id ON profiles(orbit_id);
+    `;
+
+    const { error: setupError } = await supabase.rpc('exec_sql', { sql: createTableSQL });
+    if (setupError) {
+      console.log('RPC method not available, trying direct table creation...');
+      
+      // Try creating table directly
+      const { error: directError } = await supabase
+        .from('orbit_accounts')
+        .select('count')
+        .limit(1);
+      
+      if (directError && directError.code === 'PGRST116') {
+        throw new Error('Tables need to be created manually. Please run the SQL script in Supabase SQL Editor.');
+      }
+    }
+
+    console.log('✅ Database setup completed');
+    return true;
+  } catch (error: any) {
+    console.error('Database setup error:', error);
+    throw new Error(error.message || 'Database setup failed');
+  }
+}
+
+export async function createOrbitAccountSeries() {
+  try {
+    console.log('Creating ORBIT account series (1-300)...');
+    
+    // First setup database
+    await setupOrbitDatabase();
+    
+    // Clear existing accounts
+    try {
+      await supabase.from('orbit_accounts').delete().neq('orbit_id', 'dummy');
+      console.log('Cleared existing accounts');
+    } catch (clearError) {
+      console.log('No existing accounts to clear');
+    }
+    
+    const accounts = [];
+    for (let i = 1; i <= 300; i++) {
+      const orbitId = `Orbit1000${i.toString().padStart(2, '0')}`;
+      accounts.push({
+        orbit_id: orbitId,
+        student_name: null,
+        is_active: true,
+        created_at: new Date().toISOString()
+      });
+    }
+
+    // Insert in batches of 50 to avoid timeout
+    const batchSize = 50;
+    for (let i = 0; i < accounts.length; i += batchSize) {
+      const batch = accounts.slice(i, i + batchSize);
+      const { error } = await supabase
+        .from('orbit_accounts')
+        .insert(batch);
+
+      if (error) {
+        console.error(`Error inserting batch ${i / batchSize + 1}:`, error);
+        throw error;
+      }
+      
+      console.log(`✅ Inserted batch ${i / batchSize + 1}/${Math.ceil(accounts.length / batchSize)}`);
+    }
+
+    console.log('✅ All 300 ORBIT accounts created successfully');
+    return true;
+  } catch (error: any) {
+    console.error('Error creating ORBIT account series:', error);
+    throw new Error(error.message || 'Failed to create account series');
+  }
+}
 
 export async function signUp(email: string, password: string) {
   try {
@@ -239,7 +536,7 @@ export async function createDemoUserAccount() {
     // First, check if user already exists by trying to sign in
     try {
       const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-        email: 'demo@speakceo.ai',
+        email: 'demo@orbitstudent.ai',
         password: 'Demo123!'
       });
       
@@ -254,7 +551,7 @@ export async function createDemoUserAccount() {
     
     // Try to create the user
     const { data, error } = await supabase.auth.signUp({
-      email: 'demo@speakceo.ai',
+      email: 'demo@orbitstudent.ai',
       password: 'Demo123!',
       options: {
         data: {
@@ -297,7 +594,7 @@ export async function createAdminUserAccount() {
     // First, check if user already exists by trying to sign in
     try {
       const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-        email: 'admin@speakceo.ai',
+        email: 'admin@orbitstudent.ai',
         password: 'Admin123!'
       });
       
@@ -312,7 +609,7 @@ export async function createAdminUserAccount() {
     
     // Try to create the user
     const { data, error } = await supabase.auth.signUp({
-      email: 'admin@speakceo.ai',
+      email: 'admin@orbitstudent.ai',
       password: 'Admin123!',
       options: {
         data: {
@@ -915,7 +1212,7 @@ export async function createStarterData() {
     console.log('✅ Enrollments created:', insertedEnrollments?.length);
 
     // 7. Create sample progress
-    const progressData = [];
+    const progressData: any[] = [];
     insertedStudents?.forEach(student => {
       insertedLessons?.forEach((lesson, index) => {
         if (index < 2) { // Only first 2 lessons completed
@@ -1701,7 +1998,7 @@ export function cleanUserLocalStorage(userEmail: string) {
     console.log("🧹 Cleaning localStorage for user:", userEmail);
     
     // Only keep demo data for actual demo accounts
-    const isDemoAccount = userEmail.includes("demo@speakceo.ai") || userEmail.includes("admin@speakceo.ai");
+    const isDemoAccount = userEmail.includes("demo@orbitstudent.ai") || userEmail.includes("admin@orbitstudent.ai");
     
     if (!isDemoAccount) {
       // Clear all progress-related localStorage for regular users

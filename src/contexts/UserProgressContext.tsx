@@ -81,8 +81,8 @@ const isDemoUser = () => {
   // Only consider demo user if explicitly set AND it's the demo/admin accounts
   const isDemoFlag = localStorage.getItem('isDemoUser') === 'true';
   const isDemoURL = window.location.search.includes('demo=true');
-  const isDemoEmail = localStorage.getItem('userEmail')?.includes('demo@speakceo.ai') || 
-                     localStorage.getItem('userEmail')?.includes('admin@speakceo.ai');
+  const isDemoEmail = localStorage.getItem('userEmail')?.includes('demo@orbitstudent.ai') || 
+                     localStorage.getItem('userEmail')?.includes('admin@orbitstudent.ai');
   
   // Only apply demo progress for actual demo accounts
   return (isDemoFlag || isDemoURL) && isDemoEmail;

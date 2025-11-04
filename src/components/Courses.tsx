@@ -245,7 +245,7 @@ export default function Courses() {
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-emerald-600">
               Confident Young Leader
             </span>
-          </h1>
+        </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
             In just 90 days, see your child develop the <strong>confidence, communication skills, and entrepreneurial mindset</strong> that will set them apart for life.
@@ -555,59 +555,59 @@ export default function Courses() {
             </p>
           </div>
 
-          <div className="space-y-8">
-            {learningPath.map((path, index) => (
+        <div className="space-y-8">
+          {learningPath.map((path, index) => (
               <motion.div
-                key={index}
+              key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${
                   selectedModule === path.title ? 'ring-2 ring-purple-500 transform scale-[1.02]' : ''
-                }`}
-                onClick={() => setSelectedModule(selectedModule === path.title ? null : path.title)}
-              >
-                <div className="flex items-start space-x-6">
+              }`}
+              onClick={() => setSelectedModule(selectedModule === path.title ? null : path.title)}
+            >
+              <div className="flex items-start space-x-6">
                   {/* Enhanced Week Badge */}
                   <div className={`flex-shrink-0 w-24 h-24 rounded-2xl bg-gradient-to-r ${path.color} text-white flex flex-col items-center justify-center shadow-lg`}>
-                    <span className="text-sm font-medium">WEEK</span>
-                    <span className="text-xl font-bold">{path.weeks}</span>
-                  </div>
+                  <span className="text-sm font-medium">WEEK</span>
+                  <span className="text-xl font-bold">{path.weeks}</span>
+                </div>
 
-                  <div className="flex-1">
+                <div className="flex-1">
                     <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900">{path.title}</h3>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900">{path.title}</h3>
                         <p className="text-gray-600 mb-2">{path.description}</p>
                         <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl px-4 py-2 inline-block">
                           <p className="text-sm font-semibold text-emerald-700">
                             👨‍👩‍👧‍👦 Parent Benefit: {path.parentBenefit}
                           </p>
                         </div>
-                      </div>
-                      <ChevronRight 
-                        className={`h-6 w-6 text-purple-500 transform transition-transform ${
-                          selectedModule === path.title ? 'rotate-90' : ''
-                        }`}
-                      />
                     </div>
+                    <ChevronRight 
+                        className={`h-6 w-6 text-purple-500 transform transition-transform ${
+                        selectedModule === path.title ? 'rotate-90' : ''
+                      }`}
+                    />
+                  </div>
 
                     {/* Enhanced Modules */}
-                    {selectedModule === path.title && (
+                  {selectedModule === path.title && (
                       <motion.div 
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6"
                       >
-                        {path.modules.map((module, moduleIndex) => (
-                          <div
-                            key={moduleIndex}
+                      {path.modules.map((module, moduleIndex) => (
+                        <div
+                          key={moduleIndex}
                             className="relative p-6 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100 hover:border-purple-200 transition-all duration-300 hover:shadow-md"
-                          >
+                        >
                             <div className="flex items-center space-x-4 mb-3">
-                              <div className={`rounded-lg bg-gradient-to-r ${path.color} p-3`}>
-                                <module.icon className="h-5 w-5 text-white" />
-                              </div>
+                            <div className={`rounded-lg bg-gradient-to-r ${path.color} p-3`}>
+                              <module.icon className="h-5 w-5 text-white" />
+                            </div>
                               <div className="flex-1">
                                 <h4 className="font-semibold text-gray-900">{module.title}</h4>
                                 <div className="flex items-center space-x-2 text-sm text-gray-500">
@@ -621,16 +621,16 @@ export default function Courses() {
                                 🎯 Outcome: {module.outcome}
                               </p>
                             </div>
-                          </div>
-                        ))}
+                        </div>
+                      ))}
                       </motion.div>
-                    )}
-                  </div>
+                  )}
                 </div>
+              </div>
               </motion.div>
-            ))}
-          </div>
+          ))}
         </div>
+      </div>
       </section>
 
       {/* Urgency CTA Section */}
@@ -662,12 +662,12 @@ export default function Courses() {
                 <div>
                   <div className="text-3xl font-bold text-yellow-300">98%</div>
                   <div className="text-sm opacity-80">Parent Satisfaction</div>
-                </div>
+        </div>
               </div>
-            </div>
+        </div>
 
-            <button
-              onClick={() => setShowEnrollment(true)}
+          <button 
+            onClick={() => setShowEnrollment(true)}
               className="group relative px-10 py-6 bg-white text-purple-600 font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
             >
               <span className="relative z-10 flex items-center justify-center">
@@ -675,7 +675,7 @@ export default function Courses() {
                 <ArrowRight className="ml-3 h-6 w-6" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/10 to-purple-600/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-            </button>
+          </button>
             
             <p className="mt-4 text-sm opacity-80">
               ⚡ Early bird pricing ends in 7 days • 💰 30-day money-back guarantee

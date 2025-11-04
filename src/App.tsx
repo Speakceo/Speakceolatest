@@ -2,9 +2,6 @@ import React, { Suspense, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 
-// Performance Optimizations
-import { initializePerformance, PerformanceWrapper } from './components/PerformanceOptimizer'
-
 // Context Providers
 import { LanguageProvider } from './lib/contexts/LanguageContext'
 import { UserProgressProvider } from './contexts/UserProgressContext'
@@ -12,7 +9,7 @@ import { UserProgressProvider } from './contexts/UserProgressContext'
 // Store
 import { useUserStore } from './lib/store'
 
-// Pages - Lazy loaded for better performance
+// Pages
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -31,9 +28,11 @@ import Partnerships from './pages/Partnerships'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import CookiePolicy from './pages/CookiePolicy'
+import OrbitSetup from './pages/OrbitSetup'
+import LiveOrbitSetup from './components/admin/LiveOrbitSetup'
 
 // Auth Components
-import LoginForm from './components/auth/LoginForm'
+import OrbitLoginForm from './components/auth/OrbitLoginForm'
 import ForgotPassword from './components/auth/ForgotPassword'
 
 // Dashboard Components
@@ -101,8 +100,8 @@ class ErrorBoundary extends React.Component<
             <p className="text-gray-600 mb-6">
               We're sorry for the inconvenience. Please try refreshing the page or contact support if the problem persists.
             </p>
-            <button
-              onClick={() => window.location.reload()}
+            <button 
+              onClick={() => window.location.reload()} 
               className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
             >
               Refresh Page
@@ -174,11 +173,7 @@ function AppContent() {
   const { initializeAuth, isInitialized } = useUserStore()
 
   useEffect(() => {
-    // Initialize authentication
     initializeAuth()
-    
-    // Initialize performance optimizations
-    initializePerformance()
   }, [initializeAuth])
 
   // Show loading while initializing
@@ -191,7 +186,7 @@ function AppContent() {
       <ConditionalNavbar />
       <Breadcrumb />
       <main className="flex-grow">
-        <PerformanceWrapper>
+        <Suspense fallback={<LoadingFallback />}>
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
@@ -207,70 +202,66 @@ function AppContent() {
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/partnerships" element={<Partnerships />} />
-
-            {/* Legal Pages */}
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            
+            {/* Legal Routes */}
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/cookies" element={<CookiePolicy />} />
 
             {/* Auth Routes */}
-            <Route path="/login" element={<LoginForm />} />
+            <Route path="/login" element={<OrbitLoginForm />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-
+            <Route path="/orbit-setup" element={<OrbitSetup />} />
+            <Route path="/live-orbit-setup" element={<LiveOrbitSetup />} />
+            
             {/* Dashboard Routes */}
-            <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route path="/dashboard/*" element={<DashboardLayout />}>
               <Route index element={<Overview />} />
-              <Route path="learning-journey" element={<LearningJourney />} />
-              <Route path="my-courses" element={<MyCourses />} />
+              <Route path="journey" element={<LearningJourney />} />
+              <Route path="courses" element={<MyCourses />} />
               <Route path="live-classes" element={<DashboardLiveClasses />} />
-              <Route path="tasks-assignments" element={<TasksAssignments />} />
-              <Route path="business-simulation" element={<BusinessSimulation />} />
-              <Route path="ai-tools" element={<AITools />} />
+              <Route path="tasks" element={<TasksAssignments />} />
+              <Route path="business-lab" element={<BusinessSimulation />} />
+              <Route path="ai-tools/*" element={<AITools />} />
               <Route path="achievements" element={<Achievements />} />
               <Route path="analytics" element={<Analytics />} />
               <Route path="messages" element={<Messages />} />
               <Route path="quiz" element={<Quiz />} />
               <Route path="profile" element={<UserProfile />} />
-              <Route path="business-insights" element={<BusinessInsights />} />
+              <Route path="insights" element={<BusinessInsights />} />
               <Route path="help" element={<Help />} />
             </Route>
-
+            
             {/* Admin Routes */}
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<AdminDashboard />} />
-              <Route path="users" element={<UsersPage />} />
-              <Route path="courses" element={<CoursesPage />} />
-              <Route path="lesson-planner" element={<LessonPlannerDashboard />} />
-              <Route path="tasks" element={<TasksPage />} />
-              <Route path="live-classes" element={<AdminLiveClassesPage />} />
-              <Route path="community" element={<CommunityModeration />} />
-              <Route path="analytics" element={<AnalyticsPage />} />
-              <Route path="payments" element={<PaymentsPage />} />
-              <Route path="support" element={<SupportPage />} />
-              <Route path="settings" element={<SettingsPage />} />
-            </Route>
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
-        </PerformanceWrapper>
+        </Suspense>
       </main>
       <ConditionalFooter />
-      <ScrollToTop />
     </div>
-  )
+  );
 }
 
 export default function App() {
+  // Disable browser's automatic scroll restoration
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   return (
-    <HelmetProvider>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <Router>
         <LanguageProvider>
-          <UserProgressProvider>
-            <Router>
-              <SEO />
-              <AppContent />
-            </Router>
-          </UserProgressProvider>
-        </LanguageProvider>
-      </ErrorBoundary>
-    </HelmetProvider>
-  )
+            <UserProgressProvider>
+              <ScrollToTop />
+            <AppContent />
+            </UserProgressProvider>
+          </LanguageProvider>
+          </Router>
+      </HelmetProvider>
+    </ErrorBoundary>
+  );
 }

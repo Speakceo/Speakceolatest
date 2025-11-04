@@ -24,19 +24,15 @@ import {
   PlayCircle,
   Sparkles,
   Shield,
-  Globe
+  Globe,
+  Trophy
 } from 'lucide-react';
-
-// FORCE DEPLOYMENT: Current local state - "Where Young Minds Become Future Leaders" design - Dec 19, 2024
 import { useLanguage } from '../lib/contexts/LanguageContext';
 import { useUserStore } from '../lib/store';
 import EnrollmentPopup from '../components/EnrollmentPopup';
 import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
-
-// Force deployment - Current local state with "Where Young Minds Become Future Leaders" design
-// This should match the local server exactly - Dec 19, 2024
 
 // Minimal animation variants
 const fadeIn = {
@@ -93,8 +89,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="SpeakCEO - Future Leaders Start Here"
-        description="Transform your child into a confident leader. SpeakCEO teaches entrepreneurship, communication, and leadership skills to young minds through our innovative 90-day curriculum."
+        title="ORBIT - Future Leaders Start Here"
+        description="Transform your child into a confident leader. ORBIT teaches entrepreneurship, communication, and leadership skills to young minds through our innovative 90-day curriculum."
         keywords={[
           'entrepreneurship education',
           'youth leadership',
@@ -162,7 +158,7 @@ export default function Home() {
                     className="group relative px-10 py-5 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center">
-                      Start Your Journey
+                    Start Your Journey
                       <ArrowRight className="ml-3 h-6 w-6" />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
@@ -203,9 +199,9 @@ export default function Home() {
                 className="relative z-10"
               >
                 <div className="relative">
-                  <img 
-                    src="https://i.postimg.cc/vmXKM1Y9/Chat-GPT-Image-May-19-2025-10-58-12-PM.png" 
-                    alt="Young entrepreneurs collaborating" 
+                <img 
+                  src="https://i.postimg.cc/vmXKM1Y9/Chat-GPT-Image-May-19-2025-10-58-12-PM.png" 
+                  alt="Young entrepreneurs collaborating" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                   />
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-600/20 via-blue-600/20 to-purple-600/20"></div>
@@ -223,6 +219,212 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* ORBIT Playground Demo Section */}
+        <section className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/10 via-pink-400/10 to-indigo-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-bl from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <motion.div 
+              variants={fadeIn}
+              className="text-center mb-16"
+            >
+              <div className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-8 py-3 mb-6">
+                <span className="text-purple-700 font-bold text-lg">🚀 ORBIT Playground</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Watch Your Child 
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
+                  Build Anything
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+                See how AI empowers your child to create games, websites, and apps with just their imagination. 
+                No coding required - just creativity!
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Interactive Demo Interface */}
+              <motion.div 
+                variants={fadeIn}
+                className="relative"
+              >
+                <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+                  {/* Demo Header */}
+                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4 flex items-center">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div className="flex-1 text-center">
+                      <span className="text-white font-semibold">ORBIT AI Builder</span>
+                    </div>
+                  </div>
+
+                  {/* Demo Content */}
+                  <div className="p-6">
+                    <div className="mb-6">
+                      <label className="block text-sm font-semibold text-gray-700 mb-3">
+                        ✨ What do you want to create today?
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          placeholder="Try: 'Create a space adventure game' or 'Build a website about dinosaurs'"
+                          className="w-full px-4 py-3 border-2 border-purple-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors text-gray-700 bg-purple-50/50"
+                          defaultValue=""
+                        />
+                        <button className="absolute right-2 top-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1.5 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                          Create ✨
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Demo Examples */}
+                    <div className="space-y-3 mb-6">
+                      <div className="text-sm font-semibold text-gray-600 mb-2">Popular Ideas:</div>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          "🎮 Space Game",
+                          "🌐 Pet Care Website", 
+                          "📱 Quiz App",
+                          "🎨 Art Gallery",
+                          "🏪 Online Store"
+                        ].map((idea, index) => (
+                          <button
+                            key={index}
+                            className="px-3 py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-sm font-medium hover:from-purple-200 hover:to-pink-200 transition-all duration-300 transform hover:scale-105"
+                          >
+                            {idea}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Sample Output */}
+                    <div className="bg-gradient-to-br from-gray-50 to-purple-50 rounded-xl p-4 border border-purple-100">
+                      <div className="text-sm font-semibold text-gray-600 mb-2">AI Generated Preview:</div>
+                      <div className="bg-white rounded-lg p-4 border border-gray-200">
+                        <div className="flex items-center mb-3">
+                          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
+                            <Rocket className="h-4 w-4 text-white" />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900">Space Explorer Game</div>
+                            <div className="text-xs text-gray-500">Created in 30 seconds</div>
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-r from-indigo-900 to-purple-900 rounded-lg p-3 text-white text-xs">
+                          <div className="flex items-center justify-between mb-2">
+                            <span>🚀 Score: 1,250</span>
+                            <span>❤️ Lives: 3</span>
+                          </div>
+                          <div className="bg-white/20 rounded h-2 mb-2">
+                            <div className="bg-yellow-400 h-2 rounded w-3/4"></div>
+                          </div>
+                          <div className="text-center text-yellow-300">Press SPACE to launch! 🌟</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full p-3 shadow-lg animate-bounce">
+                  <Sparkles className="h-6 w-6 text-white" />
+                </div>
+                <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-full p-3 shadow-lg animate-pulse">
+                  <Brain className="h-6 w-6 text-white" />
+                </div>
+              </motion.div>
+
+              {/* Benefits & Features */}
+              <motion.div 
+                variants={fadeIn}
+                className="space-y-8"
+              >
+                <div>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                    Your Child Can Build:
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    {[
+                      {
+                        icon: "🎮",
+                        title: "Interactive Games",
+                        description: "From simple puzzles to adventure games - all with AI guidance"
+                      },
+                      {
+                        icon: "🌐",
+                        title: "Beautiful Websites",
+                        description: "Personal portfolios, hobby sites, or business ideas brought to life"
+                      },
+                      {
+                        icon: "📱",
+                        title: "Mobile Apps",
+                        description: "Simple apps for organizing, learning, or sharing with friends"
+                      },
+                      {
+                        icon: "🎨",
+                        title: "Creative Projects",
+                        description: "Digital art galleries, story books, and multimedia presentations"
+                      }
+                    ].map((item, index) => (
+                      <div key={index} className="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300">
+                        <div className="text-2xl">{item.icon}</div>
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
+                          <p className="text-gray-600 text-sm">{item.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
+                  <h4 className="text-xl font-bold mb-2">Ready to See the Magic?</h4>
+                  <p className="text-purple-100 mb-4 text-sm">
+                    Join thousands of kids already building their dreams with AI
+                  </p>
+                  <button 
+                    onClick={() => setShowEnrollment(true)}
+                    className="bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center"
+                  >
+                    Start Building Now
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Trust Indicators */}
+            <motion.div 
+              variants={fadeIn}
+              className="mt-16 text-center"
+            >
+              <div className="flex flex-wrap justify-center items-center gap-8 text-gray-500">
+                <div className="flex items-center space-x-2">
+                  <Shield className="h-5 w-5 text-green-500" />
+                  <span className="text-sm font-medium">100% Safe & Secure</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Users className="h-5 w-5 text-blue-500" />
+                  <span className="text-sm font-medium">2,500+ Happy Families</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Award className="h-5 w-5 text-purple-500" />
+                  <span className="text-sm font-medium">Award-Winning Platform</span>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -401,65 +603,65 @@ export default function Home() {
                     <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-pink-400">
                       Meets Real Mentorship
                     </span>
-                  </h2>
+              </h2>
                   <p className="text-xl text-white/90 leading-relaxed">
                     Experience the perfect blend of cutting-edge AI tools, on-demand recorded sessions, 
                     interactive business simulators, and live mentorship from industry experts—all designed 
                     to give your child every advantage in their entrepreneurial journey.
-                  </p>
-                </div>
-                
+              </p>
+            </div>
+            
                 {/* Learning Methods Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
                         <Brain className="h-6 w-6 text-white" />
-                      </div>
+                </div>
                       <h3 className="text-lg font-bold text-white">AI-Powered Tools</h3>
                     </div>
                     <p className="text-white/80 text-sm">
                       24/7 AI business coach, pitch deck generator, and smart analytics for instant feedback and guidance.
                     </p>
-                  </div>
-                  
+              </div>
+              
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
                         <Users className="h-6 w-6 text-white" />
-                      </div>
+                </div>
                       <h3 className="text-lg font-bold text-white">Live Expert Classes</h3>
-                    </div>
+                </div>
                     <p className="text-white/80 text-sm">
                       Interactive sessions with successful entrepreneurs, real-time Q&A, and collaborative learning.
                     </p>
-                  </div>
-                  
+              </div>
+
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
                         <TrendingUp className="h-6 w-6 text-white" />
-                      </div>
+                </div>
                       <h3 className="text-lg font-bold text-white">Business Simulators</h3>
-                    </div>
+                </div>
                     <p className="text-white/80 text-sm">
                       Risk-free virtual environments to practice running businesses, making decisions, and learning from outcomes.
                     </p>
-                  </div>
-                  
+              </div>
+
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
                         <PlayCircle className="h-6 w-6 text-white" />
-                      </div>
+                </div>
                       <h3 className="text-lg font-bold text-white">Recorded Sessions</h3>
-                    </div>
+                </div>
                     <p className="text-white/80 text-sm">
                       Access hundreds of expert-led lessons anytime, with progress tracking and personalized recommendations.
-                    </p>
-                  </div>
+                </p>
                 </div>
-                
+              </div>
+
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
@@ -495,7 +697,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Image */}
               <div className="relative">
                 <div className="relative">
@@ -509,18 +711,18 @@ export default function Home() {
                   {/* Floating elements */}
                   <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-xl animate-bounce flex items-center justify-center">
                     <span className="text-xl">🤖</span>
-                  </div>
+                </div>
                   <div className="absolute -bottom-4 -left-4 w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl shadow-xl animate-pulse flex items-center justify-center">
                     <span className="text-lg">🎯</span>
-                  </div>
+                </div>
                   <div className="absolute top-1/2 -right-6 w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full shadow-xl animate-ping flex items-center justify-center">
                     <span className="text-sm">🚀</span>
                   </div>
                   <div className="absolute top-1/4 -left-6 w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl shadow-xl animate-bounce flex items-center justify-center" style={{animationDelay: '1s'}}>
                     <span className="text-lg">💡</span>
-                  </div>
-                </div>
-                
+              </div>
+            </div>
+
                 {/* Live indicator */}
                 <div className="absolute top-6 left-6 flex items-center space-x-2 bg-red-500 px-3 py-1 rounded-full">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
@@ -531,10 +733,10 @@ export default function Home() {
                 <div className="absolute bottom-6 right-6 space-y-2">
                   <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-800">
                     AI-Powered
-                  </div>
+              </div>
                   <div className="bg-emerald-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-white">
                     Expert-Led
-                  </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -712,7 +914,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Why Parents & Kids Love SpeakCEO
+                Why Parents & Kids Love ORBIT
               </h2>
               <p className="text-xl text-white/90 max-w-3xl mx-auto">
                 More than business. We're building confidence, creativity, and a lifelong love of learning.
@@ -803,7 +1005,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-600">
-                  "My daughter used to be so shy, but after starting her sticker business through SpeakCEO, she's presenting to her entire school! The transformation has been incredible."
+                  "My daughter used to be so shy, but after starting her sticker business through ORBIT, she's presenting to her entire school! The transformation has been incredible."
                 </p>
               </div>
 
@@ -841,6 +1043,198 @@ export default function Home() {
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Global Opportunities Section */}
+        <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+          {/* Background Elements */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-400/10 via-teal-400/10 to-blue-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <motion.div 
+              variants={fadeIn}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Designed for 
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600">
+                  Global Dreamers
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                We empower students from Class 2nd to 11th with the tools, knowledge, and 
+                pathways to thrive on the world stage.
+              </p>
+            </motion.div>
+
+            {/* Four Pillars Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+              {/* Global Awareness */}
+              <motion.div 
+                variants={fadeIn}
+                className="text-center group"
+              >
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+                    <Globe className="h-10 w-10 text-white" />
+                  </div>
+                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-blue-400/20 rounded-full animate-ping"></div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Global Awareness</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Learn about international programs & cultures.
+                </p>
+              </motion.div>
+
+              {/* Opportunity Discovery */}
+              <motion.div 
+                variants={fadeIn}
+                className="text-center group"
+              >
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+                    <Target className="h-10 w-10 text-white" />
+                  </div>
+                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-purple-400/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Opportunity Discovery</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Find scholarships, Olympiads, global universities.
+                </p>
+              </motion.div>
+
+              {/* Skill Building */}
+              <motion.div 
+                variants={fadeIn}
+                className="text-center group"
+              >
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+                    <Rocket className="h-10 w-10 text-white" />
+                  </div>
+                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-amber-400/20 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Skill Building</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Build writing, research, critical thinking, communication.
+                </p>
+              </motion.div>
+
+              {/* Future Roadmaps */}
+              <motion.div 
+                variants={fadeIn}
+                className="text-center group"
+              >
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+                    <Target className="h-10 w-10 text-white" />
+                  </div>
+                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-emerald-400/20 rounded-full animate-ping" style={{animationDelay: '1.5s'}}></div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Future Roadmaps</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Get personalized plans for exams, admissions & more.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Global Resources Database Section */}
+        <section className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white relative overflow-hidden">
+          {/* Background Effects */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/15 via-indigo-400/15 to-purple-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-400/15 via-teal-400/15 to-blue-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse" style={{animationDelay: '3s'}}></div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <motion.div 
+              variants={fadeIn}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Global Resources</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-red-400 to-orange-400">Database</span>
+              </h2>
+              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                A curated database of opportunities to launch your global journey.
+              </p>
+            </motion.div>
+
+            {/* Resource Categories */}
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
+              <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+                <Award className="h-5 w-5 mr-2" />
+                Scholarships
+              </button>
+              <button className="px-8 py-3 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30 flex items-center">
+                <Trophy className="h-5 w-5 mr-2" />
+                Competitions
+              </button>
+              <button className="px-8 py-3 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30 flex items-center">
+                <Brain className="h-5 w-5 mr-2" />
+                AI Tools
+              </button>
+              <button className="px-8 py-3 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30 flex items-center">
+                <Users className="h-5 w-5 mr-2" />
+                Global Fellowships
+              </button>
+            </div>
+
+            {/* Scholarship Examples Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {/* Row 1 */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
+                <h3 className="text-lg font-semibold text-blue-300 mb-2">Yale YYGS</h3>
+                <p className="text-white/80 text-sm">Young Global Scholars program for high school students</p>
+              </div>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
+                <h3 className="text-lg font-semibold text-purple-300 mb-2">Rise by Schmidt Futures</h3>
+                <p className="text-white/80 text-sm">Global scholarship for exceptional young leaders</p>
+              </div>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
+                <h3 className="text-lg font-semibold text-emerald-300 mb-2">John Locke Essay</h3>
+                <p className="text-white/80 text-sm">International essay competition for young thinkers</p>
+              </div>
+
+              {/* Row 2 */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
+                <h3 className="text-lg font-semibold text-amber-300 mb-2">Ashoka Youth Ventures</h3>
+                <p className="text-white/80 text-sm">Support for young social entrepreneurs worldwide</p>
+              </div>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
+                <h3 className="text-lg font-semibold text-indigo-300 mb-2">Google Science Fair</h3>
+                <p className="text-white/80 text-sm">Global science competition for students aged 13-18</p>
+              </div>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
+                <h3 className="text-lg font-semibold text-pink-300 mb-2">Conrad Challenge</h3>
+                <p className="text-white/80 text-sm">Innovation challenge for students to solve global problems</p>
+              </div>
+            </div>
+
+            {/* CTA for Database Access */}
+            <motion.div 
+              variants={fadeIn}
+              className="text-center"
+            >
+              <button 
+                onClick={() => setShowEnrollment(true)}
+                className="group relative px-12 py-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center justify-center">
+                  Access Full Database
+                  <ArrowRight className="ml-3 h-6 w-6" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+              </button>
+              <p className="text-white/70 mt-4 text-sm">
+                Join 2,500+ students already accessing global opportunities
+              </p>
+            </motion.div>
           </div>
         </section>
 
@@ -893,7 +1287,7 @@ export default function Home() {
               
               <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight">
                 Don't Let Your Child Fall Behind While Others Get Ahead
-              </h2>
+            </h2>
               
               <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
                 While other kids are just consuming content, your child could be building 
@@ -919,8 +1313,8 @@ export default function Home() {
               </div>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <button
-                  onClick={() => setShowEnrollment(true)}
+              <button 
+                onClick={() => setShowEnrollment(true)}
                   className="group relative px-10 py-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center">
@@ -928,14 +1322,14 @@ export default function Home() {
                     <ArrowRight className="ml-3 h-5 w-5" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                </button>
+              </button>
                 
-                <button 
+              <button 
                   className="px-8 py-6 bg-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50 backdrop-blur-sm transform hover:scale-105"
-                >
+              >
                   Download Free Guide
-                </button>
-              </div>
+              </button>
+            </div>
 
               {/* Guarantee & Trust indicators */}
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm opacity-80">

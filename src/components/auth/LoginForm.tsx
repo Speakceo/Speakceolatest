@@ -16,12 +16,12 @@ export default function LoginForm() {
   const { initializeAuth } = useUserStore();
 
   const fillDemoCredentials = () => {
-    setEmail('demo@speakceo.ai');
+    setEmail('demo@orbitstudent.ai');
     setPassword('Demo123!');
   };
 
   const fillAdminCredentials = () => {
-    setEmail('admin@speakceo.ai');
+    setEmail('admin@orbitstudent.ai');
     setPassword('Admin123!');
   };
 
@@ -63,7 +63,7 @@ export default function LoginForm() {
     setDbStatus('Testing demo login...');
     try {
       // Try to sign in directly
-      await signIn('demo@speakceo.ai', 'Demo123!');
+      await signIn('demo@orbitstudent.ai', 'Demo123!');
       setDbStatus('✅ Demo login successful! Account exists and working.');
       // Don't redirect, just test
     } catch (error: any) {
@@ -118,14 +118,14 @@ export default function LoginForm() {
       console.log('Login attempt with email:', email);
       
       // Auto-detect demo vs admin based on email and create account if needed
-      if (email === 'demo@speakceo.ai') {
+      if (email === 'demo@orbitstudent.ai') {
         console.log('Demo login detected - ensuring demo account exists...');
         try {
           await createDemoUserAccount();
         } catch (createError) {
           console.log('Demo account creation failed, proceeding with login:', createError);
         }
-      } else if (email === 'admin@speakceo.ai') {
+      } else if (email === 'admin@orbitstudent.ai') {
         console.log('Admin login detected - ensuring admin account exists...');
         try {
           await createAdminUserAccount();
@@ -138,10 +138,10 @@ export default function LoginForm() {
       await signIn(email, password);
       
       // Auto-setup profile FIRST based on email
-      if (email === 'demo@speakceo.ai') {
+      if (email === 'demo@orbitstudent.ai') {
         console.log('Setting up demo user profile...');
         await ensureDemoUserProfile();
-      } else if (email === 'admin@speakceo.ai') {
+      } else if (email === 'admin@orbitstudent.ai') {
         console.log('Setting up admin user profile...');
         await ensureAdminUserProfile();
       }
@@ -150,9 +150,9 @@ export default function LoginForm() {
       await initializeAuth();
       
       // Finally redirect based on email
-      if (email === 'demo@speakceo.ai') {
+      if (email === 'demo@orbitstudent.ai') {
         navigate('/dashboard', { replace: true });
-      } else if (email === 'admin@speakceo.ai') {
+      } else if (email === 'admin@orbitstudent.ai') {
         navigate('/admin', { replace: true });
       } else {
         // For any other email, allow login but redirect to dashboard
@@ -322,7 +322,7 @@ export default function LoginForm() {
       </div>
 
       <p className="mt-6 text-center text-sm text-gray-500">
-        🔑 Demo: demo@speakceo.ai / Demo123! | Admin: admin@speakceo.ai / Admin123!
+        🔑 Demo: demo@orbitstudent.ai / Demo123! | Admin: admin@orbitstudent.ai / Admin123!
       </p>
       
       <div className="mt-4 text-center text-xs text-gray-400">

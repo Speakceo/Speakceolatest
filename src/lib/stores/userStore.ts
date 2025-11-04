@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { getCurrentUser, initializeSession, updateUserProgress, updateUserPoints, cleanUserLocalStorage } from '../supabase';
+import { getCurrentUser, initializeSession, updateUserProgress, updateUserPoints, cleanUserLocalStorage, getCurrentOrbitUser, logoutOrbitUser } from '../supabase';
+import { getCurrentOrbitUser as mockGetCurrentOrbitUser, logoutOrbitUser as mockLogoutOrbitUser } from '../mockDatabase';
 import { supabase } from '../supabase';
 import { User as SupabaseUser } from '@supabase/supabase-js';
 
 interface AppUser {
   id: string;
+  orbitId?: string;
   name: string;
   email: string;
   avatar: string;
@@ -53,7 +55,41 @@ export const useUserStore = create<UserState>()(
             error: null 
           });
           
-          // Get current session without blocking
+          // Check for ORBIT session first (try Supabase, fallback to mock)
+          let orbitUser;
+          try {
+            orbitUser = await getCurrentOrbitUser();
+          } catch (error) {
+            console.log('Supabase failed, checking mock database for ORBIT user');
+            orbitUser = await mockGetCurrentOrbitUser();
+          }
+          
+          if (orbitUser && orbitUser.student_name) {
+            console.log('ORBIT user session found:', orbitUser.orbit_id);
+            
+            // Create app user from ORBIT account
+            const appUser: AppUser = {
+              id: orbitUser.orbit_id,
+              orbitId: orbitUser.orbit_id,
+              name: orbitUser.student_name,
+              email: `${orbitUser.orbit_id.toLowerCase()}@orbitstudent.com`,
+              avatar: 'https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80',
+              courseType: 'Premium',
+              progress: 0,
+              points: 0,
+              role: 'student'
+            };
+            
+            set({
+              user: appUser,
+              profile: orbitUser,
+              error: null
+            });
+            
+            return;
+          }
+          
+          // Fallback to traditional auth for admin/demo accounts
           const { data: { session }, error: sessionError } = await supabase.auth.getSession();
           if (sessionError) {
             console.error('Session error:', sessionError);
@@ -160,8 +196,31 @@ export const useUserStore = create<UserState>()(
         }
       },
       logout: async () => {
+        const currentUser = get().user;
+        
+        // Logout ORBIT user if applicable
+        if (currentUser?.orbitId) {
+          try {
+            await logoutOrbitUser();
+          } catch (error) {
+            console.log('Supabase logout failed, using mock logout');
+            await mockLogoutOrbitUser();
+          }
+        }
+        
+        // Logout traditional auth user
         await supabase.auth.signOut();
-        set({ user: null });
+        
+        set({ user: null, profile: null, error: null });
+        localStorage.removeItem('user-storage');
+        localStorage.removeItem('isDemoUser');
+        localStorage.removeItem('progress-storage');
+        localStorage.removeItem('brand-storage');
+        localStorage.removeItem('simulator-storage');
+        localStorage.removeItem('ai-tools-storage');
+        localStorage.removeItem('unified-progress-storage');
+        localStorage.removeItem('realtime-progress-storage');
+        localStorage.removeItem('orbit_session');
       },
       resetProgress: () => {
         const { user } = get();

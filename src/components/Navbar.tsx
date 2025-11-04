@@ -59,9 +59,9 @@ export default function Navbar() {
   return (
     <div className="w-full relative z-40">
       {/* Enhanced Navbar with Glass-morphism Effect */}
-      <nav className="fixed w-full z-50 transition-all duration-300">
+      <nav className="fixed w-full z-50 transition-all duration-300 top-0 left-0 min-h-[80px]">
         {/* Background with enhanced glass effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-indigo-900/95 backdrop-blur-xl border-b border-white/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-indigo-900/95 backdrop-blur-xl border-b border-white/10 min-h-[80px]"></div>
         
         {/* Animated gradient orbs */}
         <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/20 via-blue-400/20 to-teal-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-pulse"></div>
@@ -82,7 +82,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-indigo-100 group-hover:from-emerald-200 group-hover:to-blue-200 transition-all duration-300">
-                    SpeakCEO
+                    ORBIT
                   </span>
                   <span className="text-xs text-purple-200 font-medium tracking-wider">
                     Future Leaders
