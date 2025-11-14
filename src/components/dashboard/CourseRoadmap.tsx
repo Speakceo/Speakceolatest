@@ -232,11 +232,11 @@ export default function CourseRoadmap() {
 
   return (
     <div className="space-y-6">
-      {/* Header - Updated for 90-Day Startup Journey */}
+      {/* Header - Updated for 180-Day Startup Journey */}
       <div className="bg-white rounded-2xl p-6 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">🚀 Your 90-Day Startup Journey</h2>
+            <h2 className="text-2xl font-bold text-gray-900">🚀 Your 180-Day Startup Journey</h2>
             <p className="text-gray-500 mt-1">Learn. Build. Launch. One day at a time.</p>
           </div>
           <div className="flex flex-row items-center space-x-4 mt-4 md:mt-0">
@@ -246,7 +246,7 @@ export default function CourseRoadmap() {
             </div>
             <div className="text-center">
               <p className="text-3xl font-bold text-purple-600">Day {Math.floor(userData.overallProgress * 0.9)}</p>
-              <p className="text-sm text-gray-500">of 90</p>
+              <p className="text-sm text-gray-500">of 180</p>
             </div>
             <button
               onClick={() => window.location.reload()}
@@ -297,11 +297,11 @@ export default function CourseRoadmap() {
         {/* My Startup Section */}
         <MyStartup />
 
-        {/* 90-Day Calendar Progress Tracker */}
+        {/* 180-Day Calendar Progress Tracker */}
         <div className="mt-8 bg-white p-4 rounded-lg border border-gray-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">90-Day Calendar</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">180-Day Calendar</h3>
           <div className="grid grid-cols-9 gap-1 md:gap-2">
-            {Array.from({ length: 90 }, (_, i) => {
+            {Array.from({ length: 180 }, (_, i) => {
               // Calculate completion based on overall progress
               const isDayCompleted = i < Math.floor(userData.overallProgress * 0.9);
               const isCurrentDay = i === Math.floor(userData.overallProgress * 0.9);

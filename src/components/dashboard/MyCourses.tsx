@@ -167,7 +167,7 @@ export default function MyCourses() {
 
       {/* Course Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-        {/* 90-Day Young CEO Program */}
+        {/* 180-Day Young CEO Program */}
         <div 
           onClick={() => setCurrentView('course')}
           className="relative bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-2xl p-8 text-white cursor-pointer hover:scale-105 transition-transform duration-200 shadow-lg hover:shadow-xl"
@@ -181,7 +181,7 @@ export default function MyCourses() {
               <Star className="h-5 w-5 text-yellow-300" />
               <span className="text-sm font-medium text-purple-100">PREMIUM COURSE</span>
             </div>
-            <h2 className="text-2xl font-bold mb-3">90-Day Young CEO Program</h2>
+            <h2 className="text-2xl font-bold mb-3">180-Day Young CEO Program</h2>
             <p className="text-purple-100 text-sm leading-relaxed">
               Transform your ideas into reality with our comprehensive 13-week entrepreneurship program designed specifically for young innovators.
             </p>

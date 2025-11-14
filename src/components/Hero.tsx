@@ -111,7 +111,7 @@ export default function Hero() {
               </h1>
               
             <p className="text-xl text-white/90 mb-8 max-w-2xl">
-              Our 90-day program combines hands-on projects, mentorship, and cutting-edge tools to nurture the next generation of entrepreneurs.
+              Our 180-day program combines hands-on projects, mentorship, and cutting-edge tools to nurture the next generation of entrepreneurs.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">

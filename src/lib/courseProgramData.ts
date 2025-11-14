@@ -261,8 +261,8 @@ allWeeks[0].lessons[0].isLocked = false;
 allWeeks[0].lessons[0].unlockDate = new Date().toISOString().split('T')[0];
 
 export const youngCEOProgram: CourseProgram = {
-  id: 'young-ceo-90-day',
-  title: '90-Day Young CEO Program',
+  id: 'young-ceo-180-day',
+  title: '180-Day Young CEO Program',
   description: 'A comprehensive 13-week entrepreneurship learning program designed for young aspiring entrepreneurs',
   totalWeeks: 13,
   weeks: allWeeks,

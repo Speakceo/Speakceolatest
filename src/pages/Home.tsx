@@ -89,8 +89,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="ORBIT - Future Leaders Start Here"
-        description="Transform your child into a confident leader. ORBIT teaches entrepreneurship, communication, and leadership skills to young minds through our innovative 90-day curriculum."
+        title="SpeakCEO - Future Leaders Start Here"
+        description="Transform your child into a confident leader. SpeakCEO teaches entrepreneurship, communication, and leadership skills to young minds through our innovative 180-day curriculum."
         keywords={[
           'entrepreneurship education',
           'youth leadership',
@@ -105,9 +105,9 @@ export default function Home() {
         ]}
       />
       
-      <div className="min-h-screen bg-white font-[Poppins] overflow-x-hidden pt-20">
+      <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden pt-20">
         {/* Enhanced Hero Section */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden min-h-screen flex items-center">
+        <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 dark:from-gray-800 dark:via-gray-900 dark:to-black text-white overflow-hidden min-h-screen flex items-center">
           {/* Enhanced background effects */}
           <div className="absolute inset-0 bg-black/10"></div>
           
@@ -146,7 +146,7 @@ export default function Home() {
                   variants={fadeIn}
                   className="text-xl text-white/90 mb-10 max-w-2xl leading-relaxed"
                 >
-                  Transform your child's potential into reality with our immersive 90-day journey. From idea to launch, we guide young entrepreneurs through every step of building their first business.
+                  Transform your child's potential into reality with our immersive 180-day journey. From idea to launch, we guide young entrepreneurs through every step of building their first business.
                 </motion.p>
                 
                 <motion.div 
@@ -200,7 +200,7 @@ export default function Home() {
               >
                 <div className="relative">
                 <img 
-                  src="https://i.postimg.cc/vmXKM1Y9/Chat-GPT-Image-May-19-2025-10-58-12-PM.png" 
+                  src="/images/hero/main-hero.png" 
                   alt="Young entrepreneurs collaborating" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                   />
@@ -222,8 +222,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ORBIT Playground Demo Section */}
-        <section className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 relative overflow-hidden">
+        {/* SpeakCEO Playground Demo Section */}
+        <section className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
           {/* Background Elements */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/10 via-pink-400/10 to-indigo-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-bl from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
@@ -234,15 +234,15 @@ export default function Home() {
               className="text-center mb-16"
             >
               <div className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-8 py-3 mb-6">
-                <span className="text-purple-700 font-bold text-lg">🚀 ORBIT Playground</span>
+                <span className="text-purple-700 font-bold text-lg">🚀 SpeakCEO Playground</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Watch Your Child 
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
-                  Build Anything
-                </span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900 dark:text-white">
+              Watch Your Child 
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
+                Build Anything
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8">
                 See how AI empowers your child to create games, websites, and apps with just their imagination. 
                 No coding required - just creativity!
               </p>
@@ -263,7 +263,7 @@ export default function Home() {
                       <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
                     <div className="flex-1 text-center">
-                      <span className="text-white font-semibold">ORBIT AI Builder</span>
+                      <span className="text-white font-semibold">SpeakCEO AI Builder</span>
                     </div>
                   </div>
 
@@ -487,7 +487,7 @@ export default function Home() {
               >
                 <div className="flex items-center mb-6">
                   <img 
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+                    src="/images/avatars/student-2.jpg"
                     alt="Michael Rodriguez"
                     className="w-16 h-16 rounded-full object-cover mr-4"
                   />
@@ -521,7 +521,7 @@ export default function Home() {
               >
                 <div className="flex items-center mb-6">
                   <img 
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face"
+                    src="/images/avatars/student-4.jpg"
                     alt="Jennifer Park"
                     className="w-16 h-16 rounded-full object-cover mr-4"
                   />
@@ -702,7 +702,7 @@ export default function Home() {
               <div className="relative">
                 <div className="relative">
                   <img 
-                    src="https://i.postimg.cc/tR1StD70/Chat-GPT-Image-Jun-19-2025-10-21-56-PM.png" 
+                    src="/images/hero/journey-map.png" 
                     alt="Students collaborating in comprehensive learning environment with AI tools and live mentorship" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                   />
@@ -758,7 +758,7 @@ export default function Home() {
                 <span className="text-indigo-600 font-medium">Step-by-Step Journey</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Your Child's 90-Day Entrepreneurial Adventure
+                Your Child's 180-Day Entrepreneurial Adventure
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Step-by-step guidance, from that first spark of an idea to launching a real business.
@@ -767,8 +767,8 @@ export default function Home() {
             
             <div className="mb-16 text-center">
               <img 
-                src="https://i.postimg.cc/kM6k6zpT/Chat-GPT-Image-Jun-6-2025-06-28-18-PM.png" 
-                alt="Complete 90-day entrepreneurial journey roadmap" 
+                src="/images/hero/success-story.png" 
+                alt="Complete 180-day entrepreneurial journey roadmap" 
                 className="rounded-2xl shadow-xl max-w-3xl mx-auto w-full h-auto"
               />
             </div>
@@ -914,7 +914,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Why Parents & Kids Love ORBIT
+                Why Parents & Kids Love SpeakCEO
               </h2>
               <p className="text-xl text-white/90 max-w-3xl mx-auto">
                 More than business. We're building confidence, creativity, and a lifelong love of learning.
@@ -985,7 +985,7 @@ export default function Home() {
             {/* Success Stories Image */}
             <div className="mb-16 text-center">
               <img 
-                src="https://i.postimg.cc/6pwSP35P/Chat-GPT-Image-Jun-6-2025-06-18-44-PM.png" 
+                src="/images/hero/testimonial-bg.png" 
                 alt="Young entrepreneurs celebrating their success stories" 
                 className="rounded-2xl shadow-xl max-w-2xl mx-auto w-full h-auto"
               />
@@ -1005,14 +1005,14 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-600">
-                  "My daughter used to be so shy, but after starting her sticker business through ORBIT, she's presenting to her entire school! The transformation has been incredible."
+                  "My daughter used to be so shy, but after starting her sticker business through SpeakCEO, she's presenting to her entire school! The transformation has been incredible."
                 </p>
               </div>
 
               <div className="bg-white p-8 rounded-2xl shadow-lg">
                 <div className="flex items-center mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?w=80&h=80&fit=crop&crop=face"
+                    src="/images/avatars/student-1.jpg"
                     alt="Tyler J."
                     className="h-12 w-12 rounded-full object-cover mr-4"
                   />
@@ -1029,7 +1029,7 @@ export default function Home() {
               <div className="bg-white p-8 rounded-2xl shadow-lg">
                 <div className="flex items-center mb-4">
                   <img 
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+                    src="/images/avatars/student-2.jpg"
                     alt="Michael T."
                     className="h-12 w-12 rounded-full object-cover mr-4"
                   />
@@ -1258,7 +1258,7 @@ export default function Home() {
                 <div className="text-indigo-100">Parent Satisfaction</div>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">90</div>
+                <div className="text-4xl font-bold mb-2">180</div>
                 <div className="text-indigo-100">Day Program</div>
               </div>
               <div>

@@ -8,7 +8,7 @@ interface RouteMeta {
 export const routeMeta: Record<string, RouteMeta> = {
   '/': {
     title: 'SpeakCEO - Young Entrepreneurship Program',
-    description: 'Transform your child into a future business leader with our comprehensive 90-Day Young CEO Program. Interactive courses, live mentoring, and hands-on projects.',
+    description: 'Transform your child into a future business leader with our comprehensive 180-Day Young CEO Program. Interactive courses, live mentoring, and hands-on projects.',
     keywords: ['young CEO program', 'kids entrepreneurship', 'business education for children'],
     type: 'website'
   },

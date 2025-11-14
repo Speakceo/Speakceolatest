@@ -38,21 +38,21 @@ const parentTestimonials = [
   {
     name: "Sarah Chen",
     role: "Mother of Emma (12)",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b332800b?w=150&h=150&fit=crop&crop=face",
+    image: "/images/avatars/student-1.jpg",
     quote: "Emma went from being shy to pitching her business idea to our neighbors! The confidence transformation is incredible.",
     outcome: "Started a pet-sitting business, earning $500/month"
   },
   {
     name: "Michael Rodriguez",
     role: "Father of Diego (14)",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    image: "/images/avatars/student-2.jpg",
     quote: "Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills.",
     outcome: "Led school fundraising, raised $2,000 for charity"
   },
   {
     name: "Jennifer Park",
     role: "Mother of Alex (13)",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    image: "/images/avatars/student-4.jpg",
     quote: "Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!",
     outcome: "Became student council president, launched school app"
   }
@@ -228,7 +228,7 @@ export default function Courses() {
   const { user } = useUserStore();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-purple-50 py-24">
+    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-24">
       {/* Hero Section - Parent-focused */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <motion.div
@@ -248,7 +248,7 @@ export default function Courses() {
         </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
-            In just 90 days, see your child develop the <strong>confidence, communication skills, and entrepreneurial mindset</strong> that will set them apart for life.
+            In just 180 days, see your child develop the <strong>confidence, communication skills, and entrepreneurial mindset</strong> that will set them apart for life.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -502,7 +502,7 @@ export default function Courses() {
             <div className="relative">
               <div className="relative">
                 <img 
-                  src="https://i.postimg.cc/tR1StD70/Chat-GPT-Image-Jun-19-2025-10-21-56-PM.png" 
+                  src="/images/hero/journey-map.png" 
                   alt="Students collaborating in comprehensive learning environment with AI tools and live mentorship" 
                   className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                 />

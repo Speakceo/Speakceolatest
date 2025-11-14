@@ -42,7 +42,7 @@ export default function JourneySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header with high contrast */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h2 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">The 90-Day Journey</h2>
+          <h2 className="text-5xl font-bold text-white mb-4 drop-shadow-lg">The 180-Day Journey</h2>
           <p className="text-xl text-white/90 leading-relaxed drop-shadow-sm">From idea to impact: A step-by-step curriculum for young innovators.</p>
         </div>
         

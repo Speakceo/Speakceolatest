@@ -363,7 +363,7 @@ export async function getAdminAnalyticsData(timeRange: string = 'month') {
         startDate.setDate(endDate.getDate() - 7);
         break;
       case 'quarter':
-        startDate.setDate(endDate.getDate() - 90);
+        startDate.setDate(endDate.getDate() - 180);
         break;
       case 'year':
         startDate.setDate(endDate.getDate() - 365);

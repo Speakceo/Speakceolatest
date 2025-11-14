@@ -153,10 +153,10 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
             <div className="text-white">
               <div className="flex items-center gap-3 mb-4">
                 <Crown className="h-8 w-8 text-yellow-300" />
-                <h1 className="text-4xl font-bold">90-Day Young CEO Program</h1>
+                <h1 className="text-4xl font-bold">180-Day Young CEO Program</h1>
               </div>
               <p className="text-xl text-purple-100 mb-6 max-w-2xl">
-                Transform your ideas into reality! Join thousands of young entrepreneurs on an amazing 90-day journey to becoming a Young CEO.
+                Transform your ideas into reality! Join thousands of young entrepreneurs on an amazing 180-day journey to becoming a Young CEO.
               </p>
               
               {/* Progress Overview */}

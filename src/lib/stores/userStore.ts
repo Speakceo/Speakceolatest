@@ -1,13 +1,11 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { getCurrentUser, initializeSession, updateUserProgress, updateUserPoints, cleanUserLocalStorage, getCurrentOrbitUser, logoutOrbitUser } from '../supabase';
-import { getCurrentOrbitUser as mockGetCurrentOrbitUser, logoutOrbitUser as mockLogoutOrbitUser } from '../mockDatabase';
-import { supabase } from '../supabase';
-import { User as SupabaseUser } from '@supabase/supabase-js';
+import { getCurrentSession, logout as speakCeoLogout, clearAccountData } from '../offline-auth';
+// Removed Supabase dependency
 
 interface AppUser {
   id: string;
-  orbitId?: string;
+  speakCeoId?: string;
   name: string;
   email: string;
   avatar: string;
@@ -32,6 +30,7 @@ interface UserState {
   updateUserProgressValue: (newProgress: number) => void;
   signOut: () => Promise<void>;
   updateProfile: (updates: any) => Promise<void>;
+  clearUserLocalStorage: () => void;
 }
 
 export const useUserStore = create<UserState>()(
@@ -55,25 +54,22 @@ export const useUserStore = create<UserState>()(
             error: null 
           });
           
-          // Check for ORBIT session first (try Supabase, fallback to mock)
-          let orbitUser;
-          try {
-            orbitUser = await getCurrentOrbitUser();
-          } catch (error) {
-            console.log('Supabase failed, checking mock database for ORBIT user');
-            orbitUser = await mockGetCurrentOrbitUser();
-          }
+          // Check for SpeakCEO session
+          const session = getCurrentSession();
           
-          if (orbitUser && orbitUser.student_name) {
-            console.log('ORBIT user session found:', orbitUser.orbit_id);
+          if (session && session.studentName) {
+            console.log('SpeakCEO session found:', session.speakCeoId);
             
-            // Create app user from ORBIT account
+            // Clear any existing localStorage data to ensure fresh start
+            get().clearUserLocalStorage();
+            
+            // Create app user from SpeakCEO session
             const appUser: AppUser = {
-              id: orbitUser.orbit_id,
-              orbitId: orbitUser.orbit_id,
-              name: orbitUser.student_name,
-              email: `${orbitUser.orbit_id.toLowerCase()}@orbitstudent.com`,
-              avatar: 'https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80',
+              id: session.speakCeoId,
+              speakCeoId: session.speakCeoId,
+              name: session.studentName,
+              email: `${session.speakCeoId.toLowerCase()}@speakceo.com`,
+              avatar: '/images/avatars/student-1.jpg',
               courseType: 'Premium',
               progress: 0,
               points: 0,
@@ -82,107 +78,19 @@ export const useUserStore = create<UserState>()(
             
             set({
               user: appUser,
-              profile: orbitUser,
+              profile: session,
               error: null
             });
             
             return;
           }
           
-          // Fallback to traditional auth for admin/demo accounts
-          const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-          if (sessionError) {
-            console.error('Session error:', sessionError);
-            return; // Don't throw, just return
-          }
-          
-          if (session?.user) {
-            const user = session.user;
-            console.log('User session found:', user.email);
-            
-            // Clean localStorage for fresh users (not demo accounts)
-            if (user.email) {
-              cleanUserLocalStorage(user.email);
-            }
-            
-            // Try to get profile but don't block if it fails
-            try {
-              const { data: profile, error: profileError } = await supabase
-                .from('profiles')
-                .select('*')
-                .eq('id', user.id)
-                .single();
-              
-              if (profile && !profileError) {
-                console.log('User profile loaded:', profile);
-                
-                // Convert Supabase user to app user format
-                const appUser: AppUser = {
-                  id: profile.id,
-                  name: profile.name || 'User',
-                  email: user.email || '',
-                  avatar: profile.avatar_url || 'https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80',
-                  courseType: profile.course_type as 'Basic' | 'Premium',
-                  progress: profile.progress || 0,
-                  points: profile.points || 0,
-                  role: profile.role as 'student' | 'admin'
-                };
-                
-                set({
-                  user: appUser,
-                  profile,
-                  error: null
-                });
-                
-                console.log('Auth initialization completed successfully');
-              } else {
-                console.log('Profile not found or error:', profileError);
-                // Create a basic user from session data
-                const basicUser: AppUser = {
-                  id: user.id,
-                  name: user.email?.split('@')[0] || 'User',
-                  email: user.email || '',
-                  avatar: 'https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80',
-                  courseType: 'Basic',
-                  progress: 0,
-                  points: 0,
-                  role: 'student'
-                };
-                
-                set({
-                  user: basicUser,
-                  profile: null,
-                  error: null
-                });
-              }
-            } catch (profileError) {
-              console.error('Profile fetch error:', profileError);
-              // Don't block, just set basic user
-              const basicUser: AppUser = {
-                id: user.id,
-                name: user.email?.split('@')[0] || 'User',
-                email: user.email || '',
-                avatar: 'https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80',
-                courseType: 'Basic',
-                progress: 0,
-                points: 0,
-                role: 'student'
-              };
-              
-              set({
-                user: basicUser,
-                profile: null,
-                error: null
-              });
-            }
-          } else {
-            console.log('No active session found');
-            set({
-              user: null,
-              profile: null,
-              error: null
-            });
-          }
+          console.log('No active session found');
+          set({
+            user: null,
+            profile: null,
+            error: null
+          });
         } catch (error) {
           console.error('Auth initialization error:', error);
           // Always ensure app can continue
@@ -191,36 +99,17 @@ export const useUserStore = create<UserState>()(
             profile: null,
             isHydrated: true,
             isInitialized: true,
-            error: null // Don't show errors that might break the UI
+            error: null
           });
         }
       },
       logout: async () => {
-        const currentUser = get().user;
-        
-        // Logout ORBIT user if applicable
-        if (currentUser?.orbitId) {
-          try {
-            await logoutOrbitUser();
-          } catch (error) {
-            console.log('Supabase logout failed, using mock logout');
-            await mockLogoutOrbitUser();
-          }
-        }
-        
-        // Logout traditional auth user
-        await supabase.auth.signOut();
+        // Logout SpeakCEO user
+        speakCeoLogout();
         
         set({ user: null, profile: null, error: null });
         localStorage.removeItem('user-storage');
-        localStorage.removeItem('isDemoUser');
-        localStorage.removeItem('progress-storage');
-        localStorage.removeItem('brand-storage');
-        localStorage.removeItem('simulator-storage');
-        localStorage.removeItem('ai-tools-storage');
-        localStorage.removeItem('unified-progress-storage');
-        localStorage.removeItem('realtime-progress-storage');
-        localStorage.removeItem('orbit_session');
+        localStorage.removeItem('speakceo_session');
       },
       resetProgress: () => {
         const { user } = get();
@@ -344,6 +233,34 @@ export const useUserStore = create<UserState>()(
             error: error instanceof Error ? error.message : 'Failed to update profile'
           });
         }
+      },
+      clearUserLocalStorage: () => {
+        // Clear all localStorage keys that might contain user data
+        const keysToRemove = [
+          'progress-storage', 
+          'brand-storage',
+          'simulator-storage',
+          'ai-tools-storage',
+          'unified-progress-storage',
+          'realtime-progress-storage',
+          'myStartup',
+          'brandCreator',
+          'speakSmartHistory',
+          'mathMentorHistory',
+          'writeRightHistory',
+          'mindMazeHistory',
+          'pitchDeckHistory'
+        ];
+        
+        keysToRemove.forEach(key => {
+          try {
+            localStorage.removeItem(key);
+          } catch (error) {
+            console.warn(`Failed to remove localStorage key: ${key}`, error);
+          }
+        });
+        
+        console.log('🧹 Cleared user localStorage for fresh account');
       }
     }),
     {

@@ -289,7 +289,7 @@ export default function AdminDashboard() {
             is_active: false,
             enrolled_count: 15,
             completion_rate: 45,
-            created_at: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString()
+            created_at: new Date(Date.now() - 180 * 24 * 60 * 60 * 1000).toISOString()
           }
         ];
         setCourses(sampleCourses);

@@ -141,7 +141,7 @@ export default function LearningJourney() {
       <div className="bg-white rounded-2xl p-6 shadow-sm">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">90-Day CEO Journey</h2>
+            <h2 className="text-2xl font-bold text-gray-900">180-Day CEO Journey</h2>
             <p className="text-gray-500 mt-1">Your path to entrepreneurial success</p>
           </div>
           <div className="flex items-center space-x-4">
@@ -151,7 +151,7 @@ export default function LearningJourney() {
             </div>
             <div className="text-center">
               <p className="text-3xl font-bold text-purple-600">Day {Math.floor(overallProgress * 0.9)}</p>
-              <p className="text-sm text-gray-500">of 90</p>
+              <p className="text-sm text-gray-500">of 180</p>
             </div>
           </div>
         </div>

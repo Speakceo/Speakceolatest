@@ -21,7 +21,7 @@ const faqData: FAQItem[] = [
   {
     id: 2,
     category: "Results & Success",
-    question: "How do I know my child will stay engaged for the full 90 days?",
+    question: "How do I know my child will stay engaged for the full 180 days?",
     answer: "We've cracked the code on keeping kids engaged! Our program uses gamification with XP points, achievement badges, and daily challenges. Plus, lessons are only 15-20 minutes each - perfect for young attention spans. 94% of enrolled students complete the entire program, compared to 12% completion rates for typical online courses.",
     highlight: true
   },

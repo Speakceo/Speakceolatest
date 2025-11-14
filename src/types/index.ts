@@ -21,7 +21,7 @@ export interface MenuItem {
   href: string;
 }
 
-// 90-Day Young CEO Program Types
+// 180-Day Young CEO Program Types
 export interface Question {
   id: string;
   question: string;

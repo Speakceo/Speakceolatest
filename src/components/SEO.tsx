@@ -21,8 +21,8 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'ORBIT - Entrepreneurship Education for Young Minds',
-  description: 'Transform your child into a future business leader with ORBIT\'s comprehensive 90-Day Young CEO Program. Interactive courses, live mentoring, and hands-on projects designed for ages 8-16.',
+  title: 'SpeakCEO - Entrepreneurship Education for Young Minds',
+  description: 'Transform your child into a future business leader with SpeakCEO\'s comprehensive 180-Day Young CEO Program. Interactive courses, live mentoring, and hands-on projects designed for ages 8-16.',
   keywords: [
     'young CEO program',
     'entrepreneurship for kids',
@@ -120,7 +120,7 @@ export default function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
-        <meta property="og:site_name" content="ORBIT" />
+        <meta property="og:site_name" content="SpeakCEO" />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
       {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 

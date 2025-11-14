@@ -343,7 +343,7 @@ export default function AnalyticsPage() {
           >
             <option value="week">Last 7 Days</option>
             <option value="month">Last 30 Days</option>
-            <option value="quarter">Last 90 Days</option>
+            <option value="quarter">Last 180 Days</option>
             <option value="year">Last 365 Days</option>
           </select>
           <button
@@ -900,7 +900,7 @@ export default function AnalyticsPage() {
             
             <div>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-sm text-gray-600">90-Day Retention</span>
+                <span className="text-sm text-gray-600">180-Day Retention</span>
                 <span className="text-sm font-medium text-gray-900">58%</span>
               </div>
               <div className="h-2 w-full bg-gray-200 rounded-full">

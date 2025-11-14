@@ -66,7 +66,7 @@ const About = () => {
       role: "Founder & CEO",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face",
       background: "Former Harvard Professor, 15+ years in youth development",
-      story: "Started ORBIT after watching her own shy daughter transform into a confident leader through entrepreneurship."
+      story: "Started SpeakCEO after watching her own shy daughter transform into a confident leader through entrepreneurship."
     },
     {
       name: "Marcus Johnson",
@@ -120,7 +120,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
-                <span className="text-purple-700 font-semibold">The Story Behind ORBIT</span>
+                <span className="text-purple-700 font-semibold">The Story Behind SpeakCEO</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
@@ -143,7 +143,7 @@ const About = () => {
                     He loved giving ideas, helping his friends sell handmade cards, and even hosted pretend investor meetings with his cousins. But every time he spoke up in class, he felt nervous. And while he was full of ideas, no one was teaching him how to pitch them like a pro.
                   </p>
                   <p className="font-semibold">
-                    That spark lit the idea behind ORBIT — a platform built just for kids like Aarav.
+                    That spark lit the idea behind SpeakCEO — a platform built just for kids like Aarav.
                   </p>
                   <p>
                     <strong>We believe every child is already a leader.</strong> All they need is the right space to speak up, explore, and lead boldly.
@@ -153,7 +153,7 @@ const About = () => {
 
               {/* What We Created */}
               <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 border border-purple-100 mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">So we created ORBIT — a place where:</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">So we created SpeakCEO — a place where:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-start space-x-3">
                     <Mic className="h-6 w-6 text-purple-600 mt-1 flex-shrink-0" />
@@ -176,7 +176,7 @@ const About = () => {
 
               {/* Mission Statement */}
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">ORBIT isn't just a class. It's an adventure in confidence.</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">SpeakCEO isn't just a class. It's an adventure in confidence.</h3>
                 <p className="text-gray-700 mb-4">
                   From Delhi to Dubai, from small towns to big cities, our young CEOs are launching bake sales, eco-campaigns, sticker startups, and even podcasts.
                 </p>
@@ -186,7 +186,7 @@ const About = () => {
                     <strong>Raise the next generation of speakers, thinkers, and doers — one confident child at a time.</strong>
                   </p>
                   <p className="mt-4 text-purple-100">
-                    So if your child has a voice, a dream, or just a spark — ORBIT is where it begins.
+                    So if your child has a voice, a dream, or just a spark — SpeakCEO is where it begins.
                   </p>
                 </div>
               </div>

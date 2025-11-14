@@ -1,10 +1,21 @@
-import { createClient } from '@supabase/supabase-js';
+// Offline-only stub - no Supabase connections
+const createQueryBuilder = () => ({
+  select: (columns?: string) => createQueryBuilder(),
+  insert: (data: any) => createQueryBuilder(),
+  update: (data: any) => createQueryBuilder(),
+  delete: () => createQueryBuilder(),
+  eq: (column: string, value: any) => createQueryBuilder(),
+  order: (column: string, options?: { ascending?: boolean }) => createQueryBuilder(),
+  limit: (count: number) => createQueryBuilder(),
+  single: () => Promise.resolve({ data: null, error: null }),
+  then: (resolve: Function) => resolve({ data: [], error: null })
+});
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+export const supabase = {
+  from: (table: string) => createQueryBuilder(),
+  channel: (name: string) => ({
+    on: () => ({ subscribe: () => Promise.resolve({ error: null }) })
+  })
+};
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
-}
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey); 
+export default supabase;

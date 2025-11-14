@@ -6,6 +6,7 @@ import { useLanguage } from '../lib/contexts/LanguageContext';
 import LanguageToggle from './LanguageToggle';
 import EnrollmentPopup from './EnrollmentPopup';
 import CareerGuidePopup from './career/CareerGuidePopup';
+import ThemeToggle from './ThemeToggle';
 
 const menuItems = [
   { title: 'nav.home', href: '/' },
@@ -61,7 +62,7 @@ export default function Navbar() {
       {/* Enhanced Navbar with Glass-morphism Effect */}
       <nav className="fixed w-full z-50 transition-all duration-300 top-0 left-0 min-h-[80px]">
         {/* Background with enhanced glass effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-indigo-900/95 backdrop-blur-xl border-b border-white/10 min-h-[80px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-indigo-900/95 dark:from-gray-900/95 dark:via-gray-800/95 dark:to-gray-900/95 backdrop-blur-xl border-b border-white/10 dark:border-gray-700/50 min-h-[80px]"></div>
         
         {/* Animated gradient orbs */}
         <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/20 via-blue-400/20 to-teal-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-pulse"></div>
@@ -82,7 +83,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-indigo-100 group-hover:from-emerald-200 group-hover:to-blue-200 transition-all duration-300">
-                    ORBIT
+                    SpeakCEO
                   </span>
                   <span className="text-xs text-purple-200 font-medium tracking-wider">
                     Future Leaders
@@ -120,6 +121,9 @@ export default function Navbar() {
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
               
+              {/* Theme Toggle */}
+              <ThemeToggle size="sm" />
+              
               {/* Enhanced Auth Buttons */}
               {isInitialized && (
                 user ? (
@@ -153,6 +157,7 @@ export default function Navbar() {
 
             {/* Enhanced Mobile Menu Button */}
             <div className="md:hidden flex items-center space-x-4">
+              <ThemeToggle size="sm" />
               <LanguageToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}

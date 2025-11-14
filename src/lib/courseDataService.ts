@@ -1,7 +1,7 @@
 /**
  * Course Data Service
  * 
- * This service manages the 90-day journey course data and synchronization
+ * This service manages the 180-day journey course data and synchronization
  * between the admin panel and student dashboard.
  */
 

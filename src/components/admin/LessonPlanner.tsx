@@ -259,7 +259,7 @@ export default function LessonPlanner({
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold text-gray-900">90-Day Startup Journey Planner</h2>
+        <h2 className="text-xl font-bold text-gray-900">180-Day Startup Journey Planner</h2>
         <div className="flex items-center space-x-3">
           {saveMessage && (
             <span className={`text-sm ${saveMessage.includes('Error') ? 'text-red-600' : 'text-green-600'}`}>
@@ -279,7 +279,7 @@ export default function LessonPlanner({
       <div className="bg-white rounded-lg shadow">
         <div className="p-4 border-b border-gray-200 flex items-center justify-between">
           <h3 className="font-semibold text-gray-900">Course Modules</h3>
-          <p className="text-sm text-gray-500">Plan your 90-day journey modules and lessons</p>
+          <p className="text-sm text-gray-500">Plan your 180-day journey modules and lessons</p>
         </div>
         
         <div className="space-y-2 p-4">

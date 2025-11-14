@@ -396,7 +396,7 @@ export async function seedDemoModules() {
     }
     
     try {
-      // Create comprehensive demo modules for 90-day journey
+      // Create comprehensive demo modules for 180-day journey
       const moduleData = [
         {
           title: "Foundations of Entrepreneurship",

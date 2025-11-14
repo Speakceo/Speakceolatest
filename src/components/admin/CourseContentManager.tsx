@@ -56,7 +56,7 @@ export default function CourseContentManager() {
           <h1 className="text-3xl font-bold text-gray-900">Course Content Manager</h1>
         </div>
         <p className="text-xl text-gray-600">
-          Manage the 90-Day Young CEO Program content, lessons, quizzes, and tasks
+          Manage the 180-Day Young CEO Program content, lessons, quizzes, and tasks
         </p>
       </div>
 

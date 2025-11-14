@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async'
 // Context Providers
 import { LanguageProvider } from './lib/contexts/LanguageContext'
 import { UserProgressProvider } from './contexts/UserProgressContext'
+import { ThemeProvider } from './contexts/ThemeContext'
 
 // Store
 import { useUserStore } from './lib/store'
@@ -28,11 +29,10 @@ import Partnerships from './pages/Partnerships'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import CookiePolicy from './pages/CookiePolicy'
-import OrbitSetup from './pages/OrbitSetup'
-import LiveOrbitSetup from './components/admin/LiveOrbitSetup'
+import SetupSpeakCEO from './components/admin/SetupSpeakCEO'
 
 // Auth Components
-import OrbitLoginForm from './components/auth/OrbitLoginForm'
+import SpeakCEOLogin from './components/auth/SpeakCEOLogin'
 import ForgotPassword from './components/auth/ForgotPassword'
 
 // Dashboard Components
@@ -209,10 +209,9 @@ function AppContent() {
             <Route path="/cookies" element={<CookiePolicy />} />
 
             {/* Auth Routes */}
-            <Route path="/login" element={<OrbitLoginForm />} />
+            <Route path="/login" element={<SpeakCEOLogin />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/orbit-setup" element={<OrbitSetup />} />
-            <Route path="/live-orbit-setup" element={<LiveOrbitSetup />} />
+            <Route path="/setup" element={<SetupSpeakCEO />} />
             
             {/* Dashboard Routes */}
             <Route path="/dashboard/*" element={<DashboardLayout />}>
@@ -253,14 +252,16 @@ export default function App() {
   return (
     <ErrorBoundary>
       <HelmetProvider>
-        <Router>
-        <LanguageProvider>
-            <UserProgressProvider>
-              <ScrollToTop />
-            <AppContent />
-            </UserProgressProvider>
-          </LanguageProvider>
-          </Router>
+        <ThemeProvider>
+          <Router>
+          <LanguageProvider>
+              <UserProgressProvider>
+                <ScrollToTop />
+              <AppContent />
+              </UserProgressProvider>
+            </LanguageProvider>
+            </Router>
+        </ThemeProvider>
       </HelmetProvider>
     </ErrorBoundary>
   );
