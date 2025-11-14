@@ -1,152 +1,84 @@
-# ORBIT - Young Entrepreneurship Program
+# 🚀 SpeakCEO - Entrepreneurship Education Platform
 
-A comprehensive platform for teaching entrepreneurship to young minds through an interactive 90-day program.
+Transform your child into a confident leader with SpeakCEO's comprehensive 180-Day Young CEO Program.
 
-## 🚀 Features
+## ✨ Features
 
-- **90-Day Young CEO Program**
-  - Interactive video lessons
-  - Weekly quizzes and tasks
-  - Project-based learning
-  - Progress tracking
-  - XP and badge system
+### 🌙 **Dark Mode Support**
+- Beautiful animated theme toggle (sun/moon icons)
+- System preference detection
+- Persistent theme selection
+- Mobile-responsive design
 
-- **Interactive Learning**
-  - Live classes
-  - AI-powered learning assistant
-  - Real-time progress tracking
-  - Downloadable resources
-  - Note-taking capabilities
+### 🔐 **SpeakCEO Login System**
+- 300 unique student accounts (SpeakCEO001 to SpeakCEO300)
+- Account isolation - each student has their own progress
+- Offline-first authentication
+- Clean dashboard for new users
 
-- **Student Dashboard**
-  - Personal progress tracking
-  - Achievement system
-  - Learning analytics
-  - Resource library
-  - Community features
+### 🖼️ **Optimized Performance**
+- Local image hosting for faster loading
+- Reduced external dependencies
+- Comprehensive image optimization
 
-## 🛠️ Tech Stack
+### 📚 **Educational Content**
+- 180-day entrepreneurship curriculum
+- Interactive AI tools and games
+- Live mentoring sessions
+- Progress tracking and achievements
 
-- **Frontend**: React 18, TypeScript, Vite
-- **Styling**: TailwindCSS, Framer Motion
-- **State Management**: Zustand
-- **Database**: Supabase
-- **Authentication**: Supabase Auth
-- **API Integration**: OpenAI
-- **Testing**: Jest, React Testing Library
-- **CI/CD**: GitHub Actions
+## 🎯 **Quick Start**
 
-## 📦 Installation
+### For Students:
+1. Visit the website
+2. Click "Login" 
+3. Enter your SpeakCEO ID (e.g., `SpeakCEO001`)
+4. Enter your name (first-time only)
+5. Start your entrepreneurial journey!
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/speakceo.git
-   cd speakceo
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   ```bash
-   cp .env.example .env
-   ```
-   Fill in your environment variables in `.env`
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-## 🚀 Deployment
-
-1. Build the project:
-   ```bash
-   npm run build
-   ```
-
-2. Preview the build:
-   ```bash
-   npm run preview
-   ```
-
-3. Deploy to your hosting platform of choice.
-
-## 🔧 Environment Variables
-
-Create a `.env` file with the following variables:
-
-```env
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-VITE_OPENAI_API_KEY=your_openai_api_key
-```
-
-## 📁 Project Structure
-
-```
-src/
-├── components/        # Reusable components
-├── pages/            # Page components
-├── lib/              # Utilities and helpers
-├── contexts/         # React contexts
-├── types/            # TypeScript types
-├── utils/            # Helper functions
-└── assets/           # Static assets
-```
-
-## 🧪 Testing
-
-Run tests:
+### For Development:
 ```bash
-npm run test
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-Run tests in watch mode:
-```bash
-npm run test:watch
-```
+## 🛠️ **Tech Stack**
 
-## 🔍 Code Quality
+- **Frontend**: React + TypeScript + Vite
+- **Styling**: Tailwind CSS with dark mode
+- **Authentication**: Offline-first system
+- **Deployment**: Netlify
+- **Version Control**: Git + GitHub
 
-- Run linter:
-  ```bash
-  npm run lint
-  ```
+## 🎨 **Key Components**
 
-- Run type check:
-  ```bash
-  npm run typecheck
-  ```
+- **Theme System**: Dark/light mode with persistence
+- **Login System**: 300 isolated student accounts
+- **Dashboard**: Personalized learning experience
+- **AI Tools**: Interactive educational games
+- **Progress Tracking**: Real-time learning analytics
 
-## 📚 Documentation
+## 📱 **Responsive Design**
 
-- [API Documentation](docs/API.md)
-- [Component Documentation](docs/COMPONENTS.md)
-- [Database Schema](docs/SCHEMA.md)
-- [Deployment Guide](docs/DEPLOYMENT.md)
+- Mobile-first approach
+- Dark mode on all devices
+- Touch-friendly interfaces
+- Optimized for tablets and phones
 
-## 🤝 Contributing
+## 🚀 **Deployment**
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+This project auto-deploys to Netlify when pushed to the main branch.
 
-## 📄 License
+## 📄 **License**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Copyright © 2024 SpeakCEO. All rights reserved.
 
-## 👥 Team
+---
 
-- Project Manager: [Name]
-- Lead Developer: [Name]
-- UI/UX Designer: [Name]
-- Content Creator: [Name]
-
-## 📞 Support
-
-For support, email support@speakceo.ai or join our Slack channel. 
+**Built with ❤️ for young entrepreneurs worldwide** 🌟
