@@ -30,6 +30,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import CookiePolicy from './pages/CookiePolicy'
 import SetupSpeakCEO from './components/admin/SetupSpeakCEO'
+import TestLeadForm from './components/TestLeadForm'
 
 // Auth Components
 import SpeakCEOLogin from './components/auth/SpeakCEOLogin'
@@ -207,6 +208,9 @@ function AppContent() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/cookies" element={<CookiePolicy />} />
+            
+            {/* Debug Route */}
+            <Route path="/test-leads" element={<TestLeadForm />} />
 
             {/* Auth Routes */}
             <Route path="/login" element={<SpeakCEOLogin />} />
@@ -257,10 +261,10 @@ export default function App() {
           <LanguageProvider>
               <UserProgressProvider>
                 <ScrollToTop />
-              <AppContent />
+            <AppContent />
               </UserProgressProvider>
             </LanguageProvider>
-            </Router>
+          </Router>
         </ThemeProvider>
       </HelmetProvider>
     </ErrorBoundary>
