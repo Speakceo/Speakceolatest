@@ -159,12 +159,12 @@ export const useProgressStore = create<ProgressState>()(
           } else {
             // Convert database format to frontend format
             const formattedProgress = {
-              completedLessons: progress.completed_lessons || {},
-              completedTasks: progress.completed_tasks || {},
-              lastActivity: progress.last_activity || new Date().toISOString(),
-              streak: progress.streak || 0,
-              totalPoints: progress.total_points || 0,
-              toolUsage: progress.tool_usage || {}
+              completedLessons: (progress && progress.completed_lessons) || {},
+              completedTasks: (progress && progress.completed_tasks) || {},
+              lastActivity: (progress && progress.last_activity) || new Date().toISOString(),
+              streak: (progress && progress.streak) || 0,
+              totalPoints: (progress && progress.total_points) || 0,
+              toolUsage: (progress && progress.tool_usage) || {}
             };
             set({ userProgress: formattedProgress as UserProgress });
           }
