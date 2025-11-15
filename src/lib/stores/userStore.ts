@@ -124,9 +124,8 @@ export const useUserStore = create<UserState>()(
           }
         });
         
-        // Reset progress in database
-        updateUserProgress(user.id, 0);
-        updateUserPoints(user.id, 0);
+        // Reset progress in database (offline mode - just update local state)
+        console.log('Progress reset for user:', user.id);
         
         // Clear local storage for simulators
         localStorage.removeItem('simulator-storage');
@@ -156,7 +155,23 @@ export const useUserStore = create<UserState>()(
         });
         
         // Update database
-        updateUserPoints(user.id, newPoints);
+        // Update points in offline auth system
+        try {
+          const session = getCurrentSession();
+          if (session) {
+            // Update points in offline storage
+            const accounts = JSON.parse(localStorage.getItem('speakceo_accounts') || '[]');
+            const accountMap = new Map(accounts);
+            const account = accountMap.get(session.speakCeoId);
+            if (account) {
+              account.points = newPoints;
+              accountMap.set(session.speakCeoId, account);
+              localStorage.setItem('speakceo_accounts', JSON.stringify(Array.from(accountMap.entries())));
+            }
+          }
+        } catch (error) {
+          console.error('Error updating points in offline storage:', error);
+        }
       },
       updateUserProgressValue: (newProgress) => {
         const { user } = get();
@@ -170,8 +185,23 @@ export const useUserStore = create<UserState>()(
           }
         });
         
-        // Update database
-        updateUserProgress(user.id, newProgress);
+        // Update progress in offline auth system
+        try {
+          const session = getCurrentSession();
+          if (session) {
+            // Update progress in offline storage
+            const accounts = JSON.parse(localStorage.getItem('speakceo_accounts') || '[]');
+            const accountMap = new Map(accounts);
+            const account = accountMap.get(session.speakCeoId);
+            if (account) {
+              account.progress = newProgress;
+              accountMap.set(session.speakCeoId, account);
+              localStorage.setItem('speakceo_accounts', JSON.stringify(Array.from(accountMap.entries())));
+            }
+          }
+        } catch (error) {
+          console.error('Error updating progress in offline storage:', error);
+        }
       },
       signOut: async () => {
         try {
