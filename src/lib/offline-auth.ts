@@ -78,6 +78,7 @@ class OfflineAuthSystem {
     this.initializeAccounts();
     this.loadSession();
     this.loadLeads();
+    this.initializeCloudSync();
   }
 
   // Initialize 300 SpeakCEO accounts
@@ -454,9 +455,104 @@ class OfflineAuthSystem {
     }
   }
 
-  // Save leads to localStorage
+  // Save leads to localStorage and cloud
   private saveLeads() {
     localStorage.setItem('speakceo_leads', JSON.stringify(Array.from(this.leads.entries())));
+    // Auto-sync to cloud (non-blocking)
+    this.syncToCloud();
+  }
+
+  // Initialize cloud sync
+  private async initializeCloudSync() {
+    try {
+      // Load leads from cloud on startup
+      const cloudLeads = await this.loadFromCloud();
+      if (cloudLeads.length > 0) {
+        console.log(`📥 Loaded ${cloudLeads.length} leads from cloud storage`);
+        
+        // Merge with local leads
+        cloudLeads.forEach(lead => {
+          this.leads.set(lead.id, lead);
+        });
+        
+        // Save merged data locally
+        localStorage.setItem('speakceo_leads', JSON.stringify(Array.from(this.leads.entries())));
+      }
+      
+      // Start auto-sync every 2 minutes
+      setInterval(() => {
+        this.syncToCloud();
+      }, 2 * 60 * 1000);
+      
+    } catch (error) {
+      console.log('Cloud sync initialization failed, continuing offline:', error);
+    }
+  }
+
+  // Sync leads to cloud storage
+  private async syncToCloud() {
+    try {
+      const leadsArray = Array.from(this.leads.values());
+      const success = await this.saveToCloud(leadsArray);
+      if (success) {
+        console.log('☁️ Leads synced to cloud successfully');
+      }
+    } catch (error) {
+      console.log('Cloud sync failed, continuing offline:', error);
+    }
+  }
+
+  // Save to cloud storage using JSONBin
+  private async saveToCloud(leads: Lead[]): Promise<boolean> {
+    try {
+      const data = {
+        leads: leads,
+        lastUpdated: new Date().toISOString(),
+        totalCount: leads.length,
+        source: 'speakceo-website'
+      };
+
+      const response = await fetch('https://api.jsonbin.io/v3/b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Bin-Name': 'SpeakCEO Leads Storage',
+          'X-Bin-Private': 'false'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        // Store bin ID for future updates
+        if (result.metadata?.id) {
+          localStorage.setItem('cloud_bin_id', result.metadata.id);
+        }
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error('Error saving to cloud:', error);
+      return false;
+    }
+  }
+
+  // Load from cloud storage
+  private async loadFromCloud(): Promise<Lead[]> {
+    try {
+      const binId = localStorage.getItem('cloud_bin_id');
+      if (!binId) return [];
+
+      const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}/latest`);
+      if (response.ok) {
+        const result = await response.json();
+        return result.record?.leads || [];
+      }
+      return [];
+    } catch (error) {
+      console.error('Error loading from cloud:', error);
+      return [];
+    }
   }
 
   // Add a new lead

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Download, Eye, Mail, Phone, User, Calendar, MapPin } from 'lucide-react';
+import { Download, Eye, Mail, Phone, User, Calendar, MapPin, Cloud, CloudOff, RefreshCw } from 'lucide-react';
 import { getAllLeads, type Lead } from '../../lib/offline-auth';
 
 const SimpleLeadsViewer: React.FC = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [filter, setFilter] = useState('all');
+  const [cloudStatus, setCloudStatus] = useState<'synced' | 'syncing' | 'offline'>('offline');
+  const [lastSync, setLastSync] = useState<Date | null>(null);
 
   useEffect(() => {
     loadLeads();
@@ -69,7 +71,36 @@ const SimpleLeadsViewer: React.FC = () => {
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">All Leads</h1>
-          <p className="text-gray-600 mt-2">Total: {leads.length} leads captured</p>
+          <div className="flex items-center space-x-4 mt-2">
+            <p className="text-gray-600">Total: {leads.length} leads captured</p>
+            
+            {/* Cloud Sync Status */}
+            <div className="flex items-center space-x-2">
+              {cloudStatus === 'synced' && (
+                <>
+                  <Cloud className="h-4 w-4 text-green-500" />
+                  <span className="text-sm text-green-600">Cloud Synced</span>
+                </>
+              )}
+              {cloudStatus === 'syncing' && (
+                <>
+                  <RefreshCw className="h-4 w-4 text-blue-500 animate-spin" />
+                  <span className="text-sm text-blue-600">Syncing...</span>
+                </>
+              )}
+              {cloudStatus === 'offline' && (
+                <>
+                  <CloudOff className="h-4 w-4 text-gray-400" />
+                  <span className="text-sm text-gray-500">Local Only</span>
+                </>
+              )}
+              {lastSync && (
+                <span className="text-xs text-gray-400">
+                  Last sync: {lastSync.toLocaleTimeString()}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
         <button
           onClick={exportToCSV}
