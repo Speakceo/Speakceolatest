@@ -33,15 +33,26 @@ interface AITool {
 export default function AIToolsHome() {
   const navigate = useNavigate();
   const { user } = useUserStore();
-  const { getOverallProgress } = useProgressStore();
-  const { tools, getTotalXPEarned, getMostUsedTools } = useAIToolsStore();
-  const { recordActivity } = useUnifiedProgressStore();
+  
+  // Safely get store data with fallbacks
+  let overallProgress = 0;
+  let totalXpEarned = 0;
+  let tools = {};
+  
+  try {
+    const { getOverallProgress } = useProgressStore();
+    const { getTotalXPEarned, tools: storeTools } = useAIToolsStore();
+    const { recordActivity } = useUnifiedProgressStore();
+    
+    overallProgress = getOverallProgress() || 0;
+    totalXpEarned = getTotalXPEarned() || 0;
+    tools = storeTools || {};
+  } catch (error) {
+    console.error('Error loading AI Tools stores:', error);
+  }
   
   const [showConfetti, setShowConfetti] = useState(false);
   const [recentlyUnlocked, setRecentlyUnlocked] = useState<string | null>(null);
-  
-  const overallProgress = getOverallProgress();
-  const totalXpEarned = getTotalXPEarned();
   
   const toolsConfig: AITool[] = [
     {
