@@ -67,13 +67,35 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) return;
+    console.log('🎯 Form submission started');
+    console.log('Form data:', formData);
+    console.log('Required fields:', fields);
+    
+    if (!validateForm()) {
+      console.log('❌ Form validation failed:', errors);
+      return;
+    }
 
+    console.log('✅ Form validation passed');
     setIsSubmitting(true);
 
     try {
       // Capture the lead
-      const leadId = captureLead({
+      console.log('📝 Capturing lead with data:', {
+        source,
+        ctaType,
+        formData: {
+          name: formData.name || undefined,
+          email: formData.email || undefined,
+          phone: formData.phone || undefined,
+          message: formData.message || undefined,
+          parentName: formData.parentName || undefined,
+          studentName: formData.studentName || undefined,
+          childAge: formData.childAge || undefined
+        }
+      });
+      
+      const leadId = await captureLead({
         source,
         ctaType,
         formData: {
@@ -88,6 +110,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
       });
 
       if (leadId) {
+        console.log('🎉 Lead captured successfully! ID:', leadId);
         setIsSubmitted(true);
         if (onSuccess) onSuccess();
         
@@ -104,6 +127,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             childAge: ''
           });
         }, 3000);
+      } else {
+        console.log('❌ Lead capture returned no ID');
       }
     } catch (error) {
       console.error('Failed to submit form:', error);
