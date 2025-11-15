@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { updateUserProgress, updateUserPoints } from '../supabase';
-import { getModules, getLessons, getLessonContent } from '../api/courses';
+// Removed unused imports
 import { useUserStore } from './userStore';
 import { supabase } from '../supabase';
+import { getCurrentSession, saveUserProgress, getUserProgress, saveLessonCompletion, saveTaskCompletion } from '../offline-auth';
 
 export interface Lesson {
   id: string;
@@ -93,7 +93,44 @@ export const useProgressStore = create<ProgressState>()(
           set({ isLoading: true, error: null });
           console.log('Fetching user progress for:', userId);
 
-          // Try to fetch from the new custom progress table
+          // First try to get progress from offline auth system
+          const session = getCurrentSession();
+          if (session && session.speakCeoId) {
+            console.log('🔄 Loading progress from offline auth for:', session.speakCeoId);
+            
+            const offlineProgress = getUserProgress(session.speakCeoId);
+            if (offlineProgress) {
+              console.log('✅ Loaded progress from offline auth:', offlineProgress);
+              set({ userProgress: offlineProgress as UserProgress });
+              
+              // Still fetch modules for course structure
+              const { data: modules, error: modulesError } = await supabase
+                .from('modules')
+                .select('*')
+                .order('order_index', { ascending: true });
+
+              if (!modulesError && modules && modules.length > 0) {
+                const modulesWithLessons = await Promise.all(
+                  modules.map(async (module) => {
+                    const { data: lessons, error: lessonsError } = await supabase
+                      .from('lessons')
+                      .select('*')
+                      .eq('module_id', module.id)
+                      .order('order_index', { ascending: true });
+                    return { ...module, lessons: lessons || [] };
+                  })
+                );
+                set({ modules: modulesWithLessons });
+              }
+              
+              set({ isLoading: false });
+              console.log('✅ Progress loaded from offline auth system');
+              return;
+            }
+          }
+
+          // Fallback to Supabase (for backward compatibility)
+          console.log('📡 Falling back to Supabase for progress...');
           const { data: progress, error: progressError } = await supabase
             .from('user_progress_custom')
             .select('*')
@@ -248,27 +285,37 @@ export const useProgressStore = create<ProgressState>()(
             lastActivity: new Date().toISOString()
           };
 
-          // Update in database
-          const { error } = await supabase
-            .from('user_progress_custom')
-            .upsert({
-              user_id: user.id,
-              completed_lessons: updatedProgress.completedLessons,
-              completed_tasks: updatedProgress.completedTasks,
-              last_activity: updatedProgress.lastActivity,
-              streak: updatedProgress.streak,
-              total_points: updatedProgress.totalPoints,
-              tool_usage: updatedProgress.toolUsage || {}
-            });
+          // Save to offline auth system first
+          const session = getCurrentSession();
+          if (session && session.speakCeoId) {
+            console.log('💾 Saving lesson progress to offline auth:', { lessonId, completed });
+            saveLessonCompletion(session.speakCeoId, lessonId, completed);
+            saveUserProgress(session.speakCeoId, updatedProgress);
+          }
 
-          if (error) {
-            console.error('Error updating lesson progress in database:', error);
-            // Fall back to localStorage
-            localStorage.setItem(`user-progress-${user.id}`, JSON.stringify(updatedProgress));
+          // Also try to update in Supabase (for backup/sync)
+          try {
+            const { error } = await supabase
+              .from('user_progress_custom')
+              .upsert({
+                user_id: user.id,
+                completed_lessons: updatedProgress.completedLessons,
+                completed_tasks: updatedProgress.completedTasks,
+                last_activity: updatedProgress.lastActivity,
+                streak: updatedProgress.streak,
+                total_points: updatedProgress.totalPoints,
+                tool_usage: updatedProgress.toolUsage || {}
+              });
+
+            if (error) {
+              console.log('Supabase update failed (expected in offline mode):', error.message);
+            }
+          } catch (supabaseError) {
+            console.log('Supabase not available (offline mode)');
           }
 
           set({ userProgress: updatedProgress });
-          console.log('Updated lesson progress:', { lessonId, completed });
+          console.log('✅ Updated lesson progress:', { lessonId, completed });
         } catch (error) {
           console.error('Error updating lesson progress:', error);
         }
@@ -289,27 +336,37 @@ export const useProgressStore = create<ProgressState>()(
             lastActivity: new Date().toISOString()
           };
 
-          // Update in database
-          const { error } = await supabase
-            .from('user_progress_custom')
-            .upsert({
-              user_id: user.id,
-              completed_lessons: updatedProgress.completedLessons,
-              completed_tasks: updatedProgress.completedTasks,
-              last_activity: updatedProgress.lastActivity,
-              streak: updatedProgress.streak,
-              total_points: updatedProgress.totalPoints,
-              tool_usage: updatedProgress.toolUsage || {}
-            });
+          // Save to offline auth system first
+          const session = getCurrentSession();
+          if (session && session.speakCeoId) {
+            console.log('💾 Saving task progress to offline auth:', { taskId, status });
+            saveTaskCompletion(session.speakCeoId, taskId, status === 'completed');
+            saveUserProgress(session.speakCeoId, updatedProgress);
+          }
 
-          if (error) {
-            console.error('Error updating task progress in database:', error);
-            // Fall back to localStorage
-            localStorage.setItem(`user-progress-${user.id}`, JSON.stringify(updatedProgress));
+          // Also try to update in Supabase (for backup/sync)
+          try {
+            const { error } = await supabase
+              .from('user_progress_custom')
+              .upsert({
+                user_id: user.id,
+                completed_lessons: updatedProgress.completedLessons,
+                completed_tasks: updatedProgress.completedTasks,
+                last_activity: updatedProgress.lastActivity,
+                streak: updatedProgress.streak,
+                total_points: updatedProgress.totalPoints,
+                tool_usage: updatedProgress.toolUsage || {}
+              });
+
+            if (error) {
+              console.log('Supabase update failed (expected in offline mode):', error.message);
+            }
+          } catch (supabaseError) {
+            console.log('Supabase not available (offline mode)');
           }
 
           set({ userProgress: updatedProgress });
-          console.log('Updated task progress:', { taskId, status });
+          console.log('✅ Updated task progress:', { taskId, status });
         } catch (error) {
           console.error('Error updating task progress:', error);
         }

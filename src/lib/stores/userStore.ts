@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { getCurrentSession, logout as speakCeoLogout, clearAccountData } from '../offline-auth';
+import { getCurrentSession, logout as speakCeoLogout, clearAccountData, updateUserPoints as updateOfflinePoints, saveUserProgress } from '../offline-auth';
 // Removed Supabase dependency
 
 interface AppUser {
@@ -154,24 +154,20 @@ export const useUserStore = create<UserState>()(
           }
         });
         
-        // Update database
         // Update points in offline auth system
-        try {
-          const session = getCurrentSession();
-          if (session) {
-            // Update points in offline storage
-            const accounts = JSON.parse(localStorage.getItem('speakceo_accounts') || '[]');
-            const accountMap = new Map(accounts);
-            const account = accountMap.get(session.speakCeoId);
-            if (account) {
-              account.points = newPoints;
-              accountMap.set(session.speakCeoId, account);
-              localStorage.setItem('speakceo_accounts', JSON.stringify(Array.from(accountMap.entries())));
-            }
-          }
-        } catch (error) {
-          console.error('Error updating points in offline storage:', error);
+        const session = getCurrentSession();
+        if (session && session.speakCeoId) {
+          console.log('💰 Updating XP in offline auth:', { xpToAdd, newPoints });
+          updateOfflinePoints(session.speakCeoId, newPoints);
+          
+          // Also save progress data
+          saveUserProgress(session.speakCeoId, {
+            totalPoints: newPoints,
+            lastActivity: new Date().toISOString()
+          });
         }
+        
+        console.log('✅ User XP updated:', { xpToAdd, newPoints });
       },
       updateUserProgressValue: (newProgress) => {
         const { user } = get();
@@ -186,28 +182,24 @@ export const useUserStore = create<UserState>()(
         });
         
         // Update progress in offline auth system
-        try {
-          const session = getCurrentSession();
-          if (session) {
-            // Update progress in offline storage
-            const accounts = JSON.parse(localStorage.getItem('speakceo_accounts') || '[]');
-            const accountMap = new Map(accounts);
-            const account = accountMap.get(session.speakCeoId);
-            if (account) {
-              account.progress = newProgress;
-              accountMap.set(session.speakCeoId, account);
-              localStorage.setItem('speakceo_accounts', JSON.stringify(Array.from(accountMap.entries())));
-            }
-          }
-        } catch (error) {
-          console.error('Error updating progress in offline storage:', error);
+        const session = getCurrentSession();
+        if (session && session.speakCeoId) {
+          console.log('📈 Updating progress in offline auth:', { newProgress });
+          
+          // Save progress data
+          saveUserProgress(session.speakCeoId, {
+            progress: newProgress,
+            lastActivity: new Date().toISOString()
+          });
         }
+        
+        console.log('✅ User progress updated:', { newProgress });
       },
       signOut: async () => {
         try {
           console.log('Signing out...');
-          const { error } = await supabase.auth.signOut();
-          if (error) throw error;
+          // Use offline auth logout instead of Supabase
+          speakCeoLogout();
           
           set({
             user: null,
@@ -230,29 +222,20 @@ export const useUserStore = create<UserState>()(
           
           console.log('Updating profile:', updates);
           
-          const { data: profile, error } = await supabase
-            .from('profiles')
-            .update(updates)
-            .eq('id', user.id)
-            .select()
-            .single();
-            
-          if (error) throw error;
+          // Update profile in offline auth system
+          const session = getCurrentSession();
+          if (session && session.speakCeoId) {
+            saveUserProgress(session.speakCeoId, updates);
+          }
           
           // Update user state with new profile data
           const updatedUser: AppUser = {
             ...user,
-            name: profile.name || user.name,
-            avatar: profile.avatar_url || user.avatar,
-            courseType: profile.course_type as 'Basic' | 'Premium',
-            progress: profile.progress || user.progress,
-            points: profile.points || user.points,
-            role: profile.role as 'student' | 'admin'
+            ...updates
           };
           
           set({ 
             user: updatedUser,
-            profile, 
             error: null 
           });
           

@@ -15,10 +15,26 @@ interface SpeakCEOAccount {
     startupData?: any;
     courseProgress?: any;
     achievements?: any[];
-    completedLessons?: string[];
+    completedLessons?: { [key: string]: boolean };
+    completedTasks?: { [key: string]: boolean };
     quizScores?: { [key: string]: number };
     projectsCompleted?: string[];
     toolsUsed?: string[];
+    lastActivity?: string;
+    streak?: number;
+    totalPoints?: number;
+    level?: number;
+    xpPoints?: number;
+    modules?: any[];
+    lessons?: any[];
+    userProgress?: {
+      completedLessons: { [key: string]: boolean };
+      completedTasks: { [key: string]: boolean };
+      lastActivity: string;
+      streak: number;
+      totalPoints: number;
+      toolUsage: { [key: string]: number };
+    };
   };
 }
 
@@ -64,10 +80,26 @@ class OfflineAuthSystem {
           startupData: null,
           courseProgress: {},
           achievements: [],
-          completedLessons: [],
+          completedLessons: {},
+          completedTasks: {},
           quizScores: {},
           projectsCompleted: [],
-          toolsUsed: []
+          toolsUsed: [],
+          lastActivity: new Date().toISOString(),
+          streak: 0,
+          totalPoints: 0,
+          level: 1,
+          xpPoints: 0,
+          modules: [],
+          lessons: [],
+          userProgress: {
+            completedLessons: {},
+            completedTasks: {},
+            lastActivity: new Date().toISOString(),
+            streak: 0,
+            totalPoints: 0,
+            toolUsage: {}
+          }
         }
       });
     }
@@ -227,6 +259,114 @@ class OfflineAuthSystem {
     return true;
   }
 
+  // Save user progress to account
+  saveUserProgress(speakCeoId: string, progressData: any) {
+    const account = this.accounts.get(speakCeoId);
+    if (!account) return false;
+    
+    // Update progress data
+    account.dashboardData.userProgress = {
+      ...account.dashboardData.userProgress,
+      ...progressData,
+      lastActivity: new Date().toISOString()
+    };
+    
+    // Also update top-level progress and points
+    account.progress = progressData.progress || account.progress;
+    account.points = progressData.totalPoints || account.points;
+    account.lastLogin = new Date().toISOString();
+    
+    this.accounts.set(speakCeoId, account);
+    this.saveAccounts();
+    
+    console.log(`💾 Progress saved for ${speakCeoId}:`, progressData);
+    return true;
+  }
+
+  // Get user progress from account
+  getUserProgress(speakCeoId: string) {
+    const account = this.accounts.get(speakCeoId);
+    if (!account) return null;
+    
+    return account.dashboardData.userProgress || {
+      completedLessons: {},
+      completedTasks: {},
+      lastActivity: new Date().toISOString(),
+      streak: 0,
+      totalPoints: 0,
+      toolUsage: {}
+    };
+  }
+
+  // Save lesson completion
+  saveLessonCompletion(speakCeoId: string, lessonId: string, completed: boolean = true) {
+    const account = this.accounts.get(speakCeoId);
+    if (!account) return false;
+    
+    if (!account.dashboardData.userProgress) {
+      account.dashboardData.userProgress = {
+        completedLessons: {},
+        completedTasks: {},
+        lastActivity: new Date().toISOString(),
+        streak: 0,
+        totalPoints: 0,
+        toolUsage: {}
+      };
+    }
+    
+    account.dashboardData.userProgress.completedLessons[lessonId] = completed;
+    account.dashboardData.userProgress.lastActivity = new Date().toISOString();
+    
+    this.accounts.set(speakCeoId, account);
+    this.saveAccounts();
+    
+    console.log(`📚 Lesson ${lessonId} ${completed ? 'completed' : 'uncompleted'} for ${speakCeoId}`);
+    return true;
+  }
+
+  // Save task completion
+  saveTaskCompletion(speakCeoId: string, taskId: string, completed: boolean = true) {
+    const account = this.accounts.get(speakCeoId);
+    if (!account) return false;
+    
+    if (!account.dashboardData.userProgress) {
+      account.dashboardData.userProgress = {
+        completedLessons: {},
+        completedTasks: {},
+        lastActivity: new Date().toISOString(),
+        streak: 0,
+        totalPoints: 0,
+        toolUsage: {}
+      };
+    }
+    
+    account.dashboardData.userProgress.completedTasks[taskId] = completed;
+    account.dashboardData.userProgress.lastActivity = new Date().toISOString();
+    
+    this.accounts.set(speakCeoId, account);
+    this.saveAccounts();
+    
+    console.log(`✅ Task ${taskId} ${completed ? 'completed' : 'uncompleted'} for ${speakCeoId}`);
+    return true;
+  }
+
+  // Update user points
+  updateUserPoints(speakCeoId: string, points: number) {
+    const account = this.accounts.get(speakCeoId);
+    if (!account) return false;
+    
+    account.points = points;
+    if (account.dashboardData.userProgress) {
+      account.dashboardData.userProgress.totalPoints = points;
+    }
+    
+    this.accounts.set(speakCeoId, account);
+    this.saveAccounts();
+    
+    console.log(`💰 Points updated to ${points} for ${speakCeoId}`);
+    return true;
+  }
+
   // Clear account-specific data (for fresh start)
   clearAccountData(speakCeoId: string) {
     const account = this.accounts.get(speakCeoId);
@@ -237,10 +377,26 @@ class OfflineAuthSystem {
       startupData: null,
       courseProgress: {},
       achievements: [],
-      completedLessons: [],
+      completedLessons: {},
+      completedTasks: {},
       quizScores: {},
       projectsCompleted: [],
-      toolsUsed: []
+      toolsUsed: [],
+      lastActivity: new Date().toISOString(),
+      streak: 0,
+      totalPoints: 0,
+      level: 1,
+      xpPoints: 0,
+      modules: [],
+      lessons: [],
+      userProgress: {
+        completedLessons: {},
+        completedTasks: {},
+        lastActivity: new Date().toISOString(),
+        streak: 0,
+        totalPoints: 0,
+        toolUsage: {}
+      }
     };
     account.progress = 0;
     account.points = 0;
@@ -316,5 +472,20 @@ export const saveAccountData = (speakCeoId: string, dataType: string, data: any)
 
 export const clearAccountData = (speakCeoId: string) => 
   offlineAuth.clearAccountData(speakCeoId);
+
+export const saveUserProgress = (speakCeoId: string, progressData: any) => 
+  offlineAuth.saveUserProgress(speakCeoId, progressData);
+
+export const getUserProgress = (speakCeoId: string) => 
+  offlineAuth.getUserProgress(speakCeoId);
+
+export const saveLessonCompletion = (speakCeoId: string, lessonId: string, completed: boolean = true) => 
+  offlineAuth.saveLessonCompletion(speakCeoId, lessonId, completed);
+
+export const saveTaskCompletion = (speakCeoId: string, taskId: string, completed: boolean = true) => 
+  offlineAuth.saveTaskCompletion(speakCeoId, taskId, completed);
+
+export const updateUserPoints = (speakCeoId: string, points: number) => 
+  offlineAuth.updateUserPoints(speakCeoId, points);
 
 export default offlineAuth;
