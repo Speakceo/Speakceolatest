@@ -1,5 +1,36 @@
 // Completely offline authentication system for SpeakCEO
 // No external dependencies, works 100% locally
+// Includes lead management system
+
+interface Lead {
+  id: string;
+  timestamp: string;
+  source: string; // 'homepage', 'faq', 'about', 'courses', etc.
+  ctaType: string; // 'signup', 'demo', 'contact', 'trial', etc.
+  formData: {
+    name?: string;
+    email?: string;
+    phone?: string;
+    childAge?: string;
+    interests?: string[];
+    message?: string;
+    parentName?: string;
+    studentName?: string;
+    grade?: string;
+    experience?: string;
+    goals?: string[];
+    budget?: string;
+    timeline?: string;
+    referralSource?: string;
+  };
+  status: 'new' | 'contacted' | 'qualified' | 'converted' | 'lost';
+  notes?: string;
+  followUpDate?: string;
+  priority: 'low' | 'medium' | 'high';
+  ipAddress?: string;
+  userAgent?: string;
+  sessionId?: string;
+}
 
 interface SpeakCEOAccount {
   speakCeoId: string;
@@ -41,10 +72,12 @@ interface SpeakCEOAccount {
 class OfflineAuthSystem {
   private accounts: Map<string, SpeakCEOAccount> = new Map();
   private currentSession: any = null;
+  private leads: Map<string, Lead> = new Map();
 
   constructor() {
     this.initializeAccounts();
     this.loadSession();
+    this.loadLeads();
   }
 
   // Initialize 300 SpeakCEO accounts
@@ -406,10 +439,180 @@ class OfflineAuthSystem {
     return true;
   }
 
+  // Load leads from localStorage
+  private loadLeads() {
+    const existingLeads = localStorage.getItem('speakceo_leads');
+    if (existingLeads) {
+      try {
+        const parsed = JSON.parse(existingLeads);
+        this.leads = new Map(parsed);
+        console.log(`📊 Loaded ${this.leads.size} existing leads`);
+      } catch (error) {
+        console.log('Creating fresh leads storage...');
+        this.leads = new Map();
+      }
+    }
+  }
+
+  // Save leads to localStorage
+  private saveLeads() {
+    localStorage.setItem('speakceo_leads', JSON.stringify(Array.from(this.leads.entries())));
+  }
+
+  // Add a new lead
+  addLead(leadData: Omit<Lead, 'id' | 'timestamp' | 'status' | 'priority'>) {
+    const leadId = `lead_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    
+    // Determine priority based on form data
+    let priority: 'low' | 'medium' | 'high' = 'medium';
+    if (leadData.formData.phone || leadData.ctaType === 'demo') {
+      priority = 'high';
+    } else if (leadData.formData.email && leadData.formData.name) {
+      priority = 'medium';
+    } else {
+      priority = 'low';
+    }
+
+    const lead: Lead = {
+      id: leadId,
+      timestamp: new Date().toISOString(),
+      status: 'new',
+      priority,
+      ...leadData,
+      ipAddress: this.getClientIP(),
+      userAgent: navigator.userAgent,
+      sessionId: this.generateSessionId()
+    };
+
+    this.leads.set(leadId, lead);
+    this.saveLeads();
+    
+    console.log('🎯 New lead captured:', {
+      id: leadId,
+      source: lead.source,
+      ctaType: lead.ctaType,
+      priority: lead.priority,
+      email: lead.formData.email
+    });
+
+    return leadId;
+  }
+
+  // Get all leads
+  getAllLeads(): Lead[] {
+    return Array.from(this.leads.values()).sort((a, b) => 
+      new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+    );
+  }
+
+  // Get leads by status
+  getLeadsByStatus(status: Lead['status']): Lead[] {
+    return this.getAllLeads().filter(lead => lead.status === status);
+  }
+
+  // Get leads by priority
+  getLeadsByPriority(priority: Lead['priority']): Lead[] {
+    return this.getAllLeads().filter(lead => lead.priority === priority);
+  }
+
+  // Update lead status
+  updateLeadStatus(leadId: string, status: Lead['status'], notes?: string) {
+    const lead = this.leads.get(leadId);
+    if (!lead) return false;
+
+    lead.status = status;
+    if (notes) lead.notes = notes;
+    
+    this.leads.set(leadId, lead);
+    this.saveLeads();
+    
+    console.log(`📝 Lead ${leadId} status updated to: ${status}`);
+    return true;
+  }
+
+  // Add notes to lead
+  addLeadNotes(leadId: string, notes: string) {
+    const lead = this.leads.get(leadId);
+    if (!lead) return false;
+
+    lead.notes = (lead.notes || '') + '\n' + `[${new Date().toLocaleString()}] ${notes}`;
+    
+    this.leads.set(leadId, lead);
+    this.saveLeads();
+    
+    return true;
+  }
+
+  // Set follow-up date
+  setLeadFollowUp(leadId: string, followUpDate: string) {
+    const lead = this.leads.get(leadId);
+    if (!lead) return false;
+
+    lead.followUpDate = followUpDate;
+    
+    this.leads.set(leadId, lead);
+    this.saveLeads();
+    
+    return true;
+  }
+
+  // Get lead analytics
+  getLeadAnalytics() {
+    const leads = this.getAllLeads();
+    const total = leads.length;
+    
+    const byStatus = {
+      new: leads.filter(l => l.status === 'new').length,
+      contacted: leads.filter(l => l.status === 'contacted').length,
+      qualified: leads.filter(l => l.status === 'qualified').length,
+      converted: leads.filter(l => l.status === 'converted').length,
+      lost: leads.filter(l => l.status === 'lost').length
+    };
+
+    const byPriority = {
+      high: leads.filter(l => l.priority === 'high').length,
+      medium: leads.filter(l => l.priority === 'medium').length,
+      low: leads.filter(l => l.priority === 'low').length
+    };
+
+    const bySource = leads.reduce((acc, lead) => {
+      acc[lead.source] = (acc[lead.source] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const byCTA = leads.reduce((acc, lead) => {
+      acc[lead.ctaType] = (acc[lead.ctaType] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const conversionRate = total > 0 ? (byStatus.converted / total * 100).toFixed(1) : '0';
+
+    return {
+      total,
+      byStatus,
+      byPriority,
+      bySource,
+      byCTA,
+      conversionRate: `${conversionRate}%`,
+      recentLeads: leads.slice(0, 10)
+    };
+  }
+
+  // Helper methods
+  private getClientIP(): string {
+    // In a real app, you'd get this from server
+    return 'localhost';
+  }
+
+  private generateSessionId(): string {
+    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  }
+
   // Reset all data (for testing)
   resetAllData() {
     localStorage.removeItem('speakceo_accounts');
     localStorage.removeItem('speakceo_session');
+    localStorage.removeItem('speakceo_leads');
     // Clear all localStorage keys that might contain user data
     const keysToRemove = [
       'user-storage',
@@ -431,6 +634,7 @@ class OfflineAuthSystem {
     keysToRemove.forEach(key => localStorage.removeItem(key));
     
     this.accounts.clear();
+    this.leads.clear();
     this.currentSession = null;
     this.initializeAccounts();
   }
@@ -487,5 +691,33 @@ export const saveTaskCompletion = (speakCeoId: string, taskId: string, completed
 
 export const updateUserPoints = (speakCeoId: string, points: number) => 
   offlineAuth.updateUserPoints(speakCeoId, points);
+
+// Lead Management Exports
+export const addLead = (leadData: Omit<Lead, 'id' | 'timestamp' | 'status' | 'priority'>) => 
+  offlineAuth.addLead(leadData);
+
+export const getAllLeads = () => 
+  offlineAuth.getAllLeads();
+
+export const getLeadsByStatus = (status: Lead['status']) => 
+  offlineAuth.getLeadsByStatus(status);
+
+export const getLeadsByPriority = (priority: Lead['priority']) => 
+  offlineAuth.getLeadsByPriority(priority);
+
+export const updateLeadStatus = (leadId: string, status: Lead['status'], notes?: string) => 
+  offlineAuth.updateLeadStatus(leadId, status, notes);
+
+export const addLeadNotes = (leadId: string, notes: string) => 
+  offlineAuth.addLeadNotes(leadId, notes);
+
+export const setLeadFollowUp = (leadId: string, followUpDate: string) => 
+  offlineAuth.setLeadFollowUp(leadId, followUpDate);
+
+export const getLeadAnalytics = () => 
+  offlineAuth.getLeadAnalytics();
+
+// Export Lead type for use in components
+export type { Lead };
 
 export default offlineAuth;

@@ -33,6 +33,7 @@ import EnrollmentPopup from '../components/EnrollmentPopup';
 import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
+import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 
 // Minimal animation variants
 const fadeIn = {
@@ -1347,6 +1348,42 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Lead Capture CTA Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-black">
+          <div className="max-w-4xl mx-auto px-6">
+            <CTAWithLeadCapture
+              source="homepage"
+              ctaType="demo"
+              buttonText="Book Free Demo"
+              title="Ready to Transform Your Child's Future?"
+              subtitle="Join 2,500+ families who've unlocked their child's entrepreneurial potential with our proven 180-day program"
+              formTitle="Book Your Free Demo"
+              formSubtitle="Get a personalized demo and see how SpeakCEO can transform your child's future"
+              fields={['parentName', 'email', 'phone', 'studentName', 'childAge']}
+              variant="primary"
+              size="lg"
+            />
+          </div>
+        </section>
+
+        {/* Secondary CTA for Email Signup */}
+        <section className="py-16 bg-white dark:bg-gray-900">
+          <div className="max-w-2xl mx-auto px-6">
+            <CTAWithLeadCapture
+              source="homepage"
+              ctaType="newsletter"
+              buttonText="Get Free Resources"
+              title="Get Our Free Entrepreneurship Guide"
+              subtitle="Download our comprehensive guide with activities, worksheets, and tips to start your child's entrepreneurial journey today"
+              formTitle="Download Free Guide"
+              formSubtitle="Enter your details to get instant access to our exclusive resources"
+              fields={['parentName', 'email', 'childAge']}
+              variant="secondary"
+              size="md"
+            />
           </div>
         </section>
 
