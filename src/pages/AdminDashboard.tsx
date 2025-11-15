@@ -25,6 +25,7 @@ import {
 import { useUserStore } from '../lib/store';
 import { supabase } from '../lib/supabase';
 import SimpleLeadsViewer from '../components/admin/SimpleLeadsViewer';
+import AdminKeyAuth from '../components/admin/AdminKeyAuth';
 
 interface User {
   id: string;
@@ -65,6 +66,7 @@ interface DashboardStats {
 
 export default function AdminDashboard() {
   const { user, logout } = useUserStore();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isLoading, setIsLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
@@ -957,6 +959,11 @@ export default function AdminDashboard() {
         return renderDashboard();
     }
   };
+
+  // Check authentication first
+  if (!isAuthenticated) {
+    return <AdminKeyAuth onAuthenticated={() => setIsAuthenticated(true)} />;
+  }
 
   if (!user || user.role !== 'admin') {
     return (
