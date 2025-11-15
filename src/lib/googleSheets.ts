@@ -25,8 +25,8 @@ class GoogleSheetsService {
   private sheetId = '10O-1oe309UkelsUautOLoZFP0Q42AT9obaVvjbHBTQU';
   private sheetName = 'Sheet1'; // Default sheet name
   
-  // Google Apps Script Web App URL (you'll need to create this)
-  private webAppUrl = 'https://script.google.com/macros/s/AKfycbzXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/exec';
+  // Google Apps Script Web App URL - UPDATE THIS WITH YOUR ACTUAL URL
+  private webAppUrl = 'https://script.google.com/macros/s/YOUR_ACTUAL_WEB_APP_ID_HERE/exec';
 
   async submitLead(leadData: LeadData): Promise<boolean> {
     try {

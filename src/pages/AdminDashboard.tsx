@@ -24,7 +24,7 @@ import {
 } from 'lucide-react';
 import { useUserStore } from '../lib/store';
 import { supabase } from '../lib/supabase';
-import LeadsManager from '../components/admin/LeadsManager';
+import SimpleLeadsViewer from '../components/admin/SimpleLeadsViewer';
 
 interface User {
   id: string;
@@ -952,7 +952,7 @@ export default function AdminDashboard() {
       case 'lms':
         return renderLMS();
       case 'leads':
-        return <LeadsManager />;
+        return <SimpleLeadsViewer />;
       default:
         return renderDashboard();
     }

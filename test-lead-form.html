@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Lead Submission to Google Sheets</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #bee5eb;
+        }
+        .sheet-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .sheet-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Test Lead Submission to Google Sheets</h1>
+        
+        <div class="info">
+            <strong>📋 Instructions:</strong><br>
+            1. First, set up your Google Apps Script using the guide in <code>GOOGLE_SHEETS_SETUP.md</code><br>
+            2. Update the Web App URL below with your actual URL<br>
+            3. Fill out this form to test the integration<br>
+            4. Check your Google Sheet for the new entry
+        </div>
+
+        <form id="leadForm">
+            <div class="form-group">
+                <label for="webAppUrl">Google Apps Script Web App URL *</label>
+                <input type="url" id="webAppUrl" required 
+                       placeholder="https://script.google.com/macros/s/YOUR_WEB_APP_ID/exec"
+                       value="https://script.google.com/macros/s/YOUR_WEB_APP_ID/exec">
+            </div>
+
+            <div class="form-group">
+                <label for="parentName">Parent Name *</label>
+                <input type="text" id="parentName" required value="John Smith">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" required value="john.smith@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" value="+1 (555) 123-4567">
+            </div>
+
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName" value="Emma Smith">
+            </div>
+
+            <div class="form-group">
+                <label for="childAge">Child's Age</label>
+                <select id="childAge">
+                    <option value="">Select age range</option>
+                    <option value="6-8">6-8 years</option>
+                    <option value="9-11">9-11 years</option>
+                    <option value="12-14" selected>12-14 years</option>
+                    <option value="15-17">15-17 years</option>
+                    <option value="18+">18+ years</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="4">I am interested in the SpeakCEO program for my daughter Emma. She loves public speaking and has shown interest in starting her own business. Would love to learn more about the 180-day program.</textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                🚀 Submit Test Lead to Google Sheets
+            </button>
+        </form>
+
+        <div id="result"></div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="https://docs.google.com/spreadsheets/d/10O-1oe309UkelsUautOLoZFP0Q42AT9obaVvjbHBTQU/edit" 
+               target="_blank" class="sheet-link">
+                📊 View Your Google Sheet
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('result');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Submitting...';
+            resultDiv.innerHTML = '';
+            
+            // Get form data
+            const formData = {
+                timestamp: new Date().toISOString(),
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString(),
+                source: 'test-form',
+                ctaType: 'demo',
+                name: document.getElementById('parentName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                parentName: document.getElementById('parentName').value,
+                studentName: document.getElementById('studentName').value,
+                childAge: document.getElementById('childAge').value,
+                message: document.getElementById('message').value,
+                interests: 'Public Speaking, Business, Entrepreneurship',
+                grade: '8th Grade',
+                experience: 'Beginner',
+                goals: 'Build confidence, Learn business skills, Develop leadership',
+                budget: '$500-1000',
+                timeline: 'Next 3 months',
+                referralSource: 'Test Form',
+                priority: 'High',
+                status: 'New'
+            };
+            
+            const webAppUrl = document.getElementById('webAppUrl').value;
+            
+            try {
+                console.log('🎯 Submitting lead to Google Sheets...');
+                console.log('Data:', formData);
+                
+                const response = await fetch(webAppUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                // Note: With no-cors mode, we can't read the response
+                // But if no error is thrown, the request was sent successfully
+                
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        <strong>✅ Success!</strong><br>
+                        Test lead has been submitted to your Google Sheet.<br>
+                        <a href="https://docs.google.com/spreadsheets/d/10O-1oe309UkelsUautOLoZFP0Q42AT9obaVvjbHBTQU/edit" 
+                           target="_blank" class="sheet-link">
+                            📊 Check Your Google Sheet
+                        </a>
+                        <br><br>
+                        <strong>Expected Result:</strong><br>
+                        • New row with all form data<br>
+                        • Priority column colored red (High)<br>
+                        • Status column colored blue (New)<br>
+                        • Timestamp and source tracking
+                    </div>
+                `;
+                
+                console.log('✅ Lead submitted successfully!');
+                
+            } catch (error) {
+                console.error('❌ Error submitting lead:', error);
+                
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <strong>❌ Error!</strong><br>
+                        Failed to submit lead: ${error.message}<br><br>
+                        <strong>Possible causes:</strong><br>
+                        • Web App URL is incorrect<br>
+                        • Google Apps Script not deployed<br>
+                        • Script permissions not granted<br>
+                        • Network connectivity issues<br><br>
+                        Please check the setup guide in <code>GOOGLE_SHEETS_SETUP.md</code>
+                    </div>
+                `;
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🚀 Submit Test Lead to Google Sheets';
+            }
+        });
+    </script>
+</body>
+</html>

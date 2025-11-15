@@ -11,27 +11,12 @@ interface LeadCaptureData {
 export const useLeadCapture = () => {
   const captureLead = useCallback(async (data: LeadCaptureData) => {
     try {
-      // Store locally first (backup)
+      // Store lead locally in our offline system
       const leadId = addLead(data);
-      
-      // Submit to Google Sheets
-      const googleSheetsData = {
-        timestamp: new Date().toISOString(),
-        source: data.source,
-        ctaType: data.ctaType,
-        ...data.formData
-      };
-      
-      const sheetsSuccess = await submitLeadToGoogleSheets(googleSheetsData);
-      
-      if (sheetsSuccess) {
-        console.log('✅ Lead submitted to Google Sheets successfully');
-      } else {
-        console.log('⚠️ Lead stored locally, will sync to Google Sheets later');
-      }
       
       // Show success notification
       console.log('🎯 Lead captured successfully:', leadId);
+      console.log('📊 Lead stored in admin panel - accessible via /admin');
       
       // Optional: Show user feedback
       if (typeof window !== 'undefined') {
