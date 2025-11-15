@@ -1,13 +1,35 @@
 import OpenAI from 'openai';
 
-export const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true
-});
+// Lazy initialization of OpenAI client
+let openaiClient: OpenAI | null = null;
+
+function getOpenAIClient(): OpenAI {
+  if (!openaiClient) {
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+    if (!apiKey) {
+      throw new Error('OpenAI API key not configured. AI features are disabled.');
+    }
+    openaiClient = new OpenAI({
+      apiKey,
+      dangerouslyAllowBrowser: true
+    });
+  }
+  return openaiClient;
+}
+
+// Check if OpenAI is available
+export function isOpenAIAvailable(): boolean {
+  return !!import.meta.env.VITE_OPENAI_API_KEY;
+}
 
 // Generate AI response for the learning coach
 export async function generateAIResponse(input: string, category: string): Promise<string> {
   try {
+    if (!isOpenAIAvailable()) {
+      return 'AI features are currently disabled. Please contact support for assistance.';
+    }
+    
+    const openai = getOpenAIClient();
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
