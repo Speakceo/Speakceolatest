@@ -81,10 +81,21 @@ export function SplineHero() {
             transition={{ duration: 1, delay: 0.5 }}
             className="w-full h-full"
           >
-            <SplineScene 
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full"
-            />
+            <div className="w-full h-full relative">
+              <SplineScene 
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="w-full h-full rounded-lg"
+              />
+              
+              {/* Fallback content if 3D fails */}
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/10 to-purple-600/10 rounded-lg backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="text-center text-white/80">
+                  <Rocket className="h-16 w-16 mx-auto mb-4 animate-bounce" />
+                  <p className="text-lg font-semibold">Interactive 3D Learning</p>
+                  <p className="text-sm">Experience the future of education</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
           
           {/* Floating elements */}
