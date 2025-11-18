@@ -34,6 +34,7 @@ import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
+import { SplineHero } from '../components/ui/SplineHero';
 
 // Minimal animation variants
 const fadeIn = {
@@ -220,6 +221,38 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Interactive 3D Experience Section */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <div className="inline-block bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900 rounded-full px-8 py-3 mb-6">
+                <span className="text-indigo-700 dark:text-indigo-300 font-bold text-lg">🌟 Interactive Experience</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                Experience the Future of Learning
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Immerse yourself in our cutting-edge 3D learning environment where education meets innovation
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              <SplineHero />
+            </motion.div>
           </div>
         </section>
 
