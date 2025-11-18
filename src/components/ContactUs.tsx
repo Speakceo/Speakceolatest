@@ -1,22 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   Mail, 
   Phone, 
-  MapPin, 
   MessageSquare, 
-  Send, 
-  Clock, 
   ChevronRight,
-  Star,
-  Smile,
-  Frown,
-  Meh,
   CheckCircle,
-  User,
-  Users,
-  Briefcase,
-  Mic,
-  Search,
   ArrowRight,
   ArrowLeft
 } from 'lucide-react';
@@ -33,32 +21,7 @@ interface FormData {
   rating?: number;
 }
 
-const officeLocations = [
-  {
-    city: 'Mumbai',
-    address: 'Level 21, World Trade Centre, Cuffe Parade',
-    phone: '+91 (800) 123-4567',
-    email: 'mumbai@speakceo.ai',
-    timing: '9:00 AM - 6:00 PM IST',
-    coordinates: { lat: 18.9067, lng: 72.8147 }
-  },
-  {
-    city: 'Delhi',
-    address: 'Cyber Hub, DLF Cyber City, Gurugram',
-    phone: '+91 (800) 123-4568',
-    email: 'delhi@speakceo.ai',
-    timing: '9:00 AM - 6:00 PM IST',
-    coordinates: { lat: 28.4595, lng: 77.0266 }
-  },
-  {
-    city: 'Bangalore',
-    address: 'Prestige Trade Tower, Palace Road',
-    phone: '+91 (800) 123-4569',
-    email: 'bangalore@speakceo.ai',
-    timing: '9:00 AM - 6:00 PM IST',
-    coordinates: { lat: 12.9716, lng: 77.5946 }
-  }
-];
+// Office locations removed - contact via email only
 
 const userTypes = [
   { id: 'student', label: 'A Curious Student 🎓', description: 'Explore our learning programs' },
@@ -103,7 +66,6 @@ export default function ContactUs() {
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState<typeof officeLocations[0] | null>(null);
   const [showFaq, setShowFaq] = useState(false);
 
   const handleNext = () => {
@@ -414,18 +376,8 @@ export default function ContactUs() {
               <div className="space-y-8">
                 {/* Quick Contact */}
                 <div className="bg-white rounded-3xl p-8 shadow-lg animate-wiggle" style={{animationDelay: "0.2s"}}>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6 kid-font">Quick Contact</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6 kid-font">Get in Touch</h2>
                   <div className="space-y-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-indigo-100 flex items-center justify-center">
-                        <Phone className="h-6 w-6 text-indigo-600" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-500">Call Us</p>
-                        <p className="text-lg font-semibold text-gray-900">+91 (800) 123-4567</p>
-                      </div>
-                    </div>
-
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-purple-100 flex items-center justify-center">
                         <Mail className="h-6 w-6 text-purple-600" />
@@ -437,50 +389,17 @@ export default function ContactUs() {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-pink-100 flex items-center justify-center">
-                        <MessageSquare className="h-6 w-6 text-pink-600" />
+                      <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-indigo-100 flex items-center justify-center">
+                        <MessageSquare className="h-6 w-6 text-indigo-600" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-gray-500">Live Chat</p>
-                        <p className="text-lg font-semibold text-gray-900">Available 24/7</p>
+                        <p className="text-sm font-medium text-gray-500">Contact Form</p>
+                        <p className="text-lg font-semibold text-gray-900">Fill out the form below</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Office Locations */}
-                <div className="bg-white rounded-3xl p-8 shadow-lg animate-wiggle" style={{animationDelay: "0.3s"}}>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6 kid-font">Our Offices</h2>
-                  <div className="space-y-6">
-                    {officeLocations.map((office) => (
-                      <div
-                        key={office.city}
-                        className="p-6 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 transition-colors cursor-pointer"
-                        onClick={() => setSelectedLocation(office)}
-                      >
-                        <h3 className="text-xl font-semibold text-gray-900">{office.city}</h3>
-                        <div className="mt-4 space-y-3">
-                          <div className="flex items-start space-x-3">
-                            <MapPin className="h-5 w-5 text-indigo-600 mt-1" />
-                            <p className="text-gray-600">{office.address}</p>
-                          </div>
-                          <div className="flex items-center space-x-3">
-                            <Phone className="h-5 w-5 text-indigo-600" />
-                            <p className="text-gray-600">{office.phone}</p>
-                          </div>
-                          <div className="flex items-center space-x-3">
-                            <Mail className="h-5 w-5 text-indigo-600" />
-                            <p className="text-gray-600">{office.email}</p>
-                          </div>
-                          <div className="flex items-center space-x-3">
-                            <Clock className="h-5 w-5 text-indigo-600" />
-                            <p className="text-gray-600">{office.timing}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
                 {/* FAQ Section */}
                 <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 text-white animate-wiggle" style={{animationDelay: "0.4s"}}>

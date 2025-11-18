@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -46,19 +46,9 @@ const Contact = () => {
       details: ['contact@speakceo.ai', 'support@speakceo.ai']
     },
     {
-      icon: <Phone className="h-6 w-6" />,
-      title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543']
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: 'Location',
-      details: ['123 Innovation Drive', 'Silicon Valley, CA 94025']
-    },
-    {
-      icon: <Clock className="h-6 w-6" />,
-      title: 'Business Hours',
-      details: ['Monday - Friday: 9AM - 6PM', 'Saturday: 10AM - 4PM']
+      icon: <Send className="h-6 w-6" />,
+      title: 'Contact Form',
+      details: ['Fill out the form below', 'We\'ll respond within 24 hours']
     }
   ];
 
@@ -89,7 +79,7 @@ const Contact = () => {
         variants={fadeIn}
       >
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {contactInfo.map((info, index) => (
               <div key={index} className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                 <div className="text-indigo-600 mb-4">{info.icon}</div>
