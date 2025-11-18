@@ -7,6 +7,9 @@ import { LanguageProvider } from './lib/contexts/LanguageContext'
 import { UserProgressProvider } from './contexts/UserProgressContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 
+// Performance Monitoring
+import WebVitals from './components/common/WebVitals'
+
 // Store
 import { useUserStore } from './lib/store'
 
@@ -19,6 +22,7 @@ import Tools from './pages/Tools'
 import Community from './pages/Community'
 import LiveClasses from './pages/LiveClasses'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import Events from './pages/Events'
 import FAQ from './pages/FAQ'
 import Testimonials from './pages/Testimonials'
@@ -197,7 +201,8 @@ function AppContent() {
             <Route path="/tools" element={<Tools />} />
             <Route path="/community" element={<Community />} />
             <Route path="/live-classes" element={<LiveClasses />} />
-            <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/events" element={<Events />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/testimonials" element={<Testimonials />} />
@@ -260,6 +265,7 @@ export default function App() {
           <Router>
           <LanguageProvider>
               <UserProgressProvider>
+                <WebVitals />
                 <ScrollToTop />
             <AppContent />
               </UserProgressProvider>

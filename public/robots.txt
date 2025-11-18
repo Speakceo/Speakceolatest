@@ -1,23 +1,50 @@
 User-agent: *
 Allow: /
 
-# Block access to admin paths
+# Block access to admin and private paths
 Disallow: /admin/
 Disallow: /dashboard/admin/
 Disallow: /api/admin/
-
-# Block access to auth paths
 Disallow: /auth/
-Disallow: /login/
-Disallow: /signup/
+Disallow: /setup/
+Disallow: /test-leads/
 
-# Sitemap location
-Sitemap: https://speakceo.ai/sitemap.xml
+# Block development and testing files
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /.git/
 
-# Allow public routes
+# Allow important public routes
+Allow: /
 Allow: /about
 Allow: /courses
 Allow: /tools
 Allow: /community
 Allow: /live-classes
-Allow: /contact 
+Allow: /contact
+Allow: /faq
+Allow: /blog
+Allow: /blog/*
+Allow: /testimonials
+Allow: /resources
+Allow: /partnerships
+Allow: /events
+Allow: /privacy
+Allow: /terms
+Allow: /cookies
+
+# Sitemap location
+Sitemap: https://speakceo.ai/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+
+# Google Search Console verification (replace with your actual verification code)
+# User-agent: Googlebot
+# Allow: /
+
+# Bing verification (replace with your actual verification code)
+# User-agent: Bingbot
+# Allow: / 

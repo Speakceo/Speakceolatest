@@ -11,6 +11,7 @@ interface SEOProps {
   author?: string;
   publishedTime?: string;
   modifiedTime?: string;
+  structuredData?: any;
   courseData?: {
     name: string;
     provider: string;
@@ -51,6 +52,7 @@ export default function SEO({
   author = defaultSEO.author,
   publishedTime,
   modifiedTime,
+  structuredData,
   courseData
 }: SEOProps) {
   const siteTitle = `${title} | SpeakCEO`;
@@ -63,10 +65,10 @@ export default function SEO({
     url: defaultSEO.url,
     logo: 'https://speakceo.ai/logo.png',
     sameAs: [
-      'https://twitter.com/speakceo',
-      'https://facebook.com/speakceo',
-      'https://linkedin.com/company/speakceo',
-      'https://instagram.com/speakceo'
+      'https://twitter.com/speakceoai',
+      'https://facebook.com/speakceoai',
+      'https://linkedin.com/company/speakceoai',
+      'https://instagram.com/speakceoai'
     ],
     address: {
       '@type': 'PostalAddress',
@@ -97,12 +99,80 @@ export default function SEO({
       sameAs: defaultSEO.url
     },
     timeRequired: courseData.duration,
+    educationalLevel: 'Beginner to Intermediate',
+    teaches: [
+      'Entrepreneurship',
+      'Business Planning',
+      'Leadership Skills',
+      'Financial Literacy',
+      'Marketing and Sales',
+      'Public Speaking'
+    ],
+    audience: {
+      '@type': 'EducationalAudience',
+      educationalRole: 'student',
+      audienceType: 'Children and Teenagers aged 8-16'
+    },
     offers: courseData.price ? {
       '@type': 'Offer',
       price: courseData.price,
-      priceCurrency: 'INR'
+      priceCurrency: 'INR',
+      availability: 'https://schema.org/InStock',
+      validFrom: new Date().toISOString()
     } : undefined
   } : null;
+
+  // Add FAQ Schema for better SEO
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What age group is SpeakCEO designed for?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'SpeakCEO is designed for children and teenagers aged 8-16 who want to develop entrepreneurial skills and business acumen.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How long is the SpeakCEO program?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The SpeakCEO Young CEO Program is a comprehensive 180-day journey that transforms young minds into future business leaders.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What skills will my child learn?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Students learn entrepreneurship, business planning, leadership, financial literacy, marketing, sales, public speaking, and critical thinking skills.'
+        }
+      }
+    ]
+  };
+
+  // Add BreadcrumbList Schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://speakceo.ai'
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Courses',
+        item: 'https://speakceo.ai/courses'
+      }
+    ]
+  };
 
   return (
     <Helmet>
@@ -126,20 +196,40 @@ export default function SEO({
 
       {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@speakceo" />
+      <meta name="twitter:site" content="@speakceoai" />
       <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:creator" content="@speakceo" />
+      <meta name="twitter:creator" content="@speakceoai" />
 
       {/* Additional Meta Tags */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="canonical" href={url} />
 
-      {/* DNS Prefetch */}
+      {/* DNS Prefetch & Preconnect for Performance */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="dns-prefetch" href="//api.openai.com" />
+      <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+      
+      {/* Favicon and App Icons */}
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel="manifest" href="/manifest.json" />
+      
+      {/* Performance Hints */}
+      <meta httpEquiv="x-dns-prefetch-control" content="on" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="msapplication-tap-highlight" content="no" />
+      
+      {/* Security Headers */}
+      <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+      <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
       {/* Structured Data */}
       <script type="application/ld+json">
@@ -151,6 +241,17 @@ export default function SEO({
       {courseSchema && (
         <script type="application/ld+json">
           {JSON.stringify(courseSchema)}
+        </script>
+      )}
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
+      {structuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
         </script>
       )}
     </Helmet>

@@ -12,9 +12,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Orbit Student - Young Entrepreneurship Program',
-        short_name: 'Orbit Student',
-        description: 'Transform your child into a future business leader with our comprehensive 90-Day Young CEO Program.',
+        name: 'SpeakCEO - Young Entrepreneurship Program',
+        short_name: 'SpeakCEO',
+        description: 'Transform your child into a future business leader with our comprehensive 180-Day Young CEO Program.',
         theme_color: '#4F46E5',
         background_color: '#ffffff',
         display: 'standalone',
@@ -92,18 +92,38 @@ export default defineConfig({
   envPrefix: 'VITE_',
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false, // Disable sourcemaps in production for better performance
+    minify: 'terser',
+    target: 'es2020',
     rollupOptions: {
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'ui-vendor': ['framer-motion', '@lottiefiles/react-lottie-player'],
           'chart-vendor': ['apexcharts', 'react-apexcharts'],
-          'utils-vendor': ['date-fns', 'zod', 'zustand']
+          'utils-vendor': ['date-fns', 'zod', 'zustand'],
+          'ai-vendor': ['openai']
+        },
+        // Optimize chunk naming for better caching
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
+            return `assets/images/[name]-[hash][extname]`;
+          }
+          if (/css/i.test(ext)) {
+            return `assets/css/[name]-[hash][extname]`;
+          }
+          return `assets/[ext]/[name]-[hash][extname]`;
         }
       }
     },
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1000,
+    // Enable compression
+    assetsInlineLimit: 4096,
+    cssCodeSplit: true
   },
   css: {
     devSourcemap: true
