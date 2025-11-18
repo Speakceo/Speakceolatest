@@ -14,7 +14,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ title, subtitle, features, ctaText, heroImage }: HeroSectionProps) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-white to-indigo-100">
+    <div className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-indigo-50">
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 -mt-20 -mr-20 lg:mt-0 lg:mr-0 lg:right-0">
         <svg width="404" height="404" fill="none" viewBox="0 0 404 404" aria-hidden="true" className="text-indigo-200 opacity-20">
@@ -31,22 +31,22 @@ export default function HeroSection({ title, subtitle, features, ctaText, heroIm
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:gap-20 items-center">
           {/* Left content with improved spacing and contrast */}
           <div className="flex flex-col justify-center space-y-8">
-            <h1 className="text-4xl font-bold tracking-tight text-indigo-900 sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl leading-[1.1]">
               {title}
             </h1>
-            <p className="text-xl text-gray-700 max-w-3xl leading-relaxed">
+            <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-light">
               {subtitle}
             </p>
             
             {/* Feature list with improved contrast and readability */}
-            <div className="space-y-6 mt-4">
+            <div className="space-y-5 mt-6">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-center">
-                  <div className="flex-shrink-0 rounded-lg p-3 text-white bg-indigo-700 shadow-md">
+                <div key={index} className="flex items-center group">
+                  <div className="flex-shrink-0 rounded-2xl p-3 text-white bg-gradient-to-br from-indigo-600 to-purple-700 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                     <feature.icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <div className="ml-5">
-                    <p className="text-lg font-medium text-gray-800">{feature.name}</p>
+                  <div className="ml-6">
+                    <p className="text-lg font-semibold text-slate-800 group-hover:text-indigo-700 transition-colors duration-300">{feature.name}</p>
                   </div>
                 </div>
               ))}

@@ -8,7 +8,7 @@ import { Rocket, Lightbulb, Users, TrendingUp } from "lucide-react"
  
 export function SplineHero() {
   return (
-    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
+    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 relative overflow-hidden border-0 shadow-2xl">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
@@ -22,50 +22,63 @@ export function SplineHero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="flex items-center gap-2 mb-4">
-              <Rocket className="h-6 w-6 text-yellow-400" />
-              <span className="text-yellow-400 font-semibold text-sm uppercase tracking-wider">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 shadow-lg">
+                <Rocket className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-amber-300 font-medium text-sm uppercase tracking-[0.15em] opacity-90">
                 Future Leaders Start Here
               </span>
             </div>
             
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-gray-100 to-gray-300 mb-4 md:mb-6 leading-tight">
-              Transform Your Child Into A
-              <span className="block text-yellow-400">Young CEO</span>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 leading-[1.1]">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-gray-200">
+                Transform Your Child Into A
+              </span>
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-orange-400 to-yellow-500 mt-2">
+                Young CEO
+              </span>
             </h1>
             
-            <p className="text-gray-300 text-base md:text-lg mb-6 md:mb-8 max-w-lg leading-relaxed">
+            <p className="text-slate-300 text-base md:text-lg mb-6 md:mb-8 max-w-lg leading-relaxed font-light opacity-90">
               Our 180-day program combines interactive learning, real-world projects, 
               and AI-powered tools to build the next generation of entrepreneurs and leaders.
             </p>
 
-            <div className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8">
-              <div className="flex items-center gap-2 text-green-400">
-                <Users className="h-4 w-4 md:h-5 md:w-5" />
-                <span className="text-xs md:text-sm font-medium">2,500+ Students</span>
+            <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-10">
+              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <div className="p-1 rounded-full bg-emerald-500/20">
+                  <Users className="h-3 w-3 md:h-4 md:w-4 text-emerald-400" />
+                </div>
+                <span className="text-xs md:text-sm font-medium text-emerald-300">2,500+ Students</span>
               </div>
-              <div className="flex items-center gap-2 text-blue-400">
-                <TrendingUp className="h-4 w-4 md:h-5 md:w-5" />
-                <span className="text-xs md:text-sm font-medium">95% Success Rate</span>
+              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <div className="p-1 rounded-full bg-blue-500/20">
+                  <TrendingUp className="h-3 w-3 md:h-4 md:w-4 text-blue-400" />
+                </div>
+                <span className="text-xs md:text-sm font-medium text-blue-300">95% Success Rate</span>
               </div>
-              <div className="flex items-center gap-2 text-purple-400">
-                <Lightbulb className="h-4 w-4 md:h-5 md:w-5" />
-                <span className="text-xs md:text-sm font-medium">AI-Powered Learning</span>
+              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <div className="p-1 rounded-full bg-purple-500/20">
+                  <Lightbulb className="h-3 w-3 md:h-4 md:w-4 text-purple-400" />
+                </div>
+                <span className="text-xs md:text-sm font-medium text-purple-300">AI-Powered Learning</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-xl hover:shadow-2xl transition-all duration-300 text-sm md:text-base"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white font-semibold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 text-sm md:text-base relative overflow-hidden group"
               >
-                Start Free Trial
+                <span className="relative z-10">Start Free Trial</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 md:px-8 py-3 md:py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 text-sm md:text-base"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 md:px-8 py-3 md:py-4 border border-white/30 text-white font-medium rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-500 text-sm md:text-base backdrop-blur-sm"
               >
                 Watch Demo
               </motion.button>

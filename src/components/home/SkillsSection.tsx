@@ -34,7 +34,7 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section className="relative py-20 bg-gray-50 overflow-hidden -mt-1">
+    <section className="relative py-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden -mt-1">
       {/* Add subtle pattern background */}
       <div className="absolute inset-0" style={{ 
         backgroundImage: 'radial-gradient(circle, #e2e8f0 1px, transparent 1px)', 
@@ -46,19 +46,19 @@ export default function SkillsSection() {
         <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
           {/* Section header with improved contrast and hierarchy */}
           <div className="lg:col-span-5">
-            <div className="inline-block px-4 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium mb-4">
+            <div className="inline-block px-5 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-full text-sm font-semibold mb-6 border border-indigo-200">
               Future-proof skills
             </div>
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
               Skills That Last a Lifetime
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
+            <p className="text-xl text-slate-600 leading-relaxed mb-10 font-light">
               Master AI, money, and marketing — skills for life, not just for school.
             </p>
             <div>
               <a 
                 href="/skills" 
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-semibold rounded-2xl shadow-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
                 Explore all skills
               </a>
@@ -67,18 +67,19 @@ export default function SkillsSection() {
           
           {/* Skills grid with improved visual hierarchy and contrast */}
           <div className="mt-12 lg:mt-0 lg:col-span-7">
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-8 sm:grid-cols-2">
               {skills.map((skill, index) => (
                 <div 
                   key={index}
-                  className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg border border-gray-100 transition-all hover:shadow-xl hover:translate-y-[-4px] bg-white"
+                  className="group flex flex-col h-full overflow-hidden rounded-3xl shadow-lg border border-slate-200/50 transition-all duration-500 hover:shadow-2xl hover:translate-y-[-8px] bg-white/80 backdrop-blur-sm hover:bg-white"
                 >
-                  <div className={`p-5 ${skill.color}`}>
-                    <skill.icon className={`h-8 w-8 ${skill.iconColor}`} />
+                  <div className={`p-6 bg-gradient-to-br ${skill.color.replace('bg-', 'from-')} to-slate-800 relative overflow-hidden`}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
+                    <skill.icon className={`h-10 w-10 ${skill.iconColor} relative z-10 group-hover:scale-110 transition-transform duration-300`} />
                   </div>
-                  <div className="flex-1 p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">{skill.name}</h3>
-                    <p className="text-gray-600 leading-relaxed">{skill.description}</p>
+                  <div className="flex-1 p-8">
+                    <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-indigo-700 transition-colors duration-300">{skill.name}</h3>
+                    <p className="text-slate-600 leading-relaxed font-light">{skill.description}</p>
                   </div>
                 </div>
               ))}

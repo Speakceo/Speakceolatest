@@ -375,8 +375,8 @@ export default function ContactUs() {
               {/* Contact Information */}
               <div className="space-y-8">
                 {/* Quick Contact */}
-                <div className="bg-white rounded-3xl p-8 shadow-lg animate-wiggle" style={{animationDelay: "0.2s"}}>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6 kid-font">Get in Touch</h2>
+                <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-slate-200/50 animate-wiggle hover:shadow-2xl transition-all duration-500" style={{animationDelay: "0.2s"}}>
+                  <h2 className="text-2xl font-bold text-slate-900 mb-6 kid-font">Get in Touch</h2>
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-purple-100 flex items-center justify-center">

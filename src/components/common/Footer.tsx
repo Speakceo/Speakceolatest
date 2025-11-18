@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-indigo-900 to-purple-900 text-white relative -mt-1">
+    <footer className="bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 text-white relative -mt-1">
       {/* Top angled separator */}
       <div className="bg-white" style={{ height: '50px', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 0)' }}></div>
       
@@ -12,21 +12,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Company Information */}
           <div className="col-span-1 md:col-span-1">
-            <h2 className="text-2xl font-bold text-white mb-6">ORBIT</h2>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent mb-6">SpeakCEO</h2>
+            <p className="text-slate-300 mb-6 leading-relaxed font-light">
               Empowering the next generation of entrepreneurs with the skills they need to succeed in business and life.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200">
+              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
                 <Youtube size={20} />
               </a>
             </div>

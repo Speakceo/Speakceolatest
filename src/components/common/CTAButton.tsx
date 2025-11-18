@@ -25,25 +25,25 @@ export default function CTAButton({
   
   // Variant classes
   const variantClasses = {
-    primary: 'bg-indigo-700 hover:bg-indigo-800 text-white shadow-lg hover:shadow-xl',
-    secondary: 'bg-white hover:bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-md hover:shadow-lg'
+    primary: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl hover:scale-105',
+    secondary: 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-md hover:shadow-lg hover:scale-105'
   };
   
   const buttonClasses = `
     inline-flex items-center justify-center
     ${sizeClasses[size]}
-    font-medium rounded-md
+    font-semibold rounded-2xl
     ${variantClasses[variant]}
-    transition-all duration-200 ease-in-out
+    transition-all duration-300 ease-out
     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
-    cursor-pointer
+    cursor-pointer group
   `;
   
   if (onClick) {
     return (
       <button onClick={onClick} className={buttonClasses}>
         {text}
-        <ArrowRight className="ml-2 h-5 w-5" />
+        <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
       </button>
     );
   }
@@ -51,7 +51,7 @@ export default function CTAButton({
   return (
     <a href={href} className={buttonClasses}>
       {text}
-      <ArrowRight className="ml-2 h-5 w-5" />
+      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
     </a>
   );
 } 
