@@ -8,15 +8,15 @@ import { Rocket, Lightbulb, Users, TrendingUp } from "lucide-react"
  
 export function SplineHero() {
   return (
-    <Card className="w-full h-[600px] bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
+    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 relative overflow-hidden">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
       />
       
-      <div className="flex h-full">
+      <div className="flex flex-col md:flex-row h-full">
         {/* Left content */}
-        <div className="flex-1 p-8 lg:p-12 relative z-10 flex flex-col justify-center">
+        <div className="flex-1 p-4 sm:p-6 md:p-8 lg:p-12 relative z-10 flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -29,43 +29,43 @@ export function SplineHero() {
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-gray-100 to-gray-300 mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-gray-100 to-gray-300 mb-4 md:mb-6 leading-tight">
               Transform Your Child Into A
               <span className="block text-yellow-400">Young CEO</span>
             </h1>
             
-            <p className="text-gray-300 text-lg mb-8 max-w-lg leading-relaxed">
+            <p className="text-gray-300 text-base md:text-lg mb-6 md:mb-8 max-w-lg leading-relaxed">
               Our 180-day program combines interactive learning, real-world projects, 
               and AI-powered tools to build the next generation of entrepreneurs and leaders.
             </p>
 
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div className="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8">
               <div className="flex items-center gap-2 text-green-400">
-                <Users className="h-5 w-5" />
-                <span className="text-sm font-medium">2,500+ Students</span>
+                <Users className="h-4 w-4 md:h-5 md:w-5" />
+                <span className="text-xs md:text-sm font-medium">2,500+ Students</span>
               </div>
               <div className="flex items-center gap-2 text-blue-400">
-                <TrendingUp className="h-5 w-5" />
-                <span className="text-sm font-medium">95% Success Rate</span>
+                <TrendingUp className="h-4 w-4 md:h-5 md:w-5" />
+                <span className="text-xs md:text-sm font-medium">95% Success Rate</span>
               </div>
               <div className="flex items-center gap-2 text-purple-400">
-                <Lightbulb className="h-5 w-5" />
-                <span className="text-sm font-medium">AI-Powered Learning</span>
+                <Lightbulb className="h-4 w-4 md:h-5 md:w-5" />
+                <span className="text-xs md:text-sm font-medium">AI-Powered Learning</span>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-xl hover:shadow-2xl transition-all duration-300"
+                className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-xl hover:shadow-2xl transition-all duration-300 text-sm md:text-base"
               >
                 Start Free Trial
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
+                className="px-6 md:px-8 py-3 md:py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 text-sm md:text-base"
               >
                 Watch Demo
               </motion.button>
@@ -74,7 +74,7 @@ export function SplineHero() {
         </div>
 
         {/* Right content - 3D Scene */}
-        <div className="flex-1 relative">
+        <div className="flex-1 relative min-h-[300px] md:min-h-0 order-first md:order-last">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -98,21 +98,21 @@ export function SplineHero() {
             </div>
           </motion.div>
           
-          {/* Floating elements */}
+          {/* Floating elements - hidden on mobile for better performance */}
           <motion.div
             animate={{ y: [-10, 10, -10] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 right-20 bg-white/10 backdrop-blur-sm rounded-full p-4"
+            className="absolute top-4 md:top-20 right-4 md:right-20 bg-white/10 backdrop-blur-sm rounded-full p-2 md:p-4 hidden md:block"
           >
-            <Lightbulb className="h-8 w-8 text-yellow-400" />
+            <Lightbulb className="h-6 w-6 md:h-8 md:w-8 text-yellow-400" />
           </motion.div>
           
           <motion.div
             animate={{ y: [10, -10, 10] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-32 right-32 bg-white/10 backdrop-blur-sm rounded-full p-4"
+            className="absolute bottom-4 md:bottom-32 right-4 md:right-32 bg-white/10 backdrop-blur-sm rounded-full p-2 md:p-4 hidden md:block"
           >
-            <TrendingUp className="h-8 w-8 text-green-400" />
+            <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-green-400" />
           </motion.div>
         </div>
       </div>
