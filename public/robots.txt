@@ -35,16 +35,44 @@ Allow: /privacy
 Allow: /terms
 Allow: /cookies
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://speakceo.ai/sitemap.xml
+Sitemap: https://speakceo.ai/sitemap-advanced.xml
+Sitemap: https://speakceo.ai/rss.xml
 
-# Crawl delay (optional - helps prevent server overload)
+# Crawl delay (helps prevent server overload)
 Crawl-delay: 1
 
-# Google Search Console verification (replace with your actual verification code)
-# User-agent: Googlebot
-# Allow: /
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
-# Bing verification (replace with your actual verification code)
-# User-agent: Bingbot
-# Allow: / 
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Block AI training bots (optional)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# Cache instructions
+Cache-Control: public, max-age=86400 

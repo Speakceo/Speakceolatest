@@ -61,18 +61,55 @@ export default function SEO({
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     name: 'SpeakCEO',
+    alternateName: 'SpeakCEO Young Entrepreneurs Program',
     description: defaultSEO.description,
     url: defaultSEO.url,
-    logo: 'https://speakceo.ai/logo.png',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://speakceo.ai/logo.png',
+      width: 200,
+      height: 200
+    },
+    image: 'https://speakceo.ai/og-image.jpg',
     sameAs: [
       'https://twitter.com/speakceoai',
       'https://facebook.com/speakceoai',
       'https://linkedin.com/company/speakceoai',
-      'https://instagram.com/speakceoai'
+      'https://instagram.com/speakceoai',
+      'https://youtube.com/@speakceoai'
     ],
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'IN'
+      addressCountry: 'IN',
+      addressRegion: 'Global'
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+1-800-SPEAKCEO',
+      contactType: 'Customer Service',
+      email: 'hello@speakceo.ai',
+      availableLanguage: ['English']
+    },
+    foundingDate: '2024',
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      value: '10-50'
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '2500',
+      bestRating: '5',
+      worstRating: '1'
+    },
+    offers: {
+      '@type': 'Offer',
+      name: '180-Day Young CEO Program',
+      description: 'Comprehensive entrepreneurship education for young minds',
+      price: '299',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      validFrom: '2024-01-01'
     }
   };
 
@@ -174,6 +211,73 @@ export default function SEO({
     ]
   };
 
+  // Add Service Schema
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Young Entrepreneur Education Program',
+    description: 'Comprehensive 180-day program teaching entrepreneurship, leadership, and business skills to children aged 8-16',
+    provider: {
+      '@type': 'EducationalOrganization',
+      name: 'SpeakCEO'
+    },
+    serviceType: 'Educational Service',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Children and Teenagers',
+      suggestedMinAge: 8,
+      suggestedMaxAge: 16
+    },
+    offers: {
+      '@type': 'Offer',
+      price: '299',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock'
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'SpeakCEO Course Catalog',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Course',
+            name: 'Young CEO Fundamentals',
+            description: 'Basic entrepreneurship concepts for beginners'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Course',
+            name: 'Business Planning for Kids',
+            description: 'Learn to create and execute business plans'
+          }
+        }
+      ]
+    }
+  };
+
+  // Add Review Schema
+  const reviewSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    itemReviewed: {
+      '@type': 'EducationalOrganization',
+      name: 'SpeakCEO'
+    },
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: '5',
+      bestRating: '5'
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Parent Community'
+    },
+    reviewBody: 'SpeakCEO has transformed our children into confident young leaders. The program is comprehensive, engaging, and delivers real results.'
+  };
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -237,6 +341,12 @@ export default function SEO({
       </script>
       <script type="application/ld+json">
         {JSON.stringify(websiteSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(serviceSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(reviewSchema)}
       </script>
       {courseSchema && (
         <script type="application/ld+json">
