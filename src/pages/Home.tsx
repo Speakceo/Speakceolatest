@@ -36,13 +36,13 @@ import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import { SplineHero } from '../components/ui/SplineHero';
 
-// Minimal animation variants
+// Optimized animation variants for better performance
 const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 10 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.4, ease: "easeOut" }
   }
 };
 
@@ -50,7 +50,7 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 }
+    transition: { staggerChildren: 0.05 }
   }
 };
 
@@ -113,10 +113,9 @@ export default function Home() {
           {/* Enhanced background effects */}
           <div className="absolute inset-0 bg-black/10"></div>
           
-          {/* Animated gradient orbs */}
-          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-emerald-400/15 via-blue-400/15 to-teal-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-400/15 via-indigo-400/15 to-purple-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-teal-400/10 via-blue-400/10 to-indigo-400/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-pulse" style={{animationDelay: '4s'}}></div>
+          {/* Optimized gradient orbs - reduced for performance */}
+          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-emerald-400/10 via-blue-400/10 to-teal-400/10 rounded-full filter blur-3xl opacity-40"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full filter blur-3xl opacity-40"></div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -183,7 +182,7 @@ export default function Home() {
                     <div className="text-sm text-white/80">Students</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                    <div className="text-2xl font-bold text-blue-300">90</div>
+                    <div className="text-2xl font-bold text-blue-300">180</div>
                     <div className="text-sm text-white/80">Day Program</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
@@ -195,9 +194,9 @@ export default function Home() {
               
               {/* Enhanced Hero Image */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
                 className="relative z-10"
               >
                 <div className="relative">
@@ -205,6 +204,7 @@ export default function Home() {
                   src="/images/hero/main-hero.png" 
                   alt="Young entrepreneurs collaborating" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
+                    loading="eager"
                   />
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-600/20 via-blue-600/20 to-purple-600/20"></div>
                   
@@ -228,10 +228,10 @@ export default function Home() {
         <section className="py-20 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
               <div className="inline-block bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900 rounded-full px-8 py-3 mb-6">
@@ -246,10 +246,10 @@ export default function Home() {
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2 }}
+              transition={{ duration: 0.5 }}
             >
               <SplineHero />
             </motion.div>
@@ -258,9 +258,8 @@ export default function Home() {
 
         {/* SpeakCEO Playground Demo Section */}
         <section className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/10 via-pink-400/10 to-indigo-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-bl from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
+          {/* Background Elements - optimized */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/8 via-pink-400/8 to-indigo-400/8 rounded-full filter blur-3xl opacity-50"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div 
@@ -477,9 +476,9 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.4 }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 <div className="flex items-center mb-6">
@@ -487,6 +486,7 @@ export default function Home() {
                     src="https://randomuser.me/api/portraits/women/44.jpg"
                     alt="Sarah Chen"
                     className="w-16 h-16 rounded-full object-cover mr-4"
+                    loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src = 'https://ui-avatars.com/api/?name=Sarah+Chen&background=e5e7eb&color=374151&size=64';
                     }}
@@ -514,9 +514,9 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.15, duration: 0.4 }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 <div className="flex items-center mb-6">
@@ -548,9 +548,9 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.4 }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 <div className="flex items-center mb-6">
@@ -617,10 +617,8 @@ export default function Home() {
 
         {/* Live Interactive Learning Section */}
         <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/15 via-blue-400/15 to-teal-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-400/15 via-indigo-400/15 to-purple-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-teal-400/10 via-blue-400/10 to-indigo-400/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-pulse" style={{animationDelay: '4s'}}></div>
+          {/* Background decoration - optimized */}
+          <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/10 via-blue-400/10 to-teal-400/10 rounded-full filter blur-3xl opacity-40"></div>
           
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -739,6 +737,7 @@ export default function Home() {
                     src="/images/hero/journey-map.png" 
                     alt="Students collaborating in comprehensive learning environment with AI tools and live mentorship" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-600/10 via-blue-600/10 to-purple-600/10"></div>
                   
@@ -804,6 +803,7 @@ export default function Home() {
                 src="/images/hero/success-story.png" 
                 alt="Complete 180-day entrepreneurial journey roadmap" 
                 className="rounded-2xl shadow-xl max-w-3xl mx-auto w-full h-auto"
+                loading="lazy"
               />
             </div>
             
@@ -1022,6 +1022,7 @@ export default function Home() {
                 src="/images/hero/testimonial-bg.png" 
                 alt="Young entrepreneurs celebrating their success stories" 
                 className="rounded-2xl shadow-xl max-w-2xl mx-auto w-full h-auto"
+                loading="lazy"
               />
             </div>
 
@@ -1082,9 +1083,8 @@ export default function Home() {
 
         {/* Global Opportunities Section */}
         <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-          {/* Background Elements */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-400/10 via-teal-400/10 to-blue-400/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{animationDelay: '2s'}}></div>
+          {/* Background Elements - optimized */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/8 via-indigo-400/8 to-purple-400/8 rounded-full filter blur-3xl opacity-40"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div 
@@ -1178,9 +1178,8 @@ export default function Home() {
 
         {/* Global Resources Database Section */}
         <section className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white relative overflow-hidden">
-          {/* Background Effects */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/15 via-indigo-400/15 to-purple-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-bl from-emerald-400/15 via-teal-400/15 to-blue-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse" style={{animationDelay: '3s'}}></div>
+          {/* Background Effects - optimized */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full filter blur-3xl opacity-40"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div 
@@ -1306,14 +1305,13 @@ export default function Home() {
         {/* Enhanced CTA Section with Urgency */}
         <section className="py-20 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 text-white relative overflow-hidden">
           {/* Background effects */}
-          <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/20 via-blue-400/20 to-purple-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-400/20 via-purple-400/20 to-indigo-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
+          <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/10 via-blue-400/10 to-purple-400/10 rounded-full filter blur-3xl opacity-30"></div>
           
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
             >
               <div className="inline-block bg-gradient-to-r from-red-100 to-orange-100 rounded-full px-6 py-2 mb-6">
                 <span className="text-red-700 font-semibold">⚡ Limited Time - Only 30 Spots Left</span>
