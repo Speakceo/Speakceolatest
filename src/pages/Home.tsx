@@ -157,17 +157,17 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-10 py-5 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                    className="group relative px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                     Start Your Journey
-                      <ArrowRight className="ml-3 h-6 w-6" />
+                      <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                   </button>
                   <button
                     onClick={() => setShowCareerGuide(true)}
-                    className="px-10 py-5 bg-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50 backdrop-blur-sm transform hover:scale-105"
+                    className="px-10 py-5 bg-white/10 hover:bg-slate-50/20 text-white font-semibold rounded-2xl transition-all duration-300 ease-out border-2 border-white/30 hover:border-white/50 backdrop-blur-sm hover:scale-105 shadow-md hover:shadow-lg"
                   >
                     Download Guide
                   </button>
@@ -314,7 +314,7 @@ export default function Home() {
                           className="w-full px-4 py-3 border-2 border-purple-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors text-gray-700 bg-purple-50/50"
                           defaultValue=""
                         />
-                        <button className="absolute right-2 top-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1.5 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        <button className="absolute right-2 top-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-1.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105">
                           Create ✨
                         </button>
                       </div>
@@ -430,10 +430,10 @@ export default function Home() {
                   </p>
                   <button 
                     onClick={() => setShowEnrollment(true)}
-                    className="bg-white text-purple-600 px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center"
+                    className="group bg-white hover:bg-slate-50 text-indigo-700 px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105 flex items-center border border-slate-200 shadow-md"
                   >
                     Start Building Now
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                 </div>
               </motion.div>
@@ -700,16 +700,16 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                    className="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Start Learning Journey
-                      <Rocket className="ml-3 h-5 w-5" />
+                      <Rocket className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                   </button>
                   <button 
-                    className="px-8 py-4 bg-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50 backdrop-blur-sm transform hover:scale-105"
+                    className="px-8 py-4 bg-white/10 hover:bg-slate-50/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all duration-300 ease-out border-2 border-white/30 hover:border-white/50 backdrop-blur-sm hover:scale-105 shadow-md hover:shadow-lg"
                   >
                     Download Free Guide
                   </button>
@@ -1197,19 +1197,19 @@ export default function Home() {
 
             {/* Resource Categories */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center">
+              <button className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105 flex items-center shadow-md">
                 <Award className="h-5 w-5 mr-2" />
                 Scholarships
               </button>
-              <button className="px-8 py-3 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30 flex items-center">
+              <button className="px-8 py-3 bg-white/10 hover:bg-slate-50/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 ease-out hover:scale-105 border border-white/30 hover:border-white/50 flex items-center shadow-md hover:shadow-lg">
                 <Trophy className="h-5 w-5 mr-2" />
                 Competitions
               </button>
-              <button className="px-8 py-3 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30 flex items-center">
+              <button className="px-8 py-3 bg-white/10 hover:bg-slate-50/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 ease-out hover:scale-105 border border-white/30 hover:border-white/50 flex items-center shadow-md hover:shadow-lg">
                 <Brain className="h-5 w-5 mr-2" />
                 AI Tools
               </button>
-              <button className="px-8 py-3 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 border border-white/30 flex items-center">
+              <button className="px-8 py-3 bg-white/10 hover:bg-slate-50/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 ease-out hover:scale-105 border border-white/30 hover:border-white/50 flex items-center shadow-md hover:shadow-lg">
                 <Users className="h-5 w-5 mr-2" />
                 Global Fellowships
               </button>
@@ -1257,11 +1257,11 @@ export default function Home() {
             >
               <button 
                 onClick={() => setShowEnrollment(true)}
-                className="group relative px-12 py-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                className="group relative px-12 py-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl text-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center">
                   Access Full Database
-                  <ArrowRight className="ml-3 h-6 w-6" />
+                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
@@ -1349,17 +1349,17 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <button 
                 onClick={() => setShowEnrollment(true)}
-                  className="group relative px-10 py-6 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-500 text-white font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                  className="group relative px-10 py-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl text-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     Secure Your Child's Spot Now
-                    <ArrowRight className="ml-3 h-5 w-5" />
+                    <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
                 
               <button 
-                  className="px-8 py-6 bg-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50 backdrop-blur-sm transform hover:scale-105"
+                  className="px-8 py-6 bg-white/10 hover:bg-slate-50/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all duration-300 ease-out border-2 border-white/30 hover:border-white/50 backdrop-blur-sm hover:scale-105 shadow-md hover:shadow-lg"
               >
                   Download Free Guide
               </button>

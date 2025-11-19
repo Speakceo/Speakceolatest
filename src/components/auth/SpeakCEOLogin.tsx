@@ -130,13 +130,12 @@ export default function SpeakCEOLogin() {
                       }
                       setSpeakCeoId(value);
                     }}
-                    placeholder="SpeakCEO001"
+                    placeholder=""
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                     disabled={loading}
                   />
                   <User className="absolute right-3 top-3 h-5 w-5 text-purple-300" />
                 </div>
-                <p className="text-xs text-purple-300 mt-1">Format: SpeakCEO001 to SpeakCEO300</p>
               </div>
 
               <button
@@ -165,7 +164,7 @@ export default function SpeakCEOLogin() {
                   type="text"
                   value={studentName}
                   onChange={(e) => setStudentName(e.target.value)}
-                  placeholder="Enter your full name"
+                  placeholder=""
                   className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   disabled={loading}
                   autoFocus
@@ -222,12 +221,6 @@ export default function SpeakCEOLogin() {
             </motion.div>
           )}
 
-          {/* Help */}
-          <div className="mt-8 text-center">
-            <p className="text-purple-300 text-sm">
-              Need help? Contact your instructor for your SpeakCEO ID
-            </p>
-          </div>
         </div>
       </motion.div>
     </div>

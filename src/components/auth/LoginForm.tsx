@@ -195,25 +195,6 @@ export default function LoginForm() {
           </div>
         )}
 
-        {/* Quick Credential Buttons */}
-        <div className="grid grid-cols-2 gap-3">
-          <button
-            type="button"
-            onClick={fillDemoCredentials}
-            className="flex items-center justify-center px-3 py-2 border border-blue-300 rounded-md text-sm font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors"
-          >
-            <Users className="h-4 w-4 mr-2" />
-            Demo Student
-          </button>
-          <button
-            type="button"
-            onClick={fillAdminCredentials}
-            className="flex items-center justify-center px-3 py-2 border border-purple-300 rounded-md text-sm font-medium text-purple-700 bg-purple-50 hover:bg-purple-100 transition-colors"
-          >
-            <Database className="h-4 w-4 mr-2" />
-            Admin User
-          </button>
-        </div>
 
         <div className="space-y-4">
           <div>
@@ -231,7 +212,7 @@ export default function LoginForm() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                placeholder="Enter your email"
+                placeholder=""
               />
             </div>
           </div>
@@ -251,7 +232,7 @@ export default function LoginForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                placeholder="Enter your password"
+                placeholder=""
               />
             </div>
           </div>
@@ -288,47 +269,6 @@ export default function LoginForm() {
         </button>
       </form>
 
-      {/* Debugging Tools */}
-      <div className="mt-6 space-y-3">
-        <div className="text-sm text-gray-600 text-center">
-          🔧 Debugging Tools
-        </div>
-        <div className="grid grid-cols-1 gap-2">
-          <button
-            type="button"
-            onClick={testDatabaseConnection}
-            className="flex items-center justify-center px-4 py-2 border border-green-300 rounded-md text-sm font-medium text-green-700 bg-green-50 hover:bg-green-100 transition-colors"
-          >
-            <Database className="h-4 w-4 mr-2" />
-            Test Database & Create Accounts
-          </button>
-          <button
-            type="button"
-            onClick={testDemoLogin}
-            className="flex items-center justify-center px-4 py-2 border border-orange-300 rounded-md text-sm font-medium text-orange-700 bg-orange-50 hover:bg-orange-100 transition-colors"
-          >
-            <TestTube className="h-4 w-4 mr-2" />
-            Try Demo Login
-          </button>
-          <button
-            type="button"
-            onClick={setupForProduction}
-            className="flex items-center justify-center px-4 py-2 border border-red-300 rounded-md text-sm font-medium text-red-700 bg-red-50 hover:bg-red-100 transition-colors"
-          >
-            <AlertCircle className="h-4 w-4 mr-2" />
-            Full Production Setup
-          </button>
-        </div>
-      </div>
-
-      <p className="mt-6 text-center text-sm text-gray-500">
-        🔑 Demo: demo@orbitstudent.ai / Demo123! | Admin: admin@orbitstudent.ai / Admin123!
-      </p>
-      
-      <div className="mt-4 text-center text-xs text-gray-400">
-        <p>💡 If login fails: Check Supabase Auth settings → Disable email confirmation</p>
-        <p>Or manually confirm users in Supabase Auth → Users panel</p>
-      </div>
     </AuthLayout>
   );
 } 
