@@ -109,14 +109,14 @@ export default function Home() {
       />
       
       <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden pt-20">
-        {/* Enhanced Hero Section */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 dark:from-gray-800 dark:via-gray-900 dark:to-black text-white overflow-hidden min-h-screen flex items-center">
-          {/* Enhanced background effects */}
-          <div className="absolute inset-0 bg-black/10"></div>
+        {/* Enhanced Hero Section - Lighter theme */}
+        <section className="relative bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-white overflow-hidden min-h-screen flex items-center">
+          {/* Subtle background pattern */}
+          <div className="absolute inset-0 bg-white/5"></div>
           
-          {/* Optimized gradient orbs - Orbit colors */}
-          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-orange-400/10 via-blue-600/10 to-cyan-400/10 rounded-full filter blur-3xl opacity-40"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-600/10 via-orange-400/10 to-cyan-400/10 rounded-full filter blur-3xl opacity-40"></div>
+          {/* Minimal gradient orbs */}
+          <div className="absolute top-20 left-10 w-96 h-96 bg-white/10 rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-white/10 rounded-full filter blur-3xl"></div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -129,9 +129,9 @@ export default function Home() {
               >
                 <motion.div
                   variants={fadeIn}
-                  className="inline-block mb-6 px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-xl"
+                  className="inline-block mb-6 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30"
                 >
-                  <span className="text-orange-300 font-semibold text-lg">✨ Join 2,500+ Young Entrepreneurs</span>
+                  <span className="text-white font-medium text-base">✨ Join 2,500+ Young Entrepreneurs</span>
                 </motion.div>
                 
                 <motion.h1 
@@ -139,7 +139,7 @@ export default function Home() {
                   className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
                 >
                   Where Young Minds
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-blue-500 to-cyan-400">
+                  <span className="block text-white drop-shadow-lg">
                     Become Future Leaders
                   </span>
                 </motion.h1>
@@ -157,13 +157,12 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-10 py-5 bg-gradient-to-r from-orange-600 to-blue-700 hover:from-orange-700 hover:to-blue-800 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
+                    className="group relative px-10 py-5 bg-white text-blue-600 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105"
                   >
                     <span className="relative z-10 flex items-center justify-center">
-                    Think Future, Think Orbit
+                    Check Courses
                       <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                   </button>
                   <button
                     onClick={() => setShowCareerGuide(true)}
@@ -178,17 +177,17 @@ export default function Home() {
                   variants={fadeIn}
                   className="mt-16 grid grid-cols-3 gap-8 text-center"
                 >
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                    <div className="text-2xl font-bold text-orange-300">2,500+</div>
-                    <div className="text-sm text-white/80">Students</div>
+                  <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                    <div className="text-2xl font-bold text-white">2,500+</div>
+                    <div className="text-sm text-white/90">Students</div>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                    <div className="text-2xl font-bold text-cyan-300">180</div>
-                    <div className="text-sm text-white/80">Day Program</div>
+                  <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                    <div className="text-2xl font-bold text-white">180</div>
+                    <div className="text-sm text-white/90">Day Program</div>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                    <div className="text-2xl font-bold text-orange-300">98%</div>
-                    <div className="text-sm text-white/80">Success Rate</div>
+                  <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                    <div className="text-2xl font-bold text-white">98%</div>
+                    <div className="text-sm text-white/90">Success Rate</div>
                   </div>
                 </motion.div>
               </motion.div>

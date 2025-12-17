@@ -23,19 +23,19 @@ export default function CTAButton({
     large: 'px-8 py-4 text-lg'
   };
   
-  // Variant classes - Orbit colors
+  // Variant classes - Light blue theme
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-orange-600 to-blue-700 hover:from-orange-700 hover:to-blue-800 text-white shadow-lg hover:shadow-xl hover:scale-105',
-    secondary: 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-md hover:shadow-lg hover:scale-105'
+    primary: 'bg-blue-500 hover:bg-blue-600 text-white shadow-md hover:shadow-lg hover:scale-105',
+    secondary: 'bg-white hover:bg-slate-50 text-blue-600 border border-blue-200 shadow-sm hover:shadow-md hover:scale-105'
   };
   
   const buttonClasses = `
     inline-flex items-center justify-center
     ${sizeClasses[size]}
-    font-semibold rounded-2xl
+    font-semibold rounded-full
     ${variantClasses[variant]}
     transition-all duration-300 ease-out
-    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
     cursor-pointer group
   `;
   

@@ -8,7 +8,7 @@ import { Rocket, Lightbulb, Users, TrendingUp } from "lucide-react"
  
 export function SplineHero() {
   return (
-    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 relative overflow-hidden border-0 shadow-2xl">
+    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-blue-500 to-blue-600 relative overflow-hidden border-0 shadow-lg">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
@@ -23,11 +23,11 @@ export function SplineHero() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 shadow-lg">
+              <div className="p-2 rounded-full bg-white/20 backdrop-blur-sm">
                 <Rocket className="h-5 w-5 text-white" />
               </div>
-              <span className="text-amber-300 font-medium text-sm uppercase tracking-[0.15em] opacity-90">
-                Future Leaders Start Here
+              <span className="text-white font-medium text-sm uppercase tracking-wider opacity-90">
+                Think Future Think Orbit
               </span>
             </div>
             
@@ -35,52 +35,45 @@ export function SplineHero() {
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-gray-200">
                 Transform Your Child Into A
               </span>
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-cyan-400 to-blue-400 mt-2">
+              <span className="block text-white drop-shadow-lg mt-2">
                 Orbit Student
               </span>
             </h1>
             
-            <p className="text-slate-300 text-base md:text-lg mb-6 md:mb-8 max-w-lg leading-relaxed font-light opacity-90">
+            <p className="text-white/90 text-base md:text-lg mb-6 md:mb-8 max-w-lg leading-relaxed">
               Our 180-day program combines interactive learning, real-world projects, 
               and AI-powered tools to build the next generation of entrepreneurs and leaders.
             </p>
 
-            <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-10">
-              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <div className="p-1 rounded-full bg-orange-500/20">
-                  <Users className="h-3 w-3 md:h-4 md:w-4 text-orange-400" />
-                </div>
-                <span className="text-xs md:text-sm font-medium text-orange-300">2,500+ Students</span>
+            <div className="flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-10">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm">
+                <Users className="h-4 w-4 text-white" />
+                <span className="text-sm font-medium text-white">2,500+ Students</span>
               </div>
-              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <div className="p-1 rounded-full bg-cyan-500/20">
-                  <TrendingUp className="h-3 w-3 md:h-4 md:w-4 text-cyan-400" />
-                </div>
-                <span className="text-xs md:text-sm font-medium text-cyan-300">95% Success Rate</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm">
+                <TrendingUp className="h-4 w-4 text-white" />
+                <span className="text-sm font-medium text-white">95% Success Rate</span>
               </div>
-              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <div className="p-1 rounded-full bg-blue-500/20">
-                  <Lightbulb className="h-3 w-3 md:h-4 md:w-4 text-blue-400" />
-                </div>
-                <span className="text-xs md:text-sm font-medium text-blue-300">AI-Powered Learning</span>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm">
+                <Lightbulb className="h-4 w-4 text-white" />
+                <span className="text-sm font-medium text-white">AI-Powered</span>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <motion.button
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-orange-600 via-blue-700 to-cyan-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 text-sm md:text-base relative overflow-hidden group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300 text-base"
               >
-                <span className="relative z-10">Start Free Trial</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-700 via-blue-800 to-cyan-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                Check Courses
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 md:px-8 py-3 md:py-4 border border-white/30 text-white font-medium rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-500 text-sm md:text-base backdrop-blur-sm"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 border-2 border-white text-white font-medium rounded-full hover:bg-white/10 transition-all duration-300 text-base"
               >
-                Watch Demo
+                Learn More
               </motion.button>
             </div>
           </motion.div>

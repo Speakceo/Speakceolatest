@@ -39,11 +39,13 @@ export default {
           foreground: 'hsl(var(--card-foreground))',
         },
         orbit: {
-          orange: '#f97316',
-          blue: '#1e40af',
-          cyan: '#06b6d4',
-          dark: '#0f172a',
-          light: '#f0f9ff',
+          blue: '#1e88e5',
+          'blue-light': '#42a5f5',
+          'blue-sky': '#29b6f6',
+          cyan: '#29b6f6',
+          orange: '#ff9800',
+          light: '#e3f2fd',
+          'light-bg': '#f0f9ff',
         },
       },
       borderRadius: {
