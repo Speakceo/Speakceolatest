@@ -61,12 +61,12 @@ export default function Navbar() {
     <div className="w-full relative z-40">
       {/* Enhanced Navbar with Glass-morphism Effect */}
       <nav className="fixed w-full z-50 transition-all duration-300 top-0 left-0 min-h-[80px]">
-        {/* Background with enhanced glass effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-indigo-900/95 dark:from-gray-900/95 dark:via-gray-800/95 dark:to-gray-900/95 backdrop-blur-xl border-b border-white/10 dark:border-gray-700/50 min-h-[80px]"></div>
+        {/* Background with enhanced glass effect - Orbit colors */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-900/95 to-blue-800/95 dark:from-gray-900/95 dark:via-gray-800/95 dark:to-gray-900/95 backdrop-blur-xl border-b border-orange-500/20 dark:border-gray-700/50 min-h-[80px]"></div>
         
-        {/* Animated gradient orbs */}
-        <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/20 via-blue-400/20 to-teal-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-pulse"></div>
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-400/20 via-indigo-400/20 to-purple-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-70 animate-pulse" style={{animationDelay: '1s'}}></div>
+        {/* Animated gradient orbs - Orbit colors */}
+        <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-orange-400/20 via-blue-600/20 to-cyan-400/20 rounded-full filter blur-3xl opacity-50"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-600/20 via-orange-400/20 to-cyan-400/20 rounded-full filter blur-3xl opacity-50"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
@@ -76,17 +76,17 @@ export default function Navbar() {
                 onClick={handleLogoClick}
                 className="flex items-center space-x-3 group"
               >
-                <div className="relative flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 text-white shadow-2xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 hover:shadow-indigo-500/25">
+                <div className="relative flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-700 via-orange-600 to-cyan-600 text-white shadow-2xl transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 hover:shadow-orange-500/25">
                   <GraduationCap className="h-8 w-8 z-10" />
-                  <Sparkles className="absolute h-4 w-4 top-1 right-1 text-yellow-300 animate-pulse" />
+                  <Sparkles className="absolute h-4 w-4 top-1 right-1 text-orange-300 animate-pulse" />
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent"></div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-indigo-100 group-hover:from-emerald-200 group-hover:to-blue-200 transition-all duration-300">
-                    SpeakCEO
+                  <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-100 to-cyan-100 group-hover:from-orange-200 group-hover:to-cyan-200 transition-all duration-300">
+                    ORBIT
                   </span>
-                  <span className="text-xs text-purple-200 font-medium tracking-wider">
-                    Future Leaders
+                  <span className="text-xs text-orange-200 font-medium tracking-wider">
+                    Think Future
                   </span>
                 </div>
               </button>
@@ -107,7 +107,7 @@ export default function Navbar() {
                 >
                   <span className="relative z-10">{t(item.title)}</span>
                   {isActive(item.href) && (
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-sm"></div>
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-700/20 to-orange-500/20 blur-sm"></div>
                   )}
                 </Link>
               ))}
@@ -129,7 +129,7 @@ export default function Navbar() {
                 user ? (
                   <button
                     onClick={handleDashboardClick}
-                    className="relative px-6 py-3 rounded-2xl text-sm font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 group overflow-hidden"
+                    className="relative px-6 py-3 rounded-2xl text-sm font-bold bg-gradient-to-r from-orange-600 via-blue-700 to-cyan-600 text-white shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 hover:scale-105 group overflow-hidden"
                   >
                     <span className="relative z-10">
                       {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
@@ -205,7 +205,7 @@ export default function Navbar() {
             user ? (
               <button
                 onClick={handleDashboardClick}
-                className="w-full mt-4 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 text-white px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300 hover:shadow-lg text-center shadow-xl"
+                className="w-full mt-4 bg-gradient-to-r from-orange-600 via-blue-700 to-cyan-600 text-white px-6 py-4 rounded-2xl text-base font-bold transition-all duration-300 hover:shadow-lg text-center shadow-xl"
               >
                 {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
               </button>

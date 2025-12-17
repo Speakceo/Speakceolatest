@@ -38,6 +38,13 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        orbit: {
+          orange: '#f97316',
+          blue: '#1e40af',
+          cyan: '#06b6d4',
+          dark: '#0f172a',
+          light: '#f0f9ff',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

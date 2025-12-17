@@ -8,7 +8,7 @@ import { Rocket, Lightbulb, Users, TrendingUp } from "lucide-react"
  
 export function SplineHero() {
   return (
-    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 relative overflow-hidden border-0 shadow-2xl">
+    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 relative overflow-hidden border-0 shadow-2xl">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
@@ -35,8 +35,8 @@ export function SplineHero() {
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-gray-200">
                 Transform Your Child Into A
               </span>
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-orange-400 to-yellow-500 mt-2">
-                Young CEO
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-cyan-400 to-blue-400 mt-2">
+                Orbit Student
               </span>
             </h1>
             
@@ -47,22 +47,22 @@ export function SplineHero() {
 
             <div className="flex flex-wrap gap-4 md:gap-6 mb-8 md:mb-10">
               <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <div className="p-1 rounded-full bg-emerald-500/20">
-                  <Users className="h-3 w-3 md:h-4 md:w-4 text-emerald-400" />
+                <div className="p-1 rounded-full bg-orange-500/20">
+                  <Users className="h-3 w-3 md:h-4 md:w-4 text-orange-400" />
                 </div>
-                <span className="text-xs md:text-sm font-medium text-emerald-300">2,500+ Students</span>
+                <span className="text-xs md:text-sm font-medium text-orange-300">2,500+ Students</span>
+              </div>
+              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                <div className="p-1 rounded-full bg-cyan-500/20">
+                  <TrendingUp className="h-3 w-3 md:h-4 md:w-4 text-cyan-400" />
+                </div>
+                <span className="text-xs md:text-sm font-medium text-cyan-300">95% Success Rate</span>
               </div>
               <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
                 <div className="p-1 rounded-full bg-blue-500/20">
-                  <TrendingUp className="h-3 w-3 md:h-4 md:w-4 text-blue-400" />
+                  <Lightbulb className="h-3 w-3 md:h-4 md:w-4 text-blue-400" />
                 </div>
-                <span className="text-xs md:text-sm font-medium text-blue-300">95% Success Rate</span>
-              </div>
-              <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                <div className="p-1 rounded-full bg-purple-500/20">
-                  <Lightbulb className="h-3 w-3 md:h-4 md:w-4 text-purple-400" />
-                </div>
-                <span className="text-xs md:text-sm font-medium text-purple-300">AI-Powered Learning</span>
+                <span className="text-xs md:text-sm font-medium text-blue-300">AI-Powered Learning</span>
               </div>
             </div>
 
@@ -70,10 +70,10 @@ export function SplineHero() {
               <motion.button
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 text-white font-semibold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 text-sm md:text-base relative overflow-hidden group"
+                className="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-orange-600 via-blue-700 to-cyan-600 text-white font-semibold rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 text-sm md:text-base relative overflow-hidden group"
               >
                 <span className="relative z-10">Start Free Trial</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-700 via-blue-800 to-cyan-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.02, y: -2 }}

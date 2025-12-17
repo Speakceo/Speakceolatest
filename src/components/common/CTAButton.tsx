@@ -23,9 +23,9 @@ export default function CTAButton({
     large: 'px-8 py-4 text-lg'
   };
   
-  // Variant classes
+  // Variant classes - Orbit colors
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl hover:scale-105',
+    primary: 'bg-gradient-to-r from-orange-600 to-blue-700 hover:from-orange-700 hover:to-blue-800 text-white shadow-lg hover:shadow-xl hover:scale-105',
     secondary: 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-md hover:shadow-lg hover:scale-105'
   };
   
@@ -35,7 +35,7 @@ export default function CTAButton({
     font-semibold rounded-2xl
     ${variantClasses[variant]}
     transition-all duration-300 ease-out
-    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500
     cursor-pointer group
   `;
   

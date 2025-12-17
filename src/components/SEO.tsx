@@ -22,9 +22,10 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'SpeakCEO - Entrepreneurship Education for Young Minds',
-  description: 'Transform your child into a future business leader with SpeakCEO\'s comprehensive 180-Day Young CEO Program. Interactive courses, live mentoring, and hands-on projects designed for ages 8-16.',
+  title: 'Orbit Student - Think Future Think Orbit',
+  description: 'Transform your child into a future business leader with Orbit Student\'s comprehensive 180-Day Young CEO Program. Interactive courses, live mentoring, and hands-on projects designed for ages 8-16.',
   keywords: [
+    'orbit student',
     'young CEO program',
     'entrepreneurship for kids',
     'business education for children',
@@ -36,10 +37,10 @@ const defaultSEO = {
     'online entrepreneurship course',
     'child business education'
   ],
-  image: 'https://speakceo.ai/og-image.jpg',
-  url: 'https://speakceo.ai',
+  image: 'https://orbitstudent.com/og-image.jpg',
+  url: 'https://orbitstudent.com',
   type: 'website' as const,
-  author: 'SpeakCEO Team'
+  author: 'Orbit Future Academy'
 };
 
 export default function SEO({
@@ -55,28 +56,28 @@ export default function SEO({
   structuredData,
   courseData
 }: SEOProps) {
-  const siteTitle = `${title} | SpeakCEO`;
+  const siteTitle = `${title} | Orbit Student`;
 
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
-    name: 'SpeakCEO',
-    alternateName: 'SpeakCEO Young Entrepreneurs Program',
+    name: 'Orbit Student',
+    alternateName: 'Orbit Young Entrepreneurs Program',
     description: defaultSEO.description,
     url: defaultSEO.url,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://speakceo.ai/logo.png',
+      url: 'https://orbitstudent.com/logo.png',
       width: 200,
       height: 200
     },
-    image: 'https://speakceo.ai/og-image.jpg',
+    image: 'https://orbitstudent.com/og-image.jpg',
     sameAs: [
-      'https://twitter.com/speakceoai',
-      'https://facebook.com/speakceoai',
-      'https://linkedin.com/company/speakceoai',
-      'https://instagram.com/speakceoai',
-      'https://youtube.com/@speakceoai'
+      'https://twitter.com/orbitstudent',
+      'https://facebook.com/orbitstudent',
+      'https://linkedin.com/company/orbitstudent',
+      'https://instagram.com/orbitstudent',
+      'https://youtube.com/@orbitstudent'
     ],
     address: {
       '@type': 'PostalAddress',
@@ -85,9 +86,9 @@ export default function SEO({
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-800-SPEAKCEO',
+      telephone: '+1-800-ORBIT',
       contactType: 'Customer Service',
-      email: 'hello@speakceo.ai',
+      email: 'hello@orbitstudent.com',
       availableLanguage: ['English']
     },
     foundingDate: '2024',
@@ -294,7 +295,7 @@ export default function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
-        <meta property="og:site_name" content="SpeakCEO" />
+      <meta property="og:site_name" content="SpeakCEO" />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
       {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 

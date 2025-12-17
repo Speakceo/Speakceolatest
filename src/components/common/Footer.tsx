@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-slate-900 via-indigo-950 to-purple-950 text-white relative -mt-1">
+    <footer className="bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950 text-white relative -mt-1">
       {/* Top angled separator */}
       <div className="bg-white" style={{ height: '50px', clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 0)' }}></div>
       
@@ -12,21 +12,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Company Information */}
           <div className="col-span-1 md:col-span-1">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-slate-200 bg-clip-text text-transparent mb-6">SpeakCEO</h2>
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-cyan-400 bg-clip-text text-transparent mb-6">ORBIT</h2>
             <p className="text-slate-300 mb-6 leading-relaxed font-light">
               Empowering the next generation of entrepreneurs with the skills they need to succeed in business and life.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
+              <a href="#" className="p-2 rounded-full bg-orange-500/20 text-orange-300 hover:text-orange-400 hover:bg-orange-500/30 transition-all duration-300 hover:scale-110">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
+              <a href="#" className="p-2 rounded-full bg-orange-500/20 text-orange-300 hover:text-orange-400 hover:bg-orange-500/30 transition-all duration-300 hover:scale-110">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
+              <a href="#" className="p-2 rounded-full bg-orange-500/20 text-orange-300 hover:text-orange-400 hover:bg-orange-500/30 transition-all duration-300 hover:scale-110">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-white/10 text-slate-300 hover:text-white hover:bg-white/20 transition-all duration-300 hover:scale-110">
+              <a href="#" className="p-2 rounded-full bg-orange-500/20 text-orange-300 hover:text-orange-400 hover:bg-orange-500/30 transition-all duration-300 hover:scale-110">
                 <Youtube size={20} />
               </a>
             </div>
@@ -68,7 +68,7 @@ export default function Footer() {
                 placeholder="Your email" 
                 className="px-4 py-3 bg-white/10 border border-white/20 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-400 text-white placeholder-gray-300 transition-all"
               />
-              <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200 shadow-md">
+              <button className="bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 px-4 rounded-md transition-colors duration-200 shadow-md">
                 Subscribe
               </button>
             </div>
@@ -83,7 +83,7 @@ export default function Footer() {
         {/* Bottom section */}
         <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
           <div className="mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} SpeakCEO. All rights reserved.
+            &copy; {new Date().getFullYear()} Orbit Future Academy. All rights reserved.
           </div>
           <div className="flex space-x-6">
             <Link to="/privacy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>

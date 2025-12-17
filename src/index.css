@@ -2,22 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional color palette */
+/* Orbit Future Academy color palette */
 :root {
-  --color-primary: #6366f1; /* Sophisticated indigo */
-  --color-secondary: #8b5cf6; /* Professional purple */
-  --color-accent: #10b981; /* Mature emerald */
+  --color-primary: #1e40af; /* Deep blue */
+  --color-secondary: #f97316; /* Orbit orange */
+  --color-accent: #06b6d4; /* Cyan accent */
   --color-neutral: #64748b; /* Professional gray */
   --color-surface: #f8fafc; /* Clean white */
+  --orbit-orange: #f97316;
+  --orbit-blue: #1e40af;
+  --orbit-dark: #0f172a;
+  --orbit-cyan: #06b6d4;
 }
 
-/* Professional gradients */
-.gradient-professional {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #10b981 100%);
+/* Orbit gradients */
+.gradient-orbit {
+  background: linear-gradient(135deg, #1e40af 0%, #f97316 50%, #06b6d4 100%);
 }
 
-.gradient-text-professional {
-  background: linear-gradient(135deg, #1e293b 0%, #475569 50%, #64748b 100%);
+.gradient-text-orbit {
+  background: linear-gradient(135deg, #1e40af 0%, #f97316 50%, #06b6d4 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

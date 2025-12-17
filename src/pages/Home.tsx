@@ -91,9 +91,10 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="SpeakCEO - Future Leaders Start Here"
-        description="Transform your child into a confident leader. SpeakCEO teaches entrepreneurship, communication, and leadership skills to young minds through our innovative 180-day curriculum."
+        title="Orbit Student - Think Future Think Orbit"
+        description="Transform your child into a confident leader. Orbit Student teaches entrepreneurship, communication, and leadership skills to young minds through our innovative 180-day curriculum."
         keywords={[
+          'orbit student',
           'entrepreneurship education',
           'youth leadership',
           'public speaking for kids',
@@ -113,9 +114,9 @@ export default function Home() {
           {/* Enhanced background effects */}
           <div className="absolute inset-0 bg-black/10"></div>
           
-          {/* Optimized gradient orbs - reduced for performance */}
-          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-emerald-400/10 via-blue-400/10 to-teal-400/10 rounded-full filter blur-3xl opacity-40"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full filter blur-3xl opacity-40"></div>
+          {/* Optimized gradient orbs - Orbit colors */}
+          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-br from-orange-400/10 via-blue-600/10 to-cyan-400/10 rounded-full filter blur-3xl opacity-40"></div>
+          <div className="absolute bottom-20 right-10 w-80 h-80 bg-gradient-to-bl from-blue-600/10 via-orange-400/10 to-cyan-400/10 rounded-full filter blur-3xl opacity-40"></div>
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -130,7 +131,7 @@ export default function Home() {
                   variants={fadeIn}
                   className="inline-block mb-6 px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-xl"
                 >
-                  <span className="text-emerald-300 font-semibold text-lg">✨ Join 2,500+ Young Entrepreneurs</span>
+                  <span className="text-orange-300 font-semibold text-lg">✨ Join 2,500+ Young Entrepreneurs</span>
                 </motion.div>
                 
                 <motion.h1 
@@ -138,7 +139,7 @@ export default function Home() {
                   className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
                 >
                   Where Young Minds
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-indigo-400">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-blue-500 to-cyan-400">
                     Become Future Leaders
                   </span>
                 </motion.h1>
@@ -156,10 +157,10 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
+                    className="group relative px-10 py-5 bg-gradient-to-r from-orange-600 to-blue-700 hover:from-orange-700 hover:to-blue-800 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center justify-center">
-                    Start Your Journey
+                    Think Future, Think Orbit
                       <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
                     </span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
@@ -178,15 +179,15 @@ export default function Home() {
                   className="mt-16 grid grid-cols-3 gap-8 text-center"
                 >
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                    <div className="text-2xl font-bold text-emerald-300">2,500+</div>
+                    <div className="text-2xl font-bold text-orange-300">2,500+</div>
                     <div className="text-sm text-white/80">Students</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                    <div className="text-2xl font-bold text-blue-300">180</div>
+                    <div className="text-2xl font-bold text-cyan-300">180</div>
                     <div className="text-sm text-white/80">Day Program</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-                    <div className="text-2xl font-bold text-indigo-300">98%</div>
+                    <div className="text-2xl font-bold text-orange-300">98%</div>
                     <div className="text-sm text-white/80">Success Rate</div>
                   </div>
                 </motion.div>
