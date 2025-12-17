@@ -39,7 +39,7 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="lg:text-center mb-20">
           <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
-            Why Choose SpeakCEO
+            Why Choose Orbit
           </h2>
           <p className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
             A better way to learn

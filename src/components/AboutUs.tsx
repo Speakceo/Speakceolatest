@@ -43,7 +43,7 @@ const milestones = [
     id: 1,
     year: '2021',
     title: 'Foundation',
-    description: 'SpeakCEO was founded with a vision to revolutionize business education for young minds.'
+    description: 'Orbit was founded with a vision to revolutionize business education for young minds.'
   },
   {
     id: 2,
@@ -80,7 +80,7 @@ export default function AboutUs() {
                 Empowering the Next Generation of <span className="gradient-text">CEOs</span>
               </h1>
               <p className="mt-6 max-w-2xl mx-auto text-xl text-gray-500">
-                At SpeakCEO, we believe every child has the potential to become a successful entrepreneur.
+                At Orbit, we believe every child has the potential to become a successful entrepreneur.
                 Our mission is to nurture that potential through innovative education.
               </p>
             </div>

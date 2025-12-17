@@ -109,7 +109,7 @@ export default function AchievementPopup({ isOpen, onClose, achievement }: Achie
                   if (navigator.share) {
                     navigator.share({
                       title: 'Achievement Unlocked!',
-                      text: `I just earned the ${achievement.title} achievement on SpeakCEO! 🏆`,
+                      text: `I just earned the ${achievement.title} achievement on Orbit! 🏆`,
                       url: window.location.href
                     });
                   }

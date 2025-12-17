@@ -52,8 +52,8 @@ interface BrandIdentity {
 }
 
 const defaultBrandIdentity: BrandIdentity = {
-  name: 'SpeakCEO.ai',
-  tagline: 'Empowering Young Leaders',
+  name: 'Orbit Student',
+  tagline: 'Think Future Think Orbit',
   description: 'Transforming young minds into future business leaders through immersive AI-powered learning experiences.',
   values: ['Leadership', 'Innovation', 'Education', 'Technology'],
   industry: 'Educational Technology',
@@ -864,7 +864,7 @@ export default function BrandCreator() {
                   color: brand.colors.primary
                 }}
               >
-                {brand.name || 'SpeakCEO.ai'}
+                {brand.name || 'Orbit Student'}
               </h2>
               <p
                 className="text-lg mb-4 text-center"

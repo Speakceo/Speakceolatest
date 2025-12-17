@@ -969,11 +969,11 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
               </div>
             </div>
             
-            {/* SpeakCEO Programs */}
+            {/* Orbit Programs */}
             <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white">
               <h4 className="text-lg font-semibold mb-4 flex items-center">
                 <Star className="h-5 w-5 mr-2" />
-                How SpeakCEO Can Help
+                How Orbit Can Help
               </h4>
               <p className="mb-4">
                 Our specialized programs can help {result.studentName} develop the key skills needed for their future career path:
@@ -1030,7 +1030,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
         {/* Footer */}
         <div className="mt-8 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
           <p>This career guide is based on the information provided and is meant to be a starting point for exploration.</p>
-          <p className="mt-1">© {new Date().getFullYear()} SpeakCEO. All rights reserved.</p>
+          <p className="mt-1">© {new Date().getFullYear()} Orbit Future Academy. All rights reserved.</p>
         </div>
       </div>
       
@@ -1073,7 +1073,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
       <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Ready to Take the Next Step?</h3>
         <p className="text-gray-700 mb-4">
-          Discover how SpeakCEO can help your child develop the entrepreneurial skills needed for their dream career.
+          Discover how Orbit can help your child develop the entrepreneurial skills needed for their dream career.
         </p>
         <button
           onClick={onClose}

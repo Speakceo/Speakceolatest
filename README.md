@@ -1,6 +1,6 @@
-# 🚀 SpeakCEO - Entrepreneurship Education Platform
+# 🚀 Orbit Student - Entrepreneurship Education Platform
 
-Transform your child into a confident leader with SpeakCEO's comprehensive 180-Day Young CEO Program.
+Transform your child into a confident leader with Orbit's comprehensive 180-Day Young CEO Program.
 
 ## ✨ Features
 
@@ -10,8 +10,8 @@ Transform your child into a confident leader with SpeakCEO's comprehensive 180-D
 - Persistent theme selection
 - Mobile-responsive design
 
-### 🔐 **SpeakCEO Login System**
-- 300 unique student accounts (SpeakCEO001 to SpeakCEO300)
+### 🔐 **Orbit Login System**
+- 300 unique student accounts (Orbit001 to Orbit300)
 - Account isolation - each student has their own progress
 - Offline-first authentication
 - Clean dashboard for new users
@@ -32,7 +32,7 @@ Transform your child into a confident leader with SpeakCEO's comprehensive 180-D
 ### For Students:
 1. Visit the website
 2. Click "Login" 
-3. Enter your SpeakCEO ID (e.g., `SpeakCEO001`)
+3. Enter your Orbit ID (e.g., `Orbit001`)
 4. Enter your name (first-time only)
 5. Start your entrepreneurial journey!
 
@@ -77,7 +77,7 @@ This project auto-deploys to Netlify when pushed to the main branch.
 
 ## 📄 **License**
 
-Copyright © 2024 SpeakCEO. All rights reserved.
+Copyright © 2024 Orbit Future Academy. All rights reserved.
 
 ---
 
