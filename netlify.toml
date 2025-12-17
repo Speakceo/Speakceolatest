@@ -49,7 +49,7 @@
     
     # Additional SEO Headers
     X-Robots-Tag = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-    Link = "</rss.xml>; rel=alternate; type=application/rss+xml; title=SpeakCEO Blog RSS Feed"
+    Link = "</rss.xml>; rel=alternate; type=application/rss+xml; title=Orbit Student Blog RSS Feed"
 
 [[headers]]
   for = "/manifest.json"
