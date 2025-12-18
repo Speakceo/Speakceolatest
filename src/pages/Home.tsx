@@ -234,8 +234,8 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <div className="inline-block bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900 rounded-full px-8 py-3 mb-6">
-                <span className="text-indigo-700 dark:text-indigo-300 font-bold text-lg">🌟 Interactive Experience</span>
+              <div className="inline-block bg-[#E3F2FD] rounded-full px-8 py-3 mb-6">
+                <span className="text-[#1876D2] font-bold text-lg">🌟 Interactive Experience</span>
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 Experience the Future of Learning
@@ -256,22 +256,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SpeakCEO Playground Demo Section */}
-        <section className="py-20 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden">
+        {/* Orbit Playground Demo Section */}
+        <section className="py-20 bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] relative overflow-hidden">
           {/* Background Elements - optimized */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-400/8 via-pink-400/8 to-indigo-400/8 rounded-full filter blur-3xl opacity-50"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1876D2]/5 rounded-full filter blur-3xl"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div 
               variants={fadeIn}
               className="text-center mb-16"
             >
-              <div className="inline-block bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-8 py-3 mb-6">
-                <span className="text-purple-700 font-bold text-lg">🚀 SpeakCEO Playground</span>
+              <div className="inline-block bg-[#E3F2FD] rounded-full px-8 py-3 mb-6">
+                <span className="text-[#1876D2] font-bold text-lg">🚀 Orbit Playground</span>
               </div>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900 dark:text-white">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
               Watch Your Child 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
                 Build Anything
               </span>
             </h2>
@@ -289,7 +289,7 @@ export default function Home() {
               >
                 <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
                   {/* Demo Header */}
-                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4 flex items-center">
+                  <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] px-6 py-4 flex items-center">
                     <div className="flex space-x-2">
                       <div className="w-3 h-3 bg-red-400 rounded-full"></div>
                       <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
@@ -310,10 +310,10 @@ export default function Home() {
                         <input
                           type="text"
                           placeholder="Try: 'Create a space adventure game' or 'Build a website about dinosaurs'"
-                          className="w-full px-4 py-3 border-2 border-purple-200 rounded-xl focus:border-purple-500 focus:outline-none transition-colors text-gray-700 bg-purple-50/50"
+                          className="w-full px-4 py-3 border-2 border-[#E3F2FD] rounded-xl focus:border-[#1876D2] focus:outline-none transition-colors text-gray-700 bg-[#F5F9FC]"
                           defaultValue=""
                         />
-                        <button className="absolute right-2 top-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-1.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105">
+                        <button className="absolute right-2 top-2 bg-[#1876D2] hover:bg-[#1565C0] text-white px-4 py-1.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105">
                           Create ✨
                         </button>
                       </div>
@@ -332,7 +332,7 @@ export default function Home() {
                         ].map((idea, index) => (
                           <button
                             key={index}
-                            className="px-3 py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 rounded-full text-sm font-medium hover:from-purple-200 hover:to-pink-200 transition-all duration-300 transform hover:scale-105"
+                            className="px-3 py-1.5 bg-[#E3F2FD] text-[#1876D2] rounded-full text-sm font-medium hover:bg-[#00B0FF] hover:text-white transition-all duration-300 transform hover:scale-105"
                           >
                             {idea}
                           </button>
@@ -353,7 +353,7 @@ export default function Home() {
                             <div className="text-xs text-gray-500">Created in 30 seconds</div>
                           </div>
                         </div>
-                        <div className="bg-gradient-to-r from-indigo-900 to-purple-900 rounded-lg p-3 text-white text-xs">
+                        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-lg p-3 text-white text-xs">
                           <div className="flex items-center justify-between mb-2">
                             <span>🚀 Score: 1,250</span>
                             <span>❤️ Lives: 3</span>
@@ -422,14 +422,14 @@ export default function Home() {
                 </div>
 
                 {/* CTA */}
-                <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
+                <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
                   <h4 className="text-xl font-bold mb-2">Ready to See the Magic?</h4>
-                  <p className="text-purple-100 mb-4 text-sm">
+                  <p className="text-white/90 mb-4 text-sm">
                     Join thousands of kids already building their dreams with AI
                   </p>
                   <button 
                     onClick={() => setShowEnrollment(true)}
-                    className="group bg-white hover:bg-slate-50 text-indigo-700 px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105 flex items-center border border-slate-200 shadow-md"
+                    className="group bg-white hover:bg-slate-50 text-[#1876D2] px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105 flex items-center border border-slate-200 shadow-md"
                   >
                     Start Building Now
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -453,7 +453,7 @@ export default function Home() {
                   <span className="text-sm font-medium">2,500+ Happy Families</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Award className="h-5 w-5 text-purple-500" />
+                  <Award className="h-5 w-5 text-[#00B0FF]" />
                   <span className="text-sm font-medium">Award-Winning Platform</span>
                 </div>
               </div>
@@ -462,7 +462,7 @@ export default function Home() {
         </section>
 
         {/* Parent Testimonials & Social Proof */}
-        <section className="py-20 bg-gradient-to-r from-purple-50 via-blue-50 to-emerald-50">
+        <section className="py-20 bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <div className="inline-block bg-gradient-to-r from-emerald-100 to-blue-100 rounded-full px-6 py-2 mb-6">
@@ -540,8 +540,8 @@ export default function Home() {
                 <p className="text-gray-700 mb-6 italic">
                   "Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills."
                 </p>
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-4">
-                  <p className="text-sm font-semibold text-purple-700">
+                <div className="bg-[#E3F2FD] rounded-xl p-4">
+                  <p className="text-sm font-semibold text-[#1876D2]">
                     🎯 Result: Led school fundraising, raised $2,000 for charity
                   </p>
                 </div>
@@ -586,7 +586,7 @@ export default function Home() {
             <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">2,500+</div>
+                  <div className="text-3xl font-bold text-[#1876D2] mb-2">2,500+</div>
                   <div className="text-gray-600">Happy Families</div>
                 </div>
                 <div>
@@ -698,7 +698,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
+                    className="group relative px-8 py-4 bg-[#1876D2] hover:bg-[#1565C0] text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                       Start Learning Journey
@@ -787,8 +787,8 @@ export default function Home() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <div className="inline-block mb-4 px-4 py-2 rounded-full bg-indigo-100">
-                <span className="text-indigo-600 font-medium">Step-by-Step Journey</span>
+              <div className="inline-block mb-4 px-4 py-2 rounded-full bg-[#E3F2FD]">
+                <span className="text-[#1876D2] font-medium">Step-by-Step Journey</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                 Your Child's 180-Day Entrepreneurial Adventure
@@ -810,8 +810,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
               {/* Phase 1 */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Lightbulb className="h-8 w-8 text-indigo-600" />
+                <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Lightbulb className="h-8 w-8 text-[#1876D2]" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Discovery</h3>
                 <p className="text-gray-600 text-sm mb-4">
@@ -885,8 +885,8 @@ export default function Home() {
 
               {/* Phase 4 */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mic className="h-8 w-8 text-purple-600" />
+                <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mic className="h-8 w-8 text-[#00B0FF]" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Public Speaking & Presence</h3>
                 <p className="text-gray-600 text-sm mb-4">
@@ -969,7 +969,7 @@ export default function Home() {
 
               {/* Pillar 2 */}
               <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
-                <div className="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-[#00B0FF] rounded-xl flex items-center justify-center mb-6">
                   <Brain className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Entrepreneurial Mindset</h3>
@@ -1131,7 +1131,7 @@ export default function Home() {
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
                     <Target className="h-10 w-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-purple-400/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-[#00B0FF]/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Opportunity Discovery</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1177,9 +1177,9 @@ export default function Home() {
         </section>
 
         {/* Global Resources Database Section */}
-        <section className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 text-white relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white relative overflow-hidden">
           {/* Background Effects - optimized */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/10 via-indigo-400/10 to-purple-400/10 rounded-full filter blur-3xl opacity-40"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full filter blur-3xl"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div 
@@ -1196,7 +1196,7 @@ export default function Home() {
 
             {/* Resource Categories */}
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <button className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105 flex items-center shadow-md">
+              <button className="px-8 py-3 bg-white/20 hover:bg-white/30 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105 flex items-center shadow-md">
                 <Award className="h-5 w-5 mr-2" />
                 Scholarships
               </button>
@@ -1223,7 +1223,7 @@ export default function Home() {
               </div>
               
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-purple-300 mb-2">Rise by Schmidt Futures</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">Rise by Schmidt Futures</h3>
                 <p className="text-white/80 text-sm">Global scholarship for exceptional young leaders</p>
               </div>
               
@@ -1239,7 +1239,7 @@ export default function Home() {
               </div>
               
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-indigo-300 mb-2">Google Science Fair</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">Google Science Fair</h3>
                 <p className="text-white/80 text-sm">Global science competition for students aged 13-18</p>
               </div>
               
