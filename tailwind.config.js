@@ -39,13 +39,13 @@ export default {
           foreground: 'hsl(var(--card-foreground))',
         },
         orbit: {
-          blue: '#1e88e5',
-          'blue-light': '#42a5f5',
-          'blue-sky': '#29b6f6',
-          cyan: '#29b6f6',
-          orange: '#ff9800',
-          light: '#e3f2fd',
-          'light-bg': '#f0f9ff',
+          blue: '#1876D2',      // Primary logo blue (orbital ring)
+          cyan: '#00B0FF',      // Accent cyan (dot on i)
+          'light-cyan': '#40C4FF', // Light cyan variation
+          black: '#000000',     // Logo text black
+          white: '#FFFFFF',     // Pure white
+          'light-bg': '#F5F9FC', // Very light blue bg
+          'lighter': '#E3F2FD', // Lighter blue
         },
       },
       borderRadius: {

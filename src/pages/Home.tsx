@@ -109,8 +109,8 @@ export default function Home() {
       />
       
       <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden pt-20">
-        {/* Enhanced Hero Section - Lighter theme */}
-        <section className="relative bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 text-white overflow-hidden min-h-screen flex items-center">
+        {/* Enhanced Hero Section - Orbit Brand Colors */}
+        <section className="relative bg-gradient-to-br from-[#1876D2] via-[#1E88E5] to-[#00B0FF] text-white overflow-hidden min-h-screen flex items-center">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 bg-white/5"></div>
           
@@ -157,7 +157,7 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-10 py-5 bg-white text-blue-600 font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105"
+                    className="group relative px-10 py-5 bg-white text-[#1876D2] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105"
                   >
                     <span className="relative z-10 flex items-center justify-center">
                     Check Courses

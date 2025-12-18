@@ -72,14 +72,14 @@ export default function Navbar() {
                 onClick={handleLogoClick}
                 className="flex items-center space-x-3 group"
               >
-                <div className="relative flex items-center justify-center h-14 w-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg transform transition-all duration-300 group-hover:scale-105">
+                <div className="relative flex items-center justify-center h-14 w-14 rounded-xl bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white shadow-lg transform transition-all duration-300 group-hover:scale-105">
                   <GraduationCap className="h-8 w-8 z-10" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-blue-600 transition-all duration-300">
+                  <span className="text-xl font-bold text-[#1876D2] transition-all duration-300">
                     ORBIT
                   </span>
-                  <span className="text-xs text-blue-400 font-medium tracking-wider">
+                  <span className="text-xs text-[#00B0FF] font-medium tracking-wider">
                     FUTURE ACADEMY
                   </span>
                 </div>
@@ -95,8 +95,8 @@ export default function Navbar() {
                   to={item.href}
                   className={`relative px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 group ${
                     isActive(item.href) 
-                    ? 'bg-blue-50 text-blue-700 shadow-sm' 
-                    : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                    ? 'bg-[#E3F2FD] text-[#1876D2] shadow-sm' 
+                    : 'text-gray-700 hover:bg-[#E3F2FD] hover:text-[#1876D2]'
                   }`}
                 >
                   <span className="relative z-10">{t(item.title)}</span>
@@ -109,7 +109,7 @@ export default function Navbar() {
               {/* Career Guide Button */}
               <button
                 onClick={() => setShowCareerGuide(true)}
-                className="px-5 py-2.5 rounded-xl text-sm font-semibold bg-blue-500 hover:bg-blue-600 text-white shadow-sm hover:shadow-md transition-all duration-300"
+                className="px-5 py-2.5 rounded-xl text-sm font-semibold bg-[#1876D2] hover:bg-[#1565C0] text-white shadow-sm hover:shadow-md transition-all duration-300"
               >
                 Career Guide
               </button>
@@ -122,7 +122,7 @@ export default function Navbar() {
                 user ? (
                   <button
                     onClick={handleDashboardClick}
-                    className="relative px-6 py-3 rounded-full text-sm font-semibold bg-blue-500 hover:bg-blue-600 text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    className="relative px-6 py-3 rounded-full text-sm font-semibold bg-[#1876D2] hover:bg-[#1565C0] text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
                   >
                     <span className="relative z-10">
                       {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
@@ -133,7 +133,7 @@ export default function Navbar() {
                   <div className="flex items-center space-x-3">
                     <button
                       onClick={handleLoginClick}
-                      className="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-300"
+                      className="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-700 hover:text-[#1876D2] hover:bg-[#E3F2FD] transition-all duration-300"
                     >
                       Login
                     </button>
@@ -154,7 +154,7 @@ export default function Navbar() {
               <LanguageToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-700 hover:text-blue-600 transition-all duration-300 p-2 rounded-xl hover:bg-blue-50"
+                className="text-gray-700 hover:text-[#1876D2] transition-all duration-300 p-2 rounded-xl hover:bg-[#E3F2FD]"
               >
                 {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -165,7 +165,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div 
-        className={`md:hidden fixed w-full bg-white/95 backdrop-blur-md border-b border-blue-100 shadow-lg transition-all duration-300 transform ${
+        className={`md:hidden fixed w-full bg-white/95 backdrop-blur-md border-b border-[#E3F2FD] shadow-lg transition-all duration-300 transform ${
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
         style={{ top: '80px' }}
@@ -177,8 +177,8 @@ export default function Navbar() {
               to={item.href}
               className={`block px-5 py-4 rounded-xl text-base font-semibold transition-all duration-300 ${
                 isActive(item.href) 
-                ? 'bg-blue-50 text-blue-700' 
-                : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                ? 'bg-[#E3F2FD] text-[#1876D2]' 
+                : 'text-gray-700 hover:bg-[#E3F2FD] hover:text-[#1876D2]'
               }`}
               onClick={() => setIsOpen(false)}
             >

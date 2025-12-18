@@ -8,7 +8,7 @@ import { Rocket, Lightbulb, Users, TrendingUp } from "lucide-react"
  
 export function SplineHero() {
   return (
-    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-blue-500 to-blue-600 relative overflow-hidden border-0 shadow-lg">
+    <Card className="w-full h-[600px] md:h-[600px] bg-gradient-to-br from-[#1876D2] to-[#00B0FF] relative overflow-hidden border-0 shadow-lg">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
         fill="white"
@@ -64,7 +64,7 @@ export function SplineHero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300 text-base"
+                className="px-8 py-4 bg-white text-[#1876D2] font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-300 text-base"
               >
                 Check Courses
               </motion.button>

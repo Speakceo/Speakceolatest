@@ -12,21 +12,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Company Information */}
           <div className="col-span-1 md:col-span-1">
-            <h2 className="text-2xl font-bold text-blue-600 mb-6">ORBIT</h2>
+            <h2 className="text-2xl font-bold text-[#1876D2] mb-6">ORBIT</h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
               Empowering the next generation of entrepreneurs with the skills they need to succeed in business and life.
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-all duration-300">
+              <a href="#" className="p-2 rounded-full bg-[#E3F2FD] text-[#1876D2] hover:bg-[#00B0FF] hover:text-white transition-all duration-300">
                 <Facebook size={18} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-all duration-300">
+              <a href="#" className="p-2 rounded-full bg-[#E3F2FD] text-[#1876D2] hover:bg-[#00B0FF] hover:text-white transition-all duration-300">
                 <Twitter size={18} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-all duration-300">
+              <a href="#" className="p-2 rounded-full bg-[#E3F2FD] text-[#1876D2] hover:bg-[#00B0FF] hover:text-white transition-all duration-300">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-all duration-300">
+              <a href="#" className="p-2 rounded-full bg-[#E3F2FD] text-[#1876D2] hover:bg-[#00B0FF] hover:text-white transition-all duration-300">
                 <Youtube size={18} />
               </a>
             </div>

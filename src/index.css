@@ -2,27 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Orbit Future Academy color palette - Lighter theme */
+/* Orbit Logo Color Palette - Official Brand Colors */
 :root {
-  --color-primary: #1e88e5; /* Bright blue (Orbit FA) */
-  --color-secondary: #42a5f5; /* Light blue */
-  --color-accent: #29b6f6; /* Sky blue accent */
+  --color-primary: #1876D2; /* Orbit logo blue (orbital ring) */
+  --color-secondary: #00B0FF; /* Orbit cyan (dot on i) */
+  --color-accent: #40C4FF; /* Light cyan accent */
   --color-neutral: #64748b; /* Professional gray */
   --color-surface: #f8fafc; /* Clean white */
-  --orbit-blue-light: #1e88e5;
-  --orbit-blue-medium: #1976d2;
-  --orbit-blue-sky: #42a5f5;
-  --orbit-cyan: #29b6f6;
-  --orbit-orange: #ff9800;
+  --orbit-blue: #1876D2; /* Primary brand blue */
+  --orbit-cyan: #00B0FF; /* Brand cyan accent */
+  --orbit-light-cyan: #40C4FF; /* Light cyan */
+  --orbit-black: #000000; /* Logo text black */
+  --orbit-white: #FFFFFF; /* Pure white */
 }
 
-/* Orbit gradients - Lighter theme */
+/* Orbit Logo Gradients - Official Brand */
 .gradient-orbit {
-  background: linear-gradient(135deg, #1e88e5 0%, #42a5f5 100%);
+  background: linear-gradient(135deg, #1876D2 0%, #00B0FF 100%);
 }
 
 .gradient-text-orbit {
-  background: linear-gradient(135deg, #1e88e5 0%, #42a5f5 100%);
+  background: linear-gradient(135deg, #1876D2 0%, #00B0FF 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -23,10 +23,10 @@ export default function CTAButton({
     large: 'px-8 py-4 text-lg'
   };
   
-  // Variant classes - Light blue theme
+  // Variant classes - Orbit Logo Colors
   const variantClasses = {
-    primary: 'bg-blue-500 hover:bg-blue-600 text-white shadow-md hover:shadow-lg hover:scale-105',
-    secondary: 'bg-white hover:bg-slate-50 text-blue-600 border border-blue-200 shadow-sm hover:shadow-md hover:scale-105'
+    primary: 'bg-[#1876D2] hover:bg-[#1565C0] text-white shadow-md hover:shadow-lg hover:scale-105',
+    secondary: 'bg-white hover:bg-slate-50 text-[#1876D2] border border-[#E3F2FD] shadow-sm hover:shadow-md hover:scale-105'
   };
   
   const buttonClasses = `
@@ -35,7 +35,7 @@ export default function CTAButton({
     font-semibold rounded-full
     ${variantClasses[variant]}
     transition-all duration-300 ease-out
-    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1876D2]
     cursor-pointer group
   `;
   
