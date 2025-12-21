@@ -12,7 +12,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Company Information */}
           <div className="col-span-1 md:col-span-1">
-            <h2 className="text-2xl font-bold text-[#1876D2] mb-6">ORBIT</h2>
+            <img 
+              src="/images/hero/orbit-logo.png" 
+              alt="Orbit Logo" 
+              className="h-10 w-auto mb-6"
+            />
             <p className="text-gray-600 mb-6 leading-relaxed">
               Empowering the next generation of entrepreneurs with the skills they need to succeed in business and life.
             </p>

@@ -70,16 +70,15 @@ export default function Navbar() {
             <div className="flex items-center space-x-3 py-3">
               <button 
                 onClick={handleLogoClick}
-                className="flex items-center space-x-3 group"
+                className="flex items-center space-x-2 group"
               >
-                <div className="relative flex items-center justify-center h-14 w-14 rounded-xl bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white shadow-lg transform transition-all duration-300 group-hover:scale-105">
-                  <GraduationCap className="h-8 w-8 z-10" />
-                </div>
+                <img 
+                  src="/images/hero/orbit-logo.png" 
+                  alt="Orbit Logo" 
+                  className="h-12 w-auto transform transition-all duration-300 group-hover:scale-105"
+                />
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-[#1876D2] transition-all duration-300">
-                    ORBIT
-                  </span>
-                  <span className="text-xs text-[#00B0FF] font-medium tracking-wider">
+                  <span className="text-xs text-gray-600 font-medium tracking-wider">
                     FUTURE ACADEMY
                   </span>
                 </div>
