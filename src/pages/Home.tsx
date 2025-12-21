@@ -164,7 +164,7 @@ export default function Home() {
               >
                 <div className="relative">
                 <img 
-                  src="/images/hero/orbit-kids-laptop.jpg" 
+                  src="/images/hero/orbit-kids-laptop.png" 
                   alt="Orbit students in branded t-shirts learning with laptop" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover"
                     loading="eager"
@@ -753,7 +753,7 @@ export default function Home() {
             <div className="mb-16 text-center">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto bg-gradient-to-br from-[#1876D2] to-[#00B0FF] p-1">
                 <img 
-                  src="/images/hero/orbit-kids-banner.jpg" 
+                  src="/images/hero/orbit-kids-banner.png" 
                   alt="Orbit Student - Empowering Kids to Learn AI - orbitstudent.com" 
                   className="w-full h-auto rounded-2xl"
                   loading="lazy"
