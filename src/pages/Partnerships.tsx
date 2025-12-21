@@ -170,7 +170,7 @@ const Partnerships: React.FC = () => {
             </div>
             
             <a
-              href="mailto:partnerships@speakceo.ai"
+              href="mailto:partnerships@orbitstudent.com"
               className="inline-flex items-center bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
             >
               <Mail className="h-5 w-5 mr-2" />

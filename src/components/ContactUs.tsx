@@ -384,7 +384,7 @@ export default function ContactUs() {
                       </div>
                       <div>
                         <p className="text-sm font-medium text-gray-500">Email Us</p>
-                        <p className="text-lg font-semibold text-gray-900">support@speakceo.ai</p>
+                        <p className="text-lg font-semibold text-gray-900">support@orbitstudent.com</p>
                       </div>
                     </div>
 

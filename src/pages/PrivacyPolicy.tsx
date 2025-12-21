@@ -153,7 +153,7 @@ const PrivacyPolicy: React.FC = () => {
             </p>
             <div className="flex justify-center space-x-4">
               <a
-                href="mailto:privacy@speakceo.ai"
+                href="mailto:privacy@orbitstudent.com"
                 className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
               >
                 Email Us

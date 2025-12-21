@@ -154,7 +154,7 @@ const TermsOfService: React.FC = () => {
             </p>
             <div className="flex justify-center space-x-4">
               <a
-                href="mailto:legal@speakceo.ai"
+                href="mailto:legal@orbitstudent.com"
                 className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
               >
                 Contact Legal Team

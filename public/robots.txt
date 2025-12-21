@@ -36,9 +36,9 @@ Allow: /terms
 Allow: /cookies
 
 # Sitemap locations
-Sitemap: https://speakceo.ai/sitemap.xml
-Sitemap: https://speakceo.ai/sitemap-advanced.xml
-Sitemap: https://speakceo.ai/rss.xml
+Sitemap: https://orbitstudent.com/sitemap.xml
+Sitemap: https://orbitstudent.com/sitemap-advanced.xml
+Sitemap: https://orbitstudent.com/rss.xml
 
 # Crawl delay (helps prevent server overload)
 Crawl-delay: 1

@@ -110,14 +110,14 @@ export default function AdminDashboard() {
       const offlineUsers: User[] = Array.from(accountMap.values()).map((account: any) => ({
         id: account.speakCeoId,
         name: account.studentName || 'Student',
-        email: `${account.speakCeoId.toLowerCase()}@speakceo.com`,
+        email: `${account.speakCeoId.toLowerCase()}@orbitstudent.com`,
         role: 'student',
         avatar_url: '/images/avatars/student-1.jpg',
         xp_points: account.points || 0,
         level: Math.floor((account.points || 0) / 100) + 1,
         streak_count: 0,
         total_tasks_completed: 0,
-        current_course_id: null,
+        current_course_id: undefined,
         last_active: account.lastLogin || account.createdAt,
         created_at: account.createdAt,
         updated_at: account.createdAt

@@ -220,7 +220,7 @@ const CookiePolicy: React.FC = () => {
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-sm text-gray-500">
               This cookie policy is subject to change without notice and was last updated on March 1, 2024. 
-              For questions about our cookie practices, please contact us at privacy@speakceo.ai.
+              For questions about our cookie practices, please contact us at privacy@orbitstudent.com.
             </p>
           </div>
         </div>

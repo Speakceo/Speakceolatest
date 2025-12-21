@@ -5,17 +5,17 @@
   
   <!-- Homepage with images -->
   <url>
-    <loc>https://speakceo.ai/</loc>
+    <loc>https://orbitstudent.com/</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://speakceo.ai/images/hero/main-hero.png</image:loc>
+      <image:loc>https://orbitstudent.com/images/hero/main-hero.png</image:loc>
       <image:title>SpeakCEO Young Entrepreneurs Program</image:title>
       <image:caption>Transform your child into a future business leader</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://speakceo.ai/og-image.jpg</image:loc>
+      <image:loc>https://orbitstudent.com/og-image.jpg</image:loc>
       <image:title>SpeakCEO Social Media Preview</image:title>
       <image:caption>Entrepreneurship education for young minds</image:caption>
     </image:image>
@@ -23,7 +23,7 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://speakceo.ai/about</loc>
+    <loc>https://orbitstudent.com/about</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -31,7 +31,7 @@
 
   <!-- Courses Page -->
   <url>
-    <loc>https://speakceo.ai/courses</loc>
+    <loc>https://orbitstudent.com/courses</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -39,7 +39,7 @@
 
   <!-- Tools Page -->
   <url>
-    <loc>https://speakceo.ai/tools</loc>
+    <loc>https://orbitstudent.com/tools</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -47,7 +47,7 @@
 
   <!-- Community Page -->
   <url>
-    <loc>https://speakceo.ai/community</loc>
+    <loc>https://orbitstudent.com/community</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -55,7 +55,7 @@
 
   <!-- Live Classes Page -->
   <url>
-    <loc>https://speakceo.ai/live-classes</loc>
+    <loc>https://orbitstudent.com/live-classes</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -63,7 +63,7 @@
 
   <!-- Blog Index -->
   <url>
-    <loc>https://speakceo.ai/blog</loc>
+    <loc>https://orbitstudent.com/blog</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -71,7 +71,7 @@
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://speakceo.ai/blog/why-entrepreneurship-education-matters-for-kids</loc>
+    <loc>https://orbitstudent.com/blog/why-entrepreneurship-education-matters-for-kids</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -86,28 +86,28 @@
   </url>
 
   <url>
-    <loc>https://speakceo.ai/blog/building-confidence-in-young-entrepreneurs</loc>
+    <loc>https://orbitstudent.com/blog/building-confidence-in-young-entrepreneurs</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/blog/communication-skills-for-young-leaders</loc>
+    <loc>https://orbitstudent.com/blog/communication-skills-for-young-leaders</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/blog/financial-literacy-for-kids-complete-guide</loc>
+    <loc>https://orbitstudent.com/blog/financial-literacy-for-kids-complete-guide</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/blog/success-story-12-year-old-ceo</loc>
+    <loc>https://orbitstudent.com/blog/success-story-12-year-old-ceo</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -115,56 +115,56 @@
 
   <!-- Contact and Legal Pages -->
   <url>
-    <loc>https://speakceo.ai/contact</loc>
+    <loc>https://orbitstudent.com/contact</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/faq</loc>
+    <loc>https://orbitstudent.com/faq</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/testimonials</loc>
+    <loc>https://orbitstudent.com/testimonials</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/resources</loc>
+    <loc>https://orbitstudent.com/resources</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/partnerships</loc>
+    <loc>https://orbitstudent.com/partnerships</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/events</loc>
+    <loc>https://orbitstudent.com/events</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/privacy</loc>
+    <loc>https://orbitstudent.com/privacy</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://speakceo.ai/terms</loc>
+    <loc>https://orbitstudent.com/terms</loc>
     <lastmod>2024-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
