@@ -67,19 +67,16 @@ export default function Navbar() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             {/* Enhanced Logo Section */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center">
               <button 
                 onClick={handleLogoClick}
-                className="flex items-center space-x-2 group py-2"
+                className="flex items-center group py-2"
               >
                 <img 
                   src="/images/hero/orbit-logo.png" 
                   alt="Orbit Logo" 
                   className="h-10 w-auto transform transition-all duration-300 group-hover:scale-105"
                 />
-                <span className="text-xs text-gray-600 font-medium tracking-wide hidden sm:inline">
-                  FUTURE ACADEMY
-                </span>
               </button>
             </div>
 
