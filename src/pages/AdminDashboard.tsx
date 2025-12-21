@@ -1,26 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Users, 
   BookOpen, 
   BarChart3,
   LogOut,
-  Bell,
   Mail,
   Search,
   RefreshCw,
-  Filter,
-  Download,
-  Eye,
-  Edit,
-  Trash2,
-  Settings,
   Activity,
-  TrendingUp,
-  UserPlus,
-  Clock,
-  CheckCircle,
-  AlertCircle,
-  X
+  TrendingUp
 } from 'lucide-react';
 import { useUserStore } from '../lib/store';
 import SimpleLeadsViewer from '../components/admin/SimpleLeadsViewer';

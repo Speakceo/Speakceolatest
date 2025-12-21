@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
   Brain, 
   Presentation,
   TrendingUp, 
-  PiggyBank, 
   Users, 
-  Zap,
   Lightbulb,
   Rocket,
   Mic, 
@@ -15,12 +13,7 @@ import {
   CheckCircle,
   Star,
   Target,
-  Video,
-  Calendar,
-  MessageCircle,
-  BookOpen,
   Award,
-  Clock,
   PlayCircle,
   Sparkles,
   Shield,
@@ -28,7 +21,6 @@ import {
   Trophy
 } from 'lucide-react';
 import { useLanguage } from '../lib/contexts/LanguageContext';
-import { useUserStore } from '../lib/store';
 import EnrollmentPopup from '../components/EnrollmentPopup';
 import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import { motion } from 'framer-motion';
@@ -54,39 +46,10 @@ const staggerContainer = {
   }
 };
 
-const transformationOutcomes = [
-  {
-    before: "Lacks confidence in speaking",
-    after: "Confident public speaker",
-    icon: Mic,
-    color: "from-blue-500 to-indigo-600"
-  },
-  {
-    before: "No clear direction or goals",
-    after: "Clear vision & purpose",
-    icon: Target,
-    color: "from-purple-500 to-pink-600"
-  },
-  {
-    before: "Poor financial awareness",
-    after: "Financially responsible",
-    icon: DollarSign,
-    color: "from-green-500 to-emerald-600"
-  },
-  {
-    before: "Passive screen consumption",
-    after: "Creative problem solver",
-    icon: Lightbulb,
-    color: "from-amber-500 to-orange-600"
-  }
-];
-
 export default function Home() {
   const [showEnrollment, setShowEnrollment] = useState(false);
   const [showCareerGuide, setShowCareerGuide] = useState(false);
   const { t } = useLanguage();
-  const navigate = useNavigate();
-  const { user } = useUserStore();
 
   return (
     <>
@@ -783,12 +746,28 @@ export default function Home() {
           </svg>
         </div>
 
-        {/* Roadmap Section */}
-        <section className="py-20 bg-white">
+        {/* Roadmap Section - Orbit Branding */}
+        <section className="py-20 bg-gradient-to-br from-white via-[#F5F9FC] to-[#E3F2FD]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Orbit Brand Hero Image */}
+            <div className="mb-16 text-center">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-black max-w-5xl mx-auto">
+                <img 
+                  src="/images/hero/orbit-kids-learning-ai.jpg" 
+                  alt="Orbit Student - Empowering Kids to Learn AI" 
+                  className="w-full h-auto"
+                  loading="lazy"
+                />
+                <div className="absolute top-8 left-8 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Empowering Kids to Learn AI</h3>
+                  <p className="text-[#00B0FF] text-lg font-semibold">orbitstudent.com</p>
+                </div>
+              </div>
+            </div>
+
             <div className="text-center mb-16">
-              <div className="inline-block mb-4 px-4 py-2 rounded-full bg-[#E3F2FD]">
-                <span className="text-[#1876D2] font-medium">Step-by-Step Journey</span>
+              <div className="inline-block mb-4 px-6 py-3 rounded-full bg-[#E3F2FD]">
+                <span className="text-[#1876D2] font-semibold text-lg">🚀 Step-by-Step Journey</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
                 Your Child's 180-Day Entrepreneurial Adventure
@@ -796,15 +775,6 @@ export default function Home() {
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Step-by-step guidance, from that first spark of an idea to launching a real business.
               </p>
-            </div>
-            
-            <div className="mb-16 text-center">
-              <img 
-                src="/images/hero/success-story.png" 
-                alt="Complete 180-day entrepreneurial journey roadmap" 
-                className="rounded-2xl shadow-xl max-w-3xl mx-auto w-full h-auto"
-                loading="lazy"
-              />
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
