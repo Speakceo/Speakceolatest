@@ -60,28 +60,26 @@ export default function Navbar() {
   return (
     <div className="w-full relative z-40">
       {/* Enhanced Navbar with Glass-morphism Effect */}
-      <nav className="fixed w-full z-50 transition-all duration-300 top-0 left-0 min-h-[80px]">
+      <nav className="fixed w-full z-50 transition-all duration-300 top-0 left-0">
         {/* Light background with clean design */}
-        <div className="absolute inset-0 bg-white/95 backdrop-blur-md border-b border-blue-100 min-h-[80px] shadow-sm"></div>
+        <div className="absolute inset-0 bg-white/95 backdrop-blur-md border-b border-blue-100 shadow-sm"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20">
+          <div className="flex justify-between h-16">
             {/* Enhanced Logo Section */}
-            <div className="flex items-center space-x-3 py-3">
+            <div className="flex items-center space-x-2">
               <button 
                 onClick={handleLogoClick}
-                className="flex items-center space-x-2 group"
+                className="flex items-center space-x-2 group py-2"
               >
                 <img 
                   src="/images/hero/orbit-logo.png" 
                   alt="Orbit Logo" 
-                  className="h-12 w-auto transform transition-all duration-300 group-hover:scale-105"
+                  className="h-10 w-auto transform transition-all duration-300 group-hover:scale-105"
                 />
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-600 font-medium tracking-wider">
-                    FUTURE ACADEMY
-                  </span>
-                </div>
+                <span className="text-xs text-gray-600 font-medium tracking-wide hidden sm:inline">
+                  FUTURE ACADEMY
+                </span>
               </button>
             </div>
 
@@ -167,7 +165,7 @@ export default function Navbar() {
         className={`md:hidden fixed w-full bg-white/95 backdrop-blur-md border-b border-[#E3F2FD] shadow-lg transition-all duration-300 transform ${
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
-        style={{ top: '80px' }}
+        style={{ top: '64px' }}
       >
         <div className="px-4 pt-2 pb-3 space-y-2">
           {menuItems.map((item) => (
