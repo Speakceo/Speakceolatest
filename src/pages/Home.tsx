@@ -164,12 +164,12 @@ export default function Home() {
               >
                 <div className="relative">
                 <img 
-                  src="/images/hero/main-hero.png" 
-                  alt="Young entrepreneurs collaborating" 
-                    className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
+                  src="/images/hero/orbit-kids-laptop.jpg" 
+                  alt="Orbit students in branded t-shirts learning with laptop" 
+                    className="rounded-3xl shadow-2xl w-full h-auto object-cover"
                     loading="eager"
                   />
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-600/20 via-blue-600/20 to-purple-600/20"></div>
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/5 to-[#00B0FF]/5"></div>
                   
                   {/* Professional floating elements */}
                   <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
@@ -751,17 +751,13 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Orbit Brand Hero Image */}
             <div className="mb-16 text-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-black max-w-5xl mx-auto">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto bg-gradient-to-br from-[#1876D2] to-[#00B0FF] p-1">
                 <img 
-                  src="/images/hero/orbit-kids-learning-ai.jpg" 
-                  alt="Orbit Student - Empowering Kids to Learn AI" 
-                  className="w-full h-auto"
+                  src="/images/hero/orbit-kids-banner.jpg" 
+                  alt="Orbit Student - Empowering Kids to Learn AI - orbitstudent.com" 
+                  className="w-full h-auto rounded-2xl"
                   loading="lazy"
                 />
-                <div className="absolute top-8 left-8 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">Empowering Kids to Learn AI</h3>
-                  <p className="text-[#00B0FF] text-lg font-semibold">orbitstudent.com</p>
-                </div>
               </div>
             </div>
 
