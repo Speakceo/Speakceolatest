@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, GraduationCap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useUserStore } from '../lib/store';
 import { useLanguage } from '../lib/contexts/LanguageContext';
 import LanguageToggle from './LanguageToggle';

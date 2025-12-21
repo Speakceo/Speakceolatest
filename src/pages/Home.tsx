@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
   Brain, 
@@ -20,7 +19,6 @@ import {
   Globe,
   Trophy
 } from 'lucide-react';
-import { useLanguage } from '../lib/contexts/LanguageContext';
 import EnrollmentPopup from '../components/EnrollmentPopup';
 import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import { motion } from 'framer-motion';
@@ -49,7 +47,6 @@ const staggerContainer = {
 export default function Home() {
   const [showEnrollment, setShowEnrollment] = useState(false);
   const [showCareerGuide, setShowCareerGuide] = useState(false);
-  const { t } = useLanguage();
 
   return (
     <>
@@ -175,10 +172,10 @@ export default function Home() {
                   <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
                     <TrendingUp className="h-8 w-8 text-white" />
                   </div>
-                  <div className="absolute -bottom-6 -left-6 w-14 h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+                  <div className="absolute -bottom-6 -left-6 w-14 h-14 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-xl shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
                     <Lightbulb className="h-7 w-7 text-white" />
                   </div>
-                  <div className="absolute top-1/2 -right-8 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+                  <div className="absolute top-1/2 -right-8 w-12 h-12 bg-gradient-to-br from-[#00B0FF] to-[#40C4FF] rounded-full shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
                     <Target className="h-6 w-6 text-white" />
                   </div>
                 </div>
@@ -304,11 +301,11 @@ export default function Home() {
                     </div>
 
                     {/* Sample Output */}
-                    <div className="bg-gradient-to-br from-gray-50 to-purple-50 rounded-xl p-4 border border-purple-100">
+                    <div className="bg-gradient-to-br from-gray-50 to-[#E3F2FD] rounded-xl p-4 border border-[#E3F2FD]">
                       <div className="text-sm font-semibold text-gray-600 mb-2">AI Generated Preview:</div>
                       <div className="bg-white rounded-lg p-4 border border-gray-200">
                         <div className="flex items-center mb-3">
-                          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-3">
+                          <div className="w-8 h-8 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-lg flex items-center justify-center mr-3">
                             <Rocket className="h-4 w-4 text-white" />
                           </div>
                           <div>
@@ -579,7 +576,7 @@ export default function Home() {
         </div>
 
         {/* Live Interactive Learning Section */}
-        <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-br from-[#1876D2] via-[#1565C0] to-[#00B0FF] text-white relative overflow-hidden">
           {/* Background decoration - optimized */}
           <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/10 via-blue-400/10 to-teal-400/10 rounded-full filter blur-3xl opacity-40"></div>
           
@@ -610,7 +607,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                     <div className="flex items-center space-x-3 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-xl flex items-center justify-center">
                         <Brain className="h-6 w-6 text-white" />
                 </div>
                       <h3 className="text-lg font-bold text-white">AI-Powered Tools</h3>
@@ -634,7 +631,7 @@ export default function Home() {
 
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                     <div className="flex items-center space-x-3 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#00B0FF] to-[#40C4FF] rounded-xl flex items-center justify-center">
                         <TrendingUp className="h-6 w-6 text-white" />
                 </div>
                       <h3 className="text-lg font-bold text-white">Business Simulators</h3>
@@ -702,7 +699,7 @@ export default function Home() {
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-600/10 via-blue-600/10 to-purple-600/10"></div>
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/5 to-[#00B0FF]/5"></div>
                   
                   {/* Floating elements */}
                   <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-xl animate-bounce flex items-center justify-center">
