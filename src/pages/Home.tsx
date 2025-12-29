@@ -25,6 +25,7 @@ import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import { SplineHero } from '../components/ui/SplineHero';
+import FounderMindsetSection from '../components/home/FounderMindsetSection';
 
 // Optimized animation variants for better performance
 const fadeIn = {
@@ -215,6 +216,9 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* Founder Mindset Section - High Converting */}
+        <FounderMindsetSection />
 
         {/* Orbit Playground Demo Section */}
         <section className="py-20 bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] relative overflow-hidden">
