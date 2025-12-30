@@ -34,16 +34,17 @@ export default function AIToolsHome() {
   const navigate = useNavigate();
   const { user } = useUserStore();
   
+  // Call hooks at the top level (React rules)
+  const { getOverallProgress } = useProgressStore();
+  const { getTotalXPEarned, tools: storeTools } = useAIToolsStore();
+  const { recordActivity } = useUnifiedProgressStore();
+  
   // Safely get store data with fallbacks
   let overallProgress = 0;
   let totalXpEarned = 0;
   let tools = {};
   
   try {
-    const { getOverallProgress } = useProgressStore();
-    const { getTotalXPEarned, tools: storeTools } = useAIToolsStore();
-    const { recordActivity } = useUnifiedProgressStore();
-    
     overallProgress = getOverallProgress() || 0;
     totalXpEarned = getTotalXPEarned() || 0;
     tools = storeTools || {};
@@ -134,12 +135,16 @@ export default function AIToolsHome() {
             origin: { y: 0.6 }
           });
           
-          // Record activity
-          recordActivity({
-            type: 'ai-tool',
-            title: `Unlocked ${newlyUnlocked.name}`,
-            xpEarned: 50 // Bonus XP for unlocking a new tool
-          });
+          // Record activity safely
+          try {
+            recordActivity({
+              type: 'ai-tool',
+              title: `Unlocked ${newlyUnlocked.name}`,
+              xpEarned: 50 // Bonus XP for unlocking a new tool
+            });
+          } catch (error) {
+            console.error('Error recording activity:', error);
+          }
           
           // Clear after 5 seconds
           setTimeout(() => {
@@ -157,12 +162,16 @@ export default function AIToolsHome() {
   }, [overallProgress, toolsConfig, recordActivity]);
   
   const handleToolClick = (tool: AITool) => {
-    // Record tool usage in unified progress
-    recordActivity({
-      type: 'ai-tool',
-      title: `Used ${tool.name}`,
-      xpEarned: 5 // Small XP for just opening the tool
-    });
+    // Record tool usage in unified progress safely
+    try {
+      recordActivity({
+        type: 'ai-tool',
+        title: `Used ${tool.name}`,
+        xpEarned: 5 // Small XP for just opening the tool
+      });
+    } catch (error) {
+      console.error('Error recording activity:', error);
+    }
     
     navigate(tool.path);
   };
