@@ -1,67 +1,35 @@
-User-agent: *
-Allow: /
+# Orbit Student - Robots.txt
+# Allow all search engines to crawl everything except admin areas
 
-# Block access to admin and private paths
-Disallow: /admin/
-Disallow: /dashboard/admin/
-Disallow: /api/admin/
-Disallow: /auth/
-Disallow: /setup/
-Disallow: /test-leads/
-
-# Block development and testing files
-Disallow: /*.json$
-Disallow: /*.log$
-Disallow: /node_modules/
-Disallow: /src/
-Disallow: /.git/
-
-# Allow important public routes
-Allow: /
-Allow: /about
-Allow: /courses
-Allow: /tools
-Allow: /community
-Allow: /live-classes
-Allow: /contact
-Allow: /faq
-Allow: /blog
-Allow: /blog/*
-Allow: /testimonials
-Allow: /resources
-Allow: /partnerships
-Allow: /events
-Allow: /privacy
-Allow: /terms
-Allow: /cookies
-
-# Sitemap locations
-Sitemap: https://orbitstudent.com/sitemap.xml
-Sitemap: https://orbitstudent.com/sitemap-advanced.xml
-Sitemap: https://orbitstudent.com/rss.xml
-
-# Crawl delay (helps prevent server overload)
-Crawl-delay: 1
-
-# Specific bot instructions
+# Allow Googlebot full access
 User-agent: Googlebot
 Allow: /
+Allow: /sitemap.xml
+Allow: /sitemap-advanced.xml
+Allow: /rss.xml
 Crawl-delay: 0
 
+# Allow Bingbot full access
 User-agent: Bingbot
 Allow: /
+Allow: /sitemap.xml
+Allow: /sitemap-advanced.xml
+Allow: /rss.xml
 Crawl-delay: 1
 
-User-agent: facebookexternalhit
+# Allow all other search engines
+User-agent: *
 Allow: /
+Allow: /sitemap.xml
+Allow: /sitemap-advanced.xml
+Allow: /rss.xml
 
-User-agent: Twitterbot
-Allow: /
+# Block only admin and private areas
+Disallow: /admin
+Disallow: /dashboard/admin
+Disallow: /api/admin
 
-User-agent: LinkedInBot
-Allow: /
-
-# Block AI training bots (optional)
+# Block AI training bots
 User-agent: GPTBot
 Disallow: /
 
@@ -74,5 +42,7 @@ Disallow: /
 User-agent: anthropic-ai
 Disallow: /
 
-# Cache instructions
-Cache-Control: public, max-age=86400 
+# Sitemap locations
+Sitemap: https://orbitstudent.com/sitemap.xml
+Sitemap: https://orbitstudent.com/sitemap-advanced.xml
+Sitemap: https://orbitstudent.com/rss.xml
