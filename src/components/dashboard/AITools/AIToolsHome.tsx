@@ -36,7 +36,7 @@ export default function AIToolsHome() {
   
   // Call hooks at the top level (React rules)
   const { getOverallProgress } = useProgressStore();
-  const { getTotalXPEarned, tools: storeTools } = useAIToolsStore();
+  const { getTotalXPEarned, getMostUsedTools, tools: storeTools } = useAIToolsStore();
   const { recordActivity } = useUnifiedProgressStore();
   
   // Safely get store data with fallbacks
@@ -176,8 +176,14 @@ export default function AIToolsHome() {
     navigate(tool.path);
   };
   
-  // Get tools sorted by usage
-  const mostUsedTools = getMostUsedTools().slice(0, 3);
+  // Get tools sorted by usage with error handling
+  let mostUsedTools = [];
+  try {
+    mostUsedTools = getMostUsedTools().slice(0, 3);
+  } catch (error) {
+    console.error('Error getting most used tools:', error);
+    mostUsedTools = [];
+  }
   
   return (
     <div className="space-y-8">
