@@ -2674,14 +2674,23 @@ export default function Demo() {
               </div>
 
               {/* Game Content */}
-              <div className="bg-black/30 rounded-2xl overflow-hidden">
+              <div className="bg-black/30 rounded-2xl overflow-hidden relative">
                 {showGamePreview ? (
-                  <iframe
-                    srcDoc={gamePreview}
-                    className="w-full h-[650px] border-0"
-                    title="Game Preview"
-                    sandbox="allow-scripts allow-same-origin"
-                  />
+                  <>
+                    <iframe
+                      srcDoc={gamePreview}
+                      className="w-full h-[650px] border-0"
+                      title="Game Preview"
+                      sandbox="allow-scripts allow-same-origin"
+                    />
+                    
+                    {/* Click to Play Overlay */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-black px-6 py-3 rounded-full font-bold shadow-lg animate-bounce">
+                        👆 Click inside the game to start playing!
+                      </div>
+                    </div>
+                  </>
                 ) : (
                   <div className="p-6 max-h-[650px] overflow-auto">
                     <pre className="text-green-400 text-sm font-mono whitespace-pre-wrap">
@@ -2692,13 +2701,74 @@ export default function Demo() {
               </div>
 
               {/* Game Info */}
-              <div className="mt-6 text-center">
-                <p className="text-purple-200 text-lg mb-2">
-                  🎮 This game is 100% playable! Try the controls and have fun!
-                </p>
-                <p className="text-purple-300 text-sm">
-                  Your child can build games like this AND customize them with their own ideas!
-                </p>
+              <div className="mt-6 space-y-4">
+                {/* Controls Guide */}
+                <div className="bg-yellow-500/20 border-2 border-yellow-500 rounded-xl p-6">
+                  <h4 className="text-yellow-300 font-bold text-lg mb-3 flex items-center justify-center">
+                    <span className="mr-2">⌨️</span>
+                    HOW TO PLAY
+                    <span className="ml-2">🎮</span>
+                  </h4>
+                  <div className="text-white text-base space-y-2">
+                    <p className="font-bold text-yellow-300">1️⃣ CLICK inside the game area above</p>
+                    <p className="font-bold text-yellow-300">2️⃣ Use these controls:</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                      {selectedGame === 'flappy' && (
+                        <>
+                          <div className="bg-white/10 p-3 rounded-lg">🚀 <strong>SPACE</strong> or <strong>CLICK</strong> - Make bird fly</div>
+                          <div className="bg-white/10 p-3 rounded-lg">🎯 Avoid pipes & stay alive!</div>
+                        </>
+                      )}
+                      {selectedGame === 'snake' && (
+                        <>
+                          <div className="bg-white/10 p-3 rounded-lg">⬆️ <strong>Arrow Keys</strong> - Change direction</div>
+                          <div className="bg-white/10 p-3 rounded-lg">🍎 Eat food to grow longer!</div>
+                        </>
+                      )}
+                      {selectedGame === 'car-race' && (
+                        <>
+                          <div className="bg-white/10 p-3 rounded-lg">⬅️➡️ <strong>Left/Right Arrows</strong> - Steer car</div>
+                          <div className="bg-white/10 p-3 rounded-lg">🚗 Dodge other cars!</div>
+                        </>
+                      )}
+                      {selectedGame === 'pong' && (
+                        <>
+                          <div className="bg-white/10 p-3 rounded-lg">⬆️⬇️ <strong>W/S Keys</strong> - Move paddle</div>
+                          <div className="bg-white/10 p-3 rounded-lg">🏓 Beat the computer!</div>
+                        </>
+                      )}
+                      {selectedGame === 'memory' && (
+                        <>
+                          <div className="bg-white/10 p-3 rounded-lg">🖱️ <strong>CLICK</strong> cards to flip</div>
+                          <div className="bg-white/10 p-3 rounded-lg">🎴 Find matching pairs!</div>
+                        </>
+                      )}
+                      {selectedGame === 'space' && (
+                        <>
+                          <div className="bg-white/10 p-3 rounded-lg">⬆️⬇️⬅️➡️ <strong>Arrow Keys</strong> - Move ship</div>
+                          <div className="bg-white/10 p-3 rounded-lg">🚀 <strong>SPACE</strong> - Shoot asteroids!</div>
+                        </>
+                      )}
+                      {selectedGame === 'catch' && (
+                        <>
+                          <div className="bg-white/10 p-3 rounded-lg">⬅️➡️ <strong>Left/Right Arrows</strong> - Move basket</div>
+                          <div className="bg-white/10 p-3 rounded-lg">🍎 Catch falling fruits!</div>
+                        </>
+                      )}
+                    </div>
+                    <p className="text-yellow-300 font-bold mt-4">3️⃣ Press <strong>R</strong> to restart (most games)</p>
+                  </div>
+                </div>
+                
+                {/* Additional Info */}
+                <div className="text-center">
+                  <p className="text-purple-200 text-lg mb-2">
+                    🎮 This game is 100% playable & fully functional!
+                  </p>
+                  <p className="text-purple-300 text-sm">
+                    Your child can build games like this AND customize them with their own ideas!
+                  </p>
+                </div>
               </div>
             </motion.div>
           )}
