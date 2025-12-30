@@ -284,6 +284,502 @@ const fallbackTemplates: Record<string, string> = {
         </div>
     </div>
 </body>
+</html>`,
+
+  'pet-sitting': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paws & Care Pet Sitting</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #B4E7CE 0%, #E3F4F4 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        h1 {
+            font-size: 3.5em;
+            color: #2E8B57;
+            margin-bottom: 15px;
+        }
+        .tagline {
+            font-size: 1.3em;
+            color: #3CB371;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        .service-card {
+            background: linear-gradient(135deg, #90EE90 0%, #98FB98 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(46,139,87,0.2);
+        }
+        .service-icon {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+        }
+        .service-name {
+            font-size: 1.6em;
+            color: #2E8B57;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .service-price {
+            font-size: 2em;
+            color: #228B22;
+            font-weight: bold;
+        }
+        .cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #2E8B57;
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(46,139,87,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐕 Paws & Care Pet Sitting 🐾</h1>
+            <p class="tagline">Your Pets Are Family - We Treat Them That Way!</p>
+        </header>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-icon">🐕</div>
+                <div class="service-name">Dog Walking</div>
+                <div class="service-price">$15/walk</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🐱</div>
+                <div class="service-name">Cat Sitting</div>
+                <div class="service-price">$20/day</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <div class="service-name">Home Visits</div>
+                <div class="service-price">$25/visit</div>
+            </div>
+        </div>
+        <div class="cta">
+            <a href="#" class="cta-button">Book Now! 🐾</a>
+        </div>
+    </div>
+</body>
+</html>`,
+
+  'art-shop': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Arts Shop</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #FFE4E9 0%, #FFF0F5 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 5px solid #FF69B4;
+            padding-bottom: 30px;
+        }
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        .tagline {
+            font-size: 1.3em;
+            color: #C71585;
+            font-style: italic;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin: 40px 0;
+        }
+        .art-card {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 4px solid #FF69B4;
+            transition: transform 0.3s;
+        }
+        .art-card:hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+        .art-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+        .art-name {
+            font-size: 1.5em;
+            color: #C71585;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .art-price {
+            font-size: 1.8em;
+            color: #FF1493;
+            font-weight: bold;
+        }
+        .shop-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            color: white;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-top: 40px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(255,20,147,0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Creative Arts Shop 🖌️</h1>
+            <p class="tagline">Handmade Art with Love & Creativity!</p>
+        </header>
+        <div class="gallery">
+            <div class="art-card">
+                <div class="art-icon">🖼️</div>
+                <div class="art-name">Paintings</div>
+                <div class="art-price">$30</div>
+            </div>
+            <div class="art-card">
+                <div class="art-icon">🎭</div>
+                <div class="art-name">Handmade Crafts</div>
+                <div class="art-price">$15</div>
+            </div>
+            <div class="art-card">
+                <div class="art-icon">📿</div>
+                <div class="art-name">Jewelry</div>
+                <div class="art-price">$20</div>
+            </div>
+            <div class="art-card">
+                <div class="art-icon">🎁</div>
+                <div class="art-name">Custom Orders</div>
+                <div class="art-price">$40+</div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a href="#" class="shop-btn">Shop Now! 🎨</a>
+        </div>
+    </div>
+</body>
+</html>`,
+
+  'tutoring': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Tutoring Services</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #E8EAF6 0%, #F3E5F5 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #5E35B1;
+            margin-bottom: 15px;
+        }
+        .tagline {
+            font-size: 1.2em;
+            color: #7E57C2;
+        }
+        .subjects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .subject-card {
+            background: linear-gradient(135deg, #B39DDB 0%, #CE93D8 100%);
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #9575CD;
+        }
+        .subject-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        .subject-name {
+            font-size: 1.6em;
+            color: #4A148C;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .subject-price {
+            font-size: 1.8em;
+            color: #6A1B9A;
+            font-weight: bold;
+        }
+        .features {
+            background: #F3E5F5;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        .features h3 {
+            color: #5E35B1;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .features ul {
+            list-style: none;
+            font-size: 1.1em;
+            color: #7E57C2;
+        }
+        .features li {
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .features li:before {
+            content: "✓ ";
+            color: #5E35B1;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        .contact-btn {
+            display: inline-block;
+            background: #5E35B1;
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(94,53,177,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Smart Tutoring Services 🎓</h1>
+            <p class="tagline">Helping Students Excel in Every Subject!</p>
+        </header>
+        <div class="subjects">
+            <div class="subject-card">
+                <div class="subject-icon">📐</div>
+                <div class="subject-name">Math</div>
+                <div class="subject-price">$25/hr</div>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">📖</div>
+                <div class="subject-name">English</div>
+                <div class="subject-price">$20/hr</div>
+            </div>
+            <div class="subject-card">
+                <div class="subject-icon">🔬</div>
+                <div class="subject-name">Science</div>
+                <div class="subject-price">$25/hr</div>
+            </div>
+        </div>
+        <div class="features">
+            <h3>Why Choose Me?</h3>
+            <ul>
+                <li>Straight-A student with proven results</li>
+                <li>Patient and friendly teaching style</li>
+                <li>Flexible scheduling - weekdays & weekends</li>
+                <li>Online or in-person sessions available</li>
+            </ul>
+        </div>
+        <div style="text-align: center;">
+            <a href="#" class="contact-btn">Book a Session! 📚</a>
+        </div>
+    </div>
+</body>
+</html>`,
+
+  'game-dev': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Game Studio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Impact', fantasy;
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #0F3460 0%, #16213E 100%);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 3px solid #E94560;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #E94560 0%, #FF6B9D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(233,69,96,0.5);
+            margin-bottom: 15px;
+        }
+        .tagline {
+            font-size: 1.3em;
+            color: #FF6B9D;
+        }
+        .games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .game-card {
+            background: linear-gradient(135deg, #E94560 0%, #0F3460 100%);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #FF6B9D;
+            transition: all 0.3s;
+        }
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(233,69,96,0.4);
+        }
+        .game-icon {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+        }
+        .game-name {
+            font-size: 1.6em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .game-desc {
+            font-size: 1.1em;
+            color: #FFF;
+            opacity: 0.9;
+        }
+        .play-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #E94560 0%, #FF6B9D 100%);
+            color: white;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 40px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(233,69,96,0.5);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Epic Game Studio 🕹️</h1>
+            <p class="tagline">Creating Amazing Games for Everyone!</p>
+        </header>
+        <div class="games">
+            <div class="game-card">
+                <div class="game-icon">👾</div>
+                <div class="game-name">Space Raiders</div>
+                <div class="game-desc">Defend Earth from aliens!</div>
+            </div>
+            <div class="game-card">
+                <div class="game-icon">🏃</div>
+                <div class="game-name">Jump Quest</div>
+                <div class="game-desc">Endless running adventure</div>
+            </div>
+            <div class="game-card">
+                <div class="game-icon">🧩</div>
+                <div class="game-name">Puzzle Master</div>
+                <div class="game-desc">Challenge your brain!</div>
+            </div>
+            <div class="game-card">
+                <div class="game-icon">⚔️</div>
+                <div class="game-name">Battle Arena</div>
+                <div class="game-desc">Epic multiplayer battles</div>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a href="#" class="play-btn">Play Now! 🎮</a>
+        </div>
+    </div>
+</body>
 </html>`
 };
 
@@ -314,41 +810,32 @@ export default function Demo() {
     setTypingText('');
 
     try {
-      // Check if we should use fallback
+      // ALWAYS use fallback templates for demo (instant, reliable, no API costs)
       if (templateId && fallbackTemplates[templateId]) {
-        // Simulate AI thinking
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // Simulate AI thinking for effect
+        await new Promise(resolve => setTimeout(resolve, 1500));
         setGeneratedCode(fallbackTemplates[templateId]);
         setShowSuccessMessage(true);
       } else {
-        // Try OpenAI
-        const aiPrompt = `Create a complete, beautiful, responsive HTML website with inline CSS for: ${prompt}
-
-Requirements:
-- Single HTML file with embedded CSS
-- Colorful, kid-friendly design
-- Use emojis and fun fonts
-- Include gradient backgrounds
-- Add hover effects
-- Make it mobile responsive
-- Include a call-to-action button
-- Professional yet playful
-- Use box-shadows and border-radius
-- Complete <!DOCTYPE html> structure
-
-Return ONLY the HTML code, no explanations.`;
-
-        const response = await generateAIResponse(aiPrompt, 'Web Development');
+        // For custom prompts, use a smart template based on keywords
+        const lowerPrompt = prompt.toLowerCase();
+        let selectedTemplate = 'bakery'; // default
         
-        // Extract HTML if wrapped in markdown
-        let code = response;
-        if (code.includes('```html')) {
-          code = code.split('```html')[1].split('```')[0].trim();
-        } else if (code.includes('```')) {
-          code = code.split('```')[1].split('```')[0].trim();
+        if (lowerPrompt.includes('lemonade') || lowerPrompt.includes('drink') || lowerPrompt.includes('juice')) {
+          selectedTemplate = 'lemonade';
+        } else if (lowerPrompt.includes('pet') || lowerPrompt.includes('dog') || lowerPrompt.includes('cat') || lowerPrompt.includes('animal')) {
+          selectedTemplate = 'pet-sitting';
+        } else if (lowerPrompt.includes('art') || lowerPrompt.includes('craft') || lowerPrompt.includes('paint') || lowerPrompt.includes('draw')) {
+          selectedTemplate = 'art-shop';
+        } else if (lowerPrompt.includes('tutor') || lowerPrompt.includes('teach') || lowerPrompt.includes('education') || lowerPrompt.includes('homework')) {
+          selectedTemplate = 'tutoring';
+        } else if (lowerPrompt.includes('game') || lowerPrompt.includes('video') || lowerPrompt.includes('play')) {
+          selectedTemplate = 'game-dev';
         }
         
-        setGeneratedCode(code);
+        // Simulate AI thinking
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setGeneratedCode(fallbackTemplates[selectedTemplate]);
         setShowSuccessMessage(true);
       }
     } catch (error) {
@@ -593,7 +1080,7 @@ Return ONLY the HTML code, no explanations.`;
                   srcDoc={generatedCode}
                   className="w-full h-full border-0"
                   title="Website Preview"
-                  sandbox="allow-scripts"
+                  sandbox="allow-same-origin"
                 />
               ) : (
                 <div className="h-full overflow-auto bg-gray-900 p-6">
