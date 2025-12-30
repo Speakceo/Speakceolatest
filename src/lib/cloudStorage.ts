@@ -17,37 +17,14 @@ class JSONBinStorage implements CloudStorageService {
 
   async saveLeads(leads: any[]): Promise<boolean> {
     try {
-      console.log('💾 Saving leads to cloud storage...');
+      console.log('💾 Saving leads to local storage (cloud disabled)...');
       
-      const data = {
+      // Just save to local storage - disable cloud sync
+      localStorage.setItem('orbit_leads_backup', JSON.stringify({
         leads: leads,
         lastUpdated: new Date().toISOString(),
-        totalCount: leads.length,
-        source: 'speakceo-website'
-      };
-
-      // Try to update existing bin first
-      let response = await fetch(`${this.baseUrl}/${this.publicBinId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Bin-Name': 'SpeakCEO Leads Storage'
-        },
-        body: JSON.stringify(data)
-      });
-
-      if (!response.ok) {
-        // If update fails, create new bin
-        response = await fetch(`${this.baseUrl}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Bin-Name': 'SpeakCEO Leads Storage',
-            'X-Bin-Private': 'false'
-          },
-          body: JSON.stringify(data)
-        });
-      }
+        totalCount: leads.length
+      }));
 
       if (response.ok) {
         const result = await response.json();
@@ -71,56 +48,26 @@ class JSONBinStorage implements CloudStorageService {
 
   async loadLeads(): Promise<any[]> {
     try {
-      console.log('📥 Loading leads from cloud storage...');
-      
-      // Try to get the stored bin ID first
-      const storedBinId = localStorage.getItem('cloud_bin_id') || this.publicBinId;
-      
-      const response = await fetch(`${this.baseUrl}/${storedBinId}/latest`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        const leads = result.record?.leads || [];
-        console.log(`✅ Loaded ${leads.length} leads from cloud`);
-        return leads;
-      } else {
-        console.log('No cloud data found, starting fresh');
-        return [];
+      console.log('📥 Loading leads from local storage (cloud disabled)...');
+      const backup = localStorage.getItem('orbit_leads_backup');
+      if (backup) {
+        const data = JSON.parse(backup);
+        return data.leads || [];
       }
+      return [];
     } catch (error) {
-      console.error('Error loading leads from cloud:', error);
+      console.error('Error loading leads:', error);
       return [];
     }
   }
 
   async syncLeads(): Promise<void> {
     try {
-      console.log('🔄 Syncing leads with cloud...');
+      console.log('🔄 Local sync only (cloud disabled)...');
       
-      // Get local leads
+      // Just ensure local storage is working
       const localLeads = JSON.parse(localStorage.getItem('speakceo_leads') || '[]');
-      const localLeadsArray = Array.from(new Map(localLeads).values());
-      
-      // Get cloud leads
-      const cloudLeads = await this.loadLeads();
-      
-      // Merge leads (local takes priority for duplicates)
       const mergedLeads = new Map();
-      
-      // Add cloud leads first
-      cloudLeads.forEach((lead: any) => {
-        mergedLeads.set(lead.id, lead);
-      });
-      
-      // Add/update with local leads
-      localLeadsArray.forEach((lead: any) => {
-        mergedLeads.set(lead.id, lead);
-      });
       
       const finalLeads = Array.from(mergedLeads.values());
       
