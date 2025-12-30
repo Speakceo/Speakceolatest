@@ -43,6 +43,6 @@ User-agent: anthropic-ai
 Disallow: /
 
 # Sitemap locations
-Sitemap: https://orbitstudent.com/sitemap.xml
-Sitemap: https://orbitstudent.com/sitemap-advanced.xml
-Sitemap: https://orbitstudent.com/rss.xml
+Sitemap: https://www.orbitstudent.com/sitemap.xml
+Sitemap: https://www.orbitstudent.com/sitemap-advanced.xml
+Sitemap: https://www.orbitstudent.com/rss.xml

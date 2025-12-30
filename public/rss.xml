@@ -3,16 +3,16 @@
   <channel>
     <title>SpeakCEO Blog - Young Entrepreneurship Education</title>
     <description>Expert insights, tips, and success stories about entrepreneurship education for young minds. Transform your child into a future business leader.</description>
-    <link>https://orbitstudent.com/blog</link>
-    <atom:link href="https://orbitstudent.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <link>https://www.orbitstudent.com/blog</link>
+    <atom:link href="https://www.orbitstudent.com/rss.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>
     <lastBuildDate>Mon, 18 Nov 2024 12:00:00 GMT</lastBuildDate>
     <pubDate>Mon, 18 Nov 2024 12:00:00 GMT</pubDate>
     <ttl>60</ttl>
     <image>
-      <url>https://orbitstudent.com/logo.png</url>
+      <url>https://www.orbitstudent.com/logo.png</url>
       <title>SpeakCEO Blog</title>
-      <link>https://orbitstudent.com/blog</link>
+      <link>https://www.orbitstudent.com/blog</link>
       <width>144</width>
       <height>144</height>
     </image>
@@ -20,8 +20,8 @@
     <item>
       <title>Why Entrepreneurship Education Matters for Kids</title>
       <description>Discover how early entrepreneurship education shapes confident, innovative leaders and prepares children for future success in an ever-changing world.</description>
-      <link>https://orbitstudent.com/blog/why-entrepreneurship-education-matters-for-kids</link>
-      <guid>https://orbitstudent.com/blog/why-entrepreneurship-education-matters-for-kids</guid>
+      <link>https://www.orbitstudent.com/blog/why-entrepreneurship-education-matters-for-kids</link>
+      <guid>https://www.orbitstudent.com/blog/why-entrepreneurship-education-matters-for-kids</guid>
       <pubDate>Mon, 18 Nov 2024 10:00:00 GMT</pubDate>
       <category>Entrepreneurship</category>
       <author>hello@orbitstudent.com (Dr. Sarah Johnson)</author>
@@ -34,8 +34,8 @@
     <item>
       <title>Building Confidence in Young Entrepreneurs</title>
       <description>Learn proven strategies to help young entrepreneurs overcome fear, build self-confidence, and develop the mindset needed for business success.</description>
-      <link>https://orbitstudent.com/blog/building-confidence-in-young-entrepreneurs</link>
-      <guid>https://orbitstudent.com/blog/building-confidence-in-young-entrepreneurs</guid>
+      <link>https://www.orbitstudent.com/blog/building-confidence-in-young-entrepreneurs</link>
+      <guid>https://www.orbitstudent.com/blog/building-confidence-in-young-entrepreneurs</guid>
       <pubDate>Sun, 17 Nov 2024 10:00:00 GMT</pubDate>
       <category>Leadership</category>
       <author>hello@orbitstudent.com (Michael Chen)</author>
@@ -48,8 +48,8 @@
     <item>
       <title>Communication Skills for Young Leaders</title>
       <description>Master the art of effective communication with practical tips and exercises designed specifically for young leaders and entrepreneurs.</description>
-      <link>https://orbitstudent.com/blog/communication-skills-for-young-leaders</link>
-      <guid>https://orbitstudent.com/blog/communication-skills-for-young-leaders</guid>
+      <link>https://www.orbitstudent.com/blog/communication-skills-for-young-leaders</link>
+      <guid>https://www.orbitstudent.com/blog/communication-skills-for-young-leaders</guid>
       <pubDate>Sat, 16 Nov 2024 10:00:00 GMT</pubDate>
       <category>Business Skills</category>
       <author>hello@orbitstudent.com (Emily Rodriguez)</author>

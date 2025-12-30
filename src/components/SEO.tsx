@@ -56,8 +56,8 @@ const defaultSEO = {
     'business skills for teens',
     'AI literacy program'
   ],
-  image: 'https://orbitstudent.com/og-image.jpg',
-  url: 'https://orbitstudent.com',
+  image: 'https://www.orbitstudent.com/og-image.jpg',
+  url: 'https://www.orbitstudent.com',
   type: 'website' as const,
   author: 'Orbit Future Academy'
 };
@@ -86,11 +86,11 @@ export default function SEO({
     url: defaultSEO.url,
     logo: {
       '@type': 'ImageObject',
-      url: 'https://orbitstudent.com/logo.png',
+      url: 'https://www.orbitstudent.com/logo.png',
       width: 200,
       height: 200
     },
-    image: 'https://orbitstudent.com/og-image.jpg',
+    image: 'https://www.orbitstudent.com/og-image.jpg',
     sameAs: [
       'https://twitter.com/orbitstudent',
       'https://facebook.com/orbitstudent',
