@@ -6,6 +6,38 @@
   NODE_VERSION = "18"
   SECRETS_SCAN_ENABLED = "false"
 
+# Exclude static files from SPA redirect
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/sitemap-advanced.xml"
+  to = "/sitemap-advanced.xml"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/rss.xml"
+  to = "/rss.xml"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/seo-keywords.html"
+  to = "/seo-keywords.html"
+  status = 200
+  force = false
+
+# SPA redirect for all other routes
 [[redirects]]
   from = "/*"
   to = "/index.html"
