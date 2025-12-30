@@ -28,6 +28,7 @@ import FAQ from './pages/FAQ'
 import Testimonials from './pages/Testimonials'
 import Resources from './pages/Resources'
 import Partnerships from './pages/Partnerships'
+import Demo from './pages/Demo'
 
 // Legal Pages
 import PrivacyPolicy from './pages/PrivacyPolicy'
@@ -197,6 +198,7 @@ function AppContent() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/demo" element={<Demo />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/tools" element={<Tools />} />
             <Route path="/community" element={<Community />} />
