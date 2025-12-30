@@ -27,7 +27,7 @@ export default function FounderMindsetSection() {
   ];
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gradient-to-br from-white via-[#F5F9FC] to-[#E3F2FD]">
+    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-white via-[#F5F9FC] to-[#E3F2FD]">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#1876D2]/5 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00B0FF]/5 rounded-full filter blur-3xl"></div>

@@ -69,9 +69,9 @@ export default function Home() {
         ]}
       />
       
-      <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden pt-20">
+      <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden">
         {/* Enhanced Hero Section - Orbit Brand Colors */}
-        <section className="relative bg-gradient-to-br from-[#1876D2] via-[#1E88E5] to-[#00B0FF] text-white overflow-hidden min-h-screen flex items-center">
+        <section className="relative bg-gradient-to-br from-[#1876D2] via-[#1E88E5] to-[#00B0FF] text-white overflow-hidden min-h-screen flex items-center pt-16">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 bg-white/5"></div>
           
