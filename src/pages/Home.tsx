@@ -165,7 +165,10 @@ export default function Home() {
                   src="/images/hero/orbit-kids-laptop.png" 
                   alt="Orbit students in branded t-shirts learning with laptop" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover"
-                    loading="eager"
+                  width="800"
+                  height="600"
+                  fetchpriority="high"
+                  decoding="async"
                   />
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/5 to-[#00B0FF]/5"></div>
                   
@@ -206,13 +209,34 @@ export default function Home() {
               </p>
             </motion.div>
             
+            {/* Spline 3D - Desktop only for performance */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
+              className="hidden md:block"
             >
               <SplineHero />
+            </motion.div>
+            
+            {/* Mobile-optimized static version */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="md:hidden"
+            >
+              <div className="relative h-[400px] bg-gradient-to-br from-[#1876D2] via-[#1876D2] to-[#00B0FF] rounded-xl shadow-2xl overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white p-8">
+                    <div className="text-6xl mb-4">🚀</div>
+                    <h3 className="text-2xl font-bold mb-2">Interactive Learning</h3>
+                    <p className="text-white/90">Experience hands-on entrepreneurship education</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -757,7 +781,10 @@ export default function Home() {
                   src="/images/hero/orbit-kids-banner.png" 
                   alt="Orbit Student - Empowering Kids to Learn AI - orbitstudent.com" 
                   className="w-full h-auto rounded-2xl"
+                  width="1200"
+                  height="600"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
