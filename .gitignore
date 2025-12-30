@@ -104,3 +104,6 @@ __snapshots__/
 
 # Local Netlify folder
 .netlify
+
+# API Keys (sensitive)
+src/config/api-keys.ts

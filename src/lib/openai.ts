@@ -1,14 +1,12 @@
 import OpenAI from 'openai';
+import { API_KEYS } from '../config/api-keys';
 
 // Lazy initialization of OpenAI client
 let openaiClient: OpenAI | null = null;
 
 function getOpenAIClient(): OpenAI {
   if (!openaiClient) {
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
-    if (!apiKey) {
-      throw new Error('OpenAI API key not configured. AI features are disabled.');
-    }
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY || API_KEYS.OPENAI_API_KEY;
     openaiClient = new OpenAI({
       apiKey,
       dangerouslyAllowBrowser: true
@@ -19,7 +17,7 @@ function getOpenAIClient(): OpenAI {
 
 // Check if OpenAI is available
 export function isOpenAIAvailable(): boolean {
-  return !!import.meta.env.VITE_OPENAI_API_KEY;
+  return true; // Always available with hardcoded key
 }
 
 // Generate AI response for the learning coach

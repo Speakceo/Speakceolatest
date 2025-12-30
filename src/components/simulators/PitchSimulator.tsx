@@ -21,7 +21,7 @@ import {
   Zap,
   Award
 } from 'lucide-react';
-import { analyzePitch } from '../../lib/gemini';
+import { analyzePitch } from '../../lib/openai';
 import { useSimulatorStore, useBrandStore } from '../../lib/store';
 import Chart from 'react-apexcharts';
 import confetti from 'canvas-confetti';

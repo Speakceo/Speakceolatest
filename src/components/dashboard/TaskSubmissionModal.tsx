@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { useUserStore, useUnifiedProgressStore } from '../../lib/store';
 import { submitTask } from '../../lib/api/tasks';
-import { analyzeSubmission } from '../../lib/gemini';
+import { analyzeSubmission } from '../../lib/openai';
 import type { Task } from '../../lib/types/tasks';
 
 interface TaskSubmissionModalProps {
