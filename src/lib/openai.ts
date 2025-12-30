@@ -1,12 +1,14 @@
 import OpenAI from 'openai';
-import { API_KEYS } from '../config/api-keys';
 
 // Lazy initialization of OpenAI client
 let openaiClient: OpenAI | null = null;
 
 function getOpenAIClient(): OpenAI {
   if (!openaiClient) {
-    const apiKey = import.meta.env.VITE_OPENAI_API_KEY || API_KEYS.OPENAI_API_KEY;
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+    if (!apiKey) {
+      throw new Error('VITE_OPENAI_API_KEY not set. Set it in your .env for local dev and in Netlify environment variables for builds.');
+    }
     openaiClient = new OpenAI({
       apiKey,
       dangerouslyAllowBrowser: true
@@ -17,7 +19,7 @@ function getOpenAIClient(): OpenAI {
 
 // Check if OpenAI is available
 export function isOpenAIAvailable(): boolean {
-  return true; // Always available with hardcoded key
+  return !!import.meta.env.VITE_OPENAI_API_KEY;
 }
 
 // Generate AI response for the learning coach
