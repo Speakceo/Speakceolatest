@@ -191,7 +191,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
       setStep(5); // Success step
     } catch (error) {
       console.error('Failed to submit enrollment:', error);
-      alert('Something went wrong. Please try again or contact us directly at hello@speakceo.com');
+      alert('Something went wrong. Please try again or contact us directly at hello@orbitstudent.com');
     }
     setIsSubmitting(false);
   };

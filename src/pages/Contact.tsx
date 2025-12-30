@@ -43,7 +43,7 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: 'Email',
-      details: ['contact@speakceo.ai', 'support@speakceo.ai']
+      details: ['contact@orbitstudent.com', 'support@orbitstudent.com']
     },
     {
       icon: <Send className="h-6 w-6" />,

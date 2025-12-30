@@ -260,7 +260,7 @@ export default function Home() {
                       <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
                     <div className="flex-1 text-center">
-                      <span className="text-white font-semibold">SpeakCEO AI Builder</span>
+                      <span className="text-white font-semibold">Orbit AI Builder</span>
                     </div>
                   </div>
 
@@ -915,7 +915,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Why Parents & Kids Love SpeakCEO
+                Why Parents & Kids Love Orbit Student
               </h2>
               <p className="text-xl text-white/90 max-w-3xl mx-auto">
                 More than business. We're building confidence, creativity, and a lifelong love of learning.
@@ -1007,7 +1007,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-600">
-                  "My daughter used to be so shy, but after starting her sticker business through SpeakCEO, she's presenting to her entire school! The transformation has been incredible."
+                  "My daughter used to be so shy, but after starting her sticker business through Orbit Student, she's presenting to her entire school! The transformation has been incredible."
                 </p>
               </div>
 
@@ -1359,7 +1359,7 @@ export default function Home() {
               title="Ready to Transform Your Child's Future?"
               subtitle="Join 2,500+ families who've unlocked their child's entrepreneurial potential with our proven 180-day program"
               formTitle="Book Your Free Demo"
-              formSubtitle="Get a personalized demo and see how SpeakCEO can transform your child's future"
+              formSubtitle="Get a personalized demo and see how Orbit Student can transform your child's future"
               fields={['parentName', 'email', 'phone', 'studentName', 'childAge']}
               variant="primary"
               size="lg"
