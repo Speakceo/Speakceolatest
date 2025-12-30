@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Wand2, Rocket, Code, Eye, RefreshCw, Download, Share2, Zap } from 'lucide-react';
 import { generateAIResponse } from '../lib/openai';
 
-// Pre-built templates for instant demo
+// Pre-built website templates
 const templates = [
   {
     id: 'bakery',
@@ -40,6 +40,52 @@ const templates = [
     name: '🎮 Game Creator',
     prompt: 'Create an exciting website showcasing game development projects',
     icon: '🎮'
+  }
+];
+
+// Pre-built game templates
+const gameTemplates = [
+  {
+    id: 'flappy',
+    name: '🐦 Flappy Bird',
+    description: 'Classic flappy bird game',
+    icon: '🐦'
+  },
+  {
+    id: 'snake',
+    name: '🐍 Snake Game',
+    description: 'Eat and grow longer',
+    icon: '🐍'
+  },
+  {
+    id: 'car-race',
+    name: '🏎️ Car Race',
+    description: 'Dodge obstacles',
+    icon: '🏎️'
+  },
+  {
+    id: 'pong',
+    name: '🏓 Pong',
+    description: 'Classic arcade game',
+    icon: '🏓'
+  },
+  {
+    id: 'memory',
+    name: '🎴 Memory Match',
+    description: 'Find matching pairs',
+    icon: '🎴'
+  },
+  {
+    id: 'space',
+    name: '🚀 Space Shooter',
+    description: 'Shoot the asteroids',
+    icon: '🚀'
+  },
+  {
+    id: 'catch',
+    name: '🍎 Fruit Catch',
+    description: 'Catch falling fruits',
+    icon: '🍎'
   }
 ];
 
@@ -783,6 +829,1336 @@ const fallbackTemplates: Record<string, string> = {
 </html>`
 };
 
+// Playable game templates
+const gameCode: Record<string, string> = {
+  'flappy': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #87CEEB 0%, #00BFFF 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        #game {
+            border: 5px solid #FFD700;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        #score {
+            color: white;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .instructions {
+            color: white;
+            margin-top: 10px;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>🐦 Flappy Bird</h1>
+    <canvas id="game" width="400" height="600"></canvas>
+    <div id="score">Score: 0</div>
+    <div class="instructions">Click or Press SPACE to fly!</div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        
+        let bird = { x: 50, y: 250, width: 30, height: 30, velocity: 0, gravity: 0.5, jump: -8 };
+        let pipes = [];
+        let score = 0;
+        let frame = 0;
+        let gameOver = false;
+        
+        function drawBird() {
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(bird.x + bird.width/2, bird.y + bird.height/2, bird.width/2, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Eye
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.arc(bird.x + 20, bird.y + 10, 3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Beak
+            ctx.fillStyle = '#FF6B00';
+            ctx.beginPath();
+            ctx.moveTo(bird.x + bird.width, bird.y + bird.height/2);
+            ctx.lineTo(bird.x + bird.width + 10, bird.y + bird.height/2 - 5);
+            ctx.lineTo(bird.x + bird.width + 10, bird.y + bird.height/2 + 5);
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        function drawPipes() {
+            ctx.fillStyle = '#32CD32';
+            pipes.forEach(pipe => {
+                ctx.fillRect(pipe.x, 0, pipe.width, pipe.top);
+                ctx.fillRect(pipe.x, canvas.height - pipe.bottom, pipe.width, pipe.bottom);
+                
+                // Pipe highlights
+                ctx.fillStyle = '#228B22';
+                ctx.fillRect(pipe.x, pipe.top - 30, pipe.width, 30);
+                ctx.fillRect(pipe.x, canvas.height - pipe.bottom, pipe.width, 30);
+                ctx.fillStyle = '#32CD32';
+            });
+        }
+        
+        function update() {
+            if (gameOver) return;
+            
+            bird.velocity += bird.gravity;
+            bird.y += bird.velocity;
+            
+            if (bird.y + bird.height > canvas.height || bird.y < 0) {
+                endGame();
+                return;
+            }
+            
+            if (frame % 100 === 0) {
+                let gap = 150;
+                let minTop = 100;
+                let maxTop = canvas.height - gap - 100;
+                let top = Math.random() * (maxTop - minTop) + minTop;
+                pipes.push({
+                    x: canvas.width,
+                    width: 60,
+                    top: top,
+                    bottom: canvas.height - top - gap,
+                    scored: false
+                });
+            }
+            
+            pipes.forEach((pipe, index) => {
+                pipe.x -= 3;
+                
+                if (pipe.x + pipe.width < 0) {
+                    pipes.splice(index, 1);
+                }
+                
+                if (!pipe.scored && pipe.x + pipe.width < bird.x) {
+                    score++;
+                    pipe.scored = true;
+                    document.getElementById('score').textContent = 'Score: ' + score;
+                }
+                
+                if (bird.x + bird.width > pipe.x && bird.x < pipe.x + pipe.width) {
+                    if (bird.y < pipe.top || bird.y + bird.height > canvas.height - pipe.bottom) {
+                        endGame();
+                    }
+                }
+            });
+            
+            frame++;
+        }
+        
+        function endGame() {
+            gameOver = true;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.font = '48px Arial';
+            ctx.fillText('Game Over!', 80, 250);
+            ctx.font = '24px Arial';
+            ctx.fillText('Score: ' + score, 140, 300);
+            ctx.fillText('Click to Restart', 100, 350);
+        }
+        
+        function draw() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Clouds
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = 0.5;
+            ctx.beginPath();
+            ctx.arc(100, 100, 30, 0, Math.PI * 2);
+            ctx.arc(120, 100, 35, 0, Math.PI * 2);
+            ctx.arc(140, 100, 30, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            
+            drawPipes();
+            drawBird();
+        }
+        
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        function flap() {
+            if (gameOver) {
+                bird = { x: 50, y: 250, width: 30, height: 30, velocity: 0, gravity: 0.5, jump: -8 };
+                pipes = [];
+                score = 0;
+                frame = 0;
+                gameOver = false;
+                document.getElementById('score').textContent = 'Score: 0';
+            } else {
+                bird.velocity = bird.jump;
+            }
+        }
+        
+        canvas.addEventListener('click', flap);
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                flap();
+            }
+        });
+        
+        gameLoop();
+    </script>
+</body>
+</html>`,
+
+  'snake': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #134E5E 0%, #71B280 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        #game {
+            border: 5px solid #2E8B57;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            background: #1a4d2e;
+        }
+        #score {
+            color: white;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .instructions {
+            color: white;
+            margin-top: 10px;
+            font-size: 1.1em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>🐍 Snake Game</h1>
+    <canvas id="game" width="500" height="500"></canvas>
+    <div id="score">Score: 0</div>
+    <div class="instructions">Use Arrow Keys to Move!</div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        
+        const gridSize = 20;
+        const tileCount = canvas.width / gridSize;
+        
+        let snake = [{ x: 10, y: 10 }];
+        let food = { x: 15, y: 15 };
+        let dx = 0;
+        let dy = 0;
+        let score = 0;
+        let gameOver = false;
+        
+        function drawSnake() {
+            snake.forEach((segment, index) => {
+                ctx.fillStyle = index === 0 ? '#90EE90' : '#32CD32';
+                ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+                
+                if (index === 0) {
+                    ctx.fillStyle = 'black';
+                    ctx.fillRect(segment.x * gridSize + 5, segment.y * gridSize + 5, 3, 3);
+                    ctx.fillRect(segment.x * gridSize + 12, segment.y * gridSize + 5, 3, 3);
+                }
+            });
+        }
+        
+        function drawFood() {
+            ctx.fillStyle = '#FF6347';
+            ctx.beginPath();
+            ctx.arc(food.x * gridSize + gridSize/2, food.y * gridSize + gridSize/2, gridSize/2 - 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function moveSnake() {
+            if (gameOver) return;
+            
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            
+            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                endGame();
+                return;
+            }
+            
+            for (let segment of snake) {
+                if (segment.x === head.x && segment.y === head.y) {
+                    endGame();
+                    return;
+                }
+            }
+            
+            snake.unshift(head);
+            
+            if (head.x === food.x && head.y === food.y) {
+                score++;
+                document.getElementById('score').textContent = 'Score: ' + score;
+                placeFood();
+            } else {
+                snake.pop();
+            }
+        }
+        
+        function placeFood() {
+            food = {
+                x: Math.floor(Math.random() * tileCount),
+                y: Math.floor(Math.random() * tileCount)
+            };
+            
+            for (let segment of snake) {
+                if (segment.x === food.x && segment.y === food.y) {
+                    placeFood();
+                    return;
+                }
+            }
+        }
+        
+        function endGame() {
+            gameOver = true;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.font = '48px Arial';
+            ctx.fillText('Game Over!', 120, 220);
+            ctx.font = '24px Arial';
+            ctx.fillText('Score: ' + score, 190, 270);
+            ctx.fillText('Press R to Restart', 130, 320);
+        }
+        
+        function draw() {
+            ctx.fillStyle = '#1a4d2e';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.strokeStyle = '#2a5d3e';
+            for (let i = 0; i < tileCount; i++) {
+                for (let j = 0; j < tileCount; j++) {
+                    ctx.strokeRect(i * gridSize, j * gridSize, gridSize, gridSize);
+                }
+            }
+            
+            drawFood();
+            drawSnake();
+        }
+        
+        function gameLoop() {
+            moveSnake();
+            draw();
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp' && dy === 0) { dx = 0; dy = -1; }
+            if (e.key === 'ArrowDown' && dy === 0) { dx = 0; dy = 1; }
+            if (e.key === 'ArrowLeft' && dx === 0) { dx = -1; dy = 0; }
+            if (e.key === 'ArrowRight' && dx === 0) { dx = 1; dy = 0; }
+            
+            if ((e.key === 'r' || e.key === 'R') && gameOver) {
+                snake = [{ x: 10, y: 10 }];
+                dx = 0;
+                dy = 0;
+                score = 0;
+                gameOver = false;
+                document.getElementById('score').textContent = 'Score: 0';
+                placeFood();
+            }
+        });
+        
+        draw();
+        setInterval(gameLoop, 100);
+    </script>
+</body>
+</html>`,
+
+  'car-race': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Race</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #1c1c1c 0%, #3a3a3a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        #game {
+            border: 5px solid #FFD700;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        #score {
+            color: white;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .instructions {
+            color: white;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏎️ Car Race</h1>
+    <canvas id="game" width="400" height="600"></canvas>
+    <div id="score">Score: 0</div>
+    <div class="instructions">Use Arrow Keys (← →) to Move!</div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        
+        let car = { x: 175, y: 500, width: 50, height: 80, speed: 5 };
+        let obstacles = [];
+        let score = 0;
+        let frame = 0;
+        let gameOver = false;
+        let keys = {};
+        
+        function drawRoad() {
+            ctx.fillStyle = '#555';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 5;
+            ctx.setLineDash([20, 15]);
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            ctx.fillStyle = '#333';
+            ctx.fillRect(0, 0, 50, canvas.height);
+            ctx.fillRect(canvas.width - 50, 0, 50, canvas.height);
+        }
+        
+        function drawCar() {
+            ctx.fillStyle = '#FF6B6B';
+            ctx.fillRect(car.x, car.y, car.width, car.height);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(car.x + 5, car.y + 60, 10, 15);
+            ctx.fillRect(car.x + 35, car.y + 60, 10, 15);
+            
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(car.x + 10, car.y + 20, car.width - 20, 30);
+        }
+        
+        function drawObstacles() {
+            obstacles.forEach(obs => {
+                ctx.fillStyle = obs.color;
+                ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+                
+                ctx.fillStyle = '#333';
+                ctx.fillRect(obs.x + 5, obs.y + 10, 10, 15);
+                ctx.fillRect(obs.x + 35, obs.y + 10, 10, 15);
+                
+                ctx.fillStyle = '#FFD700';
+                ctx.fillRect(obs.x + 10, obs.y + 40, obs.width - 20, 20);
+            });
+        }
+        
+        function update() {
+            if (gameOver) return;
+            
+            if (keys['ArrowLeft'] && car.x > 50) car.x -= car.speed;
+            if (keys['ArrowRight'] && car.x < canvas.width - 50 - car.width) car.x += car.speed;
+            
+            if (frame % 60 === 0) {
+                let lanes = [75, 175, 275];
+                let randomLane = lanes[Math.floor(Math.random() * lanes.length)];
+                let colors = ['#4169E1', '#32CD32', '#FFD700', '#FF69B4'];
+                obstacles.push({
+                    x: randomLane,
+                    y: -80,
+                    width: 50,
+                    height: 80,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+            
+            obstacles.forEach((obs, index) => {
+                obs.y += 5;
+                
+                if (obs.y > canvas.height) {
+                    obstacles.splice(index, 1);
+                    score++;
+                    document.getElementById('score').textContent = 'Score: ' + score;
+                }
+                
+                if (car.x < obs.x + obs.width && car.x + car.width > obs.x &&
+                    car.y < obs.y + obs.height && car.y + car.height > obs.y) {
+                    endGame();
+                }
+            });
+            
+            frame++;
+        }
+        
+        function endGame() {
+            gameOver = true;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#FFD700';
+            ctx.font = '48px Arial';
+            ctx.fillText('Crash!', 120, 250);
+            ctx.font = '24px Arial';
+            ctx.fillText('Score: ' + score, 145, 300);
+            ctx.fillText('Press R to Restart', 90, 350);
+        }
+        
+        function draw() {
+            drawRoad();
+            drawObstacles();
+            drawCar();
+        }
+        
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            
+            if ((e.key === 'r' || e.key === 'R') && gameOver) {
+                car.x = 175;
+                obstacles = [];
+                score = 0;
+                frame = 0;
+                gameOver = false;
+                document.getElementById('score').textContent = 'Score: 0';
+            }
+        });
+        
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+        
+        gameLoop();
+    </script>
+</body>
+</html>`,
+
+  'pong': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+        #game {
+            border: 5px solid white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            background: black;
+        }
+        #score {
+            color: white;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .instructions {
+            color: white;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏓 Pong Game</h1>
+    <canvas id="game" width="600" height="400"></canvas>
+    <div id="score">Player: 0 | Computer: 0</div>
+    <div class="instructions">Use W/S Keys to Move!</div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        
+        let paddle1 = { x: 10, y: 160, width: 10, height: 80, speed: 6 };
+        let paddle2 = { x: 580, y: 160, width: 10, height: 80, speed: 4 };
+        let ball = { x: 300, y: 200, radius: 8, dx: 4, dy: 4 };
+        let score1 = 0;
+        let score2 = 0;
+        let keys = {};
+        
+        function drawPaddle(p) {
+            ctx.fillStyle = 'white';
+            ctx.fillRect(p.x, p.y, p.width, p.height);
+        }
+        
+        function drawBall() {
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function drawNet() {
+            ctx.strokeStyle = 'white';
+            ctx.setLineDash([10, 10]);
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        }
+        
+        function update() {
+            if (keys['w'] && paddle1.y > 0) paddle1.y -= paddle1.speed;
+            if (keys['s'] && paddle1.y < canvas.height - paddle1.height) paddle1.y += paddle1.speed;
+            
+            if (ball.y < paddle2.y + paddle2.height / 2) {
+                paddle2.y -= paddle2.speed * 0.7;
+            } else {
+                paddle2.y += paddle2.speed * 0.7;
+            }
+            
+            if (paddle2.y < 0) paddle2.y = 0;
+            if (paddle2.y > canvas.height - paddle2.height) paddle2.y = canvas.height - paddle2.height;
+            
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+            
+            if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) {
+                ball.dy *= -1;
+            }
+            
+            if (ball.x - ball.radius < paddle1.x + paddle1.width && 
+                ball.y > paddle1.y && ball.y < paddle1.y + paddle1.height) {
+                ball.dx = Math.abs(ball.dx);
+                ball.dx *= 1.05;
+            }
+            
+            if (ball.x + ball.radius > paddle2.x && 
+                ball.y > paddle2.y && ball.y < paddle2.y + paddle2.height) {
+                ball.dx = -Math.abs(ball.dx);
+                ball.dx *= 1.05;
+            }
+            
+            if (ball.x - ball.radius < 0) {
+                score2++;
+                resetBall();
+            }
+            
+            if (ball.x + ball.radius > canvas.width) {
+                score1++;
+                resetBall();
+            }
+            
+            document.getElementById('score').textContent = 'Player: ' + score1 + ' | Computer: ' + score2;
+        }
+        
+        function resetBall() {
+            ball.x = canvas.width / 2;
+            ball.y = canvas.height / 2;
+            ball.dx = (Math.random() > 0.5 ? 1 : -1) * 4;
+            ball.dy = (Math.random() > 0.5 ? 1 : -1) * 4;
+        }
+        
+        function draw() {
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            drawNet();
+            drawPaddle(paddle1);
+            drawPaddle(paddle2);
+            drawBall();
+        }
+        
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            keys[e.key.toLowerCase()] = true;
+        });
+        
+        document.addEventListener('keyup', (e) => {
+            keys[e.key.toLowerCase()] = false;
+        });
+        
+        gameLoop();
+    </script>
+</body>
+</html>`,
+
+  'memory': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+        #game {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .card {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card.flipped {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .card.matched {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            pointer-events: none;
+        }
+        .card .back {
+            background: white;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        #score {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .instructions {
+            color: white;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+        button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎴 Memory Match</h1>
+    <div id="score">Moves: 0 | Matches: 0/8</div>
+    <div id="game"></div>
+    <button onclick="resetGame()">New Game</button>
+    <div class="instructions">Click cards to find matching pairs!</div>
+
+    <script>
+        const emojis = ['🍎', '🍌', '🍇', '🍊', '🍓', '🍉', '🍒', '🍑'];
+        let cards = [...emojis, ...emojis];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let moves = 0;
+        
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        
+        function createBoard() {
+            const game = document.getElementById('game');
+            game.innerHTML = '';
+            shuffle(cards);
+            
+            cards.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.emoji = emoji;
+                card.dataset.index = index;
+                card.innerHTML = '<div class="back">🎴</div>';
+                card.addEventListener('click', flipCard);
+                game.appendChild(card);
+            });
+        }
+        
+        function flipCard() {
+            if (flippedCards.length >= 2) return;
+            if (this.classList.contains('matched')) return;
+            if (this.classList.contains('flipped')) return;
+            
+            this.classList.add('flipped');
+            this.innerHTML = this.dataset.emoji;
+            flippedCards.push(this);
+            
+            if (flippedCards.length === 2) {
+                moves++;
+                document.getElementById('score').textContent = \`Moves: \${moves} | Matches: \${matchedPairs}/8\`;
+                checkMatch();
+            }
+        }
+        
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            
+            if (card1.dataset.emoji === card2.dataset.emoji) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                document.getElementById('score').textContent = \`Moves: \${moves} | Matches: \${matchedPairs}/8\`;
+                flippedCards = [];
+                
+                if (matchedPairs === 8) {
+                    setTimeout(() => {
+                        alert(\`🎉 You Won! Completed in \${moves} moves!\`);
+                    }, 500);
+                }
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                    card1.innerHTML = '<div class="back">🎴</div>';
+                    card2.innerHTML = '<div class="back">🎴</div>';
+                    flippedCards = [];
+                }, 1000);
+            }
+        }
+        
+        function resetGame() {
+            flippedCards = [];
+            matchedPairs = 0;
+            moves = 0;
+            document.getElementById('score').textContent = 'Moves: 0 | Matches: 0/8';
+            createBoard();
+        }
+        
+        createBoard();
+    </script>
+</body>
+</html>`,
+
+  'space': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooter</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        h1 {
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(255,215,0,0.5);
+        }
+        #game {
+            border: 5px solid #FFD700;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(255,215,0,0.3);
+        }
+        #score {
+            color: white;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .instructions {
+            color: white;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Space Shooter</h1>
+    <canvas id="game" width="500" height="600"></canvas>
+    <div id="score">Score: 0</div>
+    <div class="instructions">Arrow Keys to Move | Space to Shoot!</div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        
+        let ship = { x: 225, y: 500, width: 50, height: 60, speed: 7 };
+        let bullets = [];
+        let asteroids = [];
+        let score = 0;
+        let frame = 0;
+        let gameOver = false;
+        let keys = {};
+        
+        function drawShip() {
+            ctx.fillStyle = '#4169E1';
+            ctx.beginPath();
+            ctx.moveTo(ship.x + ship.width/2, ship.y);
+            ctx.lineTo(ship.x, ship.y + ship.height);
+            ctx.lineTo(ship.x + ship.width, ship.y + ship.height);
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(ship.x + 10, ship.y + 40, 10, 20);
+            ctx.fillRect(ship.x + 30, ship.y + 40, 10, 20);
+            
+            ctx.fillStyle = '#FF6347';
+            ctx.beginPath();
+            ctx.arc(ship.x + ship.width/2, ship.y + ship.height, 10, 0, Math.PI, true);
+            ctx.fill();
+        }
+        
+        function drawBullets() {
+            ctx.fillStyle = '#FFD700';
+            bullets.forEach(bullet => {
+                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+            });
+        }
+        
+        function drawAsteroids() {
+            asteroids.forEach(ast => {
+                ctx.fillStyle = '#8B4513';
+                ctx.beginPath();
+                ctx.arc(ast.x, ast.y, ast.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = '#A0522D';
+                ctx.beginPath();
+                ctx.arc(ast.x - ast.radius/3, ast.y - ast.radius/3, ast.radius/3, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+        
+        function drawStars() {
+            ctx.fillStyle = 'white';
+            for (let i = 0; i < 50; i++) {
+                let x = (i * 37 + frame) % canvas.width;
+                let y = (i * 59) % canvas.height;
+                ctx.fillRect(x, y, 2, 2);
+            }
+        }
+        
+        function update() {
+            if (gameOver) return;
+            
+            if (keys['ArrowLeft'] && ship.x > 0) ship.x -= ship.speed;
+            if (keys['ArrowRight'] && ship.x < canvas.width - ship.width) ship.x += ship.speed;
+            if (keys['ArrowUp'] && ship.y > 0) ship.y -= ship.speed;
+            if (keys['ArrowDown'] && ship.y < canvas.height - ship.height) ship.y += ship.speed;
+            
+            bullets.forEach((bullet, index) => {
+                bullet.y -= bullet.speed;
+                if (bullet.y < 0) bullets.splice(index, 1);
+            });
+            
+            if (frame % 40 === 0) {
+                asteroids.push({
+                    x: Math.random() * (canvas.width - 40) + 20,
+                    y: -30,
+                    radius: 20 + Math.random() * 20,
+                    speed: 2 + Math.random() * 3
+                });
+            }
+            
+            asteroids.forEach((ast, astIndex) => {
+                ast.y += ast.speed;
+                
+                if (ast.y > canvas.height) {
+                    asteroids.splice(astIndex, 1);
+                }
+                
+                bullets.forEach((bullet, bulletIndex) => {
+                    let dist = Math.sqrt((bullet.x - ast.x)**2 + (bullet.y - ast.y)**2);
+                    if (dist < ast.radius) {
+                        asteroids.splice(astIndex, 1);
+                        bullets.splice(bulletIndex, 1);
+                        score += 10;
+                        document.getElementById('score').textContent = 'Score: ' + score;
+                    }
+                });
+                
+                let shipDist = Math.sqrt((ship.x + ship.width/2 - ast.x)**2 + (ship.y + ship.height/2 - ast.y)**2);
+                if (shipDist < ast.radius + 20) {
+                    endGame();
+                }
+            });
+            
+            frame++;
+        }
+        
+        function endGame() {
+            gameOver = true;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#FFD700';
+            ctx.font = '48px Arial';
+            ctx.fillText('Game Over!', 120, 250);
+            ctx.font = '24px Arial';
+            ctx.fillText('Score: ' + score, 190, 300);
+            ctx.fillText('Press R to Restart', 130, 350);
+        }
+        
+        function draw() {
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            drawStars();
+            drawBullets();
+            drawAsteroids();
+            drawShip();
+        }
+        
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            
+            if (e.key === ' ' && !gameOver) {
+                e.preventDefault();
+                bullets.push({
+                    x: ship.x + ship.width/2 - 2,
+                    y: ship.y,
+                    width: 4,
+                    height: 15,
+                    speed: 10
+                });
+            }
+            
+            if ((e.key === 'r' || e.key === 'R') && gameOver) {
+                ship.x = 225;
+                ship.y = 500;
+                bullets = [];
+                asteroids = [];
+                score = 0;
+                frame = 0;
+                gameOver = false;
+                document.getElementById('score').textContent = 'Score: 0';
+            }
+        });
+        
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+        
+        gameLoop();
+    </script>
+</body>
+</html>`,
+
+  'catch': `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Catch</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #FFE5B4 0%, #FFDAB9 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #FF6347;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+        }
+        #game {
+            border: 5px solid #FF6347;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            background: linear-gradient(180deg, #87CEEB 0%, #98FB98 100%);
+        }
+        #score {
+            color: #FF6347;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .instructions {
+            color: #FF6347;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍎 Fruit Catch</h1>
+    <canvas id="game" width="500" height="600"></canvas>
+    <div id="score">Score: 0 | Lives: 3</div>
+    <div class="instructions">Use Arrow Keys (← →) to Catch Fruits!</div>
+
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        
+        let basket = { x: 200, y: 550, width: 100, height: 40, speed: 8 };
+        let fruits = [];
+        let score = 0;
+        let lives = 3;
+        let frame = 0;
+        let gameOver = false;
+        let keys = {};
+        
+        const fruitTypes = ['🍎', '🍌', '🍇', '🍊', '🍓', '🍉', '🍒', '🍑', '🥝', '🍍'];
+        
+        function drawBasket() {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+            
+            ctx.fillStyle = '#D2691E';
+            for (let i = 0; i < 5; i++) {
+                ctx.fillRect(basket.x + i * 20, basket.y, 10, basket.height);
+            }
+            
+            ctx.strokeStyle = '#654321';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(basket.x, basket.y, basket.width, basket.height);
+        }
+        
+        function drawFruits() {
+            ctx.font = '40px Arial';
+            fruits.forEach(fruit => {
+                ctx.fillText(fruit.emoji, fruit.x, fruit.y);
+            });
+        }
+        
+        function drawBackground() {
+            let gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(1, '#98FB98');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.beginPath();
+            ctx.arc(100, 100, 40, 0, Math.PI * 2);
+            ctx.arc(120, 100, 50, 0, Math.PI * 2);
+            ctx.arc(140, 100, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.beginPath();
+            ctx.arc(400, 150, 40, 0, Math.PI * 2);
+            ctx.arc(420, 150, 50, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function update() {
+            if (gameOver) return;
+            
+            if (keys['ArrowLeft'] && basket.x > 0) basket.x -= basket.speed;
+            if (keys['ArrowRight'] && basket.x < canvas.width - basket.width) basket.x += basket.speed;
+            
+            if (frame % 30 === 0) {
+                fruits.push({
+                    x: Math.random() * (canvas.width - 40),
+                    y: 0,
+                    speed: 3 + Math.random() * 2,
+                    emoji: fruitTypes[Math.floor(Math.random() * fruitTypes.length)]
+                });
+            }
+            
+            fruits.forEach((fruit, index) => {
+                fruit.y += fruit.speed;
+                
+                if (fruit.y > canvas.height) {
+                    fruits.splice(index, 1);
+                    lives--;
+                    updateScore();
+                    if (lives <= 0) endGame();
+                }
+                
+                if (fruit.y + 40 >= basket.y && fruit.y + 40 <= basket.y + basket.height &&
+                    fruit.x + 20 >= basket.x && fruit.x + 20 <= basket.x + basket.width) {
+                    fruits.splice(index, 1);
+                    score += 10;
+                    updateScore();
+                }
+            });
+            
+            frame++;
+        }
+        
+        function updateScore() {
+            document.getElementById('score').textContent = \`Score: \${score} | Lives: \${lives}\`;
+        }
+        
+        function endGame() {
+            gameOver = true;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#FFD700';
+            ctx.font = '48px Arial';
+            ctx.fillText('Game Over!', 120, 250);
+            ctx.font = '24px Arial';
+            ctx.fillText('Final Score: ' + score, 160, 300);
+            ctx.fillText('Press R to Restart', 130, 350);
+        }
+        
+        function draw() {
+            drawBackground();
+            drawFruits();
+            drawBasket();
+        }
+        
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            keys[e.key] = true;
+            
+            if ((e.key === 'r' || e.key === 'R') && gameOver) {
+                basket.x = 200;
+                fruits = [];
+                score = 0;
+                lives = 3;
+                frame = 0;
+                gameOver = false;
+                updateScore();
+            }
+        });
+        
+        document.addEventListener('keyup', (e) => {
+            keys[e.key] = false;
+        });
+        
+        gameLoop();
+    </script>
+</body>
+</html>`
+};
+
 export default function Demo() {
   const [selectedTemplate, setSelectedTemplate] = useState<string | null>(null);
   const [customPrompt, setCustomPrompt] = useState('');
@@ -791,6 +2167,11 @@ export default function Demo() {
   const [showPreview, setShowPreview] = useState(true);
   const [typingText, setTypingText] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  
+  // Game builder state
+  const [selectedGame, setSelectedGame] = useState('');
+  const [gamePreview, setGamePreview] = useState('');
+  const [showGamePreview, setShowGamePreview] = useState(true);
 
   // Typing animation for code
   useEffect(() => {
@@ -850,6 +2231,13 @@ export default function Demo() {
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const handleGameSelect = async (gameId: string) => {
+    setSelectedGame(gameId);
+    await new Promise(resolve => setTimeout(resolve, 500)); // Small delay for effect
+    setGamePreview(gameCode[gameId]);
+    setShowGamePreview(true);
   };
 
   const handleTemplateClick = (template: typeof templates[0]) => {
@@ -1150,6 +2538,214 @@ export default function Demo() {
             </p>
           </motion.div>
         )}
+      </div>
+
+      {/* ======== GAME BUILDER SECTION ======== */}
+      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="inline-block mb-6"
+            >
+              <div className="text-8xl">🎮</div>
+            </motion.div>
+            
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Build <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500">
+                Epic Games
+              </span>
+            </h2>
+            
+            <p className="text-2xl text-purple-200 mb-4">
+              Create Real, Playable Games in Seconds!
+            </p>
+            
+            <p className="text-lg text-purple-300 max-w-3xl mx-auto">
+              Choose from 7 awesome game templates. Each one is fully playable, interactive, and ready to customize. 
+              No complex coding needed – just click and play! 🚀
+            </p>
+          </motion.div>
+
+          {/* Game Template Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-12">
+            {gameTemplates.map((game, index) => (
+              <motion.button
+                key={game.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleGameSelect(game.id)}
+                className={`
+                  relative p-6 rounded-2xl backdrop-blur-xl transition-all duration-300
+                  ${selectedGame === game.id 
+                    ? 'bg-gradient-to-br from-pink-500/30 via-purple-500/30 to-cyan-500/30 border-2 border-white shadow-2xl' 
+                    : 'bg-white/10 border border-white/20 hover:bg-white/20'
+                  }
+                `}
+              >
+                <div className="text-5xl mb-3">{game.icon}</div>
+                <div className="text-white font-semibold text-sm mb-2">{game.name}</div>
+                <div className="text-purple-200 text-xs">{game.description}</div>
+                
+                {selectedGame === game.id && (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute -top-2 -right-2 bg-green-500 rounded-full p-2"
+                  >
+                    <Sparkles className="w-4 h-4 text-white" />
+                  </motion.div>
+                )}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Game Preview */}
+          {gamePreview && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/20 shadow-2xl"
+            >
+              {/* Preview Controls */}
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-2 bg-purple-500/30 px-4 py-2 rounded-full">
+                    <Zap className="w-5 h-5 text-yellow-300" />
+                    <span className="text-white font-semibold">Live & Playable!</span>
+                  </div>
+                  <button
+                    onClick={() => setShowGamePreview(!showGamePreview)}
+                    className="flex items-center space-x-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-all"
+                  >
+                    {showGamePreview ? (
+                      <>
+                        <Code className="w-4 h-4 text-white" />
+                        <span className="text-white">View Code</span>
+                      </>
+                    ) : (
+                      <>
+                        <Eye className="w-4 h-4 text-white" />
+                        <span className="text-white">Play Game</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                <div className="flex space-x-2">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      const blob = new Blob([gamePreview], { type: 'text/html' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = `${selectedGame}-game.html`;
+                      a.click();
+                    }}
+                    className="p-3 bg-green-500 hover:bg-green-600 rounded-full transition-all"
+                  >
+                    <Download className="w-5 h-5 text-white" />
+                  </motion.button>
+                  
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      navigator.clipboard.writeText(gamePreview);
+                      alert('✅ Game code copied to clipboard!');
+                    }}
+                    className="p-3 bg-blue-500 hover:bg-blue-600 rounded-full transition-all"
+                  >
+                    <Share2 className="w-5 h-5 text-white" />
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Game Content */}
+              <div className="bg-black/30 rounded-2xl overflow-hidden">
+                {showGamePreview ? (
+                  <iframe
+                    srcDoc={gamePreview}
+                    className="w-full h-[650px] border-0"
+                    title="Game Preview"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
+                ) : (
+                  <div className="p-6 max-h-[650px] overflow-auto">
+                    <pre className="text-green-400 text-sm font-mono whitespace-pre-wrap">
+                      {gamePreview}
+                    </pre>
+                  </div>
+                )}
+              </div>
+
+              {/* Game Info */}
+              <div className="mt-6 text-center">
+                <p className="text-purple-200 text-lg mb-2">
+                  🎮 This game is 100% playable! Try the controls and have fun!
+                </p>
+                <p className="text-purple-300 text-sm">
+                  Your child can build games like this AND customize them with their own ideas!
+                </p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Empty State */}
+          {!gamePreview && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-20"
+            >
+              <div className="text-8xl mb-6">🎯</div>
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Pick a Game to Start! 🎮
+              </h3>
+              <p className="text-xl text-purple-200">
+                Click any game template above to see it in action!
+              </p>
+            </motion.div>
+          )}
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="mt-16 text-center"
+          >
+            <div className="bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-white/20 rounded-3xl p-12">
+              <h3 className="text-3xl font-bold text-white mb-4">
+                🚀 Your Child Can Build ALL of This!
+              </h3>
+              <p className="text-xl text-purple-200 mb-8 max-w-2xl mx-auto">
+                From websites to games – imagine what your child will create with our 180-day program. 
+                Real skills. Real projects. Real success!
+              </p>
+              <motion.a
+                href="https://www.orbitstudent.com"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-bold text-xl px-12 py-5 rounded-full shadow-2xl hover:shadow-pink-500/50 transition-all"
+              >
+                Start Building Today! 🎉
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
