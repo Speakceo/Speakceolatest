@@ -3,7 +3,7 @@ import { useDrag, useDrop } from 'react-dnd';
 import { Tooltip } from 'react-tooltip';
 import { Download, Save, Share2, Sparkles, X, RefreshCw, HelpCircle } from 'lucide-react';
 import { useSimulatorStore } from '../../lib/store';
-import { analyzeBusinessModel } from '../../lib/openai';
+import { analyzeBusinessModel } from '../../lib/gemini';
 import type { Component, Position, GridCell } from '../../lib/types/simulators';
 import { GRID_CELLS, GRID_SIZE, pixelToGrid, gridToPixel, isValidGridPosition } from '../../lib/types/simulators';
 import html2canvas from 'html2canvas';

@@ -17,7 +17,11 @@ import {
   AlertCircle,
   Wand2
 } from 'lucide-react';
-import { generateBrandSuggestions, generateLogo } from '../../lib/openai';
+import { generateBrandSuggestions } from '../../lib/gemini';
+// Note: Logo generation temporarily disabled (DALL-E feature)
+const generateLogo = async (): Promise<string> => {
+  throw new Error('Logo generation temporarily unavailable. Use a logo maker tool instead.');
+};
 import { useBrandStore, useUserStore } from '../../lib/store';
 import { saveUserBrandLogo } from '../../lib/supabase';
 import confetti from 'canvas-confetti';

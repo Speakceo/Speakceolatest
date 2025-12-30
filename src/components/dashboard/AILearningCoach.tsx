@@ -13,7 +13,7 @@ import {
   ChevronRight,
   X
 } from 'lucide-react';
-import { generateAIResponse, generateSpeech } from '../../lib/openai';
+import { generateAIResponse, generateSpeech } from '../../lib/gemini';
 
 interface Message {
   id: string;
