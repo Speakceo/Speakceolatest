@@ -25,10 +25,13 @@ export function isOpenAIAvailable(): boolean {
 // Generate AI response for the learning coach
 export async function generateAIResponse(input: string, category: string): Promise<string> {
   try {
+    console.log('[OpenAI] Checking API availability...');
     if (!isOpenAIAvailable()) {
+      console.error('[OpenAI] API key not available');
       return 'AI features are currently disabled. Please add your OpenAI API key to environment variables.';
     }
     
+    console.log('[OpenAI] Getting client and making API call for category:', category);
     const openai = getOpenAIClient();
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -48,13 +51,17 @@ export async function generateAIResponse(input: string, category: string): Promi
       temperature: 0.7,
     });
 
+    console.log('[OpenAI] Response received successfully');
     return response.choices[0]?.message?.content?.trim() || 'I apologize, but I could not generate a response. Please try asking your question again.';
   } catch (error) {
-    console.error('Error generating AI response:', error);
-    if (error instanceof Error && error.message.includes('API key not configured')) {
-      return 'AI features are currently disabled. Please add your OpenAI API key to environment variables.';
+    console.error('[OpenAI] Error generating AI response:', error);
+    if (error instanceof Error) {
+      console.error('[OpenAI] Error message:', error.message);
+      if (error.message.includes('API key not configured')) {
+        return 'AI features are currently disabled. Please add your OpenAI API key to environment variables.';
+      }
     }
-    return 'I apologize, but I encountered an error. Please try asking your question again.';
+    return `Error: ${error instanceof Error ? error.message : 'Unknown error'}. Please try again.`;
   }
 }
 
