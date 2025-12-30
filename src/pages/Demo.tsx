@@ -2172,6 +2172,20 @@ export default function Demo() {
   const [selectedGame, setSelectedGame] = useState('');
   const [gamePreview, setGamePreview] = useState('');
   const [showGamePreview, setShowGamePreview] = useState(true);
+  
+  // Personalization state
+  const [studentName, setStudentName] = useState('');
+  const [showNameModal, setShowNameModal] = useState(true);
+  const [tempName, setTempName] = useState('');
+
+  // Load name from localStorage on mount
+  useEffect(() => {
+    const savedName = localStorage.getItem('orbit-demo-student-name');
+    if (savedName) {
+      setStudentName(savedName);
+      setShowNameModal(false);
+    }
+  }, []);
 
   // Typing animation for code
   useEffect(() => {
@@ -2191,12 +2205,13 @@ export default function Demo() {
     setTypingText('');
 
     try {
+      let baseCode = '';
+      
       // ALWAYS use fallback templates for demo (instant, reliable, no API costs)
       if (templateId && fallbackTemplates[templateId]) {
         // Simulate AI thinking for effect
         await new Promise(resolve => setTimeout(resolve, 1500));
-        setGeneratedCode(fallbackTemplates[templateId]);
-        setShowSuccessMessage(true);
+        baseCode = fallbackTemplates[templateId];
       } else {
         // For custom prompts, use a smart template based on keywords
         const lowerPrompt = prompt.toLowerCase();
@@ -2216,27 +2231,64 @@ export default function Demo() {
         
         // Simulate AI thinking
         await new Promise(resolve => setTimeout(resolve, 2000));
-        setGeneratedCode(fallbackTemplates[selectedTemplate]);
-        setShowSuccessMessage(true);
+        baseCode = fallbackTemplates[selectedTemplate];
       }
+      
+      // Inject "Made by" footer
+      const codeWithFooter = injectMadeByFooter(baseCode, studentName);
+      setGeneratedCode(codeWithFooter);
+      setShowSuccessMessage(true);
     } catch (error) {
       console.error('Error generating website:', error);
       // Use fallback on error
+      let baseCode = '';
       if (templateId && fallbackTemplates[templateId]) {
-        setGeneratedCode(fallbackTemplates[templateId]);
+        baseCode = fallbackTemplates[templateId];
       } else {
-        setGeneratedCode(fallbackTemplates['bakery']);
+        baseCode = fallbackTemplates['bakery'];
       }
+      const codeWithFooter = injectMadeByFooter(baseCode, studentName);
+      setGeneratedCode(codeWithFooter);
       setShowSuccessMessage(true);
     } finally {
       setIsGenerating(false);
     }
   };
 
+  const handleNameSubmit = () => {
+    if (tempName.trim()) {
+      setStudentName(tempName.trim());
+      localStorage.setItem('orbit-demo-student-name', tempName.trim());
+      setShowNameModal(false);
+    }
+  };
+
+  const handleChangeName = () => {
+    setTempName(studentName);
+    setShowNameModal(true);
+  };
+
+  // Function to inject "Made by" footer into HTML
+  const injectMadeByFooter = (htmlCode: string, name: string) => {
+    if (!name) return htmlCode;
+    
+    const footerHTML = `
+    <!-- Made By Footer -->
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #1876D2 0%, #00B0FF 100%); color: white; padding: 12px 20px; text-align: center; font-family: Arial, sans-serif; font-size: 14px; font-weight: 600; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); z-index: 9999;">
+        🌟 Made by <span style="font-size: 16px; color: #FFD700;">${name}</span> 🚀
+    </div>
+    <div style="height: 48px;"></div> <!-- Spacer for fixed footer -->
+`;
+    
+    // Insert before closing body tag
+    return htmlCode.replace('</body>', `${footerHTML}</body>`);
+  };
+
   const handleGameSelect = async (gameId: string) => {
     setSelectedGame(gameId);
     await new Promise(resolve => setTimeout(resolve, 500)); // Small delay for effect
-    setGamePreview(gameCode[gameId]);
+    const codeWithFooter = injectMadeByFooter(gameCode[gameId], studentName);
+    setGamePreview(codeWithFooter);
     setShowGamePreview(true);
   };
 
@@ -2264,6 +2316,71 @@ export default function Demo() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50">
+      {/* Name Input Modal */}
+      <AnimatePresence>
+        {showNameModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative overflow-hidden"
+            >
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full filter blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full filter blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <div className="text-center mb-6">
+                  <div className="text-6xl mb-4">🌟</div>
+                  <h2 className="text-3xl font-bold text-gray-800 mb-2">
+                    Welcome to Orbit Demo!
+                  </h2>
+                  <p className="text-gray-600 text-lg">
+                    What's the student's name?
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    value={tempName}
+                    onChange={(e) => setTempName(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleNameSubmit()}
+                    placeholder="Enter student name..."
+                    className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all text-lg text-center font-semibold text-gray-800 placeholder-gray-400"
+                    autoFocus
+                  />
+                  
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleNameSubmit}
+                    disabled={!tempName.trim()}
+                    className={`w-full py-4 rounded-xl font-bold text-lg shadow-lg transition-all ${
+                      tempName.trim()
+                        ? 'bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white hover:shadow-xl'
+                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    }`}
+                  >
+                    Start Creating! 🚀
+                  </motion.button>
+                </div>
+
+                <div className="mt-6 text-center text-sm text-gray-500">
+                  💡 Tip: All creations will show "Made by {tempName || '[Name]'}"
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white py-8 px-4 shadow-2xl">
         <div className="max-w-7xl mx-auto">
@@ -2277,6 +2394,24 @@ export default function Demo() {
               <h1 className="text-4xl md:text-5xl font-bold">AI Website Builder</h1>
               <Wand2 className="h-12 w-12 ml-3 animate-bounce" />
             </div>
+            
+            {/* Student Name Display */}
+            {studentName && (
+              <div className="flex items-center justify-center mb-4">
+                <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30">
+                  <span className="text-lg">
+                    👤 Building as: <span className="font-bold text-yellow-300">{studentName}</span>
+                  </span>
+                  <button
+                    onClick={handleChangeName}
+                    className="text-sm bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full transition-all"
+                  >
+                    ✏️ Change
+                  </button>
+                </div>
+              </div>
+            )}
+            
             <p className="text-xl md:text-2xl opacity-90">
               Watch AI Create Real Websites in Seconds! ✨
             </p>
