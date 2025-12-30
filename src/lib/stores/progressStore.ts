@@ -416,15 +416,20 @@ export const useProgressStore = create<ProgressState>()(
 
         set({ userProgress: updatedProgress });
 
+        // Skip Supabase sync - using offline storage
         try {
-          await supabase
-            .from('user_progress')
-            .upsert({
-              user_id: user.id,
-              ...updatedProgress
-            });
+          if (supabase && typeof supabase.from === 'function') {
+            const table = supabase.from('user_progress');
+            if (table && typeof table.upsert === 'function') {
+              await table.upsert({
+                user_id: user.id,
+                ...updatedProgress
+              });
+            }
+          }
         } catch (error) {
-          console.error('Error updating streak:', error);
+          // Fail silently - offline mode
+          console.debug('Streak updated locally (Supabase sync skipped)');
         }
       },
 
