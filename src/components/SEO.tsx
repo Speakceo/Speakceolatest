@@ -23,7 +23,7 @@ interface SEOProps {
 
 const defaultSEO = {
   title: 'Orbit Student: AI Learning for Young Entrepreneurs',
-  description: 'Best future plan for kids ages 10-18. Orbit Student prepares children for future success with AI learning, entrepreneurship training, and real-world business skills. The best investment in your child\'s future career and opportunities.',
+  description: 'Best future plan for kids ages 10-18. Orbit Student teaches AI, entrepreneurship & business skills through hands-on projects. Prepare your child for future success—180-day program.',
   keywords: [
     'AI learning',
     'young entrepreneur',
@@ -159,7 +159,7 @@ export default function SEO({
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'SpeakCEO',
+    name: 'Orbit Student',
     url: defaultSEO.url,
     potentialAction: {
       '@type': 'SearchAction',
@@ -209,18 +209,18 @@ export default function SEO({
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What age group is SpeakCEO designed for?',
+        name: 'What age group is Orbit Student designed for?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'SpeakCEO is designed for children and teenagers aged 8-16 who want to develop entrepreneurial skills and business acumen.'
+          text: 'Orbit Student is designed for children and teenagers aged 8-16 who want to develop entrepreneurial skills and business acumen.'
         }
       },
       {
         '@type': 'Question',
-        name: 'How long is the SpeakCEO program?',
+        name: 'How long is the Orbit Student program?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The SpeakCEO Young CEO Program is a comprehensive 180-day journey that transforms young minds into future business leaders.'
+          text: 'The Orbit Student Young CEO Program is a comprehensive 180-day journey that transforms young minds into future business leaders.'
         }
       },
       {
@@ -262,7 +262,7 @@ export default function SEO({
     description: 'Comprehensive 180-day program teaching entrepreneurship, leadership, and business skills to children aged 8-16',
     provider: {
       '@type': 'EducationalOrganization',
-      name: 'SpeakCEO'
+      name: 'Orbit Student'
     },
     serviceType: 'Educational Service',
     audience: {
@@ -279,7 +279,7 @@ export default function SEO({
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'SpeakCEO Course Catalog',
+      name: 'Orbit Student Course Catalog',
       itemListElement: [
         {
           '@type': 'Offer',
@@ -307,7 +307,7 @@ export default function SEO({
     '@type': 'Review',
     itemReviewed: {
       '@type': 'EducationalOrganization',
-      name: 'SpeakCEO'
+      name: 'Orbit Student'
     },
     reviewRating: {
       '@type': 'Rating',
@@ -318,7 +318,7 @@ export default function SEO({
       '@type': 'Person',
       name: 'Parent Community'
     },
-    reviewBody: 'SpeakCEO has transformed our children into confident young leaders. The program is comprehensive, engaging, and delivers real results.'
+    reviewBody: 'Orbit Student has transformed our children into confident young leaders. The program is comprehensive, engaging, and delivers real results.'
   };
 
   return (
@@ -337,17 +337,17 @@ export default function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
-      <meta property="og:site_name" content="SpeakCEO" />
+      <meta property="og:site_name" content="Orbit Student" />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
       {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
       {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@speakceoai" />
+      <meta name="twitter:site" content="@orbitstudent" />
       <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:creator" content="@speakceoai" />
+      <meta name="twitter:creator" content="@orbitstudent" />
 
       {/* Additional Meta Tags */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
