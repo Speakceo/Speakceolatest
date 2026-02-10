@@ -17,7 +17,8 @@ import {
   Sparkles,
   Shield,
   Globe,
-  Trophy
+  Trophy,
+  Zap
 } from 'lucide-react';
 import EnrollmentPopup from '../components/EnrollmentPopup';
 import CareerGuidePopup from '../components/career/CareerGuidePopup';
@@ -469,920 +470,473 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Parent Testimonials & Social Proof */}
-        <section className="py-20 bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-block bg-gradient-to-r from-emerald-100 to-blue-100 rounded-full px-6 py-2 mb-6">
-                <span className="text-emerald-700 font-semibold">Real Parent Stories</span>
+        {/* ═══ REAL PARENT STORIES — Dark Glass ═══ */}
+        <section className="py-28 bg-slate-950 relative overflow-hidden">
+          {/* Gradient mesh */}
+          <div className="absolute top-[-20%] right-[-15%] w-[40%] h-[40%] bg-[#1876D2]/10 rounded-full filter blur-[120px]" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[35%] h-[35%] bg-[#00B0FF]/8 rounded-full filter blur-[100px]" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                <Star className="h-4 w-4 text-amber-400" />
+                <span className="text-sm font-medium text-gray-400">Real Parent Stories</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                "My Child is a Different Person"
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
+                "My Child is a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Different Person</span>"
               </h2>
-              <p className="text-xl text-gray-600">See the transformations that make parents proud</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1, duration: 0.4 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-              >
-                <div className="flex items-center mb-6">
-                  <img 
-                    src="https://randomuser.me/api/portraits/women/44.jpg"
-                    alt="Sarah Chen"
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                    loading="lazy"
-                    onError={(e) => {
-                      e.currentTarget.src = 'https://ui-avatars.com/api/?name=Sarah+Chen&background=e5e7eb&color=374151&size=64';
-                    }}
-                  />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Sarah Chen</h4>
-                    <p className="text-gray-600 text-sm">Mother of Emma (12)</p>
-                    <div className="flex text-yellow-400">
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-700 mb-6 italic">
-                  "Emma went from being too shy to order food to confidently pitching business ideas to our neighbors! The transformation is incredible."
-                </p>
-                <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl p-4">
-                  <p className="text-sm font-semibold text-emerald-700">
-                    🎯 Result: Started a pet-sitting business, earning $500/month
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.15, duration: 0.4 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-              >
-                <div className="flex items-center mb-6">
-                  <img 
-                    src="/images/avatars/student-2.jpg"
-                    alt="Michael Rodriguez"
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Michael Rodriguez</h4>
-                    <p className="text-gray-600 text-sm">Father of Diego (14)</p>
-                    <div className="flex text-yellow-400">
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-700 mb-6 italic">
-                  "Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills."
-                </p>
-                <div className="bg-[#E3F2FD] rounded-xl p-4">
-                  <p className="text-sm font-semibold text-[#1876D2]">
-                    🎯 Result: Led school fundraising, raised $2,000 for charity
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.4 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-              >
-                <div className="flex items-center mb-6">
-                  <img 
-                    src="/images/avatars/student-4.jpg"
-                    alt="Jennifer Park"
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Jennifer Park</h4>
-                    <p className="text-gray-600 text-sm">Mother of Alex (13)</p>
-                    <div className="flex text-yellow-400">
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                      <Star className="h-4 w-4 fill-current" />
-                    </div>
-                  </div>
-                </div>
-                <p className="text-gray-700 mb-6 italic">
-                  "Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!"
-                </p>
-                <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-4">
-                  <p className="text-sm font-semibold text-amber-700">
-                    🎯 Result: Became student council president, launched school app
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Trust Indicators */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-[#1876D2] mb-2">2,500+</div>
-                  <div className="text-gray-600">Happy Families</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-blue-600 mb-2">98%</div>
-                  <div className="text-gray-600">Parent Satisfaction</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-emerald-600 mb-2">35+</div>
-                  <div className="text-gray-600">Countries</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-amber-600 mb-2">Forbes</div>
-                  <div className="text-gray-600">Featured</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider 1 - Hero to Features */}
-        <div className="relative w-full overflow-hidden">
-          <svg className="w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#f9fafb"></path>
-            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#f9fafb"></path>
-            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#f9fafb"></path>
-          </svg>
-        </div>
-
-        {/* Live Interactive Learning Section */}
-        <section className="py-20 bg-gradient-to-br from-[#1876D2] via-[#1565C0] to-[#00B0FF] text-white relative overflow-hidden">
-          {/* Background decoration - optimized */}
-          <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/10 via-blue-400/10 to-teal-400/10 rounded-full filter blur-3xl opacity-40"></div>
-          
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Content */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                  <div className="w-3 h-3 bg-emerald-400 rounded-full mr-3 animate-pulse"></div>
-                  <span className="text-emerald-300 font-semibold">Complete Learning Ecosystem</span>
-                </div>
-                
-                <div>
-                  <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                    AI-Powered Learning
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-white">
-                      Meets Real Mentorship
-                    </span>
-              </h2>
-                  <p className="text-xl text-white/90 leading-relaxed">
-                    Experience the perfect blend of cutting-edge AI tools, on-demand recorded sessions, 
-                    interactive business simulators, and live mentorship from industry experts—all designed 
-                    to give your child every advantage in their entrepreneurial journey.
-              </p>
-            </div>
-            
-                {/* Learning Methods Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-xl flex items-center justify-center">
-                        <Brain className="h-6 w-6 text-white" />
-                </div>
-                      <h3 className="text-lg font-bold text-white">AI-Powered Tools</h3>
-                    </div>
-                    <p className="text-white/80 text-sm">
-                      24/7 AI business coach, pitch deck generator, and smart analytics for instant feedback and guidance.
-                    </p>
-              </div>
-              
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
-                        <Users className="h-6 w-6 text-white" />
-                </div>
-                      <h3 className="text-lg font-bold text-white">Live Expert Classes</h3>
-                </div>
-                    <p className="text-white/80 text-sm">
-                      Interactive sessions with successful entrepreneurs, real-time Q&A, and collaborative learning.
-                    </p>
-                </div>
-
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#00B0FF] to-[#40C4FF] rounded-xl flex items-center justify-center">
-                        <TrendingUp className="h-6 w-6 text-white" />
-                </div>
-                      <h3 className="text-lg font-bold text-white">Business Simulators</h3>
-                </div>
-                    <p className="text-white/80 text-sm">
-                      Risk-free virtual environments to practice running businesses, making decisions, and learning from outcomes.
-                    </p>
-              </div>
-
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
-                        <PlayCircle className="h-6 w-6 text-white" />
-                </div>
-                      <h3 className="text-lg font-bold text-white">Recorded Sessions</h3>
-                </div>
-                    <p className="text-white/80 text-sm">
-                      Access hundreds of expert-led lessons anytime, with progress tracking and personalized recommendations.
-                </p>
-                </div>
-              </div>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={() => setShowEnrollment(true)}
-                    className="group relative px-8 py-4 bg-[#1876D2] hover:bg-[#1565C0] text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105"
-                  >
-                    <span className="relative z-10 flex items-center justify-center">
-                      Start Learning Journey
-                      <Rocket className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                  </button>
-                  <button 
-                    className="px-8 py-4 bg-white/10 hover:bg-slate-50/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all duration-300 ease-out border-2 border-white/30 hover:border-white/50 backdrop-blur-sm hover:scale-105 shadow-md hover:shadow-lg"
-                  >
-                    Download Free Guide
-                  </button>
-                </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/20">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-emerald-300">100+</div>
-                    <div className="text-sm text-white/80">AI-Powered Tools</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-300">50+</div>
-                    <div className="text-sm text-white/80">Live Sessions Monthly</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-cyan-300">500+</div>
-                    <div className="text-sm text-white/80">Recorded Lessons</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Image */}
-              <div className="relative">
-                <div className="relative">
-                  <img 
-                    src="/images/hero/journey-map.jpg" 
-                    alt="Students collaborating in comprehensive learning environment with AI tools and live mentorship" 
-                    className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/5 to-[#00B0FF]/5"></div>
-                  
-                  {/* Clean corner accents */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg shadow-lg flex items-center justify-center border border-white/30 hidden lg:flex">
-                    <Brain className="h-4 w-4 text-white/80" />
-                </div>
-                </div>
-
-                {/* Live indicator */}
-                <div className="absolute top-6 left-6 flex items-center space-x-2 bg-red-500 px-3 py-1 rounded-full">
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                  <span className="text-white font-medium text-sm">LIVE NOW</span>
-              </div>
-
-                {/* Feature badges */}
-                <div className="absolute bottom-6 right-6 space-y-2">
-                  <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-800">
-                    AI-Powered
-                </div>
-                  <div className="bg-emerald-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-white">
-                    Expert-Led
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider 3 - Live Classes to Roadmap */}
-        <div className="relative w-full overflow-hidden">
-          <svg className="w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#f9fafb"></path>
-          </svg>
-        </div>
-
-        {/* Roadmap Section - Orbit Branding */}
-        <section className="py-20 bg-gradient-to-br from-white via-[#F5F9FC] to-[#E3F2FD]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Orbit Brand Hero Image */}
-            <div className="mb-16 text-center">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto bg-gradient-to-br from-[#1876D2] to-[#00B0FF] p-1">
-                <img 
-                  src="/images/hero/orbit-kids-banner.jpg" 
-                  alt="Orbit Student - Empowering Kids to Learn AI - orbitstudent.com" 
-                  className="w-full h-auto rounded-2xl"
-                  width="1200"
-                  height="600"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </div>
-
-            <div className="text-center mb-16">
-              <div className="inline-block mb-4 px-6 py-3 rounded-full bg-[#E3F2FD]">
-                <span className="text-[#1876D2] font-semibold text-lg">🚀 Step-by-Step Journey</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Your Child's 180-Day Entrepreneurial Adventure
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Step-by-step guidance, from that first spark of an idea to launching a real business.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-              {/* Phase 1 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Lightbulb className="h-8 w-8 text-[#1876D2]" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Discovery</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Find your passion, spot opportunities, and dream big.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Problem Identification
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Market Research
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Idea Validation
-                  </div>
-                </div>
-              </div>
-
-              {/* Phase 2 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Rocket className="h-8 w-8 text-blue-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Idea to MVP</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Transform your ideas into tangible products or services.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Product Development
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Customer Feedback
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Prototype Testing
-                  </div>
-                </div>
-              </div>
-
-              {/* Phase 3 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Presentation className="h-8 w-8 text-[#1876D2]" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Branding & Storytelling</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Create a unique brand identity and compelling story.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Visual Identity
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Brand Messaging
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Pitch Development
-                  </div>
-                </div>
-              </div>
-
-              {/* Phase 4 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mic className="h-8 w-8 text-[#00B0FF]" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Public Speaking & Presence</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Become a confident communicator and presenter.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Speech Techniques
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Presentation Skills
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Confidence Building
-                  </div>
-                </div>
-              </div>
-
-              {/* Phase 5 */}
-              <div className="text-center">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="h-8 w-8 text-emerald-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Finance & Pitching</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Master money skills and pitch to potential investors.
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Financial Planning
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Investor Decks
-                  </div>
-                  <div className="flex items-center text-xs text-gray-500">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2" />
-                    Demo Day Preparation
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider 3 - Roadmap to Why Choose Us */}
-        <div className="relative w-full overflow-hidden bg-white">
-          <svg className="w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#0f172a"></path>
-          </svg>
-        </div>
-
-        {/* Why Choose Us Section */}
-        <section className="py-20 bg-slate-900 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-                Why Parents & Kids Love Orbit Student
-              </h2>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto">
-                More than business. We're building confidence, creativity, and a lifelong love of learning.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Pillar 1 */}
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
-                <div className="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
-                  <Presentation className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4">Real-World Confidence</h3>
-                <p className="text-white/80">
-                  From TED-style talks to investor pitches, kids learn to lead and inspire with confidence.
-                </p>
-              </div>
-
-              {/* Pillar 2 */}
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
-                <div className="w-16 h-16 bg-[#00B0FF] rounded-xl flex items-center justify-center mb-6">
-                  <Brain className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4">Entrepreneurial Mindset</h3>
-                <p className="text-white/80">
-                  Solve real problems, build real products, and pitch to real investors with guidance.
-                </p>
-              </div>
-
-              {/* Pillar 3 */}
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
-                <div className="w-16 h-16 bg-emerald-500 rounded-xl flex items-center justify-center mb-6">
-                  <Rocket className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4">Future-Ready Skills</h3>
-                <p className="text-white/80">
-                  Master AI, money, and marketing—skills for life, not just for school success.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section Divider 4 - Why Choose Us to Success Stories */}
-        <div className="relative w-full overflow-hidden">
-          <svg className="w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#f9fafb"></path>
-            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#f9fafb"></path>
-            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#f9fafb"></path>
-          </svg>
-        </div>
-
-        {/* Success Stories Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <div className="inline-block mb-4 px-4 py-2 rounded-full bg-emerald-100">
-                <span className="text-emerald-600 font-medium">Success Stories</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                What Parents & Kids Are Saying
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Join thousands of families who've watched their children transform into confident young entrepreneurs.
-              </p>
-            </div>
-
-            {/* Success Stories Image */}
-            <div className="mb-16 text-center">
-              <img 
-                src="/images/hero/testimonial-bg.jpg" 
-                alt="Young entrepreneurs celebrating their success stories" 
-                className="rounded-2xl shadow-xl max-w-2xl mx-auto w-full h-auto"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="flex items-center mb-4">
-                  <img 
-                    src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face&v=2"
-                    alt="Amanda K."
-                    className="h-12 w-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <div className="font-semibold text-gray-900">Amanda K.</div>
-                    <div className="text-sm text-gray-500">Mom of 12-year-old Emma</div>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "My daughter used to be so shy, but after starting her sticker business through Orbit Student, she's presenting to her entire school! The transformation has been incredible."
-                </p>
-              </div>
-
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="flex items-center mb-4">
-                  <img 
-                    src="/images/avatars/student-1.jpg"
-                    alt="Tyler J."
-                    className="h-12 w-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <div className="font-semibold text-gray-900">Tyler J.</div>
-                    <div className="text-sm text-gray-500">10-year-old Entrepreneur</div>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "I never thought I could start my own business at 10, but now I sell my handmade bracelets online! The AI coach helped me figure out pricing and even make a logo."
-                </p>
-              </div>
-
-              <div className="bg-white p-8 rounded-2xl shadow-lg">
-                <div className="flex items-center mb-4">
-                  <img 
-                    src="/images/avatars/student-2.jpg"
-                    alt="Michael T."
-                    className="h-12 w-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <div className="font-semibold text-gray-900">Michael T.</div>
-                    <div className="text-sm text-gray-500">Dad of 14-year-old Jayden</div>
-                  </div>
-                </div>
-                <p className="text-gray-600">
-                  "The gamified lessons kept my son engaged while teaching him real business skills. He's learning concepts I didn't understand until college! Worth every penny."
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Global Opportunities Section */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-sky-50 relative overflow-hidden">
-          {/* Background Elements - optimized */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-[#1876D2]/5 rounded-full filter blur-3xl opacity-40"></div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <motion.div 
-              variants={fadeIn}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Designed for 
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
-                  Global Dreamers
-                </span>
-              </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                We empower students from Class 2nd to 11th with the tools, knowledge, and 
-                pathways to thrive on the world stage.
-              </p>
+              <p className="text-gray-400 max-w-xl mx-auto">See the transformations that make parents proud</p>
             </motion.div>
 
-            {/* Four Pillars Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {/* Global Awareness */}
-              <motion.div 
-                variants={fadeIn}
-                className="text-center group"
-              >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[#1876D2] to-[#1565C0] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-                    <Globe className="h-10 w-10 text-white" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+              {[
+                { name: 'Sarah Chen', role: 'Mother of Emma (12)', quote: 'Emma went from being too shy to order food to confidently pitching business ideas to our neighbors!', result: 'Started a pet-sitting business, earning $500/month', initials: 'SC', color: 'from-[#1876D2] to-[#00B0FF]' },
+                { name: 'Michael Rodriguez', role: 'Father of Diego (14)', quote: 'Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills.', result: 'Led school fundraising, raised $2,000 for charity', initials: 'MR', color: 'from-[#00B0FF] to-[#40C4FF]' },
+                { name: 'Jennifer Park', role: 'Mother of Alex (13)', quote: 'Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!', result: 'Became student council president, launched school app', initials: 'JP', color: 'from-emerald-400 to-teal-500' },
+              ].map((t, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
+                  <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500 h-full flex flex-col">
+                    {/* Stars */}
+                    <div className="flex gap-1 mb-5">
+                      {[...Array(5)].map((_, j) => <Star key={j} className="h-4 w-4 text-amber-400 fill-amber-400" />)}
+                    </div>
+                    {/* Quote */}
+                    <p className="text-gray-300 mb-6 leading-relaxed flex-grow italic">"{t.quote}"</p>
+                    {/* Result tag */}
+                    <div className="bg-white/[0.04] rounded-lg px-4 py-2.5 mb-6 border border-white/[0.06]">
+                      <p className="text-xs font-medium text-[#00B0FF]">{t.result}</p>
+                    </div>
+                    {/* Author */}
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold`}>{t.initials}</div>
+                      <div>
+                        <div className="text-white text-sm font-semibold">{t.name}</div>
+                        <div className="text-gray-500 text-xs">{t.role}</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Global Awareness</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Learn about international programs & cultures.
-                </p>
-              </motion.div>
+                </motion.div>
+              ))}
+            </div>
 
-              {/* Opportunity Discovery */}
-              <motion.div 
-                variants={fadeIn}
-                className="text-center group"
-              >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-                    <Target className="h-10 w-10 text-white" />
-                  </div>
+            {/* Trust bar */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { value: '2,500+', label: 'Happy Families' },
+                { value: '98%', label: 'Parent Satisfaction' },
+                { value: '35+', label: 'Countries' },
+                { value: 'Forbes', label: 'Featured' },
+              ].map((s, i) => (
+                <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
+                  <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF] mb-1">{s.value}</div>
+                  <div className="text-gray-500 text-xs">{s.label}</div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Opportunity Discovery</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Find scholarships, Olympiads, global universities.
-                </p>
-              </motion.div>
-
-              {/* Skill Building */}
-              <motion.div 
-                variants={fadeIn}
-                className="text-center group"
-              >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[#00B0FF] to-[#0091EA] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-                    <Rocket className="h-10 w-10 text-white" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Skill Building</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Build writing, research, critical thinking, communication.
-                </p>
-              </motion.div>
-
-              {/* Future Roadmaps */}
-              <motion.div 
-                variants={fadeIn}
-                className="text-center group"
-              >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
-                    <Target className="h-10 w-10 text-white" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Future Roadmaps</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Get personalized plans for exams, admissions & more.
-                </p>
-              </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Global Resources Database Section */}
-        <section className="py-20 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white relative overflow-hidden">
-          {/* Background Effects - optimized */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full filter blur-3xl"></div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <motion.div 
-              variants={fadeIn}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-white">Global Resources</span> Database
-              </h2>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-                A curated database of opportunities to launch your global journey.
-              </p>
-            </motion.div>
+        {/* ═══ COMPLETE LEARNING ECOSYSTEM — White with Glass Cards ═══ */}
+        <section className="py-28 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
-            {/* Resource Categories */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <button className="px-8 py-3 bg-white/20 hover:bg-white/30 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105 flex items-center shadow-md">
-                <Award className="h-5 w-5 mr-2" />
-                Scholarships
-              </button>
-              <button className="px-8 py-3 bg-white/10 hover:bg-slate-50/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 ease-out hover:scale-105 border border-white/30 hover:border-white/50 flex items-center shadow-md hover:shadow-lg">
-                <Trophy className="h-5 w-5 mr-2" />
-                Competitions
-              </button>
-              <button className="px-8 py-3 bg-white/10 hover:bg-slate-50/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 ease-out hover:scale-105 border border-white/30 hover:border-white/50 flex items-center shadow-md hover:shadow-lg">
-                <Brain className="h-5 w-5 mr-2" />
-                AI Tools
-              </button>
-              <button className="px-8 py-3 bg-white/10 hover:bg-slate-50/20 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-300 ease-out hover:scale-105 border border-white/30 hover:border-white/50 flex items-center shadow-md hover:shadow-lg">
-                <Users className="h-5 w-5 mr-2" />
-                Global Fellowships
-              </button>
-            </div>
-
-            {/* Scholarship Examples Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-              {/* Row 1 */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-blue-300 mb-2">Yale YYGS</h3>
-                <p className="text-white/80 text-sm">Young Global Scholars program for high school students</p>
-              </div>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-white mb-2">Rise by Schmidt Futures</h3>
-                <p className="text-white/80 text-sm">Global scholarship for exceptional young leaders</p>
-              </div>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-emerald-300 mb-2">John Locke Essay</h3>
-                <p className="text-white/80 text-sm">International essay competition for young thinkers</p>
-              </div>
-
-              {/* Row 2 */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-amber-300 mb-2">Ashoka Youth Ventures</h3>
-                <p className="text-white/80 text-sm">Support for young social entrepreneurs worldwide</p>
-              </div>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-white mb-2">Google Science Fair</h3>
-                <p className="text-white/80 text-sm">Global science competition for students aged 13-18</p>
-              </div>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-cyan-300 mb-2">Conrad Challenge</h3>
-                <p className="text-white/80 text-sm">Innovation challenge for students to solve global problems</p>
-              </div>
-            </div>
-
-            {/* CTA for Database Access */}
-            <motion.div 
-              variants={fadeIn}
-              className="text-center"
-            >
-                <button 
-                onClick={() => setShowEnrollment(true)}
-                className="group relative px-12 py-5 bg-white text-[#1876D2] font-semibold rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center justify-center">
-                  Access Full Database
-                  <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-              </button>
-              <p className="text-white/70 mt-4 text-sm">
-                Join 2,500+ students already accessing global opportunities
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Section Divider 5 - Success Stories to Stats */}
-        <div className="relative w-full overflow-hidden">
-          <svg className="w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#0F172A"></path>
-          </svg>
-        </div>
-
-        {/* Stats Section */}
-        <section className="py-20 bg-slate-950 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">2,500+</div>
-                <div className="text-gray-400 text-sm uppercase tracking-wider">Young Entrepreneurs</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00B0FF] to-[#40C4FF]">98%</div>
-                <div className="text-gray-400 text-sm uppercase tracking-wider">Parent Satisfaction</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#40C4FF] to-[#1876D2]">180</div>
-                <div className="text-gray-400 text-sm uppercase tracking-wider">Day Program</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">24/7</div>
-                <div className="text-gray-400 text-sm uppercase tracking-wider">AI Support</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Enhanced CTA Section with Urgency */}
-        <section className="py-20 bg-gradient-to-br from-slate-950 via-[#0a1628] to-slate-900 text-white relative overflow-hidden">
-          {/* Background effects */}
-          <div className="absolute top-0 left-0 w-40 h-40 bg-[#1876D2]/10 rounded-full filter blur-3xl opacity-30"></div>
-          
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-white/10">
-                <span className="text-white/90 font-semibold text-sm">Limited Time — Only 30 Spots Left</span>
-              </div>
-              
-              <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight">
-                Don't Let Your Child Fall Behind While Others Get Ahead
-            </h2>
-              
-              <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-                While other kids are just consuming content, your child could be building 
-                <strong> confidence, leadership skills, and an entrepreneurial mindset</strong> that lasts a lifetime.
-              </p>
-
-              {/* Urgency indicators */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 border border-white/20">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                  <div>
-                    <div className="text-3xl font-bold text-yellow-300">30</div>
-                    <div className="text-sm opacity-80">Spots Remaining</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-yellow-300">7</div>
-                    <div className="text-sm opacity-80">Days Left</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-yellow-300">$200</div>
-                    <div className="text-sm opacity-80">Early Bird Savings</div>
-                  </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left: Content */}
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E3F2FD] border border-[#1876D2]/10 mb-8">
+                  <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" />
+                  <span className="text-sm font-medium text-[#1876D2]">Complete Learning Ecosystem</span>
                 </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <button 
-                onClick={() => setShowEnrollment(true)}
-                  className="group relative px-10 py-5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] overflow-hidden"
-              >
-                  <span className="relative z-10 flex items-center justify-center">
-                    Secure Your Child's Spot Now
-                    <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+
+                <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight text-gray-900">
+                  AI-Powered Learning
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
+                    Meets Real Mentorship
                   </span>
-              </button>
-                
-              <button 
-                  className="px-8 py-6 bg-white/10 hover:bg-slate-50/20 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all duration-300 ease-out border-2 border-white/30 hover:border-white/50 backdrop-blur-sm hover:scale-105 shadow-md hover:shadow-lg"
-              >
-                  Download Free Guide
-              </button>
+                </h2>
+
+                <p className="text-gray-500 text-lg mb-10 leading-relaxed">
+                  The perfect blend of cutting-edge AI tools, live mentorship, and interactive simulators — giving your child every advantage.
+                </p>
+
+                {/* Learning method cards — 2x2 */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                  {[
+                    { icon: Brain, name: 'AI-Powered Tools', desc: '24/7 AI coach & smart analytics', gradient: 'from-[#1876D2] to-[#00B0FF]' },
+                    { icon: Users, name: 'Live Expert Classes', desc: 'Interactive sessions with mentors', gradient: 'from-emerald-500 to-teal-600' },
+                    { icon: TrendingUp, name: 'Business Simulators', desc: 'Risk-free virtual environments', gradient: 'from-[#00B0FF] to-[#40C4FF]' },
+                    { icon: PlayCircle, name: 'Recorded Sessions', desc: '500+ expert-led lessons', gradient: 'from-amber-500 to-orange-500' },
+                  ].map((m, i) => (
+                    <div key={i} className="group bg-gray-50 hover:bg-white rounded-xl p-4 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-lg transition-all duration-300">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className={`w-9 h-9 bg-gradient-to-br ${m.gradient} rounded-lg flex items-center justify-center shadow-md`}>
+                          <m.icon className="h-4 w-4 text-white" />
+                        </div>
+                        <h3 className="text-sm font-bold text-gray-900">{m.name}</h3>
+                      </div>
+                      <p className="text-gray-500 text-xs pl-12">{m.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Stats row */}
+                <div className="flex gap-8">
+                  {[{ v: '100+', l: 'AI Tools' }, { v: '50+', l: 'Live Monthly' }, { v: '500+', l: 'Lessons' }].map((s, i) => (
+                    <div key={i}>
+                      <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{s.v}</div>
+                      <div className="text-gray-400 text-xs">{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Right: Image with overlay */}
+              <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="relative">
+                <div className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-2xl">
+                  <img
+                    src="/images/hero/journey-map.jpg"
+                    alt="Students collaborating with AI tools"
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+                  {/* Live badge */}
+                  <div className="absolute top-4 left-4 flex items-center gap-2 bg-red-500/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                    <span className="text-white font-medium text-xs">LIVE NOW</span>
+                  </div>
+                </div>
+
+                {/* Floating stat card */}
+                <motion.div
+                  animate={{ y: [-5, 5, -5] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-xl border border-gray-100 p-3"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center">
+                      <TrendingUp className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-gray-900">Expert-Led</div>
+                      <div className="text-[10px] text-gray-400">AI-Powered</div>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 180-DAY ROADMAP — Dark with Numbered Cards ═══ */}
+        <section className="py-28 bg-slate-950 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+          <div className="absolute top-[10%] left-[-5%] w-[30%] h-[30%] bg-[#1876D2]/8 rounded-full filter blur-[100px]" />
+          <div className="absolute bottom-[10%] right-[-5%] w-[25%] h-[25%] bg-[#00B0FF]/6 rounded-full filter blur-[80px]" />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Banner image */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-20 text-center">
+              <div className="relative rounded-2xl overflow-hidden max-w-5xl mx-auto border border-white/[0.06]">
+                <img src="/images/hero/orbit-kids-banner.jpg" alt="Orbit Student - Empowering Kids to Learn AI" className="w-full h-auto" width="1200" height="600" loading="lazy" decoding="async" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+              </div>
+            </motion.div>
+
+            {/* Section header */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                <Rocket className="h-4 w-4 text-[#00B0FF]" />
+                <span className="text-sm font-medium text-gray-400">Step-by-Step Journey</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
+                Your Child's <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">180-Day</span> Adventure
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">From first spark to real business launch — guided every step of the way.</p>
+            </motion.div>
+
+            {/* Timeline cards */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {[
+                { icon: Lightbulb, title: 'Discovery', desc: 'Find your passion', items: ['Problem ID', 'Market Research', 'Idea Validation'], num: '01', gradient: 'from-[#1876D2] to-[#00B0FF]' },
+                { icon: Rocket, title: 'Idea to MVP', desc: 'Build something real', items: ['Product Dev', 'Customer Feedback', 'Prototype'], num: '02', gradient: 'from-[#00B0FF] to-[#40C4FF]' },
+                { icon: Presentation, title: 'Branding', desc: 'Create your identity', items: ['Visual Identity', 'Messaging', 'Pitch Deck'], num: '03', gradient: 'from-[#40C4FF] to-[#1876D2]' },
+                { icon: Mic, title: 'Public Speaking', desc: 'Become confident', items: ['Techniques', 'Presentation', 'Confidence'], num: '04', gradient: 'from-[#1876D2] to-emerald-400' },
+                { icon: DollarSign, title: 'Finance & Pitch', desc: 'Master money', items: ['Planning', 'Investor Deck', 'Demo Day'], num: '05', gradient: 'from-emerald-400 to-[#00B0FF]' },
+              ].map((phase, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.08 }} className="group">
+                  <div className="bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12] rounded-2xl p-6 h-full transition-all duration-500 relative overflow-hidden">
+                    <div className="absolute top-3 right-4 text-4xl font-black text-white/[0.03] select-none">{phase.num}</div>
+                    <div className={`inline-flex p-2.5 rounded-lg bg-gradient-to-br ${phase.gradient} mb-4 shadow-lg`}>
+                      <phase.icon className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-base font-bold text-white mb-1">{phase.title}</h3>
+                    <p className="text-gray-500 text-xs mb-4">{phase.desc}</p>
+                    <div className="space-y-2">
+                      {phase.items.map((item, j) => (
+                        <div key={j} className="flex items-center gap-2">
+                          <CheckCircle className="h-3.5 w-3.5 text-emerald-400/70" />
+                          <span className="text-gray-400 text-xs">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-[#1876D2]/5 to-[#00B0FF]/5" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ WHY PARENTS LOVE US — White with Accent Border Cards ═══ */}
+        <section className="py-28 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                Why Parents & Kids Love <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Orbit Student</span>
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto">More than business — we're building confidence, creativity, and a lifelong love of learning.</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { icon: Presentation, title: 'Real-World Confidence', desc: 'From TED-style talks to investor pitches, kids learn to lead and inspire.', gradient: 'from-[#1876D2] to-[#00B0FF]' },
+                { icon: Brain, title: 'Entrepreneurial Mindset', desc: 'Solve real problems, build real products, and pitch to real investors.', gradient: 'from-[#00B0FF] to-[#40C4FF]' },
+                { icon: Rocket, title: 'Future-Ready Skills', desc: 'Master AI, money, and marketing — skills for life, not just school.', gradient: 'from-emerald-400 to-teal-500' },
+              ].map((p, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group">
+                  <div className="relative rounded-2xl p-8 bg-gray-50 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-xl transition-all duration-500 h-full">
+                    <div className={`inline-flex p-3.5 rounded-xl bg-gradient-to-br ${p.gradient} mb-6 shadow-lg`}>
+                      <p.icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{p.title}</h3>
+                    <p className="text-gray-500 leading-relaxed text-sm">{p.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ SUCCESS STORIES — Dark Masonry ═══ */}
+        <section className="py-28 bg-slate-950 relative overflow-hidden">
+          <div className="absolute top-[-10%] left-[50%] -translate-x-1/2 w-[50%] h-[40%] bg-[#1876D2]/8 rounded-full filter blur-[120px]" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                <Award className="h-4 w-4 text-emerald-400" />
+                <span className="text-sm font-medium text-gray-400">Success Stories</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
+                What Parents & Kids <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Are Saying</span>
+              </h2>
+              <p className="text-gray-400 max-w-xl mx-auto">Join thousands of families who've watched their children transform.</p>
+            </motion.div>
+
+            {/* Image */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 text-center">
+              <div className="relative rounded-2xl overflow-hidden max-w-2xl mx-auto border border-white/[0.06]">
+                <img src="/images/hero/testimonial-bg.jpg" alt="Young entrepreneurs celebrating" className="w-full h-auto" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+              </div>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { name: 'Amanda K.', role: 'Mom of 12-year-old Emma', quote: 'My daughter used to be so shy, but after starting her sticker business through Orbit Student, she\'s presenting to her entire school!', initials: 'AK', color: 'from-[#1876D2] to-[#00B0FF]' },
+                { name: 'Tyler J.', role: '10-year-old Entrepreneur', quote: 'I never thought I could start my own business at 10, but now I sell my handmade bracelets online! The AI coach helped me figure out pricing.', initials: 'TJ', color: 'from-emerald-400 to-teal-500' },
+                { name: 'Michael T.', role: 'Dad of 14-year-old Jayden', quote: 'The gamified lessons kept my son engaged while teaching him real business skills. He\'s learning concepts I didn\'t understand until college!', initials: 'MT', color: 'from-[#00B0FF] to-[#40C4FF]' },
+              ].map((t, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                  <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500 h-full flex flex-col">
+                    <p className="text-gray-300 mb-6 leading-relaxed flex-grow italic">"{t.quote}"</p>
+                    <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
+                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold`}>{t.initials}</div>
+                      <div>
+                        <div className="text-white text-sm font-semibold">{t.name}</div>
+                        <div className="text-gray-500 text-xs">{t.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ GLOBAL DREAMERS — White with Pillar Cards ═══ */}
+        <section className="py-28 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                Designed for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Global Dreamers</span>
+              </h2>
+              <p className="text-gray-500 max-w-2xl mx-auto">Empowering students from Class 2nd to 11th with tools, knowledge, and pathways to thrive on the world stage.</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                { icon: Globe, title: 'Global Awareness', desc: 'International programs & cultures', gradient: 'from-[#1876D2] to-[#1565C0]' },
+                { icon: Target, title: 'Opportunity Discovery', desc: 'Scholarships, Olympiads & more', gradient: 'from-[#1876D2] to-[#00B0FF]' },
+                { icon: Rocket, title: 'Skill Building', desc: 'Writing, research & critical thinking', gradient: 'from-[#00B0FF] to-[#40C4FF]' },
+                { icon: Target, title: 'Future Roadmaps', desc: 'Personalized plans for admissions', gradient: 'from-emerald-400 to-teal-500' },
+              ].map((p, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group">
+                  <div className="relative bg-gray-50 rounded-2xl p-7 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-xl transition-all duration-500 h-full text-center">
+                    <div className={`w-14 h-14 mx-auto bg-gradient-to-br ${p.gradient} rounded-xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <p.icon className="h-7 w-7 text-white" />
+                    </div>
+                    <h3 className="text-base font-bold text-gray-900 mb-2">{p.title}</h3>
+                    <p className="text-gray-500 text-sm">{p.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ GLOBAL RESOURCES — Dark ═══ */}
+        <section className="py-28 bg-slate-950 relative overflow-hidden">
+          <div className="absolute top-[-10%] right-[-10%] w-[35%] h-[35%] bg-[#1876D2]/10 rounded-full filter blur-[120px]" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
+                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Global Resources</span> Database
+              </h2>
+              <p className="text-gray-400 max-w-xl mx-auto">A curated database of opportunities to launch your global journey.</p>
+            </motion.div>
+
+            {/* Category tabs */}
+            <div className="flex flex-wrap justify-center gap-3 mb-14">
+              {[
+                { icon: Award, label: 'Scholarships' },
+                { icon: Trophy, label: 'Competitions' },
+                { icon: Brain, label: 'AI Tools' },
+                { icon: Users, label: 'Fellowships' },
+              ].map((cat, i) => (
+                <button key={i} className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${i === 0 ? 'bg-white/10 text-white border border-white/20' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-white/[0.06]'}`}>
+                  <cat.icon className="h-4 w-4" /> {cat.label}
+                </button>
+              ))}
             </div>
 
-              {/* Guarantee & Trust indicators */}
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm opacity-80">
-                <div className="flex items-center">
-                  <CheckCircle className="h-4 w-4 mr-2 text-emerald-300" />
-                  <span>30-day money-back guarantee</span>
-                </div>
-                <div className="flex items-center">
-                  <Users className="h-4 w-4 mr-2 text-blue-300" />
-                  <span>2,500+ happy families</span>
-                </div>
-                <div className="flex items-center">
-                  <Star className="h-4 w-4 mr-2 text-yellow-300" />
-                  <span>Forbes featured program</span>
-                </div>
+            {/* Resource cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
+              {[
+                { name: 'Yale YYGS', desc: 'Young Global Scholars program', color: 'text-[#00B0FF]' },
+                { name: 'Rise by Schmidt Futures', desc: 'Global scholarship for young leaders', color: 'text-white' },
+                { name: 'John Locke Essay', desc: 'International essay competition', color: 'text-emerald-400' },
+                { name: 'Ashoka Youth Ventures', desc: 'For young social entrepreneurs', color: 'text-amber-400' },
+                { name: 'Google Science Fair', desc: 'STEM competition ages 13-18', color: 'text-white' },
+                { name: 'Conrad Challenge', desc: 'Innovation for global problems', color: 'text-[#40C4FF]' },
+              ].map((r, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
+                  <div className="bg-white/[0.03] rounded-xl p-5 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500">
+                    <h3 className={`text-sm font-bold ${r.color} mb-1`}>{r.name}</h3>
+                    <p className="text-gray-500 text-xs">{r.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="text-center">
+              <button onClick={() => setShowEnrollment(true)} className="group px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]">
+                <span className="flex items-center gap-2">
+                  Access Full Database
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </button>
+              <p className="text-gray-500 mt-3 text-xs">Join 2,500+ students accessing global opportunities</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ STATS — White Minimal ═══ */}
+        <section className="py-20 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {[
+                { v: '2,500+', l: 'Young Entrepreneurs' },
+                { v: '98%', l: 'Parent Satisfaction' },
+                { v: '180', l: 'Day Program' },
+                { v: '24/7', l: 'AI Support' },
+              ].map((s, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+                  <div className="text-4xl font-bold mb-1.5 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{s.v}</div>
+                  <div className="text-gray-400 text-xs uppercase tracking-wider">{s.l}</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ FINAL CTA — Dark Cinematic ═══ */}
+        <section className="py-28 bg-slate-950 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[60%] h-[50%] bg-[#1876D2]/8 rounded-full filter blur-[150px]" />
+          </div>
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                <Zap className="h-4 w-4 text-amber-400" />
+                <span className="text-sm font-medium text-gray-400">Limited — Only 30 Spots Left</span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
+                Don't Let Your Child Fall Behind
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">While Others Get Ahead</span>
+              </h2>
+
+              <p className="text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                While other kids are just consuming content, your child could be building confidence, leadership, and an entrepreneurial mindset that lasts a lifetime.
+              </p>
+
+              {/* Urgency strip */}
+              <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mb-12">
+                {[{ v: '30', l: 'Spots Left' }, { v: '7', l: 'Days Left' }, { v: '$200', l: 'Savings' }].map((u, i) => (
+                  <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4">
+                    <div className="text-xl font-bold text-amber-400">{u.v}</div>
+                    <div className="text-gray-500 text-[10px] uppercase tracking-wider mt-0.5">{u.l}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+                <button onClick={() => setShowEnrollment(true)} className="group px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]">
+                  <span className="flex items-center gap-2">
+                    Secure Your Child's Spot Now
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300">
+                  Download Free Guide
+                </button>
+              </div>
+
+              {/* Trust */}
+              <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-500">
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-emerald-400/70" /> 30-day money-back guarantee</span>
+                <span className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5 text-[#00B0FF]/70" /> 2,500+ happy families</span>
+                <span className="flex items-center gap-1.5"><Star className="h-3.5 w-3.5 text-amber-400/70" /> Forbes featured</span>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Lead Capture CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] dark:from-gray-800 dark:via-gray-900 dark:to-black">
+        {/* ═══ LEAD CAPTURE — White ═══ */}
+        <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-6">
             <CTAWithLeadCapture
               source="homepage"
@@ -1399,8 +953,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Secondary CTA for Email Signup */}
-        <section className="py-16 bg-white dark:bg-gray-900">
+        {/* ═══ SECONDARY CTA — Light ═══ */}
+        <section className="py-16 bg-gray-50">
           <div className="max-w-2xl mx-auto px-6">
             <CTAWithLeadCapture
               source="homepage"
