@@ -208,7 +208,7 @@ export default function CourseLessonViewer({
           {(lesson.pdfUrl || lesson.pptUrl) && (
             <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
               <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <Download className="h-5 w-5 text-indigo-600" />
+                <Download className="h-5 w-5 text-[#1876D2]" />
                 Downloadable Resources
               </h2>
               
@@ -262,7 +262,7 @@ export default function CourseLessonViewer({
             <button
               onClick={onNext}
               disabled={!hasNext}
-              className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex items-center gap-2 px-6 py-3 bg-[#1876D2] text-white rounded-xl hover:bg-[#1565C0] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               Next Lesson
               <ArrowRight className="h-5 w-5" />
@@ -286,7 +286,7 @@ export default function CourseLessonViewer({
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div 
-                    className="h-2 bg-indigo-500 rounded-full transition-all duration-300"
+                    className="h-2 bg-[#E3F2FD]0 rounded-full transition-all duration-300"
                     style={{ width: `${(currentTime / duration) * 100 || 0}%` }}
                   ></div>
                 </div>
@@ -312,7 +312,7 @@ export default function CourseLessonViewer({
               <h3 className="text-lg font-bold text-gray-900">My Notes</h3>
               <button
                 onClick={() => setShowNotes(!showNotes)}
-                className="text-indigo-600 hover:text-indigo-700 transition-colors"
+                className="text-[#1876D2] hover:text-indigo-700 transition-colors"
               >
                 {showNotes ? 'Hide' : 'Show'}
               </button>
@@ -324,7 +324,7 @@ export default function CourseLessonViewer({
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Take notes while you learn..."
                 rows={6}
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               />
             )}
           </div>
@@ -332,13 +332,13 @@ export default function CourseLessonViewer({
           {/* AI Assistant */}
           <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-6 shadow-sm mb-6">
             <div className="flex items-center gap-3 mb-3">
-              <MessageCircle className="h-6 w-6 text-purple-600" />
+              <MessageCircle className="h-6 w-6 text-[#1876D2]" />
               <h3 className="text-lg font-bold text-gray-900">Need Help?</h3>
             </div>
             <p className="text-gray-600 text-sm mb-4">
               Ask our AI assistant questions about this lesson or any concepts you don't understand.
             </p>
-            <button className="w-full bg-purple-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors">
+            <button className="w-full bg-[#1876D2] text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors">
               Ask Question
             </button>
           </div>

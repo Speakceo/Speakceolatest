@@ -42,7 +42,7 @@ export default function OrbitSetup() {
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-6">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] px-8 py-6">
           <div className="flex items-center">
             <div className="bg-white/20 rounded-2xl p-3 mr-4">
               <Rocket className="h-8 w-8 text-white" />
@@ -67,9 +67,9 @@ export default function OrbitSetup() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
+            <div className="bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] rounded-xl p-6 border border-purple-200">
               <div className="flex items-center mb-4">
-                <Users className="h-8 w-8 text-purple-600 mr-3" />
+                <Users className="h-8 w-8 text-[#1876D2] mr-3" />
                 <h3 className="text-lg font-semibold text-gray-900">Account Creation</h3>
               </div>
               <p className="text-gray-600 text-sm">
@@ -97,11 +97,11 @@ export default function OrbitSetup() {
                 <span className="text-gray-700">Clear existing authentication data</span>
               </div>
               <div className="flex items-center text-sm">
-                <div className="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3">2</div>
+                <div className="w-6 h-6 bg-[#F5F9FC]0 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3">2</div>
                 <span className="text-gray-700">Create orbit_accounts table structure</span>
               </div>
               <div className="flex items-center text-sm">
-                <div className="w-6 h-6 bg-indigo-500 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3">3</div>
+                <div className="w-6 h-6 bg-[#E3F2FD]0 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3">3</div>
                 <span className="text-gray-700">Generate 300 ORBIT ID accounts</span>
               </div>
               <div className="flex items-center text-sm">
@@ -120,7 +120,7 @@ export default function OrbitSetup() {
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3">
                 <div 
-                  className="bg-gradient-to-r from-indigo-500 to-purple-600 h-3 rounded-full transition-all duration-300"
+                  className="bg-gradient-to-r from-[#1876D2] to-purple-600 h-3 rounded-full transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
@@ -148,7 +148,7 @@ export default function OrbitSetup() {
             {setupStatus === 'idle' && (
               <button
                 onClick={handleSetupOrbitAccounts}
-                className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 px-6 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                className="flex-1 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-4 px-6 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
               >
                 <Rocket className="h-5 w-5 mr-2" />
                 Initialize ORBIT System

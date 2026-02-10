@@ -21,7 +21,7 @@ export default function LoadingState({ message = 'Loading...', fullScreen = fals
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         >
-          <div className="w-16 h-16 border-4 border-indigo-500 rounded-full border-t-transparent"></div>
+          <div className="w-16 h-16 border-4 border-[#1876D2] rounded-full border-t-transparent"></div>
         </motion.div>
         
         {/* Inner circle pulse */}
@@ -31,7 +31,7 @@ export default function LoadingState({ message = 'Loading...', fullScreen = fals
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
         >
-          <div className="w-8 h-8 bg-indigo-500/20 rounded-full"></div>
+          <div className="w-8 h-8 bg-[#E3F2FD]0/20 rounded-full"></div>
         </motion.div>
       </div>
 
@@ -50,7 +50,7 @@ export default function LoadingState({ message = 'Loading...', fullScreen = fals
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
-            className="w-2 h-2 bg-indigo-500 rounded-full"
+            className="w-2 h-2 bg-[#E3F2FD]0 rounded-full"
             initial={{ opacity: 0.3 }}
             animate={{ opacity: 1 }}
             transition={{

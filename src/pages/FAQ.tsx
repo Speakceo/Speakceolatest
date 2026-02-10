@@ -157,9 +157,9 @@ const FAQ: React.FC = () => {
         keywords={["Young CEO Program FAQ", "entrepreneurship for kids", "business education children", "leadership development", "parent questions"]}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <div className="flex justify-center mb-6">
               <div className="flex items-center space-x-2 bg-white/20 rounded-full px-6 py-2">
@@ -171,7 +171,7 @@ const FAQ: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Your Questions Answered
             </h1>
-            <p className="text-xl text-indigo-100 mb-8">
+            <p className="text-xl text-gray-400 mb-8">
               Everything you need to know about transforming your child into a confident young entrepreneur
             </p>
             
@@ -183,7 +183,7 @@ const FAQ: React.FC = () => {
                 placeholder="Search your concerns..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-purple-300 focus:outline-none"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#1876D2]/30 focus:outline-none"
               />
             </div>
           </div>
@@ -208,7 +208,7 @@ const FAQ: React.FC = () => {
                 <div className="text-sm text-gray-600">Start Real Businesses</div>
               </div>
               <div className="flex flex-col items-center">
-                <div className="bg-purple-500 rounded-full p-3 mb-3">
+                <div className="bg-[#F5F9FC]0 rounded-full p-3 mb-3">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div className="text-2xl font-bold text-gray-900">30-Day</div>
@@ -232,7 +232,7 @@ const FAQ: React.FC = () => {
                 onClick={() => setSelectedCategory('All')}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   selectedCategory === 'All'
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-[#1876D2] text-white'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
               >
@@ -244,7 +244,7 @@ const FAQ: React.FC = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     selectedCategory === category
-                      ? 'bg-indigo-600 text-white'
+                      ? 'bg-[#1876D2] text-white'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                   }`}
                 >
@@ -286,7 +286,7 @@ const FAQ: React.FC = () => {
                       <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full mr-3 ${
                         item.highlight 
                           ? 'text-yellow-800 bg-yellow-100' 
-                          : 'text-indigo-600 bg-indigo-100'
+                          : 'text-[#1876D2] bg-[#E3F2FD]'
                       }`}>
                         {item.category}
                       </span>
@@ -310,10 +310,10 @@ const FAQ: React.FC = () => {
           </div>
 
           {/* Irresistible CTA Section */}
-          <div className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+          <div className="mt-16 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-8 text-white text-center">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Child's Future?</h2>
-              <p className="text-indigo-100 mb-6 text-lg">
+              <p className="text-gray-400 mb-6 text-lg">
                 Join thousands of parents who've watched their children develop confidence, leadership skills, and entrepreneurial thinking that will benefit them for life.
               </p>
               
@@ -323,28 +323,28 @@ const FAQ: React.FC = () => {
                   <span className="font-semibold">Limited Time Offer</span>
                 </div>
                 <p className="text-2xl font-bold mb-2">Save 40% + Get Bonus Materials</p>
-                <p className="text-sm text-indigo-200">Offer expires in 48 hours</p>
+                <p className="text-sm text-white/70">Offer expires in 48 hours</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <div className="bg-white/10 rounded-lg p-4">
                   <Shield className="h-8 w-8 mx-auto mb-2" />
                   <h3 className="font-semibold mb-2">30-Day Guarantee</h3>
-                  <p className="text-sm text-indigo-100">100% money-back if not satisfied</p>
+                  <p className="text-sm text-gray-400">100% money-back if not satisfied</p>
                 </div>
                 
                 <div className="bg-white/10 rounded-lg p-4">
                   <Trophy className="h-8 w-8 mx-auto mb-2" />
                   <h3 className="font-semibold mb-2">Proven Results</h3>
-                  <p className="text-sm text-indigo-100">94% completion rate, 89% start businesses</p>
+                  <p className="text-sm text-gray-400">94% completion rate, 89% start businesses</p>
                 </div>
               </div>
               
-              <button className="bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50 transition-colors transform hover:scale-105 shadow-lg">
+              <button className="bg-white text-[#1876D2] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#E3F2FD] transition-colors transform hover:scale-105 shadow-lg">
                 Enroll Now - Transform Your Child's Future
               </button>
               
-              <p className="text-sm text-indigo-200 mt-4">
+              <p className="text-sm text-white/70 mt-4">
                 ✓ Instant access ✓ All devices ✓ Expert support ✓ Parent dashboard
               </p>
             </div>
@@ -384,12 +384,12 @@ const FAQ: React.FC = () => {
               </div>
               
               <div className="text-center">
-                <div className="bg-purple-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="h-8 w-8 text-purple-600" />
+                <div className="bg-[#E3F2FD] rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                  <Phone className="h-8 w-8 text-[#1876D2]" />
                 </div>
                 <h3 className="font-semibold mb-2">Phone Consultation</h3>
                 <p className="text-sm text-gray-600 mb-4">15-minute free consultation with our experts</p>
-                <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                <button className="bg-[#1876D2] text-white px-4 py-2 rounded-lg hover:bg-[#1565C0] transition-colors">
                   Schedule Call
                 </button>
               </div>

@@ -50,7 +50,7 @@ const getAchievements = (userProgress: number, completedLessons: number, totalLe
       title: 'Innovation Award',
       description: 'Top 3 in monthly pitch competition',
       icon: Trophy,
-      color: 'from-blue-500 to-indigo-500',
+      color: 'from-blue-500 to-[#1876D2]',
       date: '2 weeks ago',
       xp: 200,
       unlocked: userProgress >= 45
@@ -88,7 +88,7 @@ const getSkillMasteries = (userProgress: number) => {
       name: 'Public Speaking',
       progress: Math.min(100, Math.round(userProgress * 0.85)),
       icon: Video,
-      color: 'from-purple-600 to-pink-600'
+      color: 'from-[#1876D2] to-[#00B0FF]'
     },
     {
       name: 'Leadership',
@@ -169,11 +169,11 @@ export default function Achievements() {
           </div>
           <div className="flex items-center space-x-4">
             <div className="text-center">
-              <p className="text-3xl font-bold text-indigo-600">{user?.points || 0}</p>
+              <p className="text-3xl font-bold text-[#1876D2]">{user?.points || 0}</p>
               <p className="text-sm text-gray-500">Total XP</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-purple-600">{Math.floor(overallProgress / 10)}</p>
+              <p className="text-3xl font-bold text-[#1876D2]">{Math.floor(overallProgress / 10)}</p>
               <p className="text-sm text-gray-500">Badges</p>
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function Achievements() {
         <div className="mt-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">Level {Math.floor(overallProgress / 20) + 1} Progress</span>
-            <span className="text-sm font-medium text-indigo-600">{overallProgress % 20 * 5}%</span>
+            <span className="text-sm font-medium text-[#1876D2]">{overallProgress % 20 * 5}%</span>
           </div>
           <ProgressBar 
             progress={overallProgress % 20 * 5} 
@@ -203,7 +203,7 @@ export default function Achievements() {
                 <div
                   key={achievement.id}
                   className={`flex items-center space-x-4 p-4 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100 ${
-                    !achievement.unlocked ? 'cursor-pointer hover:border-indigo-200 hover:bg-indigo-50' : ''
+                    !achievement.unlocked ? 'cursor-pointer hover:border-indigo-200 hover:bg-[#E3F2FD]' : ''
                   }`}
                   onClick={() => handleUnlockAchievement(achievement)}
                 >
@@ -216,7 +216,7 @@ export default function Achievements() {
                         {achievement.title}
                       </h4>
                       <div className="flex items-center space-x-2">
-                        <span className="text-sm text-indigo-600 font-medium">
+                        <span className="text-sm text-[#1876D2] font-medium">
                           +{achievement.xp} XP
                         </span>
                         {achievement.unlocked ? (
@@ -264,12 +264,12 @@ export default function Achievements() {
                   <div className="relative pt-1">
                     <div className="flex items-center justify-between mb-2">
                       <div>
-                        <span className="text-xs font-semibold inline-block text-indigo-600">
+                        <span className="text-xs font-semibold inline-block text-[#1876D2]">
                           Level {Math.floor(skill.progress / 20) + 1}
                         </span>
                       </div>
                       <div className="text-right">
-                        <span className="text-xs font-semibold inline-block text-indigo-600">
+                        <span className="text-xs font-semibold inline-block text-[#1876D2]">
                           {skill.progress}%
                         </span>
                       </div>
@@ -307,7 +307,7 @@ export default function Achievements() {
                         <Clock className="h-4 w-4 inline mr-1" />
                         {challenge.deadline}
                       </span>
-                      <span className="text-indigo-600 font-medium">{challenge.reward}</span>
+                      <span className="text-[#1876D2] font-medium">{challenge.reward}</span>
                     </div>
                     <div className="flex items-center text-sm text-gray-500">
                       <Users className="h-4 w-4 mr-1" />
@@ -315,7 +315,7 @@ export default function Achievements() {
                     </div>
                   </div>
                   <button 
-                    className="w-full mt-3 px-4 py-2 bg-white text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
+                    className="w-full mt-3 px-4 py-2 bg-white text-[#1876D2] rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
                     onClick={() => {
                       // Record activity
                       recordActivity({
@@ -347,8 +347,8 @@ export default function Achievements() {
                   });
                 }}
               >
-                <div className="h-8 w-8 rounded-lg bg-purple-100 flex items-center justify-center">
-                  <Share2 className="h-5 w-5 text-purple-600" />
+                <div className="h-8 w-8 rounded-lg bg-[#E3F2FD] flex items-center justify-center">
+                  <Share2 className="h-5 w-5 text-[#1876D2]" />
                 </div>
                 <span className="text-gray-600">Share Progress</span>
               </button>

@@ -103,7 +103,7 @@ export default function AchievementPopup({ isOpen, onClose, achievement }: Achie
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-6 w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="mt-6 w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1876D2]"
                 onClick={() => {
                   // Implement share functionality
                   if (navigator.share) {
@@ -127,7 +127,7 @@ export default function AchievementPopup({ isOpen, onClose, achievement }: Achie
               transition={{ duration: 5, ease: "linear" }}
               className="h-1 bg-gray-200 w-full"
             >
-              <div className="h-full bg-indigo-600 origin-left"></div>
+              <div className="h-full bg-[#1876D2] origin-left"></div>
             </motion.div>
           </div>
         </motion.div>

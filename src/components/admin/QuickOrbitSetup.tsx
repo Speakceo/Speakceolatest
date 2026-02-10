@@ -90,7 +90,7 @@ SELECT COUNT(*) as total_accounts FROM orbit_accounts;`;
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-6">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] px-8 py-6">
           <div className="flex items-center">
             <div className="bg-white/20 rounded-2xl p-3 mr-4">
               <Rocket className="h-8 w-8 text-white" />
@@ -119,7 +119,7 @@ SELECT COUNT(*) as total_accounts FROM orbit_accounts;`;
             {/* Automatic Setup */}
             <div className="border border-gray-200 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <Database className="h-6 w-6 text-indigo-600 mr-3" />
+                <Database className="h-6 w-6 text-[#1876D2] mr-3" />
                 <h3 className="text-lg font-semibold text-gray-900">Automatic Setup</h3>
               </div>
               <p className="text-gray-600 text-sm mb-4">
@@ -129,7 +129,7 @@ SELECT COUNT(*) as total_accounts FROM orbit_accounts;`;
               {setupStatus === 'idle' && (
                 <button
                   onClick={handleQuickSetup}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300"
+                  className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-4 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all duration-300"
                 >
                   <Rocket className="h-4 w-4 mr-2 inline" />
                   Auto Setup ORBIT System
@@ -180,7 +180,7 @@ SELECT COUNT(*) as total_accounts FROM orbit_accounts;`;
             {/* Manual Setup */}
             <div className="border border-gray-200 rounded-xl p-6">
               <div className="flex items-center mb-4">
-                <Copy className="h-6 w-6 text-purple-600 mr-3" />
+                <Copy className="h-6 w-6 text-[#1876D2] mr-3" />
                 <h3 className="text-lg font-semibold text-gray-900">Manual Setup</h3>
               </div>
               <p className="text-gray-600 text-sm mb-4">
@@ -190,7 +190,7 @@ SELECT COUNT(*) as total_accounts FROM orbit_accounts;`;
               <div className="space-y-3">
                 <button
                   onClick={() => setShowSQL(!showSQL)}
-                  className="w-full bg-purple-100 text-purple-700 py-3 px-4 rounded-xl font-semibold hover:bg-purple-200 transition-colors"
+                  className="w-full bg-[#E3F2FD] text-[#1876D2] py-3 px-4 rounded-xl font-semibold hover:bg-purple-200 transition-colors"
                 >
                   {showSQL ? 'Hide' : 'Show'} SQL Script
                 </button>
@@ -235,7 +235,7 @@ SELECT COUNT(*) as total_accounts FROM orbit_accounts;`;
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {['Orbit100001', 'Orbit100002', 'Orbit100003', 'Orbit100004'].map((id) => (
                   <div key={id} className="bg-white border border-gray-200 rounded-lg p-3 text-center">
-                    <code className="text-sm font-mono text-indigo-600">{id}</code>
+                    <code className="text-sm font-mono text-[#1876D2]">{id}</code>
                   </div>
                 ))}
               </div>

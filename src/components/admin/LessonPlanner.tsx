@@ -232,7 +232,7 @@ export default function LessonPlanner({
       case 'document':
         return <FileText className="h-4 w-4 text-orange-500" />;
       case 'ppt':
-        return <PenTool className="h-4 w-4 text-purple-500" />;
+        return <PenTool className="h-4 w-4 text-[#1876D2]" />;
       case 'quiz':
         return <Brain className="h-4 w-4 text-green-500" />;
       case 'assignment':
@@ -268,7 +268,7 @@ export default function LessonPlanner({
           )}
           <button
             onClick={onAddModule}
-            className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+            className="flex items-center px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
           >
             <Plus className="h-4 w-4 mr-1" />
             Add Module
@@ -303,7 +303,7 @@ export default function LessonPlanner({
                   </div>
                   <div>
                     <div className="flex items-center">
-                      <span className="bg-indigo-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">
+                      <span className="bg-[#1876D2] text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-2">
                         {moduleIndex + 1}
                       </span>
                       <h4 className="font-medium text-gray-900">{module.title}</h4>
@@ -325,7 +325,7 @@ export default function LessonPlanner({
                       e.stopPropagation();
                       onEditModule(module.id);
                     }}
-                    className="p-1 text-gray-500 hover:text-indigo-600"
+                    className="p-1 text-gray-500 hover:text-[#1876D2]"
                   >
                     <Edit className="h-4 w-4" />
                   </button>
@@ -352,7 +352,7 @@ export default function LessonPlanner({
                     <p className="text-sm text-gray-500">Lessons</p>
                     <button
                       onClick={() => onAddLesson(module.id)}
-                      className="text-sm text-indigo-600 hover:text-indigo-500 flex items-center"
+                      className="text-sm text-[#1876D2] hover:text-indigo-500 flex items-center"
                     >
                       <Plus className="h-3 w-3 mr-1" />
                       Add Lesson
@@ -391,7 +391,7 @@ export default function LessonPlanner({
                                   {lesson.points && (
                                     <>
                                       <span className="mx-1">•</span>
-                                      <span className="text-indigo-600 font-medium">+{lesson.points} XP</span>
+                                      <span className="text-[#1876D2] font-medium">+{lesson.points} XP</span>
                                     </>
                                   )}
                                 </div>
@@ -400,7 +400,7 @@ export default function LessonPlanner({
                             <div className="flex space-x-1">
                               <button
                                 onClick={() => onEditLesson(module.id, lesson.id)}
-                                className="p-1 text-gray-500 hover:text-indigo-600"
+                                className="p-1 text-gray-500 hover:text-[#1876D2]"
                               >
                                 <Edit className="h-4 w-4" />
                               </button>
@@ -420,7 +420,7 @@ export default function LessonPlanner({
                         <p>No lessons in this module</p>
                         <button
                           onClick={() => onAddLesson(module.id)}
-                          className="mt-2 text-sm text-indigo-600 hover:text-indigo-500"
+                          className="mt-2 text-sm text-[#1876D2] hover:text-indigo-500"
                         >
                           Add your first lesson
                         </button>
@@ -439,7 +439,7 @@ export default function LessonPlanner({
               <p className="text-gray-500 mb-4">Start by adding your first module</p>
               <button
                 onClick={onAddModule}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 inline-flex items-center"
+                className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] inline-flex items-center"
               >
                 <Plus className="h-4 w-4 mr-1" />
                 Add Module

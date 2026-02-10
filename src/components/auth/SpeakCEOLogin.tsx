@@ -91,7 +91,7 @@ export default function SpeakCEOLogin() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 dark:from-gray-900 dark:via-gray-800 dark:to-black flex items-center justify-center p-4">
       <div className="absolute inset-0 opacity-20">
-        <div className="w-full h-full bg-gradient-to-br from-white/5 to-purple-500/10 backdrop-blur-3xl"></div>
+        <div className="w-full h-full bg-gradient-to-br from-white/5 to-[#00B0FF]/10 backdrop-blur-3xl"></div>
       </div>
       
       <motion.div 
@@ -141,7 +141,7 @@ export default function SpeakCEOLogin() {
               <button
                 type="submit"
                 disabled={loading || !speakCeoId}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
+                className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
               >
                 {loading ? (
                   <div className="flex items-center justify-center">
@@ -183,7 +183,7 @@ export default function SpeakCEOLogin() {
                 <button
                   type="submit"
                   disabled={loading || !studentName.trim()}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  className="flex-1 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                 >
                   {loading ? (
                     <div className="flex items-center justify-center">

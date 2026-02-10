@@ -92,7 +92,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={this.handleRefresh}
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#1876D2] hover:bg-[#1565C0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1876D2]"
                 >
                   <RefreshCw className="w-5 h-5 mr-2" />
                   Try Again
@@ -102,7 +102,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={this.handleGoHome}
-                  className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1876D2]"
                 >
                   <Home className="w-5 h-5 mr-2" />
                   Go Home
@@ -114,7 +114,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               <p>Error ID: {Math.random().toString(36).substr(2, 9)}</p>
               <p className="mt-1">
                 If the problem persists, please contact{' '}
-                <a href="mailto:support@speakceo.ai" className="text-indigo-600 hover:text-indigo-500">
+                <a href="mailto:support@speakceo.ai" className="text-[#1876D2] hover:text-indigo-500">
                   support@speakceo.ai
                 </a>
               </p>

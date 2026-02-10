@@ -410,7 +410,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
           onClick={() => setActiveTab('overview')}
           className={`py-4 px-6 border-b-2 font-medium text-sm ${
             activeTab === 'overview'
-              ? 'border-indigo-500 text-indigo-600'
+              ? 'border-[#1876D2] text-[#1876D2]'
               : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
           }`}
         >
@@ -421,7 +421,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
           onClick={() => setActiveTab('analytics')}
           className={`py-4 px-6 border-b-2 font-medium text-sm ${
             activeTab === 'analytics'
-              ? 'border-indigo-500 text-indigo-600'
+              ? 'border-[#1876D2] text-[#1876D2]'
               : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
           }`}
         >
@@ -432,7 +432,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
           onClick={() => setActiveTab('careers')}
           className={`py-4 px-6 border-b-2 font-medium text-sm ${
             activeTab === 'careers'
-              ? 'border-indigo-500 text-indigo-600'
+              ? 'border-[#1876D2] text-[#1876D2]'
               : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
           }`}
         >
@@ -445,7 +445,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
       <div ref={targetRef} className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
         {/* Header */}
         <div className={`text-center mb-8 pb-6 border-b border-gray-200 transition-opacity duration-500 ${animationStep >= 0 ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto mb-4">
+          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] mx-auto mb-4">
             <Rocket className="h-8 w-8 text-white" />
           </div>
           <h2 className="text-3xl font-bold text-gray-900">Career Pathway Guide</h2>
@@ -481,22 +481,22 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                   )}
                   
                   {result.entrepreneurialScore !== undefined && (
-                    <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6">
+                    <div className="bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD] rounded-xl p-6">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                          <Zap className="h-5 w-5 text-purple-600 mr-2" />
+                          <Zap className="h-5 w-5 text-[#1876D2] mr-2" />
                           Entrepreneurial Potential
                         </h3>
-                        <div className="text-2xl font-bold text-purple-600">{result.entrepreneurialScore}%</div>
+                        <div className="text-2xl font-bold text-[#1876D2]">{result.entrepreneurialScore}%</div>
                       </div>
-                      <div className="h-2 w-full bg-purple-100 rounded-full mb-2">
+                      <div className="h-2 w-full bg-[#E3F2FD] rounded-full mb-2">
                         <div 
-                          className="h-2 bg-purple-600 rounded-full" 
+                          className="h-2 bg-[#1876D2] rounded-full" 
                           style={{ width: `${result.entrepreneurialScore}%` }}
                         ></div>
                       </div>
                       <p className="text-sm text-gray-600">
-                        Rating: <span className="font-medium text-purple-700">{getScoreDescription(result.entrepreneurialScore, 'entrepreneurial')}</span>
+                        Rating: <span className="font-medium text-[#1876D2]">{getScoreDescription(result.entrepreneurialScore, 'entrepreneurial')}</span>
                       </p>
                     </div>
                   )}
@@ -507,7 +507,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             {/* Overview */}
             <div className={`mb-8 transition-all duration-500 ${animationStep >= 2 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
               <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                <Target className="h-5 w-5 text-indigo-600 mr-2" />
+                <Target className="h-5 w-5 text-[#1876D2] mr-2" />
                 Overview
               </h3>
               <p className="text-gray-700 leading-relaxed">
@@ -517,9 +517,9 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             
             {/* Personality & Learning Style */}
             <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 transition-all duration-500 ${animationStep >= 3 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-              <div className="bg-indigo-50 rounded-xl p-6">
+              <div className="bg-[#E3F2FD] rounded-xl p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Brain className="h-5 w-5 text-indigo-600 mr-2" />
+                  <Brain className="h-5 w-5 text-[#1876D2] mr-2" />
                   Personality Insights
                 </h3>
                 <p className="text-gray-700">
@@ -527,9 +527,9 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                 </p>
               </div>
               
-              <div className="bg-purple-50 rounded-xl p-6">
+              <div className="bg-[#F5F9FC] rounded-xl p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Sparkles className="h-5 w-5 text-purple-600 mr-2" />
+                  <Sparkles className="h-5 w-5 text-[#1876D2] mr-2" />
                   Learning Style
                 </h3>
                 <p className="text-gray-700">
@@ -541,7 +541,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             {/* Top Career Paths */}
             <div className={`mb-8 transition-all duration-500 ${animationStep >= 4 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
               <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                <Rocket className="h-5 w-5 text-indigo-600 mr-2" />
+                <Rocket className="h-5 w-5 text-[#1876D2] mr-2" />
                 Top 3 Suggested Career Paths
               </h3>
               <div className="space-y-4">
@@ -551,7 +551,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                     className={`bg-gradient-to-r from-gray-50 to-white border border-gray-200 rounded-lg p-4 hover:border-indigo-200 transition-all duration-500 ${animationStep >= 5 + index ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform -translate-x-10'}`}
                   >
                     <div className="flex items-center">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-indigo-100 text-indigo-600 font-bold mr-3">
+                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-[#E3F2FD] text-[#1876D2] font-bold mr-3">
                         {index + 1}
                       </div>
                       <p className="text-gray-800 font-medium">{career}</p>
@@ -564,7 +564,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             {/* Skills to Develop */}
             <div className={`mb-8 transition-all duration-500 ${animationStep >= 6 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
               <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                <Target className="h-5 w-5 text-indigo-600 mr-2" />
+                <Target className="h-5 w-5 text-[#1876D2] mr-2" />
                 Skills to Develop
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -581,7 +581,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             </div>
             
             {/* Motivational Message */}
-            <div className={`bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white transition-all duration-500 ${animationStep >= 7 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
+            <div className={`bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white transition-all duration-500 ${animationStep >= 7 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
               <h3 className="text-xl font-semibold mb-3">Your Journey Begins Now</h3>
               <p className="leading-relaxed">
                 {result.motivationalMessage}
@@ -597,7 +597,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             {/* Skills Radar Chart */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
               <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <Target className="h-5 w-5 text-indigo-600 mr-2" />
+                <Target className="h-5 w-5 text-[#1876D2] mr-2" />
                 Skills Assessment & Growth Potential
               </h4>
               <div className="h-80">
@@ -617,7 +617,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <BookOpen className="h-5 w-5 text-purple-600 mr-2" />
+                  <BookOpen className="h-5 w-5 text-[#1876D2] mr-2" />
                   Learning Style Distribution
                 </h4>
                 <div className="h-64">
@@ -636,7 +636,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
               {/* Personality Traits */}
               <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                 <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Brain className="h-5 w-5 text-indigo-600 mr-2" />
+                  <Brain className="h-5 w-5 text-[#1876D2] mr-2" />
                   Personality Trait Analysis
                 </h4>
                 <div className="h-64">
@@ -693,20 +693,20 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             
             {/* Entrepreneurial Potential */}
             {result.entrepreneurialScore !== undefined && (
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6">
+              <div className="bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD] rounded-xl p-6">
                 <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Rocket className="h-5 w-5 text-purple-600 mr-2" />
+                  <Rocket className="h-5 w-5 text-[#1876D2] mr-2" />
                   Entrepreneurial Potential Analysis
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="bg-white rounded-xl p-4 shadow-sm">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="text-sm font-medium text-gray-700">Innovation Score</h5>
-                      <span className="text-lg font-semibold text-purple-600">{Math.round(result.entrepreneurialScore * 0.9)}%</span>
+                      <span className="text-lg font-semibold text-[#1876D2]">{Math.round(result.entrepreneurialScore * 0.9)}%</span>
                     </div>
-                    <div className="h-2 w-full bg-purple-100 rounded-full">
+                    <div className="h-2 w-full bg-[#E3F2FD] rounded-full">
                       <div 
-                        className="h-2 bg-purple-600 rounded-full" 
+                        className="h-2 bg-[#1876D2] rounded-full" 
                         style={{ width: `${Math.round(result.entrepreneurialScore * 0.9)}%` }}
                       ></div>
                     </div>
@@ -714,11 +714,11 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                   <div className="bg-white rounded-xl p-4 shadow-sm">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="text-sm font-medium text-gray-700">Risk Tolerance</h5>
-                      <span className="text-lg font-semibold text-indigo-600">{Math.round(result.entrepreneurialScore * 0.8)}%</span>
+                      <span className="text-lg font-semibold text-[#1876D2]">{Math.round(result.entrepreneurialScore * 0.8)}%</span>
                     </div>
-                    <div className="h-2 w-full bg-indigo-100 rounded-full">
+                    <div className="h-2 w-full bg-[#E3F2FD] rounded-full">
                       <div 
-                        className="h-2 bg-indigo-600 rounded-full" 
+                        className="h-2 bg-[#1876D2] rounded-full" 
                         style={{ width: `${Math.round(result.entrepreneurialScore * 0.8)}%` }}
                       ></div>
                     </div>
@@ -726,11 +726,11 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                   <div className="bg-white rounded-xl p-4 shadow-sm">
                     <div className="flex items-center justify-between mb-2">
                       <h5 className="text-sm font-medium text-gray-700">Leadership Potential</h5>
-                      <span className="text-lg font-semibold text-pink-600">{Math.round(result.entrepreneurialScore * 1.1)}%</span>
+                      <span className="text-lg font-semibold text-[#00B0FF]">{Math.round(result.entrepreneurialScore * 1.1)}%</span>
                     </div>
-                    <div className="h-2 w-full bg-pink-100 rounded-full">
+                    <div className="h-2 w-full bg-[#E3F2FD] rounded-full">
                       <div 
-                        className="h-2 bg-pink-600 rounded-full" 
+                        className="h-2 bg-[#00B0FF] rounded-full" 
                         style={{ width: `${Math.min(100,Math.round(result.entrepreneurialScore * 1.1))}%` }}
                       ></div>
                     </div>
@@ -788,16 +788,16 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                 return (
                   <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
                     <div className="flex items-center mb-4">
-                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-100 text-indigo-600 font-bold mr-3">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-[#E3F2FD] text-[#1876D2] font-bold mr-3">
                         {index + 1}
                       </div>
                       <h4 className="text-xl font-semibold text-gray-900">{career}</h4>
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                      <div className="bg-indigo-50 rounded-lg p-4">
+                      <div className="bg-[#E3F2FD] rounded-lg p-4">
                         <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <Target className="h-4 w-4 text-indigo-600 mr-2" />
+                          <Target className="h-4 w-4 text-[#1876D2] mr-2" />
                           Key Skills
                         </h5>
                         <ul className="space-y-2">
@@ -810,15 +810,15 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                         </ul>
                       </div>
                       
-                      <div className="bg-purple-50 rounded-lg p-4">
+                      <div className="bg-[#F5F9FC] rounded-lg p-4">
                         <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <GraduationCap className="h-4 w-4 text-purple-600 mr-2" />
+                          <GraduationCap className="h-4 w-4 text-[#1876D2] mr-2" />
                           Education Paths
                         </h5>
                         <ul className="space-y-2">
                           {selectedPaths.map((path, i) => (
                             <li key={i} className="flex items-center text-gray-700">
-                              <ArrowRight className="h-4 w-4 text-purple-500 mr-2 flex-shrink-0" />
+                              <ArrowRight className="h-4 w-4 text-[#1876D2] mr-2 flex-shrink-0" />
                               {path}
                             </li>
                           ))}
@@ -900,7 +900,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             {/* Development Roadmap */}
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
               <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <Layers className="h-5 w-5 text-indigo-600 mr-2" />
+                <Layers className="h-5 w-5 text-[#1876D2] mr-2" />
                 Career Development Roadmap
               </h4>
               
@@ -947,7 +947,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
                   ].map((phase, index) => (
                     <div key={index} className="relative flex items-start ml-8">
                       <div className="absolute -left-8 mt-1">
-                        <div className="h-6 w-6 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
+                        <div className="h-6 w-6 rounded-full bg-[#1876D2] flex items-center justify-center text-white text-xs font-bold">
                           {index + 1}
                         </div>
                       </div>
@@ -970,7 +970,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
             </div>
             
             {/* Orbit Programs */}
-            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white">
+            <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white">
               <h4 className="text-lg font-semibold mb-4 flex items-center">
                 <Star className="h-5 w-5 mr-2" />
                 How Orbit Can Help
@@ -1018,7 +1018,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
               </div>
               <button
                 onClick={onClose}
-                className="w-full mt-6 bg-white text-indigo-600 px-4 py-3 rounded-lg font-medium hover:bg-indigo-50 transition-colors flex items-center justify-center"
+                className="w-full mt-6 bg-white text-[#1876D2] px-4 py-3 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors flex items-center justify-center"
               >
                 <span>Explore Our Programs</span>
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -1038,7 +1038,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
       <div className="flex flex-wrap justify-center gap-4">
         <button
           onClick={handleDownloadPDF}
-          className="flex items-center space-x-2 px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+          className="flex items-center space-x-2 px-6 py-3 bg-[#1876D2] text-white rounded-xl font-medium hover:bg-[#1565C0] transition-colors"
           data-tooltip-id="download-tooltip"
           data-tooltip-content="Download as PDF"
         >
@@ -1049,7 +1049,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
         <button
           onClick={handleShare}
           disabled={isSharing}
-          className="flex items-center space-x-2 px-6 py-3 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 transition-colors disabled:opacity-70"
+          className="flex items-center space-x-2 px-6 py-3 bg-[#1876D2] text-white rounded-xl font-medium hover:bg-purple-700 transition-colors disabled:opacity-70"
           data-tooltip-id="share-tooltip"
           data-tooltip-content="Share via link"
         >
@@ -1077,7 +1077,7 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
         </p>
         <button
           onClick={onClose}
-          className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium hover:opacity-90 transition-all w-full justify-center"
+          className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-xl font-medium hover:opacity-90 transition-all w-full justify-center"
         >
           <span>Explore Our Programs</span>
           <ArrowRight className="h-5 w-5" />

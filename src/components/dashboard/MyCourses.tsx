@@ -141,7 +141,7 @@ export default function MyCourses() {
         <div className="mb-6">
           <button
             onClick={handleBackToOverview}
-            className="flex items-center gap-2 text-indigo-600 hover:text-indigo-700 transition-colors"
+            className="flex items-center gap-2 text-[#1876D2] hover:text-indigo-700 transition-colors"
           >
             ← Back to My Courses
           </button>
@@ -157,7 +157,7 @@ export default function MyCourses() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <BookOpen className="h-8 w-8 text-indigo-600" />
+          <BookOpen className="h-8 w-8 text-[#1876D2]" />
           <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
         </div>
         <p className="text-xl text-gray-600">
@@ -296,8 +296,8 @@ export default function MyCourses() {
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="text-center">
-            <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <BookOpen className="h-8 w-8 text-indigo-600" />
+            <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-3">
+              <BookOpen className="h-8 w-8 text-[#1876D2]" />
             </div>
             <div className="text-2xl font-bold text-gray-900">15</div>
             <div className="text-sm text-gray-500">Lessons Completed</div>
@@ -312,8 +312,8 @@ export default function MyCourses() {
           </div>
           
           <div className="text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <Crown className="h-8 w-8 text-purple-600" />
+            <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-3">
+              <Crown className="h-8 w-8 text-[#1876D2]" />
             </div>
             <div className="text-2xl font-bold text-gray-900">3</div>
             <div className="text-sm text-gray-500">Badges Earned</div>

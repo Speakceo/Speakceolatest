@@ -211,7 +211,7 @@ export default function LoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2] sm:text-sm"
                 placeholder=""
               />
             </div>
@@ -231,7 +231,7 @@ export default function LoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2] sm:text-sm"
                 placeholder=""
               />
             </div>
@@ -245,7 +245,7 @@ export default function LoginForm() {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              className="h-4 w-4 text-[#1876D2] focus:ring-[#1876D2] border-gray-300 rounded"
             />
             <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
               Remember me
@@ -254,7 +254,7 @@ export default function LoginForm() {
 
           <Link
             to="/forgot-password"
-            className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+            className="text-sm font-medium text-[#1876D2] hover:text-indigo-500"
           >
             Forgot password?
           </Link>
@@ -263,7 +263,7 @@ export default function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex justify-center py-3 px-4 border-0 rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:opacity-90 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
+          className="w-full flex justify-center py-3 px-4 border-0 rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#1876D2] to-[#00B0FF] hover:opacity-90 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
         >
           {loading ? 'Signing in...' : 'Sign in'}
         </button>

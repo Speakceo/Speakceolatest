@@ -37,7 +37,7 @@ const categories = [
   {
     name: 'Public Speaking',
     icon: MessageSquare,
-    color: 'bg-purple-500',
+    color: 'bg-[#F5F9FC]0',
     examples: [
       'Tips for confident presentations',
       'How to structure a pitch?',
@@ -166,7 +166,7 @@ export default function AILearningCoach({ onClose }: { onClose: () => void }) {
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center">
+              <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-[#1876D2] to-[#00B0FF] flex items-center justify-center">
                 <Brain className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -187,7 +187,7 @@ export default function AILearningCoach({ onClose }: { onClose: () => void }) {
                 onClick={() => handleCategorySelect(category.name)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                   selectedCategory === category.name
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-[#1876D2] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -207,7 +207,7 @@ export default function AILearningCoach({ onClose }: { onClose: () => void }) {
             >
               <div className={`max-w-[80%] rounded-2xl p-4 ${
                 message.type === 'user'
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-[#1876D2] text-white'
                   : 'bg-gray-100 text-gray-900'
               }`}>
                 <div className="prose max-w-none">
@@ -218,7 +218,7 @@ export default function AILearningCoach({ onClose }: { onClose: () => void }) {
                 {message.type === 'ai' && message.audioUrl && (
                   <button
                     onClick={() => toggleAudio(message.id)}
-                    className="mt-2 flex items-center text-indigo-600 hover:text-indigo-700"
+                    className="mt-2 flex items-center text-[#1876D2] hover:text-indigo-700"
                   >
                     {isPlaying[message.id] ? (
                       <VolumeX className="h-5 w-5 mr-1" />
@@ -249,7 +249,7 @@ export default function AILearningCoach({ onClose }: { onClose: () => void }) {
                 <button
                   key={index}
                   onClick={() => handleExampleClick(example)}
-                  className="flex items-center space-x-1 px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-indigo-50 hover:text-indigo-600 transition-colors whitespace-nowrap border border-gray-200"
+                  className="flex items-center space-x-1 px-3 py-1 bg-white rounded-full text-sm text-gray-600 hover:bg-[#E3F2FD] hover:text-[#1876D2] transition-colors whitespace-nowrap border border-gray-200"
                 >
                   <ChevronRight className="h-4 w-4" />
                   <span>{example}</span>
@@ -268,13 +268,13 @@ export default function AILearningCoach({ onClose }: { onClose: () => void }) {
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Type your question here..."
-              className="flex-1 px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="flex-1 px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               maxLength={200}
             />
             <button
               onClick={handleSend}
               disabled={isTyping || !input.trim()}
-              className="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+              className="flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
             >
               <Send className="h-5 w-5" />
             </button>

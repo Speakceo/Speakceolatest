@@ -291,7 +291,7 @@ export default function CoursesPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1876D2] mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading courses...</p>
         </div>
       </div>
@@ -312,7 +312,7 @@ export default function CoursesPage() {
             </div>
             <button
               onClick={() => setShowAddCourseModal(true)}
-              className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 flex items-center"
+              className="bg-[#1876D2] text-white px-4 py-2 rounded-lg hover:bg-[#1565C0] flex items-center"
             >
               <Plus className="h-5 w-5 mr-2" />
               Add New Course
@@ -341,7 +341,7 @@ export default function CoursesPage() {
                 onClick={() => setActiveTab('courses')}
                 className={`py-2 px-1 border-b-2 font-medium text-sm ${
                   activeTab === 'courses'
-                    ? 'border-indigo-500 text-indigo-600'
+                    ? 'border-[#1876D2] text-[#1876D2]'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -351,7 +351,7 @@ export default function CoursesPage() {
                 onClick={() => setActiveTab('lessons')}
                 className={`py-2 px-1 border-b-2 font-medium text-sm ${
                   activeTab === 'lessons'
-                    ? 'border-indigo-500 text-indigo-600'
+                    ? 'border-[#1876D2] text-[#1876D2]'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -361,7 +361,7 @@ export default function CoursesPage() {
                 onClick={() => setActiveTab('materials')}
                 className={`py-2 px-1 border-b-2 font-medium text-sm ${
                   activeTab === 'materials'
-                    ? 'border-indigo-500 text-indigo-600'
+                    ? 'border-[#1876D2] text-[#1876D2]'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -381,14 +381,14 @@ export default function CoursesPage() {
                 placeholder="Search courses..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
             
             <select
               value={filterLevel}
               onChange={(e) => setFilterLevel(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
             >
               <option value="all">All Levels</option>
               <option value="Beginner">Beginner</option>
@@ -504,7 +504,7 @@ function CoursesTab({ courses, onSelectCourse, onDeleteCourse, onAddLesson, onAd
                   onSelectCourse(course);
                   onAddLesson();
                 }}
-                className="flex-1 bg-indigo-600 text-white text-center py-2 px-3 rounded text-sm hover:bg-indigo-700"
+                className="flex-1 bg-[#1876D2] text-white text-center py-2 px-3 rounded text-sm hover:bg-[#1565C0]"
               >
                 Add Lesson
               </button>
@@ -595,7 +595,7 @@ function MaterialsTab({ courses, onAddMaterial }: any) {
                   <p className="text-sm text-gray-500">{material.courseName}</p>
                   <p className="text-sm text-gray-600 mt-1">{material.description}</p>
                   <div className="flex items-center space-x-4 mt-2">
-                    <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">{material.type}</span>
+                    <span className="text-xs bg-[#E3F2FD] text-purple-800 px-2 py-1 rounded">{material.type}</span>
                     {material.file_size > 0 && (
                       <span className="text-xs text-gray-500">
                         {(material.file_size / 1024 / 1024).toFixed(1)} MB
@@ -673,7 +673,7 @@ function AddCourseModal({ isOpen, onClose, onSubmit }: any) {
                 required
                 value={formData.title}
                 onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
 
@@ -683,7 +683,7 @@ function AddCourseModal({ isOpen, onClose, onSubmit }: any) {
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
 
@@ -694,7 +694,7 @@ function AddCourseModal({ isOpen, onClose, onSubmit }: any) {
                   type="text"
                   value={formData.duration}
                   onChange={(e) => setFormData(prev => ({ ...prev, duration: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                   placeholder="e.g., 4 weeks"
                 />
               </div>
@@ -704,7 +704,7 @@ function AddCourseModal({ isOpen, onClose, onSubmit }: any) {
                 <select
                   value={formData.level}
                   onChange={(e) => setFormData(prev => ({ ...prev, level: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                 >
                   <option value="Beginner">Beginner</option>
                   <option value="Intermediate">Intermediate</option>
@@ -719,7 +719,7 @@ function AddCourseModal({ isOpen, onClose, onSubmit }: any) {
                 type="url"
                 value={formData.image_url}
                 onChange={(e) => setFormData(prev => ({ ...prev, image_url: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                 placeholder="https://example.com/image.jpg"
               />
             </div>
@@ -734,7 +734,7 @@ function AddCourseModal({ isOpen, onClose, onSubmit }: any) {
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                className="px-6 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
               >
                 Create Course
               </button>
@@ -787,7 +787,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
                 required
                 value={formData.title}
                 onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
 
@@ -797,7 +797,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
                 <select
                   value={formData.type}
                   onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                 >
                   <option value="text">Text</option>
                   <option value="video">Video</option>
@@ -814,7 +814,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
                   type="text"
                   value={formData.duration}
                   onChange={(e) => setFormData(prev => ({ ...prev, duration: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                   placeholder="e.g., 30 min"
                 />
               </div>
@@ -826,7 +826,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
 
@@ -836,7 +836,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
                 value={formData.content}
                 onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
                 rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                 placeholder="Lesson content, instructions, or notes..."
               />
             </div>
@@ -848,7 +848,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
                   type="url"
                   value={formData.url}
                   onChange={(e) => setFormData(prev => ({ ...prev, url: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                   placeholder="https://example.com/resource"
                 />
               </div>
@@ -861,7 +861,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
                 min="0"
                 value={formData.points}
                 onChange={(e) => setFormData(prev => ({ ...prev, points: parseInt(e.target.value) || 0 }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
 
@@ -875,7 +875,7 @@ function AddLessonModal({ isOpen, onClose, onSubmit, course }: any) {
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                className="px-6 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
               >
                 Add Lesson
               </button>
@@ -928,7 +928,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
                 required
                 value={formData.title}
                 onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
 
@@ -938,7 +938,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
                 value={formData.description}
                 onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
               />
             </div>
 
@@ -948,7 +948,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
                 <select
                   value={formData.type}
                   onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                 >
                   <option value="pdf">PDF Document</option>
                   <option value="ppt">PowerPoint</option>
@@ -966,7 +966,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
                 <select
                   value={formData.lesson_id}
                   onChange={(e) => setFormData(prev => ({ ...prev, lesson_id: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                 >
                   <option value="">No specific lesson</option>
                   {course.lessons.map((lesson: Lesson) => (
@@ -984,7 +984,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
                   required
                   value={formData.file_url}
                   onChange={(e) => setFormData(prev => ({ ...prev, file_url: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                   placeholder="https://example.com/resource"
                 />
               </div>
@@ -994,7 +994,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
                 <input
                   type="file"
                   onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2]"
                   accept={
                     formData.type === 'pdf' ? '.pdf' :
                     formData.type === 'ppt' ? '.ppt,.pptx' :
@@ -1015,7 +1015,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
                 id="downloadable"
                 checked={formData.is_downloadable}
                 onChange={(e) => setFormData(prev => ({ ...prev, is_downloadable: e.target.checked }))}
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                className="h-4 w-4 text-[#1876D2] focus:ring-[#1876D2] border-gray-300 rounded"
               />
               <label htmlFor="downloadable" className="ml-2 block text-sm text-gray-900">
                 Allow downloads
@@ -1032,7 +1032,7 @@ function AddMaterialModal({ isOpen, onClose, onSubmit, course }: any) {
               </button>
               <button
                 type="submit"
-                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                className="px-6 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
               >
                 Add Material
               </button>

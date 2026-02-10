@@ -53,7 +53,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-indigo-50 to-mint-50 pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-white to-[#F5F9FC] pt-16">
       {/* Hero Section */}
       <motion.section 
         className="pt-32 pb-16 px-4 sm:px-6 lg:px-8"
@@ -82,7 +82,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {contactInfo.map((info, index) => (
               <div key={index} className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-indigo-600 mb-4">{info.icon}</div>
+                <div className="text-[#1876D2] mb-4">{info.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{info.title}</h3>
                 {info.details.map((detail, idx) => (
                   <p key={idx} className="text-gray-600">{detail}</p>
@@ -115,7 +115,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                   placeholder="John Doe"
                 />
               </div>
@@ -131,7 +131,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                   placeholder="john@example.com"
                 />
               </div>
@@ -146,7 +146,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                 >
                   <option value="">Select a subject</option>
                   <option value="enrollment">Program Enrollment</option>
@@ -168,7 +168,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                   placeholder="Your message here..."
                 />
               </div>
@@ -179,7 +179,7 @@ const Contact = () => {
                 className={`w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-full text-white font-medium transition-colors ${
                   isSubmitting 
                     ? 'bg-gray-400 cursor-not-allowed' 
-                    : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700'
+                    : 'bg-gradient-to-r from-[#1876D2] to-[#00B0FF] hover:from-[#1565C0] hover:to-[#0091EA]'
                 }`}
               >
                 <Send className="h-5 w-5" />

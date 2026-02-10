@@ -464,7 +464,7 @@ export default function BusinessInsights() {
           <h2 className="text-xl font-semibold text-gray-900">Business Insights</h2>
           <button
             onClick={handleRefresh}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+            className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
           >
             Retry
           </button>
@@ -484,7 +484,7 @@ export default function BusinessInsights() {
           <p className="text-gray-600 mb-4">No business data available yet.</p>
           <button
             onClick={handleGoToSimulators}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+            className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
           >
             Go to Simulators
           </button>
@@ -507,7 +507,7 @@ export default function BusinessInsights() {
             className={`p-2 rounded-lg transition-colors ${
               isRefreshing 
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                : 'bg-indigo-100 text-indigo-600 hover:bg-indigo-200'
+                : 'bg-[#E3F2FD] text-[#1876D2] hover:bg-indigo-200'
             }`}
           >
             <RefreshCw className={`h-5 w-5 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -521,7 +521,7 @@ export default function BusinessInsights() {
           score={marketScore}
           description="How well your business model addresses market needs"
           improvement="Focus on defining clear value propositions and customer segments"
-          icon={<Target className="h-5 w-5 text-indigo-600" />}
+          icon={<Target className="h-5 w-5 text-[#1876D2]" />}
           color="indigo"
           isLoading={isAnalyzing}
         />
@@ -556,13 +556,13 @@ export default function BusinessInsights() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">Estimated break-even in</span>
-                <span className="text-lg font-semibold text-indigo-600">
+                <span className="text-lg font-semibold text-[#1876D2]">
                   {breakEvenMonths} months
                 </span>
               </div>
               <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-indigo-500 rounded-full transition-all duration-1000 ease-out" 
+                  className="h-full bg-[#E3F2FD]0 rounded-full transition-all duration-1000 ease-out" 
                   style={{ width: `${Math.min(100, (breakEvenMonths / 24) * 100)}%` }}
                 ></div>
               </div>
@@ -602,7 +602,7 @@ export default function BusinessInsights() {
                 <textarea
                   value={editedFeedback}
                   onChange={(e) => setEditedFeedback(e.target.value)}
-                  className="w-full h-40 p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  className="w-full h-40 p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                   placeholder="Edit AI feedback..."
                 />
               ) : (

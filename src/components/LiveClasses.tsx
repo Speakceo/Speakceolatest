@@ -95,7 +95,7 @@ export default function LiveClasses() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature) => (
             <div key={feature.title} className="bg-white rounded-2xl p-6 shadow-lg">
-              <div className="h-12 w-12 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center mb-4">
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-r from-[#1876D2] to-[#00B0FF] flex items-center justify-center mb-4">
                 <feature.icon className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
@@ -115,7 +115,7 @@ export default function LiveClasses() {
                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                   class_.level === 'Beginner' ? 'bg-green-100 text-green-800' :
                   class_.level === 'Intermediate' ? 'bg-blue-100 text-blue-800' :
-                  'bg-purple-100 text-purple-800'
+                  'bg-[#E3F2FD] text-purple-800'
                 }`}>
                   {class_.level}
                 </span>
@@ -146,7 +146,7 @@ export default function LiveClasses() {
               <p className="mt-4 text-gray-600 line-clamp-2">{class_.description}</p>
               <button 
                 onClick={() => setSelectedClass(class_)}
-                className="mt-6 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300"
+                className="mt-6 w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300"
               >
                 Join Class
               </button>
@@ -185,23 +185,23 @@ export default function LiveClasses() {
                 </div>
               </div>
               
-              <div className="bg-indigo-50 rounded-xl p-6 mb-6">
+              <div className="bg-[#E3F2FD] rounded-xl p-6 mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Class Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-center text-gray-700">
-                    <Calendar className="h-5 w-5 text-indigo-600 mr-2" />
+                    <Calendar className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{format(selectedClass.date, 'MMMM d, yyyy')}</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <Clock className="h-5 w-5 text-indigo-600 mr-2" />
+                    <Clock className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{selectedClass.duration}</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <Users className="h-5 w-5 text-indigo-600 mr-2" />
+                    <Users className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{selectedClass.attendees} students enrolled</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <BookOpen className="h-5 w-5 text-indigo-600 mr-2" />
+                    <BookOpen className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{selectedClass.level} Level</span>
                   </div>
                 </div>
@@ -216,19 +216,19 @@ export default function LiveClasses() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">What You'll Learn</h3>
                 <ul className="space-y-2">
                   <li className="flex items-start">
-                    <ChevronRight className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                    <ChevronRight className="h-5 w-5 text-[#1876D2] mr-2 mt-0.5" />
                     <span className="text-gray-700">Understand key concepts and principles</span>
                   </li>
                   <li className="flex items-start">
-                    <ChevronRight className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                    <ChevronRight className="h-5 w-5 text-[#1876D2] mr-2 mt-0.5" />
                     <span className="text-gray-700">Apply practical techniques to real-world scenarios</span>
                   </li>
                   <li className="flex items-start">
-                    <ChevronRight className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                    <ChevronRight className="h-5 w-5 text-[#1876D2] mr-2 mt-0.5" />
                     <span className="text-gray-700">Develop essential skills through interactive exercises</span>
                   </li>
                   <li className="flex items-start">
-                    <ChevronRight className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                    <ChevronRight className="h-5 w-5 text-[#1876D2] mr-2 mt-0.5" />
                     <span className="text-gray-700">Receive personalized feedback from industry experts</span>
                   </li>
                 </ul>
@@ -242,7 +242,7 @@ export default function LiveClasses() {
                   Close
                 </button>
                 <button
-                  className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-colors"
+                  className="px-6 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-colors"
                 >
                   Enroll Now
                 </button>
@@ -254,12 +254,12 @@ export default function LiveClasses() {
 
       {/* CTA Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 md:p-12 text-white text-center">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-3xl p-8 md:p-12 text-white text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
           <p className="text-xl text-indigo-100 mb-8">
             Join our community of young entrepreneurs and start your business journey today!
           </p>
-          <button className="bg-white text-indigo-600 px-8 py-4 rounded-full font-medium hover:bg-indigo-50 transition-colors duration-300">
+          <button className="bg-white text-[#1876D2] px-8 py-4 rounded-full font-medium hover:bg-[#E3F2FD] transition-colors duration-300">
             Enroll Now
           </button>
         </div>

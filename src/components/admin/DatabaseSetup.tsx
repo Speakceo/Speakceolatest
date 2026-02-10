@@ -494,7 +494,7 @@ ${totalRecords === 0 ? 'Database appears empty. Click "Setup Database" to popula
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <div className="flex items-center mb-4">
-        <Database className="h-6 w-6 text-indigo-600 mr-2" />
+        <Database className="h-6 w-6 text-[#1876D2] mr-2" />
         <h2 className="text-lg font-semibold text-gray-900">Database Management</h2>
       </div>
 
@@ -507,7 +507,7 @@ ${totalRecords === 0 ? 'Database appears empty. Click "Setup Database" to popula
         <button
           onClick={setupDatabase}
           disabled={isLoading}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 flex items-center"
+          className="bg-[#1876D2] text-white px-4 py-2 rounded-lg hover:bg-[#1565C0] disabled:opacity-50 flex items-center"
         >
           {isLoading ? (
             <RefreshCw className="h-4 w-4 mr-2 animate-spin" />

@@ -76,7 +76,7 @@ export default function JourneySection() {
         <div className="mt-16 text-center">
           <a 
             href="/journey" 
-            className="inline-flex items-center px-8 py-4 border-2 border-white text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white shadow-lg transition-all"
+            className="inline-flex items-center px-8 py-4 border-2 border-white text-base font-medium rounded-md text-indigo-700 bg-white hover:bg-[#E3F2FD] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white shadow-lg transition-all"
           >
             Explore the full journey
             <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

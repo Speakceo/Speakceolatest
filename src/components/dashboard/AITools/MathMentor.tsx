@@ -271,7 +271,7 @@ export default function MathMentor() {
       case 'unit-pricing':
         return <ShoppingCart className="h-5 w-5 text-blue-600" />;
       case 'budgeting':
-        return <BarChart2 className="h-5 w-5 text-purple-600" />;
+        return <BarChart2 className="h-5 w-5 text-[#1876D2]" />;
       case 'percentages':
         return <Percent className="h-5 w-5 text-amber-600" />;
       default:
@@ -286,7 +286,7 @@ export default function MathMentor() {
       case 'medium':
         return 'bg-blue-100 text-blue-800';
       case 'hard':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-[#E3F2FD] text-purple-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }

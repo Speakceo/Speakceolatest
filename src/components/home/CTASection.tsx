@@ -15,7 +15,7 @@ export default function CTASection() {
         
         {/* Decorative elements */}
         <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#F5F9FC]0/20 rounded-full blur-2xl"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 max-w-4xl mx-auto leading-tight drop-shadow-sm">
@@ -29,7 +29,7 @@ export default function CTASection() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button 
               onClick={() => setShowEnrollment(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-md text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white shadow-lg transition-all transform hover:scale-105"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-md text-indigo-700 bg-white hover:bg-[#E3F2FD] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white shadow-lg transition-all transform hover:scale-105"
             >
               Get Started Today
               <ChevronRight className="ml-2 h-5 w-5" />

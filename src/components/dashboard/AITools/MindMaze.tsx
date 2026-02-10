@@ -279,7 +279,7 @@ export default function MindMaze() {
       case 'pricing':
         return <DollarSign className="h-5 w-5 text-green-600" />;
       case 'marketing':
-        return <Target className="h-5 w-5 text-purple-600" />;
+        return <Target className="h-5 w-5 text-[#1876D2]" />;
       case 'operations':
         return <TrendingUp className="h-5 w-5 text-blue-600" />;
       case 'finance':
@@ -298,7 +298,7 @@ export default function MindMaze() {
       case 'intermediate':
         return 'bg-blue-100 text-blue-800';
       case 'advanced':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-[#E3F2FD] text-purple-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }

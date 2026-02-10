@@ -48,7 +48,7 @@ export default function SetupSpeakCEO() {
         <button
           onClick={handleSetup}
           disabled={loading}
-          className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 transition-all duration-300"
+          className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 transition-all duration-300"
         >
           {loading ? 'Setting up...' : 'Setup Database & Create 300 Accounts'}
         </button>

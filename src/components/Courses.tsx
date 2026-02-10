@@ -115,7 +115,7 @@ const learningPath = [
     title: 'Confidence & Communication',
     description: 'Transform from shy to confident speaker',
     icon: Mic,
-    color: 'from-blue-500 to-indigo-500',
+    color: 'from-blue-500 to-[#1876D2]',
     parentBenefit: 'Watch your child speak up at family dinners',
     modules: [
       { title: 'Overcoming Speaking Anxiety', icon: Heart, duration: '2h', outcome: 'Confident presentations' },
@@ -185,7 +185,7 @@ const learningPath = [
     title: 'Real Business Launch',
     description: 'Launch your first real business or social impact project',
     icon: Rocket,
-    color: 'from-purple-600 to-indigo-600',
+    color: 'from-[#1876D2] to-[#00B0FF]',
     parentBenefit: 'Actual business results you can see',
     modules: [
       { title: 'Business Plan Mastery', icon: Target, duration: '2h', outcome: 'Complete business plan' },
@@ -296,7 +296,7 @@ export default function Courses() {
       </div>
 
       {/* Parent Testimonials - Social Proof */}
-      <section className="py-20 bg-gradient-to-r from-purple-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -374,8 +374,8 @@ export default function Courses() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{story.name}</h3>
                   <p className="text-gray-600 mb-4">{story.story}</p>
-                  <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-4">
-                    <p className="text-sm font-semibold text-purple-700">
+                  <div className="bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD] rounded-xl p-4">
+                    <p className="text-sm font-semibold text-[#1876D2]">
                       ✨ Achievement: {story.achievement}
                     </p>
                   </div>
@@ -515,10 +515,10 @@ export default function Courses() {
                 <div className="absolute -bottom-4 -left-4 w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl shadow-xl animate-pulse flex items-center justify-center">
                   <span className="text-lg">🎯</span>
                 </div>
-                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full shadow-xl animate-ping flex items-center justify-center">
+                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-gradient-to-br from-pink-400 to-[#00B0FF] rounded-full shadow-xl animate-ping flex items-center justify-center">
                   <span className="text-sm">🚀</span>
                 </div>
-                <div className="absolute top-1/4 -left-6 w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl shadow-xl animate-bounce flex items-center justify-center" style={{animationDelay: '1s'}}>
+                <div className="absolute top-1/4 -left-6 w-10 h-10 bg-gradient-to-br from-blue-400 to-[#1876D2] rounded-xl shadow-xl animate-bounce flex items-center justify-center" style={{animationDelay: '1s'}}>
                   <span className="text-lg">💡</span>
                 </div>
               </div>
@@ -586,7 +586,7 @@ export default function Courses() {
                         </div>
                     </div>
                     <ChevronRight 
-                        className={`h-6 w-6 text-purple-500 transform transition-transform ${
+                        className={`h-6 w-6 text-[#1876D2] transform transition-transform ${
                         selectedModule === path.title ? 'rotate-90' : ''
                       }`}
                     />
@@ -616,8 +616,8 @@ export default function Courses() {
                                 </div>
                               </div>
                             </div>
-                            <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-3">
-                              <p className="text-sm font-medium text-purple-700">
+                            <div className="bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD] rounded-lg p-3">
+                              <p className="text-sm font-medium text-[#1876D2]">
                                 🎯 Outcome: {module.outcome}
                               </p>
                             </div>
@@ -668,7 +668,7 @@ export default function Courses() {
 
           <button 
             onClick={() => setShowEnrollment(true)}
-              className="group relative px-10 py-6 bg-white text-purple-600 font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+              className="group relative px-10 py-6 bg-white text-[#1876D2] font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
             >
               <span className="relative z-10 flex items-center justify-center">
                 Secure Your Child's Spot Now

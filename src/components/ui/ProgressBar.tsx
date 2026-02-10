@@ -33,9 +33,9 @@ export default function ProgressBar({
   
   // Determine color gradient
   const colorGradient = 
-    color === 'indigo' ? 'from-indigo-600 to-purple-600' :
+    color === 'indigo' ? 'from-[#1876D2] to-[#00B0FF]' :
     color === 'green' ? 'from-green-500 to-emerald-500' :
-    color === 'purple' ? 'from-purple-600 to-pink-600' :
+    color === 'purple' ? 'from-[#1876D2] to-[#00B0FF]' :
     'from-blue-600 to-indigo-600';
   
   // Generate unique ID for tooltip

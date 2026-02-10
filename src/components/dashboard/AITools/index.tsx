@@ -16,7 +16,7 @@ function AIToolsSimple() {
   return (
     <div className="p-6">
       <div className="text-center mb-8">
-        <Sparkles className="h-16 w-16 text-purple-500 mx-auto mb-4" />
+        <Sparkles className="h-16 w-16 text-[#1876D2] mx-auto mb-4" />
         <h1 className="text-3xl font-bold text-gray-900 mb-2">AI Tools</h1>
         <p className="text-gray-600">Enhance your learning with AI-powered tools</p>
       </div>
@@ -30,10 +30,10 @@ function AIToolsSimple() {
           { icon: Presentation, name: 'PitchDeck', desc: 'Presentation Creator', path: 'pitch-deck' }
         ].map((tool) => (
           <div key={tool.path} className="bg-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
-            <tool.icon className="h-12 w-12 text-purple-500 mb-4" />
+            <tool.icon className="h-12 w-12 text-[#1876D2] mb-4" />
             <h3 className="text-xl font-semibold mb-2">{tool.name}</h3>
             <p className="text-gray-600 mb-4">{tool.desc}</p>
-            <button className="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors">
+            <button className="w-full bg-[#F5F9FC]0 text-white py-2 px-4 rounded-lg hover:bg-[#1876D2] transition-colors">
               Launch Tool
             </button>
           </div>
@@ -58,7 +58,7 @@ export default function AITools() {
       <React.Suspense fallback={
         <div className="flex items-center justify-center min-h-96">
           <div className="text-center">
-            <Sparkles className="h-12 w-12 text-purple-500 mx-auto mb-4 animate-spin" />
+            <Sparkles className="h-12 w-12 text-[#1876D2] mx-auto mb-4 animate-spin" />
             <p className="text-gray-600">Loading AI Tools...</p>
           </div>
         </div>

@@ -103,7 +103,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
           onClick={handleMobileToggle}
           className="lg:hidden fixed top-4 left-4 z-30 p-2 rounded-full bg-white shadow-md"
         >
-          <Menu className="h-6 w-6 text-indigo-600" />
+          <Menu className="h-6 w-6 text-[#1876D2]" />
         </button>
         
         {/* Mobile Sidebar Overlay */}
@@ -123,7 +123,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-[#1876D2] flex items-center justify-center">
                   <span className="text-white font-bold">SS</span>
                 </div>
                 <div>
@@ -151,14 +151,14 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
                     className={`flex items-center w-full px-3 py-2.5 rounded-lg mb-1 ${
                       location.pathname === item.href || 
                       (item.href !== '/dashboard' && location.pathname.startsWith(item.href))
-                        ? 'bg-indigo-50 text-indigo-700'
+                        ? 'bg-[#E3F2FD] text-indigo-700'
                         : 'text-gray-600 hover:bg-gray-100'
                     }`}
                   >
                     <item.icon className={`h-5 w-5 mr-3 ${
                       location.pathname === item.href || 
                       (item.href !== '/dashboard' && location.pathname.startsWith(item.href))
-                        ? 'text-indigo-600'
+                        ? 'text-[#1876D2]'
                         : 'text-gray-500'
                     }`} />
                     <span className="font-medium">{item.name}</span>
@@ -177,8 +177,8 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
                       className="h-10 w-10 rounded-full object-cover"
                     />
                   ) : (
-                    <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                      <span className="text-indigo-600 font-semibold">
+                    <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                      <span className="text-[#1876D2] font-semibold">
                         {user?.name?.charAt(0) || 'U'}
                       </span>
                     </div>
@@ -212,12 +212,12 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
       {/* Logo Area */}
       <div className={`border-b py-5 flex items-center ${isCollapsed ? 'justify-center px-2' : 'px-6'}`}>
         {isCollapsed ? (
-          <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full bg-[#1876D2] flex items-center justify-center">
             <span className="text-white font-bold">SS</span>
           </div>
         ) : (
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-[#1876D2] flex items-center justify-center">
               <span className="text-white font-bold">SS</span>
             </div>
             <div>
@@ -249,7 +249,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
               } px-3 py-3 rounded-lg ${
                 location.pathname === item.href || 
                 (item.href !== '/dashboard' && location.pathname.startsWith(item.href))
-                  ? 'bg-indigo-50 text-indigo-700'
+                  ? 'bg-[#E3F2FD] text-indigo-700'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
               title={isCollapsed ? item.name : ''}
@@ -259,7 +259,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
               } ${
                 location.pathname === item.href || 
                 (item.href !== '/dashboard' && location.pathname.startsWith(item.href))
-                  ? 'text-indigo-600'
+                  ? 'text-[#1876D2]'
                   : 'text-gray-500'
               }`} />
               
@@ -283,8 +283,8 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
                   className="h-10 w-10 rounded-full object-cover"
                 />
               ) : (
-                <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                  <span className="text-indigo-600 font-semibold">
+                <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                  <span className="text-[#1876D2] font-semibold">
                     {user?.name?.charAt(0) || 'U'}
                   </span>
                 </div>
@@ -301,8 +301,8 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
                   className="h-10 w-10 rounded-full object-cover"
                 />
               ) : (
-                <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                  <span className="text-indigo-600 font-semibold">
+                <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                  <span className="text-[#1876D2] font-semibold">
                     {user?.name?.charAt(0) || 'U'}
                   </span>
                 </div>

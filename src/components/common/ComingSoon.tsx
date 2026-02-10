@@ -15,13 +15,13 @@ const ComingSoon: React.FC<ComingSoonProps> = ({
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center">
         <div className="mb-8">
-          <Rocket className="h-20 w-20 text-indigo-600 mx-auto animate-bounce" />
+          <Rocket className="h-20 w-20 text-[#1876D2] mx-auto animate-bounce" />
         </div>
         <h1 className="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
         <p className="text-lg text-gray-600 mb-8">{description}</p>
         <Link
           to="/"
-          className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium"
+          className="inline-flex items-center text-[#1876D2] hover:text-indigo-700 font-medium"
         >
           <ArrowLeft className="h-5 w-5 mr-2" />
           Back to Home

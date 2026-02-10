@@ -117,7 +117,7 @@ export default function Overview() {
   const StatCard = ({ icon: Icon, title, value, subtitle, growth, color, onClick, isActive }: any) => (
     <div 
       className={`bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer ${
-        isActive ? 'ring-2 ring-indigo-500' : ''
+        isActive ? 'ring-2 ring-[#1876D2]' : ''
       }`}
       onClick={onClick}
       onMouseEnter={() => setActiveCard(title)}
@@ -157,7 +157,7 @@ export default function Overview() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1876D2]"></div>
       </div>
     );
   }
@@ -189,7 +189,7 @@ export default function Overview() {
                    `Ready to continue your entrepreneurial journey? You're ${progressPercentage}% of the way there!`}
                 </p>
                 {userBrand?.brandData?.name && (
-                  <p className="text-sm text-indigo-600 font-medium">
+                  <p className="text-sm text-[#1876D2] font-medium">
                     Building {userBrand.brandData.name}
                   </p>
                 )}
@@ -212,7 +212,7 @@ export default function Overview() {
             onClick={() => setShowQuickActions(!showQuickActions)}
             className="bg-white px-6 py-3 rounded-full shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
           >
-            <Sparkles className="h-5 w-5 text-indigo-600" />
+            <Sparkles className="h-5 w-5 text-[#1876D2]" />
             <span className="font-medium text-gray-700">Quick Actions</span>
             <ChevronRight className={`h-4 w-4 text-gray-400 transition-transform ${showQuickActions ? 'rotate-90' : ''}`} />
           </button>
@@ -225,14 +225,14 @@ export default function Overview() {
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <p className="text-sm font-medium text-gray-600">Total XP</p>
-                <p className="text-3xl font-bold text-indigo-600 mt-1">{overviewData?.user?.totalXP || 0}</p>
+                <p className="text-3xl font-bold text-[#1876D2] mt-1">{overviewData?.user?.totalXP || 0}</p>
                 <div className="flex items-center mt-2">
                   <Zap className="h-4 w-4 text-green-500 mr-1" />
                   <span className="text-sm text-green-600 font-medium">+{Math.floor((overviewData?.user?.totalXP || 0) * 0.1)} this week</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">+15 today</p>
               </div>
-              <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg ml-4">
+              <div className="p-3 bg-gradient-to-br from-[#1876D2] to-purple-600 rounded-lg ml-4">
                 <Zap className="h-8 w-8 text-white" />
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function Overview() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Community</p>
-                <p className="text-3xl font-bold text-purple-600 mt-1">{communitySize}</p>
+                <p className="text-3xl font-bold text-[#1876D2] mt-1">{communitySize}</p>
                 <div className="flex items-center space-x-4 mt-2">
                   <div className="flex items-center text-sm text-gray-500">
                     <Award className="h-4 w-4 mr-1" />
@@ -292,7 +292,7 @@ export default function Overview() {
           <div className="mb-8 bg-white rounded-xl p-6 shadow-lg border border-indigo-200 border-l-4 border-l-indigo-500">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <button className="flex items-center p-3 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors">
+              <button className="flex items-center p-3 bg-[#E3F2FD] text-indigo-700 rounded-lg hover:bg-[#E3F2FD] transition-colors">
                 <Play className="h-5 w-5 mr-2" />
                 Continue Learning
               </button>
@@ -300,7 +300,7 @@ export default function Overview() {
                 <Video className="h-5 w-5 mr-2" />
                 Join Live Class
               </button>
-              <button className="flex items-center p-3 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors">
+              <button className="flex items-center p-3 bg-[#F5F9FC] text-[#1876D2] rounded-lg hover:bg-[#E3F2FD] transition-colors">
                 <BookOpen className="h-5 w-5 mr-2" />
                 View Tasks
               </button>
@@ -342,7 +342,7 @@ export default function Overview() {
               <div className="p-6 border-b border-gray-100">
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-semibold text-gray-900">Continue Learning</h2>
-                  <span className="text-sm text-indigo-600 font-medium">Module {Math.floor(completedLessons / 3) + 1} of 6</span>
+                  <span className="text-sm text-[#1876D2] font-medium">Module {Math.floor(completedLessons / 3) + 1} of 6</span>
                 </div>
               </div>
               
@@ -369,7 +369,7 @@ export default function Overview() {
                 
                 <button 
                   onClick={() => navigate('/dashboard/courses')}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-4 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
                 >
                   <Play className="h-5 w-5 mr-2" />
                   Continue Lesson
@@ -388,7 +388,7 @@ export default function Overview() {
                   {[
                     { icon: Video, title: 'Live Workshop', subtitle: 'Pitch Perfect: Master Your Elevator Pitch', time: 'Tomorrow 2:00 PM', color: 'bg-red-500', action: () => navigate('/dashboard/live-classes') },
                     { icon: BookOpen, title: 'New Lesson', subtitle: 'Customer Discovery Techniques', time: '15 min read', color: 'bg-green-500', action: () => navigate('/dashboard/courses') },
-                    { icon: BrainCircuit, title: 'AI Tool', subtitle: 'Business Plan Generator', time: 'Try now', color: 'bg-purple-500', action: () => navigate('/dashboard/ai-tools') },
+                    { icon: BrainCircuit, title: 'AI Tool', subtitle: 'Business Plan Generator', time: 'Try now', color: 'bg-[#F5F9FC]0', action: () => navigate('/dashboard/ai-tools') },
                     { icon: Users, title: 'Community', subtitle: 'Weekly Founder Meetup', time: 'Join discussion', color: 'bg-blue-500', action: () => navigate('/dashboard/community') }
                   ].map((item, index) => (
                     <div 
@@ -534,12 +534,12 @@ export default function Overview() {
               
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-bold text-indigo-600">Level {overviewData?.user?.currentLevel || 1}</span>
+                  <span className="text-2xl font-bold text-[#1876D2]">Level {overviewData?.user?.currentLevel || 1}</span>
                   <span className="text-sm text-gray-500">{Math.round((overviewData?.user?.xpInCurrentLevel || 0))}%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
                   <div 
-                    className="bg-gradient-to-r from-indigo-500 to-purple-600 h-3 rounded-full transition-all duration-500" 
+                    className="bg-gradient-to-r from-[#1876D2] to-purple-600 h-3 rounded-full transition-all duration-500" 
                     style={{ width: `${overviewData?.user?.xpInCurrentLevel || 0}%` }}
                   ></div>
                 </div>
@@ -562,31 +562,31 @@ export default function Overview() {
                       <div className={`p-2 ${
                         achievement.color === 'yellow' ? 'bg-yellow-100' :
                         achievement.color === 'green' ? 'bg-green-100' :
-                        achievement.color === 'purple' ? 'bg-purple-100' :
+                        achievement.color === 'purple' ? 'bg-[#E3F2FD]' :
                         'bg-blue-100'
                       } rounded-lg`}>
                         {achievement.icon === 'star' && <Star className={`h-5 w-5 ${
                           achievement.color === 'yellow' ? 'text-yellow-600' :
                           achievement.color === 'green' ? 'text-green-600' :
-                          achievement.color === 'purple' ? 'text-purple-600' :
+                          achievement.color === 'purple' ? 'text-[#1876D2]' :
                           'text-blue-600'
                         }`} />}
                         {achievement.icon === 'trophy' && <Trophy className={`h-5 w-5 ${
                           achievement.color === 'yellow' ? 'text-yellow-600' :
                           achievement.color === 'green' ? 'text-green-600' :
-                          achievement.color === 'purple' ? 'text-purple-600' :
+                          achievement.color === 'purple' ? 'text-[#1876D2]' :
                           'text-blue-600'
                         }`} />}
                         {achievement.icon === 'users' && <Users className={`h-5 w-5 ${
                           achievement.color === 'yellow' ? 'text-yellow-600' :
                           achievement.color === 'green' ? 'text-green-600' :
-                          achievement.color === 'purple' ? 'text-purple-600' :
+                          achievement.color === 'purple' ? 'text-[#1876D2]' :
                           'text-blue-600'
                         }`} />}
                         {achievement.icon === 'target' && <Target className={`h-5 w-5 ${
                           achievement.color === 'yellow' ? 'text-yellow-600' :
                           achievement.color === 'green' ? 'text-green-600' :
-                          achievement.color === 'purple' ? 'text-purple-600' :
+                          achievement.color === 'purple' ? 'text-[#1876D2]' :
                           'text-blue-600'
                         }`} />}
                       </div>
@@ -619,8 +619,8 @@ export default function Overview() {
                       </div>
                       
                       <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-purple-100 rounded-lg">
-                          <Users className="h-5 w-5 text-purple-600" />
+                        <div className="p-2 bg-[#E3F2FD] rounded-lg">
+                          <Users className="h-5 w-5 text-[#1876D2]" />
                         </div>
                         <div>
                           <p className="text-sm font-medium text-gray-900">Community Helper</p>

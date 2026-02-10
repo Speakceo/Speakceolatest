@@ -84,7 +84,7 @@ export default function AdminSidebar() {
               onClick={() => handleNavigation('/admin')}
               className="flex items-center space-x-3 cursor-pointer"
             >
-              <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+              <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white">
                 <GraduationCap className="h-6 w-6" />
               </div>
               <span className="text-xl font-bold text-gray-900">
@@ -107,8 +107,8 @@ export default function AdminSidebar() {
                             group flex w-full gap-x-3 rounded-xl p-3 text-sm leading-6 font-semibold
                             transition-all duration-300
                             ${isActive
-                              ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
-                              : 'text-gray-700 hover:bg-indigo-50 hover:text-indigo-600'
+                              ? 'bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white'
+                              : 'text-gray-700 hover:bg-[#E3F2FD] hover:text-[#1876D2]'
                             }
                           `}
                         >

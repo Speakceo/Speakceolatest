@@ -235,7 +235,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
       {/* Weekly Progress Grid */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-          <BookOpen className="h-6 w-6 text-indigo-600" />
+          <BookOpen className="h-6 w-6 text-[#1876D2]" />
           Your Learning Journey
         </h2>
         
@@ -253,7 +253,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
                 onClick={() => !isLocked && setSelectedWeek(selectedWeek?.id === week.id ? null : week)}
                 className={`relative bg-white rounded-2xl p-6 shadow-sm border-2 transition-all duration-200 cursor-pointer ${
                   isCurrentWeek 
-                    ? 'border-indigo-500 shadow-lg ring-2 ring-indigo-200' 
+                    ? 'border-[#1876D2] shadow-lg ring-2 ring-indigo-200' 
                     : isCompleted
                     ? 'border-green-300 hover:shadow-md'
                     : isLocked
@@ -266,7 +266,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
                   {isCompleted ? (
                     <CheckCircle className="h-6 w-6 text-green-500" />
                   ) : isCurrentWeek ? (
-                    <div className="h-6 w-6 bg-indigo-500 rounded-full flex items-center justify-center">
+                    <div className="h-6 w-6 bg-[#E3F2FD]0 rounded-full flex items-center justify-center">
                       <span className="text-white text-xs font-bold">{week.weekNumber}</span>
                     </div>
                   ) : isLocked ? (
@@ -293,7 +293,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div 
                       className={`h-2 rounded-full transition-all duration-300 ${
-                        isCompleted ? 'bg-green-500' : isCurrentWeek ? 'bg-indigo-500' : 'bg-gray-400'
+                        isCompleted ? 'bg-green-500' : isCurrentWeek ? 'bg-[#E3F2FD]0' : 'bg-gray-400'
                       }`}
                       style={{ width: `${weekProgress}%` }}
                     ></div>
@@ -337,7 +337,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
           {/* Lessons Grid */}
           <div className="mb-8">
             <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <Video className="h-5 w-5 text-indigo-600" />
+              <Video className="h-5 w-5 text-[#1876D2]" />
               Lessons
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -357,7 +357,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
                       <div className="flex items-center gap-2">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                           isCompleted ? 'bg-green-500 text-white' : 
-                          isUnlocked ? 'bg-indigo-500 text-white' : 'bg-gray-300 text-gray-600'
+                          isUnlocked ? 'bg-[#E3F2FD]0 text-white' : 'bg-gray-300 text-gray-600'
                         }`}>
                           {isCompleted ? <Check className="h-4 w-4" /> : index + 1}
                         </div>
@@ -449,13 +449,13 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
           {/* AI Assistant */}
           <div className="mt-6 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6">
             <div className="flex items-center gap-3 mb-3">
-              <MessageCircle className="h-6 w-6 text-purple-600" />
+              <MessageCircle className="h-6 w-6 text-[#1876D2]" />
               <h3 className="text-lg font-bold text-gray-900">AI Learning Assistant</h3>
             </div>
             <p className="text-gray-600 mb-4">
               Need help with this week's content? Ask our AI assistant any questions about the lessons, concepts, or assignments.
             </p>
-            <button className="px-4 py-2 bg-purple-600 text-white rounded-lg text-sm font-medium hover:bg-purple-700">
+            <button className="px-4 py-2 bg-[#1876D2] text-white rounded-lg text-sm font-medium hover:bg-purple-700">
               Ask Question
             </button>
           </div>
@@ -502,7 +502,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
 
         <div className="bg-white rounded-xl p-6 shadow-sm">
           <div className="flex items-center gap-3 mb-4">
-            <PenTool className="h-8 w-8 text-purple-500" />
+            <PenTool className="h-8 w-8 text-[#1876D2]" />
             <div>
               <h3 className="text-lg font-bold text-gray-900">Tasks Completed</h3>
               <p className="text-gray-600">{progress.completedTasks.length} / {youngCEOProgram.weeks.length}</p>
@@ -510,7 +510,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div 
-              className="h-2 bg-purple-500 rounded-full transition-all duration-300"
+              className="h-2 bg-[#F5F9FC]0 rounded-full transition-all duration-300"
               style={{ 
                 width: `${(progress.completedTasks.length / youngCEOProgram.weeks.length) * 100}%` 
               }}
@@ -602,7 +602,7 @@ function QuizModal({ quiz, onComplete, onClose }: QuizModalProps) {
             <p className="text-gray-600 mb-4">
               You scored {correctAnswers} out of {quiz.questions.length} questions correctly
             </p>
-            <div className="text-3xl font-bold text-indigo-600 mb-6">{score}%</div>
+            <div className="text-3xl font-bold text-[#1876D2] mb-6">{score}%</div>
             <div className="flex gap-3">
               <button
                 onClick={onClose}
@@ -612,7 +612,7 @@ function QuizModal({ quiz, onComplete, onClose }: QuizModalProps) {
               </button>
               <button
                 onClick={handleComplete}
-                className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                className="flex-1 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
               >
                 Complete (+{quiz.xpReward} XP)
               </button>
@@ -646,7 +646,7 @@ function QuizModal({ quiz, onComplete, onClose }: QuizModalProps) {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div 
-              className="h-2 bg-indigo-500 rounded-full transition-all duration-300"
+              className="h-2 bg-[#E3F2FD]0 rounded-full transition-all duration-300"
               style={{ width: `${((currentQuestion + 1) / quiz.questions.length) * 100}%` }}
             ></div>
           </div>
@@ -663,14 +663,14 @@ function QuizModal({ quiz, onComplete, onClose }: QuizModalProps) {
                 onClick={() => handleAnswer(index)}
                 className={`w-full p-4 text-left rounded-xl border-2 transition-all duration-200 ${
                   selectedAnswers[currentQuestion] === index
-                    ? 'border-indigo-500 bg-indigo-50'
+                    ? 'border-[#1876D2] bg-[#E3F2FD]'
                     : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                     selectedAnswers[currentQuestion] === index
-                      ? 'border-indigo-500 bg-indigo-500'
+                      ? 'border-[#1876D2] bg-[#E3F2FD]0'
                       : 'border-gray-300'
                   }`}>
                     {selectedAnswers[currentQuestion] === index && (
@@ -697,7 +697,7 @@ function QuizModal({ quiz, onComplete, onClose }: QuizModalProps) {
           <button
             onClick={handleNext}
             disabled={selectedAnswers[currentQuestion] === undefined}
-            className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="px-6 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {currentQuestion < quiz.questions.length - 1 ? 'Next' : 'Finish'}
           </button>
@@ -764,7 +764,7 @@ function TaskModal({ task, onComplete, onClose }: TaskModalProps) {
                 value={submission}
                 onChange={(e) => setSubmission(e.target.value)}
                 rows={8}
-                className="w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Write your response here..."
               />
             </div>
@@ -809,7 +809,7 @@ function TaskModal({ task, onComplete, onClose }: TaskModalProps) {
                   value={submission}
                   onChange={(e) => setSubmission(e.target.value)}
                   rows={6}
-                  className="w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   placeholder="Describe your project..."
                 />
               </div>

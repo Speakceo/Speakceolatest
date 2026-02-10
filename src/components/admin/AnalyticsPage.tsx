@@ -339,7 +339,7 @@ export default function AnalyticsPage() {
           <select
             value={timeRange}
             onChange={(e) => setTimeRange(e.target.value as typeof timeRange)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
           >
             <option value="week">Last 7 Days</option>
             <option value="month">Last 30 Days</option>
@@ -446,7 +446,7 @@ export default function AnalyticsPage() {
           <h2 className="text-lg font-semibold text-gray-900">Content Engagement</h2>
           <button
             onClick={() => setShowContentDetails(!showContentDetails)}
-            className="text-indigo-600 hover:text-indigo-800"
+            className="text-[#1876D2] hover:text-indigo-800"
           >
             {showContentDetails ? (
               <ChevronUp className="h-5 w-5" />
@@ -489,7 +489,7 @@ export default function AnalyticsPage() {
                   {analyticsData.contentEngagement.map((item, index) => (
                     <tr 
                       key={index} 
-                      className={`hover:bg-gray-50 ${selectedModule === item.module ? 'bg-indigo-50' : ''}`}
+                      className={`hover:bg-gray-50 ${selectedModule === item.module ? 'bg-[#E3F2FD]' : ''}`}
                       onClick={() => setSelectedModule(selectedModule === item.module ? null : item.module)}
                     >
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.module}</td>
@@ -507,7 +507,7 @@ export default function AnalyticsPage() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <button 
-                          className="text-indigo-600 hover:text-indigo-900"
+                          className="text-[#1876D2] hover:text-indigo-900"
                           onClick={(e) => {
                             e.stopPropagation();
                             window.location.href = '/admin/courses';
@@ -523,7 +523,7 @@ export default function AnalyticsPage() {
             </div>
             
             {selectedModule && (
-              <div className="mt-4 p-4 bg-indigo-50 rounded-lg">
+              <div className="mt-4 p-4 bg-[#E3F2FD] rounded-lg">
                 <h4 className="font-medium text-indigo-900 mb-2">Module Insights: {selectedModule}</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
@@ -559,7 +559,7 @@ export default function AnalyticsPage() {
                 </div>
                 <div className="mt-4 flex justify-end">
                   <button 
-                    className="text-sm text-indigo-600 hover:text-indigo-800 font-medium"
+                    className="text-sm text-[#1876D2] hover:text-indigo-800 font-medium"
                     onClick={() => window.location.href = '/admin/courses'}
                   >
                     View Full Module Analytics
@@ -577,7 +577,7 @@ export default function AnalyticsPage() {
           <h2 className="text-lg font-semibold text-gray-900">Engagement Metrics</h2>
           <button
             onClick={() => setShowEngagementDetails(!showEngagementDetails)}
-            className="text-indigo-600 hover:text-indigo-800"
+            className="text-[#1876D2] hover:text-indigo-800"
           >
             {showEngagementDetails ? (
               <ChevronUp className="h-5 w-5" />
@@ -669,7 +669,7 @@ export default function AnalyticsPage() {
             <h2 className="text-lg font-semibold text-gray-900">Top Performing Students</h2>
             <button 
               onClick={() => handleMessageStudents(analyticsData?.topPerformers || [])}
-              className="text-sm text-indigo-600 hover:text-indigo-800 font-medium"
+              className="text-sm text-[#1876D2] hover:text-indigo-800 font-medium"
             >
               Message All
             </button>
@@ -691,8 +691,8 @@ export default function AnalyticsPage() {
             <div className="space-y-4">
               {analyticsData?.topPerformers.map((student, index) => (
                 <div key={student.id} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <span className="text-indigo-600 font-semibold">{index + 1}</span>
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                    <span className="text-[#1876D2] font-semibold">{index + 1}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate">{student.name}</p>
@@ -703,16 +703,16 @@ export default function AnalyticsPage() {
                       <span className="text-xs text-gray-500">{student.progress}% complete</span>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-1 bg-indigo-100 px-2 py-1 rounded-full">
-                    <Star className="h-3 w-3 text-indigo-600" />
-                    <span className="text-xs font-medium text-indigo-600">{student.points}</span>
+                  <div className="flex items-center space-x-1 bg-[#E3F2FD] px-2 py-1 rounded-full">
+                    <Star className="h-3 w-3 text-[#1876D2]" />
+                    <span className="text-xs font-medium text-[#1876D2]">{student.points}</span>
                   </div>
                   <button 
                     onClick={(e) => {
                       e.stopPropagation();
                       handleMessageStudents([student]);
                     }}
-                    className="text-gray-400 hover:text-indigo-600"
+                    className="text-gray-400 hover:text-[#1876D2]"
                   >
                     <Mail className="h-4 w-4" />
                   </button>
@@ -728,7 +728,7 @@ export default function AnalyticsPage() {
             <h2 className="text-lg font-semibold text-gray-900">Students Needing Attention</h2>
             <button 
               onClick={() => handleMessageStudents(analyticsData?.strugglingStudents || [])}
-              className="text-sm text-indigo-600 hover:text-indigo-800 font-medium"
+              className="text-sm text-[#1876D2] hover:text-indigo-800 font-medium"
             >
               Message All
             </button>
@@ -782,7 +782,7 @@ export default function AnalyticsPage() {
                       e.stopPropagation();
                       handleMessageStudents([student]);
                     }}
-                    className="text-gray-400 hover:text-indigo-600"
+                    className="text-gray-400 hover:text-[#1876D2]"
                   >
                     <Mail className="h-4 w-4" />
                   </button>
@@ -804,7 +804,7 @@ export default function AnalyticsPage() {
                 <span className="text-sm font-medium text-gray-900">78%</span>
               </div>
               <div className="h-2 w-full bg-gray-200 rounded-full">
-                <div className="h-2 bg-indigo-500 rounded-full" style={{ width: '78%' }}></div>
+                <div className="h-2 bg-[#E3F2FD]0 rounded-full" style={{ width: '78%' }}></div>
               </div>
             </div>
             
@@ -814,7 +814,7 @@ export default function AnalyticsPage() {
                 <span className="text-sm font-medium text-gray-900">65%</span>
               </div>
               <div className="h-2 w-full bg-gray-200 rounded-full">
-                <div className="h-2 bg-indigo-500 rounded-full" style={{ width: '65%' }}></div>
+                <div className="h-2 bg-[#E3F2FD]0 rounded-full" style={{ width: '65%' }}></div>
               </div>
             </div>
             
@@ -824,7 +824,7 @@ export default function AnalyticsPage() {
                 <span className="text-sm font-medium text-gray-900">82%</span>
               </div>
               <div className="h-2 w-full bg-gray-200 rounded-full">
-                <div className="h-2 bg-indigo-500 rounded-full" style={{ width: '82%' }}></div>
+                <div className="h-2 bg-[#E3F2FD]0 rounded-full" style={{ width: '82%' }}></div>
               </div>
             </div>
             
@@ -834,7 +834,7 @@ export default function AnalyticsPage() {
                 <span className="text-sm font-medium text-gray-900">45%</span>
               </div>
               <div className="h-2 w-full bg-gray-200 rounded-full">
-                <div className="h-2 bg-indigo-500 rounded-full" style={{ width: '45%' }}></div>
+                <div className="h-2 bg-[#E3F2FD]0 rounded-full" style={{ width: '45%' }}></div>
               </div>
             </div>
           </div>
@@ -864,8 +864,8 @@ export default function AnalyticsPage() {
             </div>
             
             <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-              <div className="flex-shrink-0 h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                <Users className="h-5 w-5 text-purple-600" />
+              <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                <Users className="h-5 w-5 text-[#1876D2]" />
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-900">Team Project</p>
@@ -908,7 +908,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
             
-            <div className="mt-4 p-3 bg-indigo-50 rounded-lg">
+            <div className="mt-4 p-3 bg-[#E3F2FD] rounded-lg">
               <p className="text-sm text-indigo-700">
                 <strong>Insight:</strong> Students who complete at least 3 modules have a 92% chance of completing the entire course.
               </p>
@@ -993,7 +993,7 @@ export default function AnalyticsPage() {
                   </label>
                   <div className="p-2 border border-gray-300 rounded-lg max-h-24 overflow-y-auto">
                     {selectedStudents.map(student => (
-                      <div key={student.id} className="inline-flex items-center bg-indigo-100 text-indigo-800 rounded-full px-2 py-1 text-xs mr-2 mb-1">
+                      <div key={student.id} className="inline-flex items-center bg-[#E3F2FD] text-indigo-800 rounded-full px-2 py-1 text-xs mr-2 mb-1">
                         {student.name}
                       </div>
                     ))}
@@ -1005,7 +1005,7 @@ export default function AnalyticsPage() {
                     Message Type
                   </label>
                   <select
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     <option value="email">Email</option>
                     <option value="notification">In-App Notification</option>
@@ -1020,7 +1020,7 @@ export default function AnalyticsPage() {
                   <input
                     type="text"
                     placeholder="Enter subject"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
                 
@@ -1032,7 +1032,7 @@ export default function AnalyticsPage() {
                     value={messageText}
                     onChange={(e) => setMessageText(e.target.value)}
                     rows={4}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     placeholder="Enter your message"
                   />
                 </div>
@@ -1044,19 +1044,19 @@ export default function AnalyticsPage() {
                   <div className="space-y-2">
                     <button
                       onClick={() => setMessageText("Hi there! We noticed you haven't been active in the course recently. Is there anything we can help you with to get back on track with your learning journey?")}
-                      className="w-full text-left p-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-lg"
+                      className="w-full text-left p-2 text-sm text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg"
                     >
                       Re-engagement Message
                     </button>
                     <button
                       onClick={() => setMessageText("Congratulations on your excellent progress! We've noticed your dedication and wanted to recognize your hard work. Keep up the great work!")}
-                      className="w-full text-left p-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-lg"
+                      className="w-full text-left p-2 text-sm text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg"
                     >
                       Progress Celebration
                     </button>
                     <button
                       onClick={() => setMessageText("We've noticed you might be having some difficulty with recent course material. Would you like to schedule a one-on-one session with an instructor to help clarify any concepts?")}
-                      className="w-full text-left p-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-lg"
+                      className="w-full text-left p-2 text-sm text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg"
                     >
                       Support Offer
                     </button>
@@ -1074,7 +1074,7 @@ export default function AnalyticsPage() {
                 <button
                   onClick={handleSendMessage}
                   disabled={isSendingMessage || !messageText.trim()}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                  className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50"
                 >
                   {isSendingMessage ? (
                     <RefreshCw className="h-4 w-4 animate-spin" />

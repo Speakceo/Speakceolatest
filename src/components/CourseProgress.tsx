@@ -61,15 +61,15 @@ export default function CourseProgress({ course, onContinue }: CourseProgressPro
         </div>
         
         <div className="flex items-center space-x-2">
-          <span className="text-2xl font-bold text-indigo-600">{course.progress}%</span>
-          <TrendingUp className="w-5 h-5 text-indigo-600" />
+          <span className="text-2xl font-bold text-[#1876D2]">{course.progress}%</span>
+          <TrendingUp className="w-5 h-5 text-[#1876D2]" />
         </div>
       </div>
 
       {/* Progress Bar */}
       <div className="relative h-4 bg-gray-100 rounded-full overflow-hidden">
         <motion.div
-          className="absolute top-0 left-0 h-full bg-gradient-to-r from-indigo-500 to-purple-500"
+          className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF]"
           variants={progressBarVariants}
           initial="initial"
           animate="animate"
@@ -84,7 +84,7 @@ export default function CourseProgress({ course, onContinue }: CourseProgressPro
           <div className="flex items-center space-x-3">
             {course.nextModule.type === 'video' && <Play className="w-5 h-5 text-blue-500" />}
             {course.nextModule.type === 'quiz' && <CheckCircle className="w-5 h-5 text-green-500" />}
-            {course.nextModule.type === 'project' && <Award className="w-5 h-5 text-purple-500" />}
+            {course.nextModule.type === 'project' && <Award className="w-5 h-5 text-[#1876D2]" />}
             <div>
               <p className="font-medium text-gray-900">{course.nextModule.title}</p>
               <p className="text-sm text-gray-500">{course.nextModule.duration} min</p>
@@ -95,7 +95,7 @@ export default function CourseProgress({ course, onContinue }: CourseProgressPro
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onContinue}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            className="px-4 py-2 bg-[#1876D2] text-white rounded-lg font-medium hover:bg-[#1565C0] transition-colors"
           >
             Continue
           </motion.button>

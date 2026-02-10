@@ -307,7 +307,7 @@ export default function PaymentsPage() {
       case 'bank_transfer':
         return <DollarSign className="h-4 w-4 text-green-500" />;
       case 'upi':
-        return <DollarSign className="h-4 w-4 text-purple-500" />;
+        return <DollarSign className="h-4 w-4 text-[#1876D2]" />;
       case 'paypal':
         return <DollarSign className="h-4 w-4 text-indigo-500" />;
     }
@@ -408,7 +408,7 @@ export default function PaymentsPage() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setShowAnalytics(!showAnalytics)}
-            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
           >
             <BarChart2 className="h-5 w-5" />
             <span>{showAnalytics ? 'Hide Analytics' : 'Show Analytics'}</span>
@@ -446,8 +446,8 @@ export default function PaymentsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="p-3 bg-indigo-100 rounded-lg">
-                  <DollarSign className="h-6 w-6 text-indigo-600" />
+                <div className="p-3 bg-[#E3F2FD] rounded-lg">
+                  <DollarSign className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <span className="text-sm font-medium text-gray-500">Total Revenue</span>
               </div>
@@ -478,8 +478,8 @@ export default function PaymentsPage() {
             
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="p-3 bg-purple-100 rounded-lg">
-                  <CheckCircle className="h-6 w-6 text-purple-600" />
+                <div className="p-3 bg-[#E3F2FD] rounded-lg">
+                  <CheckCircle className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <span className="text-sm font-medium text-gray-500">Success Rate</span>
               </div>
@@ -549,7 +549,7 @@ export default function PaymentsPage() {
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center">
-                          <div className="h-4 w-4 bg-indigo-600 rounded-full mr-2"></div>
+                          <div className="h-4 w-4 bg-[#1876D2] rounded-full mr-2"></div>
                           <span className="text-gray-700">Basic Plan</span>
                         </div>
                         <span className="font-medium text-gray-900">
@@ -558,7 +558,7 @@ export default function PaymentsPage() {
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div 
-                          className="bg-indigo-600 h-2 rounded-full" 
+                          className="bg-[#1876D2] h-2 rounded-full" 
                           style={{ 
                             width: `${(analyticsData.revenueByPlan.Basic / 
                               (analyticsData.revenueByPlan.Basic + analyticsData.revenueByPlan.Premium)) * 100}%` 
@@ -570,7 +570,7 @@ export default function PaymentsPage() {
                     <div>
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center">
-                          <div className="h-4 w-4 bg-purple-600 rounded-full mr-2"></div>
+                          <div className="h-4 w-4 bg-[#1876D2] rounded-full mr-2"></div>
                           <span className="text-gray-700">Premium Plan</span>
                         </div>
                         <span className="font-medium text-gray-900">
@@ -579,7 +579,7 @@ export default function PaymentsPage() {
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
                         <div 
-                          className="bg-purple-600 h-2 rounded-full" 
+                          className="bg-[#1876D2] h-2 rounded-full" 
                           style={{ 
                             width: `${(analyticsData.revenueByPlan.Premium / 
                               (analyticsData.revenueByPlan.Basic + analyticsData.revenueByPlan.Premium)) * 100}%` 
@@ -607,14 +607,14 @@ export default function PaymentsPage() {
               placeholder="Search payments..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
             />
           </div>
           <div className="relative">
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none"
+              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] appearance-none"
             >
               <option value="all">All Statuses</option>
               <option value="completed">Completed</option>
@@ -630,7 +630,7 @@ export default function PaymentsPage() {
             <select
               value={courseFilter}
               onChange={(e) => setCourseFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none"
+              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] appearance-none"
             >
               <option value="all">All Courses</option>
               <option value="Basic">Basic</option>
@@ -644,7 +644,7 @@ export default function PaymentsPage() {
             <select
               value={dateFilter}
               onChange={(e) => setDateFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none"
+              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] appearance-none"
             >
               <option value="all">All Time</option>
               <option value="today">Today</option>
@@ -717,7 +717,7 @@ export default function PaymentsPage() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
                       payment.course_type === 'Premium' 
-                        ? 'bg-purple-100 text-purple-800' 
+                        ? 'bg-[#E3F2FD] text-purple-800' 
                         : 'bg-blue-100 text-blue-800'
                     }`}>
                       {payment.course_type}
@@ -771,7 +771,7 @@ export default function PaymentsPage() {
                       )}
                       <a 
                         href="#" 
-                        className="text-indigo-600 hover:text-indigo-900"
+                        className="text-[#1876D2] hover:text-indigo-900"
                         title="View Details"
                       >
                         <ExternalLink className="h-4 w-4" />

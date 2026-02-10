@@ -191,7 +191,7 @@ export default function AIToolsHome() {
       <div className="bg-white rounded-2xl p-6 shadow-sm">
         <div className="flex items-center mb-4">
           <h1 className="text-2xl font-bold text-gray-900 flex items-center">
-            <Sparkles className="h-6 w-6 text-indigo-600 mr-2" />
+            <Sparkles className="h-6 w-6 text-[#1876D2] mr-2" />
             AI Tools
           </h1>
           <p className="text-gray-500 mt-1">
@@ -201,22 +201,22 @@ export default function AIToolsHome() {
         
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center space-x-4">
-            <div className="bg-indigo-50 rounded-xl p-3 flex items-center">
-              <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                <Trophy className="h-5 w-5 text-indigo-600" />
+            <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
+              <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+                <Trophy className="h-5 w-5 text-[#1876D2]" />
               </div>
               <div>
-                <p className="text-xs text-indigo-600 font-medium">AI Tools XP</p>
+                <p className="text-xs text-[#1876D2] font-medium">AI Tools XP</p>
                 <p className="text-lg font-bold text-indigo-700">{totalXpEarned} XP</p>
               </div>
             </div>
             
-            <div className="bg-indigo-50 rounded-xl p-3 flex items-center">
-              <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                <Clock className="h-5 w-5 text-indigo-600" />
+            <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
+              <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+                <Clock className="h-5 w-5 text-[#1876D2]" />
               </div>
               <div>
-                <p className="text-xs text-indigo-600 font-medium">AI Tools Streak</p>
+                <p className="text-xs text-[#1876D2] font-medium">AI Tools Streak</p>
                 <p className="text-lg font-bold text-indigo-700">3 days</p>
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function AIToolsHome() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white shadow-lg"
+          className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white shadow-lg"
         >
           <div className="flex items-center">
             <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
@@ -245,7 +245,7 @@ export default function AIToolsHome() {
           <div className="mt-4 flex justify-end">
             <button 
               onClick={() => navigate(toolsConfig.find(t => t.id === recentlyUnlocked)?.path || '')}
-              className="px-4 py-2 bg-white text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
+              className="px-4 py-2 bg-white text-[#1876D2] rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
             >
               Try It Now
             </button>
@@ -259,7 +259,7 @@ export default function AIToolsHome() {
           <motion.div
             key={tool.id}
             whileHover={{ scale: 1.03 }}
-            className={`bg-white rounded-2xl p-6 shadow-sm border border-gray-100 transition-all duration-300 cursor-pointer hover:shadow-md ${recentlyUnlocked === tool.id ? 'ring-2 ring-indigo-500' : ''}`}
+            className={`bg-white rounded-2xl p-6 shadow-sm border border-gray-100 transition-all duration-300 cursor-pointer hover:shadow-md ${recentlyUnlocked === tool.id ? 'ring-2 ring-[#1876D2]' : ''}`}
             onClick={() => handleToolClick(tool)}
           >
             <div className="flex items-center justify-between mb-4">
@@ -282,7 +282,7 @@ export default function AIToolsHome() {
               </div>
               
               <button 
-                className="flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700"
+                className="flex items-center text-sm font-medium text-[#1876D2] hover:text-indigo-700"
               >
                 Launch Tool
                 <ArrowRight className="h-4 w-4 ml-1" />
@@ -307,8 +307,8 @@ export default function AIToolsHome() {
                   className="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer"
                   onClick={() => navigate(toolConfig.path)}
                 >
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                    <span className="text-lg font-bold text-indigo-600">#{index + 1}</span>
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+                    <span className="text-lg font-bold text-[#1876D2]">#{index + 1}</span>
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">{tool.name}</h3>
@@ -326,7 +326,7 @@ export default function AIToolsHome() {
       </div>
       
       {/* AI Tools Benefits */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+      <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
         <h2 className="text-lg font-bold mb-6">How AI Tools Boost Your Learning</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white/10 rounded-xl p-4">

@@ -219,11 +219,11 @@ export default function Community() {
             <p className="text-gray-500 mt-1">Connect and share with fellow entrepreneurs</p>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 transition-colors">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-[#E3F2FD] text-[#1876D2] rounded-lg hover:bg-[#E3F2FD] transition-colors">
               <Filter className="h-4 w-4" />
               <span>Filter</span>
             </button>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-opacity">
               <Bell className="h-4 w-4" />
               <span>Notifications</span>
             </button>
@@ -236,7 +236,7 @@ export default function Community() {
           <input
             type="text"
             placeholder="Search discussions..."
-            className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
           />
         </div>
 
@@ -248,7 +248,7 @@ export default function Community() {
               onClick={() => setActiveCategory(category.id)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-full whitespace-nowrap ${
                 activeCategory === category.id
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-[#1876D2] text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -283,22 +283,22 @@ export default function Community() {
                   value={newPost}
                   onChange={(e) => setNewPost(e.target.value)}
                   placeholder="Share your thoughts, questions, or ideas..."
-                  className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                  className="w-full p-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] resize-none"
                   rows={3}
                 />
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center space-x-4">
-                    <button className="p-2 text-gray-400 hover:text-indigo-600 transition-colors">
+                    <button className="p-2 text-gray-400 hover:text-[#1876D2] transition-colors">
                       <ImageIcon className="h-5 w-5" />
                     </button>
-                    <button className="p-2 text-gray-400 hover:text-indigo-600 transition-colors">
+                    <button className="p-2 text-gray-400 hover:text-[#1876D2] transition-colors">
                       <Smile className="h-5 w-5" />
                     </button>
                   </div>
                   <button
                     onClick={handleCreatePost}
                     disabled={isSubmitting || !newPost.trim()}
-                    className="flex items-center space-x-2 px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                    className="flex items-center space-x-2 px-6 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <RefreshCw className="h-4 w-4 animate-spin" />
@@ -317,7 +317,7 @@ export default function Community() {
           {/* Posts Feed */}
           {isLoading ? (
             <div className="flex items-center justify-center h-64">
-              <RefreshCw className="h-8 w-8 text-indigo-600 animate-spin" />
+              <RefreshCw className="h-8 w-8 text-[#1876D2] animate-spin" />
             </div>
           ) : posts.length > 0 ? (
             <div className="space-y-4">
@@ -349,7 +349,7 @@ export default function Community() {
                           {post.ai_tags.map((tag, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs"
+                              className="px-2 py-1 bg-[#E3F2FD] text-[#1876D2] rounded-full text-xs"
                             >
                               {tag}
                             </span>
@@ -362,12 +362,12 @@ export default function Community() {
                             e.stopPropagation();
                             handleLikePost(post);
                           }}
-                          className="flex items-center space-x-2 text-gray-400 hover:text-indigo-600 transition-colors"
+                          className="flex items-center space-x-2 text-gray-400 hover:text-[#1876D2] transition-colors"
                         >
                           <ThumbsUp className="h-5 w-5" />
                           <span>{post.likes}</span>
                         </button>
-                        <button className="flex items-center space-x-2 text-gray-400 hover:text-indigo-600 transition-colors">
+                        <button className="flex items-center space-x-2 text-gray-400 hover:text-[#1876D2] transition-colors">
                           <MessageSquare className="h-5 w-5" />
                           <span>{post.comments_count}</span>
                         </button>
@@ -376,7 +376,7 @@ export default function Community() {
                             e.stopPropagation();
                             handleSharePost(post);
                           }}
-                          className="flex items-center space-x-2 text-gray-400 hover:text-indigo-600 transition-colors"
+                          className="flex items-center space-x-2 text-gray-400 hover:text-[#1876D2] transition-colors"
                         >
                           <Share2 className="h-5 w-5" />
                           <span>{post.shares}</span>
@@ -408,15 +408,15 @@ export default function Community() {
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Community Stats</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <div className="h-12 w-12 rounded-xl bg-indigo-100 flex items-center justify-center mx-auto mb-2">
-                  <MessageSquare className="h-6 w-6 text-indigo-600" />
+                <div className="h-12 w-12 rounded-xl bg-[#E3F2FD] flex items-center justify-center mx-auto mb-2">
+                  <MessageSquare className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900">{stats?.total_posts || 0}</p>
                 <p className="text-sm text-gray-500">Total Posts</p>
               </div>
               <div className="text-center">
-                <div className="h-12 w-12 rounded-xl bg-purple-100 flex items-center justify-center mx-auto mb-2">
-                  <Users className="h-6 w-6 text-purple-600" />
+                <div className="h-12 w-12 rounded-xl bg-[#E3F2FD] flex items-center justify-center mx-auto mb-2">
+                  <Users className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <p className="text-2xl font-bold text-gray-900">{stats?.active_users || 0}</p>
                 <p className="text-sm text-gray-500">Active Users</p>
@@ -450,7 +450,7 @@ export default function Community() {
           </div>
 
           {/* Quick Links */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
               <button 
@@ -515,7 +515,7 @@ export default function Community() {
                       {selectedPost.ai_tags.map((tag, index) => (
                         <span
                           key={index}
-                          className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs"
+                          className="px-2 py-1 bg-[#E3F2FD] text-[#1876D2] rounded-full text-xs"
                         >
                           {tag}
                         </span>
@@ -525,18 +525,18 @@ export default function Community() {
                   <div className="flex items-center space-x-6 mt-4">
                     <button
                       onClick={() => handleLikePost(selectedPost)}
-                      className="flex items-center space-x-2 text-gray-400 hover:text-indigo-600 transition-colors"
+                      className="flex items-center space-x-2 text-gray-400 hover:text-[#1876D2] transition-colors"
                     >
                       <ThumbsUp className="h-5 w-5" />
                       <span>{selectedPost.likes}</span>
                     </button>
-                    <button className="flex items-center space-x-2 text-gray-400 hover:text-indigo-600 transition-colors">
+                    <button className="flex items-center space-x-2 text-gray-400 hover:text-[#1876D2] transition-colors">
                       <MessageSquare className="h-5 w-5" />
                       <span>{selectedPost.comments_count}</span>
                     </button>
                     <button
                       onClick={() => handleSharePost(selectedPost)}
-                      className="flex items-center space-x-2 text-gray-400 hover:text-indigo-600 transition-colors"
+                      className="flex items-center space-x-2 text-gray-400 hover:text-[#1876D2] transition-colors"
                     >
                       <Share2 className="h-5 w-5" />
                       <span>{selectedPost.shares}</span>
@@ -590,14 +590,14 @@ export default function Community() {
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
                       placeholder="Write a comment..."
-                      className="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                      className="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] resize-none"
                       rows={2}
                     />
                     <div className="flex justify-end mt-2">
                       <button
                         onClick={handleCreateComment}
                         disabled={isSubmitting || !newComment.trim()}
-                        className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                        className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
                       >
                         {isSubmitting ? (
                           <RefreshCw className="h-4 w-4 animate-spin" />

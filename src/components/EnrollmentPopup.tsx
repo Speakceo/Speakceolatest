@@ -71,7 +71,7 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
     { id: 'leadership', label: '⭐ Leadership Skills', icon: Star, color: 'from-yellow-500 to-orange-500' },
     { id: 'public-speaking', label: '🎤 Public Speaking', icon: Mic, color: 'from-purple-500 to-pink-500' },
     { id: 'finance', label: '💰 Money Management', icon: DollarSign, color: 'from-green-500 to-emerald-500' },
-    { id: 'innovation', label: '🧠 Innovation & Creativity', icon: Brain, color: 'from-indigo-500 to-purple-500' },
+    { id: 'innovation', label: '🧠 Innovation & Creativity', icon: Brain, color: 'from-[#1876D2] to-[#00B0FF]' },
     { id: 'tech', label: '💻 Technology & Apps', icon: Target, color: 'from-red-500 to-pink-500' },
     { id: 'marketing', label: '📈 Marketing & Sales', icon: TrendingUp, color: 'from-teal-500 to-blue-500' },
     { id: 'team-building', label: '👥 Team Building', icon: Users, color: 'from-orange-500 to-red-500' }
@@ -250,7 +250,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
           {/* Enhanced Progress Bar */}
           <div className="absolute top-0 left-0 right-0 h-1">
             <div
-              className="h-full bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500 transition-all duration-700 ease-out"
+              className="h-full bg-gradient-to-r from-emerald-500 via-blue-500 to-[#00B0FF] transition-all duration-700 ease-out"
               style={{ width: `${(step / 5) * 100}%` }}
             />
           </div>
@@ -381,7 +381,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
                       <div className="text-sm text-gray-600">Success Rate</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-600">50+</div>
+                      <div className="text-2xl font-bold text-[#1876D2]">50+</div>
                       <div className="text-sm text-gray-600">Expert Mentors</div>
                     </div>
                   </div>
@@ -700,7 +700,7 @@ FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact withi
                         <p className="text-gray-600 text-sm">Our enrollment specialist will call you within 24 hours</p>
                       </div>
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <div className="w-12 h-12 bg-[#F5F9FC]0 rounded-2xl flex items-center justify-center mx-auto mb-4">
                           <Calendar className="h-6 w-6 text-white" />
                         </div>
                         <h4 className="font-semibold text-lg">2. Program Design</h4>

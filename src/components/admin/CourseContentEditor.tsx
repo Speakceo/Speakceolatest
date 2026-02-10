@@ -289,7 +289,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
           {content && (
             <button
               onClick={() => setPreviewActive(!previewActive)}
-              className="mt-2 flex items-center text-sm text-indigo-600 hover:text-indigo-800"
+              className="mt-2 flex items-center text-sm text-[#1876D2] hover:text-indigo-800"
             >
               <Eye className="h-4 w-4 mr-1" />
               {previewActive ? 'Hide Preview' : 'Show Preview'}
@@ -328,7 +328,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
           {url && (
             <button
               onClick={() => setPreviewActive(!previewActive)}
-              className="mt-2 flex items-center text-sm text-indigo-600 hover:text-indigo-800"
+              className="mt-2 flex items-center text-sm text-[#1876D2] hover:text-indigo-800"
             >
               <Eye className="h-4 w-4 mr-1" />
               {previewActive ? 'Hide Preview' : 'Show Preview'}
@@ -349,7 +349,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
               <div className="flex text-sm text-gray-600">
                 <label
                   htmlFor="file-upload"
-                  className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                  className="relative cursor-pointer bg-white rounded-md font-medium text-[#1876D2] hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-[#1876D2]"
                 >
                   <span>Upload a file</span>
                   <input
@@ -372,12 +372,12 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
               <div className="relative pt-1">
                 <div className="flex mb-2 items-center justify-between">
                   <div>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200">
+                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-[#1876D2] bg-indigo-200">
                       Uploading
                     </span>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs font-semibold inline-block text-indigo-600">
+                    <span className="text-xs font-semibold inline-block text-[#1876D2]">
                       {uploadProgress}%
                     </span>
                   </div>
@@ -385,7 +385,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
                 <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
                   <div
                     style={{ width: `${uploadProgress}%` }}
-                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500"
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#E3F2FD]0"
                   ></div>
                 </div>
               </div>
@@ -400,7 +400,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
                 </a>
                 <button
                   onClick={() => setPreviewActive(!previewActive)}
-                  className="ml-2 inline-flex items-center text-sm text-indigo-600 hover:text-indigo-800"
+                  className="ml-2 inline-flex items-center text-sm text-[#1876D2] hover:text-indigo-800"
                 >
                   <Eye className="h-4 w-4 mr-1" />
                   {previewActive ? 'Hide Preview' : 'Preview'}
@@ -512,7 +512,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
     if (!content) return null;
     
     return (
-      <div className="mb-6 border-l-4 border-indigo-500 pl-4">
+      <div className="mb-6 border-l-4 border-[#1876D2] pl-4">
         <h3 className="text-lg font-semibold mb-2">{title}</h3>
         {content}
       </div>
@@ -522,7 +522,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
   if (isLoading) {
     return (
       <div className="p-8 text-center">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-[#1876D2] border-t-transparent"></div>
         <p className="mt-2 text-gray-600">Loading lesson content...</p>
       </div>
     );
@@ -577,7 +577,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
               onClick={() => setContentType('text')}
               className={`flex items-center px-4 py-2 rounded-md ${
                 contentType === 'text'
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-[#1876D2] text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -588,7 +588,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
               onClick={() => setContentType('url')}
               className={`flex items-center px-4 py-2 rounded-md ${
                 contentType === 'url'
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-[#1876D2] text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -599,7 +599,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
               onClick={() => setContentType('file')}
               className={`flex items-center px-4 py-2 rounded-md ${
                 contentType === 'file'
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-[#1876D2] text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
               }`}
             >
@@ -626,7 +626,7 @@ export default function CourseContentEditor({ lessonId, onClose, onSave }: Conte
               className={`flex items-center px-4 py-2 rounded-md ${
                 isSaving
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                  : 'bg-[#1876D2] text-white hover:bg-[#1565C0]'
               }`}
             >
               {isSaving ? (

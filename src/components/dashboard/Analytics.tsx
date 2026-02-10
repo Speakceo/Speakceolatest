@@ -231,7 +231,7 @@ export default function Analytics() {
       change: '+2.5h',
       trend: 'up',
       icon: Clock,
-      color: 'from-purple-600 to-pink-600'
+      color: 'from-[#1876D2] to-[#00B0FF]'
     },
     {
       name: 'Achievements',
@@ -254,7 +254,7 @@ export default function Analytics() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1876D2]"></div>
       </div>
     );
   }
@@ -269,11 +269,11 @@ export default function Analytics() {
             <p className="text-gray-500 mt-1">Track your progress and achievements</p>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 transition-colors">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-[#E3F2FD] text-[#1876D2] rounded-lg hover:bg-[#E3F2FD] transition-colors">
               <Download className="h-4 w-4" />
               <span>Export Report</span>
             </button>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-opacity">
               <Share2 className="h-4 w-4" />
               <span>Share Progress</span>
             </button>
@@ -338,13 +338,13 @@ export default function Analytics() {
             />
             
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="bg-indigo-50 rounded-xl p-4">
+              <div className="bg-[#E3F2FD] rounded-xl p-4">
                 <div className="flex items-center space-x-3">
-                  <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <Clock className="h-5 w-5 text-indigo-600" />
+                  <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                    <Clock className="h-5 w-5 text-[#1876D2]" />
                   </div>
                   <div>
-                    <p className="text-xs text-indigo-600 font-medium">Total Study Time</p>
+                    <p className="text-xs text-[#1876D2] font-medium">Total Study Time</p>
                     <p className="text-lg font-bold text-indigo-700">
                       {weeklyActivity.reduce((sum: number, day: any) => sum + day.hours, 0).toFixed(1)}h
                     </p>
@@ -352,14 +352,14 @@ export default function Analytics() {
                 </div>
               </div>
               
-              <div className="bg-purple-50 rounded-xl p-4">
+              <div className="bg-[#F5F9FC] rounded-xl p-4">
                 <div className="flex items-center space-x-3">
-                  <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-purple-600" />
+                  <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5 text-[#1876D2]" />
                   </div>
                   <div>
-                    <p className="text-xs text-purple-600 font-medium">Tasks Completed</p>
-                    <p className="text-lg font-bold text-purple-700">
+                    <p className="text-xs text-[#1876D2] font-medium">Tasks Completed</p>
+                    <p className="text-lg font-bold text-[#1876D2]">
                       {weeklyActivity.reduce((sum: number, day: any) => sum + day.tasks, 0)}
                     </p>
                   </div>
@@ -375,16 +375,16 @@ export default function Analytics() {
               {recentActivities.length > 0 ? (
                 recentActivities.map((activity: any, index: number) => (
                   <div key={index} className="flex items-start">
-                    <div className="h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center mr-4">
-                      {activity.type === 'course' && <BookOpen className="h-5 w-5 text-indigo-600" />}
+                    <div className="h-10 w-10 rounded-lg bg-[#E3F2FD] flex items-center justify-center mr-4">
+                      {activity.type === 'course' && <BookOpen className="h-5 w-5 text-[#1876D2]" />}
                       {activity.type === 'task' && <CheckCircle className="h-5 w-5 text-green-600" />}
                       {activity.type === 'simulator' && <Target className="h-5 w-5 text-amber-600" />}
-                      {activity.type === 'ai-tool' && <Sparkles className="h-5 w-5 text-purple-600" />}
+                      {activity.type === 'ai-tool' && <Sparkles className="h-5 w-5 text-[#1876D2]" />}
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between">
                         <h4 className="font-medium text-gray-900">{activity.title}</h4>
-                        <span className="text-sm font-medium text-indigo-600">+{activity.xpEarned} XP</span>
+                        <span className="text-sm font-medium text-[#1876D2]">+{activity.xpEarned} XP</span>
                       </div>
                       <p className="text-sm text-gray-500">
                         {new Date(activity.timestamp).toLocaleString()}
@@ -422,7 +422,7 @@ export default function Analytics() {
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
-                  <BookOpen className="h-5 w-5 text-indigo-600 mr-3" />
+                  <BookOpen className="h-5 w-5 text-[#1876D2] mr-3" />
                   <span className="text-gray-700">Lessons Completed</span>
                 </div>
                 <span className="font-medium">
@@ -456,7 +456,7 @@ export default function Analytics() {
               
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
-                  <Sparkles className="h-5 w-5 text-purple-600 mr-3" />
+                  <Sparkles className="h-5 w-5 text-[#1876D2] mr-3" />
                   <span className="text-gray-700">AI Tools Used</span>
                 </div>
                 <span className="font-medium">{toolStats.totalUsage}</span>
@@ -464,7 +464,7 @@ export default function Analytics() {
             </div>
           </div>
           
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
             <div className="flex items-center space-x-3 mb-4">
               <div className="h-10 w-10 bg-white/20 rounded-xl flex items-center justify-center">
                 <Brain className="h-6 w-6" />
@@ -476,7 +476,7 @@ export default function Analytics() {
             </p>
             <button 
               onClick={() => setShowAICoach(true)}
-              className="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
+              className="w-full bg-white text-[#1876D2] px-4 py-2 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
             >
               Talk to AI Coach
             </button>

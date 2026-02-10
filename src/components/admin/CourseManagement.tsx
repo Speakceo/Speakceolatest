@@ -505,7 +505,7 @@ export default function CourseManagement({
       case 'assignment':
         return <FileText className="h-4 w-4 text-amber-500" />;
       case 'ppt':
-        return <FileText className="h-4 w-4 text-purple-500" />;
+        return <FileText className="h-4 w-4 text-[#1876D2]" />;
       case 'link':
         return <LinkIcon className="h-4 w-4 text-blue-500" />;
     }
@@ -522,14 +522,14 @@ export default function CourseManagement({
       case 'assignment':
         return <FileText className="h-5 w-5 text-red-500" />;
       case 'ppt':
-        return <Presentation className="h-5 w-5 text-purple-500" />;
+        return <Presentation className="h-5 w-5 text-[#1876D2]" />;
     }
   };
 
   const getModuleIcon = (order: number) => {
     const icons = [
       <Target className="h-5 w-5 text-blue-500" />,
-      <Star className="h-5 w-5 text-purple-500" />,
+      <Star className="h-5 w-5 text-[#1876D2]" />,
       <DollarSign className="h-5 w-5 text-green-500" />,
       <Target className="h-5 w-5 text-amber-500" />,
       <Users className="h-5 w-5 text-red-500" />,
@@ -553,7 +553,7 @@ export default function CourseManagement({
         <h2 className="text-lg font-semibold text-gray-900">Course Modules</h2>
         <button
           onClick={() => setShowAddModule(true)}
-          className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
         >
           <Plus className="h-5 w-5" />
           <span>Add Module</span>
@@ -597,7 +597,7 @@ export default function CourseManagement({
                 type="text"
                 value={newModule.title}
                 onChange={(e) => setNewModule({ ...newModule, title: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Enter module title"
               />
             </div>
@@ -610,7 +610,7 @@ export default function CourseManagement({
                 value={newModule.description}
                 onChange={(e) => setNewModule({ ...newModule, description: e.target.value })}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Enter module description"
               />
             </div>
@@ -623,7 +623,7 @@ export default function CourseManagement({
                 type="text"
                 value={newModule.duration}
                 onChange={(e) => setNewModule({ ...newModule, duration: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="e.g., 2 weeks"
               />
             </div>
@@ -639,7 +639,7 @@ export default function CourseManagement({
             <button
               onClick={handleAddModule}
               disabled={isLocalLoading || !newModule.title || !newModule.description || !newModule.duration}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+              className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50"
             >
               {isLocalLoading ? 'Adding...' : 'Add Module'}
             </button>
@@ -657,7 +657,7 @@ export default function CourseManagement({
               onClick={() => toggleModuleExpanded(module.id)}
             >
               <div className="flex items-center">
-                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center">
+                <div className="flex-shrink-0 h-10 w-10 rounded-lg bg-[#E3F2FD] flex items-center justify-center">
                   {getModuleIcon(module.order)}
                 </div>
                 <div className="ml-4">
@@ -737,7 +737,7 @@ export default function CourseManagement({
                                         href={content.url} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="text-indigo-600 hover:text-indigo-900"
+                                        className="text-[#1876D2] hover:text-indigo-900"
                                         onClick={(e) => e.stopPropagation()}
                                       >
                                         <LinkIcon className="h-3 w-3" />
@@ -784,7 +784,7 @@ export default function CourseManagement({
                                     type="text"
                                     value={newContent.title}
                                     onChange={(e) => setNewContent({ ...newContent, title: e.target.value })}
-                                    className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                                     placeholder="Enter content title"
                                   />
                                 </div>
@@ -796,7 +796,7 @@ export default function CourseManagement({
                                   <select
                                     value={newContent.type}
                                     onChange={(e) => setNewContent({ ...newContent, type: e.target.value as LessonContent['type'] })}
-                                    className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                    className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                                   >
                                     <option value="video">Video</option>
                                     <option value="text">Text</option>
@@ -818,7 +818,7 @@ export default function CourseManagement({
                                       type="text"
                                       value={newContent.url}
                                       onChange={(e) => setNewContent({ ...newContent, url: e.target.value })}
-                                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                                       placeholder="Enter URL"
                                     />
                                   </div>
@@ -833,7 +833,7 @@ export default function CourseManagement({
                                       value={newContent.content}
                                       onChange={(e) => setNewContent({ ...newContent, content: e.target.value })}
                                       rows={3}
-                                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded-md focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                                       placeholder="Enter content"
                                     />
                                   </div>
@@ -850,7 +850,7 @@ export default function CourseManagement({
                                 <button
                                   onClick={() => handleAddContent(module.id, lesson.id)}
                                   disabled={isLocalLoading}
-                                  className="px-2 py-1 text-xs bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+                                  className="px-2 py-1 text-xs bg-[#1876D2] text-white rounded-md hover:bg-[#1565C0] disabled:opacity-50"
                                 >
                                   {isLocalLoading ? 'Adding...' : 'Add Content'}
                                 </button>
@@ -859,7 +859,7 @@ export default function CourseManagement({
                           ) : (
                             <button
                               onClick={() => setShowAddContent(lesson.id)}
-                              className="flex items-center space-x-1 text-xs text-indigo-600 hover:text-indigo-900"
+                              className="flex items-center space-x-1 text-xs text-[#1876D2] hover:text-indigo-900"
                             >
                               <Plus className="h-3 w-3" />
                               <span>Add Content</span>
@@ -874,7 +874,7 @@ export default function CourseManagement({
                                 // Edit lesson logic
                                 setEditingLesson(lesson);
                               }}
-                              className="text-indigo-600 hover:text-indigo-900"
+                              className="text-[#1876D2] hover:text-indigo-900"
                             >
                               <Edit className="h-4 w-4" />
                             </button>
@@ -916,7 +916,7 @@ export default function CourseManagement({
                           type="text"
                           value={newLesson.title}
                           onChange={(e) => setNewLesson({ ...newLesson, title: e.target.value })}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                           placeholder="Enter lesson title"
                         />
                       </div>
@@ -929,7 +929,7 @@ export default function CourseManagement({
                           <select
                             value={newLesson.type}
                             onChange={(e) => setNewLesson({ ...newLesson, type: e.target.value as Lesson['type'] })}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                           >
                             <option value="video">Video</option>
                             <option value="document">Document</option>
@@ -947,7 +947,7 @@ export default function CourseManagement({
                             type="text"
                             value={newLesson.duration}
                             onChange={(e) => setNewLesson({ ...newLesson, duration: e.target.value })}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                             placeholder="e.g., 2 hours"
                           />
                         </div>
@@ -964,7 +964,7 @@ export default function CourseManagement({
                       <button
                         onClick={() => handleAddLesson(module.id)}
                         disabled={isLocalLoading || !newLesson.title || !newLesson.type || !newLesson.duration}
-                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+                        className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50"
                       >
                         {isLocalLoading ? 'Adding...' : 'Add Lesson'}
                       </button>
@@ -973,7 +973,7 @@ export default function CourseManagement({
                 ) : (
                   <button
                     onClick={() => setShowAddLesson(module.id)}
-                    className="mt-4 flex items-center space-x-2 text-sm text-indigo-600 hover:text-indigo-900"
+                    className="mt-4 flex items-center space-x-2 text-sm text-[#1876D2] hover:text-indigo-900"
                   >
                     <Plus className="h-4 w-4" />
                     <span>Add Lesson</span>
@@ -988,7 +988,7 @@ export default function CourseManagement({
                       // Edit module logic
                       setEditingModule(module);
                     }}
-                    className="text-indigo-600 hover:text-indigo-900"
+                    className="text-[#1876D2] hover:text-indigo-900"
                   >
                     <Edit className="h-5 w-5" />
                   </button>
@@ -1014,7 +1014,7 @@ export default function CourseManagement({
             <p className="text-gray-500 mb-4">Get started by adding your first course module</p>
             <button
               onClick={() => setShowAddModule(true)}
-              className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="inline-flex items-center px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
             >
               <Plus className="h-5 w-5 mr-2" />
               Add Module
@@ -1027,12 +1027,12 @@ export default function CourseManagement({
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white rounded-xl p-4">
           <div className="flex items-center space-x-3 mb-3">
-            <div className="h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center">
-              <BookOpen className="h-5 w-5 text-indigo-600" />
+            <div className="h-10 w-10 rounded-lg bg-[#E3F2FD] flex items-center justify-center">
+              <BookOpen className="h-5 w-5 text-[#1876D2]" />
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-900">Total Modules</h3>
-              <p className="text-2xl font-bold text-indigo-600">{localModules.length}</p>
+              <p className="text-2xl font-bold text-[#1876D2]">{localModules.length}</p>
             </div>
           </div>
           <div className="text-xs text-gray-500">
@@ -1042,12 +1042,12 @@ export default function CourseManagement({
         
         <div className="bg-white rounded-xl p-4">
           <div className="flex items-center space-x-3 mb-3">
-            <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center">
-              <Users className="h-5 w-5 text-purple-600" />
+            <div className="h-10 w-10 rounded-lg bg-[#E3F2FD] flex items-center justify-center">
+              <Users className="h-5 w-5 text-[#1876D2]" />
             </div>
             <div>
               <h3 className="text-sm font-medium text-gray-900">Enrolled Students</h3>
-              <p className="text-2xl font-bold text-purple-600">248</p>
+              <p className="text-2xl font-bold text-[#1876D2]">248</p>
             </div>
           </div>
           <div className="text-xs text-gray-500">

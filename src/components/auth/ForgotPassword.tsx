@@ -37,7 +37,7 @@ export default function ForgotPassword() {
           </div>
           <Link
             to="/login"
-            className="flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500"
+            className="flex items-center justify-center text-sm font-medium text-[#1876D2] hover:text-indigo-500"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to login
@@ -66,7 +66,7 @@ export default function ForgotPassword() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2] sm:text-sm"
                 placeholder="Enter your email"
               />
             </div>
@@ -75,7 +75,7 @@ export default function ForgotPassword() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#1876D2] to-[#00B0FF] hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1876D2] disabled:opacity-50"
           >
             {loading ? 'Sending...' : 'Send reset instructions'}
           </button>
@@ -83,7 +83,7 @@ export default function ForgotPassword() {
           <div className="text-center">
             <Link
               to="/login"
-              className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+              className="text-sm font-medium text-[#1876D2] hover:text-indigo-500"
             >
               Back to login
             </Link>

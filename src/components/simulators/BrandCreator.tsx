@@ -225,7 +225,7 @@ export default function BrandCreator() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#1876D2]"></div>
         <span className="ml-2 text-gray-600">Loading Brand Creator...</span>
       </div>
     );
@@ -391,7 +391,7 @@ export default function BrandCreator() {
           <button
             onClick={handleGenerateBrand}
             disabled={isGenerating}
-            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
           >
             {isGenerating ? (
               <RefreshCw className="h-4 w-4 animate-spin" />
@@ -435,7 +435,7 @@ export default function BrandCreator() {
             onClick={() => setActiveTab('identity')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'identity'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -446,7 +446,7 @@ export default function BrandCreator() {
             onClick={() => setActiveTab('colors')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'colors'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -457,7 +457,7 @@ export default function BrandCreator() {
             onClick={() => setActiveTab('typography')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'typography'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -468,7 +468,7 @@ export default function BrandCreator() {
             onClick={() => setActiveTab('logo')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'logo'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -495,7 +495,7 @@ export default function BrandCreator() {
                       type="text"
                       value={brand.name}
                       onChange={(e) => setBrand({ ...brand, name: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                       placeholder="Enter brand name"
                     />
                   </div>
@@ -507,7 +507,7 @@ export default function BrandCreator() {
                       type="text"
                       value={brand.tagline}
                       onChange={(e) => setBrand({ ...brand, tagline: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                       placeholder="Enter tagline"
                     />
                   </div>
@@ -519,7 +519,7 @@ export default function BrandCreator() {
                       value={brand.description}
                       onChange={(e) => setBrand({ ...brand, description: e.target.value })}
                       rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                       placeholder="Describe your brand"
                     />
                   </div>
@@ -536,7 +536,7 @@ export default function BrandCreator() {
                     <select
                       value={brand.industry}
                       onChange={(e) => setBrand({ ...brand, industry: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     >
                       {industries.map((industry) => (
                         <option key={industry} value={industry.toLowerCase()}>
@@ -552,7 +552,7 @@ export default function BrandCreator() {
                     <select
                       value={brand.personality}
                       onChange={(e) => setBrand({ ...brand, personality: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     >
                       {personalities.map((personality) => (
                         <option key={personality} value={personality.toLowerCase()}>
@@ -569,7 +569,7 @@ export default function BrandCreator() {
                       {brand.values.map((value, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm"
+                          className="px-3 py-1 bg-[#E3F2FD] text-indigo-700 rounded-full text-sm"
                         >
                           {value}
                           <button
@@ -589,7 +589,7 @@ export default function BrandCreator() {
                       <input
                         type="text"
                         placeholder="Add a brand value"
-                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                         onKeyPress={(e) => {
                           if (e.key === 'Enter') {
                             const value = e.currentTarget.value.trim();
@@ -615,7 +615,7 @@ export default function BrandCreator() {
                             input.value = '';
                           }
                         }}
-                        className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                        className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
                       >
                         Add
                       </button>
@@ -656,7 +656,7 @@ export default function BrandCreator() {
                             colors: { ...brand.colors, [name]: e.target.value }
                           })
                         }
-                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                       />
                       <button
                         onClick={() => handleCopyColor(color)}
@@ -691,7 +691,7 @@ export default function BrandCreator() {
                         typography: { ...brand.typography, heading: e.target.value }
                       })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     {fonts.map((font) => (
                       <option key={font} value={font}>
@@ -719,7 +719,7 @@ export default function BrandCreator() {
                         typography: { ...brand.typography, body: e.target.value }
                       })
                     }
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     {fonts.map((font) => (
                       <option key={font} value={font}>
@@ -749,8 +749,8 @@ export default function BrandCreator() {
                       onClick={() => setSelectedLogoStyle(style.id)}
                       className={`p-4 rounded-xl border text-left transition-all ${
                         selectedLogoStyle === style.id
-                          ? 'border-indigo-500 bg-indigo-50'
-                          : 'border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD]'
+                          : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       <h4 className="font-medium text-gray-900">{style.name}</h4>
@@ -763,7 +763,7 @@ export default function BrandCreator() {
                   <button
                     onClick={handleGenerateLogo}
                     disabled={isGeneratingLogo || !brand.name}
-                    className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
+                    className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
                   >
                     {isGeneratingLogo ? (
                       <RefreshCw className="h-5 w-5 animate-spin" />
@@ -782,8 +782,8 @@ export default function BrandCreator() {
                   {...getRootProps()}
                   className={`border-2 border-dashed rounded-xl p-8 text-center transition-colors ${
                     isDragActive
-                      ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-gray-300 hover:border-indigo-500'
+                      ? 'border-[#1876D2] bg-[#E3F2FD]'
+                      : 'border-gray-300 hover:border-[#1876D2]'
                   }`}
                 >
                   <input {...getInputProps()} />
@@ -900,7 +900,7 @@ export default function BrandCreator() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white">
             <div className="flex items-center space-x-3 mb-4">
               <div className="h-10 w-10 bg-white/20 rounded-xl flex items-center justify-center">
                 <Sparkles className="h-6 w-6" />
@@ -914,7 +914,7 @@ export default function BrandCreator() {
               <button
                 onClick={handleGenerateBrand}
                 disabled={isGenerating}
-                className="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition-colors disabled:opacity-50"
+                className="w-full bg-white text-[#1876D2] px-4 py-2 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors disabled:opacity-50"
               >
                 {isGenerating ? 'Generating...' : 'Generate Brand Identity'}
               </button>

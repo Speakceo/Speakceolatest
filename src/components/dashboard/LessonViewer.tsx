@@ -163,7 +163,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
       case 'pdf':
         return <FileText className="h-5 w-5 text-red-500" />;
       case 'ppt':
-        return <Presentation className="h-5 w-5 text-purple-500" />;
+        return <Presentation className="h-5 w-5 text-[#1876D2]" />;
       case 'link':
         return <LinkIcon className="h-5 w-5 text-green-500" />;
       case 'text':
@@ -251,7 +251,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
           {activeContent.quiz_questions.map((question, index) => (
             <div key={question.id} className="p-6 bg-gray-50 rounded-lg">
               <h4 className="text-lg font-medium text-gray-900 mb-3">
-                <span className="bg-indigo-600 text-white w-7 h-7 inline-flex items-center justify-center rounded-full mr-2">
+                <span className="bg-[#1876D2] text-white w-7 h-7 inline-flex items-center justify-center rounded-full mr-2">
                   {index + 1}
                 </span>
                 {question.question}
@@ -273,7 +273,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
                             ? isCorrectAnswer 
                               ? 'bg-green-50 border-green-300'
                               : 'bg-red-50 border-red-300'
-                            : 'bg-indigo-50 border-indigo-300'
+                            : 'bg-[#E3F2FD] border-indigo-300'
                           : showCorrectAnswer && isCorrectAnswer
                             ? 'bg-green-50 border-green-300'
                             : 'bg-white border-gray-200 hover:bg-gray-50'
@@ -287,7 +287,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
                               ? isCorrectAnswer 
                                 ? 'bg-green-500' 
                                 : 'bg-red-500'
-                              : 'bg-indigo-500'
+                              : 'bg-[#E3F2FD]0'
                             : showCorrectAnswer && isCorrectAnswer
                               ? 'bg-green-500'
                               : 'border border-gray-300'
@@ -336,7 +336,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
               disabled={Object.keys(quizResponses).length !== activeContent.quiz_questions.length}
               className={`px-6 py-3 rounded-lg font-medium ${
                 Object.keys(quizResponses).length === activeContent.quiz_questions.length
-                  ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                  ? 'bg-[#1876D2] text-white hover:bg-[#1565C0]'
                   : 'bg-gray-100 text-gray-400 cursor-not-allowed'
               }`}
             >
@@ -344,24 +344,24 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
             </button>
           </div>
         ) : quizResults && (
-          <div className="mt-8 p-6 bg-indigo-50 border border-indigo-200 rounded-lg">
+          <div className="mt-8 p-6 bg-[#E3F2FD] border border-indigo-200 rounded-lg">
             <h3 className="text-xl font-bold text-indigo-900 mb-3">Quiz Results</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div className="p-4 bg-white rounded-lg shadow-sm text-center">
                 <p className="text-sm text-gray-500 mb-1">Score</p>
-                <p className="text-2xl font-bold text-indigo-600">
+                <p className="text-2xl font-bold text-[#1876D2]">
                   {quizResults.score}/{quizResults.totalPoints}
                 </p>
               </div>
               <div className="p-4 bg-white rounded-lg shadow-sm text-center">
                 <p className="text-sm text-gray-500 mb-1">Correct Answers</p>
-                <p className="text-2xl font-bold text-indigo-600">
+                <p className="text-2xl font-bold text-[#1876D2]">
                   {quizResults.correctAnswers}/{quizResults.totalQuestions}
                 </p>
               </div>
               <div className="p-4 bg-white rounded-lg shadow-sm text-center">
                 <p className="text-sm text-gray-500 mb-1">XP Earned</p>
-                <p className="text-2xl font-bold text-indigo-600">
+                <p className="text-2xl font-bold text-[#1876D2]">
                   +{quizResults.score} XP
                 </p>
               </div>
@@ -406,7 +406,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
                 href={activeContent.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                className="flex items-center px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
               >
                 <ExternalLink className="h-4 w-4 mr-2" />
                 <span>Open PDF</span>
@@ -443,7 +443,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
               href={activeContent.url} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="flex items-center px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
             >
               <ExternalLink className="h-4 w-4 mr-2" />
               <span>Open Link</span>
@@ -557,7 +557,7 @@ export default function LessonViewer({ lessonTitle, content, onClose, onComplete
                 className={`flex items-center px-4 py-2 ${
                   activeContent.type === 'quiz' && !quizSubmitted
                     ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                    : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                    : 'bg-[#1876D2] text-white hover:bg-[#1565C0]'
                 } rounded-lg transition-colors`}
               >
                 <span>Next</span>

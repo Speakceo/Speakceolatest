@@ -96,7 +96,7 @@ const Blog: React.FC = () => {
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white py-20">
+        <section className="bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -134,7 +134,7 @@ const Blog: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
                 >
-                  <div className="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-[#F5F9FC]0 to-[#00B0FF] flex items-center justify-center">
                     <h3 className="text-white font-bold text-lg text-center px-4">
                       {post.title}
                     </h3>
@@ -154,12 +154,12 @@ const Blog: React.FC = () => {
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-3 py-1 rounded-full">
+                      <span className="text-sm bg-[#E3F2FD] dark:bg-[#1876D2]/20 text-[#1876D2] dark:text-[#00B0FF] px-3 py-1 rounded-full">
                         {post.category}
                       </span>
                       <Link
                         to={`/blog/${post.slug}`}
-                        className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium flex items-center gap-1"
+                        className="text-[#1876D2] dark:text-[#00B0FF] hover:text-[#1876D2] dark:hover:text-[#00B0FF] font-medium flex items-center gap-1"
                       >
                         Read More <ArrowRight className="h-4 w-4" />
                       </Link>
@@ -183,7 +183,7 @@ const Blog: React.FC = () => {
                   placeholder="Search articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 />
               </div>
 
@@ -193,7 +193,7 @@ const Blog: React.FC = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 >
                   <option value="All">All Categories</option>
                   {blogCategories.map(category => (
@@ -208,7 +208,7 @@ const Blog: React.FC = () => {
                 <select
                   value={selectedTag}
                   onChange={(e) => setSelectedTag(e.target.value)}
-                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                 >
                   <option value="">All Tags</option>
                   {allTags.map(tag => (
@@ -247,7 +247,7 @@ const Blog: React.FC = () => {
                     transition={{ duration: 0.6, delay: (index % 9) * 0.1 }}
                     className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
-                    <div className="h-48 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-6">
+                    <div className="h-48 bg-gradient-to-br from-[#F5F9FC]0 to-[#00B0FF] flex items-center justify-center p-6">
                       <h3 className="text-white font-bold text-lg text-center leading-tight">
                         {post.title}
                       </h3>
@@ -276,7 +276,7 @@ const Blog: React.FC = () => {
                       </div>
 
                       <div className="flex flex-wrap gap-2 mb-4">
-                        <span className="text-xs bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-2 py-1 rounded-full">
+                        <span className="text-xs bg-[#E3F2FD] dark:bg-[#1876D2]/20 text-[#1876D2] dark:text-[#00B0FF] px-2 py-1 rounded-full">
                           {post.category}
                         </span>
                         {post.tags.slice(0, 2).map(tag => (
@@ -288,7 +288,7 @@ const Blog: React.FC = () => {
 
                       <Link
                         to={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium transition-colors"
+                        className="inline-flex items-center gap-2 text-[#1876D2] dark:text-[#00B0FF] hover:text-[#1876D2] dark:hover:text-[#00B0FF] font-medium transition-colors"
                       >
                         Read Full Article <ArrowRight className="h-4 w-4" />
                       </Link>
@@ -301,7 +301,7 @@ const Blog: React.FC = () => {
         </section>
 
         {/* Newsletter Signup */}
-        <section className="py-16 bg-gradient-to-br from-indigo-600 to-purple-600 text-white">
+        <section className="py-16 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold mb-4">
               Stay Updated with SpeakCEO Insights
@@ -315,7 +315,7 @@ const Blog: React.FC = () => {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-white focus:outline-none"
               />
-              <button className="px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+              <button className="px-6 py-3 bg-white text-[#1876D2] font-semibold rounded-lg hover:bg-gray-100 transition-colors">
                 Subscribe
               </button>
             </div>

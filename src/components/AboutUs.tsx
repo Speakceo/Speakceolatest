@@ -90,7 +90,7 @@ export default function AboutUs() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="bg-white rounded-3xl p-8 shadow-xl card-hover">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center mb-6">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-[#1876D2] to-[#00B0FF] flex items-center justify-center mb-6">
                   <Target className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
@@ -101,7 +101,7 @@ export default function AboutUs() {
                 </p>
               </div>
               <div className="bg-white rounded-3xl p-8 shadow-xl card-hover">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center mb-6">
+                <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-[#1876D2] to-[#00B0FF] flex items-center justify-center mb-6">
                   <Globe2 className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
@@ -134,7 +134,7 @@ export default function AboutUs() {
                     <div className="ml-4">
                       <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
                       <div className="flex flex-col">
-                        <p className="text-sm text-indigo-600">{member.role}</p>
+                        <p className="text-sm text-[#1876D2]">{member.role}</p>
                         <p className="text-xs text-gray-500">{member.location}</p>
                       </div>
                     </div>
@@ -142,7 +142,7 @@ export default function AboutUs() {
                   <p className="mt-4 text-gray-600">{member.bio}</p>
                   <a
                     href={member.linkedin}
-                    className="mt-4 text-gray-400 hover:text-indigo-600 transition-colors"
+                    className="mt-4 text-gray-400 hover:text-[#1876D2] transition-colors"
                   >
                     <Linkedin className="h-6 w-6" />
                   </a>
@@ -160,7 +160,7 @@ export default function AboutUs() {
               </p>
             </div>
             <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-indigo-600 to-purple-600" />
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#1876D2] to-[#00B0FF]" />
               <div className="space-y-12">
                 {milestones.map((milestone, index) => (
                   <div
@@ -170,10 +170,10 @@ export default function AboutUs() {
                     }`}
                   >
                     <div className="flex-1 md:w-1/2" />
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-4 border-indigo-600 z-10" />
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white border-4 border-[#1876D2] z-10" />
                     <div className="flex-1 md:w-1/2">
                       <div className="bg-white rounded-2xl p-6 shadow-lg ml-4 md:ml-0 md:mx-8">
-                        <span className="text-sm font-semibold text-indigo-600">{milestone.year}</span>
+                        <span className="text-sm font-semibold text-[#1876D2]">{milestone.year}</span>
                         <h3 className="mt-2 text-xl font-bold text-gray-900">{milestone.title}</h3>
                         <p className="mt-2 text-gray-500">{milestone.description}</p>
                       </div>

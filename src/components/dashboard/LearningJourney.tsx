@@ -146,11 +146,11 @@ export default function LearningJourney() {
           </div>
           <div className="flex items-center space-x-4">
             <div className="text-center">
-              <p className="text-3xl font-bold text-indigo-600">{overallProgress}%</p>
+              <p className="text-3xl font-bold text-[#1876D2]">{overallProgress}%</p>
               <p className="text-sm text-gray-500">Overall Progress</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-purple-600">Day {Math.floor(overallProgress * 0.9)}</p>
+              <p className="text-3xl font-bold text-[#1876D2]">Day {Math.floor(overallProgress * 0.9)}</p>
               <p className="text-sm text-gray-500">of 180</p>
             </div>
           </div>
@@ -250,12 +250,12 @@ export default function LearningJourney() {
                               }}
                             >
                               <div className="flex items-center space-x-3">
-                                <div className="rounded-lg p-2 bg-indigo-100">
-                                  {lesson.type === 'video' && <Video className="h-4 w-4 text-indigo-600" />}
-                                  {lesson.type === 'document' && <FileText className="h-4 w-4 text-indigo-600" />}
-                                  {lesson.type === 'quiz' && <BrainCircuit className="h-4 w-4 text-indigo-600" />}
-                                  {lesson.type === 'assignment' && <FileText className="h-4 w-4 text-indigo-600" />}
-                                  {lesson.type === 'ppt' && <Presentation className="h-4 w-4 text-indigo-600" />}
+                                <div className="rounded-lg p-2 bg-[#E3F2FD]">
+                                  {lesson.type === 'video' && <Video className="h-4 w-4 text-[#1876D2]" />}
+                                  {lesson.type === 'document' && <FileText className="h-4 w-4 text-[#1876D2]" />}
+                                  {lesson.type === 'quiz' && <BrainCircuit className="h-4 w-4 text-[#1876D2]" />}
+                                  {lesson.type === 'assignment' && <FileText className="h-4 w-4 text-[#1876D2]" />}
+                                  {lesson.type === 'ppt' && <Presentation className="h-4 w-4 text-[#1876D2]" />}
                                 </div>
                                 <div>
                                   <p className="text-sm font-medium text-gray-900">{lesson.title}</p>
@@ -304,7 +304,7 @@ export default function LearningJourney() {
                 </div>
               </div>
               <button 
-                className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                 onClick={() => {
                   // Find the module that contains this lesson
                   for (const module of modules) {
@@ -351,7 +351,7 @@ export default function LearningJourney() {
           </div>
 
           {/* AI Coach */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
             <div className="flex items-center space-x-3 mb-4">
               <div className="h-10 w-10 bg-white/20 rounded-xl flex items-center justify-center">
                 <Sparkles className="h-6 w-6" />
@@ -363,7 +363,7 @@ export default function LearningJourney() {
             </p>
             <button 
               onClick={() => setShowAICoach(true)}
-              className="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
+              className="w-full bg-white text-[#1876D2] px-4 py-2 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
             >
               Chat with Coach
             </button>

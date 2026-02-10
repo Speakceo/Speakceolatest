@@ -33,7 +33,7 @@ const simulators = [
     title: 'Business Model Canvas',
     description: 'Create and visualize your business model with AI-powered suggestions',
     icon: Layout,
-    color: 'from-blue-500 to-indigo-500',
+    color: 'from-blue-500 to-[#1876D2]',
     features: [
       'Interactive drag-and-drop canvas',
       'AI-driven improvement suggestions',
@@ -164,7 +164,7 @@ export default function BusinessSimulation() {
             onClick={() => setActiveTab('simulators')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               activeTab === 'simulators'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-[#1876D2] text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
@@ -174,7 +174,7 @@ export default function BusinessSimulation() {
             onClick={() => setActiveTab('insights')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               activeTab === 'insights'
-                ? 'bg-indigo-600 text-white'
+                ? 'bg-[#1876D2] text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
             }`}
           >
@@ -208,7 +208,7 @@ export default function BusinessSimulation() {
             <div
               className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              <div className="bg-purple-500 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+              <div className="bg-[#F5F9FC]0 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
                 <Users className="h-6 w-6 text-white" />
               </div>
               <h3 className="font-semibold text-gray-900">Target Audience</h3>
@@ -242,7 +242,7 @@ export default function BusinessSimulation() {
                 </ul>
                 <button 
                   onClick={() => handleLaunchSimulator(simulator)}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center justify-center"
+                  className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center justify-center"
                 >
                   Launch Simulator
                   <ArrowRight className="ml-2 h-4 w-4" />

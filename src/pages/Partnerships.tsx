@@ -78,14 +78,14 @@ const Partnerships: React.FC = () => {
         keywords={["business partnerships", "entrepreneurship mentors", "startup funding", "youth business support"]}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-6xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Our Partnerships
             </h1>
-            <p className="text-xl text-indigo-100 mb-8">
+            <p className="text-xl text-gray-400 mb-8">
               Collaborating with leading organizations to empower young entrepreneurs
             </p>
           </div>
@@ -100,7 +100,7 @@ const Partnerships: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {benefits.map((benefit, index) => (
                 <div key={index} className="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition-shadow">
-                  <div className="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-[#E3F2FD] text-[#1876D2] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     {benefit.icon}
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">{benefit.title}</h3>
@@ -127,7 +127,7 @@ const Partnerships: React.FC = () => {
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="text-xl font-bold text-gray-900">{partner.name}</h3>
-                        <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-sm">
+                        <span className="bg-[#E3F2FD] text-[#1876D2] px-2 py-1 rounded-full text-sm">
                           {partner.type}
                         </span>
                       </div>
@@ -136,7 +136,7 @@ const Partnerships: React.FC = () => {
                         href={partner.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition-colors"
+                        className="inline-flex items-center text-[#1876D2] hover:text-[#1876D2] transition-colors"
                       >
                         Visit Website <ArrowRight className="h-4 w-4 ml-1" />
                       </a>
@@ -148,30 +148,30 @@ const Partnerships: React.FC = () => {
           </div>
 
           {/* Become a Partner */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-8 text-white text-center">
             <h2 className="text-2xl font-bold mb-4">Become a Partner</h2>
-            <p className="text-indigo-100 mb-6">
+            <p className="text-gray-400 mb-6">
               Join us in empowering the next generation of entrepreneurs. Partner with Young CEO Program to make a lasting impact.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white/10 rounded-lg p-6">
                 <h3 className="font-semibold mb-2">Corporate Partners</h3>
-                <p className="text-indigo-100 text-sm">Provide internships, mentorship, and real-world projects</p>
+                <p className="text-gray-400 text-sm">Provide internships, mentorship, and real-world projects</p>
               </div>
               <div className="bg-white/10 rounded-lg p-6">
                 <h3 className="font-semibold mb-2">Educational Partners</h3>
-                <p className="text-indigo-100 text-sm">Collaborate on curriculum and student exchanges</p>
+                <p className="text-gray-400 text-sm">Collaborate on curriculum and student exchanges</p>
               </div>
               <div className="bg-white/10 rounded-lg p-6">
                 <h3 className="font-semibold mb-2">Funding Partners</h3>
-                <p className="text-indigo-100 text-sm">Support through grants, scholarships, and investments</p>
+                <p className="text-gray-400 text-sm">Support through grants, scholarships, and investments</p>
               </div>
             </div>
             
             <a
               href="mailto:partnerships@orbitstudent.com"
-              className="inline-flex items-center bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+              className="inline-flex items-center bg-white text-[#1876D2] px-8 py-3 rounded-lg font-semibold hover:bg-[#E3F2FD] transition-colors"
             >
               <Mail className="h-5 w-5 mr-2" />
               Contact Partnership Team

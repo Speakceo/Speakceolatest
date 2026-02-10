@@ -315,7 +315,7 @@ export default function UsersPage() {
   if (isLoading && users.length === 0) {
     return (
       <div className="flex items-center justify-center h-64">
-        <RefreshCw className="h-8 w-8 text-indigo-600 animate-spin" />
+        <RefreshCw className="h-8 w-8 text-[#1876D2] animate-spin" />
       </div>
     );
   }
@@ -330,7 +330,7 @@ export default function UsersPage() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => setShowAddUserForm(true)}
-            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
           >
             <UserPlus className="h-5 w-5" />
             <span>Add User</span>
@@ -383,7 +383,7 @@ export default function UsersPage() {
                 type="text"
                 value={newUser.name}
                 onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Enter full name"
               />
             </div>
@@ -396,7 +396,7 @@ export default function UsersPage() {
                 type="email"
                 value={newUser.email}
                 onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Enter email address"
               />
             </div>
@@ -409,7 +409,7 @@ export default function UsersPage() {
                 type="password"
                 value={newUser.password}
                 onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Enter password"
               />
             </div>
@@ -422,7 +422,7 @@ export default function UsersPage() {
                 <select
                   value={newUser.course_type}
                   onChange={(e) => setNewUser({ ...newUser, course_type: e.target.value as 'Basic' | 'Premium' })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 >
                   <option value="Basic">Basic</option>
                   <option value="Premium">Premium</option>
@@ -436,7 +436,7 @@ export default function UsersPage() {
                 <select
                   value={newUser.role}
                   onChange={(e) => setNewUser({ ...newUser, role: e.target.value as 'user' | 'admin' })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 >
                   <option value="user">User</option>
                   <option value="admin">Admin</option>
@@ -455,7 +455,7 @@ export default function UsersPage() {
             <button
               onClick={handleAddUser}
               disabled={isLoading || !newUser.name || !newUser.email || !newUser.password}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50"
+              className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50"
             >
               {isLoading ? 'Adding...' : 'Add User'}
             </button>
@@ -473,14 +473,14 @@ export default function UsersPage() {
               placeholder="Search users..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
             />
           </div>
           <div className="relative">
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none"
+              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] appearance-none"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active</option>
@@ -495,7 +495,7 @@ export default function UsersPage() {
             <select
               value={courseFilter}
               onChange={(e) => setCourseFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none"
+              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] appearance-none"
             >
               <option value="all">All Courses</option>
               <option value="Basic">Basic</option>
@@ -595,7 +595,7 @@ export default function UsersPage() {
                         <div className="flex items-center">
                           <div className="text-sm font-medium text-gray-900">{user.name}</div>
                           {user.role === 'admin' && (
-                            <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-indigo-100 text-indigo-800">
+                            <span className="ml-2 px-2 py-0.5 text-xs rounded-full bg-[#E3F2FD] text-indigo-800">
                               Admin
                             </span>
                           )}
@@ -610,7 +610,7 @@ export default function UsersPage() {
                       onChange={(e) => handleUpdateUserCourseType(user.id, e.target.value as 'Basic' | 'Premium')}
                       className={`px-2 py-1 text-xs rounded-full font-semibold ${
                         user.course_type === 'Premium' 
-                          ? 'bg-purple-100 text-purple-800 border border-purple-200' 
+                          ? 'bg-[#E3F2FD] text-purple-800 border border-purple-200' 
                           : 'bg-blue-100 text-blue-800 border border-blue-200'
                       }`}
                     >
@@ -621,7 +621,7 @@ export default function UsersPage() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="w-full bg-gray-200 rounded-full h-2.5">
                       <div 
-                        className="bg-indigo-600 h-2.5 rounded-full" 
+                        className="bg-[#1876D2] h-2.5 rounded-full" 
                         style={{ width: `${user.progress}%` }}
                       ></div>
                     </div>
@@ -657,7 +657,7 @@ export default function UsersPage() {
                     <div className="flex items-center justify-end space-x-3">
                       <button
                         onClick={() => setSelectedUser(user)}
-                        className="text-indigo-600 hover:text-indigo-900"
+                        className="text-[#1876D2] hover:text-indigo-900"
                         title="View Details"
                       >
                         <User className="h-4 w-4" />
@@ -739,7 +739,7 @@ export default function UsersPage() {
                         onChange={(e) => handleUpdateUserCourseType(selectedUser.id, e.target.value as 'Basic' | 'Premium')}
                         className={`px-2 py-1 text-xs rounded-full font-semibold ${
                           selectedUser.course_type === 'Premium' 
-                            ? 'bg-purple-100 text-purple-800 border border-purple-200' 
+                            ? 'bg-[#E3F2FD] text-purple-800 border border-purple-200' 
                             : 'bg-blue-100 text-blue-800 border border-blue-200'
                         }`}
                       >
@@ -817,8 +817,8 @@ export default function UsersPage() {
                 <div className="space-y-3">
                   {[...Array(3)].map((_, index) => (
                     <div key={index} className="flex items-start p-3 bg-gray-50 rounded-lg">
-                      <div className="flex-shrink-0 h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                        {[<BookOpen className="h-4 w-4 text-indigo-600" />, <Award className="h-4 w-4 text-indigo-600" />, <BarChart2 className="h-4 w-4 text-indigo-600" />][index]}
+                      <div className="flex-shrink-0 h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+                        {[<BookOpen className="h-4 w-4 text-[#1876D2]" />, <Award className="h-4 w-4 text-[#1876D2]" />, <BarChart2 className="h-4 w-4 text-[#1876D2]" />][index]}
                       </div>
                       <div>
                         <p className="text-sm text-gray-700">
@@ -854,7 +854,7 @@ export default function UsersPage() {
                     handleUpdateUserCourseType(selectedUser.id, selectedUser.course_type);
                     setSelectedUser(null);
                   }}
-                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                  className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
                 >
                   Save Changes
                 </button>

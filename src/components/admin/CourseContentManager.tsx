@@ -52,7 +52,7 @@ export default function CourseContentManager() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <BookOpen className="h-8 w-8 text-indigo-600" />
+          <BookOpen className="h-8 w-8 text-[#1876D2]" />
           <h1 className="text-3xl font-bold text-gray-900">Course Content Manager</h1>
         </div>
         <p className="text-xl text-gray-600">
@@ -72,7 +72,7 @@ export default function CourseContentManager() {
                   onClick={() => setSelectedWeek(week)}
                   className={`w-full text-left p-3 rounded-lg transition-colors ${
                     selectedWeek?.id === week.id
-                      ? 'bg-indigo-50 text-indigo-700 border border-indigo-200'
+                      ? 'bg-[#E3F2FD] text-indigo-700 border border-indigo-200'
                       : 'hover:bg-gray-50'
                   }`}
                 >
@@ -103,7 +103,7 @@ export default function CourseContentManager() {
                     onClick={() => setActiveTab('lessons')}
                     className={`py-4 px-1 border-b-2 font-medium text-sm ${
                       activeTab === 'lessons'
-                        ? 'border-indigo-500 text-indigo-600'
+                        ? 'border-[#1876D2] text-[#1876D2]'
                         : 'border-transparent text-gray-500 hover:text-gray-700'
                     }`}
                   >
@@ -116,7 +116,7 @@ export default function CourseContentManager() {
                     onClick={() => setActiveTab('quiz')}
                     className={`py-4 px-1 border-b-2 font-medium text-sm ${
                       activeTab === 'quiz'
-                        ? 'border-indigo-500 text-indigo-600'
+                        ? 'border-[#1876D2] text-[#1876D2]'
                         : 'border-transparent text-gray-500 hover:text-gray-700'
                     }`}
                   >
@@ -129,7 +129,7 @@ export default function CourseContentManager() {
                     onClick={() => setActiveTab('task')}
                     className={`py-4 px-1 border-b-2 font-medium text-sm ${
                       activeTab === 'task'
-                        ? 'border-indigo-500 text-indigo-600'
+                        ? 'border-[#1876D2] text-[#1876D2]'
                         : 'border-transparent text-gray-500 hover:text-gray-700'
                     }`}
                   >
@@ -216,7 +216,7 @@ function LessonsManager({ lessons, onEdit, onFileUpload }: LessonsManagerProps) 
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold text-gray-900">Lessons</h3>
-        <button className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+        <button className="flex items-center gap-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]">
           <Plus className="h-4 w-4" />
           Add Lesson
         </button>
@@ -310,7 +310,7 @@ function FileUploadCard({ title, icon, currentFile, onUpload, accept }: FileUplo
               <Eye className="h-3 w-3" />
               View
             </button>
-            <label className="flex-1 text-xs bg-indigo-100 hover:bg-indigo-200 text-indigo-700 p-2 rounded flex items-center justify-center gap-1 cursor-pointer">
+            <label className="flex-1 text-xs bg-[#E3F2FD] hover:bg-indigo-200 text-indigo-700 p-2 rounded flex items-center justify-center gap-1 cursor-pointer">
               <Upload className="h-3 w-3" />
               Replace
               <input
@@ -508,7 +508,7 @@ function LessonEditModal({ lesson, onSave, onClose }: LessonEditModalProps) {
           </button>
           <button
             onClick={() => onSave(editedLesson)}
-            className="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+            className="flex-1 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
           >
             Save Changes
           </button>

@@ -234,7 +234,7 @@ export default function AdminPanel() {
             title="Total Tasks"
             value={dashboardStats.totalTasks}
             icon={CheckSquare}
-            color="bg-purple-500"
+            color="bg-[#F5F9FC]0"
             change={15}
           />
           <StatCard
@@ -270,8 +270,8 @@ export default function AdminPanel() {
                 </div>
               </div>
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                  <Video className="h-4 w-4 text-purple-600" />
+                <div className="w-8 h-8 bg-[#E3F2FD] rounded-full flex items-center justify-center">
+                  <Video className="h-4 w-4 text-[#1876D2]" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-gray-900">Live class scheduled</p>
@@ -298,7 +298,7 @@ export default function AdminPanel() {
                     <div className="flex items-center">
                       <div className="flex-1 bg-gray-200 rounded-full h-2">
                         <div
-                          className="bg-indigo-600 h-2 rounded-full"
+                          className="bg-[#1876D2] h-2 rounded-full"
                           style={{ width: `${user.progress}%` }}
                         />
                       </div>
@@ -324,7 +324,7 @@ export default function AdminPanel() {
         <h2 className="text-2xl font-bold text-gray-900">User Management</h2>
         <button
           onClick={() => setShowAddForm(true)}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-indigo-700"
+          className="bg-[#1876D2] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#1565C0]"
         >
           <Plus className="h-5 w-5" />
           Add User
@@ -339,14 +339,14 @@ export default function AdminPanel() {
             <input
               type="text"
               placeholder="Search users..."
-              className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         </div>
         <select
-          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
           value={filterType}
           onChange={(e) => setFilterType(e.target.value)}
         >
@@ -395,7 +395,7 @@ export default function AdminPanel() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      user.course_type === 'Premium' ? 'bg-purple-100 text-purple-800' : 'bg-blue-100 text-blue-800'
+                      user.course_type === 'Premium' ? 'bg-[#E3F2FD] text-purple-800' : 'bg-blue-100 text-blue-800'
                     }`}>
                       {user.course_type}
                     </span>
@@ -404,7 +404,7 @@ export default function AdminPanel() {
                     <div className="flex items-center">
                       <div className="flex-1 bg-gray-200 rounded-full h-2 w-16">
                         <div
-                          className="bg-indigo-600 h-2 rounded-full"
+                          className="bg-[#1876D2] h-2 rounded-full"
                           style={{ width: `${user.progress}%` }}
                         />
                       </div>
@@ -418,7 +418,7 @@ export default function AdminPanel() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex space-x-2">
-                      <button className="text-indigo-600 hover:text-indigo-900">
+                      <button className="text-[#1876D2] hover:text-indigo-900">
                         <Edit className="h-4 w-4" />
                       </button>
                       <button className="text-red-600 hover:text-red-900">
@@ -441,7 +441,7 @@ export default function AdminPanel() {
         <h2 className="text-2xl font-bold text-gray-900">Task Management</h2>
         <button
           onClick={() => setShowAddForm(true)}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-indigo-700"
+          className="bg-[#1876D2] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#1565C0]"
         >
           <Plus className="h-5 w-5" />
           Add Task
@@ -455,7 +455,7 @@ export default function AdminPanel() {
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center space-x-3">
                 <div className={`p-2 rounded-lg ${
-                  task.type === 'file_upload' ? 'bg-purple-100 text-purple-600' :
+                  task.type === 'file_upload' ? 'bg-[#E3F2FD] text-[#1876D2]' :
                   task.type === 'presentation' ? 'bg-orange-100 text-orange-600' :
                   'bg-blue-100 text-blue-600'
                 }`}>
@@ -469,7 +469,7 @@ export default function AdminPanel() {
                 </div>
               </div>
               <div className="flex space-x-2">
-                <button className="text-indigo-600 hover:text-indigo-900">
+                <button className="text-[#1876D2] hover:text-indigo-900">
                   <Edit className="h-4 w-4" />
                 </button>
                 <button className="text-red-600 hover:text-red-900">
@@ -517,7 +517,7 @@ export default function AdminPanel() {
         <h2 className="text-2xl font-bold text-gray-900">Live Classes</h2>
         <button
           onClick={() => setShowAddForm(true)}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-indigo-700"
+          className="bg-[#1876D2] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#1565C0]"
         >
           <Plus className="h-5 w-5" />
           Schedule Class
@@ -557,7 +557,7 @@ export default function AdminPanel() {
             
             <div className="flex justify-between items-center pt-4 border-t border-gray-200 mt-4">
               <div className="flex space-x-2">
-                <button className="text-indigo-600 hover:text-indigo-900">
+                <button className="text-[#1876D2] hover:text-indigo-900">
                   <Edit className="h-4 w-4" />
                 </button>
                 <button className="text-red-600 hover:text-red-900">
@@ -581,7 +581,7 @@ export default function AdminPanel() {
         <h2 className="text-2xl font-bold text-gray-900">Course Management</h2>
         <button
           onClick={() => setShowAddForm(true)}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-indigo-700"
+          className="bg-[#1876D2] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#1565C0]"
         >
           <Plus className="h-5 w-5" />
           Add Course
@@ -598,7 +598,7 @@ export default function AdminPanel() {
                 <p className="text-sm text-gray-500 mt-1">{course.description}</p>
               </div>
               <div className="flex space-x-2">
-                <button className="text-indigo-600 hover:text-indigo-900">
+                <button className="text-[#1876D2] hover:text-indigo-900">
                   <Edit className="h-4 w-4" />
                 </button>
                 <button className="text-red-600 hover:text-red-900">
@@ -647,7 +647,7 @@ export default function AdminPanel() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Student Progress</h3>
-          <div className="text-3xl font-bold text-indigo-600 mb-2">{dashboardStats.avgProgress}%</div>
+          <div className="text-3xl font-bold text-[#1876D2] mb-2">{dashboardStats.avgProgress}%</div>
           <p className="text-gray-600">Average completion rate</p>
         </div>
         
@@ -731,7 +731,7 @@ export default function AdminPanel() {
                       onClick={() => setActiveTab(tab.id)}
                       className={`w-full flex items-center space-x-3 px-4 py-3 text-left rounded-lg transition-colors ${
                         isActive
-                          ? 'bg-indigo-50 text-indigo-700 border border-indigo-200'
+                          ? 'bg-[#E3F2FD] text-indigo-700 border border-indigo-200'
                           : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                       }`}
                     >

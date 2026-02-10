@@ -10,12 +10,12 @@ const ProgressChart = () => {
       <div className="relative pt-1">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200">
+            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-[#1876D2] bg-indigo-200">
               In Progress
             </span>
           </div>
           <div className="text-right">
-            <span className="text-xs font-semibold inline-block text-indigo-600">
+            <span className="text-xs font-semibold inline-block text-[#1876D2]">
               65%
             </span>
           </div>
@@ -23,7 +23,7 @@ const ProgressChart = () => {
         <div className="overflow-hidden h-2 mt-2 text-xs flex rounded bg-indigo-200">
           <div 
             style={{ width: "65%" }} 
-            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-600"
+            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#1876D2]"
           ></div>
         </div>
       </div>

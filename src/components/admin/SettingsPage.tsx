@@ -139,7 +139,7 @@ export default function SettingsPage() {
             onClick={() => setActiveTab('general')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'general'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -150,7 +150,7 @@ export default function SettingsPage() {
             onClick={() => setActiveTab('security')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'security'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -161,7 +161,7 @@ export default function SettingsPage() {
             onClick={() => setActiveTab('notifications')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'notifications'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -172,7 +172,7 @@ export default function SettingsPage() {
             onClick={() => setActiveTab('data')}
             className={`pb-4 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'data'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -197,7 +197,7 @@ export default function SettingsPage() {
                     type="text"
                     value={settings.general.siteName}
                     onChange={(e) => handleInputChange('general', 'siteName', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
                 <div>
@@ -208,7 +208,7 @@ export default function SettingsPage() {
                     type="text"
                     value={settings.general.siteDescription}
                     onChange={(e) => handleInputChange('general', 'siteDescription', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
                 <div>
@@ -219,7 +219,7 @@ export default function SettingsPage() {
                     type="email"
                     value={settings.general.supportEmail}
                     onChange={(e) => handleInputChange('general', 'supportEmail', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
                 <div>
@@ -230,7 +230,7 @@ export default function SettingsPage() {
                     type="tel"
                     value={settings.general.contactPhone}
                     onChange={(e) => handleInputChange('general', 'contactPhone', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
                 <div>
@@ -240,7 +240,7 @@ export default function SettingsPage() {
                   <select
                     value={settings.general.defaultLanguage}
                     onChange={(e) => handleInputChange('general', 'defaultLanguage', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     <option value="en">English</option>
                     <option value="hi">Hindi</option>
@@ -255,7 +255,7 @@ export default function SettingsPage() {
                   <select
                     value={settings.general.timezone}
                     onChange={(e) => handleInputChange('general', 'timezone', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     <option value="Asia/Kolkata">Asia/Kolkata (IST)</option>
                     <option value="UTC">UTC</option>
@@ -270,7 +270,7 @@ export default function SettingsPage() {
                 <button
                   onClick={() => handleSaveSettings('general')}
                   disabled={isLoading}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
                 >
                   {isLoading ? (
                     <>
@@ -310,7 +310,7 @@ export default function SettingsPage() {
                       <label
                         htmlFor="toggle-2fa"
                         className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                          settings.security.twoFactorAuth ? 'bg-indigo-600' : 'bg-gray-300'
+                          settings.security.twoFactorAuth ? 'bg-[#1876D2]' : 'bg-gray-300'
                         }`}
                       >
                         <span
@@ -333,7 +333,7 @@ export default function SettingsPage() {
                     type="number"
                     value={settings.security.passwordExpiry}
                     onChange={(e) => handleInputChange('security', 'passwordExpiry', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     min="0"
                     max="365"
                   />
@@ -349,7 +349,7 @@ export default function SettingsPage() {
                     type="number"
                     value={settings.security.sessionTimeout}
                     onChange={(e) => handleInputChange('security', 'sessionTimeout', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     min="5"
                     max="1440"
                   />
@@ -362,7 +362,7 @@ export default function SettingsPage() {
                     type="number"
                     value={settings.security.allowedLoginAttempts}
                     onChange={(e) => handleInputChange('security', 'allowedLoginAttempts', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     min="1"
                     max="10"
                   />
@@ -383,7 +383,7 @@ export default function SettingsPage() {
                       <label
                         htmlFor="toggle-strong-pw"
                         className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                          settings.security.requireStrongPasswords ? 'bg-indigo-600' : 'bg-gray-300'
+                          settings.security.requireStrongPasswords ? 'bg-[#1876D2]' : 'bg-gray-300'
                         }`}
                       >
                         <span
@@ -404,7 +404,7 @@ export default function SettingsPage() {
                 <button
                   onClick={() => handleSaveSettings('security')}
                   disabled={isLoading}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
                 >
                   {isLoading ? (
                     <>
@@ -448,7 +448,7 @@ export default function SettingsPage() {
                     <label
                       htmlFor="toggle-email"
                       className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                        settings.notifications.emailNotifications ? 'bg-indigo-600' : 'bg-gray-300'
+                        settings.notifications.emailNotifications ? 'bg-[#1876D2]' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -480,7 +480,7 @@ export default function SettingsPage() {
                     <label
                       htmlFor="toggle-sms"
                       className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                        settings.notifications.smsNotifications ? 'bg-indigo-600' : 'bg-gray-300'
+                        settings.notifications.smsNotifications ? 'bg-[#1876D2]' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -512,7 +512,7 @@ export default function SettingsPage() {
                     <label
                       htmlFor="toggle-admin"
                       className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                        settings.notifications.adminAlerts ? 'bg-indigo-600' : 'bg-gray-300'
+                        settings.notifications.adminAlerts ? 'bg-[#1876D2]' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -544,7 +544,7 @@ export default function SettingsPage() {
                     <label
                       htmlFor="toggle-reminders"
                       className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                        settings.notifications.studentReminders ? 'bg-indigo-600' : 'bg-gray-300'
+                        settings.notifications.studentReminders ? 'bg-[#1876D2]' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -576,7 +576,7 @@ export default function SettingsPage() {
                     <label
                       htmlFor="toggle-marketing"
                       className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                        settings.notifications.marketingEmails ? 'bg-indigo-600' : 'bg-gray-300'
+                        settings.notifications.marketingEmails ? 'bg-[#1876D2]' : 'bg-gray-300'
                       }`}
                     >
                       <span
@@ -593,7 +593,7 @@ export default function SettingsPage() {
                 <button
                   onClick={() => handleSaveSettings('notifications')}
                   disabled={isLoading}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
                 >
                   {isLoading ? (
                     <>
@@ -633,7 +633,7 @@ export default function SettingsPage() {
                       <label
                         htmlFor="toggle-backup"
                         className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                          settings.data.autoBackup ? 'bg-indigo-600' : 'bg-gray-300'
+                          settings.data.autoBackup ? 'bg-[#1876D2]' : 'bg-gray-300'
                         }`}
                       >
                         <span
@@ -655,7 +655,7 @@ export default function SettingsPage() {
                   <select
                     value={settings.data.backupFrequency}
                     onChange={(e) => handleInputChange('data', 'backupFrequency', e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     disabled={!settings.data.autoBackup}
                   >
                     <option value="hourly">Hourly</option>
@@ -672,7 +672,7 @@ export default function SettingsPage() {
                     type="number"
                     value={settings.data.retentionPeriod}
                     onChange={(e) => handleInputChange('data', 'retentionPeriod', parseInt(e.target.value))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     min="1"
                     max="365"
                     disabled={!settings.data.autoBackup}
@@ -694,7 +694,7 @@ export default function SettingsPage() {
                       <label
                         htmlFor="toggle-export"
                         className={`block overflow-hidden h-6 rounded-full cursor-pointer ${
-                          settings.data.dataExportEnabled ? 'bg-indigo-600' : 'bg-gray-300'
+                          settings.data.dataExportEnabled ? 'bg-[#1876D2]' : 'bg-gray-300'
                         }`}
                       >
                         <span
@@ -717,7 +717,7 @@ export default function SettingsPage() {
                   <button
                     onClick={handleBackupNow}
                     disabled={isLoading}
-                    className="flex items-center justify-center space-x-2 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                    className="flex items-center justify-center space-x-2 px-4 py-3 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
                   >
                     {isLoading ? (
                       <RefreshCw className="h-5 w-5 animate-spin" />
@@ -769,7 +769,7 @@ export default function SettingsPage() {
                 <button
                   onClick={() => handleSaveSettings('data')}
                   disabled={isLoading}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                  className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
                 >
                   {isLoading ? (
                     <>
@@ -790,19 +790,19 @@ export default function SettingsPage() {
       </div>
 
       {/* Help Section */}
-      <div className="bg-indigo-50 rounded-xl p-6">
+      <div className="bg-[#E3F2FD] rounded-xl p-6">
         <div className="flex items-start">
-          <HelpCircle className="h-6 w-6 text-indigo-600 mt-0.5 mr-3 flex-shrink-0" />
+          <HelpCircle className="h-6 w-6 text-[#1876D2] mt-0.5 mr-3 flex-shrink-0" />
           <div>
             <h3 className="text-lg font-semibold text-indigo-900 mb-2">Need Help?</h3>
             <p className="text-indigo-700 mb-4">
               If you need assistance with configuring these settings, please refer to our documentation or contact support.
             </p>
             <div className="flex space-x-4">
-              <button className="px-4 py-2 bg-white text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors">
+              <button className="px-4 py-2 bg-white text-[#1876D2] rounded-lg hover:bg-[#E3F2FD] transition-colors">
                 View Documentation
               </button>
-              <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+              <button className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors">
                 Contact Support
               </button>
             </div>

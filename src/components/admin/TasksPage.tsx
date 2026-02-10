@@ -245,7 +245,7 @@ export default function TasksPage() {
         <h1 className="text-2xl font-bold text-gray-900">Tasks Management</h1>
         <button
           onClick={() => setShowAddTaskForm(true)}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-lg flex items-center gap-2 hover:bg-indigo-700 transition-colors"
+          className="px-4 py-2 bg-[#1876D2] text-white rounded-lg flex items-center gap-2 hover:bg-[#1565C0] transition-colors"
         >
           <Plus className="h-5 w-5" />
           Add Task
@@ -304,7 +304,7 @@ export default function TasksPage() {
       <div className="bg-white rounded-xl overflow-hidden shadow-sm">
         {isLoading ? (
           <div className="flex items-center justify-center py-12">
-            <RefreshCw className="h-8 w-8 text-indigo-600 animate-spin" />
+            <RefreshCw className="h-8 w-8 text-[#1876D2] animate-spin" />
           </div>
         ) : filteredTasks.length === 0 ? (
           <div className="py-12 px-6 text-center">
@@ -325,7 +325,7 @@ export default function TasksPage() {
             ) : (
               <button
                 onClick={() => setShowAddTaskForm(true)}
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#1876D2] hover:bg-[#1565C0]"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Add Task
@@ -352,7 +352,7 @@ export default function TasksPage() {
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className={`flex-shrink-0 h-10 w-10 rounded-lg flex items-center justify-center ${
-                          task.type === 'file_upload' ? 'bg-purple-100 text-purple-600' :
+                          task.type === 'file_upload' ? 'bg-[#E3F2FD] text-[#1876D2]' :
                           task.type === 'text' ? 'bg-blue-100 text-blue-600' :
                           'bg-green-100 text-green-600'
                         }`}>
@@ -378,7 +378,7 @@ export default function TasksPage() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        task.type === 'file_upload' ? 'bg-purple-100 text-purple-800' :
+                        task.type === 'file_upload' ? 'bg-[#E3F2FD] text-purple-800' :
                         task.type === 'text' ? 'bg-blue-100 text-blue-800' :
                         'bg-green-100 text-green-800'
                       }`}>
@@ -415,7 +415,7 @@ export default function TasksPage() {
                             setSelectedTask(task);
                             setShowEditTaskForm(true);
                           }}
-                          className="text-indigo-600 hover:text-indigo-900"
+                          className="text-[#1876D2] hover:text-indigo-900"
                         >
                           <Edit className="h-5 w-5" />
                         </button>
@@ -451,7 +451,7 @@ export default function TasksPage() {
                   type="text"
                   value={newTask.title}
                   onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   placeholder="Enter task title"
                 />
               </div>
@@ -465,7 +465,7 @@ export default function TasksPage() {
                   value={newTask.description}
                   onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   placeholder="Describe the task requirements..."
                 />
               </div>
@@ -479,7 +479,7 @@ export default function TasksPage() {
                   <select
                     value={newTask.type}
                     onChange={(e) => setNewTask({ ...newTask, type: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     <option value="file_upload">File Upload</option>
                     <option value="text">Text Response</option>
@@ -497,7 +497,7 @@ export default function TasksPage() {
                   <select
                     value={newTask.week_number}
                     onChange={(e) => setNewTask({ ...newTask, week_number: parseInt(e.target.value) })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     {[...Array(12)].map((_, i) => (
                       <option key={i + 1} value={i + 1}>Week {i + 1}</option>
@@ -518,7 +518,7 @@ export default function TasksPage() {
                     onChange={(e) => setNewTask({ ...newTask, points: parseInt(e.target.value) || 0 })}
                     min="0"
                     max="1000"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
 
@@ -531,7 +531,7 @@ export default function TasksPage() {
                     type="date"
                     value={newTask.due_date}
                     onChange={(e) => setNewTask({ ...newTask, due_date: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
               </div>
@@ -543,7 +543,7 @@ export default function TasksPage() {
                   id="live_discussion"
                   checked={newTask.live_discussion}
                   onChange={(e) => setNewTask({ ...newTask, live_discussion: e.target.checked })}
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-[#1876D2] focus:ring-[#1876D2] border-gray-300 rounded"
                 />
                 <label htmlFor="live_discussion" className="ml-2 text-sm text-gray-700">
                   Include live discussion session
@@ -581,7 +581,7 @@ export default function TasksPage() {
               <button
                 onClick={handleAddTask}
                 disabled={!newTask.title || !newTask.description}
-                className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#1876D2] hover:bg-[#1565C0] disabled:bg-gray-400 disabled:cursor-not-allowed"
               >
                 Add Task
               </button>

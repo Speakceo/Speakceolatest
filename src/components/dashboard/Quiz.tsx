@@ -80,7 +80,7 @@ const sampleQuestions: Question[] = [
 ];
 
 const categories = [
-  { id: 'business', name: 'Business Basics', icon: Rocket, color: 'from-blue-500 to-indigo-500' },
+  { id: 'business', name: 'Business Basics', icon: Rocket, color: 'from-blue-500 to-[#1876D2]' },
   { id: 'finance', name: 'Money Smart', icon: DollarSign, color: 'from-green-500 to-emerald-500' },
   { id: 'leadership', name: 'Leadership', icon: Target, color: 'from-purple-500 to-pink-500' },
   { id: 'marketing', name: 'Marketing', icon: MessageSquare, color: 'from-amber-500 to-orange-500' }
@@ -159,11 +159,11 @@ export default function Quiz() {
             </div>
             <div className="flex items-center space-x-4">
               <div className="text-center">
-                <p className="text-3xl font-bold text-indigo-600">{user?.points || 0}</p>
+                <p className="text-3xl font-bold text-[#1876D2]">{user?.points || 0}</p>
                 <p className="text-sm text-gray-500">Total Points</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-purple-600">15</p>
+                <p className="text-3xl font-bold text-[#1876D2]">15</p>
                 <p className="text-sm text-gray-500">Quizzes Completed</p>
               </div>
             </div>
@@ -196,8 +196,8 @@ export default function Quiz() {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Achievements</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center">
-              <div className="h-16 w-16 rounded-full bg-indigo-100 flex items-center justify-center mx-auto mb-2">
-                <Trophy className="h-8 w-8 text-indigo-600" />
+              <div className="h-16 w-16 rounded-full bg-[#E3F2FD] flex items-center justify-center mx-auto mb-2">
+                <Trophy className="h-8 w-8 text-[#1876D2]" />
               </div>
               <p className="font-medium text-gray-900">Quiz Master</p>
               <p className="text-sm text-gray-500">Complete 10 quizzes</p>
@@ -210,8 +210,8 @@ export default function Quiz() {
               <p className="text-sm text-gray-500">100% on any quiz</p>
             </div>
             <div className="text-center">
-              <div className="h-16 w-16 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-2">
-                <Brain className="h-8 w-8 text-purple-600" />
+              <div className="h-16 w-16 rounded-full bg-[#E3F2FD] flex items-center justify-center mx-auto mb-2">
+                <Brain className="h-8 w-8 text-[#1876D2]" />
               </div>
               <p className="font-medium text-gray-900">Quick Thinker</p>
               <p className="text-sm text-gray-500">Answer in under 10s</p>
@@ -232,7 +232,7 @@ export default function Quiz() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <RefreshCw className="h-8 w-8 text-indigo-600 animate-spin" />
+        <RefreshCw className="h-8 w-8 text-[#1876D2] animate-spin" />
       </div>
     );
   }
@@ -255,7 +255,7 @@ export default function Quiz() {
           {currentQuestion?.hint && (
             <button
               onClick={() => setShowHint(!showHint)}
-              className="text-indigo-600 hover:text-indigo-700"
+              className="text-[#1876D2] hover:text-indigo-700"
             >
               <HelpCircle className="h-5 w-5" />
             </button>
@@ -269,7 +269,7 @@ export default function Quiz() {
           {currentQuestion?.question}
         </h3>
         {showHint && (
-          <div className="bg-indigo-50 rounded-lg p-4 mb-4">
+          <div className="bg-[#E3F2FD] rounded-lg p-4 mb-4">
             <p className="text-indigo-700 text-sm">{currentQuestion?.hint}</p>
           </div>
         )}
@@ -290,8 +290,8 @@ export default function Quiz() {
                   ? 'bg-red-50 border-red-200'
                   : 'bg-gray-50 border-gray-200'
                 : selectedAnswer === option
-                ? 'bg-indigo-50 border-indigo-200'
-                : 'border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
+                ? 'bg-[#E3F2FD] border-indigo-200'
+                : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
             }`}
           >
             <div className="flex items-center justify-between">
@@ -331,7 +331,7 @@ export default function Quiz() {
           </div>
           <button
             onClick={handleNextQuestion}
-            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300"
+            className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300"
           >
             Next Question
           </button>
@@ -340,7 +340,7 @@ export default function Quiz() {
         <button
           onClick={handleAnswerSubmit}
           disabled={!selectedAnswer}
-          className="w-full mt-8 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full mt-8 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Submit Answer
         </button>

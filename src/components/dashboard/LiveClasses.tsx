@@ -240,7 +240,7 @@ export default function LiveClasses() {
       case 'Intermediate':
         return 'bg-blue-100 text-blue-800';
       case 'Advanced':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-[#E3F2FD] text-purple-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -249,15 +249,15 @@ export default function LiveClasses() {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Business Strategy':
-        return <Target className="h-5 w-5 text-indigo-600" />;
+        return <Target className="h-5 w-5 text-[#1876D2]" />;
       case 'Finance':
         return <Zap className="h-5 w-5 text-green-600" />;
       case 'Marketing':
-        return <Sparkles className="h-5 w-5 text-pink-600" />;
+        return <Sparkles className="h-5 w-5 text-[#00B0FF]" />;
       case 'Leadership':
         return <Users className="h-5 w-5 text-amber-600" />;
       case 'Communication':
-        return <Mic className="h-5 w-5 text-purple-600" />;
+        return <Mic className="h-5 w-5 text-[#1876D2]" />;
       default:
         return <BookOpen className="h-5 w-5 text-gray-600" />;
     }
@@ -306,7 +306,7 @@ export default function LiveClasses() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1876D2]"></div>
       </div>
     );
   }
@@ -321,11 +321,11 @@ export default function LiveClasses() {
             <p className="text-gray-500 mt-1">Interactive sessions with expert mentors</p>
           </div>
           <div className="flex items-center space-x-4">
-            <button className="flex items-center space-x-2 px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 transition-colors">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-[#E3F2FD] text-[#1876D2] rounded-lg hover:bg-[#E3F2FD] transition-colors">
               <Bell className="h-4 w-4" />
               <span>Notifications</span>
             </button>
-            <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity">
+            <button className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-opacity">
               <Calendar className="h-4 w-4" />
               <span>Add to Calendar</span>
             </button>
@@ -336,55 +336,55 @@ export default function LiveClasses() {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">Course Completion</span>
-            <span className="text-sm font-medium text-indigo-600">{overallProgress}%</span>
+            <span className="text-sm font-medium text-[#1876D2]">{overallProgress}%</span>
           </div>
           <div className="h-2.5 w-full bg-gray-200 rounded-full overflow-hidden">
             <div 
-              className="h-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full" 
+              className="h-2.5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-full" 
               style={{ width: `${overallProgress}%` }}
             ></div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-indigo-50 rounded-xl p-3 flex items-center">
-            <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-              <Video className="h-5 w-5 text-indigo-600" />
+          <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
+            <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+              <Video className="h-5 w-5 text-[#1876D2]" />
             </div>
             <div>
-              <p className="text-xs text-indigo-600 font-medium">Classes Attended</p>
+              <p className="text-xs text-[#1876D2] font-medium">Classes Attended</p>
               <p className="text-lg font-bold text-indigo-700">{pastClasses.length}</p>
             </div>
           </div>
           
-          <div className="bg-indigo-50 rounded-xl p-3 flex items-center">
-            <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-              <Clock className="h-5 w-5 text-indigo-600" />
+          <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
+            <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+              <Clock className="h-5 w-5 text-[#1876D2]" />
             </div>
             <div>
-              <p className="text-xs text-indigo-600 font-medium">Hours Learned</p>
+              <p className="text-xs text-[#1876D2] font-medium">Hours Learned</p>
               <p className="text-lg font-bold text-indigo-700">
                 {pastClasses.reduce((sum, cls) => sum + (cls.durationMinutes / 60), 0).toFixed(1)}
               </p>
             </div>
           </div>
           
-          <div className="bg-indigo-50 rounded-xl p-3 flex items-center">
-            <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-              <Star className="h-5 w-5 text-indigo-600" />
+          <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
+            <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+              <Star className="h-5 w-5 text-[#1876D2]" />
             </div>
             <div>
-              <p className="text-xs text-indigo-600 font-medium">Engagement Score</p>
+              <p className="text-xs text-[#1876D2] font-medium">Engagement Score</p>
               <p className="text-lg font-bold text-indigo-700">4.8</p>
             </div>
           </div>
           
-          <div className="bg-indigo-50 rounded-xl p-3 flex items-center">
-            <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-              <Award className="h-5 w-5 text-indigo-600" />
+          <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
+            <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+              <Award className="h-5 w-5 text-[#1876D2]" />
             </div>
             <div>
-              <p className="text-xs text-indigo-600 font-medium">XP Earned</p>
+              <p className="text-xs text-[#1876D2] font-medium">XP Earned</p>
               <p className="text-lg font-bold text-indigo-700">
                 {pastClasses.length * 25 + upcomingClasses.length * 10}
               </p>
@@ -405,7 +405,7 @@ export default function LiveClasses() {
                 </div>
                 <input
                   type="text"
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-[#1876D2] focus:border-[#1876D2]"
                   placeholder="Search classes..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -416,7 +416,7 @@ export default function LiveClasses() {
                   <Filter className="h-5 w-5 text-gray-400" />
                 </div>
                 <select
-                  className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 appearance-none"
+                  className="block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-[#1876D2] focus:border-[#1876D2] appearance-none"
                   value={filterLevel}
                   onChange={(e) => setFilterLevel(e.target.value as any)}
                 >
@@ -456,7 +456,7 @@ export default function LiveClasses() {
                 onClick={() => setActiveTab('upcoming')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   activeTab === 'upcoming'
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-[#1876D2] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -466,7 +466,7 @@ export default function LiveClasses() {
                 onClick={() => setActiveTab('past')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   activeTab === 'past'
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-[#1876D2] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -476,7 +476,7 @@ export default function LiveClasses() {
                 onClick={() => setActiveTab('materials')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   activeTab === 'materials'
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-[#1876D2] text-white'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -511,7 +511,7 @@ export default function LiveClasses() {
                       <div className="flex items-center space-x-3">
                         <div className={`rounded-xl p-3 ${
                           class_.status === 'live' ? 'bg-green-500' :
-                          class_.status === 'scheduled' ? 'bg-indigo-500' :
+                          class_.status === 'scheduled' ? 'bg-[#E3F2FD]0' :
                           'bg-gray-500'
                         }`}>
                           <Video className="h-6 w-6 text-white" />
@@ -569,7 +569,7 @@ export default function LiveClasses() {
                                 handleJoinClass(class_);
                               }}
                               disabled={isJoining}
-                              className={`flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors ${
+                              className={`flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors ${
                                 isJoining ? 'opacity-75 cursor-not-allowed' : ''
                               }`}
                             >
@@ -582,7 +582,7 @@ export default function LiveClasses() {
                             </button>
                           ) : (
                             <div className="flex flex-col items-end">
-                              <div className="text-sm font-medium text-indigo-600 mb-1">
+                              <div className="text-sm font-medium text-[#1876D2] mb-1">
                                 {getTimeUntilClass(class_.date)}
                               </div>
                               <button
@@ -591,12 +591,12 @@ export default function LiveClasses() {
                                   handleRegisterForClass(class_);
                                 }}
                                 disabled={isRegistering}
-                                className={`flex items-center space-x-1 text-sm text-indigo-600 hover:text-indigo-700 ${
+                                className={`flex items-center space-x-1 text-sm text-[#1876D2] hover:text-indigo-700 ${
                                   isRegistering ? 'opacity-75 cursor-not-allowed' : ''
                                 }`}
                               >
                                 {isRegistering ? (
-                                  <div className="animate-spin h-3 w-3 border-2 border-indigo-600 border-t-transparent rounded-full"></div>
+                                  <div className="animate-spin h-3 w-3 border-2 border-[#1876D2] border-t-transparent rounded-full"></div>
                                 ) : (
                                   <ChevronRight className="h-4 w-4" />
                                 )}
@@ -610,7 +610,7 @@ export default function LiveClasses() {
                               e.stopPropagation();
                               window.open(class_.recordingUrl, '_blank');
                             }}
-                            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                            className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                           >
                             <Play className="h-4 w-4" />
                             <span>Watch Recording</span>
@@ -621,7 +621,7 @@ export default function LiveClasses() {
                               e.stopPropagation();
                               setSelectedClass(class_);
                             }}
-                            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                            className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                           >
                             <Download className="h-4 w-4" />
                             <span>View Materials</span>
@@ -688,14 +688,14 @@ export default function LiveClasses() {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-4 flex items-center justify-center space-x-2 text-indigo-600 hover:text-indigo-700 font-medium">
+            <button className="w-full mt-4 flex items-center justify-center space-x-2 text-[#1876D2] hover:text-indigo-700 font-medium">
               <span>View All Recommendations</span>
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
             <div className="flex items-center space-x-3 mb-4">
               <div className="h-10 w-10 bg-white/20 rounded-xl flex items-center justify-center">
                 <Brain className="h-6 w-6" />
@@ -705,7 +705,7 @@ export default function LiveClasses() {
             <p className="text-indigo-100 mb-4">
               Get personalized class recommendations and learning insights based on your progress.
             </p>
-            <button className="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition-colors">
+            <button className="w-full bg-white text-[#1876D2] px-4 py-2 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors">
               Get Recommendations
             </button>
           </div>
@@ -742,23 +742,23 @@ export default function LiveClasses() {
                 </div>
               </div>
               
-              <div className="bg-indigo-50 rounded-xl p-6 mb-6">
+              <div className="bg-[#E3F2FD] rounded-xl p-6 mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">Class Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-center text-gray-700">
-                    <Calendar className="h-5 w-5 text-indigo-600 mr-2" />
+                    <Calendar className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{format(parseISO(selectedClass.date), 'MMMM d, yyyy')}</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <Clock className="h-5 w-5 text-indigo-600 mr-2" />
+                    <Clock className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{format(parseISO(selectedClass.date), 'h:mm a')} ({selectedClass.duration})</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <Users className="h-5 w-5 text-indigo-600 mr-2" />
+                    <Users className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{selectedClass.attendees}/{selectedClass.maxAttendees} enrolled</span>
                   </div>
                   <div className="flex items-center text-gray-700">
-                    <BookOpen className="h-5 w-5 text-indigo-600 mr-2" />
+                    <BookOpen className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span>{selectedClass.level} Level</span>
                   </div>
                 </div>
@@ -789,7 +789,7 @@ export default function LiveClasses() {
                           href={material.url} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="text-indigo-600 hover:text-indigo-800"
+                          className="text-[#1876D2] hover:text-indigo-800"
                         >
                           <Download className="h-5 w-5" />
                         </a>
@@ -809,13 +809,13 @@ export default function LiveClasses() {
                 {canJoinClass(selectedClass) ? (
                   <button
                     onClick={() => handleJoinClass(selectedClass)}
-                    className="px-6 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-opacity"
+                    className="px-6 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-opacity"
                   >
                     {isJoining ? 'Joining...' : 'Join Class'}
                   </button>
                 ) : selectedClass.status === 'scheduled' ? (
                   <button
-                    className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                    className="px-6 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                   >
                     Add to Calendar
                   </button>

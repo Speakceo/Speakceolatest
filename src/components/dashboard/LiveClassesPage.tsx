@@ -464,7 +464,7 @@ export default function LiveClassesPage() {
       case 'Intermediate':
         return 'bg-blue-100 text-blue-800';
       case 'Advanced':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-[#E3F2FD] text-purple-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -473,15 +473,15 @@ export default function LiveClassesPage() {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Business Strategy':
-        return <Target className="h-5 w-5 text-indigo-600" />;
+        return <Target className="h-5 w-5 text-[#1876D2]" />;
       case 'Finance':
         return <Zap className="h-5 w-5 text-green-600" />;
       case 'Marketing':
-        return <Sparkles className="h-5 w-5 text-pink-600" />;
+        return <Sparkles className="h-5 w-5 text-[#00B0FF]" />;
       case 'Leadership':
         return <Users className="h-5 w-5 text-amber-600" />;
       case 'Communication':
-        return <Mic className="h-5 w-5 text-purple-600" />;
+        return <Mic className="h-5 w-5 text-[#1876D2]" />;
       case 'Product':
         return <Target className="h-5 w-5 text-blue-600" />;
       case 'Legal':
@@ -502,7 +502,7 @@ export default function LiveClassesPage() {
           <p className="text-gray-600 mt-1">Schedule and manage live classes for students</p>
         </div>
         <button
-          className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+          className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
         >
           <Plus className="h-5 w-5" />
           <span>Schedule Class</span>
@@ -519,14 +519,14 @@ export default function LiveClassesPage() {
               placeholder="Search classes..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
             />
           </div>
           <div className="relative">
             <select
               value={filterLevel}
               onChange={(e) => setFilterLevel(e.target.value as any)}
-              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 appearance-none"
+              className="pl-3 pr-8 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] appearance-none"
             >
               <option value="All">All Levels</option>
               <option value="Beginner">Beginner</option>
@@ -563,7 +563,7 @@ export default function LiveClassesPage() {
                 <tr key={cls.id}>
                   <td className="px-6 py-4">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                      <div className="flex-shrink-0 h-10 w-10 bg-[#E3F2FD] rounded-lg flex items-center justify-center">
                         {getCategoryIcon(cls.category)}
                       </div>
                       <div className="ml-4">
@@ -590,7 +590,7 @@ export default function LiveClassesPage() {
                     <div className="text-sm text-gray-900">{cls.attendees}/{cls.maxAttendees}</div>
                     <div className="w-24 bg-gray-200 rounded-full h-1.5 mt-1">
                       <div 
-                        className="bg-indigo-600 h-1.5 rounded-full" 
+                        className="bg-[#1876D2] h-1.5 rounded-full" 
                         style={{ width: `${(cls.attendees / cls.maxAttendees) * 100}%` }}
                       ></div>
                     </div>
@@ -604,7 +604,7 @@ export default function LiveClassesPage() {
                         <>
                           <a 
                             href="#" 
-                            className="text-indigo-600 hover:text-indigo-900"
+                            className="text-[#1876D2] hover:text-indigo-900"
                             onClick={(e) => {
                               e.preventDefault();
                               // Edit class logic

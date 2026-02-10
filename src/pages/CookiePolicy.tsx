@@ -125,14 +125,14 @@ const CookiePolicy: React.FC = () => {
         keywords={["cookie policy", "website cookies", "privacy", "data tracking"]}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Cookie Policy
             </h1>
-            <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
               Understanding how and why we use cookies on our platform
             </p>
             <p className="text-indigo-200">
@@ -157,7 +157,7 @@ const CookiePolicy: React.FC = () => {
           {cookieCategories.map(category => (
             <div key={category.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="bg-indigo-100 text-indigo-600 p-3 rounded-lg">
+                <div className="bg-[#E3F2FD] text-[#1876D2] p-3 rounded-lg">
                   <category.icon className="h-6 w-6" />
                 </div>
                 <div>
@@ -190,7 +190,7 @@ const CookiePolicy: React.FC = () => {
                         <td className="py-3 px-4">
                           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                             cookie.required
-                              ? 'bg-indigo-100 text-indigo-800'
+                              ? 'bg-[#E3F2FD] text-[#1876D2]'
                               : 'bg-gray-100 text-gray-800'
                           }`}>
                             {cookie.required ? 'Required' : 'Optional'}
@@ -205,13 +205,13 @@ const CookiePolicy: React.FC = () => {
           ))}
 
           {/* Cookie Settings CTA */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center mb-16">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-8 text-white text-center mb-16">
             <Cookie className="h-12 w-12 mx-auto mb-6" />
             <h2 className="text-2xl font-bold mb-4">Manage Your Cookie Preferences</h2>
-            <p className="text-indigo-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               You can change your cookie settings at any time. Please note that disabling some cookies may impact your experience on our site.
             </p>
-            <button className="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors">
+            <button className="bg-white text-[#1876D2] px-6 py-3 rounded-lg font-semibold hover:bg-[#E3F2FD] transition-colors">
               Cookie Settings
             </button>
           </div>

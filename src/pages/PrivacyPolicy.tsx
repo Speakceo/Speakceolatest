@@ -93,14 +93,14 @@ const PrivacyPolicy: React.FC = () => {
         keywords={["privacy policy", "data protection", "personal information", "data security"]}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Privacy Policy
             </h1>
-            <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
               We take your privacy seriously. Learn how we protect and handle your personal information.
             </p>
             <p className="text-indigo-200">
@@ -127,7 +127,7 @@ const PrivacyPolicy: React.FC = () => {
             {policySections.map(section => (
               <div key={section.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
                 <div className="flex items-center space-x-4 mb-6">
-                  <div className="bg-indigo-100 text-indigo-600 p-3 rounded-lg">
+                  <div className="bg-[#E3F2FD] text-[#1876D2] p-3 rounded-lg">
                     <section.icon className="h-6 w-6" />
                   </div>
                   <h2 className="text-xl font-bold text-gray-900">{section.title}</h2>
@@ -135,7 +135,7 @@ const PrivacyPolicy: React.FC = () => {
                 <ul className="space-y-3">
                   {section.content.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="h-2 w-2 bg-indigo-600 rounded-full mt-2 mr-3 shrink-0" />
+                      <span className="h-2 w-2 bg-[#1876D2] rounded-full mt-2 mr-3 shrink-0" />
                       <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
@@ -146,7 +146,7 @@ const PrivacyPolicy: React.FC = () => {
 
           {/* Contact Section */}
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center mb-16">
-            <Mail className="h-12 w-12 text-indigo-600 mx-auto mb-6" />
+            <Mail className="h-12 w-12 text-[#1876D2] mx-auto mb-6" />
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Questions About Privacy?</h2>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
               If you have any questions about this Privacy Policy or our data practices, please contact our Data Protection Officer.
@@ -154,13 +154,13 @@ const PrivacyPolicy: React.FC = () => {
             <div className="flex justify-center space-x-4">
               <a
                 href="mailto:privacy@orbitstudent.com"
-                className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+                className="bg-[#1876D2] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1565C0] transition-colors"
               >
                 Email Us
               </a>
               <a
                 href="/contact"
-                className="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+                className="border border-[#1876D2] text-[#1876D2] px-6 py-3 rounded-lg font-semibold hover:bg-[#E3F2FD] transition-colors"
               >
                 Contact Form
               </a>

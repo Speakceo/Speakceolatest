@@ -416,7 +416,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
             <h3 className="font-medium text-gray-900 mb-2">Task Description</h3>
             <p className="text-gray-600">{task.description}</p>
             <div className="flex items-center mt-3 text-sm text-gray-500">
-              <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
+              <span className="bg-[#E3F2FD] text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
                 {task.points} points
               </span>
               {task.due_date && (
@@ -435,8 +435,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('text')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'text'
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <File className="h-6 w-6 mb-2" />
@@ -446,8 +446,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('file')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'file'
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <Upload className="h-6 w-6 mb-2" />
@@ -457,8 +457,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('audio')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'audio'
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <Mic className="h-6 w-6 mb-2" />
@@ -468,8 +468,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('video')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'video'
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <Video className="h-6 w-6 mb-2" />
@@ -497,7 +497,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                   value={textContent}
                   onChange={(e) => setTextContent(e.target.value)}
                   rows={8}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] resize-none"
                   placeholder="Type your response here..."
                 />
               </div>
@@ -509,13 +509,13 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                   Upload File
                 </label>
                 <div 
-                  className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl cursor-pointer hover:border-indigo-300 hover:bg-indigo-50 transition-colors"
+                  className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-xl cursor-pointer hover:border-indigo-300 hover:bg-[#E3F2FD] transition-colors"
                   onClick={() => fileInputRef.current?.click()}
                 >
                   <div className="space-y-1 text-center">
                     <Upload className="mx-auto h-12 w-12 text-gray-400" />
                     <div className="flex text-sm text-gray-600">
-                      <label className="relative cursor-pointer rounded-md font-medium text-indigo-600 hover:text-indigo-500">
+                      <label className="relative cursor-pointer rounded-md font-medium text-[#1876D2] hover:text-indigo-500">
                         <span>Upload a file</span>
                         <input
                           ref={fileInputRef}
@@ -532,8 +532,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                   </div>
                 </div>
                 {submissionData.file && (
-                  <div className="mt-3 flex items-center p-3 bg-indigo-50 rounded-lg">
-                    <File className="h-5 w-5 text-indigo-600 mr-2" />
+                  <div className="mt-3 flex items-center p-3 bg-[#E3F2FD] rounded-lg">
+                    <File className="h-5 w-5 text-[#1876D2] mr-2" />
                     <span className="text-sm text-indigo-700">{submissionData.file.name}</span>
                   </div>
                 )}
@@ -557,11 +557,11 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                     </div>
                   ) : status === 'recorded' && submissionData.audioUrl ? (
                     <div className="flex flex-col items-center">
-                      <div className="h-16 w-16 rounded-full bg-indigo-100 flex items-center justify-center mb-4 cursor-pointer" onClick={handlePlayMedia}>
+                      <div className="h-16 w-16 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4 cursor-pointer" onClick={handlePlayMedia}>
                         {isPlaying ? (
-                          <StopCircle className="h-8 w-8 text-indigo-600" />
+                          <StopCircle className="h-8 w-8 text-[#1876D2]" />
                         ) : (
-                          <Play className="h-8 w-8 text-indigo-600" />
+                          <Play className="h-8 w-8 text-[#1876D2]" />
                         )}
                       </div>
                       <div className="text-gray-700">
@@ -571,8 +571,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                     </div>
                   ) : (
                     <div className="flex flex-col items-center">
-                      <div className="h-16 w-16 rounded-full bg-indigo-100 flex items-center justify-center mb-4 cursor-pointer" onClick={handleStartAudioRecording}>
-                        <Mic className="h-8 w-8 text-indigo-600" />
+                      <div className="h-16 w-16 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4 cursor-pointer" onClick={handleStartAudioRecording}>
+                        <Mic className="h-8 w-8 text-[#1876D2]" />
                       </div>
                       <div className="text-gray-700">
                         Click to start recording
@@ -612,7 +612,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                     <div className="flex items-center space-x-3">
                       <button 
                         onClick={handlePlayMedia}
-                        className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                        className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                       >
                         {isPlaying ? (
                           <>
@@ -640,7 +640,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                   ) : (
                     <button 
                       onClick={handleStartVideoRecording}
-                      className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                      className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                     >
                       <Video className="h-5 w-5" />
                       <span>Start Recording</span>
@@ -660,7 +660,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
               <button
                 onClick={handleAnalyzeSubmission}
                 disabled={isAnalyzing}
-                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-medium hover:opacity-90 disabled:opacity-50 transition-colors"
+                className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-xl font-medium hover:opacity-90 disabled:opacity-50 transition-colors"
               >
                 {isAnalyzing ? (
                   <>
@@ -682,10 +682,10 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
             <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                  <Sparkles className="h-5 w-5 text-indigo-600 mr-2" />
+                  <Sparkles className="h-5 w-5 text-[#1876D2] mr-2" />
                   AI Feedback
                 </h3>
-                <div className="bg-white px-3 py-1 rounded-full text-indigo-600 font-medium">
+                <div className="bg-white px-3 py-1 rounded-full text-[#1876D2] font-medium">
                   Score: {aiFeedback.score}/100
                 </div>
               </div>
@@ -712,13 +712,13 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 </div>
                 <div>
                   <h4 className="font-medium text-gray-900 mb-2 flex items-center">
-                    <Sparkles className="h-4 w-4 text-indigo-600 mr-1" />
+                    <Sparkles className="h-4 w-4 text-[#1876D2] mr-1" />
                     Areas to Improve
                   </h4>
                   <ul className="space-y-1">
                     {aiFeedback.improvements.map((improvement, index) => (
                       <li key={index} className="text-sm text-gray-700 flex items-start">
-                        <Sparkles className="h-4 w-4 text-indigo-600 mr-2 mt-0.5 flex-shrink-0" />
+                        <Sparkles className="h-4 w-4 text-[#1876D2] mr-2 mt-0.5 flex-shrink-0" />
                         {improvement}
                       </li>
                     ))}
@@ -746,7 +746,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
               (submissionType === 'audio' && !submissionData.audioBlob) ||
               (submissionType === 'video' && !submissionData.videoBlob)
             }
-            className="flex items-center space-x-2 px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+            className="flex items-center space-x-2 px-6 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
           >
             {status === 'uploading' ? (
               <>

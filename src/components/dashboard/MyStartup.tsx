@@ -54,7 +54,7 @@ export default function MyStartup() {
       icon: Layout,
       progress: startupData.businessModel.progress,
       status: startupData.businessModel.status,
-      color: 'from-blue-500 to-indigo-500'
+      color: 'from-blue-500 to-[#1876D2]'
     },
     {
       id: 'brand-identity',
@@ -197,7 +197,7 @@ export default function MyStartup() {
           {isEditing ? (
             <button
               onClick={handleSaveClick}
-              className="flex items-center space-x-1 px-3 py-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm"
+              className="flex items-center space-x-1 px-3 py-1.5 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors text-sm"
             >
               <CheckCircle className="h-4 w-4" />
               <span>Save</span>
@@ -224,7 +224,7 @@ export default function MyStartup() {
               className="w-32 h-32 object-contain mb-4"
             />
           ) : (
-            <div className="w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mb-4">
+            <div className="w-32 h-32 rounded-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] flex items-center justify-center mb-4">
               <Rocket className="h-16 w-16 text-white" />
             </div>
           )}
@@ -235,14 +235,14 @@ export default function MyStartup() {
                 type="text"
                 value={startupName}
                 onChange={(e) => setStartupName(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-center"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] text-center"
                 placeholder="Startup Name"
               />
               <input
                 type="text"
                 value={startupTagline}
                 onChange={(e) => setStartupTagline(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-center text-sm"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] text-center text-sm"
                 placeholder="Tagline"
               />
             </div>
@@ -260,7 +260,7 @@ export default function MyStartup() {
           <div>
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-gray-700">Overall Completion</span>
-              <span className="text-sm font-medium text-indigo-600">{startupData.overallProgress}%</span>
+              <span className="text-sm font-medium text-[#1876D2]">{startupData.overallProgress}%</span>
             </div>
             <ProgressBar 
               progress={startupData.overallProgress} 
@@ -306,7 +306,7 @@ export default function MyStartup() {
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
             <button
               onClick={handleResumeJourney}
-              className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-colors"
+              className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-colors"
             >
               <Rocket className="h-5 w-5" />
               <span>Resume Journey</span>
@@ -336,12 +336,12 @@ export default function MyStartup() {
       {/* AI Suggestions */}
       <div className="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg">
         <div className="flex items-start space-x-3">
-          <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-            <Sparkles className="h-4 w-4 text-indigo-600" />
+          <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center flex-shrink-0">
+            <Sparkles className="h-4 w-4 text-[#1876D2]" />
           </div>
           <div>
             <h4 className="text-sm font-medium text-indigo-700">AI Suggestion</h4>
-            <p className="text-sm text-indigo-600 mt-1">
+            <p className="text-sm text-[#1876D2] mt-1">
               {startupData.overallProgress < 30 
                 ? "Start by defining your business model canvas to clarify your value proposition."
                 : startupData.overallProgress < 60

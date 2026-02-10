@@ -16,7 +16,7 @@ const plans = [
       'Certificate of completion',
       'Email support'
     ],
-    color: 'from-blue-500 to-indigo-500',
+    color: 'from-blue-500 to-[#1876D2]',
     icon: Brain
   },
   {
@@ -34,7 +34,7 @@ const plans = [
       'Networking events access'
     ],
     featured: true,
-    color: 'from-indigo-500 to-purple-500',
+    color: 'from-[#1876D2] to-[#00B0FF]',
     icon: Rocket
   }
 ];
@@ -50,7 +50,7 @@ export default function Pricing() {
         <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-pink-500 to-mint-500 mb-6 drop-shadow-lg">Pricing</h1>
         <div className="bg-white/80 rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+            <h2 className="text-base text-[#1876D2] font-semibold tracking-wide uppercase">
               Pricing Plans
             </h2>
             <p className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
@@ -81,7 +81,7 @@ export default function Pricing() {
 
                 <div className="mb-8">
                   <div className="flex items-center space-x-3">
-                    <div className="h-12 w-12 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center">
+                    <div className="h-12 w-12 rounded-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] flex items-center justify-center">
                       <plan.icon className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900">{plan.name}</h3>
@@ -122,24 +122,24 @@ export default function Pricing() {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div className="mx-auto h-14 w-14 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
-                  <Star className="h-7 w-7 text-indigo-600" />
+                <div className="mx-auto h-14 w-14 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4">
+                  <Star className="h-7 w-7 text-[#1876D2]" />
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">Fun Learning</h4>
                 <p className="text-sm text-gray-500">Interactive games and activities</p>
               </div>
               
               <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div className="mx-auto h-14 w-14 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-                  <Target className="h-7 w-7 text-purple-600" />
+                <div className="mx-auto h-14 w-14 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4">
+                  <Target className="h-7 w-7 text-[#1876D2]" />
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">Goal Setting</h4>
                 <p className="text-sm text-gray-500">Personalized learning paths</p>
               </div>
               
               <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                <div className="mx-auto h-14 w-14 rounded-full bg-pink-100 flex items-center justify-center mb-4">
-                  <Users className="h-7 w-7 text-pink-600" />
+                <div className="mx-auto h-14 w-14 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4">
+                  <Users className="h-7 w-7 text-[#00B0FF]" />
                 </div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-2">Community</h4>
                 <p className="text-sm text-gray-500">Connect with peers worldwide</p>

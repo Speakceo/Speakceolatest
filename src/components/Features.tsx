@@ -12,7 +12,7 @@ const features = [
     name: 'Expert Mentorship',
     description: 'Learn from successful entrepreneurs and industry leaders',
     icon: Users,
-    color: 'from-purple-500 to-indigo-500',
+    color: 'from-purple-500 to-[#1876D2]',
   },
   {
     name: 'Business Projects',
@@ -38,7 +38,7 @@ export default function Features() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="lg:text-center mb-20">
-          <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+          <h2 className="text-base text-[#1876D2] font-semibold tracking-wide uppercase">
             Why Choose Orbit
           </h2>
           <p className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
@@ -81,16 +81,16 @@ export default function Features() {
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div className="mx-auto h-14 w-14 rounded-full bg-indigo-100 flex items-center justify-center mb-4">
-                <Brain className="h-7 w-7 text-indigo-600" />
+              <div className="mx-auto h-14 w-14 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4">
+                <Brain className="h-7 w-7 text-[#1876D2]" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">Critical Thinking</h4>
               <p className="text-sm text-gray-500">Analyze problems and find creative solutions</p>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div className="mx-auto h-14 w-14 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-                <Mic className="h-7 w-7 text-purple-600" />
+              <div className="mx-auto h-14 w-14 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4">
+                <Mic className="h-7 w-7 text-[#1876D2]" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">Public Speaking</h4>
               <p className="text-sm text-gray-500">Communicate ideas with confidence and clarity</p>
@@ -113,8 +113,8 @@ export default function Features() {
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div className="mx-auto h-14 w-14 rounded-full bg-pink-100 flex items-center justify-center mb-4">
-                <Sparkles className="h-7 w-7 text-pink-600" />
+              <div className="mx-auto h-14 w-14 rounded-full bg-[#E3F2FD] flex items-center justify-center mb-4">
+                <Sparkles className="h-7 w-7 text-[#00B0FF]" />
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">Creativity</h4>
               <p className="text-sm text-gray-500">Think outside the box and innovate</p>

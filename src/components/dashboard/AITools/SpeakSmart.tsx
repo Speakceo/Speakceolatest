@@ -367,7 +367,7 @@ export default function SpeakSmart() {
       case 'intermediate':
         return 'bg-blue-100 text-blue-800';
       case 'advanced':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-[#E3F2FD] text-purple-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -628,7 +628,7 @@ export default function SpeakSmart() {
                       </div>
                       <div className="h-2 w-full bg-gray-200 rounded-full">
                         <div 
-                          className="h-2 bg-purple-500 rounded-full"
+                          className="h-2 bg-[#F5F9FC]0 rounded-full"
                           style={{ width: `${feedback.tone}%` }}
                         ></div>
                       </div>
@@ -741,7 +741,7 @@ export default function SpeakSmart() {
                     
                     <button
                       onClick={resetPractice}
-                      className="px-4 py-2 bg-white text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
+                      className="px-4 py-2 bg-white text-[#1876D2] rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
                     >
                       Practice Again
                     </button>

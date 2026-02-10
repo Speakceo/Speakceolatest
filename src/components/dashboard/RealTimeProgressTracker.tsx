@@ -62,7 +62,7 @@ export default function RealTimeProgressTracker() {
     <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold text-gray-900 flex items-center">
-          <Activity className="h-6 w-6 text-indigo-600 mr-2" />
+          <Activity className="h-6 w-6 text-[#1876D2] mr-2" />
           Real-Time Progress
         </h3>
         <div className="text-sm text-gray-500">
@@ -75,12 +75,12 @@ export default function RealTimeProgressTracker() {
         {/* Total XP Card */}
         <div className="bg-gradient-to-br from-indigo-50 to-purple-50 p-4 rounded-lg">
           <div className="flex items-center justify-between">
-            <Zap className="h-8 w-8 text-indigo-600" />
+            <Zap className="h-8 w-8 text-[#1876D2]" />
             <div className="text-right">
               <div className="text-2xl font-bold text-indigo-900">
                 {progress.totalXP.toLocaleString()}
               </div>
-              <div className="text-xs text-indigo-600">Total XP</div>
+              <div className="text-xs text-[#1876D2]">Total XP</div>
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@ export default function RealTimeProgressTracker() {
         </div>
         <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
           <div 
-            className="bg-gradient-to-r from-indigo-500 to-purple-600 h-4 rounded-full transition-all duration-1000 ease-out relative"
+            className="bg-gradient-to-r from-[#1876D2] to-purple-600 h-4 rounded-full transition-all duration-1000 ease-out relative"
             style={{ width: `${progressPercentage}%` }}
           >
             <div className="absolute inset-0 bg-white opacity-30 animate-pulse"></div>
@@ -197,7 +197,7 @@ export default function RealTimeProgressTracker() {
             </button>
             <button
               onClick={handleQuizComplete}
-              className="flex items-center justify-center p-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-sm"
+              className="flex items-center justify-center p-2 bg-[#F5F9FC]0 text-white rounded-lg hover:bg-[#1876D2] transition-colors text-sm"
             >
               <Brain className="h-4 w-4 mr-1" />
               +75 XP
@@ -235,7 +235,7 @@ export default function RealTimeProgressTracker() {
         <h4 className="text-sm font-semibold text-gray-700 mb-2">This Week</h4>
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">XP Earned:</span>
-          <span className="font-semibold text-indigo-600">+{weeklyXP}</span>
+          <span className="font-semibold text-[#1876D2]">+{weeklyXP}</span>
         </div>
         <div className="flex justify-between text-sm">
           <span className="text-gray-600">Current Streak:</span>

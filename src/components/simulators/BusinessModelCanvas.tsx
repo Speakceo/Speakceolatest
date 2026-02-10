@@ -57,7 +57,7 @@ function DraggableComponent({ component, onMove, onEdit, onDelete }: DraggableCo
         height: `${cell?.height ? cell.height * (GRID_SIZE.CELL_HEIGHT + GRID_SIZE.GAP) - GRID_SIZE.GAP : 120}px`
       }}
       className={`bg-white rounded-lg shadow-md p-4 transition-all duration-300 ${
-        isEditing ? 'ring-2 ring-indigo-500' : ''
+        isEditing ? 'ring-2 ring-[#1876D2]' : ''
       }`}
       onClick={() => setIsEditing(true)}
       data-tooltip-id={`component-${component.id}`}
@@ -82,7 +82,7 @@ function DraggableComponent({ component, onMove, onEdit, onDelete }: DraggableCo
         onBlur={handleBlur}
         className={`w-full h-[calc(100%-2rem)] text-sm border rounded-md p-2 resize-none transition-colors ${
           isEditing 
-            ? 'border-indigo-500 focus:ring-2 focus:ring-indigo-500' 
+            ? 'border-[#1876D2] focus:ring-2 focus:ring-[#1876D2]' 
             : 'border-transparent hover:border-gray-200'
         }`}
         placeholder={`Add your ${cell?.label.toLowerCase()} here...`}
@@ -221,7 +221,7 @@ export default function BusinessModelCanvas() {
           <button
             onClick={handleAnalyze}
             disabled={isAnalyzing}
-            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
           >
             {isAnalyzing ? (
               <RefreshCw className="h-4 w-4 animate-spin" />
@@ -321,7 +321,7 @@ export default function BusinessModelCanvas() {
               </button>
               <button
                 onClick={handleSubmit}
-                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
               >
                 Submit
               </button>
@@ -353,7 +353,7 @@ export default function BusinessModelCanvas() {
                 </div>
                 <button
                   onClick={() => handleAddComponent(cell.type)}
-                  className="text-xs text-indigo-600 hover:text-indigo-700"
+                  className="text-xs text-[#1876D2] hover:text-indigo-700"
                 >
                   + Add Component
                 </button>
@@ -398,7 +398,7 @@ export default function BusinessModelCanvas() {
               {businessModel.suggestions.map((suggestion, index) => (
                 <div
                   key={index}
-                  className="p-4 rounded-lg bg-indigo-50 text-sm text-indigo-700"
+                  className="p-4 rounded-lg bg-[#E3F2FD] text-sm text-indigo-700"
                 >
                   {suggestion}
                 </div>

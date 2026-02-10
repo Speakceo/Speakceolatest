@@ -227,7 +227,7 @@ Your secret admin key: SPEAKCEO_ADMIN_2024_SECURE_ACCESS_KEY_789
           
           <button
             onClick={copyBackupInstructions}
-            className="flex items-center justify-center space-x-2 bg-purple-600 text-white px-4 py-3 rounded-lg hover:bg-purple-700"
+            className="flex items-center justify-center space-x-2 bg-[#1876D2] text-white px-4 py-3 rounded-lg hover:bg-purple-700"
           >
             <Copy className="h-4 w-4" />
             <span>Copy Instructions</span>

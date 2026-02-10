@@ -126,7 +126,7 @@ export default function StudentProgress() {
               <div
                 key={student.id}
                 className={`p-4 cursor-pointer hover:bg-gray-50 ${
-                  selectedStudent?.id === student.id ? 'bg-indigo-50' : ''
+                  selectedStudent?.id === student.id ? 'bg-[#E3F2FD]' : ''
                 }`}
                 onClick={() => setSelectedStudent(student)}
               >

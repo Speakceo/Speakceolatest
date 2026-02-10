@@ -646,7 +646,7 @@ export default function TasksAssignments() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <Target className="h-8 w-8 text-indigo-600" />
+          <Target className="h-8 w-8 text-[#1876D2]" />
           <h1 className="text-3xl font-bold text-gray-900">Tasks & Assignments</h1>
         </div>
         <p className="text-xl text-gray-600">
@@ -656,7 +656,7 @@ export default function TasksAssignments() {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-6 text-white">
+        <div className="bg-gradient-to-br from-[#1876D2] to-purple-600 rounded-2xl p-6 text-white">
           <div className="flex items-center gap-3 mb-2">
             <Trophy className="h-6 w-6" />
             <span className="font-medium">Total Points</span>
@@ -708,7 +708,7 @@ export default function TasksAssignments() {
               onClick={() => setSelectedFilter(key as FilterType)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all ${
                 selectedFilter === key
-                  ? 'bg-indigo-600 text-white shadow-lg'
+                  ? 'bg-[#1876D2] text-white shadow-lg'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -721,13 +721,13 @@ export default function TasksAssignments() {
 
       {/* AI Review Toggle */}
       <div className="mb-6">
-        <div className="flex items-center gap-3 p-4 bg-purple-50 rounded-xl border border-purple-200">
-          <Brain className="h-5 w-5 text-purple-600" />
+        <div className="flex items-center gap-3 p-4 bg-[#F5F9FC] rounded-xl border border-purple-200">
+          <Brain className="h-5 w-5 text-[#1876D2]" />
           <span className="font-medium text-purple-800">AI Feedback</span>
           <button
             onClick={() => setAiReviewEnabled(!aiReviewEnabled)}
             className={`relative w-12 h-6 rounded-full transition-colors ${
-              aiReviewEnabled ? 'bg-purple-600' : 'bg-gray-300'
+              aiReviewEnabled ? 'bg-[#1876D2]' : 'bg-gray-300'
             }`}
           >
             <div
@@ -736,7 +736,7 @@ export default function TasksAssignments() {
               }`}
             />
           </button>
-          <span className="text-sm text-purple-600">
+          <span className="text-sm text-[#1876D2]">
             {aiReviewEnabled ? 'Get AI feedback on submissions' : 'AI feedback disabled'}
           </span>
         </div>
@@ -750,7 +750,7 @@ export default function TasksAssignments() {
             <div key={weekNumber} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
               <div className="bg-gradient-to-r from-indigo-50 to-purple-50 px-6 py-4 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-gray-900 flex items-center gap-3">
-                  <Calendar className="h-5 w-5 text-indigo-600" />
+                  <Calendar className="h-5 w-5 text-[#1876D2]" />
                   Week {weekNumber} Tasks
                   <span className="text-sm font-normal text-gray-500">
                     ({weekTasks.length} task{weekTasks.length !== 1 ? 's' : ''})
@@ -839,7 +839,7 @@ export default function TasksAssignments() {
                           {status === 'pending' && (
                             <button
                               onClick={() => setSubmissionModal({ task })}
-                              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                              className="flex items-center gap-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                             >
                               <Plus className="h-4 w-4" />
                               Submit Task
@@ -898,20 +898,20 @@ export default function TasksAssignments() {
                                 )}
 
                                 {submission.aiReview && (
-                                  <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                                  <div className="bg-[#F5F9FC] rounded-lg p-4 border border-purple-200">
                                     <h5 className="font-semibold text-purple-800 mb-2 flex items-center gap-2">
                                       <Brain className="h-4 w-4" />
                                       AI Feedback (Score: {submission.aiReview.score}/10)
                                     </h5>
-                                    <p className="text-sm text-purple-700 mb-3">{submission.aiReview.feedback}</p>
+                                    <p className="text-sm text-[#1876D2] mb-3">{submission.aiReview.feedback}</p>
                                     
                                     {submission.aiReview.suggestions.length > 0 && (
                                       <div>
                                         <p className="text-sm font-medium text-purple-800 mb-1">Suggestions:</p>
-                                        <ul className="text-sm text-purple-700 space-y-1">
+                                        <ul className="text-sm text-[#1876D2] space-y-1">
                                           {submission.aiReview.suggestions.map((suggestion, index) => (
                                             <li key={index} className="flex items-start gap-2">
-                                              <span className="text-purple-500 mt-1">•</span>
+                                              <span className="text-[#1876D2] mt-1">•</span>
                                               {suggestion}
                                             </li>
                                           ))}
@@ -1133,7 +1133,7 @@ function TaskSubmissionModal({
                     value={textContent}
                     onChange={(e) => setTextContent(e.target.value)}
                     placeholder="Enter your text response here..."
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     rows={4}
                   />
                 </div>
@@ -1162,7 +1162,7 @@ function TaskSubmissionModal({
                         value={pdfTextContent}
                         onChange={(e) => setPdfTextContent(e.target.value)}
                         placeholder="Write your document content here..."
-                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                         rows={6}
                       />
                     </div>
@@ -1290,7 +1290,7 @@ function TaskSubmissionModal({
                     value={linkUrl}
                     onChange={(e) => setLinkUrl(e.target.value)}
                     placeholder="https://example.com/your-work"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   />
                 </div>
               )}
@@ -1343,7 +1343,7 @@ function TaskSubmissionModal({
               value={reflection}
               onChange={(e) => setReflection(e.target.value)}
               placeholder="What did you learn from this task?"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               rows={3}
             />
           </div>
@@ -1359,7 +1359,7 @@ function TaskSubmissionModal({
           <button
             onClick={handleSubmit}
             disabled={!canSubmit()}
-            className="flex-1 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+            className="flex-1 px-6 py-3 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
           >
             Submit Task
           </button>

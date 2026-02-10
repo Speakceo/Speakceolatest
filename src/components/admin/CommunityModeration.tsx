@@ -276,7 +276,7 @@ export default function CommunityModeration() {
       <div className="bg-white rounded-xl overflow-hidden shadow-sm">
         {isLoading ? (
           <div className="flex items-center justify-center py-12">
-            <RefreshCw className="h-8 w-8 text-indigo-600 animate-spin" />
+            <RefreshCw className="h-8 w-8 text-[#1876D2] animate-spin" />
           </div>
         ) : filteredPosts.length === 0 ? (
           <div className="py-12 px-6 text-center">
@@ -376,7 +376,7 @@ export default function CommunityModeration() {
                           setSelectedPost(post);
                           setShowModerateModal(true);
                         }}
-                        className="text-indigo-600 hover:text-indigo-900"
+                        className="text-[#1876D2] hover:text-indigo-900"
                       >
                         <Shield className="h-5 w-5" />
                       </button>
@@ -484,7 +484,7 @@ export default function CommunityModeration() {
                   disabled={!moderationAction}
                   className={`px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${
                     moderationAction 
-                      ? 'bg-indigo-600 hover:bg-indigo-700'
+                      ? 'bg-[#1876D2] hover:bg-[#1565C0]'
                       : 'bg-gray-300 cursor-not-allowed'
                   }`}
                 >

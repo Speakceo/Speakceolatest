@@ -69,8 +69,8 @@ export default {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       boxShadow: {
-        'glow': '0 0 15px rgba(99, 102, 241, 0.5)',
-        'glow-lg': '0 0 30px rgba(99, 102, 241, 0.8)',
+        'glow': '0 0 15px rgba(24, 118, 210, 0.4)',
+        'glow-lg': '0 0 30px rgba(24, 118, 210, 0.6)',
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
         'hover': '0 4px 20px -3px rgba(0, 0, 0, 0.1), 0 12px 25px -2px rgba(0, 0, 0, 0.06)',
       },

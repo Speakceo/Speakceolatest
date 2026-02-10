@@ -21,7 +21,7 @@ const COURSE_TEMPLATE = {
   title: '',
   description: '',
   icon: 'Target',
-  color: 'from-blue-500 to-indigo-500',
+  color: 'from-blue-500 to-[#1876D2]',
   modules: []
 };
 
@@ -56,7 +56,7 @@ const ICON_OPTIONS: IconOption[] = [
 ];
 
 const COLOR_OPTIONS = [
-  { value: 'from-blue-500 to-indigo-500', label: 'Blue' },
+  { value: 'from-blue-500 to-[#1876D2]', label: 'Blue' },
   { value: 'from-purple-500 to-pink-500', label: 'Purple' },
   { value: 'from-green-500 to-emerald-500', label: 'Green' },
   { value: 'from-amber-500 to-orange-500', label: 'Orange' },
@@ -219,7 +219,7 @@ export default function CourseEditor() {
         <div className="flex space-x-4">
           <button
             onClick={addCourse}
-            className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+            className="flex items-center px-4 py-2 bg-[#1876D2] text-white rounded-md hover:bg-[#1565C0] transition"
           >
             <PlusCircle className="h-5 w-5 mr-2" />
             Add Section
@@ -374,7 +374,7 @@ export default function CourseEditor() {
                               <ChevronDown className="h-4 w-4 text-gray-500 mr-2" />
                             )}
                             <div className="flex items-center">
-                              <div className="mr-2 flex items-center justify-center h-6 w-6 bg-indigo-100 text-indigo-600 rounded-md">
+                              <div className="mr-2 flex items-center justify-center h-6 w-6 bg-[#E3F2FD] text-[#1876D2] rounded-md">
                                 {getIconComponent(module.icon)}
                               </div>
                               <h3 className="font-medium">
@@ -465,7 +465,7 @@ export default function CourseEditor() {
                                           {slide.order}
                                         </span>
                                         <span className="font-medium">{slide.title || "Untitled Slide"}</span>
-                                        <span className="ml-2 px-2 py-0.5 bg-indigo-100 text-indigo-800 rounded-md text-xs font-medium">
+                                        <span className="ml-2 px-2 py-0.5 bg-[#E3F2FD] text-indigo-800 rounded-md text-xs font-medium">
                                           {slide.type}
                                         </span>
                                       </div>
@@ -566,7 +566,7 @@ export default function CourseEditor() {
                             
                             <button
                               onClick={() => addSlide(courseIndex, moduleIndex)}
-                              className="mt-3 flex items-center px-3 py-1.5 text-sm bg-indigo-100 text-indigo-700 rounded-md hover:bg-indigo-200 transition"
+                              className="mt-3 flex items-center px-3 py-1.5 text-sm bg-[#E3F2FD] text-indigo-700 rounded-md hover:bg-indigo-200 transition"
                             >
                               <PlusCircle className="h-4 w-4 mr-1" />
                               Add Slide
@@ -580,7 +580,7 @@ export default function CourseEditor() {
                 
                 <button
                   onClick={() => addModule(courseIndex)}
-                  className="mt-4 flex items-center px-3 py-2 bg-indigo-100 text-indigo-700 rounded-md hover:bg-indigo-200 transition"
+                  className="mt-4 flex items-center px-3 py-2 bg-[#E3F2FD] text-indigo-700 rounded-md hover:bg-indigo-200 transition"
                 >
                   <PlusCircle className="h-5 w-5 mr-2" />
                   Add Module
@@ -595,7 +595,7 @@ export default function CourseEditor() {
             <p className="text-gray-500 mb-4">No course sections added yet.</p>
             <button
               onClick={addCourse}
-              className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition mx-auto"
+              className="flex items-center px-4 py-2 bg-[#1876D2] text-white rounded-md hover:bg-[#1565C0] transition mx-auto"
             >
               <PlusCircle className="h-5 w-5 mr-2" />
               Add Your First Section

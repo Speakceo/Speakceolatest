@@ -224,7 +224,7 @@ export default function CourseRoadmap() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1876D2]"></div>
         <p className="ml-3 text-gray-600">Loading course data...</p>
       </div>
     );
@@ -241,16 +241,16 @@ export default function CourseRoadmap() {
           </div>
           <div className="flex flex-row items-center space-x-4 mt-4 md:mt-0">
             <div className="text-center">
-              <p className="text-3xl font-bold text-indigo-600">{userData.overallProgress}%</p>
+              <p className="text-3xl font-bold text-[#1876D2]">{userData.overallProgress}%</p>
               <p className="text-sm text-gray-500">Progress</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-purple-600">Day {Math.floor(userData.overallProgress * 0.9)}</p>
+              <p className="text-3xl font-bold text-[#1876D2]">Day {Math.floor(userData.overallProgress * 0.9)}</p>
               <p className="text-sm text-gray-500">of 180</p>
             </div>
             <button
               onClick={() => window.location.reload()}
-              className="flex items-center justify-center h-10 w-10 bg-indigo-100 text-indigo-700 rounded-md hover:bg-indigo-200 transition-colors"
+              className="flex items-center justify-center h-10 w-10 bg-[#E3F2FD] text-indigo-700 rounded-md hover:bg-indigo-200 transition-colors"
               title="Refresh course data"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -264,7 +264,7 @@ export default function CourseRoadmap() {
         <div className="bg-gray-100 p-4 rounded-lg mb-6">
           <div className="flex justify-between items-center mb-2">
             <div className="flex items-center">
-              <div className="bg-indigo-600 text-white p-1 rounded-md">
+              <div className="bg-[#1876D2] text-white p-1 rounded-md">
                 <Star className="h-5 w-5" />
               </div>
               <span className="ml-2 font-medium text-gray-800">XP Progress</span>
@@ -286,7 +286,7 @@ export default function CourseRoadmap() {
           </div>
           <div className="h-8 bg-gray-200 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center"
+              className="h-full bg-gradient-to-r from-[#1876D2] to-purple-600 flex items-center"
               style={{ width: `${userData.overallProgress}%` }}
             >
               <span className="mx-auto text-xs font-medium text-white">{getTotalXP()} XP</span>
@@ -440,7 +440,7 @@ export default function CourseRoadmap() {
                                         <Clock className="h-3 w-3 mr-1" />
                                         {module.duration}
                                         {module.slides && (
-                                          <span className="ml-2 text-indigo-600 flex items-center">
+                                          <span className="ml-2 text-[#1876D2] flex items-center">
                                             <FileText className="h-3 w-3 mr-1" />
                                             {module.slides.length} slides
                                           </span>
@@ -495,7 +495,7 @@ export default function CourseRoadmap() {
                 </div>
               </div>
               <button 
-                className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
                 onClick={() => {
                   // Find the module that contains this lesson
                   for (const section of courseData) {
@@ -536,7 +536,7 @@ export default function CourseRoadmap() {
 
         <div className="space-y-6">
           {/* AI Coach */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
             <div className="flex items-center space-x-3 mb-4">
               <div className="h-10 w-10 bg-white/20 rounded-xl flex items-center justify-center">
                 <Sparkles className="h-6 w-6" />
@@ -548,7 +548,7 @@ export default function CourseRoadmap() {
             </p>
             <button 
               onClick={() => setShowAICoach(true)}
-              className="w-full bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-indigo-50 transition-colors"
+              className="w-full bg-white text-[#1876D2] px-4 py-2 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
             >
               Chat with Coach
             </button>

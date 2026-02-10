@@ -44,7 +44,7 @@ class ErrorBoundary extends React.Component<
                 this.setState({ hasError: false, error: null });
                 window.location.reload();
               }}
-              className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+              className="px-4 py-2 bg-[#1876D2] text-white rounded hover:bg-[#1565C0]"
             >
               Reload Dashboard
             </button>
@@ -61,7 +61,7 @@ class ErrorBoundary extends React.Component<
 const LoadingSpinner = ({ message = "Loading dashboard..." }: { message?: string }) => (
   <div className="min-h-screen flex items-center justify-center bg-gray-50">
     <div className="text-center">
-      <Loader2 className="h-8 w-8 animate-spin text-indigo-600 mx-auto mb-4" />
+      <Loader2 className="h-8 w-8 animate-spin text-[#1876D2] mx-auto mb-4" />
       <p className="text-gray-600">{message}</p>
     </div>
   </div>
@@ -152,7 +152,7 @@ export default function DashboardLayout() {
               setError(null);
               window.location.reload();
             }}
-            className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+            className="px-4 py-2 bg-[#1876D2] text-white rounded hover:bg-[#1565C0]"
           >
             Try Again
           </button>

@@ -91,14 +91,14 @@ const Testimonials: React.FC = () => {
         keywords={["success stories", "young entrepreneurs", "student testimonials", "business achievements"]}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Success Stories
             </h1>
-            <p className="text-xl text-indigo-100 mb-12 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
               Meet our young entrepreneurs and discover their inspiring journeys
             </p>
             
@@ -200,15 +200,15 @@ const Testimonials: React.FC = () => {
           </div>
 
           {/* Share Your Story CTA */}
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white text-center">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-8 text-white text-center">
             <Quote className="h-12 w-12 mx-auto mb-6 opacity-75" />
             <h2 className="text-2xl font-bold mb-4">Share Your Success Story</h2>
-            <p className="text-indigo-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               Are you a Young CEO Program graduate with a story to tell? We'd love to feature your entrepreneurial journey!
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+              className="inline-flex items-center bg-white text-[#1876D2] px-6 py-3 rounded-lg font-semibold hover:bg-[#E3F2FD] transition-colors"
             >
               Share Your Story
               <ArrowRight className="h-5 w-5 ml-2" />

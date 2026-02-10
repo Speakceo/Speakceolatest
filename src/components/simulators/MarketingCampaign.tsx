@@ -203,7 +203,7 @@ export default function MarketingCampaign() {
           ) : (
             <button
               onClick={importBrandLogo}
-              className="flex items-center space-x-2 px-4 py-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+              className="flex items-center space-x-2 px-4 py-2 text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg transition-colors"
             >
               <ImageIcon className="h-4 w-4" />
               <span>Import Brand Logo</span>
@@ -219,7 +219,7 @@ export default function MarketingCampaign() {
               type="text"
               value={campaign.name}
               onChange={(e) => setCampaign({ ...campaign, name: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               placeholder="Enter campaign name"
             />
           </div>
@@ -230,7 +230,7 @@ export default function MarketingCampaign() {
             <select
               value={campaign.goal}
               onChange={(e) => setCampaign({ ...campaign, goal: e.target.value as Campaign['goal'] })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
             >
               <option value="awareness">Brand Awareness</option>
               <option value="conversions">Conversions</option>
@@ -255,7 +255,7 @@ export default function MarketingCampaign() {
                 ...campaign,
                 audience: { ...campaign.audience, age: e.target.value }
               })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               placeholder="e.g., 18-35"
             />
           </div>
@@ -270,7 +270,7 @@ export default function MarketingCampaign() {
                 ...campaign,
                 audience: { ...campaign.audience, location: e.target.value }
               })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               placeholder="e.g., Mumbai, Delhi"
             />
           </div>
@@ -283,7 +283,7 @@ export default function MarketingCampaign() {
           <h3 className="text-lg font-semibold text-gray-900">Marketing Channels</h3>
           <button
             onClick={addChannel}
-            className="flex items-center space-x-2 px-4 py-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg transition-colors"
           >
             <PlusCircle className="h-5 w-5" />
             <span>Add Channel</span>
@@ -313,7 +313,7 @@ export default function MarketingCampaign() {
                         )
                       });
                     }}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   >
                     {marketingChannels.map(c => (
                       <option key={c.name} value={c.name}>{c.name}</option>
@@ -335,7 +335,7 @@ export default function MarketingCampaign() {
                           : c
                       )
                     })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                     min={marketingChannels.find(c => c.name === channel.name)?.minBudget}
                     step="1000"
                   />
@@ -364,7 +364,7 @@ export default function MarketingCampaign() {
         <button
           onClick={calculateMetrics}
           disabled={isCalculating || campaign.channels.length === 0}
-          className="flex items-center space-x-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+          className="flex items-center space-x-2 px-6 py-3 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
         >
           {isCalculating ? (
             <>
@@ -401,8 +401,8 @@ export default function MarketingCampaign() {
           <div className="grid grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="p-3 bg-indigo-100 rounded-lg">
-                  <Users className="h-6 w-6 text-indigo-600" />
+                <div className="p-3 bg-[#E3F2FD] rounded-lg">
+                  <Users className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <span className="text-sm font-medium text-gray-500">Total Reach</span>
               </div>
@@ -412,8 +412,8 @@ export default function MarketingCampaign() {
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="p-3 bg-purple-100 rounded-lg">
-                  <Target className="h-6 w-6 text-purple-600" />
+                <div className="p-3 bg-[#E3F2FD] rounded-lg">
+                  <Target className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <span className="text-sm font-medium text-gray-500">Engagement Rate</span>
               </div>
@@ -423,8 +423,8 @@ export default function MarketingCampaign() {
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="p-3 bg-pink-100 rounded-lg">
-                  <Megaphone className="h-6 w-6 text-pink-600" />
+                <div className="p-3 bg-[#E3F2FD] rounded-lg">
+                  <Megaphone className="h-6 w-6 text-[#00B0FF]" />
                 </div>
                 <span className="text-sm font-medium text-gray-500">Conversion Rate</span>
               </div>

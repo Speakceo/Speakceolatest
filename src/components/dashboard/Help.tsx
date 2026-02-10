@@ -110,7 +110,7 @@ export default function Help() {
       icon: Video,
       action: 'Schedule Call',
       available: true,
-      color: 'bg-purple-500'
+      color: 'bg-[#F5F9FC]0'
     },
     {
       title: 'Phone Support',
@@ -146,7 +146,7 @@ export default function Help() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center mb-4">
-          <HelpCircle className="h-8 w-8 text-indigo-600 mr-3" />
+          <HelpCircle className="h-8 w-8 text-[#1876D2] mr-3" />
           <h1 className="text-3xl font-bold text-gray-900">Help & Support</h1>
         </div>
         <p className="text-gray-600">
@@ -163,7 +163,7 @@ export default function Help() {
             placeholder="Search for help..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
           />
         </div>
       </div>
@@ -182,7 +182,7 @@ export default function Help() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`py-2 px-1 border-b-2 font-medium text-sm flex items-center ${
                   activeTab === tab.id
-                    ? 'border-indigo-500 text-indigo-600'
+                    ? 'border-[#1876D2] text-[#1876D2]'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -249,7 +249,7 @@ export default function Help() {
                 <button
                   className={`w-full py-2 px-4 rounded-lg text-sm font-medium transition-colors ${
                     option.available
-                      ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+                      ? 'bg-[#1876D2] text-white hover:bg-[#1565C0]'
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                   disabled={!option.available}
@@ -274,7 +274,7 @@ export default function Help() {
                     type="text"
                     value={contactForm.subject}
                     onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                     placeholder="Brief description of your issue"
                   />
                 </div>
@@ -286,7 +286,7 @@ export default function Help() {
                   <select
                     value={contactForm.priority}
                     onChange={(e) => setContactForm({ ...contactForm, priority: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                   >
                     <option value="low">Low</option>
                     <option value="normal">Normal</option>
@@ -303,14 +303,14 @@ export default function Help() {
                     value={contactForm.message}
                     onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
                     rows={6}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                     placeholder="Please describe your issue in detail..."
                   />
                 </div>
 
                 <button
                   onClick={handleSubmitContact}
-                  className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center"
+                  className="bg-[#1876D2] text-white px-6 py-2 rounded-lg hover:bg-[#1565C0] transition-colors flex items-center"
                 >
                   <Send className="h-4 w-4 mr-2" />
                   Send Message
@@ -352,7 +352,7 @@ export default function Help() {
                     href={link.url}
                     className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                   >
-                    <link.icon className="h-6 w-6 text-indigo-600 mr-3" />
+                    <link.icon className="h-6 w-6 text-[#1876D2] mr-3" />
                     <span className="font-medium text-gray-900">{link.title}</span>
                     <ExternalLink className="h-4 w-4 text-gray-400 ml-auto" />
                   </a>
@@ -367,7 +367,7 @@ export default function Help() {
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Documentation</h2>
               <div className="space-y-4">
                 <div className="flex items-center p-4 border border-gray-200 rounded-lg">
-                  <FileText className="h-6 w-6 text-indigo-600 mr-3" />
+                  <FileText className="h-6 w-6 text-[#1876D2] mr-3" />
                   <div className="flex-1">
                     <h3 className="font-medium text-gray-900">Platform User Guide</h3>
                     <p className="text-gray-600 text-sm">Complete guide to using all platform features</p>
@@ -376,7 +376,7 @@ export default function Help() {
                 </div>
 
                 <div className="flex items-center p-4 border border-gray-200 rounded-lg">
-                  <Video className="h-6 w-6 text-indigo-600 mr-3" />
+                  <Video className="h-6 w-6 text-[#1876D2] mr-3" />
                   <div className="flex-1">
                     <h3 className="font-medium text-gray-900">Video Tutorials</h3>
                     <p className="text-gray-600 text-sm">Step-by-step video guides for common tasks</p>
@@ -385,7 +385,7 @@ export default function Help() {
                 </div>
 
                 <div className="flex items-center p-4 border border-gray-200 rounded-lg">
-                  <Lightbulb className="h-6 w-6 text-indigo-600 mr-3" />
+                  <Lightbulb className="h-6 w-6 text-[#1876D2] mr-3" />
                   <div className="flex-1">
                     <h3 className="font-medium text-gray-900">Tips & Best Practices</h3>
                     <p className="text-gray-600 text-sm">Expert tips to maximize your learning experience</p>

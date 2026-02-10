@@ -61,7 +61,7 @@ export default function Testimonials() {
         <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-pink-500 to-mint-500 mb-6 drop-shadow-lg">Testimonials</h1>
         <div className="bg-white/80 rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+            <h2 className="text-base text-[#1876D2] font-semibold tracking-wide uppercase">
               Testimonials
             </h2>
             <p className="mt-2 text-4xl font-extrabold text-gray-900 sm:text-5xl">
@@ -90,7 +90,7 @@ export default function Testimonials() {
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
                     <div className="flex flex-col">
-                      <p className="text-sm text-indigo-600">{testimonial.role}</p>
+                      <p className="text-sm text-[#1876D2]">{testimonial.role}</p>
                       <p className="text-xs text-gray-500">{testimonial.location}</p>
                     </div>
                   </div>

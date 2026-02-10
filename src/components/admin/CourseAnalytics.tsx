@@ -94,7 +94,7 @@ export default function CourseAnalytics() {
             onClick={() => setTimeRange('week')}
             className={`px-3 py-1 rounded-lg text-sm font-medium ${
               timeRange === 'week'
-                ? 'bg-indigo-100 text-indigo-700'
+                ? 'bg-[#E3F2FD] text-indigo-700'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
@@ -104,7 +104,7 @@ export default function CourseAnalytics() {
             onClick={() => setTimeRange('month')}
             className={`px-3 py-1 rounded-lg text-sm font-medium ${
               timeRange === 'month'
-                ? 'bg-indigo-100 text-indigo-700'
+                ? 'bg-[#E3F2FD] text-indigo-700'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
@@ -114,7 +114,7 @@ export default function CourseAnalytics() {
             onClick={() => setTimeRange('year')}
             className={`px-3 py-1 rounded-lg text-sm font-medium ${
               timeRange === 'year'
-                ? 'bg-indigo-100 text-indigo-700'
+                ? 'bg-[#E3F2FD] text-indigo-700'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
@@ -140,7 +140,7 @@ export default function CourseAnalytics() {
               <div
                 key={course.id}
                 className={`p-4 cursor-pointer hover:bg-gray-50 ${
-                  selectedCourse?.id === course.id ? 'bg-indigo-50' : ''
+                  selectedCourse?.id === course.id ? 'bg-[#E3F2FD]' : ''
                 }`}
                 onClick={() => setSelectedCourse(course)}
               >
@@ -171,8 +171,8 @@ export default function CourseAnalytics() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <div className="bg-white p-4 rounded-lg border">
                   <div className="flex items-center">
-                    <div className="p-2 bg-indigo-100 rounded-lg">
-                      <Users className="h-5 w-5 text-indigo-600" />
+                    <div className="p-2 bg-[#E3F2FD] rounded-lg">
+                      <Users className="h-5 w-5 text-[#1876D2]" />
                     </div>
                     <div className="ml-4">
                       <p className="text-sm text-gray-500">Total Students</p>
@@ -261,7 +261,7 @@ export default function CourseAnalytics() {
                     {selectedCourse.enrollment_trend.map((point, index) => (
                       <div
                         key={index}
-                        className="flex-1 bg-indigo-100 rounded-t"
+                        className="flex-1 bg-[#E3F2FD] rounded-t"
                         style={{
                           height: `${(point.count / Math.max(...selectedCourse.enrollment_trend.map(p => p.count))) * 100}%`
                         }}

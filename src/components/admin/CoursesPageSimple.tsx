@@ -250,7 +250,7 @@ export default function CoursesPageSimple() {
         </div>
         <button
           onClick={() => setShowAddCourseForm(true)}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-indigo-700"
+          className="bg-[#1876D2] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#1565C0]"
         >
           <Plus className="h-5 w-5" />
           Add Course
@@ -268,7 +268,7 @@ export default function CoursesPageSimple() {
                 type="text"
                 value={newCourse.title}
                 onChange={(e) => setNewCourse({ ...newCourse, title: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Enter course title"
               />
             </div>
@@ -277,7 +277,7 @@ export default function CoursesPageSimple() {
               <select
                 value={newCourse.difficulty}
                 onChange={(e) => setNewCourse({ ...newCourse, difficulty: e.target.value as any })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               >
                 <option value="Beginner">Beginner</option>
                 <option value="Intermediate">Intermediate</option>
@@ -291,7 +291,7 @@ export default function CoursesPageSimple() {
               value={newCourse.description}
               onChange={(e) => setNewCourse({ ...newCourse, description: e.target.value })}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               placeholder="Enter course description"
             />
           </div>
@@ -304,7 +304,7 @@ export default function CoursesPageSimple() {
             </button>
             <button
               onClick={handleAddCourse}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+              className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
             >
               Add Course
             </button>
@@ -315,7 +315,7 @@ export default function CoursesPageSimple() {
       {/* Courses Grid */}
       {isLoading ? (
         <div className="text-center py-8">
-          <RefreshCw className="h-8 w-8 animate-spin text-indigo-600 mx-auto mb-4" />
+          <RefreshCw className="h-8 w-8 animate-spin text-[#1876D2] mx-auto mb-4" />
           <p className="text-gray-600">Loading courses...</p>
         </div>
       ) : (
@@ -330,7 +330,7 @@ export default function CoursesPageSimple() {
                 <div className="flex space-x-2 ml-4">
                   <button
                     onClick={() => setSelectedCourse(course)}
-                    className="text-indigo-600 hover:text-indigo-900"
+                    className="text-[#1876D2] hover:text-indigo-900"
                   >
                     <Edit className="h-4 w-4" />
                   </button>
@@ -374,7 +374,7 @@ export default function CoursesPageSimple() {
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
-                    className="bg-indigo-600 h-2 rounded-full"
+                    className="bg-[#1876D2] h-2 rounded-full"
                     style={{ width: `${course.completion_rate}%` }}
                   />
                 </div>
@@ -402,7 +402,7 @@ export default function CoursesPageSimple() {
         </div>
         <button
           onClick={() => setShowAddModuleForm(true)}
-          className="bg-indigo-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-indigo-700"
+          className="bg-[#1876D2] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#1565C0]"
         >
           <Plus className="h-5 w-5" />
           Add Module
@@ -420,7 +420,7 @@ export default function CoursesPageSimple() {
                 type="text"
                 value={newModule.title}
                 onChange={(e) => setNewModule({ ...newModule, title: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                 placeholder="Enter module title"
               />
             </div>
@@ -429,7 +429,7 @@ export default function CoursesPageSimple() {
               <select
                 value={newModule.course_id}
                 onChange={(e) => setNewModule({ ...newModule, course_id: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               >
                 <option value="">Select a course</option>
                 {courses.map(course => (
@@ -444,7 +444,7 @@ export default function CoursesPageSimple() {
               value={newModule.description}
               onChange={(e) => setNewModule({ ...newModule, description: e.target.value })}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               placeholder="Enter module description"
             />
           </div>
@@ -457,7 +457,7 @@ export default function CoursesPageSimple() {
             </button>
             <button
               onClick={handleAddModule}
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+              className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
             >
               Add Module
             </button>
@@ -475,7 +475,7 @@ export default function CoursesPageSimple() {
                 <div className="flex-1">
                   <h3 className="text-lg font-semibold text-gray-900">{module.title}</h3>
                   <p className="text-gray-600 text-sm mt-1">{module.description}</p>
-                  <p className="text-indigo-600 text-sm mt-2">Course: {course?.title || 'Unknown'}</p>
+                  <p className="text-[#1876D2] text-sm mt-2">Course: {course?.title || 'Unknown'}</p>
                 </div>
                 <div className="flex space-x-2">
                   <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(module.status)}`}>
@@ -536,7 +536,7 @@ export default function CoursesPageSimple() {
             onClick={() => setActiveTab('courses')}
             className={`py-2 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'courses'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >
@@ -546,7 +546,7 @@ export default function CoursesPageSimple() {
             onClick={() => setActiveTab('modules')}
             className={`py-2 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'modules'
-                ? 'border-indigo-500 text-indigo-600'
+                ? 'border-[#1876D2] text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             }`}
           >

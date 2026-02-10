@@ -7,14 +7,14 @@ export default function SkillsSection() {
       name: 'AI & Technology',
       description: 'Learn to use AI tools, coding basics, and understand technology trends.',
       icon: BrainCircuit,
-      color: 'bg-purple-600',
+      color: 'bg-[#1876D2]',
       iconColor: 'text-white'
     },
     {
       name: 'Financial Literacy',
       description: 'Master personal finance, business economics, and investment fundamentals.',
       icon: DollarSign,
-      color: 'bg-indigo-600',
+      color: 'bg-[#1876D2]',
       iconColor: 'text-white'
     },
     {
@@ -58,7 +58,7 @@ export default function SkillsSection() {
             <div>
               <a 
                 href="/skills" 
-                className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-semibold rounded-2xl shadow-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-semibold rounded-2xl shadow-lg text-white bg-gradient-to-r from-[#1876D2] to-[#00B0FF] hover:from-indigo-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
                 Explore all skills
               </a>

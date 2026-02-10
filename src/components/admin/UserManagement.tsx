@@ -96,7 +96,7 @@ export default function UserManagement() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="bg-white rounded-2xl shadow-lg p-8">
         <div className="flex items-center gap-3 mb-8">
-          <Users className="h-8 w-8 text-indigo-600" />
+          <Users className="h-8 w-8 text-[#1876D2]" />
           <h1 className="text-3xl font-bold text-gray-900">User Management</h1>
         </div>
 
@@ -116,7 +116,7 @@ export default function UserManagement() {
             </button>
             <button
               onClick={handleSetDemoMode}
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors flex items-center gap-2"
+              className="px-4 py-2 bg-[#1876D2] text-white rounded-lg font-medium hover:bg-purple-700 transition-colors flex items-center gap-2"
             >
               <Star className="h-4 w-4" />
               Set Demo Mode
@@ -127,7 +127,7 @@ export default function UserManagement() {
         {/* Create New User */}
         <div className="mb-8">
           <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <UserPlus className="h-6 w-6 text-indigo-600" />
+            <UserPlus className="h-6 w-6 text-[#1876D2]" />
             Create New User
           </h2>
 
@@ -140,7 +140,7 @@ export default function UserManagement() {
                 type="text"
                 value={newUser.name}
                 onChange={(e) => setNewUser(prev => ({ ...prev, name: e.target.value }))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                 placeholder="Enter student's full name"
               />
             </div>
@@ -153,7 +153,7 @@ export default function UserManagement() {
                 type="email"
                 value={newUser.email}
                 onChange={(e) => setNewUser(prev => ({ ...prev, email: e.target.value }))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
                 placeholder="student@example.com"
               />
             </div>
@@ -167,7 +167,7 @@ export default function UserManagement() {
               <select
                 value={newUser.role}
                 onChange={(e) => setNewUser(prev => ({ ...prev, role: e.target.value as 'student' | 'admin' }))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
               >
                 <option value="student">Student</option>
                 <option value="admin">Admin</option>
@@ -180,7 +180,7 @@ export default function UserManagement() {
                   type="checkbox"
                   checked={newUser.startAsDemo}
                   onChange={(e) => setNewUser(prev => ({ ...prev, startAsDemo: e.target.checked }))}
-                  className="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500"
+                  className="w-5 h-5 text-[#1876D2] rounded focus:ring-[#1876D2]"
                 />
                 <div>
                   <span className="text-sm font-medium text-gray-700">Start with demo progress</span>
@@ -194,7 +194,7 @@ export default function UserManagement() {
             <button
               onClick={handleCreateUser}
               disabled={isCreating || !newUser.name.trim() || !newUser.email.trim()}
-              className="px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+              className="px-6 py-3 bg-[#1876D2] text-white rounded-xl font-medium hover:bg-[#1565C0] disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
             >
               {isCreating ? (
                 <>

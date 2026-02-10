@@ -130,7 +130,7 @@ const SimpleLeadsViewer: React.FC = () => {
           <div className="text-sm text-gray-600">Today</div>
         </div>
         <div className="bg-white p-4 rounded-lg shadow-sm border">
-          <div className="text-2xl font-bold text-purple-600">
+          <div className="text-2xl font-bold text-[#1876D2]">
             {leads.filter(l => l.formData.phone).length}
           </div>
           <div className="text-sm text-gray-600">With Phone</div>
@@ -239,7 +239,7 @@ const SimpleLeadsViewer: React.FC = () => {
                     </span>
                   )}
                   {lead.formData.goals && (
-                    <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded">
+                    <span className="px-2 py-1 bg-[#E3F2FD] text-purple-800 text-xs rounded">
                       Goals: {Array.isArray(lead.formData.goals) ? lead.formData.goals.join(', ') : lead.formData.goals}
                     </span>
                   )}

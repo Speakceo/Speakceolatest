@@ -114,7 +114,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
         <h3 className="text-lg font-semibold text-gray-900">Quiz Questions</h3>
         <button
           onClick={handleAddQuestion}
-          className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 flex items-center"
+          className="px-4 py-2 bg-[#1876D2] text-white rounded-md hover:bg-[#1565C0] flex items-center"
         >
           <Plus className="h-4 w-4 mr-1" />
           Add Question
@@ -126,7 +126,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
           <p className="text-gray-500">No questions added yet</p>
           <button
             onClick={handleAddQuestion}
-            className="mt-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+            className="mt-2 px-4 py-2 bg-[#1876D2] text-white rounded-md hover:bg-[#1565C0]"
           >
             Add Your First Question
           </button>
@@ -138,7 +138,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
             {questions.map((question, index) => (
               <div 
                 key={question.id} 
-                className={`p-4 border rounded-lg ${activeQuestion === question.id ? 'border-indigo-300 bg-indigo-50' : 'border-gray-200 hover:bg-gray-50'}`}
+                className={`p-4 border rounded-lg ${activeQuestion === question.id ? 'border-indigo-300 bg-[#E3F2FD]' : 'border-gray-200 hover:bg-gray-50'}`}
               >
                 <div className="flex justify-between">
                   <div 
@@ -146,7 +146,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
                     onClick={() => setActiveQuestion(activeQuestion === question.id ? null : question.id)}
                   >
                     <div className="flex items-center">
-                      <span className="w-6 h-6 flex items-center justify-center bg-indigo-600 text-white rounded-full text-sm mr-2">
+                      <span className="w-6 h-6 flex items-center justify-center bg-[#1876D2] text-white rounded-full text-sm mr-2">
                         {index + 1}
                       </span>
                       <h4 className="font-medium text-gray-900 truncate">{question.question}</h4>
@@ -177,7 +177,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
                           type="text"
                           value={question.question}
                           onChange={e => handleQuestionChange(question.id, 'question', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2]"
                         />
                       </div>
                       
@@ -189,7 +189,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
                           type="number"
                           value={question.points}
                           onChange={e => handleQuestionChange(question.id, 'points', parseInt(e.target.value) || 0)}
-                          className="w-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          className="w-32 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2]"
                           min="1"
                           max="100"
                         />
@@ -202,7 +202,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
                           </label>
                           <button
                             onClick={() => handleAddOption(question.id)}
-                            className="text-sm text-indigo-600 hover:text-indigo-500 flex items-center"
+                            className="text-sm text-[#1876D2] hover:text-indigo-500 flex items-center"
                           >
                             <Plus className="h-3 w-3 mr-1" />
                             Add Option
@@ -225,7 +225,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
                                 type="text"
                                 value={option.text}
                                 onChange={e => handleOptionChange(question.id, option.id, 'text', e.target.value)}
-                                className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2]"
                                 placeholder="Option text"
                               />
                               <button
@@ -250,7 +250,7 @@ export default function CourseQuizEditor({ questions, onChange }: CourseQuizEdit
                         <textarea
                           value={question.explanation || ''}
                           onChange={e => handleQuestionChange(question.id, 'explanation', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2]"
                           rows={3}
                           placeholder="Explain why the correct answer is right (shown after submission)"
                         />

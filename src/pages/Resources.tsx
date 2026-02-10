@@ -111,14 +111,14 @@ const Resources: React.FC = () => {
         keywords={["business resources", "templates", "guides", "entrepreneurship tools"]}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Free Resources
             </h1>
-            <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
               Download free templates, guides, and tools to help you start and grow your business
             </p>
           </div>
@@ -131,7 +131,7 @@ const Resources: React.FC = () => {
               {categories.map((category) => (
                 <button
                   key={category}
-                  className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-white border border-gray-200 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-100"
+                  className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-white border border-gray-200 text-gray-700 hover:bg-[#E3F2FD] hover:text-[#1876D2] hover:border-indigo-100"
                 >
                   {category}
                 </button>
@@ -148,7 +148,7 @@ const Resources: React.FC = () => {
                 return (
                   <div key={resource.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
                     <div className="flex items-center space-x-3 mb-4">
-                      <div className="bg-indigo-100 text-indigo-600 p-3 rounded-lg">
+                      <div className="bg-[#E3F2FD] text-[#1876D2] p-3 rounded-lg">
                         <Icon className="h-6 w-6" />
                       </div>
                       <div>
@@ -158,12 +158,12 @@ const Resources: React.FC = () => {
                     </div>
                     <p className="text-gray-600 text-sm mb-4">{resource.description}</p>
                     <div className="flex items-center justify-between">
-                      <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
+                      <span className="bg-[#E3F2FD] text-[#1876D2] px-2 py-1 rounded-full text-xs font-medium">
                         {resource.category}
                       </span>
                       <a
                         href={resource.downloadUrl}
-                        className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium text-sm"
+                        className="inline-flex items-center text-[#1876D2] hover:text-[#1876D2] font-medium text-sm"
                       >
                         <Download className="h-4 w-4 mr-2" />
                         Download
@@ -184,7 +184,7 @@ const Resources: React.FC = () => {
                 return (
                   <div key={resource.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
                     <div className="flex items-center space-x-3 mb-4">
-                      <div className="bg-indigo-100 text-indigo-600 p-3 rounded-lg">
+                      <div className="bg-[#E3F2FD] text-[#1876D2] p-3 rounded-lg">
                         <Icon className="h-6 w-6" />
                       </div>
                       <div>
@@ -194,12 +194,12 @@ const Resources: React.FC = () => {
                     </div>
                     <p className="text-gray-600 text-sm mb-4">{resource.description}</p>
                     <div className="flex items-center justify-between">
-                      <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
+                      <span className="bg-[#E3F2FD] text-[#1876D2] px-2 py-1 rounded-full text-xs font-medium">
                         {resource.category}
                       </span>
                       <a
                         href={resource.downloadUrl}
-                        className="inline-flex items-center text-indigo-600 hover:text-indigo-700 font-medium text-sm"
+                        className="inline-flex items-center text-[#1876D2] hover:text-[#1876D2] font-medium text-sm"
                       >
                         <Download className="h-4 w-4 mr-2" />
                         Download
@@ -212,15 +212,15 @@ const Resources: React.FC = () => {
           </div>
 
           {/* Additional Resources Section */}
-          <div className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+          <div className="mt-16 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-8 text-white">
             <h2 className="text-2xl font-bold mb-4 text-center">Need More Resources?</h2>
-            <p className="text-indigo-100 mb-8 text-center max-w-2xl mx-auto">
+            <p className="text-gray-400 mb-8 text-center max-w-2xl mx-auto">
               Check out our premium resources and tools available to enrolled students.
             </p>
             <div className="flex justify-center">
               <a
                 href="/courses"
-                className="inline-flex items-center bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+                className="inline-flex items-center bg-white text-[#1876D2] px-6 py-3 rounded-lg font-semibold hover:bg-[#E3F2FD] transition-colors"
               >
                 <ExternalLink className="h-5 w-5 mr-2" />
                 Explore Premium Resources

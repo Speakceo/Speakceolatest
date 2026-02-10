@@ -39,7 +39,7 @@ const About = () => {
     { label: 'Happy Families', value: '2,500+', icon: Heart, color: 'text-red-500' },
     { label: 'Success Rate', value: '98%', icon: Trophy, color: 'text-yellow-500' },
     { label: 'Countries Reached', value: '35+', icon: Globe2, color: 'text-blue-500' },
-    { label: 'Expert Mentors', value: '50+', icon: Users, color: 'text-purple-500' }
+    { label: 'Expert Mentors', value: '50+', icon: Users, color: 'text-[#1876D2]' }
   ];
 
   const achievements = [
@@ -108,7 +108,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-indigo-50 to-mint-50 pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-white to-[#F5F9FC] pt-16">
       {/* Hero Section - Founder Story */}
       <motion.section 
         className="pt-32 pb-16 px-4 sm:px-6 lg:px-8"
@@ -119,24 +119,24 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-gradient-to-r from-purple-100 to-blue-100 rounded-full px-6 py-2 mb-6">
-                <span className="text-purple-700 font-semibold">The Story Behind Orbit</span>
+              <div className="inline-block bg-gradient-to-r from-[#E3F2FD] to-[#E3F2FD] rounded-full px-6 py-2 mb-6">
+                <span className="text-[#1876D2] font-semibold">The Story Behind Orbit</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 From One Child's Question to 
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
                   A Global Movement
                 </span>
               </h1>
               
               <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mb-8">
-                <Quote className="h-8 w-8 text-purple-500 mb-4" />
+                <Quote className="h-8 w-8 text-[#1876D2] mb-4" />
                 <div className="space-y-4 text-lg text-gray-700">
                   <p className="italic font-medium">
                     Once upon a time, a curious 12-year-old named Aarav had a bold question:
                   </p>
-                  <p className="text-xl font-semibold text-purple-600">
+                  <p className="text-xl font-semibold text-[#1876D2]">
                     "Why don't we learn how to speak like leaders or build real businesses in school?"
                   </p>
                   <p>
@@ -152,11 +152,11 @@ const About = () => {
               </div>
 
               {/* What We Created */}
-              <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-8 border border-purple-100 mb-8">
+              <div className="bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] rounded-2xl p-8 border border-[#1876D2]/10 mb-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">So we created Orbit — a place where:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex items-start space-x-3">
-                    <Mic className="h-6 w-6 text-purple-600 mt-1 flex-shrink-0" />
+                    <Mic className="h-6 w-6 text-[#1876D2] mt-1 flex-shrink-0" />
                     <p className="text-gray-700">Kids practice public speaking through games, stories, and challenges</p>
                   </div>
                   <div className="flex items-start space-x-3">
@@ -180,12 +180,12 @@ const About = () => {
                 <p className="text-gray-700 mb-4">
                   From Delhi to Dubai, from small towns to big cities, our young CEOs are launching bake sales, eco-campaigns, sticker startups, and even podcasts.
                 </p>
-                <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl p-6 text-white">
+                <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white">
                   <h4 className="text-lg font-bold mb-3">Our mission is simple:</h4>
                   <p className="text-lg">
                     <strong>Raise the next generation of speakers, thinkers, and doers — one confident child at a time.</strong>
                   </p>
-                  <p className="mt-4 text-purple-100">
+                  <p className="mt-4 text-white/80">
                     So if your child has a voice, a dream, or just a spark — Orbit is where it begins.
                   </p>
                 </div>
@@ -200,7 +200,7 @@ const About = () => {
               />
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-600">98%</div>
+                  <div className="text-3xl font-bold text-[#1876D2]">98%</div>
                   <div className="text-sm text-gray-600">Parent Satisfaction</div>
                 </div>
               </div>
@@ -247,12 +247,12 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 border border-purple-100"
+                className="bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] rounded-2xl p-6 border border-[#1876D2]/10"
               >
-                <Award className="h-8 w-8 text-purple-600 mb-4" />
+                <Award className="h-8 w-8 text-[#1876D2] mb-4" />
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{achievement.title}</h3>
                 <p className="text-gray-600 mb-3">{achievement.description}</p>
-                <span className="text-sm text-purple-600 font-semibold">{achievement.date}</span>
+                <span className="text-sm text-[#1876D2] font-semibold">{achievement.date}</span>
               </motion.div>
             ))}
           </div>
@@ -292,7 +292,7 @@ const About = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 via-blue-600 to-emerald-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -310,13 +310,13 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <button
                 onClick={() => setShowEnrollment(true)}
-                className="group relative px-10 py-6 bg-white text-purple-600 font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                className="group relative px-10 py-6 bg-white text-[#1876D2] font-bold rounded-2xl text-xl hover:shadow-2xl hover:shadow-white/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center">
                   Start Your Child's Transformation
                   <ArrowRight className="ml-3 h-6 w-6" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/10 to-purple-600/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
             </div>
             

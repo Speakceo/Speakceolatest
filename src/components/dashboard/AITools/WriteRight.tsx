@@ -321,7 +321,7 @@ export default function WriteRight() {
       case 'business':
         return <FileText className="h-5 w-5 text-blue-600" />;
       case 'marketing':
-        return <Megaphone className="h-5 w-5 text-purple-600" />;
+        return <Megaphone className="h-5 w-5 text-[#1876D2]" />;
       case 'communication':
         return <Mail className="h-5 w-5 text-green-600" />;
       case 'creative':
@@ -344,7 +344,7 @@ export default function WriteRight() {
           </button>
           <div>
             <h1 className="text-2xl font-bold text-gray-900 flex items-center">
-              <FileEdit className="h-6 w-6 text-purple-600 mr-2" />
+              <FileEdit className="h-6 w-6 text-[#1876D2] mr-2" />
               WriteRight
             </h1>
             <p className="text-gray-500 mt-1">
@@ -355,23 +355,23 @@ export default function WriteRight() {
         
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="flex items-center space-x-4">
-            <div className="bg-purple-50 rounded-xl p-3 flex items-center">
-              <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center mr-2">
-                <Award className="h-4 w-4 text-purple-600" />
+            <div className="bg-[#F5F9FC] rounded-xl p-3 flex items-center">
+              <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-2">
+                <Award className="h-4 w-4 text-[#1876D2]" />
               </div>
               <div>
-                <p className="text-xs text-purple-600 font-medium">XP Earned</p>
-                <p className="text-sm font-bold text-purple-700">{totalXpEarned} XP</p>
+                <p className="text-xs text-[#1876D2] font-medium">XP Earned</p>
+                <p className="text-sm font-bold text-[#1876D2]">{totalXpEarned} XP</p>
               </div>
             </div>
             
-            <div className="bg-purple-50 rounded-xl p-3 flex items-center">
-              <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center mr-2">
-                <FileText className="h-4 w-4 text-purple-600" />
+            <div className="bg-[#F5F9FC] rounded-xl p-3 flex items-center">
+              <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-2">
+                <FileText className="h-4 w-4 text-[#1876D2]" />
               </div>
               <div>
-                <p className="text-xs text-purple-600 font-medium">Documents</p>
-                <p className="text-sm font-bold text-purple-700">{writingHistory.length}</p>
+                <p className="text-xs text-[#1876D2] font-medium">Documents</p>
+                <p className="text-sm font-bold text-[#1876D2]">{writingHistory.length}</p>
               </div>
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function WriteRight() {
           <div className="flex space-x-3">
             <button
               onClick={() => setShowTemplates(true)}
-              className="px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:opacity-90 transition-colors"
+              className="px-4 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 transition-colors"
             >
               Writing Templates
             </button>
@@ -427,7 +427,7 @@ export default function WriteRight() {
             
             {selectedTemplate ? (
               <div className="mb-6">
-                <div className="bg-purple-50 rounded-xl p-4 mb-4">
+                <div className="bg-[#F5F9FC] rounded-xl p-4 mb-4">
                   <div className="flex items-start">
                     {getCategoryIcon(selectedTemplate.category)}
                     <div className="ml-3">
@@ -498,7 +498,7 @@ export default function WriteRight() {
                   <button
                     onClick={handleImproveContent}
                     disabled={isImproving}
-                    className="flex items-center justify-center space-x-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors disabled:opacity-50"
+                    className="flex items-center justify-center space-x-2 px-4 py-2 bg-[#E3F2FD] text-[#1876D2] rounded-lg hover:bg-purple-200 transition-colors disabled:opacity-50"
                   >
                     {isImproving ? (
                       <>
@@ -517,7 +517,7 @@ export default function WriteRight() {
                 <button
                   onClick={handleGenerateContent}
                   disabled={isGenerating || (selectedTemplate ? Object.values(placeholderValues).some(v => !v) : !content.trim())}
-                  className="flex items-center justify-center space-x-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:opacity-90 disabled:opacity-50 transition-colors"
+                  className="flex items-center justify-center space-x-2 px-6 py-2 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 disabled:opacity-50 transition-colors"
                 >
                   {isGenerating ? (
                     <>
@@ -568,7 +568,7 @@ export default function WriteRight() {
                 </div>
               </div>
               
-              <div className="bg-purple-50 rounded-xl p-6 mb-6">
+              <div className="bg-[#F5F9FC] rounded-xl p-6 mb-6">
                 <div className="prose max-w-none text-gray-700">
                   {generatedContent.split('\n').map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>
@@ -578,7 +578,7 @@ export default function WriteRight() {
               
               {/* XP Earned */}
               {xpEarned > 0 && (
-                <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-4 text-white">
+                <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-4 text-white">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
                       <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
@@ -592,7 +592,7 @@ export default function WriteRight() {
                     
                     <button
                       onClick={resetEditor}
-                      className="px-4 py-2 bg-white text-purple-600 rounded-lg font-medium hover:bg-purple-50 transition-colors"
+                      className="px-4 py-2 bg-white text-[#1876D2] rounded-lg font-medium hover:bg-[#F5F9FC] transition-colors"
                     >
                       New Document
                     </button>
@@ -610,8 +610,8 @@ export default function WriteRight() {
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Writing Tips</h2>
             <div className="space-y-4">
               <div className="flex items-start">
-                <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center mr-3 flex-shrink-0">
-                  <span className="text-purple-600 font-bold">1</span>
+                <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3 flex-shrink-0">
+                  <span className="text-[#1876D2] font-bold">1</span>
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Know your audience</h3>
@@ -620,8 +620,8 @@ export default function WriteRight() {
               </div>
               
               <div className="flex items-start">
-                <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center mr-3 flex-shrink-0">
-                  <span className="text-purple-600 font-bold">2</span>
+                <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3 flex-shrink-0">
+                  <span className="text-[#1876D2] font-bold">2</span>
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Start with structure</h3>
@@ -630,8 +630,8 @@ export default function WriteRight() {
               </div>
               
               <div className="flex items-start">
-                <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center mr-3 flex-shrink-0">
-                  <span className="text-purple-600 font-bold">3</span>
+                <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3 flex-shrink-0">
+                  <span className="text-[#1876D2] font-bold">3</span>
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Be clear and concise</h3>
@@ -640,8 +640,8 @@ export default function WriteRight() {
               </div>
               
               <div className="flex items-start">
-                <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center mr-3 flex-shrink-0">
-                  <span className="text-purple-600 font-bold">4</span>
+                <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3 flex-shrink-0">
+                  <span className="text-[#1876D2] font-bold">4</span>
                 </div>
                 <div>
                   <h3 className="font-medium text-gray-900">Edit and revise</h3>
@@ -663,7 +663,7 @@ export default function WriteRight() {
                       <span className="text-xs text-gray-500">
                         {new Date(doc.date).toLocaleDateString()}
                       </span>
-                      <span className="text-xs font-medium text-purple-600 flex items-center">
+                      <span className="text-xs font-medium text-[#1876D2] flex items-center">
                         <Zap className="h-3 w-3 mr-1" />
                         {doc.xpEarned} XP
                       </span>
@@ -674,7 +674,7 @@ export default function WriteRight() {
                 {writingHistory.length > 3 && (
                   <button
                     onClick={() => setShowHistory(true)}
-                    className="w-full text-center text-sm text-purple-600 hover:text-purple-700 font-medium"
+                    className="w-full text-center text-sm text-[#1876D2] hover:text-[#1876D2] font-medium"
                   >
                     View All History
                   </button>
@@ -688,7 +688,7 @@ export default function WriteRight() {
           </div>
           
           {/* Writing Prompts */}
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
+          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
             <h2 className="text-lg font-semibold mb-4">Writing Prompts</h2>
             <div className="space-y-3">
               <div className="bg-white/10 rounded-xl p-3 cursor-pointer hover:bg-white/20 transition-colors">
@@ -729,7 +729,7 @@ export default function WriteRight() {
                 {templates.map((template) => (
                   <div
                     key={template.id}
-                    className="bg-white rounded-xl p-4 border border-gray-200 hover:border-purple-300 hover:bg-purple-50 transition-colors cursor-pointer"
+                    className="bg-white rounded-xl p-4 border border-gray-200 hover:border-purple-300 hover:bg-[#F5F9FC] transition-colors cursor-pointer"
                     onClick={() => handleTemplateSelect(template)}
                   >
                     <div className="flex items-center justify-between mb-2">
@@ -737,7 +737,7 @@ export default function WriteRight() {
                         {getCategoryIcon(template.category)}
                         <h3 className="font-medium text-gray-900 ml-2">{template.title}</h3>
                       </div>
-                      <span className="text-xs font-medium text-purple-600 flex items-center">
+                      <span className="text-xs font-medium text-[#1876D2] flex items-center">
                         <Zap className="h-3 w-3 mr-1" />
                         {template.xpReward} XP
                       </span>
@@ -792,7 +792,7 @@ export default function WriteRight() {
                           <span className="capitalize">{doc.template.replace('-', ' ')}</span>
                         </div>
                         <div className="flex items-center space-x-3">
-                          <span className="text-xs font-medium text-purple-600 flex items-center">
+                          <span className="text-xs font-medium text-[#1876D2] flex items-center">
                             <Zap className="h-3 w-3 mr-1" />
                             {doc.xpEarned} XP
                           </span>

@@ -365,7 +365,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="studentName"
                   value={formData.studentName}
                   onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
-                  className={`w-full px-4 py-2 border ${errors.studentName ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                  className={`w-full px-4 py-2 border ${errors.studentName ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                   placeholder="Enter child's name"
                 />
                 {errors.studentName && <p className="mt-1 text-sm text-red-600">{errors.studentName}</p>}
@@ -381,7 +381,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                     id="age"
                     value={formData.age}
                     onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                    className={`w-full px-4 py-2 border ${errors.age ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                    className={`w-full px-4 py-2 border ${errors.age ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                     placeholder="Enter age"
                   />
                   {errors.age && <p className="mt-1 text-sm text-red-600">{errors.age}</p>}
@@ -396,7 +396,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                     id="grade"
                     value={formData.grade}
                     onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
-                    className={`w-full px-4 py-2 border ${errors.grade ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                    className={`w-full px-4 py-2 border ${errors.grade ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                     placeholder="Enter grade/class"
                   />
                   {errors.grade && <p className="mt-1 text-sm text-red-600">{errors.grade}</p>}
@@ -412,7 +412,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="parentEmail"
                   value={formData.parentEmail}
                   onChange={(e) => setFormData({ ...formData, parentEmail: e.target.value })}
-                  className={`w-full px-4 py-2 border ${errors.parentEmail ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                  className={`w-full px-4 py-2 border ${errors.parentEmail ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                   placeholder="Enter parent's email"
                 />
                 {errors.parentEmail && <p className="mt-1 text-sm text-red-600">{errors.parentEmail}</p>}
@@ -427,7 +427,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="parentPhone"
                   value={formData.parentPhone}
                   onChange={(e) => setFormData({ ...formData, parentPhone: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   placeholder="Enter parent's phone"
                 />
               </div>
@@ -452,19 +452,19 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   onClick={() => handleInterestToggle(interest.id)}
                   className={`flex items-center p-4 rounded-xl border transition-all ${
                     formData.interests.includes(interest.id)
-                      ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
+                      ? 'border-[#1876D2] bg-[#E3F2FD]'
+                      : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                   }`}
                 >
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
-                    <interest.icon className="h-5 w-5 text-indigo-600" />
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-4">
+                    <interest.icon className="h-5 w-5 text-[#1876D2]" />
                   </div>
                   <div className="flex-1">
                     <p className="font-medium text-gray-900">{interest.label}</p>
                   </div>
                   <div className="flex-shrink-0 h-5 w-5 rounded-full border border-gray-300 flex items-center justify-center">
                     {formData.interests.includes(interest.id) && (
-                      <div className="h-3 w-3 rounded-full bg-indigo-600"></div>
+                      <div className="h-3 w-3 rounded-full bg-[#1876D2]"></div>
                     )}
                   </div>
                 </button>
@@ -500,7 +500,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       </label>
                       <p className="text-xs text-gray-500">{skill.description}</p>
                     </div>
-                    <span className="text-sm font-medium text-indigo-600">
+                    <span className="text-sm font-medium text-[#1876D2]">
                       {formData[skill.id as keyof typeof formData] as number}/5
                     </span>
                   </div>
@@ -542,7 +542,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="futureAspiration"
                   value={formData.futureAspiration}
                   onChange={(e) => setFormData({ ...formData, futureAspiration: e.target.value })}
-                  className={`w-full px-4 py-2 border ${errors.futureAspiration ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                  className={`w-full px-4 py-2 border ${errors.futureAspiration ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                   placeholder="Astronaut, Doctor, Business Owner, etc."
                 />
                 {errors.futureAspiration && <p className="mt-1 text-sm text-red-600">{errors.futureAspiration}</p>}
@@ -564,8 +564,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, workEnvironment: option.id as any })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.workEnvironment === option.id
-                          ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option.label}
@@ -590,8 +590,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, workStyle: option.id as any })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.workStyle === option.id
-                          ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option.label}
@@ -616,8 +616,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, problemApproach: option.id as any })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.problemApproach === option.id
-                          ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option.label}
@@ -654,8 +654,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, learningStyle: option.id })}
                       className={`p-4 rounded-xl border text-left transition-all ${
                         formData.learningStyle === option.id
-                          ? 'border-indigo-500 bg-indigo-50'
-                          : 'border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD]'
+                          : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       <p className="font-medium text-gray-900">{option.label}</p>
@@ -675,7 +675,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="favoriteSubject"
                   value={formData.favoriteSubject}
                   onChange={(e) => setFormData({ ...formData, favoriteSubject: e.target.value })}
-                  className={`w-full px-4 py-2 border ${errors.favoriteSubject ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                  className={`w-full px-4 py-2 border ${errors.favoriteSubject ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                   placeholder="Math, Science, Art, etc."
                 />
                 {errors.favoriteSubject && <p className="mt-1 text-sm text-red-600">{errors.favoriteSubject}</p>}
@@ -690,7 +690,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="challengingSubject"
                   value={formData.challengingSubject}
                   onChange={(e) => setFormData({ ...formData, challengingSubject: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   placeholder="Math, Science, Art, etc."
                 />
               </div>
@@ -722,8 +722,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, hasSoldCreated: option.id })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.hasSoldCreated === option.id
-                          ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option.label}
@@ -747,8 +747,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, excitedForCompany: option.id })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.excitedForCompany === option.id
-                          ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option.label}
@@ -765,7 +765,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="invention"
                   value={formData.invention}
                   onChange={(e) => setFormData({ ...formData, invention: e.target.value })}
-                  className={`w-full px-4 py-2 border ${errors.invention ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                  className={`w-full px-4 py-2 border ${errors.invention ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                   rows={3}
                   placeholder="Describe their invention idea..."
                 />
@@ -792,7 +792,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="friendsDescription"
                   value={formData.friendsDescription}
                   onChange={(e) => setFormData({ ...formData, friendsDescription: e.target.value })}
-                  className={`w-full px-4 py-2 border ${errors.friendsDescription ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                  className={`w-full px-4 py-2 border ${errors.friendsDescription ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                   rows={3}
                   placeholder="Funny, kind, creative, etc."
                 />
@@ -815,8 +815,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, riskTaking: option.id })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.riskTaking === option.id
-                          ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option.label}
@@ -842,8 +842,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       onClick={() => setFormData({ ...formData, problemSolvingApproach: option.id })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.problemSolvingApproach === option.id
-                          ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option.label}
@@ -865,7 +865,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
             </p>
             
             <div className="space-y-6">
-              <div className="bg-indigo-50 rounded-xl p-6">
+              <div className="bg-[#E3F2FD] rounded-xl p-6">
                 <p className="font-medium text-gray-900 mb-3">
                   1. What number comes next in this pattern? 2, 5, 11, 23, ?
                 </p>
@@ -880,8 +880,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       })}
                       className={`p-3 rounded-xl border text-center transition-all ${
                         formData.iqQuestions.patternRecognition === option
-                          ? 'border-indigo-500 bg-indigo-100 text-indigo-700'
-                          : 'border-gray-200 bg-white text-gray-700 hover:border-indigo-200 hover:bg-indigo-50'
+                          ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                          : 'border-gray-200 bg-white text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                       }`}
                     >
                       {option}
@@ -890,7 +890,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                 </div>
               </div>
               
-              <div className="bg-purple-50 rounded-xl p-6">
+              <div className="bg-[#F5F9FC] rounded-xl p-6">
                 <p className="font-medium text-gray-900 mb-3">
                   2. All cats have tails. Fluffy is a cat. What can we say about Fluffy?
                 </p>
@@ -910,8 +910,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                       })}
                       className={`w-full p-3 rounded-xl border text-left transition-all ${
                         formData.iqQuestions.logicalReasoning === option
-                          ? 'border-purple-500 bg-purple-100 text-purple-700'
-                          : 'border-gray-200 bg-white text-gray-700 hover:border-purple-200 hover:bg-purple-50'
+                          ? 'border-purple-500 bg-[#E3F2FD] text-[#1876D2]'
+                          : 'border-gray-200 bg-white text-gray-700 hover:border-purple-200 hover:bg-[#F5F9FC]'
                       }`}
                     >
                       {option}
@@ -997,8 +997,8 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   onClick={() => handleCareerToggle(career.id)}
                   className={`flex items-center p-4 rounded-xl border transition-all duration-300 ${
                     formData.careerMatches.includes(career.id)
-                      ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
+                      ? 'border-[#1876D2] bg-[#E3F2FD]'
+                      : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                   }`}
                 >
                   <div className="flex-1">
@@ -1007,7 +1007,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   </div>
                   <div className="flex-shrink-0 h-5 w-5 rounded-full border border-gray-300 flex items-center justify-center">
                     {formData.careerMatches.includes(career.id) && (
-                      <div className="h-3 w-3 rounded-full bg-indigo-600"></div>
+                      <div className="h-3 w-3 rounded-full bg-[#1876D2]"></div>
                     )}
                   </div>
                 </button>
@@ -1033,7 +1033,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="morningExcitement"
                   value={formData.morningExcitement}
                   onChange={(e) => setFormData({ ...formData, morningExcitement: e.target.value })}
-                  className={`w-full px-4 py-2 border ${errors.morningExcitement ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                  className={`w-full px-4 py-2 border ${errors.morningExcitement ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]`}
                   rows={3}
                   placeholder="What motivates them?"
                 />
@@ -1048,7 +1048,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="adultUnderstanding"
                   value={formData.adultUnderstanding}
                   onChange={(e) => setFormData({ ...formData, adultUnderstanding: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   rows={3}
                   placeholder="Any insights that might help us understand them better..."
                 />
@@ -1062,7 +1062,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                   id="additionalInfo"
                   value={formData.additionalInfo}
                   onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                   rows={3}
                   placeholder="Any additional information..."
                 />
@@ -1106,7 +1106,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <div
-                    className="bg-gradient-to-r from-indigo-500 to-purple-600 h-2 rounded-full transition-all duration-300"
+                    className="bg-gradient-to-r from-[#1876D2] to-purple-600 h-2 rounded-full transition-all duration-300"
                     style={{ width: `${(step / totalSteps) * 100}%` }}
                   />
                 </div>
@@ -1126,7 +1126,7 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
                 type="button"
                 onClick={handleNext}
                 disabled={isSubmitting}
-                className={`w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-base font-medium text-white hover:from-indigo-700 hover:to-purple-700 sm:ml-3 sm:w-auto sm:text-sm ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                className={`w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-base font-medium text-white hover:from-indigo-700 hover:to-purple-700 sm:ml-3 sm:w-auto sm:text-sm ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
               >
                 {isSubmitting ? (
                   <>

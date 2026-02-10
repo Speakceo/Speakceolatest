@@ -104,7 +104,7 @@ const LeadsManager: React.FC = () => {
     switch (status) {
       case 'new': return <AlertCircle className="h-4 w-4 text-blue-500" />;
       case 'contacted': return <MessageSquare className="h-4 w-4 text-yellow-500" />;
-      case 'qualified': return <UserCheck className="h-4 w-4 text-purple-500" />;
+      case 'qualified': return <UserCheck className="h-4 w-4 text-[#1876D2]" />;
       case 'converted': return <CheckCircle className="h-4 w-4 text-green-500" />;
       case 'lost': return <XCircle className="h-4 w-4 text-red-500" />;
       default: return <Clock className="h-4 w-4 text-gray-500" />;
@@ -200,7 +200,7 @@ const LeadsManager: React.FC = () => {
             
             <div className="bg-white rounded-lg shadow-sm p-6">
               <div className="flex items-center">
-                <Award className="h-8 w-8 text-purple-500" />
+                <Award className="h-8 w-8 text-[#1876D2]" />
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">High Priority</p>
                   <p className="text-2xl font-bold text-gray-900">{analytics.byPriority.high}</p>

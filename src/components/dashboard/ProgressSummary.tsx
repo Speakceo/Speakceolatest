@@ -14,11 +14,11 @@ const ProgressSummary = ({ variant = 'card', showNextLesson = true }: ProgressSu
         <div className="text-sm font-medium text-gray-600">Progress:</div>
         <div className="relative w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
           <div 
-            className="absolute h-full bg-indigo-600 left-0 top-0"
+            className="absolute h-full bg-[#1876D2] left-0 top-0"
             style={{ width: '60%' }}
           ></div>
         </div>
-        <div className="text-sm font-medium text-indigo-600">60%</div>
+        <div className="text-sm font-medium text-[#1876D2]">60%</div>
       </div>
     );
   }
@@ -28,9 +28,9 @@ const ProgressSummary = ({ variant = 'card', showNextLesson = true }: ProgressSu
       <h2 className="text-lg font-semibold text-gray-900 mb-4">Your Progress</h2>
       
       <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="bg-indigo-50 rounded-lg p-4">
+        <div className="bg-[#E3F2FD] rounded-lg p-4">
           <div className="flex items-center mb-2">
-            <BookOpen className="h-5 w-5 text-indigo-600 mr-2" />
+            <BookOpen className="h-5 w-5 text-[#1876D2] mr-2" />
             <span className="text-sm font-medium text-indigo-900">Lessons Completed</span>
           </div>
           <p className="text-xl font-bold text-indigo-700">12/20</p>
@@ -48,11 +48,11 @@ const ProgressSummary = ({ variant = 'card', showNextLesson = true }: ProgressSu
       <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm font-medium text-gray-700">Overall Completion</span>
-          <span className="text-sm font-medium text-indigo-600">60%</span>
+          <span className="text-sm font-medium text-[#1876D2]">60%</span>
         </div>
         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-indigo-600"
+            className="h-full bg-[#1876D2]"
             style={{ width: '60%' }}
           ></div>
         </div>

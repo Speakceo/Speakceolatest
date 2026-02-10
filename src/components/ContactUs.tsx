@@ -113,8 +113,8 @@ export default function ContactUs() {
                   }}
                   className={`flex items-center p-4 rounded-xl border transition-all duration-300 ${
                     formData.userType === type.id
-                      ? 'border-indigo-500 bg-indigo-50'
-                      : 'border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
+                      ? 'border-[#1876D2] bg-[#E3F2FD]'
+                      : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                   } animate-wiggle`}
                   style={{animationDelay: `${parseInt(type.id, 36) % 5 * 0.1}s`}}
                 >
@@ -143,7 +143,7 @@ export default function ContactUs() {
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-[#1876D2] focus:ring-[#1876D2]"
                 />
               </div>
               <div>
@@ -155,7 +155,7 @@ export default function ContactUs() {
                   id="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-[#1876D2] focus:ring-[#1876D2]"
                 />
               </div>
               <div>
@@ -167,7 +167,7 @@ export default function ContactUs() {
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                  className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-[#1876D2] focus:ring-[#1876D2]"
                 />
               </div>
             </div>
@@ -189,13 +189,13 @@ export default function ContactUs() {
                     }}
                     className={`flex items-center p-4 rounded-xl border transition-all duration-300 ${
                       formData.contactMethod === method
-                        ? 'border-indigo-500 bg-indigo-50'
-                        : 'border-gray-200 hover:border-indigo-200 hover:bg-indigo-50'
+                        ? 'border-[#1876D2] bg-[#E3F2FD]'
+                        : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                     } animate-wiggle`}
                     style={{animationDelay: `${method === 'email' ? 0 : method === 'phone' ? 0.1 : 0.2}s`}}
                   >
                     <div className="flex items-center space-x-3">
-                      {method === 'email' && <Mail className="h-6 w-6 text-indigo-600" />}
+                      {method === 'email' && <Mail className="h-6 w-6 text-[#1876D2]" />}
                       {method === 'phone' && <Phone className="h-6 w-6 text-green-600" />}
                       {method === 'whatsapp' && <MessageSquare className="h-6 w-6 text-blue-600" />}
                       <span className="font-medium text-gray-900 capitalize">{method}</span>
@@ -217,8 +217,8 @@ export default function ContactUs() {
                         onClick={() => setFormData({ ...formData, preferredTime: slot })}
                         className={`p-3 text-sm rounded-lg border transition-all duration-300 ${
                           formData.preferredTime === slot
-                            ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
-                            : 'border-gray-200 text-gray-600 hover:border-indigo-200 hover:bg-indigo-50'
+                            ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
+                            : 'border-gray-200 text-gray-600 hover:border-indigo-200 hover:bg-[#E3F2FD]'
                         }`}
                       >
                         {slot}
@@ -244,7 +244,7 @@ export default function ContactUs() {
                 rows={4}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                className="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-[#1876D2] focus:ring-[#1876D2]"
                 placeholder="Tell us how we can help..."
               />
             </div>
@@ -256,7 +256,7 @@ export default function ContactUs() {
                 {commonQueries.map((query, index) => (
                   <div
                     key={index}
-                    className="p-4 rounded-xl bg-gray-50 hover:bg-indigo-50 transition-colors cursor-pointer animate-wiggle"
+                    className="p-4 rounded-xl bg-gray-50 hover:bg-[#E3F2FD] transition-colors cursor-pointer animate-wiggle"
                     style={{animationDelay: `${index * 0.1}s`}}
                     onClick={() => setFormData({ ...formData, message: query.question })}
                   >
@@ -288,7 +288,7 @@ export default function ContactUs() {
                       handleSubmit();
                     }
                   }}
-                  className="flex flex-col items-center justify-center p-6 rounded-xl border border-gray-200 hover:border-indigo-200 hover:bg-indigo-50 transition-all duration-300 animate-wiggle"
+                  className="flex flex-col items-center justify-center p-6 rounded-xl border border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD] transition-all duration-300 animate-wiggle"
                   style={{animationDelay: `${option.emoji.charCodeAt(0) % 5 * 0.1}s`}}
                 >
                   <span className="text-4xl mb-2">{option.emoji}</span>
@@ -318,7 +318,7 @@ export default function ContactUs() {
                 {/* Progress Bar */}
                 <div className="absolute top-0 left-0 right-0 h-2 rounded-t-3xl overflow-hidden">
                   <div
-                    className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 transition-all duration-500"
+                    className="h-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] transition-all duration-500"
                     style={{ width: getProgressWidth() }}
                   />
                 </div>
@@ -379,8 +379,8 @@ export default function ContactUs() {
                   <h2 className="text-2xl font-bold text-slate-900 mb-6 kid-font">Get in Touch</h2>
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-purple-100 flex items-center justify-center">
-                        <Mail className="h-6 w-6 text-purple-600" />
+                      <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-[#E3F2FD] flex items-center justify-center">
+                        <Mail className="h-6 w-6 text-[#1876D2]" />
                       </div>
                       <div>
                         <p className="text-sm font-medium text-gray-500">Email Us</p>
@@ -389,8 +389,8 @@ export default function ContactUs() {
                     </div>
 
                     <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-indigo-100 flex items-center justify-center">
-                        <MessageSquare className="h-6 w-6 text-indigo-600" />
+                      <div className="flex-shrink-0 h-12 w-12 rounded-xl bg-[#E3F2FD] flex items-center justify-center">
+                        <MessageSquare className="h-6 w-6 text-[#1876D2]" />
                       </div>
                       <div>
                         <p className="text-sm font-medium text-gray-500">Contact Form</p>
@@ -402,12 +402,12 @@ export default function ContactUs() {
 
 
                 {/* FAQ Section */}
-                <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-8 text-white animate-wiggle" style={{animationDelay: "0.4s"}}>
+                <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-3xl p-8 text-white animate-wiggle" style={{animationDelay: "0.4s"}}>
                   <div className="flex items-center justify-between mb-6">
                     <h2 className="text-2xl font-bold kid-font">Frequently Asked Questions</h2>
                     <button
                       onClick={() => setShowFaq(!showFaq)}
-                      className="px-4 py-2 bg-white text-indigo-600 rounded-lg hover:bg-indigo-50 transition-colors"
+                      className="px-4 py-2 bg-white text-[#1876D2] rounded-lg hover:bg-[#E3F2FD] transition-colors"
                     >
                       View All
                     </button>

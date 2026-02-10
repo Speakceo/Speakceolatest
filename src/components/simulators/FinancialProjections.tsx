@@ -33,7 +33,7 @@ function FinancialItemForm({ item, onChange, onDelete, categories }: FinancialIt
             type="text"
             value={item.name}
             onChange={(e) => onChange({ ...item, name: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
             placeholder="Enter name"
           />
         </div>
@@ -44,7 +44,7 @@ function FinancialItemForm({ item, onChange, onDelete, categories }: FinancialIt
             type="number"
             value={item.amount}
             onChange={(e) => onChange({ ...item, amount: Number(e.target.value) })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
             placeholder="0.00"
             min="0"
             step="0.01"
@@ -56,7 +56,7 @@ function FinancialItemForm({ item, onChange, onDelete, categories }: FinancialIt
           <select
             value={item.frequency}
             onChange={(e) => onChange({ ...item, frequency: e.target.value as any })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
           >
             <option value="one-time">One-time</option>
             <option value="monthly">Monthly</option>
@@ -70,7 +70,7 @@ function FinancialItemForm({ item, onChange, onDelete, categories }: FinancialIt
           <select
             value={item.category}
             onChange={(e) => onChange({ ...item, category: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
           >
             {categories.map((category) => (
               <option key={category} value={category}>{category}</option>
@@ -239,7 +239,7 @@ export default function FinancialProjections() {
           <h3 className="text-lg font-semibold text-gray-900">Revenue Streams</h3>
           <button
             onClick={addRevenue}
-            className="flex items-center space-x-2 px-4 py-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg transition-colors"
           >
             <PlusCircle className="h-5 w-5" />
             <span>Add Revenue</span>
@@ -277,7 +277,7 @@ export default function FinancialProjections() {
           <h3 className="text-lg font-semibold text-gray-900">Expenses</h3>
           <button
             onClick={addExpense}
-            className="flex items-center space-x-2 px-4 py-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg transition-colors"
           >
             <PlusCircle className="h-5 w-5" />
             <span>Add Expense</span>
@@ -314,7 +314,7 @@ export default function FinancialProjections() {
         <button
           onClick={calculateProjections}
           disabled={isCalculating}
-          className="flex items-center space-x-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+          className="flex items-center space-x-2 px-6 py-3 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
         >
           {isCalculating ? (
             <>
@@ -347,8 +347,8 @@ export default function FinancialProjections() {
           <div className="grid grid-cols-4 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="p-3 bg-indigo-100 rounded-lg">
-                  <TrendingUp className="h-6 w-6 text-indigo-600" />
+                <div className="p-3 bg-[#E3F2FD] rounded-lg">
+                  <TrendingUp className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <span className="text-sm font-medium text-gray-500">Revenue Growth</span>
               </div>
@@ -380,8 +380,8 @@ export default function FinancialProjections() {
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <div className="flex items-center justify-between">
-                <div className="p-3 bg-purple-100 rounded-lg">
-                  <RefreshCw className="h-6 w-6 text-purple-600" />
+                <div className="p-3 bg-[#E3F2FD] rounded-lg">
+                  <RefreshCw className="h-6 w-6 text-[#1876D2]" />
                 </div>
                 <span className="text-sm font-medium text-gray-500">Cash Flow</span>
               </div>

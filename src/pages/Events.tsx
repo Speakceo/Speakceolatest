@@ -88,14 +88,14 @@ const Events: React.FC = () => {
         keywords={["entrepreneurship events", "business workshops", "startup competitions", "networking events"]}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Upcoming Events
             </h1>
-            <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
               Join our events and connect with other young entrepreneurs
             </p>
           </div>
@@ -113,7 +113,7 @@ const Events: React.FC = () => {
                 {categories.map((category) => (
                   <button
                     key={category}
-                    className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-white border border-gray-200 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-100"
+                    className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-white border border-gray-200 text-gray-700 hover:bg-[#E3F2FD] hover:text-[#1876D2] hover:border-[#1876D2]/20"
                   >
                     {category}
                   </button>
@@ -135,7 +135,7 @@ const Events: React.FC = () => {
                 </div>
                 <div className="p-8">
                   <div className="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-[#E3F2FD] text-[#1876D2] px-2 py-1 rounded-full text-xs font-medium">
                       {events[0].type}
                     </span>
                     <span>•</span>
@@ -170,7 +170,7 @@ const Events: React.FC = () => {
                       {events[0].spotsLeft} spots remaining
                     </div>
                   </div>
-                  <button className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-indigo-700 transition-colors">
+                  <button className="w-full bg-[#1876D2] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#1565C0] transition-colors">
                     Register Now {events[0].price === "Free" ? "(Free)" : `($${events[0].price})`}
                   </button>
                 </div>
@@ -189,14 +189,14 @@ const Events: React.FC = () => {
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-white/90 backdrop-blur-sm text-indigo-600 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-white/90 backdrop-blur-sm text-[#1876D2] px-3 py-1 rounded-full text-sm font-medium">
                       {event.price === "Free" ? "Free" : `$${event.price}`}
                     </span>
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center space-x-2 text-sm text-gray-500 mb-3">
-                    <span className="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-[#E3F2FD] text-[#1876D2] px-2 py-1 rounded-full text-xs font-medium">
                       {event.type}
                     </span>
                     <span>•</span>
@@ -231,7 +231,7 @@ const Events: React.FC = () => {
                       <p className="text-sm text-gray-600">{event.speaker.role}, {event.speaker.company}</p>
                     </div>
                   )}
-                  <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-indigo-700 transition-colors">
+                  <button className="w-full bg-[#1876D2] text-white py-2 px-4 rounded-lg font-medium hover:bg-[#1565C0] transition-colors">
                     Register Now
                   </button>
                 </div>
@@ -240,15 +240,15 @@ const Events: React.FC = () => {
           </div>
 
           {/* Host Event CTA */}
-          <div className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 text-white">
+          <div className="mt-16 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-8 text-white">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold mb-4">Want to Host an Event?</h2>
-              <p className="text-indigo-100 mb-8">
+              <p className="text-gray-400 mb-8">
                 Are you an expert who'd like to share knowledge with young entrepreneurs? We'd love to hear from you!
               </p>
               <a
                 href="/contact"
-                className="inline-flex items-center bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition-colors"
+                className="inline-flex items-center bg-white text-[#1876D2] px-6 py-3 rounded-lg font-semibold hover:bg-[#E3F2FD] transition-colors"
               >
                 <ExternalLink className="h-5 w-5 mr-2" />
                 Get in Touch

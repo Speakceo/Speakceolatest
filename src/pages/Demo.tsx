@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Wand2, Rocket, Code, Eye, RefreshCw, Download, Share2, Zap } from 'lucide-react';
+import { Sparkles, Wand2, Rocket, Code, Eye, RefreshCw, Download, Share2, Zap, ArrowRight, Globe, Gamepad2, ChevronRight, Loader2, Copy, Play } from 'lucide-react';
 import { generateAIResponse } from '../lib/openai';
+import LottieAnimation from '../components/ui/LottieAnimation';
 
 // Pre-built website templates
 const templates = [
@@ -2315,7 +2316,7 @@ export default function Demo() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-[#F7FAFF] via-white to-[#E3F2FD]">
       {/* Name Input Modal */}
       <AnimatePresence>
         {showNameModal && (
@@ -2329,19 +2330,22 @@ export default function Demo() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative overflow-hidden"
+              className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative overflow-hidden border border-slate-200"
             >
               {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full filter blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full filter blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#1876D2]/20 to-[#00B0FF]/20 rounded-full filter blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-br from-[#00B0FF]/20 to-[#40C4FF]/20 rounded-full filter blur-3xl"></div>
               
               <div className="relative z-10">
                 <div className="text-center mb-6">
-                  <div className="text-6xl mb-4">🌟</div>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    Welcome to Orbit Demo!
+                  <LottieAnimation
+                    src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie"
+                    className="w-24 h-24 mx-auto mb-2"
+                  />
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    Welcome to Orbit Demo
                   </h2>
-                  <p className="text-gray-600 text-lg">
+                  <p className="text-gray-500">
                     What's the student's name?
                   </p>
                 </div>
@@ -2353,7 +2357,7 @@ export default function Demo() {
                     onChange={(e) => setTempName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleNameSubmit()}
                     placeholder="Enter student name..."
-                    className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:ring-4 focus:ring-purple-100 transition-all text-lg text-center font-semibold text-gray-800 placeholder-gray-400"
+                    className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#1876D2] focus:ring-4 focus:ring-[#1876D2]/10 transition-all text-lg text-center font-semibold text-gray-800 placeholder-gray-400"
                     autoFocus
                   />
                   
@@ -2364,16 +2368,16 @@ export default function Demo() {
                     disabled={!tempName.trim()}
                     className={`w-full py-4 rounded-xl font-bold text-lg shadow-lg transition-all ${
                       tempName.trim()
-                        ? 'bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white hover:shadow-xl'
+                        ? 'bg-gradient-to-r from-[#1876D2] via-[#1E88E5] to-[#00B0FF] text-white hover:shadow-xl'
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     }`}
                   >
-                    Start Creating! 🚀
+                    Start Building
                   </motion.button>
                 </div>
 
                 <div className="mt-6 text-center text-sm text-gray-500">
-                  💡 Tip: All creations will show "Made by {tempName || '[Name]'}"
+                  Tip: All previews will show “Made by {tempName || '[Name]'}”
                 </div>
               </div>
             </motion.div>
@@ -2382,41 +2386,47 @@ export default function Demo() {
       </AnimatePresence>
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white py-8 px-4 shadow-2xl">
-        <div className="max-w-7xl mx-auto">
+      <div className="relative bg-slate-950 text-white pt-24 pb-16 px-4 overflow-hidden">
+        {/* Background mesh */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1876D2]/20 via-transparent to-[#00B0FF]/10"></div>
+        <div className="absolute top-20 right-20 w-96 h-96 bg-[#1876D2]/10 rounded-full filter blur-[100px]"></div>
+        <div className="absolute bottom-10 left-10 w-64 h-64 bg-[#00B0FF]/10 rounded-full filter blur-[80px]"></div>
+        {/* Dot grid pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px'}}></div>
+        
+        <div className="relative max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <div className="flex items-center justify-center mb-4">
-              <Sparkles className="h-12 w-12 mr-3 animate-pulse" />
-              <h1 className="text-4xl md:text-5xl font-bold">AI Website Builder</h1>
-              <Wand2 className="h-12 w-12 ml-3 animate-bounce" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+              <Sparkles className="h-4 w-4 text-[#00B0FF]" />
+              <span className="text-sm text-gray-300 font-medium">Orbit Interactive Demo</span>
             </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+              AI Website <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Builder</span>
+            </h1>
             
             {/* Student Name Display */}
             {studentName && (
               <div className="flex items-center justify-center mb-4">
-                <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full border border-white/30">
-                  <span className="text-lg">
-                    👤 Building as: <span className="font-bold text-yellow-300">{studentName}</span>
+                <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/10">
+                  <span className="text-sm text-gray-300">
+                    Building as <span className="font-bold text-white">{studentName}</span>
                   </span>
                   <button
                     onClick={handleChangeName}
-                    className="text-sm bg-white/20 hover:bg-white/30 px-3 py-1 rounded-full transition-all"
+                    className="text-xs bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full transition-all text-gray-400 hover:text-white"
                   >
-                    ✏️ Change
+                    Change
                   </button>
                 </div>
               </div>
             )}
             
-            <p className="text-xl md:text-2xl opacity-90">
-              Watch AI Create Real Websites in Seconds! ✨
-            </p>
-            <p className="text-lg mt-2 opacity-80">
-              This is what your child will learn to build at Orbit Student
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Watch AI create real websites in seconds — this is what students learn to build at Orbit
             </p>
           </motion.div>
         </div>
@@ -2431,25 +2441,25 @@ export default function Demo() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-            <Rocket className="h-6 w-6 mr-2 text-purple-600" />
-            Choose a Business Idea:
+          <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+            <Rocket className="h-5 w-5 mr-2 text-[#1876D2]" />
+            Choose a Business Idea
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
             {templates.map((template) => (
               <motion.button
                 key={template.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => handleTemplateClick(template)}
-                className={`p-6 rounded-xl font-semibold transition-all ${
+                className={`p-5 rounded-xl font-medium transition-all border ${
                   selectedTemplate === template.id
-                    ? 'bg-gradient-to-br from-purple-600 to-pink-600 text-white shadow-2xl'
-                    : 'bg-white text-gray-700 shadow-lg hover:shadow-xl'
+                    ? 'bg-[#1876D2] text-white shadow-xl border-[#1876D2] ring-2 ring-[#1876D2]/30'
+                    : 'bg-white text-gray-700 shadow-sm hover:shadow-md border-gray-100'
                 }`}
               >
-                <div className="text-4xl mb-2">{template.icon}</div>
-                <div className="text-sm">{template.name}</div>
+                <div className="text-3xl mb-2">{template.icon}</div>
+                <div className="text-xs">{template.name}</div>
               </motion.button>
             ))}
           </div>
@@ -2462,17 +2472,17 @@ export default function Demo() {
           transition={{ delay: 0.1 }}
           className="mb-8 bg-white rounded-xl p-6 shadow-lg"
         >
-          <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-            <Zap className="h-5 w-5 mr-2 text-yellow-500" />
-            Or Describe Your Own Website:
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <Zap className="h-5 w-5 mr-2 text-[#00B0FF]" />
+            Or Describe Your Own Website
           </h3>
-          <div className="flex gap-4">
+          <div className="flex gap-3">
             <input
               type="text"
               value={customPrompt}
               onChange={(e) => setCustomPrompt(e.target.value)}
               placeholder="e.g., 'Create a website for my dog walking business...'"
-              className="flex-1 px-4 py-3 border-2 border-purple-300 rounded-lg focus:border-purple-600 focus:ring-2 focus:ring-purple-200 outline-none text-lg"
+              className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-[#1876D2] focus:ring-2 focus:ring-[#1876D2]/10 outline-none text-base bg-gray-50/50"
               onKeyPress={(e) => e.key === 'Enter' && handleCustomGenerate()}
             />
             <motion.button
@@ -2480,7 +2490,7 @@ export default function Demo() {
               whileTap={{ scale: 0.95 }}
               onClick={handleCustomGenerate}
               disabled={isGenerating || !customPrompt.trim()}
-              className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+              className="px-6 py-3 bg-[#1876D2] hover:bg-[#1565C0] text-white rounded-xl font-medium shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center transition-all"
             >
               {isGenerating ? (
                 <>
@@ -2504,17 +2514,16 @@ export default function Demo() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="mb-8 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl p-8 text-center"
+              className="mb-8 bg-[#E3F2FD] rounded-xl p-8 text-center border border-[#1876D2]/10"
             >
               <div className="flex items-center justify-center mb-4">
-                <Wand2 className="h-12 w-12 text-purple-600 animate-bounce mr-3" />
-                <Sparkles className="h-12 w-12 text-pink-600 animate-pulse" />
+                <div className="w-10 h-10 border-2 border-[#1876D2]/30 border-t-[#1876D2] rounded-full animate-spin" />
               </div>
-              <h3 className="text-2xl font-bold text-purple-800 mb-2">
-                AI is Building Your Website...
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                AI is building your website...
               </h3>
-              <p className="text-purple-600">
-                Just like magic! ✨ Watch it appear below!
+              <p className="text-gray-500 text-sm">
+                This usually takes a few seconds
               </p>
             </motion.div>
           )}
@@ -2554,10 +2563,10 @@ export default function Demo() {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => setShowPreview(false)}
-                  className={`px-4 py-2 rounded-lg font-semibold transition-all flex items-center ${
+                  className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center ${
                     !showPreview
-                      ? 'bg-purple-600 text-white'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'bg-[#1876D2] text-white'
+                      : 'text-gray-400 hover:text-white'
                   }`}
                 >
                   <Code className="h-4 w-4 mr-2" />
@@ -2565,10 +2574,10 @@ export default function Demo() {
                 </button>
                 <button
                   onClick={() => setShowPreview(true)}
-                  className={`px-4 py-2 rounded-lg font-semibold transition-all flex items-center ${
+                  className={`px-4 py-2 rounded-lg font-medium text-sm transition-all flex items-center ${
                     showPreview
-                      ? 'bg-purple-600 text-white'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'bg-[#1876D2] text-white'
+                      : 'text-gray-400 hover:text-white'
                   }`}
                 >
                   <Eye className="h-4 w-4 mr-2" />
@@ -2621,39 +2630,42 @@ export default function Demo() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-12 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-xl p-8 md:p-12 text-center text-white shadow-2xl"
+            className="mt-12 bg-slate-950 rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden border border-white/5"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Your Child Can Build This Too! 🚀
+            <div className="absolute inset-0 bg-gradient-to-br from-[#1876D2]/10 via-transparent to-[#00B0FF]/5"></div>
+            <div className="relative z-10">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              Your Child Can Build This Too
             </h2>
-            <p className="text-xl md:text-2xl mb-6 opacity-90">
+            <p className="text-gray-400 mb-8 max-w-xl mx-auto">
               In our 180-day program, students learn to:
             </p>
-            <div className="grid md:grid-cols-3 gap-6 mb-8 text-left">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-4xl mb-3">💻</div>
-                <h3 className="font-bold text-lg mb-2">Build Real Websites</h3>
-                <p className="opacity-90">Create professional websites from scratch</p>
+            <div className="grid md:grid-cols-3 gap-4 mb-8 text-left">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/5">
+                <Globe className="h-6 w-6 text-[#00B0FF] mb-3" />
+                <h3 className="font-semibold text-sm mb-1">Build Real Websites</h3>
+                <p className="text-gray-400 text-xs">Create professional websites from scratch</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-4xl mb-3">🤖</div>
-                <h3 className="font-bold text-lg mb-2">Master AI Tools</h3>
-                <p className="opacity-90">Learn to use AI like a pro developer</p>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/5">
+                <Sparkles className="h-6 w-6 text-[#00B0FF] mb-3" />
+                <h3 className="font-semibold text-sm mb-1">Master AI Tools</h3>
+                <p className="text-gray-400 text-xs">Learn to use AI like a pro developer</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <div className="text-4xl mb-3">💼</div>
-                <h3 className="font-bold text-lg mb-2">Launch Real Businesses</h3>
-                <p className="opacity-90">Turn ideas into real products</p>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/5">
+                <Rocket className="h-6 w-6 text-[#00B0FF] mb-3" />
+                <h3 className="font-semibold text-sm mb-1">Launch Real Businesses</h3>
+                <p className="text-gray-400 text-xs">Turn ideas into real products</p>
               </div>
             </div>
             <motion.a
               href="/#enrollment"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block px-12 py-4 bg-white text-purple-600 rounded-full font-bold text-xl shadow-2xl hover:shadow-3xl transition-all"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-block px-8 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-xl font-semibold transition-all"
             >
-              Enroll Your Child Now! 🎉
+              Enroll Your Child Now
             </motion.a>
+            </div>
           </motion.div>
         )}
 
@@ -2664,19 +2676,23 @@ export default function Demo() {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <div className="text-8xl mb-6">🚀</div>
-            <h3 className="text-3xl font-bold text-gray-800 mb-4">
-              Ready to See Magic? ✨
+            <Rocket className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+              Ready to Build?
             </h3>
-            <p className="text-xl text-gray-600">
-              Click a template above or describe your dream website!
+            <p className="text-gray-500">
+              Click a template above or describe your dream website
             </p>
           </motion.div>
         )}
       </div>
 
       {/* ======== GAME BUILDER SECTION ======== */}
-      <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 py-20 px-4">
+      <div className="min-h-screen bg-slate-950 py-20 px-4 relative">
+        {/* Background texture */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px'}}></div>
+        <div className="absolute top-20 left-20 w-96 h-96 bg-[#1876D2]/10 rounded-full filter blur-[120px]"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-[#00B0FF]/8 rounded-full filter blur-[100px]"></div>
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div
@@ -2684,28 +2700,19 @@ export default function Demo() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-16"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="inline-block mb-6"
-            >
-              <div className="text-8xl">🎮</div>
-            </motion.div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+              <Gamepad2 className="h-4 w-4 text-[#00B0FF]" />
+              <span className="text-sm text-gray-300 font-medium">Game Builder</span>
+            </div>
             
-            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Build <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
                 Epic Games
               </span>
             </h2>
             
-            <p className="text-2xl text-purple-200 mb-4">
-              Create Real, Playable Games in Seconds!
-            </p>
-            
-            <p className="text-lg text-purple-300 max-w-3xl mx-auto">
-              Choose from 7 awesome game templates. Each one is fully playable, interactive, and ready to customize. 
-              No complex coding needed – just click and play! 🚀
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Choose from 7 game templates — each fully playable and ready to customize. Just click and play.
             </p>
           </motion.div>
 
@@ -2721,16 +2728,16 @@ export default function Demo() {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleGameSelect(game.id)}
                 className={`
-                  relative p-6 rounded-2xl backdrop-blur-xl transition-all duration-300
+                  relative p-5 rounded-xl transition-all duration-300
                   ${selectedGame === game.id 
-                    ? 'bg-gradient-to-br from-pink-500/30 via-purple-500/30 to-cyan-500/30 border-2 border-white shadow-2xl' 
-                    : 'bg-white/10 border border-white/20 hover:bg-white/20'
+                    ? 'bg-[#1876D2]/20 border border-[#1876D2]/50 shadow-xl ring-1 ring-[#1876D2]/30' 
+                    : 'bg-white/5 border border-white/10 hover:bg-white/10'
                   }
                 `}
               >
-                <div className="text-5xl mb-3">{game.icon}</div>
-                <div className="text-white font-semibold text-sm mb-2">{game.name}</div>
-                <div className="text-purple-200 text-xs">{game.description}</div>
+                <div className="text-4xl mb-2">{game.icon}</div>
+                <div className="text-white font-medium text-xs mb-1">{game.name}</div>
+                <div className="text-gray-400 text-[10px]">{game.description}</div>
                 
                 {selectedGame === game.id && (
                   <motion.div
@@ -2754,10 +2761,10 @@ export default function Demo() {
             >
               {/* Preview Controls */}
               <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2 bg-purple-500/30 px-4 py-2 rounded-full">
-                    <Zap className="w-5 h-5 text-yellow-300" />
-                    <span className="text-white font-semibold">Live & Playable!</span>
+                <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-2 bg-[#1876D2]/20 px-3 py-1.5 rounded-full border border-[#1876D2]/30">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <span className="text-white text-sm font-medium">Live & Playable</span>
                   </div>
                   <button
                     onClick={() => setShowGamePreview(!showGamePreview)}
@@ -2897,11 +2904,11 @@ export default function Demo() {
                 
                 {/* Additional Info */}
                 <div className="text-center">
-                  <p className="text-purple-200 text-lg mb-2">
-                    🎮 This game is 100% playable & fully functional!
+                  <p className="text-gray-300 text-sm mb-1">
+                    This game is 100% playable & fully functional
                   </p>
-                  <p className="text-purple-300 text-sm">
-                    Your child can build games like this AND customize them with their own ideas!
+                  <p className="text-gray-400 text-xs">
+                    Your child can build games like this and customize them with their own ideas
                   </p>
                 </div>
               </div>
@@ -2915,12 +2922,12 @@ export default function Demo() {
               animate={{ opacity: 1 }}
               className="text-center py-20"
             >
-              <div className="text-8xl mb-6">🎯</div>
-              <h3 className="text-3xl font-bold text-white mb-4">
-                Pick a Game to Start! 🎮
+              <Gamepad2 className="h-12 w-12 text-gray-500 mx-auto mb-4" />
+              <h3 className="text-2xl font-semibold text-white mb-2">
+                Pick a Game to Start
               </h3>
-              <p className="text-xl text-purple-200">
-                Click any game template above to see it in action!
+              <p className="text-gray-400">
+                Click any game template above to see it in action
               </p>
             </motion.div>
           )}
@@ -2932,21 +2939,20 @@ export default function Demo() {
             transition={{ delay: 0.5 }}
             className="mt-16 text-center"
           >
-            <div className="bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-cyan-500/20 backdrop-blur-xl border border-white/20 rounded-3xl p-12">
-              <h3 className="text-3xl font-bold text-white mb-4">
-                🚀 Your Child Can Build ALL of This!
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-10">
+              <h3 className="text-2xl font-bold text-white mb-3">
+                Your Child Can Build All of This
               </h3>
-              <p className="text-xl text-purple-200 mb-8 max-w-2xl mx-auto">
-                From websites to games – imagine what your child will create with our 180-day program. 
-                Real skills. Real projects. Real success!
+              <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+                From websites to games — imagine what your child will create with our 180-day program.
               </p>
               <motion.a
                 href="https://www.orbitstudent.com"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-block bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 text-white font-bold text-xl px-12 py-5 rounded-full shadow-2xl hover:shadow-pink-500/50 transition-all"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-block bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold px-8 py-3 rounded-xl shadow-lg transition-all"
               >
-                Start Building Today! 🎉
+                Start Building Today
               </motion.a>
             </div>
           </motion.div>

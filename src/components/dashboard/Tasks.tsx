@@ -125,13 +125,13 @@ export default function Tasks() {
           </div>
           <div className="flex items-center space-x-4">
             <div className="text-center">
-              <p className="text-3xl font-bold text-indigo-600">
+              <p className="text-3xl font-bold text-[#1876D2]">
                 {completedTasks}
               </p>
               <p className="text-sm text-gray-500">Completed</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-purple-600">
+              <p className="text-3xl font-bold text-[#1876D2]">
                 {totalTasks}
               </p>
               <p className="text-sm text-gray-500">Total Tasks</p>
@@ -143,7 +143,7 @@ export default function Tasks() {
         <div className="mt-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-700">Overall Progress</span>
-            <span className="text-sm font-medium text-indigo-600">
+            <span className="text-sm font-medium text-[#1876D2]">
               {Math.round(completionRate)}%
             </span>
           </div>
@@ -168,7 +168,7 @@ export default function Tasks() {
         <div className="lg:col-span-2 space-y-6">
           {isLoading && tasks.length === 0 ? (
             <div className="flex items-center justify-center h-64">
-              <RefreshCw className="h-8 w-8 text-indigo-600 animate-spin" />
+              <RefreshCw className="h-8 w-8 text-[#1876D2] animate-spin" />
             </div>
           ) : tasks.length === 0 ? (
             <div className="bg-white rounded-xl p-8 shadow-sm text-center">
@@ -190,7 +190,7 @@ export default function Tasks() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <div className={`rounded-lg p-2 ${
-                          task.task_type === 'assignment' ? 'bg-purple-100 text-purple-600' :
+                          task.task_type === 'assignment' ? 'bg-[#E3F2FD] text-[#1876D2]' :
                           task.task_type === 'quiz' ? 'bg-blue-100 text-blue-600' :
                           task.task_type === 'project' ? 'bg-green-100 text-green-600' :
                           'bg-orange-100 text-orange-600'
@@ -234,7 +234,7 @@ export default function Tasks() {
                         ) : (
                           <button
                             onClick={() => handleTaskClick(task)}
-                            className="text-indigo-600 hover:text-indigo-700"
+                            className="text-[#1876D2] hover:text-indigo-700"
                           >
                             <ChevronRight className="h-6 w-6" />
                           </button>
@@ -283,7 +283,7 @@ export default function Tasks() {
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-gray-600">Total Points</span>
-                <span className="font-semibold text-purple-600">
+                <span className="font-semibold text-[#1876D2]">
                   {tasks.reduce((sum, task) => sum + task.points, 0)}
                 </span>
               </div>

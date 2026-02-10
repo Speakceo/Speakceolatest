@@ -13,7 +13,7 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
       <div className="max-w-md w-full space-y-8 bg-white rounded-2xl p-8 shadow-lg">
         <div className="text-center">
           <div className="flex items-center justify-center">
-            <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+            <div className="flex items-center justify-center h-12 w-12 rounded-xl bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white">
               <GraduationCap className="h-7 w-7" />
             </div>
           </div>

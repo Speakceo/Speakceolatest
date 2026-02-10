@@ -485,7 +485,7 @@ export default function SupportPage() {
   const getCategoryColor = (category: Ticket['category']) => {
     switch (category) {
       case 'technical':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-[#E3F2FD] text-purple-800';
       case 'billing':
         return 'bg-green-100 text-green-800';
       case 'course':
@@ -636,7 +636,7 @@ export default function SupportPage() {
         <div className="flex items-center space-x-4">
           <button
             onClick={() => setShowAnalytics(true)}
-            className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
           >
             <BarChart2 className="h-5 w-5" />
             <span>Analytics</span>
@@ -672,7 +672,7 @@ export default function SupportPage() {
                 placeholder="Search tickets..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               />
             </div>
             
@@ -680,7 +680,7 @@ export default function SupportPage() {
               <select
                 value={filters.status}
                 onChange={(e) => setFilters({ ...filters, status: e.target.value as TicketFilters['status'] })}
-                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               >
                 <option value="all">All Statuses</option>
                 <option value="open">Open</option>
@@ -692,7 +692,7 @@ export default function SupportPage() {
               <select
                 value={filters.priority}
                 onChange={(e) => setFilters({ ...filters, priority: e.target.value as TicketFilters['priority'] })}
-                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               >
                 <option value="all">All Priorities</option>
                 <option value="urgent">Urgent</option>
@@ -704,7 +704,7 @@ export default function SupportPage() {
               <select
                 value={filters.category}
                 onChange={(e) => setFilters({ ...filters, category: e.target.value as TicketFilters['category'] })}
-                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               >
                 <option value="all">All Categories</option>
                 <option value="technical">Technical</option>
@@ -717,7 +717,7 @@ export default function SupportPage() {
               <select
                 value={filters.assigned}
                 onChange={(e) => setFilters({ ...filters, assigned: e.target.value as TicketFilters['assigned'] })}
-                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
               >
                 <option value="all">All Tickets</option>
                 <option value="assigned">Assigned</option>
@@ -744,7 +744,7 @@ export default function SupportPage() {
                     key={ticket.id}
                     onClick={() => handleSelectTicket(ticket)}
                     className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                      selectedTicket?.id === ticket.id ? 'bg-indigo-50' : ''
+                      selectedTicket?.id === ticket.id ? 'bg-[#E3F2FD]' : ''
                     }`}
                   >
                     <div className="flex items-start justify-between mb-2">
@@ -825,7 +825,7 @@ export default function SupportPage() {
                   ) : (
                     <button
                       onClick={handleAssignTicket}
-                      className="ml-4 text-xs text-indigo-600 hover:text-indigo-800"
+                      className="ml-4 text-xs text-[#1876D2] hover:text-indigo-800"
                     >
                       Assign to me
                     </button>
@@ -839,7 +839,7 @@ export default function SupportPage() {
                       <h4 className="text-xs font-medium text-gray-700">Student Details</h4>
                       <button 
                         onClick={() => window.location.href = `/admin/users?search=${selectedTicket.user_email}`}
-                        className="text-xs text-indigo-600 hover:text-indigo-800"
+                        className="text-xs text-[#1876D2] hover:text-indigo-800"
                       >
                         View Profile
                       </button>
@@ -889,7 +889,7 @@ export default function SupportPage() {
                       )}
                     </div>
                     <div className={`flex-1 rounded-lg p-4 ${
-                      message.sender_type === 'admin' ? 'bg-indigo-50' : 'bg-gray-50'
+                      message.sender_type === 'admin' ? 'bg-[#E3F2FD]' : 'bg-gray-50'
                     }`}>
                       <div className="flex items-center justify-between mb-2">
                         <span className="font-medium text-gray-900">{message.sender_name}</span>
@@ -923,7 +923,7 @@ export default function SupportPage() {
                                   href={attachment.url} 
                                   target="_blank" 
                                   rel="noopener noreferrer"
-                                  className="text-indigo-600 hover:text-indigo-800"
+                                  className="text-[#1876D2] hover:text-indigo-800"
                                 >
                                   <Download className="h-4 w-4" />
                                 </a>
@@ -940,15 +940,15 @@ export default function SupportPage() {
               {/* Reply Box */}
               <div className="p-4 border-t border-gray-200">
                 <div className="flex items-start space-x-3">
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                    <MessageSquare className="h-5 w-5 text-indigo-600" />
+                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                    <MessageSquare className="h-5 w-5 text-[#1876D2]" />
                   </div>
                   <div className="flex-1">
                     <textarea
                       value={replyContent}
                       onChange={(e) => setReplyContent(e.target.value)}
                       placeholder="Type your reply..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] resize-none"
                       rows={3}
                     />
                     <div className="mt-2 flex items-center justify-between">
@@ -956,7 +956,7 @@ export default function SupportPage() {
                         <select
                           value={selectedTicket.status}
                           onChange={(e) => handleUpdateTicketStatus(e.target.value as Ticket['status'])}
-                          className="px-3 py-1 text-xs border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                          className="px-3 py-1 text-xs border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2]"
                         >
                           <option value="open">Open</option>
                           <option value="in_progress">In Progress</option>
@@ -976,7 +976,7 @@ export default function SupportPage() {
                       <button
                         onClick={handleSendReply}
                         disabled={isSending || !replyContent.trim()}
-                        className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 transition-colors"
+                        className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] disabled:opacity-50 transition-colors"
                       >
                         {isSending ? (
                           <RefreshCw className="h-4 w-4 animate-spin" />
@@ -1024,8 +1024,8 @@ export default function SupportPage() {
                 <div className="bg-white rounded-lg border border-gray-200 p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-sm font-medium text-gray-700">Total Tickets</h4>
-                    <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center">
-                      <MessageSquare className="h-4 w-4 text-indigo-600" />
+                    <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                      <MessageSquare className="h-4 w-4 text-[#1876D2]" />
                     </div>
                   </div>
                   <p className="text-2xl font-bold text-gray-900">{ticketStats?.total || 0}</p>
@@ -1057,8 +1057,8 @@ export default function SupportPage() {
                 <div className="bg-white rounded-lg border border-gray-200 p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h4 className="text-sm font-medium text-gray-700">Satisfaction Rate</h4>
-                    <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">
-                      <Star className="h-4 w-4 text-purple-600" />
+                    <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center">
+                      <Star className="h-4 w-4 text-[#1876D2]" />
                     </div>
                   </div>
                   <p className="text-2xl font-bold text-gray-900">{ticketStats?.satisfaction_rate || 0}%</p>
@@ -1116,7 +1116,7 @@ export default function SupportPage() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <Star className="h-5 w-5 text-purple-500 mt-0.5 mr-3 flex-shrink-0" />
+                    <Star className="h-5 w-5 text-[#1876D2] mt-0.5 mr-3 flex-shrink-0" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">High Satisfaction Rate</p>
                       <p className="text-sm text-gray-600">92% of users rated their support experience as "Excellent" or "Good".</p>
@@ -1137,7 +1137,7 @@ export default function SupportPage() {
                     // In a real implementation, this would download a detailed report
                     alert('Downloading detailed analytics report...');
                   }}
-                  className="flex items-center space-x-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+                  className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
                 >
                   <Download className="h-4 w-4" />
                   <span>Download Report</span>

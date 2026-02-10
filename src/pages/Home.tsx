@@ -26,6 +26,7 @@ import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import { SplineHero } from '../components/ui/SplineHero';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
+import LottieAnimation from '../components/ui/LottieAnimation';
 
 // Optimized animation variants for better performance
 const fadeIn = {
@@ -92,7 +93,7 @@ export default function Home() {
                   variants={fadeIn}
                   className="inline-block mb-6 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30"
                 >
-                  <span className="text-white font-medium text-base">✨ Join 2,500+ Young Entrepreneurs</span>
+                  <span className="text-white font-medium text-sm">Join 2,500+ Young Entrepreneurs</span>
                 </motion.div>
                 
                 <motion.h1 
@@ -172,15 +173,12 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/5 to-[#00B0FF]/5"></div>
                   
-                  {/* Professional floating elements */}
-                  <div className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
-                    <TrendingUp className="h-8 w-8 text-white" />
+                  {/* Subtle floating accents — no bouncing */}
+                  <div className="absolute -top-3 -right-3 w-10 h-10 bg-white/15 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-center border border-white/20 hidden lg:flex">
+                    <TrendingUp className="h-5 w-5 text-white/80" />
                   </div>
-                  <div className="absolute -bottom-6 -left-6 w-14 h-14 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-xl shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
-                    <Lightbulb className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="absolute top-1/2 -right-8 w-12 h-12 bg-gradient-to-br from-[#00B0FF] to-[#40C4FF] rounded-full shadow-xl flex items-center justify-center backdrop-blur-sm border border-white/20">
-                    <Target className="h-6 w-6 text-white" />
+                  <div className="absolute -bottom-3 -left-3 w-10 h-10 bg-white/15 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-center border border-white/20 hidden lg:flex">
+                    <Lightbulb className="h-5 w-5 text-white/80" />
                   </div>
                 </div>
               </motion.div>
@@ -198,13 +196,13 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <div className="inline-block bg-[#E3F2FD] rounded-full px-8 py-3 mb-6">
-                <span className="text-[#1876D2] font-bold text-lg">🌟 Interactive Experience</span>
+              <div className="inline-block bg-[#E3F2FD] rounded-full px-6 py-2 mb-6">
+                <span className="text-[#1876D2] font-semibold text-sm uppercase tracking-wider">Interactive Experience</span>
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
                 Experience the Future of Learning
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Immerse yourself in our cutting-edge 3D learning environment where education meets innovation
               </p>
             </motion.div>
@@ -231,9 +229,12 @@ export default function Home() {
               <div className="relative h-[400px] bg-gradient-to-br from-[#1876D2] via-[#1876D2] to-[#00B0FF] rounded-xl shadow-2xl overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white p-8">
-                    <div className="text-6xl mb-4">🚀</div>
+                    <LottieAnimation
+                      src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie"
+                      className="w-40 h-40 mx-auto mb-4"
+                    />
                     <h3 className="text-2xl font-bold mb-2">Interactive Learning</h3>
-                    <p className="text-white/90">Experience hands-on entrepreneurship education</p>
+                    <p className="text-white/80 text-sm">Experience hands-on entrepreneurship education</p>
                   </div>
                 </div>
               </div>
@@ -254,8 +255,8 @@ export default function Home() {
               variants={fadeIn}
               className="text-center mb-16"
             >
-              <div className="inline-block bg-[#E3F2FD] rounded-full px-8 py-3 mb-6">
-                <span className="text-[#1876D2] font-bold text-lg">🚀 Orbit Playground</span>
+              <div className="inline-block bg-[#E3F2FD] rounded-full px-6 py-2 mb-6">
+                <span className="text-[#1876D2] font-semibold text-sm uppercase tracking-wider">Orbit Playground</span>
               </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
               Watch Your Child 
@@ -356,12 +357,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Floating Elements */}
-                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full p-3 shadow-lg animate-bounce">
-                  <Sparkles className="h-6 w-6 text-white" />
-                </div>
-                <div className="absolute -bottom-4 -left-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-full p-3 shadow-lg animate-pulse">
-                  <Brain className="h-6 w-6 text-white" />
+                {/* Subtle corner accents */}
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#1876D2] rounded-lg shadow-lg flex items-center justify-center hidden lg:flex">
+                  <Sparkles className="h-4 w-4 text-white" />
                 </div>
               </motion.div>
 
@@ -620,7 +618,7 @@ export default function Home() {
                 <div>
                   <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                     AI-Powered Learning
-                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-pink-400">
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-white">
                       Meets Real Mentorship
                     </span>
               </h2>
@@ -655,7 +653,7 @@ export default function Home() {
                     <p className="text-white/80 text-sm">
                       Interactive sessions with successful entrepreneurs, real-time Q&A, and collaborative learning.
                     </p>
-              </div>
+                </div>
 
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                     <div className="flex items-center space-x-3 mb-4">
@@ -712,7 +710,7 @@ export default function Home() {
                     <div className="text-sm text-white/80">Live Sessions Monthly</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-pink-300">500+</div>
+                    <div className="text-2xl font-bold text-cyan-300">500+</div>
                     <div className="text-sm text-white/80">Recorded Lessons</div>
                   </div>
                 </div>
@@ -729,37 +727,28 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/5 to-[#00B0FF]/5"></div>
                   
-                  {/* Floating elements */}
-                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-xl animate-bounce flex items-center justify-center">
-                    <span className="text-xl">🤖</span>
+                  {/* Clean corner accents */}
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg shadow-lg flex items-center justify-center border border-white/30 hidden lg:flex">
+                    <Brain className="h-4 w-4 text-white/80" />
                 </div>
-                  <div className="absolute -bottom-4 -left-4 w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl shadow-xl animate-pulse flex items-center justify-center">
-                    <span className="text-lg">🎯</span>
                 </div>
-                  <div className="absolute top-1/2 -right-6 w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full shadow-xl animate-ping flex items-center justify-center">
-                    <span className="text-sm">🚀</span>
-                  </div>
-                  <div className="absolute top-1/4 -left-6 w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl shadow-xl animate-bounce flex items-center justify-center" style={{animationDelay: '1s'}}>
-                    <span className="text-lg">💡</span>
-              </div>
-            </div>
 
                 {/* Live indicator */}
                 <div className="absolute top-6 left-6 flex items-center space-x-2 bg-red-500 px-3 py-1 rounded-full">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                   <span className="text-white font-medium text-sm">LIVE NOW</span>
-                </div>
+              </div>
 
                 {/* Feature badges */}
                 <div className="absolute bottom-6 right-6 space-y-2">
                   <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-800">
                     AI-Powered
-              </div>
+                </div>
                   <div className="bg-emerald-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-white">
                     Expert-Led
                 </div>
-                </div>
               </div>
+            </div>
             </div>
           </div>
         </section>
@@ -854,8 +843,8 @@ export default function Home() {
 
               {/* Phase 3 */}
               <div className="text-center">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Presentation className="h-8 w-8 text-pink-600" />
+                <div className="w-16 h-16 bg-[#E3F2FD] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Presentation className="h-8 w-8 text-[#1876D2]" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Branding & Storytelling</h3>
                 <p className="text-gray-600 text-sm mb-4">
@@ -1078,7 +1067,7 @@ export default function Home() {
         {/* Global Opportunities Section */}
         <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
           {/* Background Elements - optimized */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400/8 via-indigo-400/8 to-purple-400/8 rounded-full filter blur-3xl opacity-40"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-[#1876D2]/5 rounded-full filter blur-3xl opacity-40"></div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div 
@@ -1087,7 +1076,7 @@ export default function Home() {
             >
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
                 Designed for 
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
                   Global Dreamers
                 </span>
               </h2>
@@ -1105,10 +1094,9 @@ export default function Home() {
                 className="text-center group"
               >
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[#1876D2] to-[#1565C0] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
                     <Globe className="h-10 w-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-blue-400/20 rounded-full animate-ping"></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Global Awareness</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1122,10 +1110,9 @@ export default function Home() {
                 className="text-center group"
               >
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
                     <Target className="h-10 w-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-[#00B0FF]/20 rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Opportunity Discovery</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1139,10 +1126,9 @@ export default function Home() {
                 className="text-center group"
               >
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-[#00B0FF] to-[#0091EA] rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
                     <Rocket className="h-10 w-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-amber-400/20 rounded-full animate-ping" style={{animationDelay: '1s'}}></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Skill Building</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1159,7 +1145,6 @@ export default function Home() {
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-all duration-300">
                     <Target className="h-10 w-10 text-white" />
                   </div>
-                  <div className="absolute inset-0 w-20 h-20 mx-auto bg-emerald-400/20 rounded-full animate-ping" style={{animationDelay: '1.5s'}}></div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Future Roadmaps</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -1181,7 +1166,7 @@ export default function Home() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">Global Resources</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-red-400 to-orange-400">Database</span>
+                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-white">Global Resources</span> Database
               </h2>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
                 A curated database of opportunities to launch your global journey.
@@ -1238,7 +1223,7 @@ export default function Home() {
               </div>
               
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105">
-                <h3 className="text-lg font-semibold text-pink-300 mb-2">Conrad Challenge</h3>
+                <h3 className="text-lg font-semibold text-cyan-300 mb-2">Conrad Challenge</h3>
                 <p className="text-white/80 text-sm">Innovation challenge for students to solve global problems</p>
               </div>
             </div>
@@ -1248,15 +1233,14 @@ export default function Home() {
               variants={fadeIn}
               className="text-center"
             >
-              <button 
+                <button 
                 onClick={() => setShowEnrollment(true)}
-                className="group relative px-12 py-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl text-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
+                className="group relative px-12 py-5 bg-white text-[#1876D2] font-semibold rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center">
                   Access Full Database
-                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
               <p className="text-white/70 mt-4 text-sm">
                 Join 2,500+ students already accessing global opportunities
@@ -1268,38 +1252,38 @@ export default function Home() {
         {/* Section Divider 5 - Success Stories to Stats */}
         <div className="relative w-full overflow-hidden">
           <svg className="w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#4f46e5"></path>
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#0F172A"></path>
           </svg>
         </div>
 
         {/* Stats Section */}
-        <section className="py-20 bg-indigo-600 text-white">
+        <section className="py-20 bg-slate-950 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-4xl font-bold mb-2">2,500+</div>
-                <div className="text-indigo-100">Young Entrepreneurs</div>
+                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">2,500+</div>
+                <div className="text-gray-400 text-sm uppercase tracking-wider">Young Entrepreneurs</div>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">98%</div>
-                <div className="text-indigo-100">Parent Satisfaction</div>
+                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#00B0FF] to-[#40C4FF]">98%</div>
+                <div className="text-gray-400 text-sm uppercase tracking-wider">Parent Satisfaction</div>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">180</div>
-                <div className="text-indigo-100">Day Program</div>
+                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#40C4FF] to-[#1876D2]">180</div>
+                <div className="text-gray-400 text-sm uppercase tracking-wider">Day Program</div>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">24/7</div>
-                <div className="text-indigo-100">AI Support</div>
+                <div className="text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">24/7</div>
+                <div className="text-gray-400 text-sm uppercase tracking-wider">AI Support</div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Enhanced CTA Section with Urgency */}
-        <section className="py-20 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 text-white relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-br from-slate-950 via-[#0a1628] to-slate-900 text-white relative overflow-hidden">
           {/* Background effects */}
-          <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-emerald-400/10 via-blue-400/10 to-purple-400/10 rounded-full filter blur-3xl opacity-30"></div>
+          <div className="absolute top-0 left-0 w-40 h-40 bg-[#1876D2]/10 rounded-full filter blur-3xl opacity-30"></div>
           
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
@@ -1307,8 +1291,8 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="inline-block bg-gradient-to-r from-red-100 to-orange-100 rounded-full px-6 py-2 mb-6">
-                <span className="text-red-700 font-semibold">⚡ Limited Time - Only 30 Spots Left</span>
+              <div className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6 border border-white/10">
+                <span className="text-white/90 font-semibold text-sm">Limited Time — Only 30 Spots Left</span>
               </div>
               
               <h2 className="text-3xl sm:text-5xl font-bold mb-6 leading-tight">
@@ -1341,13 +1325,12 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <button 
                 onClick={() => setShowEnrollment(true)}
-                  className="group relative px-10 py-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-2xl text-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
-                >
+                  className="group relative px-10 py-5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-[1.02] overflow-hidden"
+              >
                   <span className="relative z-10 flex items-center justify-center">
                     Secure Your Child's Spot Now
                     <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               </button>
                 
               <button 
@@ -1377,7 +1360,7 @@ export default function Home() {
         </section>
 
         {/* Lead Capture CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-black">
+        <section className="py-20 bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] dark:from-gray-800 dark:via-gray-900 dark:to-black">
           <div className="max-w-4xl mx-auto px-6">
             <CTAWithLeadCapture
               source="homepage"

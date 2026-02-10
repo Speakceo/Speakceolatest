@@ -36,7 +36,7 @@ export default function BrandShowcase({ className = '' }: BrandShowcaseProps) {
 
   if (loading) {
     return (
-      <div className={`bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-6 animate-pulse ${className}`}>
+      <div className={`bg-gradient-to-r from-[#1876D2] to-purple-600 rounded-xl p-6 animate-pulse ${className}`}>
         <div className="flex items-center space-x-4">
           <div className="h-12 w-12 bg-white/20 rounded-lg"></div>
           <div className="flex-1">
@@ -59,7 +59,7 @@ export default function BrandShowcase({ className = '' }: BrandShowcaseProps) {
           </p>
           <button
             onClick={() => navigate('/dashboard/business-simulation?tab=branding')}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition-colors flex items-center space-x-2 mx-auto"
+            className="bg-[#1876D2] hover:bg-[#1565C0] text-white px-6 py-2 rounded-lg transition-colors flex items-center space-x-2 mx-auto"
           >
             <Rocket className="h-4 w-4" />
             <span>Start Creating</span>
@@ -70,7 +70,7 @@ export default function BrandShowcase({ className = '' }: BrandShowcaseProps) {
   }
 
   return (
-    <div className={`bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl p-6 text-white ${className}`}>
+    <div className={`bg-gradient-to-r from-[#1876D2] to-purple-600 rounded-xl p-6 text-white ${className}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           {userBrand.logoUrl ? (
@@ -112,7 +112,7 @@ export default function BrandShowcase({ className = '' }: BrandShowcaseProps) {
           </button>
           <button
             onClick={() => navigate('/dashboard/business-simulation')}
-            className="bg-white hover:bg-gray-100 text-indigo-600 px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 font-medium"
+            className="bg-white hover:bg-gray-100 text-[#1876D2] px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 font-medium"
           >
             <Rocket className="h-4 w-4" />
             <span>Continue Building</span>

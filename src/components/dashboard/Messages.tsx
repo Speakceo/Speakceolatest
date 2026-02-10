@@ -123,13 +123,13 @@ export default function Messages() {
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Ask your business-related question..."
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] resize-none"
                 rows={3}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={isLoading || !newMessage.trim()}
-                className="absolute bottom-3 right-3 p-2 text-indigo-600 hover:text-indigo-700 disabled:opacity-50"
+                className="absolute bottom-3 right-3 p-2 text-[#1876D2] hover:text-indigo-700 disabled:opacity-50"
               >
                 {isLoading ? (
                   <RefreshCw className="h-5 w-5 animate-spin" />
@@ -151,10 +151,10 @@ export default function Messages() {
                   <div className="flex-1">
                     <p className="text-gray-600">{message.content}</p>
                     {message.ai_response && (
-                      <div className="mt-3 p-3 bg-indigo-50 rounded-lg">
+                      <div className="mt-3 p-3 bg-[#E3F2FD] rounded-lg">
                         <div className="flex items-center space-x-2 mb-2">
-                          <Brain className="h-5 w-5 text-indigo-600" />
-                          <span className="font-medium text-indigo-600">CEO Response:</span>
+                          <Brain className="h-5 w-5 text-[#1876D2]" />
+                          <span className="font-medium text-[#1876D2]">CEO Response:</span>
                         </div>
                         <p className="text-gray-700">{message.ai_response}</p>
                       </div>
@@ -162,7 +162,7 @@ export default function Messages() {
                   </div>
                   <button
                     onClick={() => handleUpvote(message.id)}
-                    className="flex items-center space-x-1 text-gray-400 hover:text-indigo-600"
+                    className="flex items-center space-x-1 text-gray-400 hover:text-[#1876D2]"
                   >
                     <ThumbsUp className="h-4 w-4" />
                     <span>{message.upvotes}</span>
@@ -215,7 +215,7 @@ export default function Messages() {
                     <button
                       onClick={handlePollSubmit}
                       disabled={selectedOption === null}
-                      className="w-full mt-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300 disabled:opacity-50"
+                      className="w-full mt-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition-all duration-300 disabled:opacity-50"
                     >
                       Submit Answer
                     </button>
@@ -270,8 +270,8 @@ export default function Messages() {
                     {selectedPoll.explanation && (
                       <div className="bg-white rounded-lg p-4">
                         <div className="flex items-center space-x-2 mb-2">
-                          <Brain className="h-5 w-5 text-indigo-600" />
-                          <span className="font-medium text-indigo-600">Explanation:</span>
+                          <Brain className="h-5 w-5 text-[#1876D2]" />
+                          <span className="font-medium text-[#1876D2]">Explanation:</span>
                         </div>
                         <p className="text-gray-700">{selectedPoll.explanation}</p>
                       </div>
@@ -313,7 +313,7 @@ export default function Messages() {
         </div>
 
         {/* Stats */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">
+        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
           <h3 className="text-lg font-semibold mb-4">Your Stats</h3>
           <div className="grid grid-cols-2 gap-4">
             <div className="text-center">

@@ -24,14 +24,14 @@ export function Tabs({ tabs, activeTab, onChange }: TabsProps) {
             className={cn(
               'group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm',
               activeTab === tab.id
-                ? 'border-purple-500 text-purple-600'
+                ? 'border-purple-500 text-[#1876D2]'
                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
             )}
           >
             {tab.icon && (
               <span className={cn(
                 'mr-2',
-                activeTab === tab.id ? 'text-purple-500' : 'text-gray-400 group-hover:text-gray-500'
+                activeTab === tab.id ? 'text-[#1876D2]' : 'text-gray-400 group-hover:text-gray-500'
               )}>
                 {tab.icon}
               </span>

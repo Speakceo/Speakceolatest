@@ -17,7 +17,7 @@ export default function LanguageToggle() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
+        className="flex items-center space-x-2 px-3 py-2 rounded-lg text-gray-600 hover:text-[#1876D2] hover:bg-[#E3F2FD] transition-colors"
       >
         <Globe2 className="h-5 w-5" />
         <span className="text-sm font-medium">
@@ -36,8 +36,8 @@ export default function LanguageToggle() {
                   setLanguage(lang.code as 'en' | 'hi' | 'es' | 'ar');
                   setIsOpen(false);
                 }}
-                className={`w-full text-left px-4 py-2 text-sm hover:bg-indigo-50 ${
-                  language === lang.code ? 'text-indigo-600 bg-indigo-50' : 'text-gray-700'
+                className={`w-full text-left px-4 py-2 text-sm hover:bg-[#E3F2FD] ${
+                  language === lang.code ? 'text-[#1876D2] bg-[#E3F2FD]' : 'text-gray-700'
                 }`}
               >
                 {lang.name}

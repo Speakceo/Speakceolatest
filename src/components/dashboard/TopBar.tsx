@@ -179,7 +179,7 @@ export default function TopBar() {
                     <h3 className="text-base font-semibold text-gray-900">Notifications</h3>
                     <button 
                       onClick={markAllNotificationsAsRead}
-                      className="text-xs text-indigo-600 hover:text-indigo-800"
+                      className="text-xs text-[#1876D2] hover:text-indigo-800"
                     >
                       Mark all as read
                     </button>
@@ -191,7 +191,7 @@ export default function TopBar() {
                         {notifications.map((notification) => (
                           <div 
                             key={notification.id} 
-                            className={`px-4 py-2 hover:bg-gray-50 ${!notification.read ? 'bg-indigo-50' : ''}`}
+                            className={`px-4 py-2 hover:bg-gray-50 ${!notification.read ? 'bg-[#E3F2FD]' : ''}`}
                           >
                             <div className="flex justify-between items-start">
                               <p className="text-sm font-medium text-gray-900">
@@ -212,7 +212,7 @@ export default function TopBar() {
                   
                   <div className="border-t px-4 py-2">
                     <button 
-                      className="text-xs text-indigo-600 hover:text-indigo-800 w-full text-center"
+                      className="text-xs text-[#1876D2] hover:text-indigo-800 w-full text-center"
                       onClick={() => navigate('/dashboard/notifications')}
                     >
                       View all notifications
@@ -244,11 +244,11 @@ export default function TopBar() {
             <div className="relative ml-3">
               <button
                 type="button"
-                className="user-menu-trigger flex items-center space-x-2 rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="user-menu-trigger flex items-center space-x-2 rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2]"
                 onClick={() => setShowUserMenu(!showUserMenu)}
               >
                 <span className="sr-only">Open user menu</span>
-                <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center overflow-hidden">
+                <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center overflow-hidden">
                   {user?.avatar ? (
                     <img 
                       src={user.avatar} 
@@ -256,7 +256,7 @@ export default function TopBar() {
                       className="h-full w-full object-cover"
                     />
                   ) : (
-                    <span className="text-indigo-600 font-semibold">
+                    <span className="text-[#1876D2] font-semibold">
                       {user?.name?.charAt(0) || 'U'}
                     </span>
                   )}

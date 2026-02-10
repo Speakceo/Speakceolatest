@@ -306,7 +306,7 @@ export default function Dashboard() {
   const MetricCard = ({ title, value, change, icon: Icon, color, onClick, trend = 'up' }: any) => (
     <div 
       className={`bg-white rounded-xl p-6 shadow-sm border border-gray-100 cursor-pointer transition-all duration-200 hover:shadow-lg hover:scale-105 ${
-        selectedMetric === title ? 'ring-2 ring-indigo-500' : ''
+        selectedMetric === title ? 'ring-2 ring-[#1876D2]' : ''
       }`}
       onClick={() => {
         setSelectedMetric(selectedMetric === title ? null : title);
@@ -412,7 +412,7 @@ export default function Dashboard() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <RefreshCw className="h-8 w-8 animate-spin text-indigo-600 mx-auto mb-4" />
+          <RefreshCw className="h-8 w-8 animate-spin text-[#1876D2] mx-auto mb-4" />
           <p className="text-gray-600">Loading admin dashboard...</p>
           <p className="text-xs text-gray-500 mt-2">Connecting to Supabase database...</p>
         </div>
@@ -428,7 +428,7 @@ export default function Dashboard() {
           <p className="text-gray-600 mb-4">{error}</p>
           <button
             onClick={refreshData}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+            className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0]"
           >
             Retry Connection
           </button>
@@ -479,7 +479,7 @@ export default function Dashboard() {
               {/* Refresh Button */}
               <button
                 onClick={refreshData}
-                className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                className="flex items-center px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
                 Refresh
@@ -510,7 +510,7 @@ export default function Dashboard() {
                 <div className="text-sm text-gray-500">Error Rate</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600">{stats.activeUsers}</div>
+                <div className="text-2xl font-bold text-[#1876D2]">{stats.activeUsers}</div>
                 <div className="text-sm text-gray-500">Active Users</div>
               </div>
             </div>
@@ -545,7 +545,7 @@ export default function Dashboard() {
                 {alert.actionable && alert.action && (
                   <button
                     onClick={() => navigate(alert.action!.link)}
-                    className="px-4 py-2 text-sm font-medium text-indigo-600 hover:text-indigo-800"
+                    className="px-4 py-2 text-sm font-medium text-[#1876D2] hover:text-indigo-800"
                   >
                     {alert.action.text}
                   </button>
@@ -586,7 +586,7 @@ export default function Dashboard() {
               value={stats.liveClasses}
               change={stats.liveClasses > 0 ? 100 : 0}
               icon={Video}
-              color="bg-purple-500"
+              color="bg-[#F5F9FC]0"
               onClick={() => navigate('/admin/live-classes')}
             />
             <MetricCard
@@ -609,7 +609,7 @@ export default function Dashboard() {
                 <h2 className="text-xl font-semibold text-gray-900">Recent Activity</h2>
                 <button
                   onClick={() => navigate('/admin/activity')}
-                  className="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
+                  className="text-[#1876D2] hover:text-indigo-800 text-sm font-medium"
                 >
                   View All
                 </button>
@@ -622,14 +622,14 @@ export default function Dashboard() {
                         <div className={`p-2 rounded-lg ${
                           activity.type === 'course_completion' ? 'bg-green-100' :
                           activity.type === 'payment' ? 'bg-blue-100' :
-                          activity.type === 'quiz' ? 'bg-purple-100' :
-                          activity.type === 'signup' ? 'bg-indigo-100' :
+                          activity.type === 'quiz' ? 'bg-[#E3F2FD]' :
+                          activity.type === 'signup' ? 'bg-[#E3F2FD]' :
                           'bg-gray-100'
                         }`}>
                           {activity.type === 'course_completion' && <CheckCircle className="h-5 w-5 text-green-600" />}
                           {activity.type === 'payment' && <CreditCard className="h-5 w-5 text-blue-600" />}
-                          {activity.type === 'quiz' && <Target className="h-5 w-5 text-purple-600" />}
-                          {activity.type === 'signup' && <Users className="h-5 w-5 text-indigo-600" />}
+                          {activity.type === 'quiz' && <Target className="h-5 w-5 text-[#1876D2]" />}
+                          {activity.type === 'signup' && <Users className="h-5 w-5 text-[#1876D2]" />}
                           {activity.type === 'login' && <Users className="h-5 w-5 text-gray-600" />}
                         </div>
                         <div className="flex-1">
@@ -675,7 +675,7 @@ export default function Dashboard() {
                           <div className="flex items-center space-x-2">
                             <div className="flex-1 bg-gray-200 rounded-full h-2">
                               <div
-                                className="bg-indigo-600 h-2 rounded-full"
+                                className="bg-[#1876D2] h-2 rounded-full"
                                 style={{ width: `${performer.progress}%` }}
                               />
                             </div>
@@ -708,14 +708,14 @@ export default function Dashboard() {
                 <div className="space-y-3">
                   <button
                     onClick={() => navigate('/admin/courses/new')}
-                    className="w-full flex items-center px-4 py-3 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors"
+                    className="w-full flex items-center px-4 py-3 bg-[#E3F2FD] text-indigo-700 rounded-lg hover:bg-[#E3F2FD] transition-colors"
                   >
                     <Plus className="h-5 w-5 mr-3" />
                     Create New Course
                   </button>
                   <button
                     onClick={() => navigate('/admin/live-classes/new')}
-                    className="w-full flex items-center px-4 py-3 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition-colors"
+                    className="w-full flex items-center px-4 py-3 bg-[#F5F9FC] text-[#1876D2] rounded-lg hover:bg-[#E3F2FD] transition-colors"
                   >
                     <Video className="h-5 w-5 mr-3" />
                     Schedule Live Class
@@ -786,14 +786,14 @@ export default function Dashboard() {
                   <button
                     onClick={handleSendReminders}
                     disabled={isSendingMessage}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 transition-all duration-200"
+                    className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-purple-700 disabled:opacity-50 transition-all duration-200"
                   >
                     {isSendingMessage ? 'Sending...' : 'Send Reminders'}
                   </button>
                 ) : (
                   <button
                     onClick={handleReviewContent}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-all duration-200"
+                    className="px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-purple-700 transition-all duration-200"
                   >
                     Review Content
                   </button>

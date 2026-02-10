@@ -334,7 +334,7 @@ export default function PitchSimulator() {
             ) : (
               <button
                 onClick={importBrandLogo}
-                className="flex items-center space-x-2 px-4 py-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                className="flex items-center space-x-2 px-4 py-2 text-[#1876D2] hover:bg-[#E3F2FD] rounded-lg transition-colors"
               >
                 <ImageIcon className="h-4 w-4" />
                 <span>Import Brand Logo</span>
@@ -353,7 +353,7 @@ export default function PitchSimulator() {
             value={pitch.content}
             onChange={(e) => setPitch({ ...pitch, content: e.target.value })}
             placeholder="Write your pitch script here... Start with a hook, explain your value proposition, and end with a clear call to action. Include details about your target market, business model, and competitive advantage."
-            className="w-full h-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 resize-none"
+            className="w-full h-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1876D2] focus:border-[#1876D2] resize-none"
           />
           <div className="flex justify-between mt-4 text-sm text-gray-500">
             <span>{pitch.content.length} characters</span>
@@ -361,30 +361,30 @@ export default function PitchSimulator() {
           </div>
           
           {/* Tips for a good pitch */}
-          <div className="mt-6 p-4 bg-indigo-50 rounded-lg">
+          <div className="mt-6 p-4 bg-[#E3F2FD] rounded-lg">
             <h4 className="font-medium text-indigo-700 mb-2 flex items-center">
               <Lightbulb className="h-4 w-4 mr-2" />
               Pitch Structure Tips
             </h4>
             <ul className="space-y-2 text-sm text-indigo-700">
               <li className="flex items-start">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-[#1876D2] mt-0.5 mr-2 flex-shrink-0" />
                 <span>Start with a compelling hook that grabs attention</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-[#1876D2] mt-0.5 mr-2 flex-shrink-0" />
                 <span>Clearly state the problem your business solves</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-[#1876D2] mt-0.5 mr-2 flex-shrink-0" />
                 <span>Explain your solution and what makes it unique</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-[#1876D2] mt-0.5 mr-2 flex-shrink-0" />
                 <span>Describe your target market and business model</span>
               </li>
               <li className="flex items-start">
-                <CheckCircle className="h-4 w-4 text-indigo-600 mt-0.5 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-4 w-4 text-[#1876D2] mt-0.5 mr-2 flex-shrink-0" />
                 <span>End with a clear call to action</span>
               </li>
             </ul>
@@ -395,7 +395,7 @@ export default function PitchSimulator() {
         <div className="bg-white rounded-xl p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Record Your Pitch</h3>
           <div className="flex flex-col items-center justify-center space-y-6">
-            <div className="h-32 w-32 rounded-full bg-indigo-50 flex items-center justify-center">
+            <div className="h-32 w-32 rounded-full bg-[#E3F2FD] flex items-center justify-center">
               {isRecording ? (
                 <StopCircle
                   className="h-16 w-16 text-red-600 cursor-pointer"
@@ -403,7 +403,7 @@ export default function PitchSimulator() {
                 />
               ) : (
                 <Mic
-                  className="h-16 w-16 text-indigo-600 cursor-pointer"
+                  className="h-16 w-16 text-[#1876D2] cursor-pointer"
                   onClick={handleStartRecording}
                 />
               )}
@@ -453,7 +453,7 @@ export default function PitchSimulator() {
             <div className="space-y-3">
               <div className="p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center text-sm font-medium text-gray-700 mb-1">
-                  <Target className="h-4 w-4 text-indigo-600 mr-2" />
+                  <Target className="h-4 w-4 text-[#1876D2] mr-2" />
                   Business Model
                 </div>
                 <p className="text-xs text-gray-500">
@@ -465,7 +465,7 @@ export default function PitchSimulator() {
               
               <div className="p-3 bg-gray-50 rounded-lg">
                 <div className="flex items-center text-sm font-medium text-gray-700 mb-1">
-                  <BarChart2 className="h-4 w-4 text-purple-600 mr-2" />
+                  <BarChart2 className="h-4 w-4 text-[#1876D2] mr-2" />
                   Financial Projections
                 </div>
                 <p className="text-xs text-gray-500">
@@ -496,7 +496,7 @@ export default function PitchSimulator() {
         <button
           onClick={handleAnalyzePitch}
           disabled={isAnalyzing || !pitch.content}
-          className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90 disabled:opacity-50 transition-colors"
+          className="flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-lg hover:opacity-90 disabled:opacity-50 transition-colors"
         >
           {isAnalyzing ? (
             <>
@@ -519,7 +519,7 @@ export default function PitchSimulator() {
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h3 className="text-lg font-semibold text-gray-900 mb-6">Pitch Analysis</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="md:col-span-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white text-center">
+              <div className="md:col-span-1 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white text-center">
                 <h4 className="text-lg font-medium mb-2">Overall Score</h4>
                 <div className="text-5xl font-bold">{pitch.score}/100</div>
                 <p className="mt-2 text-sm text-indigo-100">
@@ -582,14 +582,14 @@ export default function PitchSimulator() {
           {/* Improvement Suggestions */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <Lightbulb className="h-5 w-5 text-indigo-600 mr-2" />
+              <Lightbulb className="h-5 w-5 text-[#1876D2] mr-2" />
               Improvement Suggestions
             </h4>
             <div className="space-y-3">
               {pitch.improvements?.map((improvement, index) => (
-                <div key={index} className="flex items-start p-4 bg-indigo-50 rounded-lg">
-                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
-                    <span className="text-sm font-medium text-indigo-600">{index + 1}</span>
+                <div key={index} className="flex items-start p-4 bg-[#E3F2FD] rounded-lg">
+                  <div className="flex-shrink-0 h-6 w-6 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
+                    <span className="text-sm font-medium text-[#1876D2]">{index + 1}</span>
                   </div>
                   <p className="text-indigo-700">{improvement}</p>
                 </div>
@@ -600,14 +600,14 @@ export default function PitchSimulator() {
           {/* Enhanced Pitch */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-              <Sparkles className="h-5 w-5 text-purple-600 mr-2" />
+              <Sparkles className="h-5 w-5 text-[#1876D2] mr-2" />
               Enhanced Pitch (AI-Rewritten)
             </h4>
             <div className="p-6 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg">
               <p className="text-gray-700 whitespace-pre-line">{pitch.enhancedPitch}</p>
             </div>
             <div className="mt-4 flex justify-end">
-              <button className="flex items-center space-x-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+              <button className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-purple-700 transition-colors">
                 <Save className="h-4 w-4" />
                 <span>Save Enhanced Version</span>
               </button>
@@ -631,7 +631,7 @@ export default function PitchSimulator() {
             </div>
             
             {/* Motivational Note */}
-            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-6 text-white">
+            <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white">
               <h4 className="text-lg font-semibold mb-4 flex items-center">
                 <Award className="h-5 w-5 mr-2" />
                 Personal Note
@@ -644,16 +644,16 @@ export default function PitchSimulator() {
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h4 className="text-lg font-semibold text-gray-900 mb-4">Next Steps</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <button className="flex flex-col items-center p-4 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors">
-                <Presentation className="h-8 w-8 text-indigo-600 mb-2" />
+              <button className="flex flex-col items-center p-4 bg-[#E3F2FD] rounded-lg hover:bg-[#E3F2FD] transition-colors">
+                <Presentation className="h-8 w-8 text-[#1876D2] mb-2" />
                 <span className="font-medium text-indigo-700">Practice Again</span>
                 <span className="text-xs text-indigo-500 mt-1">Refine your delivery</span>
               </button>
               
-              <button className="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
-                <MessageSquare className="h-8 w-8 text-purple-600 mb-2" />
-                <span className="font-medium text-purple-700">Get Mentor Feedback</span>
-                <span className="text-xs text-purple-500 mt-1">Expert guidance</span>
+              <button className="flex flex-col items-center p-4 bg-[#F5F9FC] rounded-lg hover:bg-[#E3F2FD] transition-colors">
+                <MessageSquare className="h-8 w-8 text-[#1876D2] mb-2" />
+                <span className="font-medium text-[#1876D2]">Get Mentor Feedback</span>
+                <span className="text-xs text-[#1876D2] mt-1">Expert guidance</span>
               </button>
               
               <button className="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
