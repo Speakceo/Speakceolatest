@@ -2339,7 +2339,7 @@ export default function Demo() {
               <div className="relative z-10">
                 <div className="text-center mb-6">
                   <LottieAnimation
-                    src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie"
+                    src="/animations/welcome.json"
                     className="w-24 h-24 mx-auto mb-2"
                   />
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -2676,7 +2676,10 @@ export default function Demo() {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <Rocket className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+            <LottieAnimation
+              src="/animations/coding.json"
+              className="w-48 h-48 mx-auto mb-4"
+            />
             <h3 className="text-2xl font-semibold text-gray-900 mb-2">
               Ready to Build?
             </h3>

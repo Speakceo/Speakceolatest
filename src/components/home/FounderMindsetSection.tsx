@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Rocket, Zap, TrendingUp, Sparkles, Target, Users, Lightbulb, Brain } from 'lucide-react';
+import LottieAnimation from '../ui/LottieAnimation';
 
 export default function FounderMindsetSection() {
   const features = [
@@ -145,28 +146,12 @@ export default function FounderMindsetSection() {
                 </div>
               </div>
 
-              {/* Right: Visual */}
-              <div className="relative">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Lightbulb className="h-6 w-6 text-white" />
-                      <div className="flex-1 h-3 bg-white/20 rounded-full"></div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Target className="h-6 w-6 text-white" />
-                      <div className="flex-1 h-3 bg-white/30 rounded-full"></div>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Users className="h-6 w-6 text-white" />
-                      <div className="flex-1 h-3 bg-white/20 rounded-full"></div>
-                    </div>
-                  </div>
-                  
-                  <div className="mt-6 text-center">
-                    <span className="text-white/80 text-sm">AI Literacy + Execution = Success</span>
-                  </div>
-                </div>
+              {/* Right: Lottie Robot Animation */}
+              <div className="relative flex items-center justify-center">
+                <LottieAnimation
+                  src="/animations/robot.json"
+                  className="w-full max-w-[320px] h-auto"
+                />
               </div>
             </div>
           </div>

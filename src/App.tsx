@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 
@@ -13,64 +13,65 @@ import WebVitals from './components/common/WebVitals'
 // Store
 import { useUserStore } from './lib/store'
 
-// Pages
+// ═══ Only Home is eagerly loaded (landing page). Everything else is lazy ═══
 import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Courses from './pages/Courses'
-import Tools from './pages/Tools'
-import Community from './pages/Community'
-import LiveClasses from './pages/LiveClasses'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
-import Events from './pages/Events'
-import FAQ from './pages/FAQ'
-import Testimonials from './pages/Testimonials'
-import Resources from './pages/Resources'
-import Partnerships from './pages/Partnerships'
-import Demo from './pages/Demo'
+
+// Lazy-loaded pages — split into separate chunks for faster initial load
+const About = lazy(() => import('./pages/About'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Courses = lazy(() => import('./pages/Courses'))
+const Tools = lazy(() => import('./pages/Tools'))
+const Community = lazy(() => import('./pages/Community'))
+const LiveClasses = lazy(() => import('./pages/LiveClasses'))
+const Blog = lazy(() => import('./pages/Blog'))
+const BlogPost = lazy(() => import('./pages/BlogPost'))
+const Events = lazy(() => import('./pages/Events'))
+const FAQ = lazy(() => import('./pages/FAQ'))
+const Testimonials = lazy(() => import('./pages/Testimonials'))
+const Resources = lazy(() => import('./pages/Resources'))
+const Partnerships = lazy(() => import('./pages/Partnerships'))
+const Demo = lazy(() => import('./pages/Demo'))
 
 // Legal Pages
-import PrivacyPolicy from './pages/PrivacyPolicy'
-import TermsOfService from './pages/TermsOfService'
-import CookiePolicy from './pages/CookiePolicy'
-import SetupSpeakCEO from './components/admin/SetupSpeakCEO'
-import TestLeadForm from './components/TestLeadForm'
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazy(() => import('./pages/TermsOfService'))
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'))
+const SetupSpeakCEO = lazy(() => import('./components/admin/SetupSpeakCEO'))
+const TestLeadForm = lazy(() => import('./components/TestLeadForm'))
 
 // Auth Components
-import SpeakCEOLogin from './components/auth/SpeakCEOLogin'
-import ForgotPassword from './components/auth/ForgotPassword'
+const SpeakCEOLogin = lazy(() => import('./components/auth/SpeakCEOLogin'))
+const ForgotPassword = lazy(() => import('./components/auth/ForgotPassword'))
 
 // Dashboard Components
-import DashboardLayout from './components/dashboard/DashboardLayout'
-import Overview from './components/dashboard/Overview'
-import LearningJourney from './components/dashboard/LearningJourney'
-import MyCourses from './components/dashboard/MyCourses'
-import DashboardLiveClasses from './components/dashboard/LiveClasses'
-import TasksAssignments from './components/dashboard/TasksAssignments'
-import BusinessSimulation from './components/dashboard/BusinessSimulation'
-import AITools from './components/dashboard/AITools'
-import Achievements from './components/dashboard/Achievements'
-import Analytics from './components/dashboard/Analytics'
-import Messages from './components/dashboard/Messages'
-import Quiz from './components/dashboard/Quiz'
-import UserProfile from './components/dashboard/UserProfile'
-import BusinessInsights from './components/dashboard/BusinessInsights'
-import Help from './components/dashboard/Help'
+const DashboardLayout = lazy(() => import('./components/dashboard/DashboardLayout'))
+const Overview = lazy(() => import('./components/dashboard/Overview'))
+const LearningJourney = lazy(() => import('./components/dashboard/LearningJourney'))
+const MyCourses = lazy(() => import('./components/dashboard/MyCourses'))
+const DashboardLiveClasses = lazy(() => import('./components/dashboard/LiveClasses'))
+const TasksAssignments = lazy(() => import('./components/dashboard/TasksAssignments'))
+const BusinessSimulation = lazy(() => import('./components/dashboard/BusinessSimulation'))
+const AITools = lazy(() => import('./components/dashboard/AITools'))
+const Achievements = lazy(() => import('./components/dashboard/Achievements'))
+const Analytics = lazy(() => import('./components/dashboard/Analytics'))
+const Messages = lazy(() => import('./components/dashboard/Messages'))
+const Quiz = lazy(() => import('./components/dashboard/Quiz'))
+const UserProfile = lazy(() => import('./components/dashboard/UserProfile'))
+const BusinessInsights = lazy(() => import('./components/dashboard/BusinessInsights'))
+const Help = lazy(() => import('./components/dashboard/Help'))
 
 // Admin Components
-import AdminLayout from './components/admin/AdminLayout'
-import AdminDashboard from './pages/AdminDashboard'
-import UsersPage from './components/admin/UsersPage'
-import CoursesPage from './components/admin/CoursesPage'
-import LessonPlannerDashboard from './components/admin/LessonPlannerDashboard'
-import TasksPage from './components/admin/TasksPage'
-import AdminLiveClassesPage from './components/admin/LiveClassesPage'
-import CommunityModeration from './components/admin/CommunityModeration'
-import AnalyticsPage from './components/admin/AnalyticsPage'
-import PaymentsPage from './components/admin/PaymentsPage'
-import SupportPage from './components/admin/SupportPage'
-import SettingsPage from './components/admin/SettingsPage'
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
+const UsersPage = lazy(() => import('./components/admin/UsersPage'))
+const CoursesPage = lazy(() => import('./components/admin/CoursesPage'))
+const LessonPlannerDashboard = lazy(() => import('./components/admin/LessonPlannerDashboard'))
+const TasksPage = lazy(() => import('./components/admin/TasksPage'))
+const AdminLiveClassesPage = lazy(() => import('./components/admin/LiveClassesPage'))
+const CommunityModeration = lazy(() => import('./components/admin/CommunityModeration'))
+const AnalyticsPage = lazy(() => import('./components/admin/AnalyticsPage'))
+const PaymentsPage = lazy(() => import('./components/admin/PaymentsPage'))
+const SupportPage = lazy(() => import('./components/admin/SupportPage'))
+const SettingsPage = lazy(() => import('./components/admin/SettingsPage'))
 
 // Common Components
 import Navbar from './components/Navbar'
@@ -100,15 +101,15 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50 flex items-center justify-center p-4">
-          <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6 text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Oops! Something went wrong</h1>
-            <p className="text-gray-600 mb-6">
+        <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+          <div className="max-w-md w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 text-center">
+            <h1 className="text-2xl font-bold text-white mb-4">Oops! Something went wrong</h1>
+            <p className="text-gray-400 mb-6">
               We're sorry for the inconvenience. Please try refreshing the page or contact support if the problem persists.
             </p>
             <button 
               onClick={() => window.location.reload()} 
-              className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+              className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-[#1876D2]/30 transition-all"
             >
               Refresh Page
             </button>
@@ -188,7 +189,7 @@ function AppContent() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-slate-950">
       <ConditionalNavbar />
       <Breadcrumb />
       <main className="flex-grow">

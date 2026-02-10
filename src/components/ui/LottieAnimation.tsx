@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from 'react';
 
-// Lazy load Player to avoid blocking initial render
 const Player = lazy(() =>
   import('@lottiefiles/react-lottie-player').then((mod) => ({ default: mod.Player }))
 );
@@ -15,7 +14,8 @@ interface LottieAnimationProps {
 }
 
 /**
- * Premium Lottie animation wrapper with lazy loading + graceful fallback
+ * Premium Lottie animation wrapper with lazy loading + graceful fallback.
+ * Use local paths like "/animations/rocket.json" for reliable loading.
  */
 export default function LottieAnimation({
   src,
@@ -29,7 +29,7 @@ export default function LottieAnimation({
     <Suspense
       fallback={
         <div className={`flex items-center justify-center ${className}`} style={style}>
-          <div className="w-8 h-8 border-2 border-[#1876D2]/30 border-t-[#1876D2] rounded-full animate-spin" />
+          <div className="w-6 h-6 border-2 border-[#1876D2]/30 border-t-[#1876D2] rounded-full animate-spin" />
         </div>
       }
     >

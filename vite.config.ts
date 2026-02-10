@@ -12,10 +12,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'SpeakCEO - Young Entrepreneurship Program',
-        short_name: 'SpeakCEO',
-        description: 'Transform your child into a future business leader with our comprehensive 180-Day Young CEO Program.',
-        theme_color: '#4F46E5',
+        name: 'Orbit Student - Think Future Think Orbit',
+        short_name: 'OrbitStudent',
+        description: 'AI-powered learning platform for young entrepreneurs ages 10-18.',
+        theme_color: '#1876D2',
         background_color: '#ffffff',
         display: 'standalone',
         icons: [

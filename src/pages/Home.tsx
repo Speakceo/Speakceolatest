@@ -24,9 +24,9 @@ import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
-import { SplineHero } from '../components/ui/SplineHero';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
 import LottieAnimation from '../components/ui/LottieAnimation';
+import AnimatedHero3D from '../components/ui/AnimatedHero3D';
 
 // Optimized animation variants for better performance
 const fadeIn = {
@@ -71,123 +71,168 @@ export default function Home() {
       />
       
       <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden">
-        {/* Enhanced Hero Section - Orbit Brand Colors */}
-        <section className="relative bg-gradient-to-br from-[#1876D2] via-[#1E88E5] to-[#00B0FF] text-white overflow-hidden min-h-screen flex items-center pt-16">
-          {/* Subtle background pattern */}
-          <div className="absolute inset-0 bg-white/5"></div>
-          
-          {/* Minimal gradient orbs */}
-          <div className="absolute top-20 left-10 w-96 h-96 bg-white/10 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-white/10 rounded-full filter blur-3xl"></div>
-          
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Enhanced Hero Content */}
+        {/* ═══ HERO SECTION — Premium Dark with Animated Gradient Mesh ═══ */}
+        <section className="relative bg-slate-950 text-white overflow-hidden min-h-screen flex items-center pt-16">
+          {/* Animated gradient mesh background */}
+          <div className="absolute inset-0">
+            <div className="absolute top-[-30%] left-[-15%] w-[55%] h-[55%] bg-[#1876D2]/25 rounded-full filter blur-[120px] animate-[float_8s_ease-in-out_infinite]" />
+            <div className="absolute bottom-[-25%] right-[-10%] w-[50%] h-[50%] bg-[#00B0FF]/20 rounded-full filter blur-[120px] animate-[float_10s_ease-in-out_infinite_reverse]" />
+            <div className="absolute top-[40%] right-[30%] w-[25%] h-[25%] bg-[#40C4FF]/10 rounded-full filter blur-[80px] animate-[float_12s_ease-in-out_infinite]" />
+          </div>
+
+          {/* Dot grid overlay */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Left: Content */}
               <motion.div 
                 initial="hidden"
                 animate="visible"
                 variants={staggerContainer}
-                className="text-center lg:text-left z-10 relative"
+                className="text-center lg:text-left z-10"
               >
                 <motion.div
                   variants={fadeIn}
-                  className="inline-block mb-6 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30"
+                  className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
                 >
-                  <span className="text-white font-medium text-sm">Join 2,500+ Young Entrepreneurs</span>
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                  <span className="text-sm text-gray-300 font-medium">Join 2,500+ Young Entrepreneurs</span>
                 </motion.div>
                 
                 <motion.h1 
                   variants={fadeIn}
-                  className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
+                  className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
                 >
-                  Where Young Minds
-                  <span className="block text-white drop-shadow-lg">
+                  <span className="text-white">Where Young Minds</span>
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#40C4FF]">
                     Become Future Leaders
                   </span>
                 </motion.h1>
                 
                 <motion.p 
                   variants={fadeIn}
-                  className="text-xl text-white/90 mb-10 max-w-2xl leading-relaxed"
+                  className="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed"
                 >
-                  Transform your child's potential into reality with our immersive 180-day journey. From idea to launch, we guide young entrepreneurs through every step of building their first business.
+                  Transform your child's potential into reality with our immersive 180-day journey. From idea to launch, we guide young entrepreneurs through every step.
                 </motion.p>
                 
                 <motion.div 
                   variants={fadeIn}
-                  className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
+                  className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 >
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-10 py-5 bg-white text-[#1876D2] font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ease-out hover:scale-105"
+                    className="group relative px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]"
                   >
-                    <span className="relative z-10 flex items-center justify-center">
-                    Check Courses
-                      <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
+                    <span className="flex items-center justify-center gap-2">
+                      Check Courses
+                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </button>
                   <button
                     onClick={() => setShowCareerGuide(true)}
-                    className="px-10 py-5 bg-white/10 hover:bg-slate-50/20 text-white font-semibold rounded-2xl transition-all duration-300 ease-out border-2 border-white/30 hover:border-white/50 backdrop-blur-sm hover:scale-105 shadow-md hover:shadow-lg"
+                    className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm"
                   >
-                    Download Guide
+                    Download Free Guide
                   </button>
                 </motion.div>
 
-                {/* Enhanced stats section */}
-                <motion.div 
-                  variants={fadeIn}
-                  className="mt-16 grid grid-cols-3 gap-8 text-center"
-                >
-                  <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                    <div className="text-2xl font-bold text-white">2,500+</div>
-                    <div className="text-sm text-white/90">Students</div>
-                  </div>
-                  <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                    <div className="text-2xl font-bold text-white">180</div>
-                    <div className="text-sm text-white/90">Day Program</div>
-                  </div>
-                  <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4">
-                    <div className="text-2xl font-bold text-white">98%</div>
-                    <div className="text-sm text-white/90">Success Rate</div>
-                  </div>
+                {/* Stats — glass cards */}
+                <motion.div variants={fadeIn} className="mt-14 grid grid-cols-3 gap-4">
+                  {[
+                    { value: '2,500+', label: 'Students' },
+                    { value: '180', label: 'Day Program' },
+                    { value: '98%', label: 'Success Rate' },
+                  ].map((stat, i) => (
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 text-center backdrop-blur-sm">
+                      <div className="text-xl sm:text-2xl font-bold text-white">{stat.value}</div>
+                      <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
+                    </div>
+                  ))}
                 </motion.div>
               </motion.div>
               
-              {/* Enhanced Hero Image */}
+              {/* Right: Hero visual — Lottie + floating glass cards */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="relative z-10 hidden lg:block"
+              >
+                <div className="relative" style={{ perspective: '1000px' }}>
+                  {/* Main image with glass frame */}
+                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-[#1876D2]/10">
+                    <img
+                      src="/images/hero/orbit-kids-laptop.jpg"
+                      alt="Orbit students learning with laptop"
+                      className="w-full h-auto object-cover"
+                      width="800"
+                      height="600"
+                      fetchpriority="high"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                  </div>
+
+                  {/* Floating accent card — top right */}
+                  <motion.div
+                    animate={{ y: [-6, 6, -6] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute -top-4 -right-4 bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-xl p-3 shadow-xl"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-lg flex items-center justify-center">
+                        <Rocket className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-white text-xs font-semibold">AI-Powered</div>
+                        <div className="text-gray-400 text-[10px]">Learning</div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Floating accent card — bottom left */}
+                  <motion.div
+                    animate={{ y: [6, -6, 6] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute -bottom-4 -left-4 bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-xl p-3 shadow-xl"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-lg flex items-center justify-center">
+                        <TrendingUp className="h-4 w-4 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-white text-xs font-semibold">Real Projects</div>
+                        <div className="text-emerald-400 text-[10px]">+127% Growth</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Mobile hero — Lottie rocket animation */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="relative z-10"
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="relative z-10 lg:hidden flex justify-center"
               >
-                <div className="relative">
-                <img 
-                  src="/images/hero/orbit-kids-laptop.png" 
-                  alt="Orbit students in branded t-shirts learning with laptop" 
-                    className="rounded-3xl shadow-2xl w-full h-auto object-cover"
-                  width="800"
-                  height="600"
-                  fetchpriority="high"
-                  decoding="async"
-                  />
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/5 to-[#00B0FF]/5"></div>
-                  
-                  {/* Subtle floating accents — no bouncing */}
-                  <div className="absolute -top-3 -right-3 w-10 h-10 bg-white/15 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-center border border-white/20 hidden lg:flex">
-                    <TrendingUp className="h-5 w-5 text-white/80" />
-                  </div>
-                  <div className="absolute -bottom-3 -left-3 w-10 h-10 bg-white/15 backdrop-blur-md rounded-xl shadow-lg flex items-center justify-center border border-white/20 hidden lg:flex">
-                    <Lightbulb className="h-5 w-5 text-white/80" />
-                  </div>
-                </div>
+                <LottieAnimation
+                  src="/animations/rocket.json"
+                  className="w-64 h-64"
+                />
               </motion.div>
             </div>
           </div>
+
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-900 to-transparent" />
         </section>
 
-        {/* Interactive 3D Experience Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        {/* Interactive 3D Experience Section — Lightweight CSS 3D */}
+        <section className="py-20 bg-slate-950 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0 }}
@@ -196,48 +241,25 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <div className="inline-block bg-[#E3F2FD] rounded-full px-6 py-2 mb-6">
-                <span className="text-[#1876D2] font-semibold text-sm uppercase tracking-wider">Interactive Experience</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+                <Sparkles className="h-4 w-4 text-[#00B0FF]" />
+                <span className="text-sm text-gray-300 font-medium">Interactive Experience</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-                Experience the Future of Learning
+              <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white tracking-tight">
+                Experience the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Learning</span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Immerse yourself in our cutting-edge 3D learning environment where education meets innovation
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Immerse yourself in our cutting-edge learning environment where education meets innovation
               </p>
             </motion.div>
             
-            {/* Spline 3D - Desktop only for performance */}
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="hidden md:block"
+              transition={{ duration: 0.6 }}
             >
-              <SplineHero />
-            </motion.div>
-            
-            {/* Mobile-optimized static version */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="md:hidden"
-            >
-              <div className="relative h-[400px] bg-gradient-to-br from-[#1876D2] via-[#1876D2] to-[#00B0FF] rounded-xl shadow-2xl overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white p-8">
-                    <LottieAnimation
-                      src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie"
-                      className="w-40 h-40 mx-auto mb-4"
-                    />
-                    <h3 className="text-2xl font-bold mb-2">Interactive Learning</h3>
-                    <p className="text-white/80 text-sm">Experience hands-on entrepreneurship education</p>
-                  </div>
-                </div>
-              </div>
+              <AnimatedHero3D />
             </motion.div>
           </div>
         </section>
@@ -246,9 +268,9 @@ export default function Home() {
         <FounderMindsetSection />
 
         {/* Orbit Playground Demo Section */}
-        <section className="py-20 bg-gradient-to-br from-[#F5F9FC] to-[#E3F2FD] relative overflow-hidden">
-          {/* Background Elements - optimized */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#1876D2]/5 rounded-full filter blur-3xl"></div>
+        <section className="py-20 bg-white relative overflow-hidden">
+          {/* Subtle dot grid */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <motion.div 
@@ -720,7 +742,7 @@ export default function Home() {
               <div className="relative">
                 <div className="relative">
                   <img 
-                    src="/images/hero/journey-map.png" 
+                    src="/images/hero/journey-map.jpg" 
                     alt="Students collaborating in comprehensive learning environment with AI tools and live mentorship" 
                     className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                     loading="lazy"
@@ -767,7 +789,7 @@ export default function Home() {
             <div className="mb-16 text-center">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl max-w-5xl mx-auto bg-gradient-to-br from-[#1876D2] to-[#00B0FF] p-1">
                 <img 
-                  src="/images/hero/orbit-kids-banner.png" 
+                  src="/images/hero/orbit-kids-banner.jpg" 
                   alt="Orbit Student - Empowering Kids to Learn AI - orbitstudent.com" 
                   className="w-full h-auto rounded-2xl"
                   width="1200"
@@ -1002,7 +1024,7 @@ export default function Home() {
             {/* Success Stories Image */}
             <div className="mb-16 text-center">
               <img 
-                src="/images/hero/testimonial-bg.png" 
+                src="/images/hero/testimonial-bg.jpg" 
                 alt="Young entrepreneurs celebrating their success stories" 
                 className="rounded-2xl shadow-xl max-w-2xl mx-auto w-full h-auto"
                 loading="lazy"
@@ -1065,7 +1087,7 @@ export default function Home() {
         </section>
 
         {/* Global Opportunities Section */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-sky-50 relative overflow-hidden">
           {/* Background Elements - optimized */}
           <div className="absolute top-0 left-0 w-96 h-96 bg-[#1876D2]/5 rounded-full filter blur-3xl opacity-40"></div>
           

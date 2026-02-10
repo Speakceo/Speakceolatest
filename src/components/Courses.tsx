@@ -502,7 +502,7 @@ export default function Courses() {
             <div className="relative">
               <div className="relative">
                 <img 
-                  src="/images/hero/journey-map.png" 
+                  src="/images/hero/journey-map.jpg" 
                   alt="Students collaborating in comprehensive learning environment with AI tools and live mentorship" 
                   className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                 />

@@ -59,10 +59,9 @@ export default function Navbar() {
 
   return (
     <div className="w-full relative z-40">
-      {/* Modern Transparent Navbar with Glassmorphism */}
+      {/* Premium Navbar — Dark glassmorphism */}
       <nav className="fixed w-full z-50 transition-all duration-300 top-0 left-0">
-        {/* Transparent glassmorphism background */}
-        <div className="absolute inset-0 bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg"></div>
+        <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl border-b border-white/[0.06]"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -89,31 +88,30 @@ export default function Navbar() {
                   to={item.href}
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive(item.href) 
-                    ? 'text-[#1876D2] bg-white/60 shadow-sm' 
-                    : 'text-gray-700 hover:text-[#1876D2] hover:bg-white/40'
+                    ? 'text-[#00B0FF] bg-white/[0.08]' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/[0.05]'
                   }`}
                 >
                   {t(item.title)}
                 </Link>
               ))}
               
-              {/* Career Guide Button */}
+              {/* Career Guide */}
               <button
                 onClick={() => setShowCareerGuide(true)}
-                className="px-4 py-2 rounded-lg text-sm font-medium bg-[#1876D2] hover:bg-[#00B0FF] text-white transition-all duration-200 ml-2"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/[0.05] transition-all duration-200 ml-1"
               >
                 Career Guide
               </button>
               
-              {/* Theme Toggle */}
               <ThemeToggle size="sm" />
               
-              {/* Modern Auth Buttons */}
+              {/* Auth Buttons */}
               {isInitialized && (
                 user ? (
                   <button
                     onClick={handleDashboardClick}
-                    className="px-5 py-2 rounded-lg text-sm font-medium bg-[#1876D2] hover:bg-[#00B0FF] text-white transition-all duration-200 ml-2"
+                    className="px-5 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white shadow-lg shadow-[#1876D2]/20 hover:shadow-[#1876D2]/40 transition-all duration-200 ml-2"
                   >
                     {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
                   </button>
@@ -121,13 +119,13 @@ export default function Navbar() {
                   <div className="flex items-center space-x-2 ml-2">
                     <button
                       onClick={handleLoginClick}
-                      className="px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:text-[#1876D2] hover:bg-white/40 transition-all duration-200"
+                      className="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/[0.05] transition-all duration-200"
                     >
                       Login
                     </button>
                     <button
                       onClick={handleEnrollmentClick}
-                      className="px-5 py-2 rounded-lg text-sm font-medium bg-[#1876D2] hover:bg-[#00B0FF] text-white transition-all duration-200"
+                      className="px-5 py-2 rounded-lg text-sm font-medium bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white shadow-lg shadow-[#1876D2]/20 hover:shadow-[#1876D2]/40 transition-all duration-200"
                     >
                       Get Started
                     </button>
@@ -136,13 +134,13 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Modern Mobile Menu Button */}
+            {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center space-x-2">
               <ThemeToggle size="sm" />
               <LanguageToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg text-gray-700 hover:text-[#1876D2] hover:bg-white/40 transition-all duration-200"
+                className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/[0.05] transition-all duration-200"
               >
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
@@ -151,9 +149,9 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Modern Mobile Menu */}
+      {/* Mobile Menu — dark glass */}
       <div 
-        className={`md:hidden fixed w-full bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg transition-all duration-300 transform ${
+        className={`md:hidden fixed w-full bg-slate-950/95 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300 transform ${
           isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
         style={{ top: '64px' }}
@@ -164,9 +162,9 @@ export default function Navbar() {
               key={item.title}
               to={item.href}
               className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                isActive(item.href) 
-                ? 'text-[#1876D2] bg-white/60' 
-                : 'text-gray-700 hover:text-[#1876D2] hover:bg-white/40'
+                isActive(item.href)
+                ? 'text-[#00B0FF] bg-white/[0.08]'
+                : 'text-gray-300 hover:text-white hover:bg-white/[0.05]'
               }`}
               onClick={() => setIsOpen(false)}
             >
@@ -174,11 +172,8 @@ export default function Navbar() {
             </Link>
           ))}
           <button
-            onClick={() => {
-              setShowCareerGuide(true);
-              setIsOpen(false);
-            }}
-            className="block w-full text-left px-4 py-3 rounded-lg text-sm font-medium bg-[#1876D2] hover:bg-[#00B0FF] text-white transition-all duration-200 mt-2"
+            onClick={() => { setShowCareerGuide(true); setIsOpen(false); }}
+            className="block w-full text-left px-4 py-3 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/[0.05] transition-all duration-200 mt-2"
           >
             Career Guide
           </button>
@@ -186,7 +181,7 @@ export default function Navbar() {
             user ? (
               <button
                 onClick={handleDashboardClick}
-                className="w-full mt-3 bg-[#1876D2] hover:bg-[#00B0FF] text-white px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-center"
+                className="w-full mt-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-center"
               >
                 {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
               </button>
@@ -194,13 +189,13 @@ export default function Navbar() {
               <div className="space-y-2 mt-3">
                 <button
                   onClick={handleLoginClick}
-                  className="w-full px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:text-[#1876D2] hover:bg-white/40 transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/[0.05] transition-all duration-200"
                 >
                   Login
                 </button>
                 <button
                   onClick={handleEnrollmentClick}
-                  className="w-full bg-[#1876D2] hover:bg-[#00B0FF] text-white px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-center"
+                  className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-5 py-3 rounded-lg text-sm font-medium transition-all duration-200 text-center"
                 >
                   Get Started
                 </button>
