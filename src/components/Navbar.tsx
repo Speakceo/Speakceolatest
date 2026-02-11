@@ -11,6 +11,7 @@ import ThemeToggle from './ThemeToggle';
 const menuItems = [
   { title: 'nav.home', href: '/' },
   { title: 'nav.courses', href: '/courses' },
+  { title: 'nav.resources', href: '/resources' },
   { title: 'nav.about', href: '/about' },
   { title: 'nav.contact', href: '/contact' }
 ];
@@ -162,7 +163,7 @@ export default function Navbar() {
               key={item.title}
               to={item.href}
               className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                isActive(item.href)
+                isActive(item.href) 
                 ? 'text-[#00B0FF] bg-white/[0.08]'
                 : 'text-gray-300 hover:text-white hover:bg-white/[0.05]'
               }`}
