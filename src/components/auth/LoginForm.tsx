@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, AlertCircle, Database, Users, TestTube } from 'lucide-react';
+import { Mail, Lock, AlertCircle, ArrowRight } from 'lucide-react';
 import AuthLayout from './AuthLayout';
-import { signIn, ensureDemoUserProfile, ensureAdminUserProfile, createDemoUserAccount, createAdminUserAccount, checkSupabaseConnection, setupProductionEnvironment } from '../../lib/supabase';
+import { signIn, ensureDemoUserProfile, ensureAdminUserProfile, createDemoUserAccount, createAdminUserAccount } from '../../lib/supabase';
 import { useUserStore } from '../../lib/store';
 
 export default function LoginForm() {
@@ -11,7 +11,6 @@ export default function LoginForm() {
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [dbStatus, setDbStatus] = useState('');
   const navigate = useNavigate();
   const { initializeAuth } = useUserStore();
 
@@ -25,147 +24,34 @@ export default function LoginForm() {
     setPassword('Admin123!');
   };
 
-  const testDatabaseConnection = async () => {
-    setDbStatus('Testing database connection...');
-    try {
-      const isConnected = await checkSupabaseConnection();
-      if (isConnected) {
-        setDbStatus('✅ Database Connected - Creating accounts...');
-        
-        // Try to create demo accounts with detailed logging
-        let demoStatus = '';
-        let adminStatus = '';
-        
-        try {
-          const demoCreated = await createDemoUserAccount();
-          demoStatus = demoCreated ? '✅ Demo account ready' : '❌ Demo account failed';
-        } catch (demoError: any) {
-          demoStatus = `❌ Demo error: ${demoError?.message || 'Unknown error'}`;
-        }
-        
-        try {
-          const adminCreated = await createAdminUserAccount();
-          adminStatus = adminCreated ? '✅ Admin account ready' : '❌ Admin account failed';
-        } catch (adminError: any) {
-          adminStatus = `❌ Admin error: ${adminError?.message || 'Unknown error'}`;
-        }
-        
-        setDbStatus(`✅ Database Connected\n${demoStatus}\n${adminStatus}`);
-      } else {
-        setDbStatus('❌ Database Connection Failed');
-      }
-    } catch (error: any) {
-      setDbStatus(`❌ Error: ${error?.message || 'Unknown error'}`);
-    }
-  };
-
-  const testDemoLogin = async () => {
-    setDbStatus('Testing demo login...');
-    try {
-      // Try to sign in directly
-      await signIn('demo@orbitstudent.ai', 'Demo123!');
-      setDbStatus('✅ Demo login successful! Account exists and working.');
-      // Don't redirect, just test
-    } catch (error: any) {
-      if (error.message.includes('Invalid login credentials')) {
-        setDbStatus('❌ Account does not exist or wrong credentials.\n💡 Try "Create Accounts" button first or check Supabase dashboard.');
-      } else if (error.message.includes('Email not confirmed')) {
-        setDbStatus('❌ Email confirmation required.\n💡 Go to Supabase → Auth → Settings and disable "Enable email confirmations"\nOR go to Auth → Users and manually confirm the user.');
-      } else {
-        setDbStatus(`❌ Login failed: ${error?.message || 'Unknown error'}`);
-      }
-    }
-  };
-
-  const setupForProduction = async () => {
-    setDbStatus('🚀 Setting up production environment...');
-    try {
-      const results = await setupProductionEnvironment();
-      
-      let status = '🎉 Production Setup Results:\n';
-      status += results.tablesCreated ? '✅ Database tables ready\n' : '❌ Database tables failed\n';
-      status += results.rlsPoliciesSet ? '✅ Security policies configured\n' : '❌ Security policies failed\n';
-      status += results.demoAccountCreated ? '✅ Demo account ready\n' : '❌ Demo account failed\n';
-      status += results.adminAccountCreated ? '✅ Admin account ready\n' : '❌ Admin account failed\n';
-      status += results.starterDataCreated ? '✅ Sample data created\n' : '❌ Sample data failed\n';
-      
-      if (results.errors.length > 0) {
-        status += '\n❗ Issues found:\n';
-        results.errors.forEach(error => {
-          status += `• ${error}\n`;
-        });
-        
-        status += '\n💡 Common solutions:\n';
-        status += '• Email confirmation: Supabase → Auth → Settings → Disable "Enable email confirmations"\n';
-        status += '• Manual confirm: Supabase → Auth → Users → Click user → Confirm email\n';
-        status += '• Check policies: Database → RLS enabled on profiles table\n';
-      } else {
-        status += '\n🎊 Ready for production!';
-      }
-      
-      setDbStatus(status);
-    } catch (error: any) {
-      setDbStatus(`❌ Setup failed: ${error?.message || 'Unknown error'}`);
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
     try {
-      console.log('Login attempt with email:', email);
-      
-      // Auto-detect demo vs admin based on email and create account if needed
       if (email === 'demo@orbitstudent.ai') {
-        console.log('Demo login detected - ensuring demo account exists...');
-        try {
-          await createDemoUserAccount();
-        } catch (createError) {
-          console.log('Demo account creation failed, proceeding with login:', createError);
-        }
+        try { await createDemoUserAccount(); } catch (_) {}
       } else if (email === 'admin@orbitstudent.ai') {
-        console.log('Admin login detected - ensuring admin account exists...');
-        try {
-          await createAdminUserAccount();
-        } catch (createError) {
-          console.log('Admin account creation failed, proceeding with login:', createError);
-        }
+        try { await createAdminUserAccount(); } catch (_) {}
       }
-      
-      // Sign in with provided credentials
+
       await signIn(email, password);
-      
-      // Auto-setup profile FIRST based on email
-      if (email === 'demo@orbitstudent.ai') {
-        console.log('Setting up demo user profile...');
-        await ensureDemoUserProfile();
-      } else if (email === 'admin@orbitstudent.ai') {
-        console.log('Setting up admin user profile...');
-        await ensureAdminUserProfile();
-      }
-      
-      // THEN initialize auth to get the updated user profile
+
+      if (email === 'demo@orbitstudent.ai') await ensureDemoUserProfile();
+      else if (email === 'admin@orbitstudent.ai') await ensureAdminUserProfile();
+
       await initializeAuth();
-      
-      // Finally redirect based on email
-      if (email === 'demo@orbitstudent.ai') {
-        navigate('/dashboard', { replace: true });
-      } else if (email === 'admin@orbitstudent.ai') {
-        navigate('/admin', { replace: true });
-      } else {
-        // For any other email, allow login but redirect to dashboard
-        navigate('/dashboard', { replace: true });
-      }
+
+      if (email === 'admin@orbitstudent.ai') navigate('/admin', { replace: true });
+      else navigate('/dashboard', { replace: true });
     } catch (err: any) {
-      // Handle specific error cases with helpful messages
-      if (err.message.includes('Invalid login credentials')) {
-        setError('Invalid email or password. If this is a new account, it may need email confirmation. Check the debugging tools below.');
-      } else if (err.message.includes('Email not confirmed')) {
-        setError('Please confirm your email address. Check Supabase Auth settings or manually confirm the user.');
-      } else if (err.message.includes('too many requests')) {
-        setError('Too many login attempts. Please wait a moment and try again.');
+      if (err.message?.includes('Invalid login credentials')) {
+        setError('Invalid email or password.');
+      } else if (err.message?.includes('Email not confirmed')) {
+        setError('Please confirm your email address first.');
+      } else if (err.message?.includes('too many requests')) {
+        setError('Too many attempts. Please wait a moment.');
       } else {
         setError(err.message || 'Failed to sign in. Please try again.');
       }
@@ -175,35 +61,23 @@ export default function LoginForm() {
   };
 
   return (
-    <AuthLayout
-      title="Welcome back!"
-      subtitle="Sign in to continue your learning journey"
-    >
-      <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+    <AuthLayout title="Welcome back" subtitle="Sign in to continue your learning journey">
+      <form className="space-y-5" onSubmit={handleSubmit}>
         {error && (
-          <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700 flex items-center">
-            <AlertCircle className="h-5 w-5 mr-2" />
-            {error}
+          <div className="rounded-xl bg-red-500/10 border border-red-500/20 p-4 text-sm text-red-400 flex items-start gap-3">
+            <AlertCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
+            <span>{error}</span>
           </div>
         )}
-
-        {/* Debugging Status */}
-        {dbStatus && (
-          <div className="rounded-lg bg-blue-50 p-4 text-sm text-blue-700 whitespace-pre-line">
-            <Database className="h-5 w-5 inline mr-2" />
-            {dbStatus}
-          </div>
-        )}
-
 
         <div className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1.5">
               Email address
             </label>
-            <div className="mt-1 relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-gray-400" />
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                <Mail className="h-4 w-4 text-gray-500" />
               </div>
               <input
                 id="email"
@@ -211,19 +85,19 @@ export default function LoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2] sm:text-sm"
-                placeholder=""
+                className="w-full pl-10 pr-3 py-3 bg-white/[0.03] border border-white/[0.08] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#1876D2]/50 focus:ring-1 focus:ring-[#1876D2]/50 text-sm transition-all"
+                placeholder="you@example.com"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-1.5">
               Password
             </label>
-            <div className="mt-1 relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-gray-400" />
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                <Lock className="h-4 w-4 text-gray-500" />
               </div>
               <input
                 id="password"
@@ -231,8 +105,8 @@ export default function LoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-[#1876D2] focus:border-[#1876D2] sm:text-sm"
-                placeholder=""
+                className="w-full pl-10 pr-3 py-3 bg-white/[0.03] border border-white/[0.08] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#1876D2]/50 focus:ring-1 focus:ring-[#1876D2]/50 text-sm transition-all"
+                placeholder="••••••••"
               />
             </div>
           </div>
@@ -245,17 +119,13 @@ export default function LoginForm() {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="h-4 w-4 text-[#1876D2] focus:ring-[#1876D2] border-gray-300 rounded"
+              className="h-4 w-4 rounded border-white/20 bg-white/5 text-[#1876D2] focus:ring-[#1876D2]/50"
             />
-            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+            <label htmlFor="remember-me" className="ml-2 text-sm text-gray-400">
               Remember me
             </label>
           </div>
-
-          <Link
-            to="/forgot-password"
-            className="text-sm font-medium text-[#1876D2] hover:text-indigo-500"
-          >
+          <Link to="/forgot-password" className="text-sm font-medium text-[#00B0FF] hover:text-white transition-colors">
             Forgot password?
           </Link>
         </div>
@@ -263,12 +133,28 @@ export default function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex justify-center py-3 px-4 border-0 rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#1876D2] to-[#00B0FF] hover:opacity-90 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
+          className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#1876D2] to-[#00B0FF] shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {loading ? 'Signing in...' : 'Sign in'}
+          {loading ? (
+            <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          ) : (
+            <>Sign in <ArrowRight className="h-4 w-4" /></>
+          )}
         </button>
-      </form>
 
+        {/* Quick access */}
+        <div className="pt-4 border-t border-white/[0.06]">
+          <p className="text-xs text-gray-500 text-center mb-3">Quick access</p>
+          <div className="flex gap-2">
+            <button type="button" onClick={fillDemoCredentials} className="flex-1 py-2.5 text-xs font-medium text-gray-400 bg-white/[0.03] border border-white/[0.06] rounded-lg hover:bg-white/[0.06] hover:text-white transition-all">
+              Student Demo
+            </button>
+            <button type="button" onClick={fillAdminCredentials} className="flex-1 py-2.5 text-xs font-medium text-gray-400 bg-white/[0.03] border border-white/[0.06] rounded-lg hover:bg-white/[0.06] hover:text-white transition-all">
+              Admin Demo
+            </button>
+          </div>
+        </div>
+      </form>
     </AuthLayout>
   );
-} 
+}

@@ -63,13 +63,13 @@ const transformationOutcomes = [
     before: "Lacks confidence in speaking",
     after: "Confident public speaker",
     icon: Mic,
-    color: "from-blue-500 to-indigo-600"
+    color: "from-[#1876D2] to-[#00B0FF]"
   },
   {
     before: "No clear direction or goals",
     after: "Clear vision & purpose",
     icon: Target,
-    color: "from-purple-500 to-pink-600"
+    color: "from-[#00B0FF] to-[#40C4FF]"
   },
   {
     before: "Poor financial awareness",
@@ -129,7 +129,7 @@ const learningPath = [
     title: 'Creative Thinking & Innovation',
     description: 'Unlock unlimited creativity and problem-solving',
     icon: Lightbulb,
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-[#1876D2] to-[#00B0FF]',
     parentBenefit: 'See them solve problems you never thought of',
     modules: [
       { title: 'Design Thinking Process', icon: Brain, duration: '2h', outcome: 'Creative solutions' },
@@ -171,7 +171,7 @@ const learningPath = [
     title: 'Leadership & Team Building',
     description: 'Inspire others and lead with purpose',
     icon: Users,
-    color: 'from-red-500 to-pink-500',
+    color: 'from-amber-400 to-orange-500',
     parentBenefit: 'Natural leader at school and home',
     modules: [
       { title: 'Leadership Styles', icon: Star, duration: '2h', outcome: 'Personal leadership' },
@@ -228,7 +228,7 @@ export default function Courses() {
   const { user } = useUserStore();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-24">
+    <div className="min-h-screen bg-white py-24">
       {/* Hero Section - Parent-focused */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
         <motion.div
@@ -242,7 +242,7 @@ export default function Courses() {
           
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
             Watch Your Child Transform Into a
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-emerald-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
               Confident Young Leader
             </span>
         </h1>
@@ -254,7 +254,7 @@ export default function Courses() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <button
               onClick={() => setShowEnrollment(true)}
-              className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-blue-600 to-emerald-600 text-white font-bold rounded-2xl text-lg hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
+              className="group relative px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-2xl text-lg hover:shadow-2xl hover:shadow-[#1876D2]/25 transition-all duration-300 transform hover:scale-105 overflow-hidden"
             >
               <span className="relative z-10 flex items-center">
                 Start Your Child's Transformation
@@ -387,11 +387,10 @@ export default function Courses() {
       </section>
 
       {/* Live Interactive Learning Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse"></div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-400/20 via-purple-400/20 to-indigo-400/20 rounded-full mix-blend-screen filter blur-3xl opacity-60 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-emerald-400/15 via-blue-400/15 to-purple-400/15 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-pulse" style={{animationDelay: '4s'}}></div>
+      <section className="py-20 bg-slate-950 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+        <div className="absolute top-[20%] left-[-10%] w-[35%] h-[35%] bg-[#1876D2]/8 rounded-full filter blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] right-[-5%] w-[25%] h-[25%] bg-[#00B0FF]/6 rounded-full filter blur-[80px]"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -405,7 +404,7 @@ export default function Courses() {
               <div>
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
                   AI-Powered Learning
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-pink-400">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#40C4FF]">
                     Meets Real Mentorship
                   </span>
                 </h2>
@@ -420,7 +419,7 @@ export default function Courses() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-xl flex items-center justify-center">
                       <Brain className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="text-lg font-bold text-white">AI-Powered Tools</h3>
@@ -444,7 +443,7 @@ export default function Courses() {
                 
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                   <div className="flex items-center space-x-3 mb-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#00B0FF] to-[#40C4FF] rounded-xl flex items-center justify-center">
                       <TrendingUp className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="text-lg font-bold text-white">Business Simulators</h3>
@@ -492,7 +491,7 @@ export default function Courses() {
                   <div className="text-sm text-white/80">Live Sessions Monthly</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-pink-300">500+</div>
+                  <div className="text-2xl font-bold text-[#00B0FF]">500+</div>
                   <div className="text-sm text-white/80">Recorded Lessons</div>
                 </div>
               </div>
@@ -506,7 +505,7 @@ export default function Courses() {
                   alt="Students collaborating in comprehensive learning environment with AI tools and live mentorship" 
                   className="rounded-3xl shadow-2xl w-full h-auto object-cover border-4 border-white/20 backdrop-blur-sm"
                 />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-emerald-600/10 via-blue-600/10 to-purple-600/10"></div>
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#1876D2]/10 via-[#00B0FF]/10 to-[#40C4FF]/10"></div>
                 
                 {/* Floating elements */}
                 <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-xl animate-bounce flex items-center justify-center">
@@ -515,7 +514,7 @@ export default function Courses() {
                 <div className="absolute -bottom-4 -left-4 w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl shadow-xl animate-pulse flex items-center justify-center">
                   <span className="text-lg">🎯</span>
                 </div>
-                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-gradient-to-br from-pink-400 to-[#00B0FF] rounded-full shadow-xl animate-ping flex items-center justify-center">
+                <div className="absolute top-1/2 -right-6 w-8 h-8 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-full shadow-xl animate-ping flex items-center justify-center">
                   <span className="text-sm">🚀</span>
                 </div>
                 <div className="absolute top-1/4 -left-6 w-10 h-10 bg-gradient-to-br from-blue-400 to-[#1876D2] rounded-xl shadow-xl animate-bounce flex items-center justify-center" style={{animationDelay: '1s'}}>
@@ -544,7 +543,7 @@ export default function Courses() {
       </section>
 
       {/* Learning Path with Parent Benefits */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -563,7 +562,7 @@ export default function Courses() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={`relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 ${
-                  selectedModule === path.title ? 'ring-2 ring-purple-500 transform scale-[1.02]' : ''
+                  selectedModule === path.title ? 'ring-2 ring-[#1876D2] transform scale-[1.02]' : ''
               }`}
               onClick={() => setSelectedModule(selectedModule === path.title ? null : path.title)}
             >
@@ -602,7 +601,7 @@ export default function Courses() {
                       {path.modules.map((module, moduleIndex) => (
                         <div
                           key={moduleIndex}
-                            className="relative p-6 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100 hover:border-purple-200 transition-all duration-300 hover:shadow-md"
+                            className="relative p-6 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#1876D2]/20 transition-all duration-300 hover:shadow-md"
                         >
                             <div className="flex items-center space-x-4 mb-3">
                             <div className={`rounded-lg bg-gradient-to-r ${path.color} p-3`}>
@@ -634,7 +633,7 @@ export default function Courses() {
       </section>
 
       {/* Urgency CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 via-blue-600 to-emerald-600 text-white">
+      <section className="py-20 bg-slate-950 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -674,7 +673,7 @@ export default function Courses() {
                 Secure Your Child's Spot Now
                 <ArrowRight className="ml-3 h-6 w-6" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/10 to-purple-600/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1876D2]/0 via-[#1876D2]/10 to-[#1876D2]/0 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
           </button>
             
             <p className="mt-4 text-sm opacity-80">

@@ -769,94 +769,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══ GLOBAL DREAMERS — White with Pillar Cards ═══ */}
-        <section className="py-28 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-                Designed for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Global Dreamers</span>
-              </h2>
-              <p className="text-gray-500 max-w-2xl mx-auto">Empowering students from Class 2nd to 11th with tools, knowledge, and pathways to thrive on the world stage.</p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              {[
-                { icon: Globe, title: 'Global Awareness', desc: 'International programs & cultures', gradient: 'from-[#1876D2] to-[#1565C0]' },
-                { icon: Target, title: 'Opportunity Discovery', desc: 'Scholarships, Olympiads & more', gradient: 'from-[#1876D2] to-[#00B0FF]' },
-                { icon: Rocket, title: 'Skill Building', desc: 'Writing, research & critical thinking', gradient: 'from-[#00B0FF] to-[#40C4FF]' },
-                { icon: Target, title: 'Future Roadmaps', desc: 'Personalized plans for admissions', gradient: 'from-emerald-400 to-teal-500' },
-              ].map((p, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="group">
-                  <div className="relative bg-gray-50 rounded-2xl p-7 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-xl transition-all duration-500 h-full text-center">
-                    <div className={`w-14 h-14 mx-auto bg-gradient-to-br ${p.gradient} rounded-xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                      <p.icon className="h-7 w-7 text-white" />
-                    </div>
-                    <h3 className="text-base font-bold text-gray-900 mb-2">{p.title}</h3>
-                    <p className="text-gray-500 text-sm">{p.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ GLOBAL RESOURCES — Dark ═══ */}
-        <section className="py-28 bg-slate-950 relative overflow-hidden">
+        {/* ═══ GLOBAL RESOURCES TEASER — Link to /resources ═══ */}
+        <section className="py-20 bg-slate-950 relative overflow-hidden">
           <div className="absolute top-[-10%] right-[-10%] w-[35%] h-[35%] bg-[#1876D2]/10 rounded-full filter blur-[120px]" />
           <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+          <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+                <Globe className="h-4 w-4 text-[#00B0FF]" />
+                <span className="text-sm font-medium text-gray-400">Global Opportunities</span>
+              </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-                The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Global Resources</span> Database
+                Designed for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Global Dreamers</span>
               </h2>
-              <p className="text-gray-400 max-w-xl mx-auto">A curated database of opportunities to launch your global journey.</p>
+              <p className="text-gray-400 max-w-xl mx-auto mb-10">Scholarships, competitions, AI tools, fellowships — a curated database of opportunities to launch your global journey.</p>
+              <a href="/resources" className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]">
+                Explore Resources & Opportunities
+                <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </motion.div>
-
-            {/* Category tabs */}
-            <div className="flex flex-wrap justify-center gap-3 mb-14">
-              {[
-                { icon: Award, label: 'Scholarships' },
-                { icon: Trophy, label: 'Competitions' },
-                { icon: Brain, label: 'AI Tools' },
-                { icon: Users, label: 'Fellowships' },
-              ].map((cat, i) => (
-                <button key={i} className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${i === 0 ? 'bg-white/10 text-white border border-white/20' : 'text-gray-400 hover:text-white hover:bg-white/5 border border-white/[0.06]'}`}>
-                  <cat.icon className="h-4 w-4" /> {cat.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Resource cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-              {[
-                { name: 'Yale YYGS', desc: 'Young Global Scholars program', color: 'text-[#00B0FF]' },
-                { name: 'Rise by Schmidt Futures', desc: 'Global scholarship for young leaders', color: 'text-white' },
-                { name: 'John Locke Essay', desc: 'International essay competition', color: 'text-emerald-400' },
-                { name: 'Ashoka Youth Ventures', desc: 'For young social entrepreneurs', color: 'text-amber-400' },
-                { name: 'Google Science Fair', desc: 'STEM competition ages 13-18', color: 'text-white' },
-                { name: 'Conrad Challenge', desc: 'Innovation for global problems', color: 'text-[#40C4FF]' },
-              ].map((r, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                  <div className="bg-white/[0.03] rounded-xl p-5 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500">
-                    <h3 className={`text-sm font-bold ${r.color} mb-1`}>{r.name}</h3>
-                    <p className="text-gray-500 text-xs">{r.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <div className="text-center">
-              <button onClick={() => setShowEnrollment(true)} className="group px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]">
-                <span className="flex items-center gap-2">
-                  Access Full Database
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-              <p className="text-gray-500 mt-3 text-xs">Join 2,500+ students accessing global opportunities</p>
-            </div>
           </div>
         </section>
 
