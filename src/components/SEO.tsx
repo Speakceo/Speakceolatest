@@ -22,62 +22,87 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'Orbit Student: AI Learning for Young Entrepreneurs',
-  description: 'Best future plan for kids ages 10-18. Orbit Student teaches AI, entrepreneurship & business skills through hands-on projects. Prepare your child for future success—180-day program.',
+  title: 'Orbit Student — AI Learning Platform for Kids',
+  description: 'Orbit Student — AI-powered learning platform for kids ages 8-18. Learn AI tools, entrepreneurship, business skills & scholarship prep. Start your child\'s future today.',
   keywords: [
-    'AI learning',
-    'young entrepreneur',
+    // Brand keywords
+    'Orbit Student',
+    'Orbit AI',
+    'Orbit education',
+    'Orbit AI student',
+    'Orbit learning',
+    'Orbit scholarship',
+    'Orbit AI learning',
+    'Orbit student AI',
+    'Orbit study',
+    'Orbit edtech',
+    'Orbit new age',
+    // AI keywords
+    'AI student',
+    'AI for kids',
+    'AI learning platform',
+    'AI education for children',
+    'AI powered education',
+    'AI tools for students',
+    'AI courses for kids',
+    'AI literacy for kids',
+    'AI tutor for students',
+    'AI student platform',
+    'AI mentor for students',
+    'best AI platform for kids',
+    'AI school for kids',
+    'AI and kids',
+    'AI generation kids',
+    'AI first education',
+    'AI skills for kids',
+    'AI homework help',
+    'AI for young learners',
+    'artificial intelligence for students',
+    'learn AI for kids',
+    'kids AI tools',
+    'kids learn artificial intelligence',
+    'future AI education',
+    'AI entrepreneurship',
+    'young AI learners',
+    // New age / Gen keywords
+    'kids new age learning',
+    'new age education',
+    'new age kids education',
+    'Gen Z AI learning',
+    'Gen Alpha education',
+    'smart learning for kids',
+    // Core education keywords
     'best future plan for kids',
-    'learn AI',
-    'AI education',
+    'young entrepreneur program',
     'future skills for children',
     'entrepreneurship for kids',
     'prepare kids for future',
-    'AI learning platform',
-    'young entrepreneur program',
-    'child future planning',
-    'learn AI for students',
-    'AI tools for students',
-    'future career for kids',
     'business education for children',
-    'AI-powered learning',
-    'best education for future',
     'young CEO program',
-    'startup education kids',
+    'child future planning',
+    'AI-powered learning',
+    'future career for kids',
+    'best education for future',
+    'AI literacy for youth',
     'future-ready kids',
-    'AI literacy',
-    'entrepreneur training',
-    'prepare children for success',
-    'artificial intelligence for kids',
-    'best investment in child future',
-    'AI courses for teens',
-    'skills kids need for future',
-    'youth leadership training',
-    'AI education platform',
-    'future opportunities for children',
-    'learn entrepreneurship',
-    'AI skills for kids',
-    'how to prepare kids for future jobs',
-    'young business leaders',
-    'best programs for kids future',
-    'AI for young learners',
-    'child development programs',
-    'teen startup program',
-    'future success for kids',
-    'AI and entrepreneurship',
-    'prepare my child for future',
-    'future entrepreneurs',
-    'best courses for kids future',
-    'AI learning for children',
-    'future planning for children',
-    'young founder program',
-    'kids future career preparation',
     'business skills for teens',
+    'learn entrepreneurship online',
+    'best investment in child future',
+    'future entrepreneurs',
+    'skills kids need for future',
+    'teen startup program',
+    'future opportunities for children',
+    'young business leaders',
     'future leaders program',
-    'AI literacy program',
+    'startup skills for youth',
     'child success planning',
-    'best skills for kids future',
-    'future job preparation kids'
+    'scholarship prep for kids',
+    'early scholarship planning',
+    'college prep for middle school',
+    'coding for kids',
+    'STEM for kids',
+    'best edtech for kids',
+    'how to prepare kids for future jobs'
   ],
   image: 'https://www.orbitstudent.com/og-image.jpg',
   url: 'https://www.orbitstudent.com',
@@ -104,7 +129,7 @@ export default function SEO({
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     name: 'Orbit Student',
-    alternateName: 'Orbit Young Entrepreneurs Program',
+    alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'Orbit Young Entrepreneurs Program'],
     description: defaultSEO.description,
     url: defaultSEO.url,
     logo: {
@@ -212,7 +237,23 @@ export default function SEO({
         name: 'What age group is Orbit Student designed for?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Orbit Student is designed for children and teenagers aged 8-16 who want to develop entrepreneurial skills and business acumen.'
+          text: 'Orbit Student is designed for children and teenagers aged 8-18 who want to develop AI skills, entrepreneurial mindset, and business acumen. Our AI learning platform starts as early as 3rd grade.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How does Orbit AI help students learn?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Orbit AI provides 100+ AI-powered tools including an AI business builder, AI pitch simulator, AI brand creator, and AI learning coach. Students use artificial intelligence hands-on to build real projects, not just watch videos.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Does Orbit Student help with scholarships?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! Orbit Student maps 500+ scholarships worth $2.9B+ and creates personalized scholarship roadmaps from day one. Students build portfolios, win competitions, and prepare for college applications years before their peers.'
         }
       },
       {
@@ -220,15 +261,23 @@ export default function SEO({
         name: 'How long is the Orbit Student program?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The Orbit Student Young CEO Program is a comprehensive 180-day journey that transforms young minds into future business leaders.'
+          text: 'The Orbit Student Young CEO Program is a comprehensive 180-day journey that transforms young minds into future business leaders with AI skills, entrepreneurship, and real-world execution.'
         }
       },
       {
         '@type': 'Question',
-        name: 'What skills will my child learn?',
+        name: 'What skills will my child learn at Orbit Student?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Students learn entrepreneurship, business planning, leadership, financial literacy, marketing, sales, public speaking, and critical thinking skills.'
+          text: 'Students learn AI tools and literacy, entrepreneurship, business planning, leadership, financial literacy, marketing, sales, public speaking, coding basics, and critical thinking skills — the new age skills for future-ready kids.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How is Orbit Student different from other edtech platforms?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Orbit Student is AI-first with 100+ AI tools, starts as young as age 8 (vs. 14+ for competitors), includes live mentorship with real entrepreneurs, builds real portfolios instead of just giving certificates, and provides personalized scholarship roadmaps — none of which traditional edtech offers.'
         }
       }
     ]
@@ -243,13 +292,19 @@ export default function SEO({
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://speakceo.ai'
+        item: 'https://www.orbitstudent.com'
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Courses',
-        item: 'https://speakceo.ai/courses'
+        item: 'https://www.orbitstudent.com/courses'
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Resources',
+        item: 'https://www.orbitstudent.com/resources'
       }
     ]
   };
@@ -329,7 +384,7 @@ export default function SEO({
       <meta name="keywords" content={keywords.join(', ')} />
       <meta name="author" content={author} />
       <meta name="language" content="en" />
-      <meta name="theme-color" content="#4F46E5" />
+      <meta name="theme-color" content="#1876D2" />
 
       {/* Open Graph Meta Tags */}
       <meta property="og:title" content={siteTitle} />
@@ -363,6 +418,7 @@ export default function SEO({
       <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
       
       {/* Favicon and App Icons */}
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
