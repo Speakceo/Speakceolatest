@@ -18,7 +18,12 @@ import {
   Shield,
   Globe,
   Trophy,
-  Zap
+  Zap,
+  X,
+  Clock,
+  GraduationCap,
+  Heart,
+  BarChart3
 } from 'lucide-react';
 import EnrollmentPopup from '../components/EnrollmentPopup';
 import CareerGuidePopup from '../components/career/CareerGuidePopup';
@@ -192,7 +197,7 @@ export default function Home() {
                         <div className="text-gray-400 text-[10px]">Learning</div>
                       </div>
                     </div>
-                  </motion.div>
+              </motion.div>
 
                   {/* Floating accent card — bottom left */}
                   <motion.div
@@ -203,11 +208,11 @@ export default function Home() {
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-lg flex items-center justify-center">
                         <TrendingUp className="h-4 w-4 text-white" />
-                      </div>
+            </div>
                       <div>
                         <div className="text-white text-xs font-semibold">Real Projects</div>
                         <div className="text-emerald-400 text-[10px]">+127% Growth</div>
-                      </div>
+          </div>
                     </div>
                   </motion.div>
                 </div>
@@ -226,7 +231,7 @@ export default function Home() {
                 />
               </motion.div>
             </div>
-          </div>
+        </div>
 
           {/* Bottom fade */}
           <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-900 to-transparent" />
@@ -262,7 +267,7 @@ export default function Home() {
             >
               <AnimatedHero3D />
             </motion.div>
-          </div>
+            </div>
         </section>
 
         {/* Founder Mindset Section - High Converting */}
@@ -280,7 +285,7 @@ export default function Home() {
             >
               <div className="inline-block bg-[#E3F2FD] rounded-full px-6 py-2 mb-6">
                 <span className="text-[#1876D2] font-semibold text-sm uppercase tracking-wider">Orbit Playground</span>
-              </div>
+                </div>
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
               Watch Your Child 
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
@@ -309,9 +314,9 @@ export default function Home() {
                     </div>
                     <div className="flex-1 text-center">
                       <span className="text-white font-semibold">Orbit AI Builder</span>
-                    </div>
-                  </div>
-
+                </div>
+              </div>
+              
                   {/* Demo Content */}
                   <div className="p-6">
                     <div className="mb-6">
@@ -328,7 +333,7 @@ export default function Home() {
                         <button className="absolute right-2 top-2 bg-[#1876D2] hover:bg-[#1565C0] text-white px-4 py-1.5 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 ease-out hover:scale-105">
                           Create ✨
                         </button>
-                      </div>
+                </div>
                     </div>
 
                     {/* Demo Examples */}
@@ -349,8 +354,8 @@ export default function Home() {
                             {idea}
                           </button>
                         ))}
-                      </div>
-                    </div>
+                </div>
+              </div>
 
                     {/* Sample Output */}
                     <div className="bg-gradient-to-br from-gray-50 to-[#E3F2FD] rounded-xl p-4 border border-[#E3F2FD]">
@@ -359,7 +364,7 @@ export default function Home() {
                         <div className="flex items-center mb-3">
                           <div className="w-8 h-8 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-lg flex items-center justify-center mr-3">
                             <Rocket className="h-4 w-4 text-white" />
-                          </div>
+                </div>
                           <div>
                             <div className="font-semibold text-gray-900">Space Explorer Game</div>
                             <div className="text-xs text-gray-500">Created in 30 seconds</div>
@@ -377,8 +382,8 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
+              </div>
 
                 {/* Subtle corner accents */}
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#1876D2] rounded-lg shadow-lg flex items-center justify-center hidden lg:flex">
@@ -445,7 +450,7 @@ export default function Home() {
                   </button>
                 </div>
               </motion.div>
-            </div>
+              </div>
 
             {/* Trust Indicators */}
             <motion.div 
@@ -464,7 +469,7 @@ export default function Home() {
                 <div className="flex items-center space-x-2">
                   <Award className="h-5 w-5 text-[#00B0FF]" />
                   <span className="text-sm font-medium">Award-Winning Platform</span>
-                </div>
+              </div>
               </div>
             </motion.div>
           </div>
@@ -482,7 +487,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
                 <Star className="h-4 w-4 text-amber-400" />
                 <span className="text-sm font-medium text-gray-400">Real Parent Stories</span>
-              </div>
+                </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 "My Child is a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Different Person</span>"
               </h2>
@@ -500,13 +505,13 @@ export default function Home() {
                     {/* Stars */}
                     <div className="flex gap-1 mb-5">
                       {[...Array(5)].map((_, j) => <Star key={j} className="h-4 w-4 text-amber-400 fill-amber-400" />)}
-                    </div>
+                </div>
                     {/* Quote */}
                     <p className="text-gray-300 mb-6 leading-relaxed flex-grow italic">"{t.quote}"</p>
                     {/* Result tag */}
                     <div className="bg-white/[0.04] rounded-lg px-4 py-2.5 mb-6 border border-white/[0.06]">
                       <p className="text-xs font-medium text-[#00B0FF]">{t.result}</p>
-                    </div>
+              </div>
                     {/* Author */}
                     <div className="flex items-center gap-3">
                       <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold`}>{t.initials}</div>
@@ -548,14 +553,14 @@ export default function Home() {
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E3F2FD] border border-[#1876D2]/10 mb-8">
                   <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" />
                   <span className="text-sm font-medium text-[#1876D2]">Complete Learning Ecosystem</span>
-                </div>
+              </div>
 
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight text-gray-900">
                   AI-Powered Learning
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
                     Meets Real Mentorship
                   </span>
-                </h2>
+              </h2>
 
                 <p className="text-gray-500 text-lg mb-10 leading-relaxed">
                   The perfect blend of cutting-edge AI tools, live mentorship, and interactive simulators — giving your child every advantage.
@@ -579,8 +584,8 @@ export default function Home() {
                       <p className="text-gray-500 text-xs pl-12">{m.desc}</p>
                     </div>
                   ))}
-                </div>
-
+            </div>
+            
                 {/* Stats row */}
                 <div className="flex gap-8">
                   {[{ v: '100+', l: 'AI Tools' }, { v: '50+', l: 'Live Monthly' }, { v: '500+', l: 'Lessons' }].map((s, i) => (
@@ -607,8 +612,8 @@ export default function Home() {
                     <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
                     <span className="text-white font-medium text-xs">LIVE NOW</span>
                   </div>
-                </div>
-
+            </div>
+            
                 {/* Floating stat card */}
                 <motion.div
                   animate={{ y: [-5, 5, -5] }}
@@ -618,16 +623,16 @@ export default function Home() {
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center">
                       <TrendingUp className="h-4 w-4 text-white" />
-                    </div>
+                </div>
                     <div>
                       <div className="text-xs font-bold text-gray-900">Expert-Led</div>
                       <div className="text-[10px] text-gray-400">AI-Powered</div>
-                    </div>
+                  </div>
                   </div>
                 </motion.div>
               </motion.div>
-            </div>
-          </div>
+                  </div>
+                </div>
         </section>
 
         {/* ═══ 180-DAY ROADMAP — Dark with Numbered Cards ═══ */}
@@ -650,7 +655,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
                 <Rocket className="h-4 w-4 text-[#00B0FF]" />
                 <span className="text-sm font-medium text-gray-400">Step-by-Step Journey</span>
-              </div>
+                </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Your Child's <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">180-Day</span> Adventure
               </h2>
@@ -674,20 +679,20 @@ export default function Home() {
                     </div>
                     <h3 className="text-base font-bold text-white mb-1">{phase.title}</h3>
                     <p className="text-gray-500 text-xs mb-4">{phase.desc}</p>
-                    <div className="space-y-2">
+                <div className="space-y-2">
                       {phase.items.map((item, j) => (
                         <div key={j} className="flex items-center gap-2">
                           <CheckCircle className="h-3.5 w-3.5 text-emerald-400/70" />
                           <span className="text-gray-400 text-xs">{item}</span>
-                        </div>
+                  </div>
                       ))}
-                    </div>
+                  </div>
                     <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-[#1876D2]/5 to-[#00B0FF]/5" />
                   </div>
                 </motion.div>
               ))}
-            </div>
-          </div>
+                </div>
+              </div>
         </section>
 
         {/* ═══ WHY PARENTS LOVE US — White with Accent Border Cards ═══ */}
@@ -711,10 +716,177 @@ export default function Home() {
                   <div className="relative rounded-2xl p-8 bg-gray-50 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-xl transition-all duration-500 h-full">
                     <div className={`inline-flex p-3.5 rounded-xl bg-gradient-to-br ${p.gradient} mb-6 shadow-lg`}>
                       <p.icon className="h-6 w-6 text-white" />
-                    </div>
+                </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{p.title}</h3>
                     <p className="text-gray-500 leading-relaxed text-sm">{p.desc}</p>
                   </div>
+                </motion.div>
+              ))}
+                  </div>
+                  </div>
+        </section>
+
+        {/* ═══ ORBIT vs. OTHERS — Dark Comparison Table ═══ */}
+        <section className="py-28 bg-slate-950 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#1876D2]/6 rounded-full filter blur-[120px]" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-[#00B0FF]/5 rounded-full filter blur-[100px]" />
+
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.06] mb-8">
+                <BarChart3 className="h-4 w-4 text-[#00B0FF]" />
+                <span className="text-sm font-medium text-gray-400">See the Difference</span>
+                </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
+                Why Parents Choose{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Orbit Student</span>
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto text-lg">Not all learning platforms are created equal. Here's how Orbit stacks up against traditional edtech.</p>
+            </motion.div>
+
+            {/* Comparison Table */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
+              <div className="rounded-3xl overflow-hidden border border-white/[0.06]">
+                {/* Table header */}
+                <div className="grid grid-cols-3 bg-white/[0.03]">
+                  <div className="p-5 border-b border-r border-white/[0.06]">
+                    <span className="text-gray-500 text-sm font-medium">Feature</span>
+                </div>
+                  <div className="p-5 border-b border-r border-white/[0.06] text-center">
+                    <div className="inline-flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#1876D2] to-[#00B0FF] flex items-center justify-center">
+                        <Rocket className="h-3.5 w-3.5 text-white" />
+                  </div>
+                      <span className="text-white font-bold text-sm">Orbit Student</span>
+                  </div>
+                  </div>
+                  <div className="p-5 border-b border-white/[0.06] text-center">
+                    <span className="text-gray-500 text-sm font-medium">Other Edtech</span>
+                </div>
+              </div>
+
+                {/* Table rows */}
+                {[
+                  { feature: 'Target Age', orbit: 'Ages 8-18 (start early)', other: 'Ages 14+ only', orbitHighlight: true },
+                  { feature: 'Learning Approach', orbit: 'Build real businesses & products', other: 'Watch videos & take quizzes', orbitHighlight: true },
+                  { feature: 'AI Integration', orbit: '100+ AI tools — create, analyze, pitch', other: 'No AI tools or basic chatbot', orbitHighlight: true },
+                  { feature: 'Scholarship Prep', orbit: 'Personalized roadmap from day one', other: 'Not included', orbitHighlight: true },
+                  { feature: 'Mentorship', orbit: 'Live 1-on-1 with real entrepreneurs', other: 'Pre-recorded only', orbitHighlight: true },
+                  { feature: 'Portfolio Building', orbit: 'AI-powered portfolio + competitions', other: 'Certificate of completion', orbitHighlight: true },
+                  { feature: 'Business Simulators', orbit: 'Full pitch, brand, market simulators', other: 'None', orbitHighlight: true },
+                  { feature: 'Parental Visibility', orbit: 'Real-time dashboard & reports', other: 'Basic progress email', orbitHighlight: true },
+                ].map((row, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.04 }}
+                    className={`grid grid-cols-3 ${i % 2 === 0 ? 'bg-white/[0.01]' : 'bg-transparent'} hover:bg-white/[0.03] transition-colors`}
+                  >
+                    <div className="p-4 sm:p-5 border-r border-white/[0.06] flex items-center">
+                      <span className="text-gray-300 text-sm font-medium">{row.feature}</span>
+                </div>
+                    <div className="p-4 sm:p-5 border-r border-white/[0.06] flex items-center justify-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-emerald-400 flex-shrink-0" />
+                      <span className="text-emerald-300 text-sm font-medium">{row.orbit}</span>
+                  </div>
+                    <div className="p-4 sm:p-5 flex items-center justify-center gap-2">
+                      <X className="h-4 w-4 text-red-400/60 flex-shrink-0" />
+                      <span className="text-gray-500 text-sm">{row.other}</span>
+                  </div>
+                  </motion.div>
+                ))}
+                  </div>
+            </motion.div>
+
+            {/* Bottom verdict */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+              <div className="inline-flex flex-col sm:flex-row items-center gap-4 px-8 py-5 rounded-2xl bg-gradient-to-r from-[#1876D2]/10 to-[#00B0FF]/10 border border-[#1876D2]/20">
+                <div className="flex items-center gap-3">
+                  <Trophy className="h-6 w-6 text-amber-400" />
+                  <p className="text-white font-medium">Orbit Student wins in <span className="text-[#00B0FF] font-bold">every category</span></p>
+                </div>
+                <button onClick={() => setShowEnrollment(true)} className="group inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl text-sm hover:shadow-lg transition-all">
+                  Start Free Trial <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ═══ THE ORBIT ADVANTAGE — 4 Pillar Cards ═══ */}
+        <section className="py-28 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                What Makes Orbit{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Unstoppable</span>
+              </h2>
+              <p className="text-gray-500 max-w-2xl mx-auto text-lg">We don't just teach — we transform. Every feature is designed to give your child an unfair advantage.</p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: GraduationCap,
+                  title: 'Start at Age 8',
+                  desc: 'While others wait until high school, Orbit students begin building portfolios, confidence, and skills from elementary school.',
+                  stat: '6+ years',
+                  statLabel: 'head start',
+                  gradient: 'from-[#1876D2] to-[#1565C0]',
+                },
+                {
+                  icon: Brain,
+                  title: 'AI-First Learning',
+                  desc: 'Over 100 AI tools — from brand creators to pitch analyzers — that no other edtech platform offers for young students.',
+                  stat: '100+',
+                  statLabel: 'AI tools',
+                  gradient: 'from-[#00B0FF] to-[#00BFA5]',
+                },
+                {
+                  icon: Target,
+                  title: 'Real Outcomes',
+                  desc: 'Students don\'t get certificates — they build real businesses, win competitions, and earn scholarships.',
+                  stat: '$2.9B+',
+                  statLabel: 'in scholarships mapped',
+                  gradient: 'from-emerald-400 to-teal-500',
+                },
+                {
+                  icon: Heart,
+                  title: 'Parent-Approved',
+                  desc: '98% of parents say Orbit changed their child\'s confidence and outlook on the future. Real impact, real results.',
+                  stat: '98%',
+                  statLabel: 'parent satisfaction',
+                  gradient: 'from-amber-400 to-orange-500',
+                },
+              ].map((card, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group"
+                >
+                  <div className="relative bg-gray-50/50 rounded-3xl p-7 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-2xl hover:shadow-[#1876D2]/5 transition-all duration-700 h-full flex flex-col">
+                    {/* Icon */}
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                      <card.icon className="h-7 w-7 text-white" />
+              </div>
+
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{card.title}</h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">{card.desc}</p>
+
+                    {/* Stat */}
+                    <div className="pt-4 border-t border-gray-100">
+                      <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{card.stat}</span>
+                      <span className="text-gray-400 text-xs ml-2 uppercase tracking-wider">{card.statLabel}</span>
+                </div>
+              </div>
                 </motion.div>
               ))}
             </div>
@@ -743,7 +915,7 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden max-w-2xl mx-auto border border-white/[0.06]">
                 <img src="/images/hero/testimonial-bg.jpg" alt="Young entrepreneurs celebrating" className="w-full h-auto" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-              </div>
+            </div>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -757,16 +929,16 @@ export default function Home() {
                     <p className="text-gray-300 mb-6 leading-relaxed flex-grow italic">"{t.quote}"</p>
                     <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
                       <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold`}>{t.initials}</div>
-                      <div>
+                  <div>
                         <div className="text-white text-sm font-semibold">{t.name}</div>
                         <div className="text-gray-500 text-xs">{t.role}</div>
-                      </div>
-                    </div>
                   </div>
+                </div>
+              </div>
                 </motion.div>
               ))}
-            </div>
-          </div>
+                  </div>
+                </div>
         </section>
 
         {/* ═══ GLOBAL RESOURCES TEASER — Link to /resources ═══ */}
@@ -778,7 +950,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
                 <Globe className="h-4 w-4 text-[#00B0FF]" />
                 <span className="text-sm font-medium text-gray-400">Global Opportunities</span>
-              </div>
+                  </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Designed for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Global Dreamers</span>
               </h2>
@@ -788,80 +960,207 @@ export default function Home() {
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
-          </div>
+                </div>
         </section>
 
-        {/* ═══ STATS — White Minimal ═══ */}
-        <section className="py-20 bg-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {/* ═══ SOCIAL PROOF BAR — Dark Minimal ═══ */}
+        <section className="py-16 bg-slate-950 relative overflow-hidden border-t border-b border-white/[0.04]">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
               {[
-                { v: '2,500+', l: 'Young Entrepreneurs' },
-                { v: '98%', l: 'Parent Satisfaction' },
-                { v: '180', l: 'Day Program' },
-                { v: '24/7', l: 'AI Support' },
+                { v: '2,500+', l: 'Students Enrolled', icon: Users },
+                { v: '98%', l: 'Parent Satisfaction', icon: Heart },
+                { v: '500+', l: 'Scholarships Mapped', icon: GraduationCap },
+                { v: '100+', l: 'AI Tools Available', icon: Brain },
+                { v: '24/7', l: 'AI Learning Support', icon: Zap },
               ].map((s, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                  <div className="text-4xl font-bold mb-1.5 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{s.v}</div>
-                  <div className="text-gray-400 text-xs uppercase tracking-wider">{s.l}</div>
+                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="text-center">
+                  <div className="flex justify-center mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
+                      <s.icon className="h-5 w-5 text-[#00B0FF]" />
+              </div>
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{s.v}</div>
+                  <div className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-wider">{s.l}</div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═══ FINAL CTA — Dark Cinematic ═══ */}
-        <section className="py-28 bg-slate-950 relative overflow-hidden">
+        {/* ═══ THE COST OF WAITING — Emotional Urgency ═══ */}
+        <section className="py-28 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200/60 mb-8">
+                <Clock className="h-4 w-4 text-amber-600" />
+                <span className="text-sm font-medium text-amber-700">The Clock Is Ticking</span>
+        </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                Every Year You Wait,{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-red-500">Your Child Falls Behind</span>
+              </h2>
+              <p className="text-gray-500 max-w-2xl mx-auto text-lg">Here's what happens when students start their entrepreneurial journey at different ages.</p>
+            </motion.div>
+
+            {/* Timeline comparison */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              {[
+                {
+                  start: 'Starts at Age 8',
+                  emoji: '🏆',
+                  results: ['6 years of portfolio building', '10+ competition wins by 14', 'Full-ride scholarship ready at 16', 'Published author & speaker', 'AI-literate since elementary'],
+                  tag: 'Orbit Early Bird',
+                  tagColor: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+                  borderColor: 'border-emerald-200 hover:border-emerald-400',
+                  highlight: true,
+                },
+                {
+                  start: 'Starts at Age 14',
+                  emoji: '⏰',
+                  results: ['2 years of rushed prep', '1-2 activities to show', 'Generic application essays', 'Playing catch-up with peers', 'Basic digital skills only'],
+                  tag: 'Average Student',
+                  tagColor: 'bg-amber-50 text-amber-700 border-amber-200',
+                  borderColor: 'border-gray-200',
+                  highlight: false,
+                },
+                {
+                  start: 'Starts at Age 17',
+                  emoji: '😰',
+                  results: ['Too late for most programs', 'Empty extracurricular section', 'Panic-mode applications', 'Missed $2.9B in scholarships', 'Years of regret for parents'],
+                  tag: 'Too Late',
+                  tagColor: 'bg-red-50 text-red-600 border-red-200',
+                  borderColor: 'border-gray-200',
+                  highlight: false,
+                },
+              ].map((col, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                >
+                  <div className={`rounded-3xl p-7 border-2 ${col.borderColor} ${col.highlight ? 'bg-emerald-50/30 shadow-xl shadow-emerald-100/50 ring-2 ring-emerald-100' : 'bg-gray-50/50'} transition-all duration-500 h-full relative`}>
+                    {col.highlight && (
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white text-xs font-bold rounded-full shadow-lg">
+                        RECOMMENDED
+              </div>
+                    )}
+
+                    <div className="text-center mb-6">
+                      <span className="text-4xl mb-3 block">{col.emoji}</span>
+                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border ${col.tagColor}`}>{col.tag}</span>
+                      <h3 className="text-lg font-bold text-gray-900 mt-3">{col.start}</h3>
+              </div>
+
+                    <ul className="space-y-3">
+                      {col.results.map((r, j) => (
+                        <li key={j} className="flex items-start gap-2.5 text-sm">
+                          {col.highlight ? (
+                            <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                          ) : (
+                            <X className="h-4 w-4 text-gray-300 flex-shrink-0 mt-0.5" />
+                          )}
+                          <span className={col.highlight ? 'text-gray-700 font-medium' : 'text-gray-500'}>{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {col.highlight && (
+                      <button onClick={() => setShowEnrollment(true)} className="mt-6 w-full py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl text-sm shadow-lg shadow-[#1876D2]/20 hover:shadow-xl transition-all hover:scale-[1.02]">
+                        Start Now — It's Free
+                      </button>
+                    )}
+              </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ FINAL CTA — Dark Cinematic with Guarantee ═══ */}
+        <section className="py-32 bg-[#050a18] relative overflow-hidden">
+          {/* Animated center glow */}
           <div className="absolute inset-0">
-            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[60%] h-[50%] bg-[#1876D2]/8 rounded-full filter blur-[150px]" />
+            <motion.div
+              className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+              style={{ background: 'radial-gradient(circle, rgba(24,118,210,0.15) 0%, transparent 70%)' }}
+              animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+              transition={{ duration: 6, repeat: Infinity }}
+            />
           </div>
           <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-400/10 border border-amber-400/20 mb-8">
                 <Zap className="h-4 w-4 text-amber-400" />
-                <span className="text-sm font-medium text-gray-400">Limited — Only 30 Spots Left</span>
+                <span className="text-sm font-medium text-amber-400">Limited — Only 30 Spots Left This Batch</span>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
                 Don't Let Your Child Fall Behind
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">While Others Get Ahead</span>
-              </h2>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#00BFA5]">While Others Get Ahead</span>
+            </h2>
 
-              <p className="text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-                While other kids are just consuming content, your child could be building confidence, leadership, and an entrepreneurial mindset that lasts a lifetime.
+              <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
+                While other kids are watching YouTube, your child could be building businesses, winning scholarships, and mastering AI with Orbit Student.
               </p>
 
               {/* Urgency strip */}
-              <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mb-12">
+              <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto mb-12">
                 {[{ v: '30', l: 'Spots Left' }, { v: '7', l: 'Days Left' }, { v: '$200', l: 'Savings' }].map((u, i) => (
-                  <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4">
-                    <div className="text-xl font-bold text-amber-400">{u.v}</div>
-                    <div className="text-gray-500 text-[10px] uppercase tracking-wider mt-0.5">{u.l}</div>
-                  </div>
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
+                    className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5"
+                  >
+                    <div className="text-2xl font-bold text-amber-400">{u.v}</div>
+                    <div className="text-gray-500 text-[10px] uppercase tracking-wider mt-1">{u.l}</div>
+                  </motion.div>
                 ))}
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-                <button onClick={() => setShowEnrollment(true)} className="group px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]">
+                <button onClick={() => setShowEnrollment(true)} className="group px-10 py-5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold text-lg rounded-2xl shadow-xl shadow-[#1876D2]/25 hover:shadow-2xl hover:shadow-[#1876D2]/40 transition-all duration-500 hover:scale-[1.03]">
                   <span className="flex items-center gap-2">
                     Secure Your Child's Spot Now
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </span>
-                </button>
-                <button className="px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300">
+              </button>
+                <button className="px-8 py-5 bg-white/[0.04] hover:bg-white/[0.08] text-white font-semibold rounded-2xl border border-white/[0.08] hover:border-white/[0.12] transition-all duration-300 backdrop-blur-sm">
                   Download Free Guide
-                </button>
+              </button>
+            </div>
+
+              {/* Trust signals */}
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500 mb-8">
+                <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-emerald-400" /> 30-day money-back guarantee</span>
+                <span className="flex items-center gap-2"><Users className="h-4 w-4 text-[#00B0FF]" /> 2,500+ happy families</span>
+                <span className="flex items-center gap-2"><Star className="h-4 w-4 text-amber-400" /> 4.9/5 parent rating</span>
               </div>
 
-              {/* Trust */}
-              <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-500">
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-emerald-400/70" /> 30-day money-back guarantee</span>
-                <span className="flex items-center gap-1.5"><Users className="h-3.5 w-3.5 text-[#00B0FF]/70" /> 2,500+ happy families</span>
-                <span className="flex items-center gap-1.5"><Star className="h-3.5 w-3.5 text-amber-400/70" /> Forbes featured</span>
-              </div>
+              {/* Guarantee badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-emerald-400/5 border border-emerald-400/15"
+              >
+                <Shield className="h-8 w-8 text-emerald-400" />
+                <div className="text-left">
+                  <div className="text-emerald-400 text-sm font-bold">100% Risk-Free Guarantee</div>
+                  <div className="text-gray-500 text-xs">Not satisfied? Full refund within 30 days. No questions asked.</div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
