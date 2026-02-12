@@ -309,7 +309,7 @@ export default function YoungCEOProgram({ onLessonSelect }: YoungCEOProgramProps
                 {/* Expand Indicator */}
                 {selectedWeek?.id === week.id && (
                   <div className="absolute bottom-2 right-2">
-                    <ChevronRight className="h-5 w-5 text-indigo-500 rotate-90" />
+                    <ChevronRight className="h-5 w-5 text-[#00B0FF] rotate-90" />
                   </div>
                 )}
               </div>

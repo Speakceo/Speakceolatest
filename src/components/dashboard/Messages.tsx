@@ -129,7 +129,7 @@ export default function Messages() {
               <button
                 onClick={handleSendMessage}
                 disabled={isLoading || !newMessage.trim()}
-                className="absolute bottom-3 right-3 p-2 text-[#1876D2] hover:text-indigo-700 disabled:opacity-50"
+                className="absolute bottom-3 right-3 p-2 text-[#1876D2] hover:text-[#00B0FF] disabled:opacity-50"
               >
                 {isLoading ? (
                   <RefreshCw className="h-5 w-5 animate-spin" />
@@ -188,7 +188,7 @@ export default function Messages() {
                 ← Back to Polls
               </button>
 
-              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6">
+              <div className="bg-gradient-to-r from-[#1876D2]/5 to-[#00B0FF]/5 rounded-xl p-6">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">
                   {selectedPoll.title}
                 </h3>
@@ -204,8 +204,8 @@ export default function Messages() {
                         onClick={() => setSelectedOption(index)}
                         className={`w-full text-left p-4 rounded-xl border transition-all ${
                           selectedOption === index
-                            ? 'bg-white border-indigo-200 shadow-sm'
-                            : 'border-gray-200 hover:border-indigo-200 hover:bg-white'
+                            ? 'bg-white border-[#1876D2]/20 shadow-sm'
+                            : 'border-gray-200 hover:border-[#1876D2]/20 hover:bg-white'
                         }`}
                       >
                         {option}
@@ -290,7 +290,7 @@ export default function Messages() {
                   className={`w-full text-left p-6 rounded-xl border transition-all ${
                     answeredPolls.includes(poll.id)
                       ? 'bg-gray-50 border-gray-200'
-                      : 'bg-white border-gray-200 hover:border-indigo-200 hover:shadow-md'
+                      : 'bg-white border-gray-200 hover:border-[#1876D2]/20 hover:shadow-md'
                   }`}
                 >
                   <div className="flex items-center justify-between">

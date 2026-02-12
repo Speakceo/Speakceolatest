@@ -221,7 +221,7 @@ export default function LearningJourney() {
                             progress={getModuleProgress(module.id)} 
                             size="sm"
                             showLabel={false}
-                            color={getModuleProgress(module.id) >= 100 ? 'green' : 'indigo'}
+                            color={getModuleProgress(module.id) >= 100 ? 'green' : 'blue'}
                           />
                         </div>
                       </div>
@@ -269,7 +269,7 @@ export default function LearningJourney() {
                                 {userProgress.completedLessons[lesson.id] ? (
                                   <CheckCircle className="h-5 w-5 text-green-500" />
                                 ) : (
-                                  <ArrowRight className="h-5 w-5 text-indigo-500" />
+                                  <ArrowRight className="h-5 w-5 text-[#00B0FF]" />
                                 )}
                               </div>
                             </div>
@@ -358,7 +358,7 @@ export default function LearningJourney() {
               </div>
               <h3 className="text-lg font-semibold">AI Learning Coach</h3>
             </div>
-            <p className="text-indigo-100 mb-4">
+            <p className="text-gray-300 mb-4">
               Need help with your journey? Get personalized guidance and tips from your AI coach.
             </p>
             <button 

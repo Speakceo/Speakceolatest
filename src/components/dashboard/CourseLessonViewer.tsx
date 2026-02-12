@@ -312,7 +312,7 @@ export default function CourseLessonViewer({
               <h3 className="text-lg font-bold text-gray-900">My Notes</h3>
               <button
                 onClick={() => setShowNotes(!showNotes)}
-                className="text-[#1876D2] hover:text-indigo-700 transition-colors"
+                className="text-[#1876D2] hover:text-[#00B0FF] transition-colors"
               >
                 {showNotes ? 'Hide' : 'Show'}
               </button>

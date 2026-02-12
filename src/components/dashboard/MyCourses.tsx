@@ -141,7 +141,7 @@ export default function MyCourses() {
         <div className="mb-6">
           <button
             onClick={handleBackToOverview}
-            className="flex items-center gap-2 text-[#1876D2] hover:text-indigo-700 transition-colors"
+            className="flex items-center gap-2 text-[#1876D2] hover:text-[#00B0FF] transition-colors"
           >
             ← Back to My Courses
           </button>
@@ -170,7 +170,7 @@ export default function MyCourses() {
         {/* 180-Day Young CEO Program */}
         <div 
           onClick={() => setCurrentView('course')}
-          className="relative bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-2xl p-8 text-white cursor-pointer hover:scale-105 transition-transform duration-200 shadow-lg hover:shadow-xl"
+          className="relative bg-gradient-to-br from-[#0f1a2e] via-[#1876D2]/40 to-[#00B0FF]/20 rounded-2xl p-8 text-white cursor-pointer hover:scale-105 transition-transform duration-200 shadow-lg hover:shadow-xl"
         >
           <div className="absolute top-4 right-4">
             <Crown className="h-8 w-8 text-yellow-300" />
@@ -179,40 +179,40 @@ export default function MyCourses() {
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-2">
               <Star className="h-5 w-5 text-yellow-300" />
-              <span className="text-sm font-medium text-purple-100">PREMIUM COURSE</span>
+              <span className="text-sm font-medium text-gray-300">PREMIUM COURSE</span>
             </div>
             <h2 className="text-2xl font-bold mb-3">180-Day Young CEO Program</h2>
-            <p className="text-purple-100 text-sm leading-relaxed">
+            <p className="text-gray-300 text-sm leading-relaxed">
               Transform your ideas into reality with our comprehensive 13-week entrepreneurship program designed specifically for young innovators.
             </p>
           </div>
 
           <div className="space-y-3 mb-6">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-purple-100">Progress</span>
+              <span className="text-gray-300">Progress</span>
               <span className="font-semibold">{getTotalProgress()}% Complete</span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-purple-100">Lessons Completed</span>
+              <span className="text-gray-300">Lessons Completed</span>
               <span className="font-semibold">{progress.completedLessons.length} / 65</span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-purple-100">Current Level</span>
+              <span className="text-gray-300">Current Level</span>
               <span className="font-semibold">Level {progress.level}</span>
             </div>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-purple-100">Total XP</span>
+              <span className="text-gray-300">Total XP</span>
               <span className="font-semibold">{progress.totalXP.toLocaleString()}</span>
             </div>
           </div>
 
           {/* Progress Bar */}
           <div className="mb-6">
-            <div className="flex justify-between text-sm text-purple-100 mb-2">
+            <div className="flex justify-between text-sm text-gray-300 mb-2">
               <span>Course Progress</span>
               <span>{getTotalProgress()}%</span>
             </div>
-            <div className="w-full bg-purple-400/30 rounded-full h-2">
+            <div className="w-full bg-white/10 rounded-full h-2">
               <div 
                 className="bg-gradient-to-r from-yellow-300 to-orange-300 h-2 rounded-full transition-all duration-500" 
                 style={{ width: `${getTotalProgress()}%` }}
@@ -223,7 +223,7 @@ export default function MyCourses() {
           {/* Progress Bar */}
           <div className="mb-6">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium text-purple-100">Your Progress</span>
+              <span className="text-sm font-medium text-gray-300">Your Progress</span>
               <span className="text-sm font-bold">25%</span>
             </div>
             <div className="w-full bg-white/20 rounded-full h-2">
@@ -234,7 +234,7 @@ export default function MyCourses() {
           <div className="flex items-center justify-between">
             <div className="text-sm">
               <div className="font-semibold">Week 1 of 13</div>
-              <div className="text-purple-100">Continue Learning</div>
+              <div className="text-gray-300">Continue Learning</div>
             </div>
             <ArrowRight className="h-6 w-6" />
           </div>
@@ -279,7 +279,7 @@ export default function MyCourses() {
         </div>
 
         {/* Add New Course Placeholder */}
-        <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border-2 border-dashed border-gray-300">
+        <div className="relative bg-gradient-to-br from-white/[0.02] to-white/[0.01] rounded-2xl p-8 border-2 border-dashed border-white/[0.06]">
           <div className="text-center text-gray-500">
             <BookOpen className="h-12 w-12 mx-auto mb-4" />
             <h3 className="text-lg font-semibold mb-2">More Courses Coming</h3>

@@ -35,10 +35,10 @@ export default function UpcomingClasses() {
       {classes.map((class_) => (
         <div
           key={class_.id}
-          className="flex items-center space-x-4 rounded-xl border border-gray-200 p-4 hover:border-indigo-200 transition-colors duration-300"
+          className="flex items-center space-x-4 rounded-xl border border-gray-200 p-4 hover:border-[#1876D2]/20 transition-colors duration-300"
         >
           <div className="flex-shrink-0">
-            <Calendar className="h-8 w-8 text-indigo-600" />
+            <Calendar className="h-8 w-8 text-[#1876D2]" />
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-medium text-gray-900">{class_.title}</p>

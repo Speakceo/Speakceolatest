@@ -569,7 +569,7 @@ export default function BrandCreator() {
                       {brand.values.map((value, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-[#E3F2FD] text-indigo-700 rounded-full text-sm"
+                          className="px-3 py-1 bg-[#E3F2FD] text-[#00B0FF] rounded-full text-sm"
                         >
                           {value}
                           <button
@@ -578,7 +578,7 @@ export default function BrandCreator() {
                               newValues.splice(index, 1);
                               setBrand({ ...brand, values: newValues });
                             }}
-                            className="ml-2 text-indigo-500 hover:text-indigo-700"
+                            className="ml-2 text-indigo-500 hover:text-[#00B0FF]"
                           >
                             ×
                           </button>

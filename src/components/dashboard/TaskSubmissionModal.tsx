@@ -435,8 +435,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('text')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'text'
-                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-[#00B0FF]'
+                    : 'border-gray-200 text-gray-700 hover:border-[#1876D2]/20 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <File className="h-6 w-6 mb-2" />
@@ -446,8 +446,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('file')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'file'
-                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-[#00B0FF]'
+                    : 'border-gray-200 text-gray-700 hover:border-[#1876D2]/20 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <Upload className="h-6 w-6 mb-2" />
@@ -457,8 +457,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('audio')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'audio'
-                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-[#00B0FF]'
+                    : 'border-gray-200 text-gray-700 hover:border-[#1876D2]/20 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <Mic className="h-6 w-6 mb-2" />
@@ -468,8 +468,8 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 onClick={() => setSubmissionType('video')}
                 className={`p-4 rounded-xl border flex flex-col items-center justify-center transition-all ${
                   submissionType === 'video'
-                    ? 'border-[#1876D2] bg-[#E3F2FD] text-indigo-700'
-                    : 'border-gray-200 text-gray-700 hover:border-indigo-200 hover:bg-[#E3F2FD]'
+                    ? 'border-[#1876D2] bg-[#E3F2FD] text-[#00B0FF]'
+                    : 'border-gray-200 text-gray-700 hover:border-[#1876D2]/20 hover:bg-[#E3F2FD]'
                 }`}
               >
                 <Video className="h-6 w-6 mb-2" />
@@ -515,7 +515,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                   <div className="space-y-1 text-center">
                     <Upload className="mx-auto h-12 w-12 text-gray-400" />
                     <div className="flex text-sm text-gray-600">
-                      <label className="relative cursor-pointer rounded-md font-medium text-[#1876D2] hover:text-indigo-500">
+                      <label className="relative cursor-pointer rounded-md font-medium text-[#1876D2] hover:text-[#00B0FF]">
                         <span>Upload a file</span>
                         <input
                           ref={fileInputRef}
@@ -534,7 +534,7 @@ export default function TaskSubmissionModal({ task, isOpen, onClose, onSubmitSuc
                 {submissionData.file && (
                   <div className="mt-3 flex items-center p-3 bg-[#E3F2FD] rounded-lg">
                     <File className="h-5 w-5 text-[#1876D2] mr-2" />
-                    <span className="text-sm text-indigo-700">{submissionData.file.name}</span>
+                    <span className="text-sm text-[#00B0FF]">{submissionData.file.name}</span>
                   </div>
                 )}
               </div>

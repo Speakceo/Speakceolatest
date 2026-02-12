@@ -82,7 +82,7 @@ const sampleQuestions: Question[] = [
 const categories = [
   { id: 'business', name: 'Business Basics', icon: Rocket, color: 'from-blue-500 to-[#1876D2]' },
   { id: 'finance', name: 'Money Smart', icon: DollarSign, color: 'from-green-500 to-emerald-500' },
-  { id: 'leadership', name: 'Leadership', icon: Target, color: 'from-purple-500 to-pink-500' },
+  { id: 'leadership', name: 'Leadership', icon: Target, color: 'from-[#1876D2] to-[#00B0FF]' },
   { id: 'marketing', name: 'Marketing', icon: MessageSquare, color: 'from-amber-500 to-orange-500' }
 ];
 
@@ -174,7 +174,7 @@ export default function Quiz() {
               <button
                 key={category.id}
                 onClick={() => handleCategorySelect(category.id)}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:border-indigo-200 hover:shadow-md transition-all duration-300"
+                className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-md transition-all duration-300"
               >
                 <div className="flex items-center space-x-4">
                   <div className={`rounded-xl bg-gradient-to-r ${category.color} p-3`}>
@@ -255,7 +255,7 @@ export default function Quiz() {
           {currentQuestion?.hint && (
             <button
               onClick={() => setShowHint(!showHint)}
-              className="text-[#1876D2] hover:text-indigo-700"
+              className="text-[#1876D2] hover:text-[#00B0FF]"
             >
               <HelpCircle className="h-5 w-5" />
             </button>
@@ -270,7 +270,7 @@ export default function Quiz() {
         </h3>
         {showHint && (
           <div className="bg-[#E3F2FD] rounded-lg p-4 mb-4">
-            <p className="text-indigo-700 text-sm">{currentQuestion?.hint}</p>
+            <p className="text-[#00B0FF] text-sm">{currentQuestion?.hint}</p>
           </div>
         )}
       </div>
@@ -290,8 +290,8 @@ export default function Quiz() {
                   ? 'bg-red-50 border-red-200'
                   : 'bg-gray-50 border-gray-200'
                 : selectedAnswer === option
-                ? 'bg-[#E3F2FD] border-indigo-200'
-                : 'border-gray-200 hover:border-indigo-200 hover:bg-[#E3F2FD]'
+                ? 'bg-[#E3F2FD] border-[#1876D2]/20'
+                : 'border-gray-200 hover:border-[#1876D2]/20 hover:bg-[#E3F2FD]'
             }`}
           >
             <div className="flex items-center justify-between">

@@ -12,7 +12,10 @@ import {
   ArrowRight, 
   Star, 
   Zap, 
-  Rocket 
+  Rocket,
+  Crown,
+  Flame,
+  Lock
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useUserStore, useProgressStore, useAIToolsStore, useUnifiedProgressStore } from '../../../lib/store';
@@ -28,21 +31,19 @@ interface AITool {
   xpPerUse: number;
   usageCount: number;
   lastUsed?: string;
+  tag?: string;
 }
 
 export default function AIToolsHome() {
   const navigate = useNavigate();
   const { user } = useUserStore();
-  
-  // Call hooks at the top level (React rules)
   const { getOverallProgress } = useProgressStore();
   const { getTotalXPEarned, getMostUsedTools, tools: storeTools } = useAIToolsStore();
   const { recordActivity } = useUnifiedProgressStore();
   
-  // Safely get store data with fallbacks
   let overallProgress = 0;
   let totalXpEarned = 0;
-  let tools = {};
+  let tools: any = {};
   
   try {
     overallProgress = getOverallProgress() || 0;
@@ -52,313 +53,218 @@ export default function AIToolsHome() {
     console.error('Error loading AI Tools stores:', error);
   }
   
-  const [showConfetti, setShowConfetti] = useState(false);
   const [recentlyUnlocked, setRecentlyUnlocked] = useState<string | null>(null);
   
   const toolsConfig: AITool[] = [
-    {
-      id: 'speak-smart',
-      name: 'SpeakSmart',
-      description: 'AI Public Speaking & Communication Coach',
-      icon: Mic,
-      path: '/dashboard/ai-tools/speak-smart',
-      color: 'from-blue-500 to-indigo-600',
-      xpPerUse: 25,
-      usageCount: tools['speak-smart']?.usageCount || 0,
-      lastUsed: tools['speak-smart']?.lastUsed || undefined
-    },
-    {
-      id: 'math-mentor',
-      name: 'MathMentor',
-      description: 'Smart Math Solver & Business Concept Trainer',
-      icon: Brain,
-      path: '/dashboard/ai-tools/math-mentor',
-      color: 'from-green-500 to-teal-600',
-      xpPerUse: 20,
-      usageCount: tools['math-mentor']?.usageCount || 0,
-      lastUsed: tools['math-mentor']?.lastUsed || undefined
-    },
-    {
-      id: 'write-right',
-      name: 'WriteRight',
-      description: 'Business Writing & Creativity Assistant',
-      icon: FileEdit,
-      path: '/dashboard/ai-tools/write-right',
-      color: 'from-purple-500 to-pink-600',
-      xpPerUse: 15,
-      usageCount: tools['write-right']?.usageCount || 0,
-      lastUsed: tools['write-right']?.lastUsed || undefined
-    },
-    {
-      id: 'mind-maze',
-      name: 'MindMaze',
-      description: 'Entrepreneurial Thinking & Strategy Game',
-      icon: Gamepad2,
-      path: '/dashboard/ai-tools/mind-maze',
-      color: 'from-amber-500 to-orange-600',
-      xpPerUse: 30,
-      usageCount: tools['mind-maze']?.usageCount || 0,
-      lastUsed: tools['mind-maze']?.lastUsed || undefined
-    },
-    {
-      id: 'pitch-deck',
-      name: 'PitchDeck Creator',
-      description: 'AI Business Presentation Builder',
-      icon: Presentation,
-      path: '/dashboard/ai-tools/pitch-deck',
-      color: 'from-red-500 to-rose-600',
-      xpPerUse: 35,
-      usageCount: tools['pitch-deck']?.usageCount || 0,
-      lastUsed: tools['pitch-deck']?.lastUsed || undefined
-    }
+    { id: 'speak-smart', name: 'SpeakSmart', description: 'AI Public Speaking & Communication Coach', icon: Mic, path: '/dashboard/ai-tools/speak-smart', color: 'from-blue-500 to-cyan-500', xpPerUse: 25, usageCount: tools['speak-smart']?.usageCount || 0, lastUsed: tools['speak-smart']?.lastUsed, tag: 'Popular' },
+    { id: 'math-mentor', name: 'MathMentor', description: 'Smart Math Solver & Business Trainer', icon: Brain, path: '/dashboard/ai-tools/math-mentor', color: 'from-emerald-500 to-teal-500', xpPerUse: 20, usageCount: tools['math-mentor']?.usageCount || 0, lastUsed: tools['math-mentor']?.lastUsed },
+    { id: 'write-right', name: 'WriteRight', description: 'Business Writing & Creativity Assistant', icon: FileEdit, path: '/dashboard/ai-tools/write-right', color: 'from-violet-500 to-purple-500', xpPerUse: 15, usageCount: tools['write-right']?.usageCount || 0, lastUsed: tools['write-right']?.lastUsed },
+    { id: 'mind-maze', name: 'MindMaze', description: 'Entrepreneurial Strategy Game', icon: Gamepad2, path: '/dashboard/ai-tools/mind-maze', color: 'from-amber-500 to-orange-500', xpPerUse: 30, usageCount: tools['mind-maze']?.usageCount || 0, lastUsed: tools['mind-maze']?.lastUsed, tag: 'Fun' },
+    { id: 'pitch-deck', name: 'PitchDeck Creator', description: 'AI Business Presentation Builder', icon: Presentation, path: '/dashboard/ai-tools/pitch-deck', color: 'from-red-500 to-rose-500', xpPerUse: 35, usageCount: tools['pitch-deck']?.usageCount || 0, lastUsed: tools['pitch-deck']?.lastUsed, tag: 'Pro' }
   ];
   
-  // Check for newly unlocked tools
   useEffect(() => {
-    const checkNewlyUnlocked = () => {
-      const lastProgress = parseInt(localStorage.getItem('lastAIToolsProgress') || '0');
-      
-      if (lastProgress < overallProgress) {
-        // Find tools that were locked but are now unlocked
-        const newlyUnlocked = toolsConfig.find(tool => 
-          tool.id === 'pitch-deck' && lastProgress < 40 && overallProgress >= 40
-        );
-        
-        if (newlyUnlocked) {
-          setRecentlyUnlocked(newlyUnlocked.id);
-          setShowConfetti(true);
-          
-          // Trigger confetti
-          confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-          });
-          
-          // Record activity safely
-          try {
-            recordActivity({
-              type: 'ai-tool',
-              title: `Unlocked ${newlyUnlocked.name}`,
-              xpEarned: 50 // Bonus XP for unlocking a new tool
-            });
-          } catch (error) {
-            console.error('Error recording activity:', error);
-          }
-          
-          // Clear after 5 seconds
-          setTimeout(() => {
-            setRecentlyUnlocked(null);
-            setShowConfetti(false);
-          }, 5000);
-        }
+    const lastProgress = parseInt(localStorage.getItem('lastAIToolsProgress') || '0');
+    if (lastProgress < overallProgress) {
+      const newlyUnlocked = toolsConfig.find(tool => tool.id === 'pitch-deck' && lastProgress < 40 && overallProgress >= 40);
+      if (newlyUnlocked) {
+        setRecentlyUnlocked(newlyUnlocked.id);
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+        try { recordActivity({ type: 'ai-tool', title: `Unlocked ${newlyUnlocked.name}`, xpEarned: 50 }); } catch {}
+        setTimeout(() => setRecentlyUnlocked(null), 5000);
       }
-      
-      // Save current progress
-      localStorage.setItem('lastAIToolsProgress', overallProgress.toString());
-    };
-    
-    checkNewlyUnlocked();
-  }, [overallProgress, toolsConfig, recordActivity]);
+    }
+    localStorage.setItem('lastAIToolsProgress', overallProgress.toString());
+  }, [overallProgress]);
   
   const handleToolClick = (tool: AITool) => {
-    // Record tool usage in unified progress safely
-    try {
-      recordActivity({
-        type: 'ai-tool',
-        title: `Used ${tool.name}`,
-        xpEarned: 5 // Small XP for just opening the tool
-      });
-    } catch (error) {
-      console.error('Error recording activity:', error);
-    }
-    
+    try { recordActivity({ type: 'ai-tool', title: `Used ${tool.name}`, xpEarned: 5 }); } catch {}
     navigate(tool.path);
   };
   
-  // Get tools sorted by usage with error handling
-  let mostUsedTools = [];
-  try {
-    mostUsedTools = getMostUsedTools().slice(0, 3);
-  } catch (error) {
-    console.error('Error getting most used tools:', error);
-    mostUsedTools = [];
-  }
+  let mostUsedTools: any[] = [];
+  try { mostUsedTools = getMostUsedTools().slice(0, 3); } catch {}
   
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm">
-        <div className="flex items-center mb-4">
-          <h1 className="text-2xl font-bold text-gray-900 flex items-center">
-            <Sparkles className="h-6 w-6 text-[#1876D2] mr-2" />
-            AI Tools
-          </h1>
-          <p className="text-gray-500 mt-1">
-            Supercharge your learning with AI-powered tools designed for young entrepreneurs
-          </p>
-        </div>
+    <div className="space-y-6">
+      {/* ═══ HERO HEADER ═══ */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0f1a2e] to-[#1a1040] border border-white/[0.04] p-6">
+        <div className="absolute top-0 right-0 w-72 h-72 bg-[#1876D2]/8 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-20 w-48 h-48 bg-violet-500/5 rounded-full blur-3xl" />
         
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div className="flex items-center space-x-4">
-            <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
-              <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
-                <Trophy className="h-5 w-5 text-[#1876D2]" />
+        <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1876D2] to-[#00B0FF] flex items-center justify-center">
+                <Sparkles className="h-4 w-4 text-white" />
               </div>
-              <div>
-                <p className="text-xs text-[#1876D2] font-medium">AI Tools XP</p>
-                <p className="text-lg font-bold text-indigo-700">{totalXpEarned} XP</p>
+              <h1 className="text-xl font-bold text-white">AI Tools Lab</h1>
+            </div>
+            <p className="text-sm text-gray-400">Supercharge your learning with AI-powered tools</p>
+          </div>
+          
+          <div className="flex items-center gap-3">
+            <div className="px-4 py-2.5 rounded-xl bg-[#1876D2]/10 border border-[#1876D2]/20">
+              <div className="flex items-center gap-2">
+                <Trophy className="h-4 w-4 text-[#00B0FF]" />
+                <div>
+                  <p className="text-[10px] text-gray-500 font-medium">AI Tools XP</p>
+                  <p className="text-sm font-bold text-[#00B0FF]">{totalXpEarned} XP</p>
+                </div>
               </div>
             </div>
-            
-            <div className="bg-[#E3F2FD] rounded-xl p-3 flex items-center">
-              <div className="h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
-                <Clock className="h-5 w-5 text-[#1876D2]" />
-              </div>
-              <div>
-                <p className="text-xs text-[#1876D2] font-medium">AI Tools Streak</p>
-                <p className="text-lg font-bold text-indigo-700">3 days</p>
+            <div className="px-4 py-2.5 rounded-xl bg-orange-500/10 border border-orange-500/20">
+              <div className="flex items-center gap-2">
+                <Flame className="h-4 w-4 text-orange-400" />
+                <div>
+                  <p className="text-[10px] text-gray-500 font-medium">Streak</p>
+                  <p className="text-sm font-bold text-orange-400">3 days</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       
-      {/* Newly Unlocked Tool Alert */}
+      {/* Unlocked Alert */}
       {recentlyUnlocked && (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white shadow-lg"
+          className="rounded-2xl bg-gradient-to-r from-[#1876D2] to-[#00B0FF] p-5 border border-white/[0.1]"
         >
-          <div className="flex items-center">
-            <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center mr-4">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
               <Rocket className="h-6 w-6 text-white" />
             </div>
-            <div>
-              <h2 className="text-xl font-bold">New AI Tool Unlocked!</h2>
-              <p className="text-indigo-100">
-                You've unlocked {toolsConfig.find(t => t.id === recentlyUnlocked)?.name}! Try it out now to boost your entrepreneurial skills.
-              </p>
+            <div className="flex-1">
+              <h2 className="text-base font-bold text-white">New AI Tool Unlocked!</h2>
+              <p className="text-xs text-blue-100">{toolsConfig.find(t => t.id === recentlyUnlocked)?.name} is now available</p>
             </div>
-          </div>
-          <div className="mt-4 flex justify-end">
             <button 
               onClick={() => navigate(toolsConfig.find(t => t.id === recentlyUnlocked)?.path || '')}
-              className="px-4 py-2 bg-white text-[#1876D2] rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
+              className="px-4 py-2 bg-white text-[#1876D2] rounded-xl text-xs font-bold hover:bg-blue-50 transition-colors"
             >
-              Try It Now
+              Try Now
             </button>
           </div>
         </motion.div>
       )}
       
-      {/* AI Tools Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {toolsConfig.map((tool) => (
-          <motion.div
+      {/* ═══ AI TOOLS GRID ═══ */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {toolsConfig.map((tool, i) => (
+          <motion.button
             key={tool.id}
-            whileHover={{ scale: 1.03 }}
-            className={`bg-white rounded-2xl p-6 shadow-sm border border-gray-100 transition-all duration-300 cursor-pointer hover:shadow-md ${recentlyUnlocked === tool.id ? 'ring-2 ring-[#1876D2]' : ''}`}
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className={`group relative text-left rounded-2xl border border-white/[0.04] bg-white/[0.02] hover:border-white/[0.1] transition-all duration-300 overflow-hidden ${
+              recentlyUnlocked === tool.id ? 'ring-1 ring-[#00B0FF]' : ''
+            }`}
             onClick={() => handleToolClick(tool)}
           >
-            <div className="flex items-center justify-between mb-4">
-              <div className={`h-12 w-12 rounded-xl bg-gradient-to-r ${tool.color} flex items-center justify-center`}>
-                <tool.icon className="h-6 w-6 text-white" />
-              </div>
-              <div className="flex items-center px-3 py-1 bg-green-100 rounded-full text-xs font-medium text-green-700">
-                <Zap className="h-3 w-3 mr-1" />
-                +{tool.xpPerUse} XP per use
-              </div>
-            </div>
+            {/* Subtle gradient glow on hover */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-300`} />
             
-            <h3 className="text-lg font-bold text-gray-900 mb-2">{tool.name}</h3>
-            <p className="text-gray-500 mb-4">{tool.description}</p>
-            
-            <div className="flex items-center justify-between">
-              <div className="flex items-center text-sm text-gray-500">
-                <Star className="h-4 w-4 text-amber-400 mr-1" />
-                Used {tool.usageCount} times
+            <div className="relative p-5">
+              <div className="flex items-start justify-between mb-4">
+                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}>
+                  <tool.icon className="h-5 w-5 text-white" />
+                </div>
+                <div className="flex items-center gap-1.5">
+                  {tool.tag && (
+                    <span className={`text-[9px] font-bold px-2 py-0.5 rounded-md ${
+                      tool.tag === 'Popular' ? 'bg-blue-500/15 text-blue-400' :
+                      tool.tag === 'Fun' ? 'bg-amber-500/15 text-amber-400' :
+                      tool.tag === 'Pro' ? 'bg-purple-500/15 text-purple-400' :
+                      'bg-gray-500/15 text-gray-400'
+                    }`}>
+                      {tool.tag}
+                    </span>
+                  )}
+                  <div className="flex items-center gap-0.5 px-2 py-0.5 rounded-md bg-emerald-500/10">
+                    <Zap className="h-2.5 w-2.5 text-emerald-400" />
+                    <span className="text-[9px] font-bold text-emerald-400">+{tool.xpPerUse}</span>
+                  </div>
+                </div>
               </div>
               
-              <button 
-                className="flex items-center text-sm font-medium text-[#1876D2] hover:text-indigo-700"
-              >
-                Launch Tool
-                <ArrowRight className="h-4 w-4 ml-1" />
-              </button>
+              <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#00B0FF] transition-colors">{tool.name}</h3>
+              <p className="text-[11px] text-gray-500 mb-4 leading-relaxed">{tool.description}</p>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1 text-gray-500">
+                  <Star className="h-3 w-3 text-amber-400" />
+                  <span className="text-[10px]">Used {tool.usageCount}x</span>
+                </div>
+                <div className="flex items-center gap-1 text-[#00B0FF] text-[11px] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  Launch
+                  <ArrowRight className="h-3 w-3" />
+                </div>
+              </div>
             </div>
-          </motion.div>
+          </motion.button>
         ))}
       </div>
       
-      {/* Most Used Tools */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm">
-        <h2 className="text-lg font-bold text-gray-900 mb-4">Your Most Used Tools</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* ═══ MOST USED ═══ */}
+      <div className="rounded-2xl border border-white/[0.04] bg-white/[0.02] overflow-hidden">
+        <div className="px-5 py-4 border-b border-white/[0.04] flex items-center gap-2">
+          <Crown className="h-4 w-4 text-yellow-400" />
+          <h2 className="text-sm font-semibold text-white">Your Top Tools</h2>
+        </div>
+        
+        <div className="p-5">
           {mostUsedTools.length > 0 ? (
-            mostUsedTools.map((tool, index) => {
-              const toolConfig = toolsConfig.find(t => t.id === tool.id);
-              if (!toolConfig) return null;
-              
-              return (
-                <div 
-                  key={tool.id}
-                  className="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer"
-                  onClick={() => navigate(toolConfig.path)}
-                >
-                  <div className="flex-shrink-0 h-10 w-10 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
-                    <span className="text-lg font-bold text-[#1876D2]">#{index + 1}</span>
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">{tool.name}</h3>
-                    <p className="text-sm text-gray-500">Used {tool.usageCount} times</p>
-                  </div>
-                </div>
-              );
-            })
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {mostUsedTools.map((tool: any, index: number) => {
+                const config = toolsConfig.find(t => t.id === tool.id);
+                if (!config) return null;
+                const medals = ['🥇', '🥈', '🥉'];
+                
+                return (
+                  <button
+                    key={tool.id}
+                    onClick={() => navigate(config.path)}
+                    className="flex items-center gap-3 p-3 rounded-xl border border-white/[0.04] hover:border-white/[0.08] hover:bg-white/[0.02] transition-all text-left"
+                  >
+                    <span className="text-xl">{medals[index]}</span>
+                    <div>
+                      <p className="text-xs font-semibold text-white">{tool.name || config.name}</p>
+                      <p className="text-[10px] text-gray-500">Used {tool.usageCount}x</p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           ) : (
-            <div className="col-span-3 text-center py-8 text-gray-500">
-              You haven't used any AI tools yet. Try them out to boost your learning!
+            <div className="text-center py-8">
+              <Sparkles className="h-8 w-8 text-gray-600 mx-auto mb-3" />
+              <p className="text-xs text-gray-500">Start using AI tools to see your favorites here!</p>
             </div>
           )}
         </div>
       </div>
       
-      {/* AI Tools Benefits */}
-      <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
-        <h2 className="text-lg font-bold mb-6">How AI Tools Boost Your Learning</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white/10 rounded-xl p-4">
-            <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center mb-3">
-              <Rocket className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-medium mb-2">Accelerated Learning</h3>
-            <p className="text-sm text-indigo-100">Get personalized feedback and guidance to learn faster</p>
-          </div>
-          
-          <div className="bg-white/10 rounded-xl p-4">
-            <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center mb-3">
-              <Brain className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-medium mb-2">Practical Skills</h3>
-            <p className="text-sm text-indigo-100">Apply concepts in real-world scenarios with AI assistance</p>
-          </div>
-          
-          <div className="bg-white/10 rounded-xl p-4">
-            <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center mb-3">
-              <Trophy className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-medium mb-2">Earn XP & Rewards</h3>
-            <p className="text-sm text-indigo-100">Gain experience points and unlock achievements</p>
-          </div>
-          
-          <div className="bg-white/10 rounded-xl p-4">
-            <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center mb-3">
-              <Sparkles className="h-5 w-5 text-white" />
-            </div>
-            <h3 className="font-medium mb-2">Creative Exploration</h3>
-            <p className="text-sm text-indigo-100">Experiment with ideas in a safe, AI-guided environment</p>
+      {/* ═══ BENEFITS BANNER ═══ */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1876D2]/20 to-[#00B0FF]/10 border border-[#1876D2]/20 p-6">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIyMCIgY3k9IjIwIiByPSIxIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDMpIi8+PC9zdmc+')] opacity-50" />
+        
+        <div className="relative">
+          <h2 className="text-sm font-bold text-white mb-4">Why AI Tools?</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              { icon: Rocket, title: 'Learn 3× Faster', desc: 'AI-guided feedback' },
+              { icon: Brain, title: 'Real Skills', desc: 'Practical application' },
+              { icon: Trophy, title: 'Earn XP', desc: 'Gamified learning' },
+              { icon: Sparkles, title: 'Be Creative', desc: 'Safe to experiment' },
+            ].map((b) => (
+              <div key={b.title} className="rounded-xl bg-white/[0.04] border border-white/[0.04] p-3">
+                <b.icon className="h-4 w-4 text-[#00B0FF] mb-2" />
+                <h3 className="text-xs font-semibold text-white">{b.title}</h3>
+                <p className="text-[10px] text-gray-500 mt-0.5">{b.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

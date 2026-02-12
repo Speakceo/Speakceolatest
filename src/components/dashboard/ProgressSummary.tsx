@@ -33,7 +33,7 @@ const ProgressSummary = ({ variant = 'card', showNextLesson = true }: ProgressSu
             <BookOpen className="h-5 w-5 text-[#1876D2] mr-2" />
             <span className="text-sm font-medium text-indigo-900">Lessons Completed</span>
           </div>
-          <p className="text-xl font-bold text-indigo-700">12/20</p>
+          <p className="text-xl font-bold text-[#00B0FF]">12/20</p>
         </div>
         
         <div className="bg-green-50 rounded-lg p-4">

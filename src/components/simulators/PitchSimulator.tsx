@@ -362,11 +362,11 @@ export default function PitchSimulator() {
           
           {/* Tips for a good pitch */}
           <div className="mt-6 p-4 bg-[#E3F2FD] rounded-lg">
-            <h4 className="font-medium text-indigo-700 mb-2 flex items-center">
+            <h4 className="font-medium text-[#00B0FF] mb-2 flex items-center">
               <Lightbulb className="h-4 w-4 mr-2" />
               Pitch Structure Tips
             </h4>
-            <ul className="space-y-2 text-sm text-indigo-700">
+            <ul className="space-y-2 text-sm text-[#00B0FF]">
               <li className="flex items-start">
                 <CheckCircle className="h-4 w-4 text-[#1876D2] mt-0.5 mr-2 flex-shrink-0" />
                 <span>Start with a compelling hook that grabs attention</span>
@@ -591,7 +591,7 @@ export default function PitchSimulator() {
                   <div className="flex-shrink-0 h-6 w-6 rounded-full bg-[#E3F2FD] flex items-center justify-center mr-3">
                     <span className="text-sm font-medium text-[#1876D2]">{index + 1}</span>
                   </div>
-                  <p className="text-indigo-700">{improvement}</p>
+                  <p className="text-[#00B0FF]">{improvement}</p>
                 </div>
               ))}
             </div>
@@ -646,7 +646,7 @@ export default function PitchSimulator() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <button className="flex flex-col items-center p-4 bg-[#E3F2FD] rounded-lg hover:bg-[#E3F2FD] transition-colors">
                 <Presentation className="h-8 w-8 text-[#1876D2] mb-2" />
-                <span className="font-medium text-indigo-700">Practice Again</span>
+                <span className="font-medium text-[#00B0FF]">Practice Again</span>
                 <span className="text-xs text-indigo-500 mt-1">Refine your delivery</span>
               </button>
               

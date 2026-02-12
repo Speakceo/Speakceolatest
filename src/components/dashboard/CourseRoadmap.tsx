@@ -250,7 +250,7 @@ export default function CourseRoadmap() {
             </div>
             <button
               onClick={() => window.location.reload()}
-              className="flex items-center justify-center h-10 w-10 bg-[#E3F2FD] text-indigo-700 rounded-md hover:bg-indigo-200 transition-colors"
+              className="flex items-center justify-center h-10 w-10 bg-[#E3F2FD] text-[#00B0FF] rounded-md hover:bg-indigo-200 transition-colors"
               title="Refresh course data"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -454,7 +454,7 @@ export default function CourseRoadmap() {
                                         <CheckCircle className="h-5 w-5 text-green-500" />
                                       ) : (
                                         module.slides ? (
-                                          <ArrowRight className="h-5 w-5 text-indigo-500" />
+                                          <ArrowRight className="h-5 w-5 text-[#00B0FF]" />
                                         ) : (
                                           <ArrowRight className="h-5 w-5 text-gray-400" />
                                         )

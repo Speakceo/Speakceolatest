@@ -185,7 +185,7 @@ export default function Tasks() {
                 {tasks.map((task) => (
                   <div
                     key={task.id}
-                    className="p-4 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100 hover:border-indigo-200 transition-all duration-300"
+                    className="p-4 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100 hover:border-[#1876D2]/20 transition-all duration-300"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
@@ -234,7 +234,7 @@ export default function Tasks() {
                         ) : (
                           <button
                             onClick={() => handleTaskClick(task)}
-                            className="text-[#1876D2] hover:text-indigo-700"
+                            className="text-[#1876D2] hover:text-[#00B0FF]"
                           >
                             <ChevronRight className="h-6 w-6" />
                           </button>

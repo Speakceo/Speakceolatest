@@ -345,7 +345,7 @@ export default function Analytics() {
                   </div>
                   <div>
                     <p className="text-xs text-[#1876D2] font-medium">Total Study Time</p>
-                    <p className="text-lg font-bold text-indigo-700">
+                    <p className="text-lg font-bold text-[#00B0FF]">
                       {weeklyActivity.reduce((sum: number, day: any) => sum + day.hours, 0).toFixed(1)}h
                     </p>
                   </div>

@@ -9,7 +9,11 @@ import {
   LogOut, 
   HelpCircle,
   Menu,
-  X
+  X,
+  Zap,
+  Flame,
+  Trophy,
+  Star
 } from 'lucide-react';
 import { useUserStore } from '../../lib/store';
 
@@ -23,69 +27,55 @@ export default function TopBar() {
   const notificationsRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [searchFocused, setSearchFocused] = useState(false);
   
-  // Sample notifications
   const notifications = [
     {
       id: 1,
-      title: 'New course available',
-      description: 'Check out our new AI in Business course!',
-      time: '2 hours ago',
+      title: 'New AI Tool Unlocked!',
+      description: 'Business Plan Generator is now available.',
+      time: '2h ago',
       read: false,
-      type: 'course'
+      type: 'achievement',
+      emoji: '🚀'
     },
     {
       id: 2,
-      title: 'Task reminder',
-      description: 'Your business model canvas is due tomorrow.',
-      time: '5 hours ago',
+      title: 'Task Due Tomorrow',
+      description: 'Submit your business model canvas.',
+      time: '5h ago',
       read: true,
-      type: 'task'
+      type: 'task',
+      emoji: '📝'
     },
     {
       id: 3,
-      title: 'Achievement unlocked',
-      description: 'You\'ve completed 10 lessons in a row! 🎉',
-      time: '1 day ago',
+      title: '10-Lesson Streak!',
+      description: "You've completed 10 lessons in a row!",
+      time: '1d ago',
       read: true,
-      type: 'achievement'
+      type: 'achievement',
+      emoji: '🔥'
     }
   ];
 
-  // Handle resize for mobile view
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        setShowMobileMenu(false);
-      }
     };
-    
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        notificationsRef.current && 
-        !notificationsRef.current.contains(event.target as Node) &&
-        !(event.target as Element).closest('.notifications-trigger')
-      ) {
+      if (notificationsRef.current && !notificationsRef.current.contains(event.target as Node) && !(event.target as Element).closest('.notifications-trigger')) {
         setShowNotifications(false);
       }
-      
-      if (
-        userMenuRef.current && 
-        !userMenuRef.current.contains(event.target as Node) &&
-        !(event.target as Element).closest('.user-menu-trigger')
-      ) {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node) && !(event.target as Element).closest('.user-menu-trigger')) {
         setShowUserMenu(false);
       }
     };
-    
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
@@ -104,117 +94,93 @@ export default function TopBar() {
 
   const markAllNotificationsAsRead = () => {
     setHasNewNotifications(false);
-    // In a real app, you'd update this in your backend
   };
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
+    <header className="sticky top-0 z-30 bg-[#0c1222]/80 backdrop-blur-xl border-b border-white/[0.04]">
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Left section - Mobile menu button and logo for small screens */}
-          <div className="flex items-center">
-            {isMobile && (
-              <button
-                type="button"
-                className="p-2 rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-600 lg:hidden"
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-              >
-                {showMobileMenu ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            )}
-            
-            {/* Logo on mobile - optional */}
-            {isMobile && (
-              <div className="ml-3">
-                <div className="text-lg font-bold text-gray-900">Startup School</div>
-              </div>
-            )}
-          </div>
-
-          {/* Center section - Search */}
-          <div className="flex-1 max-w-xl mx-auto">
+        <div className="flex h-14 items-center justify-between gap-4">
+          {/* Left - Search */}
+          <div className="flex-1 max-w-lg">
             <form onSubmit={handleSearch} className="relative">
-              <div className="relative">
+              <div className={`relative rounded-xl transition-all duration-200 ${
+                searchFocused ? 'ring-1 ring-[#1876D2]/40' : ''
+              }`}>
                 <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                  <Search className="h-5 w-5 text-gray-400" />
+                  <Search className={`h-4 w-4 transition-colors ${searchFocused ? 'text-[#00B0FF]' : 'text-gray-500'}`} />
                 </div>
                 <input
                   type="text"
                   name="search"
-                  placeholder="Search for courses, tasks, or content..."
-                  className="block w-full rounded-lg border-0 py-2 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="Search courses, tools, tasks..."
+                  className="block w-full rounded-xl border-0 py-2 pl-9 pr-3 bg-white/[0.04] text-white text-sm placeholder:text-gray-500 focus:outline-none focus:bg-white/[0.06]"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => setSearchFocused(true)}
+                  onBlur={() => setSearchFocused(false)}
                 />
               </div>
             </form>
           </div>
 
-          {/* Right section - Notifications and Profile */}
-          <div className="flex items-center space-x-4">
+          {/* Right */}
+          <div className="flex items-center gap-1">
+            {/* XP Quick Badge */}
+            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#1876D2]/10 to-[#00B0FF]/10 border border-[#1876D2]/20 mr-1">
+              <Zap className="h-3.5 w-3.5 text-[#00B0FF]" />
+              <span className="text-xs font-bold text-[#00B0FF]">1,250 XP</span>
+            </div>
+            
+            {/* Streak Badge */}
+            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/20 mr-1">
+              <Flame className="h-3.5 w-3.5 text-orange-400" />
+              <span className="text-xs font-bold text-orange-400">7</span>
+            </div>
+
             {/* Notifications */}
             <div className="relative">
               <button
                 type="button"
-                className="notifications-trigger relative p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-600"
+                className="notifications-trigger relative p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/[0.04] transition-colors"
                 onClick={() => setShowNotifications(!showNotifications)}
               >
-                <Bell className="h-6 w-6" />
+                <Bell className="h-[18px] w-[18px]" />
                 {hasNewNotifications && (
-                  <span className="absolute top-1 right-1 h-2.5 w-2.5 rounded-full bg-red-500 border-2 border-white" />
+                  <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-[#00B0FF] ring-2 ring-[#0c1222]" />
                 )}
               </button>
               
-              {/* Notifications dropdown */}
               {showNotifications && (
                 <div 
                   ref={notificationsRef}
-                  className="absolute right-0 mt-2 w-80 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="absolute right-0 mt-2 w-80 origin-top-right rounded-2xl bg-[#111827]/95 backdrop-blur-xl py-1 shadow-2xl border border-white/[0.06]"
                 >
-                  <div className="flex items-center justify-between px-4 pt-2 pb-1 border-b">
-                    <h3 className="text-base font-semibold text-gray-900">Notifications</h3>
-                    <button 
-                      onClick={markAllNotificationsAsRead}
-                      className="text-xs text-[#1876D2] hover:text-indigo-800"
-                    >
-                      Mark all as read
+                  <div className="flex items-center justify-between px-4 pt-3 pb-2 border-b border-white/[0.04]">
+                    <h3 className="text-sm font-semibold text-white">Notifications</h3>
+                    <button onClick={markAllNotificationsAsRead} className="text-[10px] text-[#00B0FF] hover:underline font-medium">
+                      Mark all read
                     </button>
                   </div>
                   
-                  <div className="max-h-60 overflow-y-auto py-1">
-                    {notifications.length > 0 ? (
-                      <div>
-                        {notifications.map((notification) => (
-                          <div 
-                            key={notification.id} 
-                            className={`px-4 py-2 hover:bg-gray-50 ${!notification.read ? 'bg-[#E3F2FD]' : ''}`}
-                          >
+                  <div className="max-h-64 overflow-y-auto py-1">
+                    {notifications.map((n) => (
+                      <div key={n.id} className={`px-4 py-3 hover:bg-white/[0.02] transition-colors ${!n.read ? 'bg-[#1876D2]/5' : ''}`}>
+                        <div className="flex gap-3">
+                          <span className="text-lg">{n.emoji}</span>
+                          <div className="flex-1 min-w-0">
                             <div className="flex justify-between items-start">
-                              <p className="text-sm font-medium text-gray-900">
-                                {notification.title}
-                              </p>
-                              <span className="text-xs text-gray-500">{notification.time}</span>
+                              <p className="text-xs font-medium text-white">{n.title}</p>
+                              <span className="text-[10px] text-gray-500 ml-2 flex-shrink-0">{n.time}</span>
                             </div>
-                            <p className="text-xs text-gray-600 mt-0.5">
-                              {notification.description}
-                            </p>
+                            <p className="text-[11px] text-gray-400 mt-0.5">{n.description}</p>
                           </div>
-                        ))}
+                        </div>
                       </div>
-                    ) : (
-                      <p className="px-4 py-2 text-sm text-gray-500">No notifications</p>
-                    )}
+                    ))}
                   </div>
                   
-                  <div className="border-t px-4 py-2">
-                    <button 
-                      className="text-xs text-[#1876D2] hover:text-indigo-800 w-full text-center"
-                      onClick={() => navigate('/dashboard/notifications')}
-                    >
+                  <div className="border-t border-white/[0.04] px-4 py-2">
+                    <button className="text-[11px] text-[#00B0FF] hover:underline w-full text-center font-medium" onClick={() => navigate('/dashboard/notifications')}>
                       View all notifications
                     </button>
                   </div>
@@ -222,87 +188,78 @@ export default function TopBar() {
               )}
             </div>
             
-            {/* Help */}
-            <button
-              type="button"
-              className="p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-600"
-              onClick={() => navigate('/dashboard/help')}
-            >
-              <HelpCircle className="h-6 w-6" />
-            </button>
-            
             {/* Settings */}
             <button
               type="button"
-              className="p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-600"
+              className="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/[0.04] transition-colors"
               onClick={() => navigate('/dashboard/settings')}
             >
-              <Settings className="h-6 w-6" />
+              <Settings className="h-[18px] w-[18px]" />
             </button>
 
-            {/* User profile */}
-            <div className="relative ml-3">
+            {/* User Profile */}
+            <div className="relative ml-1">
               <button
                 type="button"
-                className="user-menu-trigger flex items-center space-x-2 rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#1876D2]"
+                className="user-menu-trigger flex items-center gap-2 rounded-xl p-1.5 hover:bg-white/[0.04] transition-colors"
                 onClick={() => setShowUserMenu(!showUserMenu)}
               >
-                <span className="sr-only">Open user menu</span>
-                <div className="h-8 w-8 rounded-full bg-[#E3F2FD] flex items-center justify-center overflow-hidden">
+                <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-[#1876D2] to-[#00B0FF] flex items-center justify-center overflow-hidden">
                   {user?.avatar ? (
-                    <img 
-                      src={user.avatar} 
-                      alt={user?.name || 'User profile'} 
-                      className="h-full w-full object-cover"
-                    />
+                    <img src={user.avatar} alt={user?.name || 'Profile'} className="h-full w-full object-cover" />
                   ) : (
-                    <span className="text-[#1876D2] font-semibold">
-                      {user?.name?.charAt(0) || 'U'}
-                    </span>
+                    <span className="text-white font-bold text-[11px]">{user?.name?.charAt(0) || 'U'}</span>
                   )}
                 </div>
                 <div className="hidden sm:flex sm:items-center">
-                  <span className="text-sm font-medium text-gray-900 truncate max-w-[100px]">
+                  <span className="text-xs font-medium text-gray-300 truncate max-w-[80px]">
                     {user?.name || 'User'}
                   </span>
-                  <ChevronDown className="ml-1 h-4 w-4 text-gray-500" />
+                  <ChevronDown className="ml-0.5 h-3 w-3 text-gray-500" />
                 </div>
               </button>
               
-              {/* User dropdown menu */}
               {showUserMenu && (
                 <div 
                   ref={userMenuRef}
-                  className="absolute right-0 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  className="absolute right-0 mt-2 w-52 origin-top-right rounded-2xl bg-[#111827]/95 backdrop-blur-xl py-1 shadow-2xl border border-white/[0.06]"
                 >
-                  <div className="px-4 py-2 border-b">
-                    <p className="text-sm font-medium text-gray-900">{user?.name || 'User'}</p>
-                    <p className="text-xs text-gray-500 truncate">{user?.email || 'user@example.com'}</p>
+                  <div className="px-4 py-3 border-b border-white/[0.04]">
+                    <p className="text-sm font-medium text-white">{user?.name || 'User'}</p>
+                    <p className="text-[11px] text-gray-500 truncate">{user?.email || 'user@example.com'}</p>
+                    <div className="flex items-center gap-3 mt-2">
+                      <div className="flex items-center gap-1">
+                        <Zap className="h-3 w-3 text-[#00B0FF]" />
+                        <span className="text-[10px] text-[#00B0FF] font-bold">1,250 XP</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Star className="h-3 w-3 text-yellow-500" />
+                        <span className="text-[10px] text-yellow-400 font-bold">Lv 5</span>
+                      </div>
+                    </div>
                   </div>
                   
-                  <button
-                    className="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => navigate('/dashboard/profile')}
-                  >
-                    <User className="mr-2 h-4 w-4 text-gray-500" />
-                    Your Profile
-                  </button>
+                  <div className="py-1">
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-white/[0.04] transition-colors" onClick={() => navigate('/dashboard/profile')}>
+                      <User className="mr-2.5 h-3.5 w-3.5 text-gray-500" />
+                      Your Profile
+                    </button>
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-white/[0.04] transition-colors" onClick={() => navigate('/dashboard/achievements')}>
+                      <Trophy className="mr-2.5 h-3.5 w-3.5 text-gray-500" />
+                      Achievements
+                    </button>
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-white/[0.04] transition-colors" onClick={() => navigate('/dashboard/settings')}>
+                      <Settings className="mr-2.5 h-3.5 w-3.5 text-gray-500" />
+                      Settings
+                    </button>
+                  </div>
                   
-                  <button
-                    className="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => navigate('/dashboard/settings')}
-                  >
-                    <Settings className="mr-2 h-4 w-4 text-gray-500" />
-                    Settings
-                  </button>
-                  
-                  <button
-                    className="flex w-full items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={handleLogout}
-                  >
-                    <LogOut className="mr-2 h-4 w-4 text-gray-500" />
-                    Sign out
-                  </button>
+                  <div className="border-t border-white/[0.04] pt-1 pb-1">
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-red-400 hover:bg-red-500/5 transition-colors" onClick={handleLogout}>
+                      <LogOut className="mr-2.5 h-3.5 w-3.5" />
+                      Sign out
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

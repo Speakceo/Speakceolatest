@@ -3,7 +3,7 @@ import { Outlet, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../lib/store';
 import Sidebar from './Sidebar';
 import TopBar from './TopBar';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Rocket } from 'lucide-react';
 
 // Simple Error Boundary Component
 class ErrorBoundary extends React.Component<
@@ -27,24 +27,21 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="text-center p-8 bg-white rounded-lg shadow-lg max-w-md">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">Dashboard Error</h2>
-            <p className="text-gray-600 mb-4">
+        <div className="min-h-screen flex items-center justify-center bg-slate-950">
+          <div className="text-center p-8 bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/[0.06] max-w-md">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-red-500/10 flex items-center justify-center">
+              <span className="text-3xl">⚠️</span>
+            </div>
+            <h2 className="text-xl font-bold text-white mb-3">Something went wrong</h2>
+            <p className="text-gray-400 mb-6 text-sm">
               {this.state.error?.message || 'An unexpected error occurred'}
             </p>
-            <details className="text-left mb-4">
-              <summary className="cursor-pointer text-sm text-gray-500">Error Details</summary>
-              <pre className="text-xs text-gray-400 mt-2 overflow-auto">
-                {this.state.error?.stack}
-              </pre>
-            </details>
             <button
               onClick={() => {
                 this.setState({ hasError: false, error: null });
                 window.location.reload();
               }}
-              className="px-4 py-2 bg-[#1876D2] text-white rounded hover:bg-[#1565C0]"
+              className="px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl hover:shadow-lg transition-all"
             >
               Reload Dashboard
             </button>
@@ -57,12 +54,18 @@ class ErrorBoundary extends React.Component<
   }
 }
 
-// Loading Component
+// Premium Loading Component
 const LoadingSpinner = ({ message = "Loading dashboard..." }: { message?: string }) => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50">
+  <div className="min-h-screen flex items-center justify-center bg-slate-950">
     <div className="text-center">
-      <Loader2 className="h-8 w-8 animate-spin text-[#1876D2] mx-auto mb-4" />
-      <p className="text-gray-600">{message}</p>
+      <div className="relative w-16 h-16 mx-auto mb-6">
+        <div className="absolute inset-0 rounded-full border-2 border-white/[0.06]" />
+        <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#00B0FF] animate-spin" />
+        <div className="absolute inset-2 rounded-full bg-gradient-to-br from-[#1876D2]/20 to-[#00B0FF]/20 flex items-center justify-center">
+          <Rocket className="h-6 w-6 text-[#00B0FF]" />
+        </div>
+      </div>
+      <p className="text-gray-400 text-sm font-medium">{message}</p>
     </div>
   </div>
 );
@@ -137,22 +140,22 @@ export default function DashboardLayout() {
 
   // Show loading while auth is initializing
   if (isLoading || !isHydrated || !isInitialized) {
-    return <LoadingSpinner message="Initializing dashboard..." />;
+    return <LoadingSpinner message="Initializing your workspace..." />;
   }
 
   // Show error state
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center p-8 bg-white rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Dashboard Error</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
+      <div className="min-h-screen flex items-center justify-center bg-slate-950">
+        <div className="text-center p-8 bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/[0.06]">
+          <h2 className="text-xl font-bold text-white mb-3">Connection Error</h2>
+          <p className="text-gray-400 mb-6 text-sm">{error}</p>
           <button
             onClick={() => {
               setError(null);
               window.location.reload();
             }}
-            className="px-4 py-2 bg-[#1876D2] text-white rounded hover:bg-[#1565C0]"
+            className="px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl hover:shadow-lg transition-all"
           >
             Try Again
           </button>
@@ -171,13 +174,13 @@ export default function DashboardLayout() {
 
   return (
     <ErrorBoundary>
-      <Suspense fallback={<LoadingSpinner message="Loading dashboard content..." />}>
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Suspense fallback={<LoadingSpinner message="Loading content..." />}>
+        <div className="min-h-screen bg-[#0c1222] flex flex-col">
           <Sidebar onCollapseChange={handleSidebarStateChange} />
-          <div className={`flex-1 flex flex-col min-h-screen ${!isMobile ? (isSidebarCollapsed ? 'ml-20' : 'ml-64') : ''}`}>
+          <div className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${!isMobile ? (isSidebarCollapsed ? 'ml-20' : 'ml-[260px]') : ''}`}>
             <TopBar />
-            <main className="py-6 px-4 sm:px-6 lg:px-8 flex-grow overflow-auto">
-              <div className="max-w-7xl mx-auto">
+            <main className="flex-grow overflow-auto">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <Outlet />
               </div>
             </main>

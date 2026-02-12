@@ -340,7 +340,7 @@ export default function MyStartup() {
             <Sparkles className="h-4 w-4 text-[#1876D2]" />
           </div>
           <div>
-            <h4 className="text-sm font-medium text-indigo-700">AI Suggestion</h4>
+            <h4 className="text-sm font-medium text-[#00B0FF]">AI Suggestion</h4>
             <p className="text-sm text-[#1876D2] mt-1">
               {startupData.overallProgress < 30 
                 ? "Start by defining your business model canvas to clarify your value proposition."
@@ -348,7 +348,7 @@ export default function MyStartup() {
                 ? "Your business model looks good! Now focus on creating a strong brand identity."
                 : "You're making great progress! Complete your financial projections to prepare for your pitch."}
             </p>
-            <button className="mt-2 flex items-center text-xs font-medium text-indigo-700 hover:text-indigo-800">
+            <button className="mt-2 flex items-center text-xs font-medium text-[#00B0FF] hover:text-indigo-800">
               <span>Take action</span>
               <ArrowRight className="h-3 w-3 ml-1" />
             </button>

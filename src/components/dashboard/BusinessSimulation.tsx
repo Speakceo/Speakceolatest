@@ -59,7 +59,7 @@ const simulators = [
     title: 'Brand & Logo Creator',
     description: 'Design your brand identity with AI assistance',
     icon: PenTool,
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-[#1876D2] to-[#00B0FF]',
     features: [
       'AI logo generation',
       'Color palette suggestions',
@@ -235,7 +235,7 @@ export default function BusinessSimulation() {
                 <ul className="space-y-2 mb-6">
                   {simulator.features.map((feature, index) => (
                     <li key={index} className="flex items-center text-sm text-gray-600">
-                      <ChevronRight className="h-4 w-4 text-indigo-500 mr-2" />
+                      <ChevronRight className="h-4 w-4 text-[#00B0FF] mr-2" />
                       {feature}
                     </li>
                   ))}

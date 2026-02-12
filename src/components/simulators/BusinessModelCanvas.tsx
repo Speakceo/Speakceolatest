@@ -353,7 +353,7 @@ export default function BusinessModelCanvas() {
                 </div>
                 <button
                   onClick={() => handleAddComponent(cell.type)}
-                  className="text-xs text-[#1876D2] hover:text-indigo-700"
+                  className="text-xs text-[#1876D2] hover:text-[#00B0FF]"
                 >
                   + Add Component
                 </button>
@@ -398,7 +398,7 @@ export default function BusinessModelCanvas() {
               {businessModel.suggestions.map((suggestion, index) => (
                 <div
                   key={index}
-                  className="p-4 rounded-lg bg-[#E3F2FD] text-sm text-indigo-700"
+                  className="p-4 rounded-lg bg-[#E3F2FD] text-sm text-[#00B0FF]"
                 >
                   {suggestion}
                 </div>

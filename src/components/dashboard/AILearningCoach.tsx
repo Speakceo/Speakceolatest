@@ -218,7 +218,7 @@ export default function AILearningCoach({ onClose }: { onClose: () => void }) {
                 {message.type === 'ai' && message.audioUrl && (
                   <button
                     onClick={() => toggleAudio(message.id)}
-                    className="mt-2 flex items-center text-[#1876D2] hover:text-indigo-700"
+                    className="mt-2 flex items-center text-[#1876D2] hover:text-[#00B0FF]"
                   >
                     {isPlaying[message.id] ? (
                       <VolumeX className="h-5 w-5 mr-1" />

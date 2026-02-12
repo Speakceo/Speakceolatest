@@ -748,7 +748,7 @@ export default function TasksAssignments() {
           .sort(([a], [b]) => parseInt(a) - parseInt(b))
           .map(([weekNumber, weekTasks]) => (
             <div key={weekNumber} className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-              <div className="bg-gradient-to-r from-indigo-50 to-purple-50 px-6 py-4 border-b border-gray-200">
+              <div className="bg-gradient-to-r from-[#1876D2]/5 to-[#00B0FF]/5 px-6 py-4 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-gray-900 flex items-center gap-3">
                   <Calendar className="h-5 w-5 text-[#1876D2]" />
                   Week {weekNumber} Tasks
@@ -868,7 +868,7 @@ export default function TasksAssignments() {
                                 <ul className="text-gray-600 text-sm space-y-1">
                                   {task.examples.map((example, index) => (
                                     <li key={index} className="flex items-start gap-2">
-                                      <span className="text-indigo-500 mt-1">•</span>
+                                      <span className="text-[#00B0FF] mt-1">•</span>
                                       {example}
                                     </li>
                                   ))}

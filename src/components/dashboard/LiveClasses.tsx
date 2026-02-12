@@ -353,7 +353,7 @@ export default function LiveClasses() {
             </div>
             <div>
               <p className="text-xs text-[#1876D2] font-medium">Classes Attended</p>
-              <p className="text-lg font-bold text-indigo-700">{pastClasses.length}</p>
+              <p className="text-lg font-bold text-[#00B0FF]">{pastClasses.length}</p>
             </div>
           </div>
           
@@ -363,7 +363,7 @@ export default function LiveClasses() {
             </div>
             <div>
               <p className="text-xs text-[#1876D2] font-medium">Hours Learned</p>
-              <p className="text-lg font-bold text-indigo-700">
+              <p className="text-lg font-bold text-[#00B0FF]">
                 {pastClasses.reduce((sum, cls) => sum + (cls.durationMinutes / 60), 0).toFixed(1)}
               </p>
             </div>
@@ -375,7 +375,7 @@ export default function LiveClasses() {
             </div>
             <div>
               <p className="text-xs text-[#1876D2] font-medium">Engagement Score</p>
-              <p className="text-lg font-bold text-indigo-700">4.8</p>
+              <p className="text-lg font-bold text-[#00B0FF]">4.8</p>
             </div>
           </div>
           
@@ -385,7 +385,7 @@ export default function LiveClasses() {
             </div>
             <div>
               <p className="text-xs text-[#1876D2] font-medium">XP Earned</p>
-              <p className="text-lg font-bold text-indigo-700">
+              <p className="text-lg font-bold text-[#00B0FF]">
                 {pastClasses.length * 25 + upcomingClasses.length * 10}
               </p>
             </div>
@@ -504,7 +504,7 @@ export default function LiveClasses() {
                 {filteredClasses.map((class_) => (
                   <div
                     key={class_.id}
-                    className="p-4 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100 hover:border-indigo-200 transition-colors cursor-pointer"
+                    className="p-4 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100 hover:border-[#1876D2]/20 transition-colors cursor-pointer"
                     onClick={() => setSelectedClass(class_)}
                   >
                     <div className="flex items-center justify-between mb-4">
@@ -591,7 +591,7 @@ export default function LiveClasses() {
                                   handleRegisterForClass(class_);
                                 }}
                                 disabled={isRegistering}
-                                className={`flex items-center space-x-1 text-sm text-[#1876D2] hover:text-indigo-700 ${
+                                className={`flex items-center space-x-1 text-sm text-[#1876D2] hover:text-[#00B0FF] ${
                                   isRegistering ? 'opacity-75 cursor-not-allowed' : ''
                                 }`}
                               >
@@ -688,7 +688,7 @@ export default function LiveClasses() {
                 </div>
               ))}
             </div>
-            <button className="w-full mt-4 flex items-center justify-center space-x-2 text-[#1876D2] hover:text-indigo-700 font-medium">
+            <button className="w-full mt-4 flex items-center justify-center space-x-2 text-[#1876D2] hover:text-[#00B0FF] font-medium">
               <span>View All Recommendations</span>
               <ArrowRight className="h-4 w-4" />
             </button>
@@ -777,7 +777,7 @@ export default function LiveClasses() {
                       <div key={material.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div className="flex items-center">
                           {material.type === 'pdf' ? (
-                            <FileText className="h-5 w-5 text-indigo-500 mr-3" />
+                            <FileText className="h-5 w-5 text-[#00B0FF] mr-3" />
                           ) : material.type === 'video' ? (
                             <Video className="h-5 w-5 text-red-500 mr-3" />
                           ) : (
