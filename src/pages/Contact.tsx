@@ -33,7 +33,11 @@ const Contact = () => {
 
   return (
     <>
-      <SEO title="Contact Us | Orbit Student" description="Get in touch with Orbit Student. We're here to help you start your child's entrepreneurial journey." />
+      <SEO
+        title="Contact Orbit Student | Get in Touch — Support & Inquiries"
+        description="Contact Orbit Student for support, enrollment, or partnership inquiries. Email hello@orbitstudent.com. We reply within 24 hours."
+        keywords={['contact Orbit Student', 'Orbit Student support', 'Orbit Student email', 'Orbit Student phone', 'Orbit Student help', 'Orbit Student enrollment', 'reach Orbit Student', 'Orbit Student customer service']}
+      />
 
       <div className="min-h-screen bg-white">
         {/* ═══ HERO — Dark ═══ */}

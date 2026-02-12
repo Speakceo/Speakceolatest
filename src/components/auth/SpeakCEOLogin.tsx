@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mic, User, AlertCircle, CheckCircle, Sparkles } from 'lucide-react';
+import { Rocket, User, AlertCircle, CheckCircle, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { loginWithSpeakCEOId, updateStudentName } from '../../lib/offline-auth';
 import { useUserStore } from '../../lib/store';
 
@@ -16,7 +17,6 @@ export default function SpeakCEOLogin() {
   const { initializeAuth } = useUserStore();
 
   const validateSpeakCEOId = (id: string) => {
-    // Allow case-insensitive matching
     const regex = /^speakceo[0-9]{3}$/i;
     return regex.test(id);
   };
@@ -28,12 +28,10 @@ export default function SpeakCEOLogin() {
     setLoading(true);
 
     try {
-      // Validate format
       if (!validateSpeakCEOId(speakCeoId)) {
         throw new Error('Invalid format. Please use: SpeakCEO001 to SpeakCEO300');
       }
 
-      // Extract number and validate range
       const idNumber = parseInt(speakCeoId.replace(/speakceo/i, ''));
       if (idNumber < 1 || idNumber > 300) {
         throw new Error('ID must be between SpeakCEO001 and SpeakCEO300');
@@ -43,7 +41,7 @@ export default function SpeakCEOLogin() {
       
       if (result.isFirstTime) {
         setShowNameEntry(true);
-        setSuccess('Welcome to SpeakCEO! Please enter your name to get started.');
+        setSuccess('Welcome to Orbit Student! Please enter your name to get started.');
       } else {
         await initializeAuth();
         setSuccess(`Welcome back, ${result.studentName}!`);
@@ -70,7 +68,7 @@ export default function SpeakCEOLogin() {
 
       await updateStudentName(speakCeoId, studentName.trim());
       await initializeAuth();
-      setSuccess(`Welcome to SpeakCEO, ${studentName}!`);
+      setSuccess(`Welcome to Orbit Student, ${studentName}!`);
       
       setTimeout(() => {
         navigate('/dashboard');
@@ -89,140 +87,196 @@ export default function SpeakCEOLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 dark:from-gray-900 dark:via-gray-800 dark:to-black flex items-center justify-center p-4">
-      <div className="absolute inset-0 opacity-20">
-        <div className="w-full h-full bg-gradient-to-br from-white/5 to-[#00B0FF]/10 backdrop-blur-3xl"></div>
-      </div>
+    <>
+      <Helmet>
+        <title>Orbit Student Login | Student Portal — Access AI Learning Dashboard</title>
+        <meta name="description" content="Login to the Orbit Student portal. Access your AI learning dashboard, courses, AI tools, live classes, and scholarship prep. Join 2,500+ students building their future." />
+        <meta name="keywords" content="Orbit Student login, Orbit Student portal, Orbit Student sign in, Orbit Student dashboard, orbitstudent login, student portal login, AI student login, Orbit Student account, Orbit Student app" />
+        <meta property="og:title" content="Orbit Student Login | Student Portal & AI Dashboard" />
+        <meta property="og:description" content="Login to your Orbit Student portal. Access AI tools, courses, live classes & scholarship prep. 2,500+ students already building their future." />
+        <meta property="og:url" content="https://www.orbitstudent.com/login" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Orbit Student Login | Student Portal" />
+        <meta name="twitter:description" content="Login to Orbit Student portal. Access AI learning dashboard, courses, and 100+ AI tools for kids 8-18." />
+        <link rel="canonical" href="https://www.orbitstudent.com/login" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Orbit Student Login",
+            "description": "Login to the Orbit Student portal. Access AI learning dashboard, courses, AI tools, live classes, and scholarship prep.",
+            "url": "https://www.orbitstudent.com/login",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "Orbit Student",
+              "url": "https://www.orbitstudent.com"
+            },
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.orbitstudent.com"
+              }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Login",
+                "item": "https://www.orbitstudent.com/login"
+              }]
+            }
+          })}
+        </script>
+      </Helmet>
       
-      <motion.div 
-        variants={fadeIn}
-        initial="initial"
-        animate="animate"
-        className="relative w-full max-w-md"
-      >
-        <div className="bg-white/10 dark:bg-gray-800/20 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-gray-700/30">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-6 relative">
-              <Mic className="h-10 w-10 text-white" />
-              <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-yellow-300 animate-pulse" />
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center p-4">
+        <div className="absolute inset-0 opacity-20">
+          <div className="w-full h-full bg-gradient-to-br from-white/5 to-[#00B0FF]/10 backdrop-blur-3xl"></div>
+        </div>
+        
+        <motion.div 
+          variants={fadeIn}
+          initial="initial"
+          animate="animate"
+          className="relative w-full max-w-md"
+        >
+          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-2xl mb-6 relative">
+                <Rocket className="h-10 w-10 text-white" />
+                <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-yellow-300 animate-pulse" />
+              </div>
+              <h1 className="text-3xl font-bold text-white mb-2">Orbit Student Login</h1>
+              <p className="text-gray-300">Enter your Student ID to access your portal</p>
             </div>
-            <h1 className="text-3xl font-bold text-white mb-2">Welcome to SpeakCEO</h1>
-            <p className="text-purple-200">Enter your SpeakCEO ID to continue</p>
-          </div>
 
-          {!showNameEntry ? (
-            /* Login Form */
-            <form onSubmit={handleLogin} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-purple-200 mb-2">
-                  SpeakCEO ID
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={speakCeoId}
-                    onChange={(e) => {
-                      let value = e.target.value;
-                      // Auto-format to correct case
-                      if (value.toLowerCase().startsWith('speakceo')) {
-                        value = 'SpeakCEO' + value.slice(8);
-                      }
-                      setSpeakCeoId(value);
-                    }}
-                    placeholder=""
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    disabled={loading}
-                  />
-                  <User className="absolute right-3 top-3 h-5 w-5 text-purple-300" />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading || !speakCeoId}
-                className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
-              >
-                {loading ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                    Logging in...
+            {!showNameEntry ? (
+              /* Login Form */
+              <form onSubmit={handleLogin} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Student ID
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      value={speakCeoId}
+                      onChange={(e) => {
+                        let value = e.target.value;
+                        if (value.toLowerCase().startsWith('speakceo')) {
+                          value = 'SpeakCEO' + value.slice(8);
+                        }
+                        setSpeakCeoId(value);
+                      }}
+                      placeholder="SpeakCEO001"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
+                      disabled={loading}
+                    />
+                    <User className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
                   </div>
-                ) : (
-                  'Login'
-                )}
-              </button>
-            </form>
-          ) : (
-            /* Name Entry Form */
-            <form onSubmit={handleNameSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-purple-200 mb-2">
-                  What's your name?
-                </label>
-                <input
-                  type="text"
-                  value={studentName}
-                  onChange={(e) => setStudentName(e.target.value)}
-                  placeholder=""
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  disabled={loading}
-                  autoFocus
-                />
-              </div>
+                </div>
 
-              <div className="flex space-x-3">
-                <button
-                  type="button"
-                  onClick={() => setShowNameEntry(false)}
-                  className="flex-1 bg-white/10 text-white py-3 px-6 rounded-xl font-semibold hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300"
-                  disabled={loading}
-                >
-                  Back
-                </button>
                 <button
                   type="submit"
-                  disabled={loading || !studentName.trim()}
-                  className="flex-1 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  disabled={loading || !speakCeoId}
+                  className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#1876D2]/25 focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
                 >
                   {loading ? (
                     <div className="flex items-center justify-center">
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Setting up...
+                      Logging in...
                     </div>
                   ) : (
-                    'Continue'
+                    'Login to Dashboard'
                   )}
                 </button>
-              </div>
-            </form>
-          )}
+              </form>
+            ) : (
+              /* Name Entry Form */
+              <form onSubmit={handleNameSubmit} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    What's your name?
+                  </label>
+                  <input
+                    type="text"
+                    value={studentName}
+                    onChange={(e) => setStudentName(e.target.value)}
+                    placeholder="Enter your name"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
+                    disabled={loading}
+                    autoFocus
+                  />
+                </div>
 
-          {/* Messages */}
-          {error && (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mt-4 p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center"
-            >
-              <AlertCircle className="h-5 w-5 text-red-400 mr-3 flex-shrink-0" />
-              <span className="text-red-200 text-sm">{error}</span>
-            </motion.div>
-          )}
+                <div className="flex space-x-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowNameEntry(false)}
+                    className="flex-1 bg-white/10 text-white py-3 px-6 rounded-xl font-semibold hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300"
+                    disabled={loading}
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={loading || !studentName.trim()}
+                    className="flex-1 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#1876D2]/25 focus:outline-none focus:ring-2 focus:ring-[#1876D2] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                  >
+                    {loading ? (
+                      <div className="flex items-center justify-center">
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Setting up...
+                      </div>
+                    ) : (
+                      'Continue'
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
 
-          {success && (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mt-4 p-4 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center"
-            >
-              <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-              <span className="text-green-200 text-sm">{success}</span>
-            </motion.div>
-          )}
+            {/* Messages */}
+            {error && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="mt-4 p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center"
+              >
+                <AlertCircle className="h-5 w-5 text-red-400 mr-3 flex-shrink-0" />
+                <span className="text-red-200 text-sm">{error}</span>
+              </motion.div>
+            )}
 
-        </div>
-      </motion.div>
-    </div>
+            {success && (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="mt-4 p-4 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center"
+              >
+                <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
+                <span className="text-green-200 text-sm">{success}</span>
+              </motion.div>
+            )}
+
+            {/* SEO-friendly hidden content for search engines */}
+            <div className="sr-only">
+              <h2>Orbit Student Portal Login</h2>
+              <p>Login to your Orbit Student account to access the AI learning dashboard, courses, AI tools, and live classes. Orbit Student is the #1 AI-powered learning portal for kids ages 8-18.</p>
+              <h3>What you get after Orbit Student login:</h3>
+              <ul>
+                <li>AI Learning Dashboard with XP tracking</li>
+                <li>100+ AI Tools — SpeakSmart, MathMentor, WriteRight</li>
+                <li>65+ Interactive Courses</li>
+                <li>Live Classes with Real Entrepreneurs</li>
+                <li>Scholarship Prep & Roadmap</li>
+                <li>Business Simulations & Projects</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </>
   );
 }

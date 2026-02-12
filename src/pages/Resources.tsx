@@ -109,9 +109,9 @@ const Resources: React.FC = () => {
   return (
     <>
       <SEO
-        title="Scholarships & Resources for Young Students | Orbit Student"
-        description="Help your child discover scholarships, competitions, and global opportunities early. Orbit Student's resource hub gives students ages 8-18 a head start on their future."
-        keywords={['scholarships for kids', 'youth competitions', 'student scholarships', 'early scholarship planning', 'AI tools for students', 'global fellowships', 'young entrepreneurs', 'college prep for middle school']}
+        title="Orbit Student Resources | Scholarships, Competitions & Opportunities for Kids"
+        description="Orbit Student resources: 500+ scholarships worth $2.9B+, competitions, and global opportunities for kids 8-18. Start scholarship prep early with Orbit Student."
+        keywords={['Orbit Student resources', 'Orbit Student scholarships', 'scholarships for kids', 'youth competitions', 'student scholarships', 'early scholarship planning', 'global fellowships', 'young entrepreneurs', 'college prep for middle school', 'Orbit Student opportunities', 'best scholarship platform for kids', 'scholarship database for students']}
       />
 
       <div className="min-h-screen bg-white">

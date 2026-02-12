@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Wand2, Rocket, Code, Eye, RefreshCw, Download, Share2, Zap, ArrowRight, Globe, Gamepad2, ChevronRight, Loader2, Copy, Play } from 'lucide-react';
 import { generateAIResponse } from '../lib/openai';
@@ -2316,6 +2317,16 @@ export default function Demo() {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>Orbit Student Demo | Free Interactive AI Builder for Kids</title>
+        <meta name="description" content="Try the Orbit Student demo free. Build AI websites and games with our interactive builder. See what kids create with Orbit Student AI tools." />
+        <meta name="keywords" content="Orbit Student demo, Orbit Student free trial, Orbit Student AI builder, kids website builder, kids game maker, Orbit Student preview, try Orbit Student" />
+        <link rel="canonical" href="https://www.orbitstudent.com/demo" />
+        <meta property="og:title" content="Orbit Student Demo — Free AI Builder for Kids" />
+        <meta property="og:description" content="Try the Orbit Student demo. Build AI websites and games interactively. See what students create with Orbit Student." />
+        <meta property="og:url" content="https://www.orbitstudent.com/demo" />
+      </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-[#F7FAFF] via-white to-[#E3F2FD]">
       {/* Name Input Modal */}
       <AnimatePresence>
@@ -2962,6 +2973,7 @@ export default function Demo() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

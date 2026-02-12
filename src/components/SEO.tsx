@@ -22,16 +22,38 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'Orbit Student — AI Learning Platform for Kids',
-  description: 'Orbit Student — AI-powered learning platform for kids ages 8-18. Learn AI tools, entrepreneurship, business skills & scholarship prep. Start your child\'s future today.',
+  title: 'Orbit Student — AI Learning Portal for Kids',
+  description: 'Orbit Student — #1 AI learning portal for kids 8-18. Login to access AI tools, courses, live classes & scholarship prep. Join 2,500+ students building their future.',
   keywords: [
-    // Brand keywords
+    // Brand + Action keywords (highest priority)
     'Orbit Student',
+    'Orbit Student login',
+    'Orbit Student portal',
+    'Orbit Student dashboard',
+    'Orbit Student app',
+    'Orbit Student sign in',
+    'Orbit Student sign up',
+    'Orbit Student register',
+    'Orbit Student account',
+    'Orbit Student platform',
+    'Orbit Student courses',
+    'Orbit Student live classes',
+    'Orbit Student AI tools',
+    'Orbit Student demo',
+    'Orbit Student free trial',
+    'Orbit Student review',
+    'Orbit Student pricing',
+    'Orbit Student scholarship',
+    'Orbit Student for parents',
+    'orbitstudent',
+    'orbitstudent.com',
+    'orbitstudent login',
+    'orbitstudent portal',
+    // Brand variants
     'Orbit AI',
-    'Orbit education',
     'Orbit AI student',
+    'Orbit education',
     'Orbit learning',
-    'Orbit scholarship',
     'Orbit AI learning',
     'Orbit student AI',
     'Orbit study',
@@ -48,10 +70,12 @@ const defaultSEO = {
     'AI literacy for kids',
     'AI tutor for students',
     'AI student platform',
+    'AI student portal',
+    'AI student login',
+    'AI student dashboard',
     'AI mentor for students',
     'best AI platform for kids',
     'AI school for kids',
-    'AI and kids',
     'AI generation kids',
     'AI first education',
     'AI skills for kids',
@@ -67,42 +91,53 @@ const defaultSEO = {
     // New age / Gen keywords
     'kids new age learning',
     'new age education',
-    'new age kids education',
     'Gen Z AI learning',
     'Gen Alpha education',
     'smart learning for kids',
-    // Core education keywords
+    // Parent-focused keywords
     'best future plan for kids',
+    'best education for future',
+    'best investment in child future',
+    'prepare kids for future',
+    'child future planning',
+    'future career for kids',
+    'future-ready kids',
+    'how to prepare kids for future jobs',
+    'future opportunities for children',
+    'child success planning',
+    // Education keywords
     'young entrepreneur program',
     'future skills for children',
     'entrepreneurship for kids',
-    'prepare kids for future',
     'business education for children',
     'young CEO program',
-    'child future planning',
     'AI-powered learning',
-    'future career for kids',
-    'best education for future',
     'AI literacy for youth',
-    'future-ready kids',
     'business skills for teens',
     'learn entrepreneurship online',
-    'best investment in child future',
     'future entrepreneurs',
     'skills kids need for future',
     'teen startup program',
-    'future opportunities for children',
     'young business leaders',
     'future leaders program',
     'startup skills for youth',
-    'child success planning',
     'scholarship prep for kids',
     'early scholarship planning',
     'college prep for middle school',
     'coding for kids',
     'STEM for kids',
     'best edtech for kids',
-    'how to prepare kids for future jobs'
+    'student learning portal',
+    'kids business course online',
+    'online learning for kids',
+    'online business school for kids',
+    'best online course for kids',
+    'kids learning dashboard',
+    'student portal for kids',
+    'gamified learning for kids',
+    'interactive learning platform',
+    'public speaking for kids',
+    'leadership for kids'
   ],
   image: 'https://www.orbitstudent.com/og-image.jpg',
   url: 'https://www.orbitstudent.com',
@@ -129,7 +164,7 @@ export default function SEO({
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     name: 'Orbit Student',
-    alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'Orbit Young Entrepreneurs Program'],
+    alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'OrbitStudent', 'Orbit Student Portal', 'Orbit Student Login', 'Orbit Student Dashboard'],
     description: defaultSEO.description,
     url: defaultSEO.url,
     logo: {
@@ -278,6 +313,30 @@ export default function SEO({
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Orbit Student is AI-first with 100+ AI tools, starts as young as age 8 (vs. 14+ for competitors), includes live mentorship with real entrepreneurs, builds real portfolios instead of just giving certificates, and provides personalized scholarship roadmaps — none of which traditional edtech offers.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I login to Orbit Student?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Visit orbitstudent.com/login to access the Orbit Student portal. Students and parents can sign in with their registered email. New users can sign up for a free trial to explore the AI learning dashboard, courses, and AI tools.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the Orbit Student portal?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The Orbit Student portal is a gamified AI learning dashboard where students access courses, AI tools (SpeakSmart, MathMentor, WriteRight, MindMaze, PitchDeck Creator), live classes, achievements, business simulations, and track their XP and level progress.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I try Orbit Student for free?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! Visit orbitstudent.com/demo for a free interactive demo, or sign up for a free trial at orbitstudent.com/login to explore the student dashboard, AI tools, and sample courses.'
         }
       }
     ]

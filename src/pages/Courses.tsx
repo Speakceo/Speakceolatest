@@ -6,9 +6,9 @@ const Courses = () => {
   return (
     <>
       <SEO
-        title="Courses | Orbit Student - Young Entrepreneur Program"
-        description="Explore our comprehensive program designed to develop young entrepreneurs ages 10-18 with hands-on learning, AI tools, and real projects."
-        keywords={['courses', 'entrepreneurship program', 'young entrepreneur', 'AI learning', 'business education', 'kids courses']}
+        title="Orbit Student Courses | AI Learning & Entrepreneurship for Kids 8-18"
+        description="Orbit Student courses: 180-day Young CEO Program, AI tools training, business skills, public speaking & leadership for kids 8-18. Enroll now."
+        keywords={['Orbit Student courses', 'Orbit Student program', 'Orbit Student curriculum', 'AI courses for kids', 'entrepreneurship program for kids', 'young entrepreneur course', 'AI learning course', 'business education for kids', 'kids courses online', 'coding for kids course', 'STEM courses for kids', 'young CEO program', 'Orbit Student classes', 'best online course for kids']}
       />
       <div className="pt-16">
         <CoursesComponent />

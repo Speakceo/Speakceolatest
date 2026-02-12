@@ -59,20 +59,41 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Orbit Student - Think Future Think Orbit"
-        description="Transform your child into a confident leader. Orbit Student teaches entrepreneurship, communication, and leadership skills to young minds through our innovative 180-day curriculum."
+        title="Orbit Student — #1 AI Learning Portal for Kids | Courses, AI Tools & Scholarships"
+        description="Orbit Student — AI-powered learning portal for kids 8-18. Login to access AI tools, courses, live classes & scholarship prep. Join 2,500+ young entrepreneurs."
         keywords={[
-          'orbit student',
-          'entrepreneurship education',
-          'youth leadership',
+          'Orbit Student',
+          'Orbit Student login',
+          'Orbit Student portal',
+          'Orbit Student dashboard',
+          'Orbit Student app',
+          'Orbit Student courses',
+          'Orbit Student AI tools',
+          'Orbit Student live classes',
+          'Orbit Student demo',
+          'Orbit Student free trial',
+          'Orbit Student review',
+          'Orbit Student scholarship',
+          'orbitstudent',
+          'orbitstudent login',
+          'AI learning platform',
+          'AI for kids',
+          'AI student portal',
+          'entrepreneurship for kids',
+          'young entrepreneur program',
+          'best edtech for kids',
+          'future skills for children',
+          'business education for children',
+          'coding for kids',
+          'STEM for kids',
           'public speaking for kids',
-          'entrepreneurial mindset',
-          'future skills',
-          'confidence building',
-          'youth business education',
-          'leadership training',
-          'communication skills',
-          'AI awareness'
+          'leadership for kids',
+          'scholarship prep for kids',
+          'best future plan for kids',
+          'online learning for kids',
+          'student learning portal',
+          'AI powered education',
+          'kids business course online'
         ]}
       />
       

@@ -7,43 +7,55 @@ interface RouteMeta {
 
 export const routeMeta: Record<string, RouteMeta> = {
   '/': {
-    title: 'SpeakCEO - Young Entrepreneurship Program',
-    description: 'Transform your child into a future business leader with our comprehensive 180-Day Young CEO Program. Interactive courses, live mentoring, and hands-on projects.',
-    keywords: ['young CEO program', 'kids entrepreneurship', 'business education for children'],
+    title: 'Orbit Student — #1 AI Learning Portal for Kids | Courses, AI Tools & Scholarships',
+    description: 'Orbit Student: AI-powered learning portal for kids 8-18. Login to access AI tools, courses, live classes & scholarship prep. Join 2,500+ students.',
+    keywords: ['Orbit Student', 'Orbit Student login', 'Orbit Student portal', 'AI learning platform', 'AI for kids', 'entrepreneurship for kids', 'best edtech for kids'],
     type: 'website'
   },
   '/courses': {
-    title: 'Entrepreneurship Courses for Kids | SpeakCEO',
-    description: 'Discover our interactive entrepreneurship courses designed specifically for young minds. From business basics to advanced leadership skills.',
-    keywords: ['kids business courses', 'entrepreneurship education', 'children business training'],
+    title: 'Orbit Student Courses | AI Learning & Entrepreneurship for Kids 8-18',
+    description: 'Orbit Student courses: 180-day Young CEO Program, AI tools training, business skills & leadership for kids 8-18. Enroll now.',
+    keywords: ['Orbit Student courses', 'AI courses for kids', 'entrepreneurship course for kids', 'young CEO program', 'Orbit Student program'],
     type: 'course'
   },
   '/about': {
-    title: 'About SpeakCEO | Empowering Young Entrepreneurs',
-    description: 'Learn about our mission to empower the next generation of business leaders through innovative education and hands-on experience.',
-    keywords: ['about SpeakCEO', 'kids business education', 'young entrepreneur program'],
+    title: 'About Orbit Student | Our Mission to Transform Kids into Future Leaders',
+    description: 'Orbit Student: AI-powered edtech for kids 8-18. Learn about our mission, team, and why 2,500+ families trust Orbit Student.',
+    keywords: ['about Orbit Student', 'Orbit Student mission', 'Orbit Student team', 'AI edtech for kids'],
     type: 'website'
   },
   '/blog': {
-    title: 'Entrepreneurship Blog for Kids | SpeakCEO',
-    description: 'Read our latest articles on youth entrepreneurship, business education, and success stories of young business leaders.',
-    keywords: ['kids business blog', 'young entrepreneur stories', 'business education tips'],
+    title: 'Orbit Student Blog | AI Learning & Entrepreneurship for Kids',
+    description: 'Read Orbit Student blog for tips on AI education, young entrepreneurship, business skills, and success stories of young leaders.',
+    keywords: ['Orbit Student blog', 'AI education blog', 'young entrepreneur stories', 'kids business tips'],
     type: 'article'
   },
   '/resources': {
-    title: 'Business Resources for Young Entrepreneurs | SpeakCEO',
-    description: 'Access our comprehensive collection of business resources, tools, and materials designed for young entrepreneurs.',
-    keywords: ['business resources for kids', 'young entrepreneur tools', 'business education materials'],
+    title: 'Orbit Student Resources | Scholarships & Opportunities for Kids 8-18',
+    description: 'Orbit Student resources: 500+ scholarships worth $2.9B+, competitions, and opportunities for kids 8-18. Start early.',
+    keywords: ['Orbit Student resources', 'Orbit Student scholarships', 'scholarships for kids', 'student opportunities'],
     type: 'website'
   },
   '/contact': {
-    title: 'Contact SpeakCEO | Get in Touch',
-    description: 'Have questions about our Young CEO Program? Contact us to learn more about how we can help your child become a future business leader.',
-    keywords: ['contact SpeakCEO', 'business education inquiry', 'young CEO program contact'],
+    title: 'Contact Orbit Student | Support & Enrollment Inquiries',
+    description: 'Contact Orbit Student for support, enrollment, or partnership inquiries. Email hello@orbitstudent.com. We reply within 24 hours.',
+    keywords: ['contact Orbit Student', 'Orbit Student support', 'Orbit Student email', 'Orbit Student enrollment'],
+    type: 'website'
+  },
+  '/login': {
+    title: 'Orbit Student Login | Student Portal — Access AI Learning Dashboard',
+    description: 'Login to the Orbit Student portal. Access AI learning dashboard, courses, AI tools, live classes & scholarship prep.',
+    keywords: ['Orbit Student login', 'Orbit Student portal', 'Orbit Student sign in', 'Orbit Student dashboard', 'orbitstudent login'],
+    type: 'website'
+  },
+  '/demo': {
+    title: 'Orbit Student Demo | Free Interactive AI Builder for Kids',
+    description: 'Try the Orbit Student demo free. Build AI websites and games with our interactive builder. See what kids create with Orbit Student AI tools.',
+    keywords: ['Orbit Student demo', 'Orbit Student free trial', 'Orbit Student preview', 'try Orbit Student'],
     type: 'website'
   }
 };
 
 export function getRouteMeta(path: string): RouteMeta {
   return routeMeta[path] || routeMeta['/'];
-} 
+}

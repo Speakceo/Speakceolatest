@@ -33,8 +33,9 @@ const About = () => {
   return (
     <>
       <SEO
-        title="About Orbit Student | Our Story & Mission"
-        description="Learn about Orbit Student's mission to empower young entrepreneurs aged 10-18 with AI tools, leadership skills, and real-world business experience."
+        title="About Orbit Student | Our Mission to Transform Kids into Future Leaders"
+        description="Orbit Student: AI-powered edtech platform for kids 8-18. Learn about our mission, team, and why 2,500+ families trust Orbit Student for entrepreneurship & AI education."
+        keywords={['about Orbit Student', 'Orbit Student mission', 'Orbit Student team', 'Orbit Student story', 'who is Orbit Student', 'Orbit Student founder', 'Orbit Student review', 'AI edtech for kids', 'best edtech platform for kids', 'Orbit Student about us']}
       />
 
       <div className="min-h-screen bg-white">
