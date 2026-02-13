@@ -23,12 +23,15 @@ import {
   Rocket,
   LogOut,
   ChevronLeft,
-  Zap
+  Zap,
+  Gamepad2,
+  Crown
 } from 'lucide-react';
 import { useUserStore } from '../../lib/store';
 
 const navigation = [
   { name: 'Overview', href: '/dashboard', icon: LayoutDashboard, badge: null },
+  { name: 'Startup Empire', href: '/dashboard/startup-empire', icon: Crown, badge: '🔥' },
   { name: 'Learning Journey', href: '/dashboard/journey', icon: Map, badge: null },
   { name: 'My Courses', href: '/dashboard/courses', icon: BookOpen, badge: '3' },
   { name: 'Live Classes', href: '/dashboard/live-classes', icon: Video, badge: 'LIVE' },

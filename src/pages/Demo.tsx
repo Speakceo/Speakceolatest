@@ -2946,6 +2946,152 @@ export default function Demo() {
             </motion.div>
           )}
 
+          {/* ═══ STARTUP EMPIRE SHOWCASE ═══ */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-20"
+          >
+            {/* Section Badge */}
+            <div className="text-center mb-8">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-full text-amber-400 text-sm font-semibold mb-4">
+                <Rocket className="w-4 h-4" /> FLAGSHIP GAME — Exclusive to Dashboard
+              </span>
+              <h3 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 mb-3">
+                Startup Empire
+              </h3>
+              <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+                Build your company from zero to a $10M empire. Real business decisions. Real consequences. 6 stages, 24 missions — the most immersive entrepreneurship game ever built.
+              </p>
+            </div>
+
+            {/* Empire Preview Card */}
+            <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-amber-500/20 rounded-3xl overflow-hidden">
+              {/* Animated Glow Border */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-amber-500/10 via-transparent to-orange-500/10 animate-pulse" />
+              
+              <div className="relative p-6 sm:p-10">
+                {/* Stage Roadmap */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+                  {[
+                    { stage: 1, name: 'The Idea Lab', icon: '💡', color: 'from-amber-500 to-yellow-500', desc: 'Find & validate your idea' },
+                    { stage: 2, name: 'Brand HQ', icon: '🎨', color: 'from-pink-500 to-rose-500', desc: 'Create your identity' },
+                    { stage: 3, name: 'The Build', icon: '🛠️', color: 'from-blue-500 to-indigo-500', desc: 'Ship your MVP' },
+                    { stage: 4, name: 'Marketing Blitz', icon: '📣', color: 'from-violet-500 to-purple-500', desc: 'Go viral' },
+                    { stage: 5, name: 'Investor Pitch', icon: '💰', color: 'from-emerald-500 to-green-500', desc: 'Raise funding' },
+                    { stage: 6, name: 'Empire Mode', icon: '👑', color: 'from-yellow-500 to-amber-500', desc: 'Scale to millions' },
+                  ].map((s, i) => (
+                    <motion.div
+                      key={s.stage}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="relative group"
+                    >
+                      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3 text-center hover:bg-white/[0.08] transition-all cursor-default">
+                        <div className={`w-10 h-10 mx-auto rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center text-xl shadow-lg mb-2`}>
+                          {s.icon}
+                        </div>
+                        <p className="text-white text-xs font-bold mb-0.5">{s.name}</p>
+                        <p className="text-gray-500 text-[10px]">{s.desc}</p>
+                      </div>
+                      {i < 5 && (
+                        <div className="hidden lg:block absolute top-1/2 -right-2 transform -translate-y-1/2 text-gray-600 z-10">
+                          <ChevronRight className="w-4 h-4" />
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Interactive Mission Preview */}
+                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 sm:p-8 mb-6">
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center">
+                      <Zap className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Sample Mission Preview</p>
+                      <h4 className="text-lg font-bold text-white">The Shark Tank Moment</h4>
+                    </div>
+                    <div className="ml-auto flex gap-2">
+                      <span className="px-2 py-1 bg-amber-500/20 text-amber-400 text-xs font-bold rounded-lg">+150 XP</span>
+                      <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-lg">+500 🪙</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-900/80 rounded-xl p-5 border border-white/[0.05] mb-5">
+                    <p className="text-gray-200 leading-relaxed">
+                      You're on stage. Your pitch went great. Now the investors fire questions:
+                    </p>
+                    <p className="text-amber-400 font-medium mt-3 italic">
+                      "Your competitor just raised $5 million. Why should I bet on YOU instead of them?"
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    {[
+                      { label: 'A', text: '"We\'re better because we work harder"', dim: true },
+                      { label: 'B', text: '"Our unique advantage is [specific thing] and we already have [traction]"', highlight: true },
+                      { label: 'C', text: '"I don\'t really follow the competition"', dim: true },
+                      { label: 'D', text: '"We just need more money to beat them"', dim: true },
+                    ].map((opt) => (
+                      <div
+                        key={opt.label}
+                        className={`flex items-start gap-3 p-3 rounded-xl border transition-all ${
+                          opt.highlight
+                            ? 'bg-emerald-500/15 border-emerald-500/30'
+                            : 'bg-white/[0.02] border-white/[0.05] opacity-60'
+                        }`}
+                      >
+                        <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
+                          opt.highlight ? 'bg-emerald-500 text-white' : 'bg-white/[0.1] text-gray-500'
+                        }`}>
+                          {opt.highlight ? '✓' : opt.label}
+                        </span>
+                        <p className={`text-sm ${opt.highlight ? 'text-emerald-300 font-medium' : 'text-gray-400'}`}>{opt.text}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Result Preview */}
+                  <div className="mt-4 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                    <p className="text-emerald-400 text-sm">
+                      🦈 <strong>The investors lean forward!</strong> You say: "While they raised $5M to sell to enterprises, we built the only product designed for teens — with 500 paying users and 90% retention." <strong>Offer: $100K for 10%!</strong>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Stats Preview */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                  {[
+                    { label: '6 Stages', value: 'Zero → IPO', icon: '🗺️' },
+                    { label: '24 Missions', value: 'Real Scenarios', icon: '🎯' },
+                    { label: 'Build', value: 'Your Company', icon: '🏢' },
+                    { label: 'Earn', value: 'XP & Coins', icon: '💰' },
+                  ].map((stat, i) => (
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 text-center">
+                      <span className="text-2xl">{stat.icon}</span>
+                      <p className="text-white font-bold text-sm mt-1">{stat.value}</p>
+                      <p className="text-gray-500 text-[10px]">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Exclusive Badge */}
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-full">
+                    <Sparkles className="w-4 h-4 text-amber-400" />
+                    <span className="text-amber-300 font-semibold text-sm">Available exclusively in the Orbit Student Dashboard</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -2955,10 +3101,10 @@ export default function Demo() {
           >
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-10">
               <h3 className="text-2xl font-bold text-white mb-3">
-                Your Child Can Build All of This
+                Your Child Can Build All of This — And More
               </h3>
               <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-                From websites to games — imagine what your child will create with our 180-day program.
+                From AI websites to games to building a real startup empire — imagine what your child will achieve with Orbit Student's 180-day program.
               </p>
               <motion.a
                 href="https://www.orbitstudent.com"
