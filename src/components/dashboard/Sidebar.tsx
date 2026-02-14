@@ -31,6 +31,7 @@ import { useUserStore } from '../../lib/store';
 
 const navigation = [
   { name: 'Overview', href: '/dashboard', icon: LayoutDashboard, badge: null },
+  { name: 'Game Zone', href: '/dashboard/games', icon: Gamepad2, badge: '🎮' },
   { name: 'Startup Empire', href: '/dashboard/startup-empire', icon: Crown, badge: '🔥' },
   { name: 'Learning Journey', href: '/dashboard/journey', icon: Map, badge: null },
   { name: 'My Courses', href: '/dashboard/courses', icon: BookOpen, badge: '3' },

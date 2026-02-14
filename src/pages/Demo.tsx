@@ -3092,6 +3092,107 @@ export default function Demo() {
             </div>
           </motion.div>
 
+          {/* ═══ GAME ZONE SHOWCASE ═══ */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-20"
+          >
+            <div className="text-center mb-8">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-violet-500/20 to-purple-500/20 border border-violet-500/30 rounded-full text-violet-400 text-sm font-semibold mb-4">
+                <Gamepad2 className="w-4 h-4" /> FUN LEARNING GAMES — Inside Dashboard
+              </span>
+              <h3 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-pink-400 mb-3">
+                Game Zone
+              </h3>
+              <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+                6 playable mini-games that teach real business skills — from running a lemonade stand to riding the stock market. Kids learn while having a blast!
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+              {[
+                { emoji: '🍋', name: 'Lemonade Tycoon', skill: 'Pricing & Profit', color: 'from-yellow-400 to-amber-500' },
+                { emoji: '🪙', name: 'Coin Catcher', skill: 'Quick Thinking', color: 'from-amber-400 to-orange-500' },
+                { emoji: '📝', name: 'Word Hustle', skill: 'Business Vocab', color: 'from-blue-400 to-indigo-500' },
+                { emoji: '📈', name: 'Stock Surfer', skill: 'Market Timing', color: 'from-emerald-400 to-teal-500' },
+                { emoji: '🧠', name: 'Brand Memory', skill: 'Brand Recognition', color: 'from-violet-400 to-purple-500' },
+                { emoji: '⚡', name: 'Pitch Racer', skill: 'Communication', color: 'from-pink-400 to-rose-500' },
+              ].map((game, i) => (
+                <motion.div
+                  key={game.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 text-center hover:bg-white/[0.08] transition-all"
+                >
+                  <div className={`w-12 h-12 mx-auto rounded-xl bg-gradient-to-br ${game.color} flex items-center justify-center text-2xl shadow-lg mb-2`}>
+                    {game.emoji}
+                  </div>
+                  <p className="text-white text-xs font-bold mb-0.5">{game.name}</p>
+                  <p className="text-gray-500 text-[10px]">{game.skill}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Interactive Demo Preview */}
+            <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-violet-500/20 rounded-3xl overflow-hidden p-6 sm:p-8">
+              <div className="grid sm:grid-cols-2 gap-6">
+                {/* Lemonade Preview */}
+                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🍋</span>
+                    <div>
+                      <h4 className="text-white font-bold">Lemonade Tycoon</h4>
+                      <p className="text-gray-500 text-xs">Set prices, manage weather, maximize profit</p>
+                    </div>
+                  </div>
+                  <div className="space-y-2 text-xs">
+                    <div className="flex justify-between bg-white/[0.04] rounded-lg p-2">
+                      <span className="text-gray-400">☀️ Sunny Day</span><span className="text-emerald-400 font-bold">$24 revenue</span>
+                    </div>
+                    <div className="flex justify-between bg-white/[0.04] rounded-lg p-2">
+                      <span className="text-gray-400">🌧️ Rainy Day</span><span className="text-red-400 font-bold">$6 revenue</span>
+                    </div>
+                    <div className="flex justify-between bg-amber-500/10 rounded-lg p-2 border border-amber-500/20">
+                      <span className="text-amber-300">💰 Total Profit</span><span className="text-amber-400 font-bold">$142</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stock Surfer Preview */}
+                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">📈</span>
+                    <div>
+                      <h4 className="text-white font-bold">Stock Surfer</h4>
+                      <p className="text-gray-500 text-xs">Buy low, sell high, beat the market</p>
+                    </div>
+                  </div>
+                  <div className="flex items-end gap-[3px] h-16 mb-3">
+                    {[30,35,28,42,38,50,45,55,48,62,58,70,65,75,72,80,76,85,90,88].map((v, i) => (
+                      <div key={i} className={`flex-1 rounded-sm ${v > (i > 0 ? [30,35,28,42,38,50,45,55,48,62,58,70,65,75,72,80,76,85,90,88][i-1] : v) ? 'bg-emerald-500' : 'bg-red-500'}`}
+                        style={{ height: `${v}%` }} />
+                    ))}
+                  </div>
+                  <div className="flex justify-between bg-emerald-500/10 rounded-lg p-2 border border-emerald-500/20 text-xs">
+                    <span className="text-emerald-300">📊 Portfolio</span><span className="text-emerald-400 font-bold">$2,450 (+145%)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center mt-6">
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-violet-500/20 to-purple-500/20 border border-violet-500/30 rounded-full">
+                  <Sparkles className="w-4 h-4 text-violet-400" />
+                  <span className="text-violet-300 font-semibold text-sm">All 6 games playable inside the Orbit Student Dashboard</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -3104,7 +3205,7 @@ export default function Demo() {
                 Your Child Can Build All of This — And More
               </h3>
               <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-                From AI websites to games to building a real startup empire — imagine what your child will achieve with Orbit Student's 180-day program.
+                From AI websites to playable business games to building a real startup empire — imagine what your child will achieve with Orbit Student's 180-day program.
               </p>
               <motion.a
                 href="https://www.orbitstudent.com"

@@ -59,6 +59,7 @@ const Quiz = lazy(() => import('./components/dashboard/Quiz'))
 const UserProfile = lazy(() => import('./components/dashboard/UserProfile'))
 const BusinessInsights = lazy(() => import('./components/dashboard/BusinessInsights'))
 const StartupEmpire = lazy(() => import('./components/dashboard/StartupEmpire'))
+const GameZone = lazy(() => import('./components/dashboard/GameZone'))
 const Help = lazy(() => import('./components/dashboard/Help'))
 
 // Admin Components
@@ -242,6 +243,7 @@ function AppContent() {
               <Route path="profile" element={<UserProfile />} />
               <Route path="insights" element={<BusinessInsights />} />
               <Route path="startup-empire" element={<StartupEmpire />} />
+              <Route path="games" element={<GameZone />} />
               <Route path="help" element={<Help />} />
             </Route>
             
