@@ -18,7 +18,7 @@ export default function AuthLayout({ children, title, subtitle }: AuthLayoutProp
         <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/[0.06] p-8 shadow-2xl">
           <div className="text-center mb-8">
             <a href="/" className="inline-block mb-6">
-              <img src="/images/hero/orbit-logo.png" alt="Orbit Student" className="h-10 mx-auto" />
+              <img src="/images/hero/orbit-logo.png" alt="Orbit Student" className="h-10 mx-auto brightness-0 invert opacity-90" style={{ filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(0, 176, 255, 0.25))' }} />
             </a>
             <h2 className="text-2xl font-bold text-white">{title}</h2>
             <p className="mt-2 text-sm text-gray-400">{subtitle}</p>
