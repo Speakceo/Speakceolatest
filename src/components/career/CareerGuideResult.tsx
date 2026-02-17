@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, Share2, Mail, Rocket, Target, Brain, Sparkles, CheckCircle, ArrowRight, Award, Zap, Lightbulb, BarChart2, PieChart, TrendingUp, Compass, Briefcase, GraduationCap, BookOpen, Layers, Smile, Heart, Star, Clock, Mic } from 'lucide-react';
-import { Tooltip } from 'react-tooltip';
-import Chart from 'react-apexcharts';
-import { usePDF } from 'react-to-pdf';
-import confetti from 'canvas-confetti';
+import { 
+  Download, Share2, Mail, Rocket, Target, Brain, Sparkles, CheckCircle, 
+  ArrowRight, Award, Zap, Lightbulb, BarChart2, TrendingUp, Compass, 
+  Briefcase, GraduationCap, BookOpen, Layers, Heart, Star, Clock, Mic,
+  Trophy, Crown, Flame, Eye
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface CareerGuideResultProps {
   result: {
@@ -26,63 +28,39 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [animationStep, setAnimationStep] = useState(0);
   const [activeTab, setActiveTab] = useState<'overview' | 'analytics' | 'careers'>('overview');
-  const reportRef = useRef<HTMLDivElement>(null);
-  
-  const { toPDF, targetRef } = usePDF({
-    filename: `${result.studentName.replace(/\s+/g, '_')}_Career_Guide.pdf`,
-    page: { margin: 20 }
-  });
-  
-  // Animation sequence
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (animationStep < 7) {
-        setAnimationStep(animationStep + 1);
-      }
-    }, 500);
-    
+      if (animationStep < 8) setAnimationStep(animationStep + 1);
+    }, 400);
     return () => clearTimeout(timer);
   }, [animationStep]);
-  
-  // Trigger confetti on load
-  useEffect(() => {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-  }, []);
-  
+
   const handleShare = () => {
     setIsSharing(true);
-    
-    // Simulate sharing functionality
     setTimeout(() => {
       setIsSharing(false);
-      alert('Share link copied to clipboard!');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href);
+      }
     }, 1000);
   };
-  
+
   const handleEmailReport = () => {
-    // Simulate email sending
-    setTimeout(() => {
-      setIsEmailSent(true);
-    }, 1000);
+    setTimeout(() => setIsEmailSent(true), 1000);
   };
-  
-  const handleDownloadPDF = async () => {
-    try {
-      await toPDF();
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Failed to generate PDF. Please try again.');
-    }
+
+  const getScoreEmoji = (score: number | undefined) => {
+    if (!score) return '🌱';
+    if (score >= 90) return '🏆';
+    if (score >= 75) return '🌟';
+    if (score >= 60) return '💪';
+    if (score >= 40) return '📈';
+    return '🌱';
   };
-  
-  // Function to get score description
-  const getScoreDescription = (score: number | undefined, type: 'iq' | 'entrepreneurial') => {
-    if (score === undefined) return '';
-    
+
+  const getScoreLabel = (score: number | undefined, type: 'iq' | 'entrepreneurial') => {
+    if (!score) return 'Developing';
     if (type === 'iq') {
       if (score >= 90) return 'Excellent';
       if (score >= 75) return 'Very Good';
@@ -97,996 +75,615 @@ export default function CareerGuideResult({ result, onClose }: CareerGuideResult
       return 'Early Stage';
     }
   };
-  
-  // Generate random data for charts
-  const generateSkillsData = () => {
-    return {
-      series: [
-        {
-          name: 'Current Level',
-          data: [65, 80, 55, 70, 60, 75, 50]
-        },
-        {
-          name: 'Potential Growth',
-          data: [90, 95, 85, 90, 85, 90, 80]
+
+  const tabs = [
+    { id: 'overview' as const, label: 'Overview', icon: Eye, emoji: '📋' },
+    { id: 'analytics' as const, label: 'Analytics', icon: BarChart2, emoji: '📊' },
+    { id: 'careers' as const, label: 'Career Paths', icon: Briefcase, emoji: '🚀' }
+  ];
+
+  // Animated counter
+  const AnimatedScore = ({ target, color }: { target: number; color: string }) => {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+      let start = 0;
+      const increment = target / 30;
+      const timer = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          setCount(target);
+          clearInterval(timer);
+        } else {
+          setCount(Math.round(start));
         }
-      ],
-      options: {
-        chart: {
-          type: 'radar',
-          toolbar: {
-            show: false
-          }
-        },
-        colors: ['#4F46E5', '#EC4899'],
-        stroke: {
-          width: 2
-        },
-        fill: {
-          opacity: 0.1
-        },
-        markers: {
-          size: 4
-        },
-        xaxis: {
-          categories: ['Creativity', 'Communication', 'Leadership', 'Problem Solving', 'Teamwork', 'Time Management', 'Curiosity']
-        },
-        yaxis: {
-          show: false
-        }
-      }
-    };
+      }, 30);
+      return () => clearInterval(timer);
+    }, [target]);
+    return <span className={`text-3xl font-black ${color}`}>{count}%</span>;
   };
-  
-  const generateCareerCompatibilityData = () => {
-    // Generate random compatibility scores for the top careers
-    const scores = result.topCareers.map(() => Math.floor(Math.random() * 30) + 70);
-    
-    return {
-      series: scores,
-      options: {
-        chart: {
-          type: 'radialBar',
-        },
-        plotOptions: {
-          radialBar: {
-            dataLabels: {
-              name: {
-                fontSize: '16px',
-                fontFamily: 'inherit',
-                fontWeight: 600,
-                color: '#111827'
-              },
-              value: {
-                fontSize: '14px',
-                fontFamily: 'inherit',
-                fontWeight: 400,
-                color: '#6B7280'
-              },
-              total: {
-                show: true,
-                label: 'Avg. Match',
-                formatter: function (w: any) {
-                  return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) + '%';
-                }
-              }
-            },
-            track: {
-              background: '#E5E7EB',
-              strokeWidth: '97%',
-              margin: 5
-            },
-            hollow: {
-              margin: 15,
-              size: '30%'
-            }
-          }
-        },
-        colors: ['#4F46E5', '#8B5CF6', '#EC4899'],
-        labels: result.topCareers,
-        stroke: {
-          lineCap: 'round'
-        }
-      }
-    };
-  };
-  
-  const generateLearningStyleData = () => {
-    // Map learning style to chart data
-    const learningStyles = {
-      visual: 70,
-      auditory: 40,
-      kinesthetic: 90
-    };
-    
-    // Default to balanced if no specific style is detected
-    let visual = 33;
-    let auditory = 33;
-    let kinesthetic = 34;
-    
-    // Try to detect the learning style from the text
-    const lowerCaseStyle = result.learningStyle.toLowerCase();
-    if (lowerCaseStyle.includes('visual') || lowerCaseStyle.includes('see')) {
-      visual = 70;
-      auditory = 15;
-      kinesthetic = 15;
-    } else if (lowerCaseStyle.includes('auditory') || lowerCaseStyle.includes('hear') || lowerCaseStyle.includes('listen')) {
-      visual = 15;
-      auditory = 70;
-      kinesthetic = 15;
-    } else if (lowerCaseStyle.includes('kinesthetic') || lowerCaseStyle.includes('hands') || lowerCaseStyle.includes('doing')) {
-      visual = 15;
-      auditory = 15;
-      kinesthetic = 70;
+
+  // Skill bars data for analytics
+  const skillBars = [
+    { label: 'Creativity', value: 85, color: 'from-pink-500 to-rose-500', emoji: '🎨' },
+    { label: 'Communication', value: 78, color: 'from-blue-500 to-cyan-500', emoji: '🗣️' },
+    { label: 'Leadership', value: 72, color: 'from-amber-500 to-orange-500', emoji: '👑' },
+    { label: 'Problem Solving', value: 88, color: 'from-emerald-500 to-green-500', emoji: '🧩' },
+    { label: 'Teamwork', value: 80, color: 'from-violet-500 to-purple-500', emoji: '🤝' },
+    { label: 'Time Management', value: 65, color: 'from-teal-500 to-cyan-500', emoji: '⏰' },
+    { label: 'Curiosity', value: 92, color: 'from-yellow-500 to-amber-500', emoji: '🔍' }
+  ];
+
+  const roadmapPhases = [
+    {
+      phase: 'Exploration Phase',
+      timeframe: 'Now',
+      emoji: '🔍',
+      color: 'from-blue-500 to-cyan-500',
+      activities: ['Join clubs related to interests', 'Try different hobby projects', 'Read books about careers']
+    },
+    {
+      phase: 'Skill Building',
+      timeframe: 'Next 2-3 Years',
+      emoji: '🏗️',
+      color: 'from-violet-500 to-purple-500',
+      activities: ['Take relevant courses', 'Participate in competitions', 'Find a mentor']
+    },
+    {
+      phase: 'Experience Gathering',
+      timeframe: '4-6 Years',
+      emoji: '🧪',
+      color: 'from-emerald-500 to-green-500',
+      activities: ['Work on real-world projects', 'Volunteer in related fields', 'Build a portfolio']
+    },
+    {
+      phase: 'Specialization',
+      timeframe: '7+ Years',
+      emoji: '🎯',
+      color: 'from-amber-500 to-orange-500',
+      activities: ['Higher education / training', 'Network with professionals', 'Develop niche expertise']
     }
-    
-    return {
-      series: [visual, auditory, kinesthetic],
-      options: {
-        chart: {
-          type: 'pie',
-        },
-        labels: ['Visual', 'Auditory', 'Kinesthetic'],
-        colors: ['#4F46E5', '#8B5CF6', '#EC4899'],
-        legend: {
-          position: 'bottom'
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-      }
-    };
-  };
-  
-  const generatePersonalityData = () => {
-    // Generate personality trait scores based on the insights
-    return {
-      series: [{
-        data: [85, 75, 90, 65, 80]
-      }],
-      options: {
-        chart: {
-          type: 'bar',
-          toolbar: {
-            show: false
-          }
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 4,
-            horizontal: true,
-            distributed: true,
-            dataLabels: {
-              position: 'top'
-            }
-          }
-        },
-        colors: ['#4F46E5', '#8B5CF6', '#EC4899', '#F59E0B', '#10B981'],
-        dataLabels: {
-          enabled: true,
-          formatter: function (val: number) {
-            return val + '%';
-          },
-          offsetX: 30,
-          style: {
-            fontSize: '12px',
-            colors: ['#304758']
-          }
-        },
-        xaxis: {
-          categories: ['Creativity', 'Analytical', 'Social', 'Practical', 'Adaptability'],
-          labels: {
-            formatter: function (val: string) {
-              return val + '%';
-            }
-          }
-        },
-        yaxis: {
-          labels: {
-            show: true
-          }
-        }
-      }
-    };
-  };
-  
-  const generateTimelineData = () => {
-    return {
-      series: [
-        {
-          data: [
-            {
-              x: 'Elementary',
-              y: [0, 5]
-            },
-            {
-              x: 'Middle School',
-              y: [5, 8]
-            },
-            {
-              x: 'High School',
-              y: [8, 12]
-            },
-            {
-              x: 'College/Training',
-              y: [12, 16]
-            },
-            {
-              x: 'Early Career',
-              y: [16, 20]
-            }
-          ]
-        }
-      ],
-      options: {
-        chart: {
-          height: 350,
-          type: 'rangeBar',
-          toolbar: {
-            show: false
-          }
-        },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-            distributed: true,
-            dataLabels: {
-              hideOverflowingLabels: false
-            }
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          formatter: function(val: any, opts: any) {
-            const labels = [
-              'Foundation Skills',
-              'Explore Interests',
-              'Skill Development',
-              'Specialization',
-              'Career Launch'
-            ];
-            return labels[opts.dataPointIndex];
-          },
-          style: {
-            colors: ['#f3f4f5', '#fff']
-          }
-        },
-        xaxis: {
-          type: 'numeric',
-          labels: {
-            formatter: function(val: number) {
-              return Math.abs(Math.round(val)) + ' yrs';
-            }
-          }
-        },
-        yaxis: {
-          labels: {
-            show: true
-          }
-        },
-        colors: [
-          '#4F46E5',
-          '#8B5CF6',
-          '#EC4899',
-          '#F59E0B',
-          '#10B981'
-        ]
-      }
-    };
-  };
-  
-  // Generate the chart data
-  const skillsChartData = generateSkillsData();
-  const careerCompatibilityData = generateCareerCompatibilityData();
-  const learningStyleData = generateLearningStyleData();
-  const personalityData = generatePersonalityData();
-  const timelineData = generateTimelineData();
-  
+  ];
+
   return (
-    <div className="space-y-8">
-      {/* Success Message */}
-      <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start">
-        <CheckCircle className="h-6 w-6 text-green-500 mt-0.5 flex-shrink-0" />
-        <div className="ml-3">
-          <h3 className="text-green-800 font-medium">Career Guide Generated Successfully!</h3>
-          <p className="text-green-700 mt-1">
-            We've created a personalized career guide based on {result.studentName}'s responses.
-            {isEmailSent ? ' A copy has been emailed to the parent.' : ''}
-          </p>
-        </div>
-      </div>
-      
+    <div className="space-y-6">
+      {/* Success Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center py-4"
+      >
+        <motion.div
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="text-5xl mb-3"
+        >
+          🎉
+        </motion.div>
+        <h2 className="text-2xl font-bold text-white mb-1">
+          {result.studentName}'s Career Guide is Ready!
+        </h2>
+        <p className="text-white/50 text-sm">
+          Powered by AI • Personalized for Age {result.age}
+        </p>
+      </motion.div>
+
+      {/* Score Cards */}
+      {(result.iqScore !== undefined || result.entrepreneurialScore !== undefined) && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="grid grid-cols-2 gap-3"
+        >
+          {result.iqScore !== undefined && (
+            <div className="bg-white/[0.05] border border-white/[0.08] rounded-2xl p-4 text-center">
+              <div className="text-2xl mb-2">{getScoreEmoji(result.iqScore)}</div>
+              <AnimatedScore target={result.iqScore} color="text-blue-400" />
+              <p className="text-xs text-white/40 mt-1">Thinking Skills</p>
+              <div className="mt-2 h-1.5 bg-white/[0.08] rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${result.iqScore}%` }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"
+                />
+              </div>
+              <p className="text-xs text-blue-400 font-medium mt-1">{getScoreLabel(result.iqScore, 'iq')}</p>
+            </div>
+          )}
+          {result.entrepreneurialScore !== undefined && (
+            <div className="bg-white/[0.05] border border-white/[0.08] rounded-2xl p-4 text-center">
+              <div className="text-2xl mb-2">{getScoreEmoji(result.entrepreneurialScore)}</div>
+              <AnimatedScore target={result.entrepreneurialScore} color="text-emerald-400" />
+              <p className="text-xs text-white/40 mt-1">Entrepreneur Score</p>
+              <div className="mt-2 h-1.5 bg-white/[0.08] rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${result.entrepreneurialScore}%` }}
+                  transition={{ duration: 1, delay: 0.7 }}
+                  className="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full"
+                />
+              </div>
+              <p className="text-xs text-emerald-400 font-medium mt-1">{getScoreLabel(result.entrepreneurialScore, 'entrepreneurial')}</p>
+            </div>
+          )}
+        </motion.div>
+      )}
+
       {/* Tabs */}
-      <div className="flex border-b border-gray-200">
-        <button
-          onClick={() => setActiveTab('overview')}
-          className={`py-4 px-6 border-b-2 font-medium text-sm ${
-            activeTab === 'overview'
-              ? 'border-[#1876D2] text-[#1876D2]'
-              : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-          }`}
-        >
-          <Target className="h-5 w-5 inline mr-2" />
-          Overview
-        </button>
-        <button
-          onClick={() => setActiveTab('analytics')}
-          className={`py-4 px-6 border-b-2 font-medium text-sm ${
-            activeTab === 'analytics'
-              ? 'border-[#1876D2] text-[#1876D2]'
-              : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-          }`}
-        >
-          <BarChart2 className="h-5 w-5 inline mr-2" />
-          Analytics
-        </button>
-        <button
-          onClick={() => setActiveTab('careers')}
-          className={`py-4 px-6 border-b-2 font-medium text-sm ${
-            activeTab === 'careers'
-              ? 'border-[#1876D2] text-[#1876D2]'
-              : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-          }`}
-        >
-          <Briefcase className="h-5 w-5 inline mr-2" />
-          Career Paths
-        </button>
+      <div className="flex bg-white/[0.04] border border-white/[0.08] rounded-2xl p-1">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-medium transition-all ${
+              activeTab === tab.id
+                ? 'bg-blue-500/20 text-white border border-blue-500/30'
+                : 'text-white/40 hover:text-white/60'
+            }`}
+          >
+            <span className="text-base">{tab.emoji}</span>
+            <span className="hidden sm:inline">{tab.label}</span>
+          </button>
+        ))}
       </div>
-      
-      {/* Report Content */}
-      <div ref={targetRef} className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
-        {/* Header */}
-        <div className={`text-center mb-8 pb-6 border-b border-gray-200 transition-opacity duration-500 ${animationStep >= 0 ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] mx-auto mb-4">
-            <Rocket className="h-8 w-8 text-white" />
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900">Career Pathway Guide</h2>
-          <p className="text-lg text-gray-600 mt-2">Personalized for {result.studentName}, Age {result.age}</p>
-          <p className="text-sm text-gray-500 mt-1">Generated on {new Date().toLocaleDateString()}</p>
-        </div>
-        
-        {activeTab === 'overview' && (
-          <>
-            {/* Scores Section */}
-            {(result.iqScore !== undefined || result.entrepreneurialScore !== undefined) && (
-              <div className={`mb-8 transition-all duration-500 ${animationStep >= 1 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {result.iqScore !== undefined && (
-                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                          <Lightbulb className="h-5 w-5 text-blue-600 mr-2" />
-                          Thinking Skills
-                        </h3>
-                        <div className="text-2xl font-bold text-blue-600">{result.iqScore}%</div>
-                      </div>
-                      <div className="h-2 w-full bg-blue-100 rounded-full mb-2">
-                        <div 
-                          className="h-2 bg-blue-600 rounded-full" 
-                          style={{ width: `${result.iqScore}%` }}
-                        ></div>
-                      </div>
-                      <p className="text-sm text-gray-600">
-                        Rating: <span className="font-medium text-blue-700">{getScoreDescription(result.iqScore, 'iq')}</span>
-                      </p>
-                    </div>
-                  )}
-                  
-                  {result.entrepreneurialScore !== undefined && (
-                    <div className="bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD] rounded-xl p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                          <Zap className="h-5 w-5 text-[#1876D2] mr-2" />
-                          Entrepreneurial Potential
-                        </h3>
-                        <div className="text-2xl font-bold text-[#1876D2]">{result.entrepreneurialScore}%</div>
-                      </div>
-                      <div className="h-2 w-full bg-[#E3F2FD] rounded-full mb-2">
-                        <div 
-                          className="h-2 bg-[#1876D2] rounded-full" 
-                          style={{ width: `${result.entrepreneurialScore}%` }}
-                        ></div>
-                      </div>
-                      <p className="text-sm text-gray-600">
-                        Rating: <span className="font-medium text-[#1876D2]">{getScoreDescription(result.entrepreneurialScore, 'entrepreneurial')}</span>
-                      </p>
-                    </div>
-                  )}
+
+      {/* Tab Content */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
+        >
+          {activeTab === 'overview' && (
+            <div className="space-y-4">
+              {/* Overview */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <Target className="w-4 h-4 text-blue-400" />
+                  <h3 className="text-sm font-semibold text-white">Overview</h3>
                 </div>
-              </div>
-            )}
-            
-            {/* Overview */}
-            <div className={`mb-8 transition-all duration-500 ${animationStep >= 2 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                <Target className="h-5 w-5 text-[#1876D2] mr-2" />
-                Overview
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                {result.overview}
-              </p>
-            </div>
-            
-            {/* Personality & Learning Style */}
-            <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 transition-all duration-500 ${animationStep >= 3 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-              <div className="bg-[#E3F2FD] rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Brain className="h-5 w-5 text-[#1876D2] mr-2" />
-                  Personality Insights
-                </h3>
-                <p className="text-gray-700">
-                  {result.personalityInsights}
-                </p>
-              </div>
-              
-              <div className="bg-[#F5F9FC] rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Sparkles className="h-5 w-5 text-[#1876D2] mr-2" />
-                  Learning Style
-                </h3>
-                <p className="text-gray-700">
-                  {result.learningStyle}
-                </p>
-              </div>
-            </div>
-            
-            {/* Top Career Paths */}
-            <div className={`mb-8 transition-all duration-500 ${animationStep >= 4 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                <Rocket className="h-5 w-5 text-[#1876D2] mr-2" />
-                Top 3 Suggested Career Paths
-              </h3>
-              <div className="space-y-4">
-                {result.topCareers.map((career, index) => (
-                  <div 
-                    key={index}
-                    className={`bg-gradient-to-r from-gray-50 to-white border border-gray-200 rounded-lg p-4 hover:border-indigo-200 transition-all duration-500 ${animationStep >= 5 + index ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform -translate-x-10'}`}
-                  >
-                    <div className="flex items-center">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-[#E3F2FD] text-[#1876D2] font-bold mr-3">
-                        {index + 1}
-                      </div>
-                      <p className="text-gray-800 font-medium">{career}</p>
-                    </div>
+                <p className="text-white/60 text-sm leading-relaxed">{result.overview}</p>
+              </motion.div>
+
+              {/* Personality & Learning */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">🧠</span>
+                    <h3 className="text-sm font-semibold text-white">Personality</h3>
                   </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Skills to Develop */}
-            <div className={`mb-8 transition-all duration-500 ${animationStep >= 6 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                <Target className="h-5 w-5 text-[#1876D2] mr-2" />
-                Skills to Develop
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {result.skillsToDevelop.map((skill, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3"
-                  >
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <p className="text-gray-700">{skill}</p>
+                  <p className="text-white/60 text-sm leading-relaxed">{result.personalityInsights}</p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">📚</span>
+                    <h3 className="text-sm font-semibold text-white">Learning Style</h3>
                   </div>
-                ))}
+                  <p className="text-white/60 text-sm leading-relaxed">{result.learningStyle}</p>
+                </motion.div>
               </div>
-            </div>
-            
-            {/* Motivational Message */}
-            <div className={`bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white transition-all duration-500 ${animationStep >= 7 ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
-              <h3 className="text-xl font-semibold mb-3">Your Journey Begins Now</h3>
-              <p className="leading-relaxed">
-                {result.motivationalMessage}
-              </p>
-            </div>
-          </>
-        )}
-        
-        {activeTab === 'analytics' && (
-          <div className="space-y-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6">Detailed Analytics</h3>
-            
-            {/* Skills Radar Chart */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <Target className="h-5 w-5 text-[#1876D2] mr-2" />
-                Skills Assessment & Growth Potential
-              </h4>
-              <div className="h-80">
-                <Chart
-                  options={skillsChartData.options}
-                  series={skillsChartData.series}
-                  type="radar"
-                  height="100%"
-                />
-              </div>
-              <div className="mt-4 text-sm text-gray-500">
-                <p>This radar chart shows current skill levels and potential growth areas based on the assessment.</p>
-              </div>
-            </div>
-            
-            {/* Learning Style Pie Chart */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <BookOpen className="h-5 w-5 text-[#1876D2] mr-2" />
-                  Learning Style Distribution
-                </h4>
-                <div className="h-64">
-                  <Chart
-                    options={learningStyleData.options}
-                    series={learningStyleData.series}
-                    type="pie"
-                    height="100%"
-                  />
+
+              {/* Top Careers */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5"
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">🏆</span>
+                  <h3 className="text-sm font-semibold text-white">Top Career Paths</h3>
                 </div>
-                <div className="mt-4 text-sm text-gray-500">
-                  <p>Understanding {result.studentName}'s learning preferences helps identify optimal educational approaches.</p>
+                <div className="space-y-2">
+                  {result.topCareers.map((career, i) => {
+                    const medals = ['🥇', '🥈', '🥉'];
+                    const colors = ['from-amber-500/20 to-amber-600/10 border-amber-500/30', 'from-gray-400/20 to-gray-500/10 border-gray-400/30', 'from-orange-600/20 to-orange-700/10 border-orange-600/30'];
+                    return (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 + i * 0.1 }}
+                        className={`flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r ${colors[i] || 'from-white/[0.05] to-white/[0.02] border-white/[0.1]'} border`}
+                      >
+                        <span className="text-xl">{medals[i] || '⭐'}</span>
+                        <p className="text-white/80 font-medium text-sm">{career}</p>
+                      </motion.div>
+                    );
+                  })}
                 </div>
-              </div>
-              
-              {/* Personality Traits */}
-              <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Brain className="h-5 w-5 text-[#1876D2] mr-2" />
-                  Personality Trait Analysis
-                </h4>
-                <div className="h-64">
-                  <Chart
-                    options={personalityData.options}
-                    series={personalityData.series}
-                    type="bar"
-                    height="100%"
-                  />
+              </motion.div>
+
+              {/* Skills to Develop */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5"
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">🎯</span>
+                  <h3 className="text-sm font-semibold text-white">Skills to Develop</h3>
                 </div>
-                <div className="mt-4 text-sm text-gray-500">
-                  <p>Key personality traits that influence career preferences and success factors.</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Career Compatibility */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <Compass className="h-5 w-5 text-green-600 mr-2" />
-                Career Path Compatibility
-              </h4>
-              <div className="h-80">
-                <Chart
-                  options={careerCompatibilityData.options}
-                  series={careerCompatibilityData.series}
-                  type="radialBar"
-                  height="100%"
-                />
-              </div>
-              <div className="mt-4 text-sm text-gray-500">
-                <p>Compatibility scores for recommended career paths based on interests, skills, and personality.</p>
-              </div>
-            </div>
-            
-            {/* Development Timeline */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <Clock className="h-5 w-5 text-amber-600 mr-2" />
-                Career Development Timeline
-              </h4>
-              <div className="h-80">
-                <Chart
-                  options={timelineData.options}
-                  series={timelineData.series}
-                  type="rangeBar"
-                  height="100%"
-                />
-              </div>
-              <div className="mt-4 text-sm text-gray-500">
-                <p>Recommended focus areas at different educational and career stages.</p>
-              </div>
-            </div>
-            
-            {/* Entrepreneurial Potential */}
-            {result.entrepreneurialScore !== undefined && (
-              <div className="bg-gradient-to-r from-[#F5F9FC] to-[#E3F2FD] rounded-xl p-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                  <Rocket className="h-5 w-5 text-[#1876D2] mr-2" />
-                  Entrepreneurial Potential Analysis
-                </h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-white rounded-xl p-4 shadow-sm">
-                    <div className="flex items-center justify-between mb-2">
-                      <h5 className="text-sm font-medium text-gray-700">Innovation Score</h5>
-                      <span className="text-lg font-semibold text-[#1876D2]">{Math.round(result.entrepreneurialScore * 0.9)}%</span>
-                    </div>
-                    <div className="h-2 w-full bg-[#E3F2FD] rounded-full">
-                      <div 
-                        className="h-2 bg-[#1876D2] rounded-full" 
-                        style={{ width: `${Math.round(result.entrepreneurialScore * 0.9)}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="bg-white rounded-xl p-4 shadow-sm">
-                    <div className="flex items-center justify-between mb-2">
-                      <h5 className="text-sm font-medium text-gray-700">Risk Tolerance</h5>
-                      <span className="text-lg font-semibold text-[#1876D2]">{Math.round(result.entrepreneurialScore * 0.8)}%</span>
-                    </div>
-                    <div className="h-2 w-full bg-[#E3F2FD] rounded-full">
-                      <div 
-                        className="h-2 bg-[#1876D2] rounded-full" 
-                        style={{ width: `${Math.round(result.entrepreneurialScore * 0.8)}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="bg-white rounded-xl p-4 shadow-sm">
-                    <div className="flex items-center justify-between mb-2">
-                      <h5 className="text-sm font-medium text-gray-700">Leadership Potential</h5>
-                      <span className="text-lg font-semibold text-[#00B0FF]">{Math.round(result.entrepreneurialScore * 1.1)}%</span>
-                    </div>
-                    <div className="h-2 w-full bg-[#E3F2FD] rounded-full">
-                      <div 
-                        className="h-2 bg-[#00B0FF] rounded-full" 
-                        style={{ width: `${Math.min(100,Math.round(result.entrepreneurialScore * 1.1))}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-4 p-4 bg-white rounded-lg">
-                  <p className="text-gray-700">
-                    {result.studentName} shows {result.entrepreneurialScore >= 75 ? 'exceptional' : result.entrepreneurialScore >= 60 ? 'strong' : 'developing'} entrepreneurial potential. 
-                    {result.entrepreneurialScore >= 60 ? 
-                      ' With the right guidance and opportunities, they could excel in creating and leading their own ventures.' : 
-                      ' With continued development of key skills like creativity and risk-taking, their entrepreneurial abilities can be strengthened.'}
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-        
-        {activeTab === 'careers' && (
-          <div className="space-y-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-6">Career Path Exploration</h3>
-            
-            {/* Top Career Paths - Detailed */}
-            <div className="space-y-6">
-              {result.topCareers.map((career, index) => {
-                // Generate random career details
-                const skills = [
-                  'Communication',
-                  'Problem Solving',
-                  'Creativity',
-                  'Technical Knowledge',
-                  'Leadership',
-                  'Analytical Thinking',
-                  'Teamwork'
-                ];
-                
-                // Select 3-5 random skills
-                const numSkills = Math.floor(Math.random() * 3) + 3;
-                const selectedSkills = [...skills].sort(() => 0.5 - Math.random()).slice(0, numSkills);
-                
-                // Generate random education paths
-                const educationPaths = [
-                  'Bachelor\'s Degree',
-                  'Specialized Certification',
-                  'Technical Training',
-                  'Online Courses',
-                  'Apprenticeship',
-                  'Self-Learning'
-                ];
-                
-                // Select 2-3 random education paths
-                const numPaths = Math.floor(Math.random() * 2) + 2;
-                const selectedPaths = [...educationPaths].sort(() => 0.5 - Math.random()).slice(0, numPaths);
-                
-                return (
-                  <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                    <div className="flex items-center mb-4">
-                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-[#E3F2FD] text-[#1876D2] font-bold mr-3">
-                        {index + 1}
-                      </div>
-                      <h4 className="text-xl font-semibold text-gray-900">{career}</h4>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                      <div className="bg-[#E3F2FD] rounded-lg p-4">
-                        <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <Target className="h-4 w-4 text-[#1876D2] mr-2" />
-                          Key Skills
-                        </h5>
-                        <ul className="space-y-2">
-                          {selectedSkills.map((skill, i) => (
-                            <li key={i} className="flex items-center text-gray-700">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                              {skill}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div className="bg-[#F5F9FC] rounded-lg p-4">
-                        <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <GraduationCap className="h-4 w-4 text-[#1876D2] mr-2" />
-                          Education Paths
-                        </h5>
-                        <ul className="space-y-2">
-                          {selectedPaths.map((path, i) => (
-                            <li key={i} className="flex items-center text-gray-700">
-                              <ArrowRight className="h-4 w-4 text-[#1876D2] mr-2 flex-shrink-0" />
-                              {path}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div className="bg-green-50 rounded-lg p-4">
-                        <h5 className="font-medium text-gray-900 mb-3 flex items-center">
-                          <TrendingUp className="h-4 w-4 text-green-600 mr-2" />
-                          Growth Potential
-                        </h5>
-                        <div className="space-y-3">
-                          <div>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs text-gray-600">Demand</span>
-                              <span className="text-xs font-medium text-gray-700">
-                                {Math.floor(Math.random() * 30) + 70}%
-                              </span>
-                            </div>
-                            <div className="h-1.5 w-full bg-gray-200 rounded-full">
-                              <div 
-                                className="h-1.5 bg-green-500 rounded-full" 
-                                style={{ width: `${Math.floor(Math.random() * 30) + 70}%` }}
-                              ></div>
-                            </div>
-                          </div>
-                          <div>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs text-gray-600">Salary Potential</span>
-                              <span className="text-xs font-medium text-gray-700">
-                                {Math.floor(Math.random() * 30) + 70}%
-                              </span>
-                            </div>
-                            <div className="h-1.5 w-full bg-gray-200 rounded-full">
-                              <div 
-                                className="h-1.5 bg-green-500 rounded-full" 
-                                style={{ width: `${Math.floor(Math.random() * 30) + 70}%` }}
-                              ></div>
-                            </div>
-                          </div>
-                          <div>
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="text-xs text-gray-600">Work-Life Balance</span>
-                              <span className="text-xs font-medium text-gray-700">
-                                {Math.floor(Math.random() * 30) + 70}%
-                              </span>
-                            </div>
-                            <div className="h-1.5 w-full bg-gray-200 rounded-full">
-                              <div 
-                                className="h-1.5 bg-green-500 rounded-full" 
-                                style={{ width: `${Math.floor(Math.random() * 30) + 70}%` }}
-                              ></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-6 p-4 bg-amber-50 rounded-lg">
-                      <h5 className="font-medium text-gray-900 mb-2 flex items-center">
-                        <Lightbulb className="h-4 w-4 text-amber-600 mr-2" />
-                        Why This Fits {result.studentName}
-                      </h5>
-                      <p className="text-gray-700">
-                        {career} aligns well with {result.studentName}'s 
-                        {index === 0 ? ' strong creative abilities and problem-solving skills' : 
-                         index === 1 ? ' excellent communication skills and interest in helping others' :
-                         ' analytical mindset and attention to detail'}. 
-                        Their {index === 0 ? 'innovative thinking' : 
-                               index === 1 ? 'people skills' : 
-                               'methodical approach'} would be a valuable asset in this field.
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            
-            {/* Development Roadmap */}
-            <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-              <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <Layers className="h-5 w-5 text-[#1876D2] mr-2" />
-                Career Development Roadmap
-              </h4>
-              
-              <div className="relative">
-                <div className="absolute left-8 top-0 bottom-0 w-1 bg-indigo-200"></div>
-                <div className="space-y-8">
-                  {[
-                    {
-                      phase: 'Exploration Phase (Now)',
-                      description: 'Discover interests and natural abilities through diverse activities',
-                      activities: [
-                        'Join clubs related to interests',
-                        'Try different hobby projects',
-                        'Read books about different careers'
-                      ]
-                    },
-                    {
-                      phase: 'Skill Building (Next 2-3 Years)',
-                      description: 'Develop foundational skills that align with career interests',
-                      activities: [
-                        'Take relevant courses',
-                        'Participate in competitions',
-                        'Find a mentor in area of interest'
-                      ]
-                    },
-                    {
-                      phase: 'Experience Gathering (4-6 Years)',
-                      description: 'Gain practical experience through projects and internships',
-                      activities: [
-                        'Work on real-world projects',
-                        'Volunteer in related fields',
-                        'Build a portfolio of work'
-                      ]
-                    },
-                    {
-                      phase: 'Specialization (7+ Years)',
-                      description: 'Focus on specific career path and advanced skills',
-                      activities: [
-                        'Pursue higher education or specialized training',
-                        'Network with professionals',
-                        'Develop expertise in niche areas'
-                      ]
-                    }
-                  ].map((phase, index) => (
-                    <div key={index} className="relative flex items-start ml-8">
-                      <div className="absolute -left-8 mt-1">
-                        <div className="h-6 w-6 rounded-full bg-[#1876D2] flex items-center justify-center text-white text-xs font-bold">
-                          {index + 1}
-                        </div>
-                      </div>
-                      <div className="bg-gradient-to-r from-indigo-50 to-white rounded-lg p-4 border border-indigo-100 w-full">
-                        <h5 className="font-medium text-gray-900 mb-2">{phase.phase}</h5>
-                        <p className="text-gray-600 mb-3">{phase.description}</p>
-                        <ul className="space-y-1">
-                          {phase.activities.map((activity, i) => (
-                            <li key={i} className="flex items-center text-gray-700 text-sm">
-                              <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                              {activity}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {result.skillsToDevelop.map((skill, i) => (
+                    <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-white/[0.03]">
+                      <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                      <span className="text-white/60 text-sm">{skill}</span>
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-            
-            {/* Orbit Programs */}
-            <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl p-6 text-white">
-              <h4 className="text-lg font-semibold mb-4 flex items-center">
-                <Star className="h-5 w-5 mr-2" />
-                How Orbit Can Help
-              </h4>
-              <p className="mb-4">
-                Our specialized programs can help {result.studentName} develop the key skills needed for their future career path:
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <h5 className="font-medium mb-2 flex items-center">
-                    <Rocket className="h-4 w-4 mr-2" />
-                    Entrepreneurship Program
-                  </h5>
-                  <p className="text-sm text-indigo-100">
-                    Develop business acumen, innovation skills, and leadership abilities through hands-on projects.
-                  </p>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <h5 className="font-medium mb-2 flex items-center">
-                    <Mic className="h-4 w-4 mr-2" />
-                    Public Speaking & Confidence
-                  </h5>
-                  <p className="text-sm text-indigo-100">
-                    Build communication skills and confidence through structured speaking exercises and presentations.
-                  </p>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <h5 className="font-medium mb-2 flex items-center">
-                    <Brain className="h-4 w-4 mr-2" />
-                    Critical Thinking & Problem Solving
-                  </h5>
-                  <p className="text-sm text-indigo-100">
-                    Enhance analytical abilities and creative problem-solving through challenging scenarios.
-                  </p>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <h5 className="font-medium mb-2 flex items-center">
-                    <Heart className="h-4 w-4 mr-2" />
-                    Personalized Mentorship
-                  </h5>
-                  <p className="text-sm text-indigo-100">
-                    One-on-one guidance from industry experts who can provide career-specific advice and support.
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={onClose}
-                className="w-full mt-6 bg-white text-[#1876D2] px-4 py-3 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors flex items-center justify-center"
+              </motion.div>
+
+              {/* Motivational */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/20 rounded-2xl p-5"
               >
-                <span>Explore Our Programs</span>
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-lg">💫</span>
+                  <h3 className="text-sm font-semibold text-white">Your Journey Begins Now</h3>
+                </div>
+                <p className="text-white/70 text-sm leading-relaxed italic">"{result.motivationalMessage}"</p>
+              </motion.div>
             </div>
-          </div>
-        )}
-        
-        {/* Footer */}
-        <div className="mt-8 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
-          <p>This career guide is based on the information provided and is meant to be a starting point for exploration.</p>
-          <p className="mt-1">© {new Date().getFullYear()} Orbit Future Academy. All rights reserved.</p>
-        </div>
-      </div>
-      
+          )}
+
+          {activeTab === 'analytics' && (
+            <div className="space-y-4">
+              {/* Skill Bars */}
+              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="text-lg">📊</span>
+                  <h3 className="text-sm font-semibold text-white">Skills Assessment</h3>
+                </div>
+                <div className="space-y-4">
+                  {skillBars.map((skill, i) => (
+                    <motion.div
+                      key={skill.label}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.08 }}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <div className="flex items-center gap-2">
+                          <span>{skill.emoji}</span>
+                          <span className="text-sm text-white/70">{skill.label}</span>
+                        </div>
+                        <span className="text-sm font-bold text-white/80">{skill.value}%</span>
+                      </div>
+                      <div className="h-2 bg-white/[0.06] rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: `${skill.value}%` }}
+                          transition={{ duration: 0.8, delay: 0.3 + i * 0.1 }}
+                          className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
+                        />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Learning Style Breakdown */}
+              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">🧬</span>
+                  <h3 className="text-sm font-semibold text-white">Learning Style DNA</h3>
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { type: 'Visual', emoji: '👁️', value: result.learningStyle.toLowerCase().includes('visual') ? 70 : 20, color: 'from-blue-500 to-cyan-500' },
+                    { type: 'Auditory', emoji: '👂', value: result.learningStyle.toLowerCase().includes('auditory') ? 70 : 20, color: 'from-violet-500 to-purple-500' },
+                    { type: 'Kinesthetic', emoji: '🤲', value: result.learningStyle.toLowerCase().includes('kinesthetic') || result.learningStyle.toLowerCase().includes('doing') ? 70 : 20, color: 'from-emerald-500 to-green-500' }
+                  ].map((style, i) => (
+                    <motion.div
+                      key={style.type}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.1 }}
+                      className="text-center bg-white/[0.04] border border-white/[0.08] rounded-2xl p-4"
+                    >
+                      <span className="text-2xl block mb-2">{style.emoji}</span>
+                      <div className="relative w-16 h-16 mx-auto mb-2">
+                        <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 36 36">
+                          <path
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="rgba(255,255,255,0.06)"
+                            strokeWidth="3"
+                          />
+                          <motion.path
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                            fill="none"
+                            stroke="url(#gradient)"
+                            strokeWidth="3"
+                            strokeDasharray={`${style.value}, 100`}
+                            initial={{ strokeDasharray: '0, 100' }}
+                            animate={{ strokeDasharray: `${style.value}, 100` }}
+                            transition={{ duration: 1, delay: 0.5 + i * 0.2 }}
+                          />
+                          <defs>
+                            <linearGradient id="gradient">
+                              <stop offset="0%" stopColor="#3B82F6" />
+                              <stop offset="100%" stopColor="#06B6D4" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                        <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white">{style.value}%</span>
+                      </div>
+                      <p className="text-xs text-white/50">{style.type}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Entrepreneurial Breakdown */}
+              {result.entrepreneurialScore !== undefined && (
+                <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-lg">🚀</span>
+                    <h3 className="text-sm font-semibold text-white">Entrepreneur Analysis</h3>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    {[
+                      { label: 'Innovation', value: Math.round(result.entrepreneurialScore * 0.9), emoji: '💡' },
+                      { label: 'Risk Tolerance', value: Math.round(result.entrepreneurialScore * 0.8), emoji: '🎲' },
+                      { label: 'Leadership', value: Math.min(100, Math.round(result.entrepreneurialScore * 1.1)), emoji: '👑' }
+                    ].map((metric, i) => (
+                      <div key={metric.label} className="text-center bg-white/[0.04] border border-white/[0.08] rounded-xl p-3">
+                        <span className="text-xl">{metric.emoji}</span>
+                        <p className="text-lg font-bold text-white mt-1">{metric.value}%</p>
+                        <p className="text-[10px] text-white/40">{metric.label}</p>
+                        <div className="mt-2 h-1 bg-white/[0.08] rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${metric.value}%` }}
+                            transition={{ duration: 0.8, delay: 0.5 + i * 0.1 }}
+                            className="h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 p-3 bg-white/[0.03] rounded-xl">
+                    <p className="text-xs text-white/50 leading-relaxed">
+                      {result.studentName} shows {result.entrepreneurialScore >= 75 ? 'exceptional' : result.entrepreneurialScore >= 60 ? 'strong' : 'developing'} entrepreneurial potential.
+                      {result.entrepreneurialScore >= 60
+                        ? ' With the right guidance, they could excel in creating and leading their own ventures.'
+                        : ' With continued skill development, their entrepreneurial abilities can be greatly strengthened.'}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'careers' && (
+            <div className="space-y-4">
+              {/* Career Cards */}
+              {result.topCareers.map((career, index) => {
+                const skillSets = [
+                  ['Communication', 'Creativity', 'Leadership'],
+                  ['Analytical Thinking', 'Teamwork', 'Problem Solving'],
+                  ['Technical Knowledge', 'Adaptability', 'Critical Thinking']
+                ];
+                const eduPaths = [
+                  ['Specialized Courses', 'Self-Learning', 'Mentorship'],
+                  ['Online Programs', 'Apprenticeship', 'Certification'],
+                  ['Degree Program', 'Bootcamp', 'Workshops']
+                ];
+                const demandScores = [88, 82, 76];
+                const fitReasons = [
+                  `strong creative abilities and problem-solving skills. Their innovative thinking would be a valuable asset.`,
+                  `excellent communication skills and genuine interest in helping others. Their people skills stand out.`,
+                  `analytical mindset and attention to detail. Their methodical approach is perfect for this field.`
+                ];
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.15 }}
+                    className="bg-white/[0.04] border border-white/[0.08] rounded-2xl overflow-hidden"
+                  >
+                    {/* Career Header */}
+                    <div className="p-5 border-b border-white/[0.06]">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center text-xl">
+                          {['🥇', '🥈', '🥉'][index] || '⭐'}
+                        </div>
+                        <div>
+                          <h4 className="text-base font-bold text-white">{career}</h4>
+                          <p className="text-xs text-white/40">Career Path #{index + 1}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-5 space-y-4">
+                      {/* Stats */}
+                      <div className="grid grid-cols-3 gap-2">
+                        <div className="text-center bg-white/[0.04] rounded-xl p-3">
+                          <p className="text-sm font-bold text-emerald-400">{demandScores[index] || 80}%</p>
+                          <p className="text-[10px] text-white/40">Demand</p>
+                        </div>
+                        <div className="text-center bg-white/[0.04] rounded-xl p-3">
+                          <p className="text-sm font-bold text-blue-400">{(demandScores[index] || 80) - 5}%</p>
+                          <p className="text-[10px] text-white/40">Growth</p>
+                        </div>
+                        <div className="text-center bg-white/[0.04] rounded-xl p-3">
+                          <p className="text-sm font-bold text-amber-400">{(demandScores[index] || 80) + 2}%</p>
+                          <p className="text-[10px] text-white/40">Satisfaction</p>
+                        </div>
+                      </div>
+
+                      {/* Skills & Education */}
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <p className="text-xs font-medium text-white/50 mb-2 flex items-center gap-1"><Target className="w-3 h-3" /> Key Skills</p>
+                          <div className="space-y-1">
+                            {(skillSets[index] || skillSets[0]).map((skill, i) => (
+                              <div key={i} className="flex items-center gap-1.5 text-xs text-white/60">
+                                <CheckCircle className="w-3 h-3 text-emerald-400/60 flex-shrink-0" />
+                                {skill}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-xs font-medium text-white/50 mb-2 flex items-center gap-1"><GraduationCap className="w-3 h-3" /> Paths</p>
+                          <div className="space-y-1">
+                            {(eduPaths[index] || eduPaths[0]).map((path, i) => (
+                              <div key={i} className="flex items-center gap-1.5 text-xs text-white/60">
+                                <ArrowRight className="w-3 h-3 text-blue-400/60 flex-shrink-0" />
+                                {path}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Fit Reason */}
+                      <div className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/15 rounded-xl p-3">
+                        <p className="text-xs text-white/50 flex items-center gap-1 mb-1">
+                          <Lightbulb className="w-3 h-3 text-amber-400" />
+                          <span className="font-medium">Why This Fits {result.studentName}</span>
+                        </p>
+                        <p className="text-xs text-white/60 leading-relaxed">
+                          {career} aligns with {result.studentName}'s {fitReasons[index] || fitReasons[0]}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+
+              {/* Development Roadmap */}
+              <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-5">
+                  <span className="text-lg">🗺️</span>
+                  <h3 className="text-sm font-semibold text-white">Career Development Roadmap</h3>
+                </div>
+                <div className="space-y-3">
+                  {roadmapPhases.map((phase, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 + i * 0.1 }}
+                      className="flex gap-3"
+                    >
+                      <div className="flex flex-col items-center">
+                        <div className={`w-8 h-8 rounded-full bg-gradient-to-r ${phase.color} flex items-center justify-center text-sm shadow-lg`}>
+                          {phase.emoji}
+                        </div>
+                        {i < roadmapPhases.length - 1 && <div className="w-0.5 flex-1 bg-white/[0.08] mt-1" />}
+                      </div>
+                      <div className="flex-1 pb-4">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="text-sm font-semibold text-white">{phase.phase}</h4>
+                          <span className="text-[10px] px-2 py-0.5 bg-white/[0.06] rounded-full text-white/40">{phase.timeframe}</span>
+                        </div>
+                        <div className="space-y-1 mt-2">
+                          {phase.activities.map((activity, j) => (
+                            <div key={j} className="flex items-center gap-1.5 text-xs text-white/50">
+                              <CheckCircle className="w-3 h-3 text-emerald-400/50 flex-shrink-0" />
+                              {activity}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Orbit CTA */}
+              <div className="bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/20 rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <Star className="w-4 h-4 text-amber-400" />
+                  <h3 className="text-sm font-semibold text-white">How Orbit Can Help</h3>
+                </div>
+                <p className="text-xs text-white/50 mb-4">
+                  Our programs can help {result.studentName} develop the key skills needed for their dream career:
+                </p>
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  {[
+                    { icon: Rocket, label: 'Entrepreneurship', desc: 'Business skills & innovation' },
+                    { icon: Mic, label: 'Public Speaking', desc: 'Confidence & communication' },
+                    { icon: Brain, label: 'Critical Thinking', desc: 'Problem-solving mastery' },
+                    { icon: Heart, label: 'Mentorship', desc: 'Expert career guidance' }
+                  ].map((prog, i) => (
+                    <div key={i} className="bg-white/[0.06] border border-white/[0.08] rounded-xl p-3">
+                      <prog.icon className="w-4 h-4 text-blue-400 mb-1" />
+                      <p className="text-xs font-medium text-white/80">{prog.label}</p>
+                      <p className="text-[10px] text-white/40">{prog.desc}</p>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  onClick={onClose}
+                  className="w-full py-2.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-medium rounded-xl hover:shadow-lg hover:shadow-blue-500/30 transition-all flex items-center justify-center gap-2"
+                >
+                  Explore Our Programs
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          )}
+        </motion.div>
+      </AnimatePresence>
+
       {/* Action Buttons */}
-      <div className="flex flex-wrap justify-center gap-4">
-        <button
-          onClick={handleDownloadPDF}
-          className="flex items-center space-x-2 px-6 py-3 bg-[#1876D2] text-white rounded-xl font-medium hover:bg-[#1565C0] transition-colors"
-          data-tooltip-id="download-tooltip"
-          data-tooltip-content="Download as PDF"
-        >
-          <Download className="h-5 w-5" />
-          <span>Download PDF</span>
-        </button>
-        
+      <div className="flex gap-2">
         <button
           onClick={handleShare}
           disabled={isSharing}
-          className="flex items-center space-x-2 px-6 py-3 bg-[#1876D2] text-white rounded-xl font-medium hover:bg-purple-700 transition-colors disabled:opacity-70"
-          data-tooltip-id="share-tooltip"
-          data-tooltip-content="Share via link"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white/[0.06] border border-white/[0.1] text-white/70 rounded-xl hover:bg-white/[0.1] transition-all text-sm font-medium disabled:opacity-50"
         >
-          <Share2 className="h-5 w-5" />
-          <span>{isSharing ? 'Sharing...' : 'Share Report'}</span>
+          <Share2 className="w-4 h-4" />
+          {isSharing ? 'Copied!' : 'Share'}
         </button>
-        
         <button
           onClick={handleEmailReport}
           disabled={isEmailSent}
-          className="flex items-center space-x-2 px-6 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition-colors disabled:opacity-70"
-          data-tooltip-id="email-tooltip"
-          data-tooltip-content="Send to parent's email"
+          className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-white/[0.06] border border-white/[0.1] text-white/70 rounded-xl hover:bg-white/[0.1] transition-all text-sm font-medium disabled:opacity-50"
         >
-          <Mail className="h-5 w-5" />
-          <span>{isEmailSent ? 'Email Sent!' : 'Email Report'}</span>
+          <Mail className="w-4 h-4" />
+          {isEmailSent ? 'Sent! ✉️' : 'Email Report'}
         </button>
       </div>
-      
-      {/* Next Steps */}
-      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Ready to Take the Next Step?</h3>
-        <p className="text-gray-700 mb-4">
-          Discover how Orbit can help your child develop the entrepreneurial skills needed for their dream career.
+
+      {/* Footer */}
+      <div className="text-center pt-2">
+        <p className="text-[10px] text-white/20">
+          This career guide is based on the provided information and is meant as a starting point for exploration.
         </p>
-        <button
-          onClick={onClose}
-          className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white rounded-xl font-medium hover:opacity-90 transition-all w-full justify-center"
-        >
-          <span>Explore Our Programs</span>
-          <ArrowRight className="h-5 w-5" />
-        </button>
+        <p className="text-[10px] text-white/20 mt-0.5">
+          © {new Date().getFullYear()} Orbit Student. All rights reserved.
+        </p>
       </div>
-      
-      <Tooltip id="share-tooltip" />
-      <Tooltip id="email-tooltip" />
-      <Tooltip id="download-tooltip" />
     </div>
   );
 }
