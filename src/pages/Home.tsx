@@ -496,6 +496,173 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ═══ WHAT YOUR CHILD GETS — Interactive Visual USP ═══ */}
+        <section className="py-28 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+          
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E3F2FD] border border-[#1876D2]/10 mb-8">
+                <Sparkles className="h-4 w-4 text-[#1876D2]" />
+                <span className="text-sm font-medium text-[#1876D2]">The Orbit Difference</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-5 tracking-tight leading-tight">
+                Not Just Learning.{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Living It.</span>
+              </h2>
+              <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+                Other platforms give PDFs. We give your child a real experience — building companies, playing business games, pitching to AI investors, and mastering skills that schools don't teach.
+              </p>
+            </motion.div>
+
+            {/* Interactive USP Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+              {[
+                {
+                  icon: '🎮',
+                  title: '10 Business Games',
+                  subtitle: 'Not watching. Playing.',
+                  desc: 'From running a lemonade stand to trading across planets — kids learn pricing, investing, budgeting & pitching through addictive mini-games.',
+                  stats: '10 games • 500+ XP',
+                  color: 'from-violet-500 to-purple-600',
+                  bg: 'bg-violet-50',
+                  link: '/demo',
+                },
+                {
+                  icon: '👑',
+                  title: 'Startup Empire',
+                  subtitle: 'Build a $10M company.',
+                  desc: 'A full roleplay game with 6 stages, 24 missions — from idea generation to IPO. Real decisions, real consequences. Your child\'s first company starts here.',
+                  stats: '6 stages • 24 missions',
+                  color: 'from-amber-500 to-orange-600',
+                  bg: 'bg-amber-50',
+                  link: '/demo',
+                },
+                {
+                  icon: '🤖',
+                  title: 'AI Superpowers',
+                  subtitle: '100+ AI tools at their fingertips.',
+                  desc: 'AI Website Builder, AI Presentation Maker, AI Image Generator, AI Business Plan Writer — your child learns to command AI like a CEO.',
+                  stats: '100+ tools • Unlimited use',
+                  color: 'from-blue-500 to-cyan-500',
+                  bg: 'bg-blue-50',
+                  link: '/demo',
+                },
+                {
+                  icon: '🎯',
+                  title: '180-Day Curriculum',
+                  subtitle: 'Structured. Not random.',
+                  desc: 'A proven path from beginner to confident young entrepreneur. Weekly tasks, live classes, mentorship — every day is designed to build real skills.',
+                  stats: '180 days • 52 live classes',
+                  color: 'from-emerald-500 to-teal-600',
+                  bg: 'bg-emerald-50',
+                  link: '/courses',
+                },
+                {
+                  icon: '🌍',
+                  title: 'Scholarship Database',
+                  subtitle: 'Start early. Win big.',
+                  desc: '500+ scholarships, competitions, and fellowships mapped for your child — filtered by age, country, and interest. Most parents don\'t know these exist.',
+                  stats: '500+ opportunities',
+                  color: 'from-blue-600 to-indigo-600',
+                  bg: 'bg-indigo-50',
+                  link: '/resources',
+                },
+                {
+                  icon: '🏆',
+                  title: 'Real Portfolio',
+                  subtitle: 'Not certificates. Proof.',
+                  desc: 'Your child builds websites, games, pitch decks, and business plans they can actually show to schools, competitions, and future employers.',
+                  stats: '10+ portfolio pieces',
+                  color: 'from-rose-500 to-pink-600',
+                  bg: 'bg-rose-50',
+                  link: '/about',
+                },
+              ].map((usp, i) => (
+                <motion.a
+                  key={i}
+                  href={usp.link}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="group relative rounded-3xl border border-gray-100 hover:border-gray-200 bg-white hover:shadow-2xl hover:shadow-gray-200/60 transition-all duration-500 overflow-hidden"
+                >
+                  {/* Top accent bar */}
+                  <div className={`h-1.5 bg-gradient-to-r ${usp.color}`} />
+                  
+                  <div className="p-7">
+                    {/* Icon + stats */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`w-14 h-14 rounded-2xl ${usp.bg} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300`}>
+                        {usp.icon}
+                      </div>
+                      <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2.5 py-1 rounded-full">{usp.stats}</span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">{usp.title}</h3>
+                    <p className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r ${usp.color} mb-3" style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to))` }}>
+                      {usp.subtitle}
+                    </p>
+                    <p className="text-gray-500 text-sm leading-relaxed">{usp.desc}</p>
+                    
+                    {/* Hover arrow */}
+                    <div className="mt-5 flex items-center gap-2 text-[#1876D2] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                      Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Bottom comparison strip */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Other EdTech vs. Orbit Student</h3>
+                <p className="text-gray-400 text-sm">See why 2,500+ parents made the switch</p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                {[
+                  { other: 'Watch pre-recorded videos', orbit: 'Build real projects & play business games' },
+                  { other: 'Get a certificate PDF', orbit: 'Build a portfolio of websites, games & pitches' },
+                  { other: 'Learn theory from slides', orbit: 'Run a lemonade stand, trade stocks, pitch to AI investors' },
+                  { other: 'Generic content for all ages', orbit: 'Personalized AI-powered path for ages 8-18' },
+                  { other: 'No scholarship guidance', orbit: '500+ scholarships & competition database' },
+                  { other: 'Learning stops at logout', orbit: 'Kids beg to come back and play more' },
+                ].map((row, i) => (
+                  <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -10 : 10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                    className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 flex gap-3">
+                    <div className="shrink-0 mt-0.5">
+                      <div className="w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center">
+                        <X className="w-3 h-3 text-red-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-gray-500 text-xs line-through mb-1">{row.other}</p>
+                      <div className="flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <p className="text-white text-sm font-medium">{row.orbit}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="text-center mt-8">
+                <button onClick={() => setShowEnrollment(true)} className="group px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all hover:scale-[1.02]">
+                  <span className="flex items-center gap-2">
+                    Try It Free — See the Difference
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* ═══ REAL PARENT STORIES — Dark Glass ═══ */}
         <section className="py-28 bg-slate-950 relative overflow-hidden">
           {/* Gradient mesh */}

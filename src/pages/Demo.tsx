@@ -3108,11 +3108,11 @@ export default function Demo() {
                 Game Zone
               </h3>
               <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-                6 playable mini-games that teach real business skills — from running a lemonade stand to riding the stock market. Kids learn while having a blast!
+                10 playable mini-games that teach real business skills — from running a lemonade stand to trading goods across planets. Kids learn while having a blast!
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
               {[
                 { emoji: '🍋', name: 'Lemonade Tycoon', skill: 'Pricing & Profit', color: 'from-yellow-400 to-amber-500' },
                 { emoji: '🪙', name: 'Coin Catcher', skill: 'Quick Thinking', color: 'from-amber-400 to-orange-500' },
@@ -3120,6 +3120,10 @@ export default function Demo() {
                 { emoji: '📈', name: 'Stock Surfer', skill: 'Market Timing', color: 'from-emerald-400 to-teal-500' },
                 { emoji: '🧠', name: 'Brand Memory', skill: 'Brand Recognition', color: 'from-violet-400 to-purple-500' },
                 { emoji: '⚡', name: 'Pitch Racer', skill: 'Communication', color: 'from-pink-400 to-rose-500' },
+                { emoji: '🎤', name: 'CEO Quiz Show', skill: 'Business IQ', color: 'from-indigo-400 to-blue-600' },
+                { emoji: '💳', name: 'Budget Boss', skill: 'Financial Literacy', color: 'from-teal-400 to-cyan-500' },
+                { emoji: '🚀', name: 'Emoji Startup', skill: 'Creative Pitching', color: 'from-orange-400 to-red-500' },
+                { emoji: '🛸', name: 'Space Trader', skill: 'Economics', color: 'from-cyan-400 to-blue-500' },
               ].map((game, i) => (
                 <motion.div
                   key={game.name}
@@ -3140,7 +3144,7 @@ export default function Demo() {
 
             {/* Interactive Demo Preview */}
             <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border border-violet-500/20 rounded-3xl overflow-hidden p-6 sm:p-8">
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-6 mb-6">
                 {/* Lemonade Preview */}
                 <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
                   <div className="flex items-center gap-3 mb-4">
@@ -3163,23 +3167,70 @@ export default function Demo() {
                   </div>
                 </div>
 
-                {/* Stock Surfer Preview */}
+                {/* Quiz Show Preview */}
                 <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-3xl">📈</span>
+                    <span className="text-3xl">🎤</span>
                     <div>
-                      <h4 className="text-white font-bold">Stock Surfer</h4>
-                      <p className="text-gray-500 text-xs">Buy low, sell high, beat the market</p>
+                      <h4 className="text-white font-bold">CEO Quiz Show</h4>
+                      <p className="text-gray-500 text-xs">Who Wants to Be a Millionaire — business edition</p>
                     </div>
                   </div>
-                  <div className="flex items-end gap-[3px] h-16 mb-3">
-                    {[30,35,28,42,38,50,45,55,48,62,58,70,65,75,72,80,76,85,90,88].map((v, i) => (
-                      <div key={i} className={`flex-1 rounded-sm ${v > (i > 0 ? [30,35,28,42,38,50,45,55,48,62,58,70,65,75,72,80,76,85,90,88][i-1] : v) ? 'bg-emerald-500' : 'bg-red-500'}`}
-                        style={{ height: `${v}%` }} />
+                  <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-3 mb-2">
+                    <p className="text-indigo-300 text-sm font-medium">"What does ROI stand for?"</p>
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5 text-xs">
+                    <div className="bg-white/[0.04] rounded-lg p-2 text-gray-400">A: Rate of Interest</div>
+                    <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-lg p-2 text-emerald-300 font-bold">B: Return on Investment ✓</div>
+                    <div className="bg-white/[0.04] rounded-lg p-2 text-gray-400">C: Revenue of Income</div>
+                    <div className="bg-white/[0.04] rounded-lg p-2 text-gray-400">D: Risk of Inflation</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-6">
+                {/* Emoji Startup Preview */}
+                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🚀</span>
+                    <div>
+                      <h4 className="text-white font-bold">Emoji Startup</h4>
+                      <p className="text-gray-500 text-xs">Create wild startup ideas from random emojis</p>
+                    </div>
+                  </div>
+                  <div className="flex justify-center gap-4 text-4xl mb-3">🍕🤖🐕</div>
+                  <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-3 text-center">
+                    <p className="text-orange-300 text-sm font-bold">"PizzaPup AI"</p>
+                    <p className="text-gray-400 text-xs">AI that delivers pizza to dogs 🐕‍🍕</p>
+                  </div>
+                  <div className="flex gap-2 mt-2 justify-center">
+                    <span className="text-xs bg-white/[0.04] px-2 py-1 rounded-lg">👩‍💼 Score: 87</span>
+                    <span className="text-xs bg-white/[0.04] px-2 py-1 rounded-lg">🧔 Score: 72</span>
+                    <span className="text-xs bg-white/[0.04] px-2 py-1 rounded-lg">👩‍🔬 Score: 91</span>
+                  </div>
+                </div>
+
+                {/* Space Trader Preview */}
+                <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">🛸</span>
+                    <div>
+                      <h4 className="text-white font-bold">Space Trader</h4>
+                      <p className="text-gray-500 text-xs">Buy & sell goods across planets for profit</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2 mb-3">
+                    {['🌍', '🔴', '🟤', '🔵', '🪐'].map((p, i) => (
+                      <div key={i} className={`flex-1 text-center py-1.5 rounded-lg text-lg ${i === 0 ? 'bg-blue-500/20 border border-blue-500/30' : 'bg-white/[0.04]'}`}>{p}</div>
                     ))}
                   </div>
-                  <div className="flex justify-between bg-emerald-500/10 rounded-lg p-2 border border-emerald-500/20 text-xs">
-                    <span className="text-emerald-300">📊 Portfolio</span><span className="text-emerald-400 font-bold">$2,450 (+145%)</span>
+                  <div className="space-y-1.5 text-xs">
+                    <div className="flex justify-between bg-white/[0.04] rounded-lg p-2">
+                      <span className="text-gray-400">💧 Water</span><span className="text-emerald-400 font-bold">$12 → $58 🚀</span>
+                    </div>
+                    <div className="flex justify-between bg-white/[0.04] rounded-lg p-2">
+                      <span className="text-gray-400">💎 Crystals</span><span className="text-amber-400 font-bold">$85 → $142 💰</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -3187,7 +3238,7 @@ export default function Demo() {
               <div className="text-center mt-6">
                 <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-violet-500/20 to-purple-500/20 border border-violet-500/30 rounded-full">
                   <Sparkles className="w-4 h-4 text-violet-400" />
-                  <span className="text-violet-300 font-semibold text-sm">All 6 games playable inside the Orbit Student Dashboard</span>
+                  <span className="text-violet-300 font-semibold text-sm">All 10 games playable inside the Orbit Student Dashboard</span>
                 </div>
               </div>
             </div>

@@ -29,6 +29,10 @@ const GAMES: GameConfig[] = [
   { id: 'stock-surfer', name: 'Stock Surfer', emoji: '📈', description: 'Buy low, sell high! Ride the stock market waves.', skill: 'Market Timing', color: '#10B981', gradient: 'from-emerald-400 to-teal-500', difficulty: 'Medium', xpReward: 60 },
   { id: 'brand-match', name: 'Brand Memory', emoji: '🧠', description: 'Match famous logos to their companies. Train your memory!', skill: 'Brand Recognition', color: '#8B5CF6', gradient: 'from-violet-400 to-purple-500', difficulty: 'Easy', xpReward: 35 },
   { id: 'pitch-type', name: 'Pitch Racer', emoji: '⚡', description: 'Type your elevator pitch as fast as you can!', skill: 'Communication Speed', color: '#EC4899', gradient: 'from-pink-400 to-rose-500', difficulty: 'Hard', xpReward: 70 },
+  { id: 'quiz-show', name: 'CEO Quiz Show', emoji: '🎤', description: 'Who Wants to Be a Millionaire — business edition!', skill: 'Business IQ', color: '#6366F1', gradient: 'from-indigo-400 to-blue-600', difficulty: 'Medium', xpReward: 80 },
+  { id: 'budget-boss', name: 'Budget Boss', emoji: '💳', description: 'Manage a monthly budget. Will you save or go broke?', skill: 'Financial Literacy', color: '#14B8A6', gradient: 'from-teal-400 to-cyan-500', difficulty: 'Medium', xpReward: 55 },
+  { id: 'emoji-startup', name: 'Emoji Startup', emoji: '🚀', description: 'Combine random emojis to pitch a wild startup idea!', skill: 'Creative Thinking', color: '#F97316', gradient: 'from-orange-400 to-red-500', difficulty: 'Easy', xpReward: 45 },
+  { id: 'space-trader', name: 'Space Trader', emoji: '🛸', description: 'Buy & sell goods across planets. Master supply & demand!', skill: 'Economics', color: '#06B6D4', gradient: 'from-cyan-400 to-blue-500', difficulty: 'Hard', xpReward: 75 },
 ];
 
 // ═══ Game State Types ═══
@@ -818,6 +822,585 @@ function PitchRacer({ onBack, onScore }: { onBack: () => void; onScore: (s: numb
 }
 
 // ═══════════════════════════════════════════════
+// GAME 7: CEO QUIZ SHOW (Millionaire-style)
+// ═══════════════════════════════════════════════
+const QUIZ_QUESTIONS = [
+  { q: 'What does "ROI" stand for?', options: ['Return on Investment', 'Rate of Interest', 'Revenue of Income', 'Risk of Inflation'], answer: 0, prize: '$100' },
+  { q: 'Who founded Amazon?', options: ['Elon Musk', 'Jeff Bezos', 'Bill Gates', 'Mark Zuckerberg'], answer: 1, prize: '$500' },
+  { q: 'What is a "pitch deck"?', options: ['A baseball field', 'A presentation for investors', 'A type of roof', 'A card game'], answer: 1, prize: '$1,000' },
+  { q: 'What does "B2C" mean?', options: ['Business to Customer', 'Back to Center', 'Brand to Company', 'Buy to Convert'], answer: 0, prize: '$5,000' },
+  { q: 'What is equity in a company?', options: ['Money in the bank', 'Ownership share', 'Monthly salary', 'Office space'], answer: 1, prize: '$10,000' },
+  { q: 'What is a "minimum viable product" (MVP)?', options: ['The cheapest product', 'Simplest version to test an idea', 'Most valuable player', 'A type of award'], answer: 1, prize: '$25,000' },
+  { q: 'What is "revenue"?', options: ['Money spent', 'Money earned before expenses', 'Profit after tax', 'Money borrowed'], answer: 1, prize: '$50,000' },
+  { q: 'What does a CEO do?', options: ['Makes coffee', 'Leads the entire company', 'Only talks to investors', 'Designs products'], answer: 1, prize: '$100,000' },
+  { q: 'What is "scalability" in business?', options: ['How tall a building is', 'Ability to grow without equal cost increase', 'Number of employees', 'How fast you can type'], answer: 1, prize: '$500,000' },
+  { q: 'What is "bootstrapping" a startup?', options: ['Wearing boots to work', 'Self-funding without investors', 'A coding method', 'A marketing strategy'], answer: 1, prize: '$1,000,000' },
+];
+
+function CEOQuizShow({ onBack, onScore }: { onBack: () => void; onScore: (s: number) => void }) {
+  const [currentQ, setCurrentQ] = useState(0);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [gameOver, setGameOver] = useState(false);
+  const [fiftyFifty, setFiftyFifty] = useState(true);
+  const [eliminated, setEliminated] = useState<number[]>([]);
+  const [walked, setWalked] = useState(false);
+
+  const question = QUIZ_QUESTIONS[currentQ];
+
+  const handleAnswer = (idx: number) => {
+    if (selected !== null) return;
+    setSelected(idx);
+    const correct = idx === question.answer;
+    setIsCorrect(correct);
+
+    setTimeout(() => {
+      if (correct) {
+        if (currentQ + 1 >= QUIZ_QUESTIONS.length) {
+          setGameOver(true);
+          onScore(1000000);
+        } else {
+          setCurrentQ(q => q + 1);
+          setSelected(null);
+          setIsCorrect(null);
+          setEliminated([]);
+        }
+      } else {
+        setGameOver(true);
+        onScore(currentQ * 10);
+      }
+    }, 1500);
+  };
+
+  const useFiftyFifty = () => {
+    if (!fiftyFifty) return;
+    setFiftyFifty(false);
+    const wrong = question.options.map((_, i) => i).filter(i => i !== question.answer);
+    const toRemove = wrong.sort(() => Math.random() - 0.5).slice(0, 2);
+    setEliminated(toRemove);
+  };
+
+  const walkAway = () => {
+    setWalked(true);
+    setGameOver(true);
+    onScore(currentQ * 15);
+  };
+
+  if (gameOver) {
+    return (
+      <GameOverScreen
+        title="CEO Quiz Show"
+        emoji="🎤"
+        score={walked ? currentQ * 15 : (isCorrect === false ? currentQ * 10 : 1000000)}
+        label={walked ? `Walked away at ${question.prize}` : (currentQ >= QUIZ_QUESTIONS.length ? 'YOU WON $1,000,000!' : `Out at question ${currentQ + 1}`)}
+        onBack={onBack}
+        onRetry={() => { setCurrentQ(0); setSelected(null); setIsCorrect(null); setGameOver(false); setFiftyFifty(true); setEliminated([]); setWalked(false); }}
+      >
+        <p className="text-gray-400 text-sm mt-2">Reached: {question.prize}</p>
+      </GameOverScreen>
+    );
+  }
+
+  return (
+    <div className="max-w-lg mx-auto">
+      <GameHeader title="🎤 CEO Quiz Show" subtitle={`Question ${currentQ + 1} — Prize: ${question.prize}`} onBack={onBack} />
+
+      {/* Prize ladder mini */}
+      <div className="flex gap-1 mb-5">
+        {QUIZ_QUESTIONS.map((_, i) => (
+          <div key={i} className={`flex-1 h-2 rounded-full ${i < currentQ ? 'bg-amber-500' : i === currentQ ? 'bg-amber-500 animate-pulse' : 'bg-white/[0.06]'}`} />
+        ))}
+      </div>
+
+      {/* Question */}
+      <motion.div key={currentQ} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+        className="bg-gradient-to-br from-indigo-500/10 to-blue-500/10 border border-indigo-500/20 rounded-2xl p-6 mb-5"
+      >
+        <p className="text-white text-lg font-bold leading-relaxed">{question.q}</p>
+      </motion.div>
+
+      {/* Options */}
+      <div className="grid grid-cols-1 gap-2 mb-5">
+        {question.options.map((opt, i) => {
+          const isEliminated = eliminated.includes(i);
+          const isSelected = selected === i;
+          const showResult = selected !== null;
+          const isAnswer = i === question.answer;
+
+          return (
+            <motion.button
+              key={i}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: isEliminated ? 0.2 : 1, x: 0 }}
+              transition={{ delay: i * 0.05 }}
+              disabled={selected !== null || isEliminated}
+              onClick={() => handleAnswer(i)}
+              className={`flex items-center gap-3 p-4 rounded-xl border-2 text-left transition-all ${
+                showResult && isAnswer ? 'bg-emerald-500/20 border-emerald-500 shadow-lg shadow-emerald-500/20' :
+                showResult && isSelected && !isAnswer ? 'bg-red-500/20 border-red-500' :
+                isSelected ? 'bg-indigo-500/20 border-indigo-500' :
+                'bg-white/[0.03] border-white/[0.08] hover:bg-white/[0.07] hover:border-white/[0.15]'
+              } disabled:cursor-not-allowed`}
+            >
+              <span className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold shrink-0 ${
+                showResult && isAnswer ? 'bg-emerald-500 text-white' :
+                showResult && isSelected ? 'bg-red-500 text-white' :
+                'bg-white/[0.06] text-gray-400'
+              }`}>
+                {String.fromCharCode(65 + i)}
+              </span>
+              <span className={`font-medium text-sm ${showResult && isAnswer ? 'text-emerald-300' : 'text-gray-200'}`}>{opt}</span>
+            </motion.button>
+          );
+        })}
+      </div>
+
+      {/* Lifelines */}
+      <div className="flex gap-3 justify-center">
+        <button onClick={useFiftyFifty} disabled={!fiftyFifty || selected !== null}
+          className="px-4 py-2 bg-indigo-500/20 text-indigo-300 rounded-lg text-sm font-bold disabled:opacity-30 border border-indigo-500/20">
+          50:50
+        </button>
+        <button onClick={walkAway} disabled={selected !== null}
+          className="px-4 py-2 bg-amber-500/20 text-amber-300 rounded-lg text-sm font-bold disabled:opacity-30 border border-amber-500/20">
+          💰 Walk Away
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════
+// GAME 8: BUDGET BOSS
+// ═══════════════════════════════════════════════
+const BUDGET_SCENARIOS = [
+  { title: 'School Supplies', desc: 'New school year! You need notebooks, pens, and a backpack.', cost: 45, category: 'need' as const },
+  { title: 'Gaming Console', desc: 'The latest console is out! All your friends have one.', cost: 400, category: 'want' as const },
+  { title: 'Online Course', desc: 'An AI and coding course that could boost your skills.', cost: 30, category: 'invest' as const },
+  { title: 'Pizza Party', desc: 'Throw a pizza party for your friends this weekend!', cost: 60, category: 'want' as const },
+  { title: 'Emergency Fund', desc: 'Save for unexpected expenses. Always smart.', cost: 100, category: 'invest' as const },
+  { title: 'New Sneakers', desc: 'Those limited edition kicks look amazing...', cost: 150, category: 'want' as const },
+  { title: 'Books & Reading', desc: 'A collection of entrepreneur biographies.', cost: 25, category: 'invest' as const },
+  { title: 'Phone Bill', desc: 'Monthly phone service — you need to stay connected.', cost: 35, category: 'need' as const },
+  { title: 'Concert Tickets', desc: 'Your favorite artist is performing nearby!', cost: 120, category: 'want' as const },
+  { title: 'Savings Account', desc: 'Deposit into your savings for compound interest.', cost: 200, category: 'invest' as const },
+  { title: 'Bus Pass', desc: 'Monthly transport to school and activities.', cost: 40, category: 'need' as const },
+  { title: 'Startup Materials', desc: 'Buy supplies to build your first product prototype.', cost: 75, category: 'invest' as const },
+];
+
+function BudgetBoss({ onBack, onScore }: { onBack: () => void; onScore: (s: number) => void }) {
+  const [budget] = useState(500);
+  const [spent, setSpent] = useState(0);
+  const [saved, setSaved] = useState(0);
+  const [invested, setInvested] = useState(0);
+  const [items, setItems] = useState(() => [...BUDGET_SCENARIOS].sort(() => Math.random() - 0.5).slice(0, 8));
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [decisions, setDecisions] = useState<{ title: string; action: string }[]>([]);
+  const [gameOver, setGameOver] = useState(false);
+
+  const remaining = budget - spent - saved - invested;
+  const item = items[currentIdx];
+
+  const decide = (action: 'buy' | 'skip' | 'invest') => {
+    let newSpent = spent, newSaved = saved, newInvested = invested;
+    
+    if (action === 'buy' && remaining >= item.cost) {
+      newSpent = spent + item.cost;
+      setSpent(newSpent);
+      setDecisions(d => [...d, { title: item.title, action: '💸 Bought' }]);
+    } else if (action === 'invest' && remaining >= item.cost) {
+      newInvested = invested + item.cost;
+      setInvested(newInvested);
+      setDecisions(d => [...d, { title: item.title, action: '📈 Invested' }]);
+    } else if (action === 'skip') {
+      newSaved = saved + Math.floor(item.cost * 0.5);
+      setSaved(newSaved);
+      setDecisions(d => [...d, { title: item.title, action: '💰 Skipped & Saved' }]);
+    } else {
+      setDecisions(d => [...d, { title: item.title, action: '❌ Can\'t afford' }]);
+    }
+
+    if (currentIdx + 1 >= items.length) {
+      setGameOver(true);
+      // Score: invest gets 3x, save gets 2x, remaining 1x
+      const finalScore = newInvested * 3 + newSaved * 2 + (budget - newSpent - newSaved - newInvested);
+      onScore(Math.round(finalScore));
+    } else {
+      setCurrentIdx(i => i + 1);
+    }
+  };
+
+  if (gameOver) {
+    const finalScore = invested * 3 + saved * 2 + remaining;
+    return (
+      <GameOverScreen title="Budget Boss" emoji="💳" score={Math.round(finalScore)} label="Financial Score" onBack={onBack}
+        onRetry={() => { setSpent(0); setSaved(0); setInvested(0); setCurrentIdx(0); setDecisions([]); setGameOver(false); setItems([...BUDGET_SCENARIOS].sort(() => Math.random() - 0.5).slice(0, 8)); }}>
+        <div className="grid grid-cols-3 gap-2 mt-3 text-xs">
+          <div className="bg-red-500/10 rounded-lg p-2"><span className="text-red-400">Spent</span><br/><span className="text-white font-bold">${spent}</span></div>
+          <div className="bg-amber-500/10 rounded-lg p-2"><span className="text-amber-400">Saved</span><br/><span className="text-white font-bold">${saved}</span></div>
+          <div className="bg-emerald-500/10 rounded-lg p-2"><span className="text-emerald-400">Invested</span><br/><span className="text-white font-bold">${invested}</span></div>
+        </div>
+      </GameOverScreen>
+    );
+  }
+
+  return (
+    <div className="max-w-lg mx-auto">
+      <GameHeader title="💳 Budget Boss" subtitle={`Decision ${currentIdx + 1} of ${items.length}`} onBack={onBack} />
+
+      {/* Budget bar */}
+      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 mb-5">
+        <div className="flex justify-between text-xs mb-2">
+          <span className="text-gray-400">Monthly Budget: <span className="text-white font-bold">${budget}</span></span>
+          <span className={`font-bold ${remaining < 50 ? 'text-red-400' : 'text-emerald-400'}`}>${remaining} left</span>
+        </div>
+        <div className="h-3 bg-white/[0.06] rounded-full overflow-hidden flex">
+          <div className="bg-red-500 h-full transition-all" style={{ width: `${(spent / budget) * 100}%` }} />
+          <div className="bg-amber-500 h-full transition-all" style={{ width: `${(saved / budget) * 100}%` }} />
+          <div className="bg-emerald-500 h-full transition-all" style={{ width: `${(invested / budget) * 100}%` }} />
+        </div>
+        <div className="flex gap-4 mt-2 text-[10px]">
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500" /> Spent ${spent}</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-500" /> Saved ${saved}</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-500" /> Invested ${invested}</span>
+        </div>
+      </div>
+
+      {/* Current item */}
+      <motion.div key={currentIdx} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }}
+        className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 mb-5 text-center"
+      >
+        <span className={`inline-block px-3 py-1 rounded-full text-[10px] font-bold mb-3 ${
+          item.category === 'need' ? 'bg-blue-500/20 text-blue-400' :
+          item.category === 'want' ? 'bg-pink-500/20 text-pink-400' :
+          'bg-emerald-500/20 text-emerald-400'
+        }`}>{item.category === 'need' ? '🔵 NEED' : item.category === 'want' ? '💖 WANT' : '📈 INVESTMENT'}</span>
+        <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+        <p className="text-gray-400 text-sm mb-3">{item.desc}</p>
+        <p className="text-2xl font-black text-amber-400">${item.cost}</p>
+      </motion.div>
+
+      {/* Action buttons */}
+      <div className="grid grid-cols-3 gap-3">
+        <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => decide('buy')} disabled={remaining < item.cost}
+          className="py-3 bg-red-500/20 border border-red-500/30 text-red-300 rounded-xl font-bold text-sm disabled:opacity-30">
+          💸 Buy It
+        </motion.button>
+        <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => decide('skip')}
+          className="py-3 bg-amber-500/20 border border-amber-500/30 text-amber-300 rounded-xl font-bold text-sm">
+          💰 Skip & Save
+        </motion.button>
+        <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => decide('invest')} disabled={remaining < item.cost}
+          className="py-3 bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 rounded-xl font-bold text-sm disabled:opacity-30">
+          📈 Invest
+        </motion.button>
+      </div>
+
+      <p className="text-gray-600 text-[10px] text-center mt-3">💡 Investing earns 3x score, saving earns 2x, spending earns nothing!</p>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════
+// GAME 9: EMOJI STARTUP (Creative Pitch)
+// ═══════════════════════════════════════════════
+const EMOJI_POOL = ['🍕', '🤖', '🐕', '🚲', '📚', '🎵', '🌱', '💊', '👕', '🎮', '📱', '🏠', '✈️', '🎨', '🏋️', '🧹', '☕', '🎭', '🌊', '🔋', '🧸', '🎓', '🛒', '🎪'];
+
+const EMOJI_JUDGES = [
+  { name: 'Ms. Venture', avatar: '👩‍💼', style: 'Loves innovation' },
+  { name: 'Mr. Profit', avatar: '🧔', style: 'Wants to see $$$' },
+  { name: 'Dr. Impact', avatar: '👩‍🔬', style: 'Cares about impact' },
+];
+
+function EmojiStartup({ onBack, onScore }: { onBack: () => void; onScore: (s: number) => void }) {
+  const [emojis, setEmojis] = useState<string[]>([]);
+  const [name, setName] = useState('');
+  const [pitch, setPitch] = useState('');
+  const [round, setRound] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
+  const [judgeScores, setJudgeScores] = useState<{ judge: string; score: number; comment: string }[]>([]);
+  const [showResults, setShowResults] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const MAX_ROUNDS = 3;
+
+  const rollEmojis = () => {
+    const picked: string[] = [];
+    while (picked.length < 3) {
+      const e = EMOJI_POOL[Math.floor(Math.random() * EMOJI_POOL.length)];
+      if (!picked.includes(e)) picked.push(e);
+    }
+    setEmojis(picked);
+    setName('');
+    setPitch('');
+    setShowResults(false);
+    setJudgeScores([]);
+  };
+
+  useEffect(() => { rollEmojis(); }, [round]);
+
+  const submitPitch = () => {
+    if (!name.trim() || !pitch.trim()) return;
+
+    // Fun scoring based on name + pitch length + creativity signals
+    const lengthScore = Math.min(30, pitch.length / 3);
+    const nameScore = name.length > 3 ? 15 : 5;
+    const creativityBonus = /!|\?|amazing|unique|first|only|love|revolutio|disrupt|change|world|planet|million/i.test(pitch) ? 20 : 0;
+    const randomFactor = Math.floor(Math.random() * 20) + 10;
+
+    const scores = EMOJI_JUDGES.map(judge => {
+      const base = Math.round(lengthScore + nameScore + creativityBonus + randomFactor + Math.random() * 15);
+      const score = Math.min(100, Math.max(20, base));
+      const comments = score >= 80 ? ['Brilliant!', 'I\'m investing!', 'Take my money!', 'Genius concept!'] :
+                       score >= 60 ? ['Interesting...', 'Has potential.', 'Needs work but I see it.', 'Promising!'] :
+                       ['Hmm, not sure.', 'Needs more thought.', 'Back to the drawing board.', 'Keep trying!'];
+      return {
+        judge: judge.name,
+        score,
+        comment: comments[Math.floor(Math.random() * comments.length)]
+      };
+    });
+
+    setJudgeScores(scores);
+    const avgScore = Math.round(scores.reduce((s, j) => s + j.score, 0) / 3);
+    setTotalScore(t => t + avgScore);
+    setShowResults(true);
+  };
+
+  const nextRound = () => {
+    if (round + 1 >= MAX_ROUNDS) {
+      setGameOver(true);
+      onScore(totalScore);
+    } else {
+      setRound(r => r + 1);
+    }
+  };
+
+  if (gameOver) {
+    return <GameOverScreen title="Emoji Startup" emoji="🚀" score={totalScore} label={`Average: ${Math.round(totalScore / MAX_ROUNDS)}/100`} onBack={onBack}
+      onRetry={() => { setRound(0); setTotalScore(0); setGameOver(false); }} />;
+  }
+
+  return (
+    <div className="max-w-lg mx-auto">
+      <GameHeader title="🚀 Emoji Startup" subtitle={`Round ${round + 1} of ${MAX_ROUNDS}`} onBack={onBack} />
+
+      {/* Emoji prompt */}
+      <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 mb-5 text-center">
+        <p className="text-gray-400 text-sm mb-3">Combine these emojis into a startup idea:</p>
+        <div className="flex justify-center gap-4 mb-4">
+          {emojis.map((e, i) => (
+            <motion.span key={i} initial={{ scale: 0, rotate: -180 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: i * 0.15, type: 'spring' }}
+              className="text-5xl">{e}</motion.span>
+          ))}
+        </div>
+        <button onClick={rollEmojis} className="text-xs text-gray-500 hover:text-gray-300 transition-colors">🎲 Reroll emojis</button>
+      </div>
+
+      {!showResults ? (
+        <>
+          {/* Input fields */}
+          <div className="space-y-3 mb-5">
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} maxLength={30}
+              placeholder="Startup name (e.g. PizzaBot)"
+              className="w-full px-4 py-3 bg-white/[0.06] border border-white/[0.1] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 font-bold" />
+            <textarea value={pitch} onChange={(e) => setPitch(e.target.value)} maxLength={200} rows={3}
+              placeholder="Your pitch: What does it do? Why is it amazing?"
+              className="w-full px-4 py-3 bg-white/[0.06] border border-white/[0.1] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500/50 resize-none text-sm" />
+          </div>
+          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={submitPitch}
+            disabled={!name.trim() || !pitch.trim()}
+            className="w-full py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-black rounded-xl text-lg shadow-lg disabled:opacity-40">
+            🎤 Pitch to the Judges!
+          </motion.button>
+        </>
+      ) : (
+        <>
+          {/* Judge results */}
+          <div className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 mb-5">
+            <p className="text-center text-white font-bold mb-4">Presenting: <span className="text-orange-400">{name}</span></p>
+            <div className="space-y-3">
+              {judgeScores.map((j, i) => (
+                <motion.div key={i} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.3 }}
+                  className="flex items-center gap-3 bg-white/[0.03] rounded-xl p-3"
+                >
+                  <span className="text-2xl">{EMOJI_JUDGES[i].avatar}</span>
+                  <div className="flex-1">
+                    <p className="text-white text-sm font-bold">{j.judge}</p>
+                    <p className="text-gray-400 text-xs">{j.comment}</p>
+                  </div>
+                  <div className={`text-xl font-black ${j.score >= 80 ? 'text-emerald-400' : j.score >= 60 ? 'text-amber-400' : 'text-red-400'}`}>
+                    {j.score}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+          <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} onClick={nextRound}
+            className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-bold rounded-xl">
+            {round + 1 >= MAX_ROUNDS ? '🏆 See Final Score' : 'Next Round →'}
+          </motion.button>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════
+// GAME 10: SPACE TRADER (Buy/Sell across planets)
+// ═══════════════════════════════════════════════
+const PLANETS = [
+  { name: 'Earth', emoji: '🌍', color: 'from-blue-400 to-green-500' },
+  { name: 'Mars', emoji: '🔴', color: 'from-red-400 to-orange-500' },
+  { name: 'Jupiter', emoji: '🟤', color: 'from-amber-400 to-yellow-600' },
+  { name: 'Neptune', emoji: '🔵', color: 'from-blue-500 to-indigo-600' },
+  { name: 'Saturn', emoji: '🪐', color: 'from-yellow-400 to-amber-500' },
+];
+
+const SPACE_GOODS = [
+  { name: 'Water', emoji: '💧' },
+  { name: 'Fuel', emoji: '⛽' },
+  { name: 'Food', emoji: '🍎' },
+  { name: 'Tech', emoji: '💻' },
+  { name: 'Crystals', emoji: '💎' },
+];
+
+function generatePrices(): Record<string, Record<string, number>> {
+  const prices: Record<string, Record<string, number>> = {};
+  PLANETS.forEach(p => {
+    prices[p.name] = {};
+    SPACE_GOODS.forEach(g => {
+      prices[p.name][g.name] = Math.floor(Math.random() * 80) + 10;
+    });
+  });
+  return prices;
+}
+
+function SpaceTrader({ onBack, onScore }: { onBack: () => void; onScore: (s: number) => void }) {
+  const [credits, setCredits] = useState(500);
+  const [cargo, setCargo] = useState<Record<string, number>>({});
+  const [planet, setPlanet] = useState(0);
+  const [prices, setPrices] = useState(generatePrices);
+  const [turn, setTurn] = useState(1);
+  const [gameOver, setGameOver] = useState(false);
+  const [log, setLog] = useState<string[]>([]);
+  const MAX_TURNS = 12;
+
+  const currentPlanet = PLANETS[planet];
+  const currentPrices = prices[currentPlanet.name];
+
+  const buy = (goodName: string) => {
+    const price = currentPrices[goodName];
+    if (credits < price) return;
+    setCredits(c => c - price);
+    setCargo(c => ({ ...c, [goodName]: (c[goodName] || 0) + 1 }));
+    setLog(l => [...l, `Bought ${goodName} on ${currentPlanet.name} for $${price}`]);
+  };
+
+  const sell = (goodName: string) => {
+    if (!cargo[goodName] || cargo[goodName] <= 0) return;
+    const price = currentPrices[goodName];
+    setCredits(c => c + price);
+    setCargo(c => ({ ...c, [goodName]: c[goodName] - 1 }));
+    setLog(l => [...l, `Sold ${goodName} on ${currentPlanet.name} for $${price}`]);
+  };
+
+  const travel = (planetIdx: number) => {
+    if (planetIdx === planet) return;
+    setPlanet(planetIdx);
+    // Shuffle prices slightly each turn
+    setPrices(prev => {
+      const next = { ...prev };
+      PLANETS.forEach(p => {
+        next[p.name] = { ...next[p.name] };
+        SPACE_GOODS.forEach(g => {
+          const change = (Math.random() - 0.5) * 30;
+          next[p.name][g.name] = Math.max(5, Math.round(next[p.name][g.name] + change));
+        });
+      });
+      return next;
+    });
+
+    if (turn + 1 > MAX_TURNS) {
+      // Calculate total value
+      let cargoValue = 0;
+      Object.entries(cargo).forEach(([good, qty]) => {
+        cargoValue += qty * (currentPrices[good] || 0);
+      });
+      setGameOver(true);
+      onScore(Math.round(credits + cargoValue));
+    } else {
+      setTurn(t => t + 1);
+    }
+  };
+
+  const totalCargoCount = Object.values(cargo).reduce((s, q) => s + q, 0);
+
+  if (gameOver) {
+    let cargoValue = 0;
+    Object.entries(cargo).forEach(([good, qty]) => { cargoValue += qty * (currentPrices[good] || 0); });
+    const total = Math.round(credits + cargoValue);
+    const profit = total - 500;
+
+    return (
+      <GameOverScreen title="Space Trader" emoji="🛸" score={total} label="Total Credits" prefix="$" onBack={onBack}
+        onRetry={() => { setCredits(500); setCargo({}); setPlanet(0); setPrices(generatePrices()); setTurn(1); setGameOver(false); setLog([]); }}>
+        <p className={`text-sm font-bold mt-2 ${profit >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+          {profit >= 0 ? `🚀 Profit: +$${profit}` : `📉 Loss: -$${Math.abs(profit)}`}
+        </p>
+      </GameOverScreen>
+    );
+  }
+
+  return (
+    <div className="max-w-lg mx-auto">
+      <GameHeader title="🛸 Space Trader" subtitle={`Turn ${turn}/${MAX_TURNS} — ${currentPlanet.emoji} ${currentPlanet.name}`} onBack={onBack} />
+
+      {/* Stats */}
+      <div className="grid grid-cols-3 gap-3 mb-4">
+        <StatBox emoji="💰" label="Credits" value={`$${credits}`} />
+        <StatBox emoji="📦" label="Cargo" value={`${totalCargoCount} items`} />
+        <StatBox emoji="🗺️" label="Turn" value={`${turn}/${MAX_TURNS}`} />
+      </div>
+
+      {/* Planet selection */}
+      <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
+        {PLANETS.map((p, i) => (
+          <button key={p.name} onClick={() => travel(i)} disabled={i === planet}
+            className={`shrink-0 px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              i === planet ? `bg-gradient-to-r ${p.color} text-white shadow-lg` : 'bg-white/[0.04] text-gray-400 hover:bg-white/[0.08]'
+            }`}>
+            {p.emoji} {p.name}
+          </button>
+        ))}
+      </div>
+
+      {/* Market */}
+      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl overflow-hidden mb-4">
+        <div className={`bg-gradient-to-r ${currentPlanet.color} px-4 py-2`}>
+          <p className="text-white font-bold text-sm">{currentPlanet.emoji} {currentPlanet.name} Market</p>
+        </div>
+        <div className="divide-y divide-white/[0.04]">
+          {SPACE_GOODS.map(good => (
+            <div key={good.name} className="flex items-center gap-3 px-4 py-2.5">
+              <span className="text-lg">{good.emoji}</span>
+              <span className="text-white text-sm font-medium flex-1">{good.name}</span>
+              <span className="text-amber-400 font-bold text-sm w-12 text-right">${currentPrices[good.name]}</span>
+              <span className="text-gray-500 text-xs w-8 text-center">x{cargo[good.name] || 0}</span>
+              <button onClick={() => buy(good.name)} disabled={credits < currentPrices[good.name]}
+                className="px-2.5 py-1 bg-emerald-500/20 text-emerald-400 rounded-lg text-xs font-bold disabled:opacity-30">Buy</button>
+              <button onClick={() => sell(good.name)} disabled={!cargo[good.name]}
+                className="px-2.5 py-1 bg-red-500/20 text-red-400 rounded-lg text-xs font-bold disabled:opacity-30">Sell</button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-gray-600 text-[10px] text-center">💡 Buy cheap on one planet, travel to another where prices are high, sell for profit! Prices change every turn.</p>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════
 // SHARED UI COMPONENTS
 // ═══════════════════════════════════════════════
 function GameHeader({ title, subtitle, onBack }: { title: string; subtitle: string; onBack: () => void }) {
@@ -904,6 +1487,10 @@ export default function GameZone() {
       case 'stock-surfer': return <StockSurfer {...props} />;
       case 'brand-match': return <BrandMemory {...props} />;
       case 'pitch-type': return <PitchRacer {...props} />;
+      case 'quiz-show': return <CEOQuizShow {...props} />;
+      case 'budget-boss': return <BudgetBoss {...props} />;
+      case 'emoji-startup': return <EmojiStartup {...props} />;
+      case 'space-trader': return <SpaceTrader {...props} />;
       default: return null;
     }
   }
