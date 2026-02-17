@@ -1,31 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  Rocket, 
-  Star, 
-  Trophy, 
-  X, 
-  ChevronRight, 
-  GraduationCap,
-  Target,
-  Brain,
-  Sparkles,
-  Mic,
-  DollarSign,
-  Users,
-  Calendar,
-  Award,
-  Lightbulb,
-  TrendingUp,
-  Heart,
-  Gift,
-  Clock,
-  CheckCircle,
-  ArrowRight,
-  Phone,
-  Mail,
-  MapPin,
-  User
+  Rocket, Star, Trophy, X, ChevronRight, GraduationCap, Target, Brain,
+  Sparkles, Mic, DollarSign, Users, Calendar, Lightbulb, TrendingUp,
+  Heart, Gift, Clock, CheckCircle, ArrowRight, Phone, Mail, MapPin, User, Shield, Gamepad2, Zap
 } from 'lucide-react';
 import { createLead, LeadSource, getUTMParams } from '../lib/leads';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -33,6 +11,38 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface EnrollmentPopupProps {
   isOpen: boolean;
   onClose: () => void;
+}
+
+// Confetti for success state
+function Confetti() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+      {Array.from({ length: 30 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            width: Math.random() * 8 + 4,
+            height: Math.random() * 8 + 4,
+            left: `${Math.random() * 100}%`,
+            top: '-5%',
+            backgroundColor: ['#1876D2', '#00B0FF', '#FBBF24', '#10B981', '#EC4899', '#8B5CF6'][i % 6],
+          }}
+          animate={{
+            y: [0, window.innerHeight + 100],
+            x: [(Math.random() - 0.5) * 200],
+            rotate: [0, Math.random() * 720],
+            opacity: [1, 1, 0],
+          }}
+          transition={{
+            duration: Math.random() * 2 + 2,
+            delay: i * 0.06,
+            ease: 'easeIn',
+          }}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProps) {
@@ -56,87 +66,61 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const navigate = useNavigate();
 
-  // Track time spent on form for analytics
+  // Track time
   useEffect(() => {
     if (isOpen) {
-      const interval = setInterval(() => {
-        setTimeSpent(prev => prev + 1);
-      }, 1000);
+      const interval = setInterval(() => setTimeSpent(prev => prev + 1), 1000);
       return () => clearInterval(interval);
     }
   }, [isOpen]);
 
   const interests = [
-    { id: 'business', label: '🚀 Starting a Business', icon: Rocket, color: 'from-blue-500 to-cyan-500' },
-    { id: 'leadership', label: '⭐ Leadership Skills', icon: Star, color: 'from-yellow-500 to-orange-500' },
-    { id: 'public-speaking', label: '🎤 Public Speaking', icon: Mic, color: 'from-purple-500 to-pink-500' },
-    { id: 'finance', label: '💰 Money Management', icon: DollarSign, color: 'from-green-500 to-emerald-500' },
-    { id: 'innovation', label: '🧠 Innovation & Creativity', icon: Brain, color: 'from-[#1876D2] to-[#00B0FF]' },
-    { id: 'tech', label: '💻 Technology & Apps', icon: Target, color: 'from-red-500 to-pink-500' },
-    { id: 'marketing', label: '📈 Marketing & Sales', icon: TrendingUp, color: 'from-teal-500 to-blue-500' },
-    { id: 'team-building', label: '👥 Team Building', icon: Users, color: 'from-orange-500 to-red-500' }
+    { id: 'business', label: 'Starting a Business', emoji: '🚀', color: 'from-[#1876D2] to-[#00B0FF]' },
+    { id: 'leadership', label: 'Leadership Skills', emoji: '⭐', color: 'from-amber-400 to-orange-500' },
+    { id: 'public-speaking', label: 'Public Speaking', emoji: '🎤', color: 'from-violet-500 to-purple-600' },
+    { id: 'finance', label: 'Money Management', emoji: '💰', color: 'from-emerald-400 to-teal-500' },
+    { id: 'innovation', label: 'Innovation & AI', emoji: '🧠', color: 'from-blue-400 to-indigo-500' },
+    { id: 'tech', label: 'Technology & Apps', emoji: '💻', color: 'from-cyan-400 to-blue-500' },
+    { id: 'marketing', label: 'Marketing & Sales', emoji: '📈', color: 'from-rose-400 to-pink-500' },
+    { id: 'games', label: 'Business Games', emoji: '🎮', color: 'from-green-400 to-emerald-500' },
   ];
 
   const urgencyOptions = [
-    { id: 'immediate', label: '🔥 Start Immediately', subtext: 'Ready to begin this week', premium: true },
-    { id: 'month', label: '📅 Within a Month', subtext: 'Planning to start soon', popular: true },
-    { id: 'quarter', label: '⏰ Next 3 Months', subtext: 'Exploring options' },
-    { id: 'explore', label: '🔍 Just Exploring', subtext: 'Gathering information' }
+    { id: 'immediate', label: '🔥 Start This Week', subtext: 'Jump right in — spots are limited', tag: 'BEST VALUE', tagColor: 'bg-emerald-500' },
+    { id: 'month', label: '📅 Within a Month', subtext: 'Planning and preparing to begin', tag: 'POPULAR', tagColor: 'bg-[#1876D2]' },
+    { id: 'quarter', label: '⏰ Next 3 Months', subtext: 'Exploring options carefully' },
+    { id: 'explore', label: '🔍 Just Exploring', subtext: 'Gathering information for now' },
   ];
 
-  // Validation functions
   const validateStep = (currentStep: number) => {
     const newErrors: {[key: string]: string} = {};
-    
     if (currentStep === 1) {
-      if (!formData.childName.trim()) newErrors.childName = 'Child\'s name is required';
-      if (!formData.parentName.trim()) newErrors.parentName = 'Parent name is required';
+      if (!formData.childName.trim()) newErrors.childName = "Your child's name is required";
+      if (!formData.parentName.trim()) newErrors.parentName = 'Your name is required';
       if (!formData.age) newErrors.age = 'Age is required';
-      if (!formData.city.trim()) newErrors.city = 'City is required';
     }
-    
     if (currentStep === 2) {
-      if (formData.interests.length === 0) newErrors.interests = 'Please select at least one interest';
+      if (formData.interests.length === 0) newErrors.interests = 'Pick at least one interest';
     }
-    
     if (currentStep === 4) {
       if (!formData.email.trim()) newErrors.email = 'Email is required';
-      if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-      if (!formData.urgency) newErrors.urgency = 'Please select when you\'d like to start';
-      
-      // Email validation
-      if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = 'Please enter a valid email address';
-      }
-      
-      // Phone validation (basic)
-      if (formData.phone && !/^[\+\(\)\s\-\d]{10,}$/.test(formData.phone)) {
-        newErrors.phone = 'Please enter a valid phone number';
-      }
+      if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
+      if (!formData.urgency) newErrors.urgency = 'Please select when to start';
+      if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Enter a valid email';
+      if (formData.phone && !/^[\+\(\)\s\-\d]{10,}$/.test(formData.phone)) newErrors.phone = 'Enter a valid phone';
     }
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
-    if (validateStep(step)) {
-      setStep(step + 1);
-    }
-  };
+  const handleNext = () => { if (validateStep(step)) setStep(step + 1); };
 
   const handleSubmit = async () => {
-    if (!validateStep(4)) {
-      return;
-    }
-    
+    if (!validateStep(4)) return;
     setIsSubmitting(true);
     try {
-      // Get UTM parameters for tracking
       const utmParams = getUTMParams();
-      
-      // Create lead data using our new system
-      const leadData = {
+      await createLead({
         email: formData.email,
         name: formData.parentName,
         phone: formData.phone,
@@ -144,649 +128,534 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
         child_age: parseInt(formData.age) || undefined,
         source: LeadSource.ENROLLMENT_POPUP,
         ...utmParams,
-        notes: `
-CHILD INFORMATION:
-• Name: ${formData.childName}
-• Age: ${formData.age}
-• City: ${formData.city}
-
-PARENT INFORMATION:
-• Name: ${formData.parentName}
-• Preferred Contact: ${formData.preferredContact}
-
-INTERESTS & GOALS:
-• Interests: ${formData.interests.join(', ')}
-• Aspirations: ${formData.aspirations}
-• Previous Experience: ${formData.previousExperience}
-
-ENROLLMENT DETAILS:
-• Start Urgency: ${formData.urgency}
-• How they heard about us: ${formData.hearAboutUs}
-
-FORM ANALYTICS:
-• Time spent: ${timeSpent} seconds
-• Completion rate: 100%
-• Conversion quality: HIGH (completed enhanced form)
-
-FOLLOW-UP PRIORITY: ${formData.urgency === 'immediate' ? 'URGENT - Contact within 2 hours' : formData.urgency === 'month' ? 'HIGH - Contact within 24 hours' : 'NORMAL - Contact within 48 hours'}
-        `.trim()
-      };
-
-      await createLead(leadData);
-
-      // Track conversion analytics
+        notes: `CHILD: ${formData.childName} (Age ${formData.age}) | PARENT: ${formData.parentName} | CITY: ${formData.city} | INTERESTS: ${formData.interests.join(', ')} | ASPIRATIONS: ${formData.aspirations} | URGENCY: ${formData.urgency} | EXPERIENCE: ${formData.previousExperience} | HEARD: ${formData.hearAboutUs} | CONTACT: ${formData.preferredContact} | TIME: ${timeSpent}s`
+      });
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'conversion', {
           event_category: 'enrollment',
           event_label: 'enhanced_form_completion',
           value: 1,
-          custom_parameters: {
-            urgency: formData.urgency,
-            time_spent: timeSpent,
-            interests_count: formData.interests.length
-          }
         });
       }
-
-      setStep(5); // Success step
+      setStep(5);
     } catch (error) {
       console.error('Failed to submit enrollment:', error);
-      alert('Something went wrong. Please try again or contact us directly at hello@orbitstudent.com');
+      alert('Something went wrong. Please try again or contact hello@orbitstudent.com');
     }
     setIsSubmitting(false);
   };
 
   if (!isOpen) return null;
 
-  // Optimized animation variants (simplified to reduce lag)
-  const overlayVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.2 } },
-    exit: { opacity: 0, transition: { duration: 0.2 } }
-  };
+  const stepTitles = [
+    '', // placeholder
+    `Tell Us About Your Future CEO`,
+    `What Excites ${formData.childName || 'Your Child'}?`,
+    `${formData.childName || 'Your Child'}'s Dreams`,
+    `Almost There! Let's Connect`,
+    `Welcome to Orbit!`,
+  ];
 
-  const popupVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
-    exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } }
-  };
+  const stepSubtitles = [
+    '',
+    "Let's personalize their entrepreneurial journey",
+    "We'll customize learning based on their passions",
+    'Understanding goals helps us build the perfect path',
+    `We're excited to welcome ${formData.childName || 'your child'} to 2,500+ young entrepreneurs!`,
+    '',
+  ];
 
-  const contentVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.3 } },
-    exit: { opacity: 0, transition: { duration: 0.2 } }
-  };
+  const stepIcons = ['', '🎓', '🎯', '✨', '🚀', '🎉'];
+  const stepColors = [
+    '',
+    'from-[#1876D2] to-[#00B0FF]',
+    'from-violet-500 to-purple-600',
+    'from-emerald-400 to-teal-500',
+    'from-amber-500 to-orange-500',
+    'from-emerald-400 to-teal-500',
+  ];
 
   return (
     <AnimatePresence>
-      <motion.div 
-        key="overlay"
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        variants={overlayVariants}
-        className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4"
+        onClick={(e) => e.target === e.currentTarget && onClose()}
       >
-        <motion.div 
-          key="popup"
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          variants={popupVariants}
-          className="bg-white rounded-3xl w-full max-w-4xl max-h-[95vh] overflow-y-auto relative shadow-2xl"
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
+
+        {/* Popup */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.92, y: 30 }}
+          transition={{ type: 'spring', duration: 0.5, bounce: 0.15 }}
+          className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl shadow-2xl"
           style={{
-            background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1)'
+            background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+            border: '1px solid rgba(255,255,255,0.06)',
           }}
         >
-          {/* Enhanced Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-6 right-6 w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-500 hover:text-gray-700 z-10 transition-all duration-200"
-          >
-            <X className="h-5 w-5" />
-          </button>
+          {/* Bg effects */}
+          <div className="absolute top-[-15%] right-[-10%] w-[35%] h-[35%] bg-[#1876D2]/10 rounded-full filter blur-[80px]" />
+          <div className="absolute bottom-[-10%] left-[-10%] w-[30%] h-[30%] bg-[#00B0FF]/8 rounded-full filter blur-[60px]" />
+          <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
-          {/* Enhanced Progress Bar */}
-          <div className="absolute top-0 left-0 right-0 h-1">
-            <div
-              className="h-full bg-gradient-to-r from-emerald-500 via-blue-500 to-[#00B0FF] transition-all duration-700 ease-out"
-              style={{ width: `${(step / 5) * 100}%` }}
+          {step === 5 && <Confetti />}
+
+          {/* Progress bar */}
+          <div className="absolute top-0 left-0 right-0 h-1 z-20">
+            <motion.div
+              className="h-full bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#00BFA5]"
+              initial={{ width: '0%' }}
+              animate={{ width: `${(step / 5) * 100}%` }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             />
           </div>
 
-          {/* Progress Indicators */}
-          <div className="flex justify-center space-x-4 pt-8 pb-4">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                  i <= step 
-                    ? 'bg-gradient-to-r from-emerald-500 to-blue-500 scale-110' 
-                    : 'bg-gray-200'
-                }`}
-              />
-            ))}
-          </div>
+          {/* Close */}
+          <motion.button
+            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={onClose}
+            className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/[0.06] border border-white/[0.08] flex items-center justify-center text-gray-400 hover:text-white z-20 transition-colors"
+          >
+            <X className="h-4 w-4" />
+          </motion.button>
 
-          <div className="p-8 pt-4">
+          {/* Step indicators */}
+          {step < 5 && (
+            <div className="flex justify-center gap-2 pt-8 pb-2 relative z-10">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className={`flex items-center gap-1.5 ${i <= step ? '' : 'opacity-30'}`}>
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-500 ${
+                    i < step ? 'bg-emerald-500 text-white' :
+                    i === step ? 'bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white shadow-lg shadow-[#1876D2]/25' :
+                    'bg-white/[0.06] text-gray-500'
+                  }`}>
+                    {i < step ? <CheckCircle className="w-4 h-4" /> : i}
+                  </div>
+                  {i < 4 && <div className={`w-6 h-[2px] rounded-full ${i < step ? 'bg-emerald-500' : 'bg-white/[0.06]'}`} />}
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="relative z-10 px-6 sm:px-10 pb-8 pt-3">
             <AnimatePresence mode="wait">
-              {/* Step 1: Child Information */}
-              {step === 1 && (
-                <motion.div 
-                  key="step1"
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={contentVariants}
-                  className="space-y-8"
+              {/* ═══ Step Header (shared) ═══ */}
+              {step <= 5 && (
+                <motion.div
+                  key={`header-${step}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <div className="text-center">
-                    <div 
-                      className="flex items-center justify-center h-20 w-20 rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 mx-auto mb-6 shadow-lg"
-                    >
-                      <GraduationCap className="h-10 w-10 text-white" />
-                    </div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                      Let's Start Your Child's
-                      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-                        CEO Journey! 🚀
-                      </span>
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
-                      Join 5,000+ young entrepreneurs who've already started building their future. 
-                      Let's get to know your future CEO!
-                    </p>
-                    <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-50 to-blue-50 border border-emerald-200 rounded-full">
-                      <Gift className="h-4 w-4 text-emerald-600 mr-2" />
-                      <span className="text-sm font-semibold text-emerald-700">FREE Consultation Worth $200</span>
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-gray-700 flex items-center">
-                        <User className="h-4 w-4 mr-2" />
-                        Child's Name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Enter your child's name"
-                        value={formData.childName}
-                        onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
-                        className={`w-full px-4 py-4 rounded-2xl border-2 transition-all duration-300 text-lg ${
-                          errors.childName ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-500/20'
-                        }`}
-                      />
-                      {errors.childName && <p className="text-red-500 text-sm mt-1">{errors.childName}</p>}
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-gray-700">Age</label>
-                      <select
-                        value={formData.age}
-                        onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                        className={`w-full px-4 py-4 rounded-2xl border-2 transition-all duration-300 text-lg ${
-                          errors.age ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-500/20'
-                        }`}
+                  {step < 5 && (
+                    <div className="text-center mb-8">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: 'spring', bounce: 0.4 }}
+                        className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stepColors[step]} mb-5 shadow-xl`}
                       >
-                        <option value="">Select age</option>
-                        {Array.from({ length: 10 }, (_, i) => i + 8).map(age => (
-                          <option key={age} value={age}>{age} years old</option>
-                        ))}
-                      </select>
-                      {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-gray-700 flex items-center">
-                        <User className="h-4 w-4 mr-2" />
-                        Parent/Guardian Name
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Your name"
-                        value={formData.parentName}
-                        onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                        className={`w-full px-4 py-4 rounded-2xl border-2 transition-all duration-300 text-lg ${
-                          errors.parentName ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-500/20'
-                        }`}
-                      />
-                      {errors.parentName && <p className="text-red-500 text-sm mt-1">{errors.parentName}</p>}
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-gray-700 flex items-center">
-                        <MapPin className="h-4 w-4 mr-2" />
-                        City
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Your city"
-                        value={formData.city}
-                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className={`w-full px-4 py-4 rounded-2xl border-2 transition-all duration-300 text-lg ${
-                          errors.city ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-blue-500 focus:ring-blue-500/20'
-                        }`}
-                      />
-                      {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
-                    </div>
-                  </div>
-
-                  {/* Trust Indicators */}
-                  <div className="flex justify-center space-x-8 pt-6 border-t border-gray-100">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">5,000+</div>
-                      <div className="text-sm text-gray-600">Students</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-600">98%</div>
-                      <div className="text-sm text-gray-600">Success Rate</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-[#1876D2]">50+</div>
-                      <div className="text-sm text-gray-600">Expert Mentors</div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Step 2: Interests */}
-              {step === 2 && (
-                <motion.div 
-                  key="step2"
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={contentVariants}
-                  className="space-y-8"
-                >
-                  <div className="text-center">
-                    <div 
-                      className="flex items-center justify-center h-20 w-20 rounded-3xl bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 mx-auto mb-6 shadow-lg"
-                    >
-                      <Target className="h-10 w-10 text-white" />
-                    </div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                      What Excites 
-                      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-red-600">
-                        {formData.childName || 'Your Child'}? 🎯
-                      </span>
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                      Choose the areas your child is most passionate about. We'll customize their learning journey!
-                    </p>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                    {interests.map((interest) => (
-                      <button
-                        key={interest.id}
-                        onClick={() => {
-                          const newInterests = formData.interests.includes(interest.id)
-                            ? formData.interests.filter(i => i !== interest.id)
-                            : [...formData.interests, interest.id];
-                          setFormData({ ...formData, interests: newInterests });
-                        }}
-                        className={`flex items-center p-6 rounded-2xl border-2 transition-all duration-200 ${
-                          formData.interests.includes(interest.id)
-                            ? 'border-transparent bg-gradient-to-r ' + interest.color + ' text-white shadow-lg'
-                            : 'border-gray-200 hover:border-gray-300 bg-white hover:shadow-md'
-                        }`}
-                      >
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mr-4 ${
-                          formData.interests.includes(interest.id) 
-                            ? 'bg-white/20' 
-                            : 'bg-gradient-to-r ' + interest.color
-                        }`}>
-                          <interest.icon className={`h-6 w-6 ${
-                            formData.interests.includes(interest.id) ? 'text-white' : 'text-white'
-                          }`} />
-                        </div>
-                        <span className="font-semibold text-lg">{interest.label}</span>
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="text-center text-sm text-gray-500">
-                    Selected {formData.interests.length} interests • You can choose multiple
-                  </div>
-                  {errors.interests && (
-                    <div className="text-center">
-                      <p className="text-red-500 text-sm">{errors.interests}</p>
+                        <span className="text-3xl">{stepIcons[step]}</span>
+                      </motion.div>
+                      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">{stepTitles[step]}</h2>
+                      <p className="text-gray-400 text-sm max-w-md mx-auto">{stepSubtitles[step]}</p>
                     </div>
                   )}
-                </motion.div>
-              )}
 
-              {/* Step 3: Goals & Experience */}
-              {step === 3 && (
-                <motion.div 
-                  key="step3"
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={contentVariants}
-                  className="space-y-8"
-                >
-                  <div className="text-center">
-                    <div 
-                      className="flex items-center justify-center h-20 w-20 rounded-3xl bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 mx-auto mb-6 shadow-lg"
-                    >
-                      <Lightbulb className="h-10 w-10 text-white" />
-                    </div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                      Tell Us About
-                      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600">
-                        Their Dreams! ✨
-                      </span>
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                      Understanding their aspirations helps us create the perfect learning path
-                    </p>
-                    </div>
-                  
-                  <div className="space-y-6 max-w-2xl mx-auto">
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-gray-700">
-                        What does {formData.childName || 'your child'} aspire to achieve?
-                      </label>
-                      <textarea
-                        placeholder="E.g., Start their own company, become a leader, solve world problems..."
-                        value={formData.aspirations}
-                        onChange={(e) => setFormData({ ...formData, aspirations: e.target.value })}
-                        className="w-full px-4 py-4 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 text-lg"
-                        rows={4}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-gray-700">
-                        Previous entrepreneurship or business experience?
-                      </label>
-                      <select
-                        value={formData.previousExperience}
-                        onChange={(e) => setFormData({ ...formData, previousExperience: e.target.value })}
-                        className="w-full px-4 py-4 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 text-lg"
-                      >
-                        <option value="">Select experience level</option>
-                        <option value="none">No previous experience</option>
-                        <option value="school">School projects or activities</option>
-                        <option value="small">Small business/lemonade stand</option>
-                        <option value="programs">Attended other programs</option>
-                        <option value="advanced">Already running a business</option>
-                      </select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-gray-700">
-                        How did you hear about us?
-                      </label>
-                      <select
-                        value={formData.hearAboutUs}
-                        onChange={(e) => setFormData({ ...formData, hearAboutUs: e.target.value })}
-                        className="w-full px-4 py-4 rounded-2xl border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-500/20 transition-all duration-300 text-lg"
-                      >
-                        <option value="">How did you find us?</option>
-                        <option value="google">Google Search</option>
-                        <option value="social">Social Media</option>
-                        <option value="friend">Friend/Family Recommendation</option>
-                        <option value="school">School/Teacher</option>
-                        <option value="ad">Online Advertisement</option>
-                        <option value="event">Event/Workshop</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Step 4: Contact & Urgency */}
-              {step === 4 && (
-                <motion.div 
-                  key="step4"
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={contentVariants}
-                  className="space-y-8"
-                >
-                  <div className="text-center">
-                    <div 
-                      className="flex items-center justify-center h-20 w-20 rounded-3xl bg-gradient-to-br from-orange-500 via-red-500 to-pink-500 mx-auto mb-6 shadow-lg"
-                    >
-                      <Calendar className="h-10 w-10 text-white" />
-                    </div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                      Let's Connect &
-                      <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-red-600 to-pink-600">
-                        Get Started! 🚀
-                      </span>
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                      We're excited to welcome {formData.childName || 'your child'} to our community of young entrepreneurs!
-                    </p>
-                  </div>
-                  
-                  <div className="space-y-8 max-w-2xl mx-auto">
-                    {/* Contact Information */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-sm font-semibold text-gray-700 flex items-center">
-                          <Mail className="h-4 w-4 mr-2" />
-                          Email Address
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="your.email@example.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className={`w-full px-4 py-4 rounded-2xl border-2 transition-all duration-300 text-lg ${
-                            errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-orange-500 focus:ring-orange-500/20'
-                          }`}
-                        />
-                        {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                  {/* ═══ STEP 1: Child Info ═══ */}
+                  {step === 1 && (
+                    <div className="space-y-5 max-w-md mx-auto">
+                      {/* Free badge */}
+                      <div className="flex justify-center mb-2">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20">
+                          <Gift className="h-3.5 w-3.5 text-amber-400" />
+                          <span className="text-xs font-bold text-amber-400">FREE Consultation Worth $200</span>
+                        </div>
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-semibold text-gray-700 flex items-center">
-                          <Phone className="h-4 w-4 mr-2" />
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          placeholder="+1 (555) 123-4567"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className={`w-full px-4 py-4 rounded-2xl border-2 transition-all duration-300 text-lg ${
-                            errors.phone ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-orange-500 focus:ring-orange-500/20'
-                          }`}
-                        />
-                        {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-                      </div>
-                    </div>
 
-                    {/* Preferred Contact Method */}
-                    <div className="space-y-4">
-                      <label className="text-sm font-semibold text-gray-700">Preferred Contact Method</label>
                       <div className="grid grid-cols-2 gap-4">
-                        {[
-                          { id: 'phone', label: 'Phone Call', icon: Phone },
-                          { id: 'email', label: 'Email', icon: Mail }
-                        ].map((method) => (
-                          <button
-                            key={method.id}
-                            onClick={() => setFormData({ ...formData, preferredContact: method.id })}
-                            className={`flex items-center justify-center p-4 rounded-2xl border-2 transition-all ${
-                              formData.preferredContact === method.id
-                                ? 'border-orange-500 bg-orange-50 text-orange-700'
-                                : 'border-gray-200 hover:border-gray-300'
+                        <div>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Child's Name *</label>
+                          <input type="text" placeholder="e.g. Alex" value={formData.childName}
+                            onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
+                            className={`w-full px-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                              errors.childName ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50'
                             }`}
+                          />
+                          {errors.childName && <p className="text-red-400 text-xs mt-1">{errors.childName}</p>}
+                        </div>
+                        <div>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Age *</label>
+                          <select value={formData.age}
+                            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                            className={`w-full px-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm focus:outline-none focus:ring-2 transition-all appearance-none ${
+                              errors.age ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50'
+                            } ${!formData.age ? 'text-gray-500' : ''}`}
                           >
-                            <method.icon className="h-5 w-5 mr-2" />
-                            {method.label}
-                          </button>
+                            <option value="">Select</option>
+                            {Array.from({ length: 13 }, (_, i) => i + 6).map(age => (
+                              <option key={age} value={age}>{age} years</option>
+                            ))}
+                          </select>
+                          {errors.age && <p className="text-red-400 text-xs mt-1">{errors.age}</p>}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Your Name *</label>
+                        <input type="text" placeholder="Parent / Guardian name" value={formData.parentName}
+                          onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
+                          className={`w-full px-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                            errors.parentName ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50'
+                          }`}
+                        />
+                        {errors.parentName && <p className="text-red-400 text-xs mt-1">{errors.parentName}</p>}
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">City</label>
+                        <input type="text" placeholder="Your city" value={formData.city}
+                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                          className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50 transition-all"
+                        />
+                      </div>
+
+                      {/* Social proof */}
+                      <div className="flex items-center justify-center gap-6 pt-4 border-t border-white/[0.04]">
+                        {[
+                          { value: '2,500+', label: 'Students', icon: Users },
+                          { value: '98%', label: 'Satisfaction', icon: Heart },
+                          { value: '4.9/5', label: 'Rating', icon: Star },
+                        ].map((s, i) => (
+                          <div key={i} className="text-center">
+                            <div className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{s.value}</div>
+                            <div className="text-[9px] text-gray-500 uppercase tracking-wider">{s.label}</div>
+                          </div>
                         ))}
                       </div>
                     </div>
+                  )}
 
-                    {/* Urgency */}
-                    <div className="space-y-4">
-                      <label className="text-sm font-semibold text-gray-700">When would you like to start?</label>
-                      <div className="space-y-3">
-                        {urgencyOptions.map((option) => (
-                          <button
-                            key={option.id}
-                            onClick={() => setFormData({ ...formData, urgency: option.id })}
-                            className={`w-full p-4 rounded-2xl border-2 text-left transition-all duration-200 relative ${
-                              formData.urgency === option.id
-                                ? 'border-orange-500 bg-orange-50'
-                                : 'border-gray-200 hover:border-gray-300'
-                            } ${errors.urgency ? 'border-red-200' : ''}`}
-                          >
-                            {option.premium && (
-                              <div className="absolute top-2 right-2">
-                                <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">Premium</span>
-                              </div>
-                            )}
-                            {option.popular && (
-                              <div className="absolute top-2 right-2">
-                                <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
-                              </div>
-                            )}
-                            <div className="font-semibold text-lg">{option.label}</div>
-                            <div className="text-sm text-gray-600">{option.subtext}</div>
-                          </button>
-                        ))}
+                  {/* ═══ STEP 2: Interests ═══ */}
+                  {step === 2 && (
+                    <div className="space-y-5 max-w-lg mx-auto">
+                      <div className="grid grid-cols-2 gap-3">
+                        {interests.map((interest, i) => {
+                          const isSelected = formData.interests.includes(interest.id);
+                          return (
+                            <motion.button
+                              key={interest.id}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: i * 0.04 }}
+                              whileHover={{ scale: 1.03 }}
+                              whileTap={{ scale: 0.97 }}
+                              onClick={() => {
+                                const newInterests = isSelected
+                                  ? formData.interests.filter(id => id !== interest.id)
+                                  : [...formData.interests, interest.id];
+                                setFormData({ ...formData, interests: newInterests });
+                              }}
+                              className={`relative p-4 rounded-2xl border-2 text-left transition-all duration-300 ${
+                                isSelected
+                                  ? 'bg-gradient-to-br from-[#1876D2]/20 to-[#00B0FF]/10 border-[#1876D2]/50 shadow-lg shadow-[#1876D2]/10'
+                                  : 'bg-white/[0.03] border-white/[0.06] hover:bg-white/[0.06] hover:border-white/[0.1]'
+                              }`}
+                            >
+                              {isSelected && (
+                                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}
+                                  className="absolute top-2 right-2 w-5 h-5 rounded-full bg-[#1876D2] flex items-center justify-center">
+                                  <CheckCircle className="w-3 h-3 text-white" />
+                                </motion.div>
+                              )}
+                              <span className="text-2xl block mb-2">{interest.emoji}</span>
+                              <span className={`text-sm font-semibold ${isSelected ? 'text-white' : 'text-gray-300'}`}>{interest.label}</span>
+                            </motion.button>
+                          );
+                        })}
                       </div>
-                      {errors.urgency && <p className="text-red-500 text-sm mt-2">{errors.urgency}</p>}
+
+                      <div className="text-center">
+                        <span className="text-xs text-gray-500">{formData.interests.length} selected • Pick as many as you like</span>
+                      </div>
+                      {errors.interests && <p className="text-red-400 text-xs text-center">{errors.interests}</p>}
                     </div>
-                  </div>
-                </motion.div>
-              )}
+                  )}
 
-              {/* Step 5: Success */}
-              {step === 5 && (
-                  <motion.div 
-                  key="step5"
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  variants={contentVariants}
-                  className="space-y-8 text-center"
-                >
-                  <div 
-                    className="flex items-center justify-center h-24 w-24 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mx-auto shadow-2xl"
-                  >
-                    <CheckCircle className="h-12 w-12 text-white" />
-                  </div>
-
-                  <div>
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                      🎉 Welcome to ORBIT!
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-                      Thank you for choosing us to guide {formData.childName || 'your child'}'s entrepreneurial journey! 
-                      Our team will contact you within 24 hours to discuss the next steps.
-                    </p>
-                  </div>
-
-                  <div
-                    className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-8 border border-blue-100"
-                  >
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">What Happens Next?</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                          <Phone className="h-6 w-6 text-white" />
-                        </div>
-                        <h4 className="font-semibold text-lg">1. Personal Call</h4>
-                        <p className="text-gray-600 text-sm">Our enrollment specialist will call you within 24 hours</p>
+                  {/* ═══ STEP 3: Goals ═══ */}
+                  {step === 3 && (
+                    <div className="space-y-5 max-w-md mx-auto">
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">
+                          What does {formData.childName || 'your child'} dream of achieving?
+                        </label>
+                        <textarea
+                          placeholder="e.g. Start their own app company, win a business competition, get into a top university..."
+                          value={formData.aspirations}
+                          onChange={(e) => setFormData({ ...formData, aspirations: e.target.value })}
+                          className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all resize-none"
+                          rows={3}
+                        />
                       </div>
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-[#F5F9FC]0 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                          <Calendar className="h-6 w-6 text-white" />
+
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">
+                          Previous entrepreneurship experience?
+                        </label>
+                        <div className="grid grid-cols-1 gap-2">
+                          {[
+                            { val: 'none', label: '🆕 Complete beginner', desc: 'No experience yet — perfect!' },
+                            { val: 'school', label: '📚 School projects', desc: 'Done some school-level activities' },
+                            { val: 'small', label: '🍋 Small ventures', desc: 'Lemonade stand, crafts sales, etc.' },
+                            { val: 'programs', label: '🎓 Other programs', desc: 'Attended camps or courses' },
+                            { val: 'advanced', label: '🚀 Already building!', desc: 'Has a running business' },
+                          ].map(opt => (
+                            <button key={opt.val}
+                              onClick={() => setFormData({ ...formData, previousExperience: opt.val })}
+                              className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all ${
+                                formData.previousExperience === opt.val
+                                  ? 'bg-emerald-500/10 border-emerald-500/30 shadow-lg shadow-emerald-500/5'
+                                  : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'
+                              }`}
+                            >
+                              <span className="text-lg shrink-0">{opt.label.split(' ')[0]}</span>
+                              <div className="min-w-0">
+                                <p className={`text-sm font-medium ${formData.previousExperience === opt.val ? 'text-white' : 'text-gray-300'}`}>
+                                  {opt.label.substring(opt.label.indexOf(' ') + 1)}
+                                </p>
+                                <p className="text-[10px] text-gray-500">{opt.desc}</p>
+                              </div>
+                            </button>
+                          ))}
                         </div>
-                        <h4 className="font-semibold text-lg">2. Program Design</h4>
-                        <p className="text-gray-600 text-sm">We'll customize the perfect program for {formData.childName || 'your child'}</p>
                       </div>
-                      <div className="text-center">
-                        <div className="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                          <Rocket className="h-6 w-6 text-white" />
-                        </div>
-                        <h4 className="font-semibold text-lg">3. Start Learning!</h4>
-                        <p className="text-gray-600 text-sm">Begin the exciting entrepreneurial journey</p>
+
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">How did you find us?</label>
+                        <select value={formData.hearAboutUs}
+                          onChange={(e) => setFormData({ ...formData, hearAboutUs: e.target.value })}
+                          className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all appearance-none"
+                        >
+                          <option value="">Select an option</option>
+                          <option value="google">Google Search</option>
+                          <option value="social">Social Media</option>
+                          <option value="friend">Friend / Family</option>
+                          <option value="school">School / Teacher</option>
+                          <option value="ad">Online Ad</option>
+                          <option value="event">Event / Workshop</option>
+                          <option value="other">Other</option>
+                        </select>
                       </div>
                     </div>
-                  </div>
+                  )}
 
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.8 }}
-                    className="space-y-4"
-                  >
-                    <button
-                      onClick={() => navigate('/dashboard')}
-                      className="w-full max-w-md mx-auto block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                    >
-                      Explore Our Platform
-                      <ArrowRight className="ml-2 h-5 w-5 inline" />
-                    </button>
-                    <p className="text-sm text-gray-500">
-                      Check out our learning tools while you wait for our call!
-                    </p>
-                  </motion.div>
+                  {/* ═══ STEP 4: Contact & Urgency ═══ */}
+                  {step === 4 && (
+                    <div className="space-y-6 max-w-md mx-auto">
+                      {/* Contact fields */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Email *</label>
+                          <div className="relative">
+                            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                            <input type="email" placeholder="your@email.com" value={formData.email}
+                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              className={`w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                                errors.email ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-amber-500/30 focus:border-amber-500/50'
+                              }`}
+                            />
+                          </div>
+                          {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+                        </div>
+                        <div>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Phone *</label>
+                          <div className="relative">
+                            <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                            <input type="tel" placeholder="+1 (555) 123-4567" value={formData.phone}
+                              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                              className={`w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                                errors.phone ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-amber-500/30 focus:border-amber-500/50'
+                              }`}
+                            />
+                          </div>
+                          {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+                        </div>
+                      </div>
+
+                      {/* Preferred contact */}
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 mb-2 block pl-1 uppercase tracking-wider">Preferred contact method</label>
+                        <div className="grid grid-cols-2 gap-3">
+                          {[
+                            { id: 'phone', label: 'Phone Call', icon: Phone, emoji: '📞' },
+                            { id: 'email', label: 'Email', icon: Mail, emoji: '✉️' },
+                          ].map(m => (
+                            <button key={m.id}
+                              onClick={() => setFormData({ ...formData, preferredContact: m.id })}
+                              className={`flex items-center justify-center gap-2 p-3 rounded-xl border transition-all ${
+                                formData.preferredContact === m.id
+                                  ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+                                  : 'bg-white/[0.03] border-white/[0.06] text-gray-400 hover:bg-white/[0.05]'
+                              }`}
+                            >
+                              <span className="text-lg">{m.emoji}</span>
+                              <span className="text-sm font-medium">{m.label}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* When to start */}
+                      <div>
+                        <label className="text-[10px] font-bold text-gray-400 mb-2 block pl-1 uppercase tracking-wider">When would you like to start? *</label>
+                        <div className="space-y-2">
+                          {urgencyOptions.map(opt => (
+                            <motion.button key={opt.id}
+                              whileHover={{ x: 3 }}
+                              whileTap={{ scale: 0.98 }}
+                              onClick={() => setFormData({ ...formData, urgency: opt.id })}
+                              className={`relative w-full flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all ${
+                                formData.urgency === opt.id
+                                  ? 'bg-amber-500/10 border-amber-500/30 shadow-lg shadow-amber-500/5'
+                                  : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'
+                              }`}
+                            >
+                              {opt.tag && (
+                                <span className={`absolute top-2 right-2 ${opt.tagColor} text-white text-[9px] font-bold px-2 py-0.5 rounded-full`}>{opt.tag}</span>
+                              )}
+                              <div>
+                                <p className={`text-sm font-semibold ${formData.urgency === opt.id ? 'text-white' : 'text-gray-300'}`}>{opt.label}</p>
+                                <p className="text-[10px] text-gray-500">{opt.subtext}</p>
+                              </div>
+                            </motion.button>
+                          ))}
+                        </div>
+                        {errors.urgency && <p className="text-red-400 text-xs mt-1">{errors.urgency}</p>}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ═══ STEP 5: Success ═══ */}
+                  {step === 5 && (
+                    <div className="text-center py-6">
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: 'spring', bounce: 0.5 }}
+                      >
+                        <div className="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mb-6 shadow-2xl shadow-emerald-500/25">
+                          <CheckCircle className="h-10 w-10 text-white" />
+                        </div>
+                      </motion.div>
+
+                      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                        <h2 className="text-3xl font-bold text-white mb-2">Welcome to Orbit! 🎉</h2>
+                        <p className="text-gray-400 mb-8 max-w-md mx-auto">
+                          We're thrilled to have {formData.childName || 'your child'} join 2,500+ young entrepreneurs! Our team will reach out soon.
+                        </p>
+                      </motion.div>
+
+                      {/* What's next */}
+                      <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+                        className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 mb-8"
+                      >
+                        <h3 className="text-white font-bold mb-4">What Happens Next?</h3>
+                        <div className="grid grid-cols-3 gap-4">
+                          {[
+                            { icon: '📞', step: '1', title: 'Personal Call', desc: 'Within 24 hours' },
+                            { icon: '📋', step: '2', title: 'Custom Plan', desc: `For ${formData.childName || 'your child'}` },
+                            { icon: '🚀', step: '3', title: 'Start Learning', desc: 'Begin the journey' },
+                          ].map((s, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 + i * 0.15 }}
+                              className="text-center"
+                            >
+                              <span className="text-2xl block mb-2">{s.icon}</span>
+                              <p className="text-white text-xs font-bold">{s.title}</p>
+                              <p className="text-gray-500 text-[10px]">{s.desc}</p>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </motion.div>
+
+                      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }}
+                        className="space-y-3"
+                      >
+                        <motion.button
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          onClick={() => navigate('/demo')}
+                          className="w-full max-w-sm mx-auto flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-2xl shadow-xl shadow-[#1876D2]/25 transition-all"
+                        >
+                          <Gamepad2 className="h-5 w-5" />
+                          Try Our Interactive Demo
+                          <ArrowRight className="h-4 w-4" />
+                        </motion.button>
+                        <button onClick={onClose} className="text-gray-500 hover:text-gray-300 text-sm transition-colors">
+                          Close this window
+                        </button>
+                      </motion.div>
+                    </div>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Navigation Buttons */}
+            {/* ═══ Navigation Buttons ═══ */}
             {step < 5 && (
-              <div className="mt-12 flex justify-between items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-8 flex items-center justify-between"
+              >
                 <button
                   onClick={() => setStep(step - 1)}
-                  className={`px-8 py-4 rounded-2xl font-semibold transition-all duration-200 ${
+                  disabled={step === 1}
+                  className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all ${
                     step === 1
                       ? 'opacity-0 cursor-default'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      : 'text-gray-400 hover:text-white hover:bg-white/[0.06]'
                   }`}
-                  disabled={step === 1}
                 >
                   ← Back
                 </button>
 
-                <div className="flex-1 mx-8 text-center">
-                  <div className="text-sm text-gray-500">
-                    Step {step} of 4 • {Math.round(((step - 1) / 4) * 100)}% Complete
-                  </div>
-                </div>
+                <span className="text-[10px] text-gray-600">Step {step} of 4</span>
 
-                <button
-                  onClick={() => {
-                    if (step === 4) {
-                      handleSubmit();
-                    } else {
-                      handleNext();
-                    }
-                  }}
+                <motion.button
+                  whileHover={{ scale: 1.03, x: 2 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => step === 4 ? handleSubmit() : handleNext()}
                   disabled={isSubmitting}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-2xl font-semibold transition-all duration-200 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                  className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-xl shadow-lg shadow-[#1876D2]/20 hover:shadow-xl transition-all disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent mr-2"></div>
-                      Submitting...
+                      <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                        className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" />
+                      <span className="text-sm">Submitting...</span>
                     </>
                   ) : step === 4 ? (
                     <>
-                      Submit Application
-                      <Trophy className="ml-2 h-5 w-5" />
+                      <span className="text-sm">Submit</span>
+                      <Trophy className="h-4 w-4" />
                     </>
                   ) : (
                     <>
-                      Continue
-                  <ChevronRight className="ml-2 h-5 w-5" />
+                      <span className="text-sm">Continue</span>
+                      <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                     </>
                   )}
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             )}
           </div>
         </motion.div>

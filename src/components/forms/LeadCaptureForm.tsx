@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, User, MessageSquare, Send, CheckCircle } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Phone, User, MessageSquare, Send, CheckCircle, Sparkles, ArrowRight, Shield, Star, Rocket, Gift } from 'lucide-react';
 import { useLeadCapture } from '../../hooks/useLeadCapture';
 
 interface LeadCaptureFormProps {
@@ -14,11 +14,112 @@ interface LeadCaptureFormProps {
   className?: string;
 }
 
+// Animated floating label input
+function FloatingInput({ 
+  icon: Icon, label, type = 'text', value, onChange, error, name 
+}: { 
+  icon: React.ComponentType<{className?: string}>; label: string; type?: string; value: string; onChange: (v: string) => void; error?: string; name: string 
+}) {
+  const [focused, setFocused] = useState(false);
+  const hasValue = value.length > 0;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="relative group"
+    >
+      <div className={`relative rounded-2xl transition-all duration-300 ${
+        error ? 'ring-2 ring-red-500/50' : focused ? 'ring-2 ring-[#1876D2]/50' : ''
+      }`}>
+        {/* Icon */}
+        <div className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
+          focused ? 'text-[#1876D2]' : 'text-gray-400'
+        }`}>
+          <Icon className="h-4 w-4" />
+        </div>
+
+        {/* Floating label */}
+        <label
+          className={`absolute left-11 transition-all duration-300 pointer-events-none ${
+            focused || hasValue
+              ? 'top-2 text-[10px] font-bold ' + (error ? 'text-red-400' : 'text-[#1876D2]')
+              : 'top-1/2 -translate-y-1/2 text-sm text-gray-400'
+          }`}
+        >
+          {label}
+        </label>
+
+        {/* Input */}
+        <input
+          ref={inputRef}
+          type={type}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          className={`w-full pl-11 pr-4 pt-6 pb-2 bg-white/[0.04] border rounded-2xl text-white text-sm font-medium focus:outline-none transition-all duration-300 ${
+            error ? 'border-red-500/50' : 'border-white/[0.08] hover:border-white/[0.15] focus:border-[#1876D2]/50'
+          }`}
+        />
+
+        {/* Bottom glow on focus */}
+        <motion.div
+          className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-full origin-center"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: focused ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+        />
+      </div>
+
+      {/* Error message */}
+      <AnimatePresence>
+        {error && (
+          <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -5 }}
+            className="text-red-400 text-xs mt-1.5 pl-1 font-medium">{error}</motion.p>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+// Success confetti particles
+function SuccessParticles() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            backgroundColor: ['#1876D2', '#00B0FF', '#FBBF24', '#10B981', '#EC4899'][i % 5],
+          }}
+          initial={{ opacity: 0, scale: 0, y: 0 }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+            y: [0, -(Math.random() * 100 + 50)],
+            x: [(Math.random() - 0.5) * 100],
+          }}
+          transition={{
+            duration: 1.5,
+            delay: i * 0.08,
+            ease: 'easeOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   source,
   ctaType,
   title = "Get Started Today",
-  subtitle = "Fill out the form below and we'll get back to you soon!",
+  subtitle = "Fill out the form and we'll get back to you within 24 hours!",
   fields = ['name', 'email', 'phone', 'message'],
   buttonText = "Submit",
   onSuccess,
@@ -36,8 +137,15 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [currentStep, setCurrentStep] = useState(0);
+  const firstInputRef = useRef<HTMLInputElement>(null);
 
   const { captureLead } = useLeadCapture();
+
+  // Auto-focus first input
+  useEffect(() => {
+    setTimeout(() => firstInputRef.current?.focus(), 300);
+  }, []);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -45,17 +153,14 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     if (fields.includes('name') && !formData.name.trim()) {
       newErrors.name = 'Name is required';
     }
-
     if (fields.includes('email') && !formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (fields.includes('email') && formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
-
     if (fields.includes('phone') && formData.phone && !/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
       newErrors.phone = 'Please enter a valid phone number';
     }
-
     if (fields.includes('parentName') && !formData.parentName.trim()) {
       newErrors.parentName = 'Parent name is required';
     }
@@ -66,35 +171,10 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    console.log('🎯 Form submission started');
-    console.log('Form data:', formData);
-    console.log('Required fields:', fields);
-    
-    if (!validateForm()) {
-      console.log('❌ Form validation failed:', errors);
-      return;
-    }
+    if (!validateForm()) return;
 
-    console.log('✅ Form validation passed');
     setIsSubmitting(true);
-
     try {
-      // Capture the lead
-      console.log('📝 Capturing lead with data:', {
-        source,
-        ctaType,
-        formData: {
-          name: formData.name || undefined,
-          email: formData.email || undefined,
-          phone: formData.phone || undefined,
-          message: formData.message || undefined,
-          parentName: formData.parentName || undefined,
-          studentName: formData.studentName || undefined,
-          childAge: formData.childAge || undefined
-        }
-      });
-      
       const leadId = await captureLead({
         source,
         ctaType,
@@ -110,25 +190,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
       });
 
       if (leadId) {
-        console.log('🎉 Lead captured successfully! ID:', leadId);
         setIsSubmitted(true);
         if (onSuccess) onSuccess();
-        
-        // Reset form after 3 seconds
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            message: '',
-            parentName: '',
-            studentName: '',
-            childAge: ''
-          });
-        }, 3000);
-      } else {
-        console.log('❌ Lead capture returned no ID');
       }
     } catch (error) {
       console.error('Failed to submit form:', error);
@@ -144,193 +207,206 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     }
   };
 
+  // Success state — Celebration
   if (isSubmitted) {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className={`bg-white rounded-lg shadow-lg p-8 text-center ${className}`}
+        className={`relative rounded-3xl overflow-hidden ${className}`}
+        style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+          border: '1px solid rgba(255,255,255,0.06)',
+        }}
       >
-        <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
-        <p className="text-gray-600">
-          We've received your information and will get back to you within 24 hours.
-        </p>
+        <SuccessParticles />
+        <div className="relative px-8 py-12 text-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', bounce: 0.5, delay: 0.2 }}
+          >
+            <div className="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center mb-6 shadow-xl shadow-emerald-500/25">
+              <CheckCircle className="h-10 w-10 text-white" />
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+            <h3 className="text-2xl font-bold text-white mb-2">You're In! 🎉</h3>
+            <p className="text-gray-400 mb-6">
+              Our team will reach out within 24 hours to get {formData.studentName || formData.name || 'your child'} started on their journey.
+            </p>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+            className="grid grid-cols-3 gap-3 max-w-xs mx-auto mb-6"
+          >
+            {[
+              { icon: '📞', label: 'Call within 24h' },
+              { icon: '📋', label: 'Custom plan' },
+              { icon: '🚀', label: 'Start learning' },
+            ].map((step, i) => (
+              <div key={i} className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 text-center">
+                <span className="text-lg block mb-1">{step.icon}</span>
+                <span className="text-gray-400 text-[10px] font-medium">{step.label}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
+            className="flex items-center justify-center gap-2 text-gray-500 text-xs"
+          >
+            <Shield className="h-3 w-3 text-emerald-400" />
+            <span>100% free consultation • No obligation</span>
+          </motion.div>
+        </div>
       </motion.div>
     );
   }
 
+  // Form
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`bg-white rounded-lg shadow-lg p-8 ${className}`}
+      className={`relative rounded-3xl overflow-hidden ${className}`}
+      style={{
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+        border: '1px solid rgba(255,255,255,0.06)',
+      }}
     >
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-600">{subtitle}</p>
-      </div>
+      {/* Top accent line */}
+      <div className="h-1 bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#00BFA5]" />
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {fields.includes('parentName') && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Parent Name *
-            </label>
-            <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                value={formData.parentName}
-                onChange={(e) => handleInputChange('parentName', e.target.value)}
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.parentName ? 'border-red-500' : 'border-gray-300'
-                }`}
-                placeholder="Enter parent's name"
-              />
-            </div>
-            {errors.parentName && <p className="text-red-500 text-sm mt-1">{errors.parentName}</p>}
-          </div>
-        )}
+      {/* Subtle background mesh */}
+      <div className="absolute top-[-20%] right-[-15%] w-[40%] h-[40%] bg-[#1876D2]/8 rounded-full filter blur-[80px]" />
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
-        {fields.includes('name') && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Name *
-            </label>
-            <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.name ? 'border-red-500' : 'border-gray-300'
-                }`}
-                placeholder="Enter your name"
-              />
-            </div>
-            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-          </div>
-        )}
+      <div className="relative px-7 py-8">
+        {/* Header */}
+        <div className="text-center mb-7">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: 'spring', bounce: 0.4, delay: 0.1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4"
+          >
+            <Gift className="h-3.5 w-3.5 text-amber-400" />
+            <span className="text-xs font-bold text-amber-400">FREE Consultation Worth $200</span>
+          </motion.div>
+          <h3 className="text-xl font-bold text-white mb-1.5">{title}</h3>
+          <p className="text-gray-400 text-sm">{subtitle}</p>
+        </div>
 
-        {fields.includes('studentName') && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Student Name
-            </label>
-            <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                value={formData.studentName}
-                onChange={(e) => handleInputChange('studentName', e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Enter student's name"
-              />
-            </div>
-          </div>
-        )}
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {fields.includes('parentName') && (
+            <FloatingInput icon={User} label="Parent / Guardian Name *" value={formData.parentName}
+              onChange={(v) => handleInputChange('parentName', v)} error={errors.parentName} name="parentName" />
+          )}
 
-        {fields.includes('email') && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email Address *
-            </label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="email"
-                value={formData.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
-                }`}
-                placeholder="Enter your email"
-              />
-            </div>
-            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-          </div>
-        )}
+          {fields.includes('name') && (
+            <FloatingInput icon={User} label="Your Name *" value={formData.name}
+              onChange={(v) => handleInputChange('name', v)} error={errors.name} name="name" />
+          )}
 
-        {fields.includes('phone') && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Phone Number
-            </label>
-            <div className="relative">
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-              <input
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
-                className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                  errors.phone ? 'border-red-500' : 'border-gray-300'
-                }`}
-                placeholder="Enter your phone number"
-              />
-            </div>
-            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-          </div>
-        )}
+          {fields.includes('studentName') && (
+            <FloatingInput icon={User} label="Student's Name" value={formData.studentName}
+              onChange={(v) => handleInputChange('studentName', v)} name="studentName" />
+          )}
 
-        {fields.includes('childAge') && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Child's Age
-            </label>
-            <select
-              value={formData.childAge}
-              onChange={(e) => handleInputChange('childAge', e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            >
-              <option value="">Select age range</option>
-              <option value="6-8">6-8 years</option>
-              <option value="9-11">9-11 years</option>
-              <option value="12-14">12-14 years</option>
-              <option value="15-17">15-17 years</option>
-              <option value="18+">18+ years</option>
-            </select>
-          </div>
-        )}
+          {fields.includes('email') && (
+            <FloatingInput icon={Mail} label="Email Address *" type="email" value={formData.email}
+              onChange={(v) => handleInputChange('email', v)} error={errors.email} name="email" />
+          )}
 
-        {fields.includes('message') && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Message
-            </label>
-            <div className="relative">
-              <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+          {fields.includes('phone') && (
+            <FloatingInput icon={Phone} label="Phone Number" type="tel" value={formData.phone}
+              onChange={(v) => handleInputChange('phone', v)} error={errors.phone} name="phone" />
+          )}
+
+          {fields.includes('childAge') && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+              <label className="text-[10px] font-bold text-[#1876D2] mb-1 block pl-1">Child's Age</label>
+              <div className="flex gap-2 flex-wrap">
+                {['6-8', '9-11', '12-14', '15-17', '18+'].map(age => (
+                  <button key={age} type="button" onClick={() => handleInputChange('childAge', age)}
+                    className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
+                      formData.childAge === age
+                        ? 'bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white shadow-lg shadow-[#1876D2]/25'
+                        : 'bg-white/[0.04] border border-white/[0.08] text-gray-400 hover:bg-white/[0.08] hover:text-white'
+                    }`}
+                  >
+                    {age} yrs
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {fields.includes('message') && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="relative">
+              <div className="absolute left-4 top-4 text-gray-400">
+                <MessageSquare className="h-4 w-4" />
+              </div>
               <textarea
                 value={formData.message}
                 onChange={(e) => handleInputChange('message', e.target.value)}
-                rows={4}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Tell us about your goals and interests..."
+                rows={3}
+                placeholder="Tell us about your goals..."
+                className="w-full pl-11 pr-4 py-4 bg-white/[0.04] border border-white/[0.08] rounded-2xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#1876D2]/50 focus:ring-2 focus:ring-[#1876D2]/20 transition-all duration-300 resize-none"
               />
-            </div>
-          </div>
-        )}
-
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-        >
-          {isSubmitting ? (
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-          ) : (
-            <>
-              <Send className="h-5 w-5 mr-2" />
-              {buttonText}
-            </>
+            </motion.div>
           )}
-        </button>
-      </form>
 
-      <p className="text-xs text-gray-500 text-center mt-4">
-        By submitting this form, you agree to our privacy policy and terms of service.
-      </p>
+          {/* Submit Button */}
+          <motion.button
+            whileHover={{ scale: 1.02, y: -1 }}
+            whileTap={{ scale: 0.98 }}
+            type="submit"
+            disabled={isSubmitting}
+            className="relative w-full py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-2xl shadow-xl shadow-[#1876D2]/25 hover:shadow-2xl hover:shadow-[#1876D2]/40 transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group"
+          >
+            {/* Shimmer */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full"
+              animate={!isSubmitting ? { translateX: ['-100%', '200%'] } : {}}
+              transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 3 }}
+            />
+            
+            <span className="relative flex items-center justify-center gap-2">
+              {isSubmitting ? (
+                <>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                    className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                  />
+                  <span>Securing your spot...</span>
+                </>
+              ) : (
+                <>
+                  <Rocket className="h-5 w-5" />
+                  <span>{buttonText}</span>
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
+            </span>
+          </motion.button>
+        </form>
+
+        {/* Trust footer */}
+        <div className="mt-5 flex flex-col items-center gap-3">
+          <div className="flex items-center gap-4 text-[10px] text-gray-500">
+            <span className="flex items-center gap-1"><Shield className="h-3 w-3 text-emerald-400" /> Secure</span>
+            <span className="flex items-center gap-1"><Star className="h-3 w-3 text-amber-400" /> 4.9/5 rated</span>
+            <span className="flex items-center gap-1"><Sparkles className="h-3 w-3 text-[#00B0FF]" /> 2,500+ families</span>
+          </div>
+          <p className="text-[10px] text-gray-600">
+            By submitting, you agree to our privacy policy. No spam, ever.
+          </p>
+        </div>
+      </div>
     </motion.div>
   );
 };

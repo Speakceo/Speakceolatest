@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight, Sparkles } from 'lucide-react';
+import { X, ArrowRight, Sparkles, Shield, Star, Users, Rocket, CheckCircle } from 'lucide-react';
 import LeadCaptureForm from './forms/LeadCaptureForm';
 
 interface CTAWithLeadCaptureProps {
@@ -32,76 +32,134 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
 
-  const getButtonClasses = () => {
-    const baseClasses = "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:ring-4 focus:ring-offset-2";
-    
-    const sizeClasses = {
-      sm: "px-4 py-2 text-sm",
-      md: "px-6 py-3 text-base",
-      lg: "px-8 py-4 text-lg"
-    };
-    
-    const variantClasses = {
-      primary: "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 focus:ring-blue-500 shadow-lg hover:shadow-xl",
-      secondary: "bg-gradient-to-r from-green-500 to-teal-500 text-white hover:from-green-600 hover:to-teal-600 focus:ring-green-500 shadow-lg hover:shadow-xl",
-      outline: "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white focus:ring-blue-500"
-    };
-    
-    return `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]}`;
-  };
-
   const handleSuccess = () => {
-    setShowModal(false);
-    
-    // Optional: Redirect or show additional success message
-    // window.location.href = '/thank-you';
+    // Keep modal open to show success state inside the form
   };
 
   return (
     <>
-      {/* CTA Section */}
-      <div className={`text-center ${className}`}>
+      {/* CTA Section — Premium Dark Card */}
+      <div className={`relative ${className}`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative rounded-3xl overflow-hidden"
+          style={{
+            background: variant === 'secondary'
+              ? 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
+              : 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+          }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {title}
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            {subtitle}
-          </p>
-          
-          <button
-            onClick={() => setShowModal(true)}
-            className={getButtonClasses()}
-          >
-            <Sparkles className="h-5 w-5 mr-2" />
-            {buttonText}
-            <ArrowRight className="h-5 w-5 ml-2" />
-          </button>
+          {/* Background effects */}
+          {variant !== 'secondary' && (
+            <>
+              <div className="absolute top-[-30%] right-[-20%] w-[60%] h-[60%] bg-[#1876D2]/15 rounded-full filter blur-[80px]" />
+              <div className="absolute bottom-[-20%] left-[-10%] w-[40%] h-[40%] bg-[#00B0FF]/10 rounded-full filter blur-[60px]" />
+              <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+            </>
+          )}
+
+          <div className="relative px-8 py-12 sm:px-12 sm:py-16 text-center">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
+              style={{
+                background: variant === 'secondary' ? 'rgba(24,118,210,0.08)' : 'rgba(255,255,255,0.06)',
+                border: variant === 'secondary' ? '1px solid rgba(24,118,210,0.15)' : '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
+              <Sparkles className={`h-4 w-4 ${variant === 'secondary' ? 'text-[#1876D2]' : 'text-[#00B0FF]'}`} />
+              <span className={`text-sm font-medium ${variant === 'secondary' ? 'text-[#1876D2]' : 'text-gray-300'}`}>
+                Limited Spots Available
+              </span>
+            </motion.div>
+
+            {/* Title */}
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight leading-tight ${
+              variant === 'secondary' ? 'text-gray-900' : 'text-white'
+            }`}>
+              {title}
+            </h2>
+
+            {/* Subtitle */}
+            <p className={`max-w-2xl mx-auto text-lg mb-10 ${
+              variant === 'secondary' ? 'text-gray-500' : 'text-gray-400'
+            }`}>
+              {subtitle}
+            </p>
+
+            {/* Trust signals */}
+            <div className="flex flex-wrap justify-center gap-6 mb-10">
+              {[
+                { icon: Shield, label: '30-day guarantee', color: 'text-emerald-400' },
+                { icon: Users, label: '2,500+ families', color: 'text-[#00B0FF]' },
+                { icon: Star, label: '4.9/5 rating', color: 'text-amber-400' },
+              ].map((trust, i) => (
+                <div key={i} className={`flex items-center gap-2 text-sm ${variant === 'secondary' ? 'text-gray-500' : 'text-gray-400'}`}>
+                  <trust.icon className={`h-4 w-4 ${trust.color}`} />
+                  <span>{trust.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <motion.button
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setShowModal(true)}
+              className="group relative inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold text-lg rounded-2xl shadow-xl shadow-[#1876D2]/25 hover:shadow-2xl hover:shadow-[#1876D2]/40 transition-all duration-500"
+            >
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                  animate={{ translateX: ['-100%', '200%'] }}
+                  transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
+                />
+              </div>
+              <Rocket className="h-5 w-5 relative" />
+              <span className="relative">{buttonText}</span>
+              <ArrowRight className="h-5 w-5 relative group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+
+            <p className={`text-xs mt-4 ${variant === 'secondary' ? 'text-gray-400' : 'text-gray-500'}`}>
+              No credit card required • Free consultation included
+            </p>
+          </div>
         </motion.div>
       </div>
 
-      {/* Modal */}
+      {/* Premium Modal */}
       <AnimatePresence>
         {showModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 z-50"
+            onClick={(e) => e.target === e.currentTarget && setShowModal(false)}
+          >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ type: 'spring', duration: 0.5, bounce: 0.2 }}
               className="relative max-w-md w-full"
             >
               {/* Close button */}
-              <button
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => setShowModal(false)}
-                className="absolute -top-2 -right-2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 z-10"
+                className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white z-10 shadow-xl transition-colors"
               >
-                <X className="h-5 w-5 text-gray-600" />
-              </button>
+                <X className="h-4 w-4" />
+              </motion.button>
 
               {/* Lead Capture Form */}
               <LeadCaptureForm
@@ -115,7 +173,7 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
                 className="w-full"
               />
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
