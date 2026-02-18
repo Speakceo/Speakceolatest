@@ -33,6 +33,9 @@ import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
 import LottieAnimation from '../components/ui/LottieAnimation';
 import AnimatedHero3D from '../components/ui/AnimatedHero3D';
+import AnimatedCounter from '../components/ui/AnimatedCounter';
+import Marquee from '../components/ui/Marquee';
+import TextReveal from '../components/ui/TextReveal';
 
 // Optimized animation variants for better performance
 const fadeIn = {
@@ -127,16 +130,13 @@ export default function Home() {
                   <span className="text-sm text-gray-300 font-medium">Join 2,500+ Young Entrepreneurs</span>
                 </motion.div>
                 
-                <motion.h1 
-                  variants={fadeIn}
-                  className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight"
-                >
-                  <span className="text-white">Where Young Minds</span>
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
+                  <TextReveal text="Where Young Minds" className="text-white" delay={0.2} />
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#40C4FF]">
-                    Become Future Leaders
+                    <TextReveal text="Become Future Leaders" delay={0.5} staggerDelay={0.06} />
                   </span>
-                </motion.h1>
+                </h1>
                 
                 <motion.p 
                   variants={fadeIn}
@@ -166,15 +166,15 @@ export default function Home() {
                   </button>
                 </motion.div>
 
-                {/* Stats — glass cards */}
+                {/* Stats — animated glass counters */}
                 <motion.div variants={fadeIn} className="mt-14 grid grid-cols-3 gap-4">
                   {[
                     { value: '2,500+', label: 'Students' },
                     { value: '180', label: 'Day Program' },
                     { value: '98%', label: 'Success Rate' },
                   ].map((stat, i) => (
-                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 text-center backdrop-blur-sm">
-                      <div className="text-xl sm:text-2xl font-bold text-white">{stat.value}</div>
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-4 text-center backdrop-blur-sm group hover:bg-white/[0.07] hover:border-white/[0.12] transition-all duration-500">
+                      <AnimatedCounter value={stat.value} className="text-xl sm:text-2xl font-bold text-white" duration={2 + i * 0.3} />
                       <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
                     </div>
                   ))}
@@ -255,7 +255,31 @@ export default function Home() {
         </div>
 
           {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-900 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
+        </section>
+
+        {/* ═══ SCROLLING TRUST MARQUEE ═══ */}
+        <section className="py-5 bg-slate-950 border-y border-white/[0.04] relative overflow-hidden">
+          <Marquee speed={25} className="py-2">
+            <div className="flex items-center gap-12 px-4">
+              {[
+                { text: '🏆 Award-Winning Platform', highlight: false },
+                { text: '🌍 35+ Countries', highlight: false },
+                { text: '⭐ 4.9/5 Parent Rating', highlight: true },
+                { text: '🚀 2,500+ Students Enrolled', highlight: false },
+                { text: '🎓 $2.9B+ Scholarships Mapped', highlight: true },
+                { text: '🤖 100+ AI Tools', highlight: false },
+                { text: '📺 500+ Expert-Led Lessons', highlight: false },
+                { text: '🔒 30-Day Money-Back Guarantee', highlight: true },
+                { text: '💡 180-Day Structured Program', highlight: false },
+                { text: '👨‍🏫 Live Mentorship Sessions', highlight: false },
+              ].map((item, i) => (
+                <span key={i} className={`text-sm font-medium whitespace-nowrap ${item.highlight ? 'text-[#00B0FF]' : 'text-gray-500'}`}>
+                  {item.text}
+                </span>
+              ))}
+            </div>
+          </Marquee>
         </section>
 
         {/* Interactive 3D Experience Section — Lightweight CSS 3D */}
@@ -713,7 +737,7 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Trust bar */}
+            {/* Trust bar — animated counters */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { value: '2,500+', label: 'Happy Families' },
@@ -721,8 +745,8 @@ export default function Home() {
                 { value: '35+', label: 'Countries' },
                 { value: 'Forbes', label: 'Featured' },
               ].map((s, i) => (
-                <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center">
-                  <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF] mb-1">{s.value}</div>
+                <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center hover:bg-white/[0.05] transition-all duration-500">
+                  <AnimatedCounter value={s.value} className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF] mb-1" duration={2} />
                   <div className="text-gray-500 text-xs">{s.label}</div>
                 </div>
               ))}
@@ -883,37 +907,6 @@ export default function Home() {
               </div>
         </section>
 
-        {/* ═══ WHY PARENTS LOVE US — White with Accent Border Cards ═══ */}
-        <section className="py-28 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-                Why Parents & Kids Love <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Orbit Student</span>
-              </h2>
-              <p className="text-gray-500 max-w-xl mx-auto">More than business — we're building confidence, creativity, and a lifelong love of learning.</p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { icon: Presentation, title: 'Real-World Confidence', desc: 'From TED-style talks to investor pitches, kids learn to lead and inspire.', gradient: 'from-[#1876D2] to-[#00B0FF]' },
-                { icon: Brain, title: 'Entrepreneurial Mindset', desc: 'Solve real problems, build real products, and pitch to real investors.', gradient: 'from-[#00B0FF] to-[#40C4FF]' },
-                { icon: Rocket, title: 'Future-Ready Skills', desc: 'Master AI, money, and marketing — skills for life, not just school.', gradient: 'from-emerald-400 to-teal-500' },
-              ].map((p, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="group">
-                  <div className="relative rounded-2xl p-8 bg-gray-50 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-xl transition-all duration-500 h-full">
-                    <div className={`inline-flex p-3.5 rounded-xl bg-gradient-to-br ${p.gradient} mb-6 shadow-lg`}>
-                      <p.icon className="h-6 w-6 text-white" />
-                </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{p.title}</h3>
-                    <p className="text-gray-500 leading-relaxed text-sm">{p.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-                  </div>
-                  </div>
-        </section>
-
         {/* ═══ ORBIT vs. OTHERS — Dark Comparison Table ═══ */}
         <section className="py-28 bg-slate-950 relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -1004,7 +997,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══ THE ORBIT ADVANTAGE — 4 Pillar Cards ═══ */}
+        {/* ═══ THE ORBIT ADVANTAGE — Bento Grid ═══ */}
         <section className="py-28 bg-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
@@ -1017,116 +1010,123 @@ export default function Home() {
               <p className="text-gray-500 max-w-2xl mx-auto text-lg">We don't just teach — we transform. Every feature is designed to give your child an unfair advantage.</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                {
-                  icon: GraduationCap,
-                  title: 'Start at Age 8',
-                  desc: 'While others wait until high school, Orbit students begin building portfolios, confidence, and skills from elementary school.',
-                  stat: '6+ years',
-                  statLabel: 'head start',
-                  gradient: 'from-[#1876D2] to-[#1565C0]',
-                },
-                {
-                  icon: Brain,
-                  title: 'AI-First Learning',
-                  desc: 'Over 100 AI tools — from brand creators to pitch analyzers — that no other edtech platform offers for young students.',
-                  stat: '100+',
-                  statLabel: 'AI tools',
-                  gradient: 'from-[#00B0FF] to-[#00BFA5]',
-                },
-                {
-                  icon: Target,
-                  title: 'Real Outcomes',
-                  desc: 'Students don\'t get certificates — they build real businesses, win competitions, and earn scholarships.',
-                  stat: '$2.9B+',
-                  statLabel: 'in scholarships mapped',
-                  gradient: 'from-emerald-400 to-teal-500',
-                },
-                {
-                  icon: Heart,
-                  title: 'Parent-Approved',
-                  desc: '98% of parents say Orbit changed their child\'s confidence and outlook on the future. Real impact, real results.',
-                  stat: '98%',
-                  statLabel: 'parent satisfaction',
-                  gradient: 'from-amber-400 to-orange-500',
-                },
-              ].map((card, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group"
-                >
-                  <div className="relative bg-gray-50/50 rounded-3xl p-7 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-2xl hover:shadow-[#1876D2]/5 transition-all duration-700 h-full flex flex-col">
-                    {/* Icon */}
-                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                      <card.icon className="h-7 w-7 text-white" />
-              </div>
-
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{card.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">{card.desc}</p>
-
-                    {/* Stat */}
-                    <div className="pt-4 border-t border-gray-100">
-                      <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{card.stat}</span>
-                      <span className="text-gray-400 text-xs ml-2 uppercase tracking-wider">{card.statLabel}</span>
+            {/* Bento Grid — mixed sizes for visual variety */}
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-5 auto-rows-[180px] md:auto-rows-[200px]">
+              {/* LARGE — Start at Age 8 (spans 4 cols, 1 row) */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="group md:col-span-4 relative rounded-3xl p-8 bg-gradient-to-br from-[#1876D2]/5 to-[#00B0FF]/5 border border-[#1876D2]/10 hover:border-[#1876D2]/25 hover:shadow-2xl hover:shadow-[#1876D2]/8 transition-all duration-700 overflow-hidden flex flex-col justify-between"
+              >
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#1876D2]/5 rounded-full filter blur-[60px] pointer-events-none" />
+                <div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1876D2] to-[#1565C0] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
+                      <GraduationCap className="h-7 w-7 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">Start at Age 8</h3>
+                      <p className="text-gray-500 text-sm">While others wait until high school, Orbit students begin building portfolios from elementary school.</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-                </motion.div>
-              ))}
+                <div className="flex items-end gap-6">
+                  <div>
+                    <AnimatedCounter value="6+" className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]" />
+                    <span className="text-gray-400 text-xs ml-2 uppercase tracking-wider">years head start</span>
+                  </div>
+                  <div className="flex gap-1 items-end h-12">
+                    {[20, 35, 30, 50, 45, 65, 60, 80, 75, 95, 90, 100].map((h, j) => (
+                      <motion.div
+                        key={j}
+                        className="w-2 bg-gradient-to-t from-[#1876D2] to-[#00B0FF] rounded-sm"
+                        initial={{ height: 0 }}
+                        whileInView={{ height: `${h}%` }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 + j * 0.05, duration: 0.4 }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* SMALL — AI-First (spans 2 cols, 1 row) */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="group md:col-span-2 relative rounded-3xl p-7 bg-gradient-to-br from-cyan-50 to-blue-50 border border-[#00B0FF]/10 hover:border-[#00B0FF]/25 hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#00B0FF] to-[#00BFA5] flex items-center justify-center shadow-lg mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <Brain className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">AI-First Learning</h3>
+                  <p className="text-gray-500 text-sm">100+ AI tools no other edtech offers for kids.</p>
+                </div>
+                <AnimatedCounter value="100+" className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00B0FF] to-[#00BFA5]" />
+              </motion.div>
+
+              {/* SMALL — Real Outcomes (spans 2 cols, 1 row) */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="group md:col-span-2 relative rounded-3xl p-7 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200/40 hover:border-emerald-300/60 hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col justify-between"
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-lg mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <Target className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">Real Outcomes</h3>
+                  <p className="text-gray-500 text-sm">Real businesses, competitions won, scholarships earned.</p>
+                </div>
+                <AnimatedCounter value="$2.9B+" className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500" />
+              </motion.div>
+
+              {/* WIDE — Parent-Approved (spans 4 cols, 1 row) */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="group md:col-span-4 relative rounded-3xl p-8 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/40 hover:border-amber-300/60 hover:shadow-2xl transition-all duration-700 overflow-hidden flex items-center gap-8"
+              >
+                <div className="flex-1">
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
+                      <Heart className="h-7 w-7 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">Parent-Approved</h3>
+                      <p className="text-gray-500 text-sm">98% of parents say Orbit changed their child's confidence forever.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden sm:flex items-center gap-2">
+                  <AnimatedCounter value="98%" className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500" />
+                  <div className="text-gray-400 text-xs uppercase tracking-wider leading-tight">parent<br/>satisfaction</div>
+                </div>
+                {/* Star ratings visual */}
+                <div className="hidden md:flex gap-1">
+                  {[...Array(5)].map((_, j) => (
+                    <motion.div
+                      key={j}
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 + j * 0.1, type: 'spring' }}
+                    >
+                      <Star className="h-6 w-6 text-amber-400 fill-amber-400" />
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </div>
-        </section>
-
-        {/* ═══ SUCCESS STORIES — Dark Masonry ═══ */}
-        <section className="py-28 bg-slate-950 relative overflow-hidden">
-          <div className="absolute top-[-10%] left-[50%] -translate-x-1/2 w-[50%] h-[40%] bg-[#1876D2]/8 rounded-full filter blur-[120px]" />
-          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-                <Award className="h-4 w-4 text-emerald-400" />
-                <span className="text-sm font-medium text-gray-400">Success Stories</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-                What Parents & Kids <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Are Saying</span>
-              </h2>
-              <p className="text-gray-400 max-w-xl mx-auto">Join thousands of families who've watched their children transform.</p>
-            </motion.div>
-
-            {/* Image */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16 text-center">
-              <div className="relative rounded-2xl overflow-hidden max-w-2xl mx-auto border border-white/[0.06]">
-                <img src="/images/hero/testimonial-bg.jpg" alt="Young entrepreneurs celebrating" className="w-full h-auto" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-            </div>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                { name: 'Amanda K.', role: 'Mom of 12-year-old Emma', quote: 'My daughter used to be so shy, but after starting her sticker business through Orbit Student, she\'s presenting to her entire school!', initials: 'AK', color: 'from-[#1876D2] to-[#00B0FF]' },
-                { name: 'Tyler J.', role: '10-year-old Entrepreneur', quote: 'I never thought I could start my own business at 10, but now I sell my handmade bracelets online! The AI coach helped me figure out pricing.', initials: 'TJ', color: 'from-emerald-400 to-teal-500' },
-                { name: 'Michael T.', role: 'Dad of 14-year-old Jayden', quote: 'The gamified lessons kept my son engaged while teaching him real business skills. He\'s learning concepts I didn\'t understand until college!', initials: 'MT', color: 'from-[#00B0FF] to-[#40C4FF]' },
-              ].map((t, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                  <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500 h-full flex flex-col">
-                    <p className="text-gray-300 mb-6 leading-relaxed flex-grow italic">"{t.quote}"</p>
-                    <div className="flex items-center gap-3 pt-4 border-t border-white/[0.06]">
-                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold`}>{t.initials}</div>
-                  <div>
-                        <div className="text-white text-sm font-semibold">{t.name}</div>
-                        <div className="text-gray-500 text-xs">{t.role}</div>
-                  </div>
-                </div>
-              </div>
-                </motion.div>
-              ))}
-                  </div>
-                </div>
         </section>
 
         {/* ═══ GLOBAL RESOURCES TEASER — Link to /resources ═══ */}
@@ -1151,7 +1151,7 @@ export default function Home() {
                 </div>
         </section>
 
-        {/* ═══ SOCIAL PROOF BAR — Dark Minimal ═══ */}
+        {/* ═══ SOCIAL PROOF BAR — Animated Counters ═══ */}
         <section className="py-16 bg-slate-950 relative overflow-hidden border-t border-b border-white/[0.04]">
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
@@ -1162,13 +1162,13 @@ export default function Home() {
                 { v: '100+', l: 'AI Tools Available', icon: Brain },
                 { v: '24/7', l: 'AI Learning Support', icon: Zap },
               ].map((s, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="text-center">
+                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="text-center group">
                   <div className="flex justify-center mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center group-hover:bg-white/[0.08] group-hover:border-[#00B0FF]/20 transition-all duration-500">
                       <s.icon className="h-5 w-5 text-[#00B0FF]" />
-              </div>
+                    </div>
                   </div>
-                  <div className="text-2xl sm:text-3xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{s.v}</div>
+                  <AnimatedCounter value={s.v} className="text-2xl sm:text-3xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]" duration={2.5} />
                   <div className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-wider">{s.l}</div>
                 </motion.div>
               ))}
