@@ -16,24 +16,41 @@ export default function TextReveal({
   const words = text.split(' ');
 
   return (
-    <span className={className}>
-      {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden">
-          <motion.span
-            className="inline-block"
-            initial={{ y: '100%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: delay + i * staggerDelay,
-              ease: [0.25, 0.4, 0.25, 1],
-            }}
-          >
-            {word}
-          </motion.span>
-          {i < words.length - 1 && '\u00A0'}
-        </span>
-      ))}
-    </span>
+    <>
+      {/* Desktop: word-by-word slide-up reveal */}
+      <span className={`hidden sm:inline ${className}`}>
+        {words.map((word, i) => (
+          <span key={i} className="inline-block overflow-hidden">
+            <motion.span
+              className="inline-block"
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: delay + i * staggerDelay,
+                ease: [0.25, 0.4, 0.25, 1],
+              }}
+            >
+              {word}
+            </motion.span>
+            {i < words.length - 1 && '\u00A0'}
+          </span>
+        ))}
+      </span>
+
+      {/* Mobile: simple fade-up (no per-word clip to avoid line-break issues) */}
+      <motion.span
+        className={`sm:hidden ${className}`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay,
+          ease: [0.25, 0.4, 0.25, 1],
+        }}
+      >
+        {text}
+      </motion.span>
+    </>
   );
 }

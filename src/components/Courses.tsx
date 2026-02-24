@@ -229,7 +229,7 @@ export default function Courses() {
               <span className="text-sm text-gray-300 font-medium">Trusted by 2,500+ Parents Worldwide</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-[1.15] tracking-tight">
               <span className="text-white">Watch Your Child Transform Into a</span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#40C4FF]">
                 Confident Young Leader
