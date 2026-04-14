@@ -19,6 +19,8 @@
     "start": "vite preview --port 3000",
     "clean": "rimraf dist",
     "generate:sitemap": "ts-node scripts/generate-sitemap.ts",
+    "blog:queue": "node scripts/blog-queue-report.mjs",
+    "seo:plan": "node scripts/seo-content-planner.mjs",
     "validate": "npm run lint && npm run typecheck && npm run test",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

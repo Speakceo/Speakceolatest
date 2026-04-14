@@ -16,6 +16,10 @@ export interface BlogPost {
   featuredImage: string;
   seoKeywords: string[];
   metaDescription: string;
+  faq?: Array<{
+    question: string;
+    answer: string;
+  }>;
 }
 
 export const blogCategories = [
@@ -1252,21 +1256,34 @@ export const finalBlogPosts: BlogPost[] = [
 // Combine all blog posts
 export const allBlogPosts = [...blogPosts, ...additionalBlogPosts, ...moreBlogPosts, ...finalBlogPosts];
 
+export const isPostPublished = (post: BlogPost, referenceDate: Date = new Date()): boolean => {
+  const publishAt = new Date(post.publishedAt);
+  return !Number.isNaN(publishAt.getTime()) && publishAt.getTime() <= referenceDate.getTime();
+};
+
+export const publishedBlogPosts = [...allBlogPosts]
+  .filter((post) => isPostPublished(post))
+  .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+export const queuedBlogPosts = [...allBlogPosts]
+  .filter((post) => !isPostPublished(post))
+  .sort((a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime());
+
 // Helper functions
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
-  return allBlogPosts.find(post => post.slug === slug);
+  return publishedBlogPosts.find(post => post.slug === slug);
 };
 
 export const getBlogPostsByCategory = (category: string): BlogPost[] => {
-  return allBlogPosts.filter(post => post.category === category);
+  return publishedBlogPosts.filter(post => post.category === category);
 };
 
 export const getBlogPostsByTag = (tag: string): BlogPost[] => {
-  return allBlogPosts.filter(post => post.tags.includes(tag));
+  return publishedBlogPosts.filter(post => post.tags.includes(tag));
 };
 
 export const getRelatedPosts = (currentPost: BlogPost, limit: number = 3): BlogPost[] => {
-  return allBlogPosts
+  return publishedBlogPosts
     .filter(post => 
       post.id !== currentPost.id && 
       (post.category === currentPost.category || 
@@ -1276,7 +1293,5 @@ export const getRelatedPosts = (currentPost: BlogPost, limit: number = 3): BlogP
 };
 
 export const getFeaturedPosts = (limit: number = 5): BlogPost[] => {
-  return allBlogPosts
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, limit);
+  return publishedBlogPosts.slice(0, limit);
 };

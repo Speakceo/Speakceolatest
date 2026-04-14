@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, User, ArrowRight, Search, Filter, Tag } from 'lucide-react';
 import SEO from '../components/SEO';
-import { allBlogPosts, blogCategories, getFeaturedPosts } from '../data/blogPosts';
+import { publishedBlogPosts, blogCategories, getFeaturedPosts } from '../data/blogPosts';
 
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,7 +13,7 @@ const Blog: React.FC = () => {
   // Get all unique tags
   const allTags = useMemo(() => {
     const tags = new Set<string>();
-    allBlogPosts.forEach(post => {
+    publishedBlogPosts.forEach(post => {
       post.tags.forEach(tag => tags.add(tag));
     });
     return Array.from(tags).sort();
@@ -21,7 +21,7 @@ const Blog: React.FC = () => {
 
   // Filter posts based on search and category
   const filteredPosts = useMemo(() => {
-    return allBlogPosts.filter(post => {
+    return publishedBlogPosts.filter(post => {
       const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -46,40 +46,39 @@ const Blog: React.FC = () => {
   return (
     <>
       <SEO 
-        title="Blog | SpeakCEO - Entrepreneurship Education & Youth Leadership"
-        description="Discover expert insights on entrepreneurship education, youth leadership, business skills, and success stories. Learn how to nurture young entrepreneurs and build future leaders."
+        title="Orbit Student Blog | AI Learning, Scholarships & Entrepreneurship for Kids"
+        description="Actionable guides on AI for kids, scholarship planning, entrepreneurship, and future-ready skills. Learn how Orbit Student helps children ages 8-18 build real portfolios."
         keywords={[
-          "entrepreneurship blog",
-          "youth leadership articles", 
-          "business education blog",
-          "young entrepreneur tips",
-          "startup education",
-          "business skills for kids",
-          "entrepreneurship education",
-          "leadership development",
-          "success stories",
-          "parenting tips entrepreneurs",
-          "financial literacy kids",
-          "communication skills youth",
-          "innovation education",
-          "future skills development"
+          "Orbit Student blog",
+          "AI learning for kids",
+          "AI student skills",
+          "kids scholarship guide",
+          "entrepreneurship for kids",
+          "future-ready skills for children",
+          "young entrepreneur program",
+          "student portfolio building",
+          "business education for kids",
+          "AI tools for students",
+          "kids new age learning",
+          "Orbit AI student"
         ]}
+        url="https://www.orbitstudent.com/blog"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "Blog",
-          "name": "SpeakCEO Blog",
-          "description": "Expert insights on entrepreneurship education and youth leadership development",
-          "url": "https://speakceo.ai/blog",
+          "name": "Orbit Student Blog",
+          "description": "Expert insights on AI learning, scholarship strategy, and entrepreneurship development for kids",
+          "url": "https://www.orbitstudent.com/blog",
           "publisher": {
             "@type": "Organization",
-            "name": "SpeakCEO",
-            "url": "https://speakceo.ai"
+            "name": "Orbit Student",
+            "url": "https://www.orbitstudent.com"
           },
-          "blogPost": allBlogPosts.slice(0, 10).map(post => ({
+          "blogPost": publishedBlogPosts.slice(0, 10).map(post => ({
             "@type": "BlogPosting",
             "headline": post.title,
             "description": post.excerpt,
-            "url": `https://speakceo.ai/blog/${post.slug}`,
+            "url": `https://www.orbitstudent.com/blog/${post.slug}`,
             "datePublished": post.publishedAt,
             "dateModified": post.updatedAt,
             "author": {
@@ -88,7 +87,7 @@ const Blog: React.FC = () => {
             },
             "publisher": {
               "@type": "Organization",
-              "name": "SpeakCEO"
+              "name": "Orbit Student"
             }
           }))
         }}
@@ -105,7 +104,7 @@ const Blog: React.FC = () => {
               className="text-center"
             >
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                SpeakCEO Blog
+                Orbit Student Blog
               </h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
                 Expert insights on entrepreneurship education, youth leadership, and building the next generation of innovators
@@ -220,7 +219,7 @@ const Blog: React.FC = () => {
 
             {/* Results count */}
             <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-              Showing {filteredPosts.length} of {allBlogPosts.length} articles
+              Showing {filteredPosts.length} of {publishedBlogPosts.length} articles
             </div>
           </div>
         </section>
@@ -304,7 +303,7 @@ const Blog: React.FC = () => {
         <section className="py-16 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <h2 className="text-3xl font-bold mb-4">
-              Stay Updated with SpeakCEO Insights
+              Stay Updated with Orbit Student Insights
             </h2>
             <p className="text-xl mb-8">
               Get the latest articles on entrepreneurship education and youth leadership delivered to your inbox

@@ -20,7 +20,7 @@ const routes = [
   '/terms'
 ];
 
-const baseUrl = 'https://speakceo.ai';
+const baseUrl = 'https://www.orbitstudent.com';
 
 export function generateSitemap() {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

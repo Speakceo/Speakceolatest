@@ -937,5 +937,355 @@ The intersection of STEM and entrepreneurship isn't just about creating the next
     featuredImage: '/images/blog/stem-entrepreneurship-future-careers.jpg',
     seoKeywords: ['STEM entrepreneurship', 'future careers kids', 'STEM education entrepreneurship', 'technology innovation children'],
     metaDescription: 'Learn how combining STEM education with entrepreneurship prepares kids for future careers. Discover strategies, opportunities, and pathways for young innovators.'
+  },
+  {
+    id: '21',
+    slug: 'ai-learning-for-kids-complete-guide-2026',
+    title: 'AI Learning for Kids: A Parent\'s Complete Guide for 2026',
+    excerpt: 'A practical roadmap to help children use AI safely and creatively for learning, building projects, and future career readiness.',
+    content: `
+# AI Learning for Kids: A Parent's Complete Guide for 2026
+
+AI is now part of your child's future. The question is not whether kids should learn AI, but how to learn it safely, creatively, and with purpose.
+
+## Why AI Literacy Matters Early
+
+- AI tools are becoming standard in schools and careers
+- Early exposure builds confidence, not fear
+- Kids can create faster: websites, decks, stories, and apps
+- Parents can shift screen time from consumption to creation
+
+## What Kids Should Learn First
+
+### 1) AI Basics
+- What AI can do well
+- Where AI makes mistakes
+- Why verification matters
+
+### 2) Prompting Skills
+- Ask specific questions
+- Give context and examples
+- Improve outputs with follow-up prompts
+
+### 3) AI Safety and Ethics
+- Never share private data
+- Fact-check every important output
+- Respect copyright and originality
+
+### 4) Project-Based Learning
+- Build a mini business idea
+- Create a presentation and pitch
+- Design a website concept
+
+## Age-Wise AI Roadmap
+
+### Ages 8-11
+- Guided AI activities with parents
+- Creative prompts for stories and ideas
+- Beginner logic and digital safety
+
+### Ages 12-14
+- Structured AI projects
+- Prompt engineering basics
+- Intro to business and product thinking
+
+### Ages 15-18
+- Portfolio projects with AI workflows
+- Scholarship and competition readiness
+- Advanced communication and pitch practice
+
+## Common Mistakes Parents Make
+
+- Treating AI as cheating instead of a tool
+- Skipping digital safety basics
+- Focusing only on coding, not communication
+- No portfolio tracking of real output
+
+## Orbit Student Framework
+
+Orbit Student combines AI tools, mentorship, and entrepreneurship challenges so students learn by doing:
+
+- AI-first project building
+- Business simulations and roleplay
+- Scholarship-oriented portfolio development
+- Parent visibility via progress dashboard
+
+## Final Takeaway
+
+The winners of the next decade will not be students who avoid AI. They will be students who know how to direct AI with clear thinking, ethics, and execution.
+    `,
+    author: 'Neha Kapoor',
+    authorBio: 'AI education strategist helping families implement practical, ethical AI learning systems for children.',
+    authorImage: '/images/authors/neha-kapoor.jpg',
+    publishedAt: '2026-03-03',
+    updatedAt: '2026-03-03',
+    readTime: 7,
+    category: 'Technology',
+    tags: ['AI for kids', 'AI learning', 'Orbit AI', 'future skills'],
+    featuredImage: '/images/blog/ai-learning-kids-guide-2026.jpg',
+    seoKeywords: ['AI learning for kids', 'AI education for children', 'Orbit AI student', 'AI student skills', 'kids AI tools'],
+    metaDescription: 'Learn how kids can use AI safely and effectively in 2026. Parent guide to AI literacy, prompt skills, digital safety, and project-based learning.'
+  },
+  {
+    id: '22',
+    slug: 'how-kids-can-build-a-scholarship-profile-from-age-10',
+    title: 'How Kids Can Build a Scholarship Profile from Age 10',
+    excerpt: 'A step-by-step scholarship strategy for parents who want their child to stand out early with projects, leadership, and proof of impact.',
+    content: `
+# How Kids Can Build a Scholarship Profile from Age 10
+
+Most scholarship prep starts too late. Students who begin early can build a strong, authentic profile long before application season.
+
+## What Scholarship Committees Actually Look For
+
+- Consistent effort over years
+- Demonstrated leadership and initiative
+- Projects with measurable impact
+- Strong communication and storytelling
+- Proof of curiosity, discipline, and service
+
+## The 4-Pillar Profile Model
+
+### 1) Projects
+- Build mini products, campaigns, or social initiatives
+- Document outcomes and lessons
+
+### 2) Competitions
+- Enter local, national, and global challenges
+- Track submissions, wins, and feedback
+
+### 3) Leadership
+- Lead school clubs or community activities
+- Show ownership, not only participation
+
+### 4) Portfolio
+- Maintain a public-ready project record
+- Include screenshots, links, reflections, and metrics
+
+## Age-Based Scholarship Timeline
+
+### Ages 10-12: Foundation
+- Explore interests across STEM, business, communication
+- Create first portfolio entries
+
+### Ages 13-15: Differentiation
+- Choose 1-2 strength tracks
+- Build deeper projects and competition outcomes
+
+### Ages 16-18: Positioning
+- Refine narrative, essays, and interviews
+- Align achievements with scholarship criteria
+
+## Parent Action Checklist
+
+- Monthly review of progress and documentation
+- Quarterly goal reset around projects and contests
+- Build a mentor network early
+- Focus on quality of outcomes, not number of certificates
+
+## Orbit Student Advantage
+
+Orbit Student helps families move from random activities to a clear, scholarship-ready system:
+
+- Opportunity mapping and deadlines
+- AI-assisted profile and essay support
+- Mentorship + gamified project execution
+- Central dashboard for progress visibility
+
+## Final Takeaway
+
+Scholarship success is rarely a last-year sprint. It is a multi-year story of initiative, execution, and impact.
+    `,
+    author: 'Aarav Mehta',
+    authorBio: 'Scholarship strategy mentor focused on early-stage profile building for students and families.',
+    authorImage: '/images/authors/aarav-mehta.jpg',
+    publishedAt: '2026-03-03',
+    updatedAt: '2026-03-03',
+    readTime: 8,
+    category: 'Education',
+    tags: ['scholarship prep', 'kids scholarship', 'student portfolio', 'parent guide'],
+    featuredImage: '/images/blog/kids-scholarship-profile-age-10.jpg',
+    seoKeywords: ['scholarship prep for kids', 'scholarship profile building', 'how to win scholarships early', 'kids scholarship strategy'],
+    metaDescription: 'Step-by-step scholarship profile plan for kids starting at age 10. Learn how to build projects, leadership, competitions, and a winning student portfolio.'
+  },
+  {
+    id: '23',
+    slug: 'kids-new-age-learning-play-build-launch',
+    title: 'Kids New Age Learning: Play, Build, Launch',
+    excerpt: 'Why gamified entrepreneurship and AI project-building is replacing passive video learning for future-ready children.',
+    content: `
+# Kids New Age Learning: Play, Build, Launch
+
+Passive learning is fading. The new-age model is active: kids play simulations, build projects, and launch ideas in public.
+
+## Old Model vs New Model
+
+### Old
+- Watch videos
+- Take quizzes
+- Collect certificates
+
+### New
+- Solve real challenges
+- Build with AI tools
+- Present, iterate, and improve
+
+## Why Gamified Learning Works
+
+- Higher attention and completion rates
+- Faster confidence growth through action
+- Better retention through repetition and feedback
+- Healthy competition with visible progress
+
+## The Play-Build-Launch Loop
+
+### Play
+- Business and decision-making games
+- Risk-free experimentation
+
+### Build
+- Create websites, decks, plans, and prototypes
+- Use AI copilots for speed and quality
+
+### Launch
+- Pitch to mentors, peers, or parents
+- Collect feedback and improve
+
+## What Parents Should Measure
+
+- Project completion rate
+- Communication confidence
+- Problem-solving independence
+- Portfolio depth over time
+
+## Orbit Student Use Case
+
+Orbit Student applies this loop through:
+
+- Startup simulations and mini games
+- AI builder tools for practical outputs
+- Mentorship and performance dashboards
+- Scholarship and competition alignment
+
+## Final Takeaway
+
+New-age learning is not about more content. It is about more creation. Children who build early become leaders earlier.
+    `,
+    author: 'Riya Sharma',
+    authorBio: 'Learning experience designer specializing in gamified education and AI-enabled student outcomes.',
+    authorImage: '/images/authors/riya-sharma.jpg',
+    publishedAt: '2026-03-03',
+    updatedAt: '2026-03-03',
+    readTime: 6,
+    category: 'Education',
+    tags: ['kids new age learning', 'gamified learning', 'AI student', 'entrepreneurship for kids'],
+    featuredImage: '/images/blog/kids-new-age-learning-play-build-launch.jpg',
+    seoKeywords: ['kids new age learning', 'gamified learning for kids', 'AI student program', 'entrepreneurship learning for children'],
+    metaDescription: 'Discover the new-age learning model for kids: play, build, launch. Learn why gamified AI-powered education outperforms passive video learning.'
+  },
+  {
+    id: '24',
+    slug: 'orbit-ai-tools-for-students-2026-checklist',
+    title: 'Orbit AI Tools for Students: 2026 Parent Checklist',
+    excerpt: 'A practical checklist to help parents choose the right AI tools and routines so kids build real outcomes every week.',
+    content: `
+# Orbit AI Tools for Students: 2026 Parent Checklist
+
+AI tools are only useful when they are tied to clear outcomes. This checklist helps parents turn AI usage into measurable growth.
+
+## Weekly Outcome Checklist
+- One project milestone completed
+- One presentation or reflection shared
+- One mentor/parent feedback loop closed
+- One portfolio update published
+
+## Tool Categories That Matter
+- Research and idea generation
+- Writing and communication support
+- Design and presentation creation
+- Planning and execution tracking
+
+## Orbit Workflow
+Use Orbit Student to combine AI tools, project tasks, and progress tracking in one place so your child moves from idea to execution.
+    `,
+    author: 'Kunal Verma',
+    authorBio: 'Edtech growth advisor focused on AI implementation frameworks for student outcomes.',
+    authorImage: '/images/authors/kunal-verma.jpg',
+    publishedAt: '2026-04-21',
+    updatedAt: '2026-04-21',
+    readTime: 5,
+    category: 'Technology',
+    tags: ['Orbit AI', 'AI student', 'AI tools for students', 'parent checklist'],
+    featuredImage: '/images/blog/orbit-ai-tools-students-checklist.jpg',
+    seoKeywords: ['Orbit AI tools', 'AI tools for students', 'AI student checklist', 'Orbit student AI'],
+    metaDescription: 'Use this 2026 parent checklist to turn AI tools into real student outcomes with Orbit Student.',
+    faq: [
+      {
+        question: 'What is the best way to start AI learning for kids?',
+        answer: 'Start with one practical project per week and use AI tools for research, writing, and presentation creation with adult guidance.',
+      },
+      {
+        question: 'How does Orbit Student make AI learning measurable?',
+        answer: 'Orbit Student tracks milestones, reflections, project outputs, and portfolio progress so parents can see weekly skill growth.',
+      },
+      {
+        question: 'Are AI tools safe for children?',
+        answer: 'Yes, when used with clear boundaries: no sharing personal data, supervised prompts, and regular fact-checking habits.',
+      },
+    ]
+  },
+  {
+    id: '25',
+    slug: 'kids-entrepreneurship-roadmap-90-day-action-plan',
+    title: 'Kids Entrepreneurship Roadmap: 90-Day Action Plan',
+    excerpt: 'A simple 90-day execution roadmap for parents and students to start building entrepreneurial confidence and portfolio proof.',
+    content: `
+# Kids Entrepreneurship Roadmap: 90-Day Action Plan
+
+If your child is motivated but inconsistent, this 90-day roadmap creates momentum through structure.
+
+## Days 1-30: Foundation
+- Pick one interest theme
+- Complete first mini project
+- Build habit of weekly reflection
+
+## Days 31-60: Execution
+- Launch a second project with improved scope
+- Practice one pitch every week
+- Collect feedback and iterate
+
+## Days 61-90: Positioning
+- Package work into a portfolio
+- Enter one competition or showcase
+- Create next-quarter goals
+
+## Orbit Support
+Orbit Student provides AI tools, gamified tasks, and mentorship to keep this roadmap consistent and measurable.
+    `,
+    author: 'Ishita Rao',
+    authorBio: 'Youth entrepreneurship coach helping students convert ideas into portfolio-ready outcomes.',
+    authorImage: '/images/authors/ishita-rao.jpg',
+    publishedAt: '2026-04-28',
+    updatedAt: '2026-04-28',
+    readTime: 6,
+    category: 'Entrepreneurship',
+    tags: ['kids entrepreneurship', '90 day plan', 'student roadmap', 'portfolio building'],
+    featuredImage: '/images/blog/kids-entrepreneurship-roadmap-90-day.jpg',
+    seoKeywords: ['kids entrepreneurship roadmap', '90 day student plan', 'young entrepreneur action plan', 'portfolio roadmap for students'],
+    metaDescription: 'Follow this 90-day entrepreneurship roadmap to help kids build confidence, projects, and a strong portfolio.',
+    faq: [
+      {
+        question: 'How many hours per week should kids spend on this roadmap?',
+        answer: 'A consistent 3-5 hours weekly is enough when focused on one clear milestone and one reflection checkpoint.',
+      },
+      {
+        question: 'What outcomes should parents expect after 90 days?',
+        answer: 'Most students complete 2 projects, improve confidence in pitching, and build a visible portfolio baseline.',
+      },
+      {
+        question: 'Can beginners follow this plan?',
+        answer: 'Yes. The roadmap is beginner-friendly and works best when parents review progress every week.',
+      },
+    ]
   }
 ];
