@@ -144,6 +144,26 @@ export default function Home() {
                 >
                   Transform your child's potential into reality with our immersive 180-day journey. From idea to launch, we guide young entrepreneurs through every step.
                 </motion.p>
+
+                {/* First-glance clarity strip */}
+                <motion.div
+                  variants={fadeIn}
+                  className="mb-6 sm:mb-8 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 max-w-2xl mx-auto lg:mx-0"
+                >
+                  {[
+                    { icon: '🎮', title: 'Business Games', text: 'Kids learn by playing, not watching' },
+                    { icon: '🤖', title: 'AI Tool Stack', text: '100+ AI tools for creation and pitching' },
+                    { icon: '🎓', title: 'Scholarship Path', text: 'Early roadmap to global opportunities' },
+                  ].map((item, i) => (
+                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl px-3 py-2.5 backdrop-blur-sm">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-base">{item.icon}</span>
+                        <p className="text-xs font-semibold text-white">{item.title}</p>
+                      </div>
+                      <p className="text-[11px] leading-relaxed text-gray-400">{item.text}</p>
+                    </div>
+                  ))}
+                </motion.div>
                 
                 <motion.div 
                   variants={fadeIn}
@@ -539,6 +559,28 @@ export default function Home() {
               </p>
             </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-10 sm:mb-12 bg-white rounded-2xl border border-[#1876D2]/10 shadow-lg shadow-[#1876D2]/5 p-4 sm:p-6"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                {[
+                  { k: '01', t: 'Play', d: 'Gamified startup and finance missions' },
+                  { k: '02', t: 'Build', d: 'Websites, apps, decks with AI copilots' },
+                  { k: '03', t: 'Launch', d: 'Mentor feedback and real-world showcases' },
+                  { k: '04', t: 'Win', d: 'Portfolio + scholarship-ready profile' },
+                ].map((step) => (
+                  <div key={step.k} className="rounded-xl bg-[#f8fbff] border border-[#1876D2]/10 p-4">
+                    <div className="text-[10px] font-bold text-[#1876D2] tracking-widest mb-1">STEP {step.k}</div>
+                    <div className="text-sm font-bold text-gray-900 mb-1">{step.t}</div>
+                    <p className="text-xs text-gray-500">{step.d}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
             {/* Interactive USP Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
               {[
@@ -625,7 +667,7 @@ export default function Home() {
             </div>
             
                     <h3 className="text-xl font-bold text-gray-900 mb-1">{usp.title}</h3>
-                    <p className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r ${usp.color} mb-3" style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to))` }}>
+                    <p className={`text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r ${usp.color} mb-3`}>
                       {usp.subtitle}
                     </p>
                     <p className="text-gray-500 text-sm leading-relaxed">{usp.desc}</p>
