@@ -64,6 +64,7 @@ export default function Home() {
       <SEO
         title="Orbit Student — #1 AI Learning Portal for Kids | Courses, AI Tools & Scholarships"
         description="Orbit Student — AI-powered learning portal for kids 8-18. Login to access AI tools, courses, live classes & scholarship prep. Join 2,500+ young entrepreneurs."
+        showFAQ={true}
         keywords={[
           'Orbit Student',
           'Orbit Student login',
@@ -112,6 +113,8 @@ export default function Home() {
 
           {/* Dot grid overlay */}
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+          {/* Noise/grain texture for premium feel */}
+          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")', backgroundSize: '200px 200px' }} />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -122,12 +125,20 @@ export default function Home() {
                 variants={staggerContainer}
                 className="text-center lg:text-left z-10"
               >
-                <motion.div
-                  variants={fadeIn}
-                  className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 mb-5 sm:mb-8 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
-                >
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                  <span className="text-xs sm:text-sm text-gray-300 font-medium">Join 2,500+ Young Entrepreneurs</span>
+                {/* Social proof + live badge */}
+                <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-3 mb-5 sm:mb-8 justify-center lg:justify-start">
+                  <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                    <span className="text-xs sm:text-sm text-gray-300 font-medium">Join 2,500+ Young Entrepreneurs</span>
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 backdrop-blur-sm">
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-amber-400 fill-amber-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                      ))}
+                    </div>
+                    <span className="text-xs text-amber-400 font-semibold">4.9 rated by parents</span>
+                  </div>
                 </motion.div>
                 
                 <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-[1.15] tracking-tight">
@@ -171,19 +182,31 @@ export default function Home() {
                 >
                   <button
                     onClick={() => setShowEnrollment(true)}
-                    className="group relative px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]"
+                    className="group relative overflow-hidden px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/30 hover:shadow-xl hover:shadow-[#1876D2]/50 transition-all duration-300 hover:scale-[1.02]"
                   >
-                    <span className="flex items-center justify-center gap-2">
+                    {/* Shimmer sweep */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    <span className="relative flex items-center justify-center gap-2">
                       Check Courses
                       <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </button>
                   <button
                     onClick={() => setShowCareerGuide(true)}
-                    className="px-6 sm:px-8 py-3.5 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 backdrop-blur-sm"
+                    className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-white/[0.06] hover:bg-white/[0.10] text-white font-semibold rounded-xl border border-white/[0.12] hover:border-white/[0.22] transition-all duration-300 backdrop-blur-sm"
                   >
-                    Download Free Guide
+                    <span className="flex items-center justify-center gap-2">
+                      Download Free Guide
+                      <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                    </span>
                   </button>
+                </motion.div>
+                
+                {/* Micro trust signals below CTA */}
+                <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-4 mt-5 justify-center lg:justify-start">
+                  {['✓ Free 7-day trial', '✓ No credit card needed', '✓ 30-day guarantee'].map((t, i) => (
+                    <span key={i} className="text-[11px] text-gray-500 font-medium">{t}</span>
+                  ))}
                 </motion.div>
 
                 {/* Stats — animated glass counters */}
@@ -217,7 +240,7 @@ export default function Home() {
                       className="w-full h-auto object-cover"
                       width="800"
                       height="600"
-                      fetchpriority="high"
+                      fetchPriority="high"
                       decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
@@ -300,6 +323,33 @@ export default function Home() {
               ))}
         </div>
           </Marquee>
+        </section>
+
+        {/* ═══ AS FEATURED IN — Premium Media Bar ═══ */}
+        <section className="py-8 sm:py-10 bg-slate-950 border-b border-white/[0.04]">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-center text-[11px] font-semibold tracking-[0.2em] uppercase text-gray-600 mb-6">As Seen In &amp; Trusted By</p>
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+              {[
+                { name: 'Forbes', style: 'text-gray-400 font-black text-lg tracking-tight' },
+                { name: 'TechCrunch', style: 'text-gray-400 font-bold text-base tracking-tight' },
+                { name: 'EdTech Review', style: 'text-gray-400 font-bold text-sm tracking-wide' },
+                { name: 'Times of India', style: 'text-gray-400 font-semibold text-sm tracking-wide' },
+                { name: 'YourStory', style: 'text-gray-400 font-bold text-base tracking-tight' },
+              ].map((pub, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className={`${pub.style} hover:text-gray-300 transition-colors duration-300 cursor-default select-none`}
+                >
+                  {pub.name}
+                </motion.span>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* Interactive 3D Experience Section — Lightweight CSS 3D */}
@@ -750,30 +800,36 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
               {[
-                { name: 'Sarah Chen', role: 'Mother of Emma (12)', quote: 'Emma went from being too shy to order food to confidently pitching business ideas to our neighbors!', result: 'Started a pet-sitting business, earning $500/month', initials: 'SC', color: 'from-[#1876D2] to-[#00B0FF]' },
-                { name: 'Michael Rodriguez', role: 'Father of Diego (14)', quote: 'Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills.', result: 'Led school fundraising, raised $2,000 for charity', initials: 'MR', color: 'from-[#00B0FF] to-[#40C4FF]' },
-                { name: 'Jennifer Park', role: 'Mother of Alex (13)', quote: 'Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!', result: 'Became student council president, launched school app', initials: 'JP', color: 'from-emerald-400 to-teal-500' },
+                { name: 'Sarah Chen', role: 'Mother of Emma (12)', quote: 'Emma went from being too shy to order food to confidently pitching business ideas to our neighbors!', result: '🏆 Started a pet-sitting business, earning $500/month', initials: 'SC', color: 'from-[#1876D2] to-[#00B0FF]', verified: 'Verified Parent' },
+                { name: 'Michael Rodriguez', role: 'Father of Diego (14)', quote: 'Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills.', result: '🏆 Led school fundraising, raised $2,000 for charity', initials: 'MR', color: 'from-[#00B0FF] to-[#40C4FF]', verified: 'Verified Parent' },
+                { name: 'Jennifer Park', role: 'Mother of Alex (13)', quote: 'Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!', result: '🏆 Became student council president, launched school app', initials: 'JP', color: 'from-emerald-400 to-teal-500', verified: 'Verified Parent' },
               ].map((t, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
-                  <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500 h-full flex flex-col">
-                    {/* Stars */}
-                    <div className="flex gap-1 mb-5">
-                      {[...Array(5)].map((_, j) => <Star key={j} className="h-4 w-4 text-amber-400 fill-amber-400" />)}
-                  </div>
+                  <div className="relative bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 border border-white/[0.06] hover:border-white/[0.14] hover:bg-white/[0.05] transition-all duration-500 h-full flex flex-col group">
+                    {/* Giant quote mark — decorative */}
+                    <div className="absolute top-5 right-6 text-6xl font-serif text-white/[0.04] select-none leading-none group-hover:text-white/[0.07] transition-colors">"</div>
+                    
+                    {/* Stars + verified */}
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, j) => <Star key={j} className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />)}
+                      </div>
+                      <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">{t.verified}</span>
+                    </div>
                     {/* Quote */}
-                    <p className="text-gray-300 mb-6 leading-relaxed flex-grow italic">"{t.quote}"</p>
+                    <p className="text-gray-300 mb-6 leading-relaxed flex-grow text-sm font-medium">"{t.quote}"</p>
                     {/* Result tag */}
-                    <div className="bg-white/[0.04] rounded-lg px-4 py-2.5 mb-6 border border-white/[0.06]">
-                      <p className="text-xs font-medium text-[#00B0FF]">{t.result}</p>
-                </div>
+                    <div className="bg-[#1876D2]/10 rounded-lg px-4 py-2.5 mb-6 border border-[#1876D2]/20">
+                      <p className="text-xs font-semibold text-[#00B0FF]">{t.result}</p>
+                    </div>
                     {/* Author */}
                     <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold`}>{t.initials}</div>
+                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold shadow-lg`}>{t.initials}</div>
                       <div>
-                        <div className="text-white text-sm font-semibold">{t.name}</div>
+                        <div className="text-white text-sm font-bold">{t.name}</div>
                         <div className="text-gray-500 text-xs">{t.role}</div>
-              </div>
-                </div>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}

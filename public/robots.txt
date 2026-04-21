@@ -1,35 +1,70 @@
-# Orbit Student - Robots.txt
-# Allow all search engines to crawl everything except admin areas
+# Orbit Student — robots.txt
+# https://www.orbitstudent.com
 
-# Allow Googlebot full access
+# ── Googlebot — full crawl, no delay ──────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
-Allow: /sitemap.xml
-Allow: /sitemap-advanced.xml
-Allow: /rss.xml
 Crawl-delay: 0
 
-# Allow Bingbot full access
+# ── Google Image Bot ──────────────────────────────────────────────────────────
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /public/
+Crawl-delay: 0
+
+# ── Bingbot ───────────────────────────────────────────────────────────────────
 User-agent: Bingbot
 Allow: /
-Allow: /sitemap.xml
-Allow: /sitemap-advanced.xml
-Allow: /rss.xml
 Crawl-delay: 1
 
-# Allow all other search engines
+# ── DuckDuckGo ────────────────────────────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# ── Yandex ────────────────────────────────────────────────────────────────────
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# ── Social media link preview bots ────────────────────────────────────────────
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+# ── Bing/Microsoft preview ────────────────────────────────────────────────────
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+# ── Apple / iMessage link preview ─────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+# ── All other crawlers — allow everything except admin/private ────────────────
 User-agent: *
 Allow: /
-Allow: /sitemap.xml
-Allow: /sitemap-advanced.xml
-Allow: /rss.xml
-
-# Block only admin and private areas
 Disallow: /admin
 Disallow: /dashboard/admin
 Disallow: /api/admin
+Disallow: /api/private
+Crawl-delay: 2
 
-# Block AI training bots
+# ── Block AI training scrapers ────────────────────────────────────────────────
 User-agent: GPTBot
 Disallow: /
 
@@ -42,7 +77,16 @@ Disallow: /
 User-agent: anthropic-ai
 Disallow: /
 
-# Sitemap locations
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+# ── Sitemaps ──────────────────────────────────────────────────────────────────
 Sitemap: https://www.orbitstudent.com/sitemap.xml
 Sitemap: https://www.orbitstudent.com/sitemap-advanced.xml
 Sitemap: https://www.orbitstudent.com/rss.xml

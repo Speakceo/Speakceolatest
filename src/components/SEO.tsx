@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
@@ -6,12 +6,15 @@ interface SEOProps {
   description?: string;
   keywords?: string[];
   image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   url?: string;
   type?: 'website' | 'article' | 'course';
   author?: string;
   publishedTime?: string;
   modifiedTime?: string;
   structuredData?: any;
+  showFAQ?: boolean;
   courseData?: {
     name: string;
     provider: string;
@@ -150,15 +153,21 @@ export default function SEO({
   description = defaultSEO.description,
   keywords = defaultSEO.keywords,
   image = defaultSEO.image,
+  imageWidth = 1200,
+  imageHeight = 630,
   url = defaultSEO.url,
   type = defaultSEO.type,
   author = defaultSEO.author,
   publishedTime,
   modifiedTime,
   structuredData,
+  showFAQ = false,
   courseData
 }: SEOProps) {
-  const siteTitle = `${title} | Orbit Student`;
+  // Avoid "Brand — Title | Brand" duplication
+  const siteTitle = title.toLowerCase().includes('orbit student')
+    ? title
+    : `${title} | Orbit Student`;
 
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -342,6 +351,49 @@ export default function SEO({
     ]
   };
 
+  // HowTo Schema — unlocks rich "How to" SERP feature
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Get Started with Orbit Student',
+    description: 'Join Orbit Student and start your child\'s AI learning journey in 4 simple steps.',
+    totalTime: 'PT10M',
+    supply: [
+      { '@type': 'HowToSupply', name: 'Internet connection' },
+      { '@type': 'HowToSupply', name: 'Email address' }
+    ],
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Book a Free Demo',
+        text: 'Visit orbitstudent.com and book a free personalised demo session to explore the platform.',
+        url: 'https://www.orbitstudent.com/demo'
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Create Your Account',
+        text: 'Register at orbitstudent.com/login with your email. Access your AI learning dashboard instantly.',
+        url: 'https://www.orbitstudent.com/login'
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Pick Your Learning Path',
+        text: 'Choose from the Young CEO Program, AI Tools track, or Scholarship Prep curriculum based on your child\'s age and interest.',
+        url: 'https://www.orbitstudent.com/courses'
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'Start Building & Playing',
+        text: 'Access 100+ AI tools, business simulations, live classes, and the scholarship database to begin your 180-day journey.',
+        url: 'https://www.orbitstudent.com/dashboard'
+      }
+    ]
+  };
+
   // Add BreadcrumbList Schema
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -451,9 +503,14 @@ export default function SEO({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content={String(imageWidth)} />
+      <meta property="og:image:height" content={String(imageHeight)} />
+      <meta property="og:image:alt" content={siteTitle} />
       <meta property="og:site_name" content="Orbit Student" />
+      <meta property="og:locale" content="en_US" />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
       {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {type === 'article' && author && <meta property="article:author" content={author} />}
 
       {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -511,9 +568,16 @@ export default function SEO({
           {JSON.stringify(courseSchema)}
         </script>
       )}
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </script>
+      {showFAQ && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      )}
+      {showFAQ && (
+        <script type="application/ld+json">
+          {JSON.stringify(howToSchema)}
+        </script>
+      )}
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
       </script>
