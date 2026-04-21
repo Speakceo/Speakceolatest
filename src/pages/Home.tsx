@@ -31,11 +31,9 @@ import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
-import LottieAnimation from '../components/ui/LottieAnimation';
 import AnimatedHero3D from '../components/ui/AnimatedHero3D';
 import AnimatedCounter from '../components/ui/AnimatedCounter';
 import Marquee from '../components/ui/Marquee';
-import TextReveal from '../components/ui/TextReveal';
 
 // Optimized animation variants for better performance
 const fadeIn = {
@@ -47,13 +45,6 @@ const fadeIn = {
   }
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.05 }
-  }
-};
 
 export default function Home() {
   const [showEnrollment, setShowEnrollment] = useState(false);
@@ -102,240 +93,294 @@ export default function Home() {
       />
       
       <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden">
-        {/* ═══ HERO SECTION — Premium Dark with Animated Gradient Mesh ═══ */}
-        <section className="relative bg-slate-950 text-white overflow-hidden min-h-[70vh] sm:min-h-screen flex items-center pt-16">
-          {/* Animated gradient mesh background */}
-          <div className="absolute inset-0">
-            <div className="absolute top-[-30%] left-[-15%] w-[55%] h-[55%] bg-[#1876D2]/25 rounded-full filter blur-[120px] animate-[float_8s_ease-in-out_infinite]" />
-            <div className="absolute bottom-[-25%] right-[-10%] w-[50%] h-[50%] bg-[#00B0FF]/20 rounded-full filter blur-[120px] animate-[float_10s_ease-in-out_infinite_reverse]" />
-            <div className="absolute top-[40%] right-[30%] w-[25%] h-[25%] bg-[#40C4FF]/10 rounded-full filter blur-[80px] animate-[float_12s_ease-in-out_infinite]" />
-          </div>
 
-          {/* Dot grid overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-          {/* Noise/grain texture for premium feel */}
-          <div className="absolute inset-0 opacity-[0.025]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'1\'/%3E%3C/svg%3E")', backgroundSize: '200px 200px' }} />
+        {/* ═══ HERO — Centered Billboard (21st.dev style) ═══ */}
+        <section className="relative bg-[#020817] text-white overflow-hidden min-h-screen flex flex-col items-center justify-center pt-16">
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-              {/* Left: Content */}
-              <motion.div 
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer}
-                className="text-center lg:text-left z-10"
+          {/* ── Layered backgrounds ────────────────────────────── */}
+          {/* Grid lines */}
+          <div className="absolute inset-0 opacity-[0.025]"
+            style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '72px 72px' }} />
+
+          {/* Central spotlight beam from top */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-[40%] bg-gradient-to-b from-[#00B0FF]/60 to-transparent" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] rounded-full opacity-30 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse at 50% 0%, #1876D2 0%, transparent 70%)' }} />
+
+          {/* Side orbs */}
+          <div className="absolute top-1/3 left-[-10%] w-[40%] h-[40%] bg-[#1876D2]/15 rounded-full filter blur-[100px] animate-[float_10s_ease-in-out_infinite]" />
+          <div className="absolute top-1/3 right-[-10%] w-[35%] h-[35%] bg-[#00B0FF]/10 rounded-full filter blur-[100px] animate-[float_12s_ease-in-out_infinite_reverse]" />
+
+          {/* Grain texture */}
+          <div className="absolute inset-0 opacity-[0.03]"
+            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: '180px 180px' }} />
+
+          {/* ── Content ─────────────────────────────────────────── */}
+          <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
+
+            {/* Announcement chip */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm mb-8 cursor-default"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00B0FF]" />
+              </span>
+              <span className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#00B0FF]">New 2026</span>
+              <div className="w-[1px] h-3 bg-white/20" />
+              <span className="text-xs text-gray-400 font-medium">AI-powered learning platform for kids 8-18</span>
+              <ArrowRight className="w-3 h-3 text-gray-600" />
+            </motion.div>
+
+            {/* Headline — max impact */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-[clamp(2.6rem,7vw,5.5rem)] font-black leading-[1.05] tracking-[-0.03em] mb-6"
+            >
+              <span className="text-white">Where Young Minds</span>
+              <br />
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] via-[#00B0FF] to-[#38bdf8]">
+                  Become Leaders
+                </span>
+                {/* Underline glow */}
+                <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00B0FF]/60 to-transparent rounded-full" />
+              </span>
+            </motion.h1>
+
+            {/* Sub-headline */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-[1.05rem] sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
+              An AI-powered 180-day program that transforms kids into confident entrepreneurs — through games, real projects, live mentorship, and 100+ AI tools.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center mb-8"
+            >
+              <button
+                onClick={() => setShowEnrollment(true)}
+                className="group relative overflow-hidden px-7 py-4 bg-white text-slate-900 font-bold text-[15px] rounded-2xl shadow-xl shadow-white/10 hover:shadow-white/20 transition-all duration-300 hover:scale-[1.02]"
               >
-                {/* Social proof + live badge */}
-                <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-3 mb-5 sm:mb-8 justify-center lg:justify-start">
-                  <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                    <span className="text-xs sm:text-sm text-gray-300 font-medium">Join 2,500+ Young Entrepreneurs</span>
-                  </div>
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 backdrop-blur-sm">
-                    <div className="flex gap-0.5">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-3 h-3 text-amber-400 fill-amber-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                      ))}
-                    </div>
-                    <span className="text-xs text-amber-400 font-semibold">4.9 rated by parents</span>
-                  </div>
-                </motion.div>
-                
-                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-[1.15] tracking-tight">
-                  <TextReveal text="Where Young Minds" className="text-white" delay={0.2} />
-                  <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#40C4FF]">
-                    <TextReveal text="Become Future Leaders" delay={0.5} staggerDelay={0.06} />
-                  </span>
-                </h1>
-                
-                <motion.p 
-                  variants={fadeIn}
-                  className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
-                >
-                  Transform your child's potential into reality with our immersive 180-day journey. From idea to launch, we guide young entrepreneurs through every step.
-                </motion.p>
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-[#1876D2]/10 to-transparent" />
+                <span className="relative flex items-center justify-center gap-2">
+                  Start Free — Check Courses
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </button>
+              <button
+                onClick={() => setShowCareerGuide(true)}
+                className="group px-7 py-4 bg-white/[0.05] hover:bg-white/[0.09] text-white font-semibold text-[15px] rounded-2xl border border-white/[0.10] hover:border-white/[0.20] transition-all duration-300 backdrop-blur-sm"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  <PlayCircle className="h-4 w-4 text-[#00B0FF]" />
+                  Download Free Guide
+                </span>
+              </button>
+            </motion.div>
 
-                {/* First-glance clarity strip */}
-                <motion.div
-                  variants={fadeIn}
-                  className="mb-6 sm:mb-8 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 max-w-2xl mx-auto lg:mx-0"
-                >
-                  {[
-                    { icon: '🎮', title: 'Business Games', text: 'Kids learn by playing, not watching' },
-                    { icon: '🤖', title: 'AI Tool Stack', text: '100+ AI tools for creation and pitching' },
-                    { icon: '🎓', title: 'Scholarship Path', text: 'Early roadmap to global opportunities' },
-                  ].map((item, i) => (
-                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl px-3 py-2.5 backdrop-blur-sm">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-base">{item.icon}</span>
-                        <p className="text-xs font-semibold text-white">{item.title}</p>
+            {/* Avatar stack + social proof */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            >
+              {/* Avatar circles */}
+              <div className="flex -space-x-2.5">
+                {[
+                  { bg: 'from-[#1876D2] to-[#00B0FF]', label: 'SC' },
+                  { bg: 'from-emerald-400 to-teal-500', label: 'MR' },
+                  { bg: 'from-violet-500 to-purple-600', label: 'JP' },
+                  { bg: 'from-amber-400 to-orange-500', label: 'AK' },
+                  { bg: 'from-rose-500 to-pink-600', label: 'LB' },
+                ].map((a, i) => (
+                  <div key={i} className={`w-8 h-8 rounded-full bg-gradient-to-br ${a.bg} flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-[#020817]`}>
+                    {a.label}
+                  </div>
+                ))}
+                <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/[0.12] flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-[#020817]">
+                  +
+                </div>
+              </div>
+              <div className="text-left">
+                <div className="text-white font-semibold text-sm">Joined by 2,500+ families</div>
+                <div className="flex items-center gap-1 mt-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-3 h-3 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                  <span className="text-gray-400 text-xs ml-1">4.9/5</span>
+                </div>
+              </div>
+              <div className="hidden sm:flex items-center gap-4 pl-4 border-l border-white/[0.08]">
+                {['✓ Free 7-day trial', '✓ No card needed'].map((t, i) => (
+                  <span key={i} className="text-[11px] text-gray-500">{t}</span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* ── Product Mockup Card ──────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="relative mx-auto max-w-4xl"
+            >
+              {/* Glow behind card */}
+              <div className="absolute -inset-4 bg-gradient-to-b from-[#1876D2]/20 via-[#00B0FF]/10 to-transparent rounded-3xl filter blur-2xl pointer-events-none" />
+
+              {/* Card frame */}
+              <div className="relative rounded-2xl border border-white/[0.10] overflow-hidden shadow-2xl shadow-black/60">
+                {/* Window chrome bar */}
+                <div className="bg-[#0d1527] border-b border-white/[0.06] px-5 py-3 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/70" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
+                    <div className="w-3 h-3 rounded-full bg-emerald-500/70" />
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="bg-white/[0.06] border border-white/[0.08] rounded-lg px-4 py-1 text-[11px] text-gray-500 font-mono">
+                      orbitstudent.com/dashboard
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dashboard preview */}
+                <div className="bg-[#080f1e] p-4 sm:p-6">
+                  {/* Top stat strip */}
+                  <div className="grid grid-cols-3 gap-3 mb-4">
+                    {[
+                      { label: 'XP Points', value: '4,820', color: 'from-[#1876D2] to-[#00B0FF]', icon: '⚡' },
+                      { label: 'Streak', value: '14 days', color: 'from-emerald-500 to-teal-500', icon: '🔥' },
+                      { label: 'Rank', value: 'Level 7', color: 'from-amber-500 to-orange-500', icon: '🏆' },
+                    ].map((s, i) => (
+                      <div key={i} className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 text-center">
+                        <div className="text-lg mb-1">{s.icon}</div>
+                        <div className={`text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r ${s.color}`}>{s.value}</div>
+                        <div className="text-[10px] text-gray-600 mt-0.5">{s.label}</div>
                       </div>
-                      <p className="text-[11px] leading-relaxed text-gray-400">{item.text}</p>
-                    </div>
-                  ))}
-                </motion.div>
-                
-                <motion.div 
-                  variants={fadeIn}
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
-                >
-                  <button
-                    onClick={() => setShowEnrollment(true)}
-                    className="group relative overflow-hidden px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-xl shadow-lg shadow-[#1876D2]/30 hover:shadow-xl hover:shadow-[#1876D2]/50 transition-all duration-300 hover:scale-[1.02]"
-                  >
-                    {/* Shimmer sweep */}
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                    <span className="relative flex items-center justify-center gap-2">
-                      Check Courses
-                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </button>
-                  <button
-                    onClick={() => setShowCareerGuide(true)}
-                    className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-white/[0.06] hover:bg-white/[0.10] text-white font-semibold rounded-xl border border-white/[0.12] hover:border-white/[0.22] transition-all duration-300 backdrop-blur-sm"
-                  >
-                    <span className="flex items-center justify-center gap-2">
-                      Download Free Guide
-                      <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                    </span>
-                  </button>
-                </motion.div>
-                
-                {/* Micro trust signals below CTA */}
-                <motion.div variants={fadeIn} className="flex flex-wrap items-center gap-4 mt-5 justify-center lg:justify-start">
-                  {['✓ Free 7-day trial', '✓ No credit card needed', '✓ 30-day guarantee'].map((t, i) => (
-                    <span key={i} className="text-[11px] text-gray-500 font-medium">{t}</span>
-                  ))}
-                </motion.div>
+                    ))}
+                  </div>
 
-                {/* Stats — animated glass counters */}
-                <motion.div variants={fadeIn} className="mt-8 sm:mt-14 grid grid-cols-3 gap-2 sm:gap-4">
-                  {[
-                    { value: '2,500+', label: 'Students' },
-                    { value: '180', label: 'Day Program' },
-                    { value: '98%', label: 'Success Rate' },
-                  ].map((stat, i) => (
-                    <div key={i} className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-3 sm:p-4 text-center backdrop-blur-sm group hover:bg-white/[0.07] hover:border-white/[0.12] transition-all duration-500">
-                      <AnimatedCounter value={stat.value} className="text-lg sm:text-2xl font-bold text-white" duration={2 + i * 0.3} />
-                      <div className="text-[10px] sm:text-xs text-gray-500 mt-1">{stat.label}</div>
-                    </div>
-                  ))}
-                </motion.div>
-              </motion.div>
-              
-              {/* Right: Hero visual — Lottie + floating glass cards */}
+                  {/* Active modules */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      { title: 'Startup Empire', sub: 'Stage 3: Branding your idea', prog: 62, color: 'from-violet-500 to-purple-600', icon: '👑' },
+                      { title: 'AI Pitch Simulator', sub: 'Practice investor pitch', prog: 40, color: 'from-[#1876D2] to-[#00B0FF]', icon: '🤖' },
+                    ].map((m, i) => (
+                      <div key={i} className="bg-white/[0.03] border border-white/[0.05] rounded-xl p-4 text-left">
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <span className="text-xl">{m.icon}</span>
+                          <div>
+                            <div className="text-white text-xs font-bold">{m.title}</div>
+                            <div className="text-gray-600 text-[10px]">{m.sub}</div>
+                          </div>
+                        </div>
+                        <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
+                          <motion.div
+                            className={`h-full rounded-full bg-gradient-to-r ${m.color}`}
+                            initial={{ width: 0 }}
+                            animate={{ width: `${m.prog}%` }}
+                            transition={{ duration: 1.2, delay: 1 + i * 0.2 }}
+                          />
+                        </div>
+                        <div className="text-[10px] text-gray-600 mt-1.5">{m.prog}% complete</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Bottom gradient fade */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#020817] to-transparent pointer-events-none" />
+              </div>
+
+              {/* Floating notification cards */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="relative z-10 hidden lg:block"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -right-4 sm:-right-8 top-20 bg-[#0d1527] backdrop-blur-xl border border-white/[0.10] rounded-xl p-3 shadow-2xl hidden sm:block"
               >
-                <div className="relative" style={{ perspective: '1000px' }}>
-                  {/* Main image with glass frame */}
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-[#1876D2]/10">
-                    <img
-                      src="/images/hero/orbit-kids-laptop.jpg"
-                      alt="Orbit students learning with laptop"
-                      className="w-full h-auto object-cover"
-                      width="800"
-                      height="600"
-                      fetchPriority="high"
-                      decoding="async"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center text-sm">🎉</div>
+                  <div>
+                    <div className="text-white text-[11px] font-bold">Achievement Unlocked!</div>
+                    <div className="text-emerald-400 text-[10px]">First Business Plan +200 XP</div>
                   </div>
-
-                  {/* Floating accent card — top right */}
-                  <motion.div
-                    animate={{ y: [-6, 6, -6] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute -top-4 -right-4 bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-xl p-3 shadow-xl"
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-lg flex items-center justify-center">
-                        <Rocket className="h-4 w-4 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-white text-xs font-semibold">AI-Powered</div>
-                        <div className="text-gray-400 text-[10px]">Learning</div>
-                      </div>
-                    </div>
-              </motion.div>
-
-                  {/* Floating accent card — bottom left */}
-                  <motion.div
-                    animate={{ y: [6, -6, 6] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute -bottom-4 -left-4 bg-white/[0.07] backdrop-blur-xl border border-white/[0.12] rounded-xl p-3 shadow-xl"
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-lg flex items-center justify-center">
-                        <TrendingUp className="h-4 w-4 text-white" />
-            </div>
-                      <div>
-                        <div className="text-white text-xs font-semibold">Real Projects</div>
-                        <div className="text-emerald-400 text-[10px]">+127% Growth</div>
-          </div>
-                    </div>
-                  </motion.div>
                 </div>
               </motion.div>
 
-              {/* Mobile hero — Lottie rocket animation (compact) */}
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="relative z-10 lg:hidden flex justify-center -mt-4"
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -left-4 sm:-left-8 bottom-20 bg-[#0d1527] backdrop-blur-xl border border-white/[0.10] rounded-xl p-3 shadow-2xl hidden sm:block"
               >
-                <LottieAnimation
-                  src="/animations/rocket.json"
-                  className="w-40 h-40 sm:w-56 sm:h-56"
-                />
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-lg flex items-center justify-center text-sm">🚀</div>
+                  <div>
+                    <div className="text-white text-[11px] font-bold">Live Class in 10 min</div>
+                    <div className="text-[#00B0FF] text-[10px]">Pitching to Investors</div>
+                  </div>
+                </div>
               </motion.div>
-            </div>
-        </div>
+            </motion.div>
+          </div>
 
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
+          {/* Bottom fade to next section */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020817] to-transparent pointer-events-none" />
         </section>
 
         {/* ═══ SCROLLING TRUST MARQUEE ═══ */}
-        <section className="py-3 sm:py-5 bg-slate-950 border-y border-white/[0.04] relative overflow-hidden">
-          <Marquee speed={25} className="py-2">
-            <div className="flex items-center gap-12 px-4">
+        <section className="py-4 bg-[#020817] border-y border-white/[0.05] relative overflow-hidden">
+          <Marquee speed={22} className="py-1">
+            <div className="flex items-center gap-10 px-4">
               {[
                 { text: '🏆 Award-Winning Platform', highlight: false },
                 { text: '🌍 35+ Countries', highlight: false },
                 { text: '⭐ 4.9/5 Parent Rating', highlight: true },
-                { text: '🚀 2,500+ Students Enrolled', highlight: false },
+                { text: '🚀 2,500+ Students', highlight: false },
                 { text: '🎓 $2.9B+ Scholarships Mapped', highlight: true },
                 { text: '🤖 100+ AI Tools', highlight: false },
-                { text: '📺 500+ Expert-Led Lessons', highlight: false },
-                { text: '🔒 30-Day Money-Back Guarantee', highlight: true },
-                { text: '💡 180-Day Structured Program', highlight: false },
-                { text: '👨‍🏫 Live Mentorship Sessions', highlight: false },
+                { text: '📺 500+ Expert Lessons', highlight: false },
+                { text: '🔒 30-Day Guarantee', highlight: true },
+                { text: '💡 180-Day Program', highlight: false },
+                { text: '👨‍🏫 Live Mentorship', highlight: false },
               ].map((item, i) => (
-                <span key={i} className={`text-sm font-medium whitespace-nowrap ${item.highlight ? 'text-[#00B0FF]' : 'text-gray-500'}`}>
-                  {item.text}
-                </span>
+                <div key={i} className="flex items-center gap-3">
+                  <span className={`text-[13px] font-medium whitespace-nowrap ${item.highlight ? 'text-[#00B0FF]' : 'text-gray-600'}`}>
+                    {item.text}
+                  </span>
+                  <span className="w-1 h-1 rounded-full bg-white/10 flex-shrink-0" />
+                </div>
               ))}
-        </div>
+            </div>
           </Marquee>
         </section>
 
         {/* ═══ AS FEATURED IN — Premium Media Bar ═══ */}
-        <section className="py-8 sm:py-10 bg-slate-950 border-b border-white/[0.04]">
+        <section className="py-10 sm:py-14 bg-[#020817] border-b border-white/[0.04]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-[11px] font-semibold tracking-[0.2em] uppercase text-gray-600 mb-6">As Seen In &amp; Trusted By</p>
-            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+            <p className="text-center text-[10px] font-bold tracking-[0.25em] uppercase text-gray-700 mb-8">As Seen In &amp; Trusted By</p>
+            <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
               {[
-                { name: 'Forbes', style: 'text-gray-400 font-black text-lg tracking-tight' },
-                { name: 'TechCrunch', style: 'text-gray-400 font-bold text-base tracking-tight' },
-                { name: 'EdTech Review', style: 'text-gray-400 font-bold text-sm tracking-wide' },
-                { name: 'Times of India', style: 'text-gray-400 font-semibold text-sm tracking-wide' },
-                { name: 'YourStory', style: 'text-gray-400 font-bold text-base tracking-tight' },
+                { name: 'Forbes', size: 'text-xl font-black' },
+                { name: 'TechCrunch', size: 'text-base font-bold' },
+                { name: 'EdTech Review', size: 'text-sm font-bold tracking-wide' },
+                { name: 'Times of India', size: 'text-sm font-semibold tracking-wide' },
+                { name: 'YourStory', size: 'text-base font-bold' },
               ].map((pub, i) => (
                 <motion.span
                   key={i}
@@ -343,7 +388,7 @@ export default function Home() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className={`${pub.style} hover:text-gray-300 transition-colors duration-300 cursor-default select-none`}
+                  className={`${pub.size} text-gray-600 hover:text-gray-300 transition-colors duration-300 cursor-default select-none`}
                 >
                   {pub.name}
                 </motion.span>
@@ -591,8 +636,10 @@ export default function Home() {
         </section>
 
         {/* ═══ WHAT YOUR CHILD GETS — Interactive Visual USP ═══ */}
-        <section className="py-16 sm:py-28 bg-[#f8fafb] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+        <section className="py-16 sm:py-28 bg-white dark:bg-gray-950 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.4] dark:opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle, #e2e8f0 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] opacity-[0.04]"
+            style={{ background: 'radial-gradient(ellipse at 50% 0%, #1876D2 0%, transparent 70%)' }} />
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
@@ -631,7 +678,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Interactive USP Cards */}
+            {/* Interactive USP Cards — gradient border (21st.dev style) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
               {[
                 {
@@ -639,59 +686,65 @@ export default function Home() {
                   title: '10 Business Games',
                   subtitle: 'Not watching. Playing.',
                   desc: 'From running a lemonade stand to trading across planets — kids learn pricing, investing, budgeting & pitching through addictive mini-games.',
-                  stats: '10 games • 500+ XP',
-                  color: 'from-violet-500 to-purple-600',
-                  bg: 'bg-violet-50',
+                  stats: '10 games · 500+ XP',
+                  border: 'from-violet-500/40 via-purple-600/20 to-transparent',
+                  glow: 'group-hover:shadow-violet-500/10',
+                  accent: 'text-violet-400',
                   link: '/demo',
                 },
                 {
                   icon: '👑',
                   title: 'Startup Empire',
                   subtitle: 'Build a $10M company.',
-                  desc: 'A full roleplay game with 6 stages, 24 missions — from idea generation to IPO. Real decisions, real consequences. Your child\'s first company starts here.',
-                  stats: '6 stages • 24 missions',
-                  color: 'from-amber-500 to-orange-600',
-                  bg: 'bg-amber-50',
+                  desc: 'A full roleplay game with 6 stages, 24 missions — from idea generation to IPO. Real decisions, real consequences.',
+                  stats: '6 stages · 24 missions',
+                  border: 'from-amber-500/40 via-orange-600/20 to-transparent',
+                  glow: 'group-hover:shadow-amber-500/10',
+                  accent: 'text-amber-400',
                   link: '/demo',
                 },
                 {
                   icon: '🤖',
                   title: 'AI Superpowers',
-                  subtitle: '100+ AI tools at their fingertips.',
-                  desc: 'AI Website Builder, AI Presentation Maker, AI Image Generator, AI Business Plan Writer — your child learns to command AI like a CEO.',
-                  stats: '100+ tools • Unlimited use',
-                  color: 'from-blue-500 to-cyan-500',
-                  bg: 'bg-blue-50',
+                  subtitle: '100+ AI tools. Zero limits.',
+                  desc: 'AI Website Builder, AI Presentation Maker, AI Business Plan Writer — your child learns to command AI like a CEO.',
+                  stats: '100+ tools · Unlimited',
+                  border: 'from-[#1876D2]/40 via-[#00B0FF]/20 to-transparent',
+                  glow: 'group-hover:shadow-[#1876D2]/10',
+                  accent: 'text-[#00B0FF]',
                   link: '/demo',
                 },
                 {
                   icon: '🎯',
                   title: '180-Day Curriculum',
                   subtitle: 'Structured. Not random.',
-                  desc: 'A proven path from beginner to confident young entrepreneur. Weekly tasks, live classes, mentorship — every day is designed to build real skills.',
-                  stats: '180 days • 52 live classes',
-                  color: 'from-emerald-500 to-teal-600',
-                  bg: 'bg-emerald-50',
+                  desc: 'A proven path from beginner to confident young entrepreneur. Weekly tasks, live classes, mentorship — every day builds real skills.',
+                  stats: '180 days · 52 live classes',
+                  border: 'from-emerald-500/40 via-teal-600/20 to-transparent',
+                  glow: 'group-hover:shadow-emerald-500/10',
+                  accent: 'text-emerald-400',
                   link: '/courses',
                 },
                 {
                   icon: '🌍',
                   title: 'Scholarship Database',
                   subtitle: 'Start early. Win big.',
-                  desc: '500+ scholarships, competitions, and fellowships mapped for your child — filtered by age, country, and interest. Most parents don\'t know these exist.',
+                  desc: '500+ scholarships, competitions, and fellowships mapped for your child — most parents don\'t even know these exist.',
                   stats: '500+ opportunities',
-                  color: 'from-blue-600 to-indigo-600',
-                  bg: 'bg-indigo-50',
+                  border: 'from-indigo-500/40 via-blue-600/20 to-transparent',
+                  glow: 'group-hover:shadow-indigo-500/10',
+                  accent: 'text-indigo-400',
                   link: '/resources',
                 },
                 {
                   icon: '🏆',
                   title: 'Real Portfolio',
                   subtitle: 'Not certificates. Proof.',
-                  desc: 'Your child builds websites, games, pitch decks, and business plans they can actually show to schools, competitions, and future employers.',
+                  desc: 'Your child builds websites, games, pitch decks, and business plans they can actually show to schools and competitions.',
                   stats: '10+ portfolio pieces',
-                  color: 'from-rose-500 to-pink-600',
-                  bg: 'bg-rose-50',
+                  border: 'from-rose-500/40 via-pink-600/20 to-transparent',
+                  glow: 'group-hover:shadow-rose-500/10',
+                  accent: 'text-rose-400',
                   link: '/about',
                 },
               ].map((usp, i) => (
@@ -701,30 +754,28 @@ export default function Home() {
                   initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="group relative rounded-3xl border border-gray-100 hover:border-gray-200 bg-white hover:shadow-2xl hover:shadow-gray-200/60 transition-all duration-500 overflow-hidden"
+                  transition={{ delay: i * 0.07 }}
+                  className={`group relative rounded-2xl p-[1px] bg-gradient-to-br ${usp.border} hover:shadow-2xl ${usp.glow} transition-all duration-500 overflow-hidden`}
                 >
-                  {/* Top accent bar */}
-                  <div className={`h-1.5 bg-gradient-to-r ${usp.color}`} />
-                  
-                  <div className="p-7">
-                    {/* Icon + stats */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-14 h-14 rounded-2xl ${usp.bg} flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300`}>
-                        {usp.icon}
-                      </div>
-                      <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2.5 py-1 rounded-full">{usp.stats}</span>
-            </div>
-            
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">{usp.title}</h3>
-                    <p className={`text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r ${usp.color} mb-3`}>
-                      {usp.subtitle}
-                    </p>
-                    <p className="text-gray-500 text-sm leading-relaxed">{usp.desc}</p>
-                    
-                    {/* Hover arrow */}
-                    <div className="mt-5 flex items-center gap-2 text-[#1876D2] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                      Explore <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  {/* Inner card */}
+                  <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 h-full flex flex-col">
+                    {/* Icon row */}
+                    <div className="flex items-start justify-between mb-5">
+                      <span className="text-3xl">{usp.icon}</span>
+                      <span className={`text-[10px] font-bold ${usp.accent} bg-current/5 border border-current/20 px-2.5 py-1 rounded-full opacity-70`}
+                        style={{ backgroundColor: 'transparent' }}
+                      >
+                        <span className={`${usp.accent}`}>{usp.stats}</span>
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{usp.title}</h3>
+                    <p className={`text-xs font-semibold ${usp.accent} mb-3 tracking-wide`}>{usp.subtitle}</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-grow">{usp.desc}</p>
+
+                    {/* Hover CTA */}
+                    <div className={`mt-5 flex items-center gap-1.5 ${usp.accent} text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0`}>
+                      Explore <ArrowRight className="w-3.5 h-3.5" />
                     </div>
                   </div>
                 </motion.a>
@@ -779,77 +830,102 @@ export default function Home() {
                   </div>
         </section>
 
-        {/* ═══ REAL PARENT STORIES — Dark Glass ═══ */}
-        <section className="py-16 sm:py-28 bg-slate-950 relative overflow-hidden">
-          {/* Gradient mesh */}
-          <div className="absolute top-[-20%] right-[-15%] w-[40%] h-[40%] bg-[#1876D2]/10 rounded-full filter blur-[120px]" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[35%] h-[35%] bg-[#00B0FF]/8 rounded-full filter blur-[100px]" />
-          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+        {/* ═══ REAL PARENT STORIES — 21st.dev glassmorphism cards ═══ */}
+        <section className="py-16 sm:py-28 bg-[#020817] relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(24,118,210,0.12) 0%, transparent 70%)' }} />
+          <div className="absolute inset-0 opacity-[0.02]"
+            style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '72px 72px' }} />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section header */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-                <Star className="h-4 w-4 text-amber-400" />
-                <span className="text-sm font-medium text-gray-400">Real Parent Stories</span>
-                  </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
-                "My Child is a <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Different Person</span>"
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] mb-8">
+                <Star className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />
+                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Real Parent Stories</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight leading-tight">
+                "My Child is a{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] via-[#00B0FF] to-[#38bdf8]">Different Person</span>"
               </h2>
-              <p className="text-gray-400 max-w-xl mx-auto">See the transformations that make parents proud</p>
+              <p className="text-gray-500 max-w-xl mx-auto">See the transformations that make parents proud</p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
               {[
-                { name: 'Sarah Chen', role: 'Mother of Emma (12)', quote: 'Emma went from being too shy to order food to confidently pitching business ideas to our neighbors!', result: '🏆 Started a pet-sitting business, earning $500/month', initials: 'SC', color: 'from-[#1876D2] to-[#00B0FF]', verified: 'Verified Parent' },
-                { name: 'Michael Rodriguez', role: 'Father of Diego (14)', quote: 'Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills.', result: '🏆 Led school fundraising, raised $2,000 for charity', initials: 'MR', color: 'from-[#00B0FF] to-[#40C4FF]', verified: 'Verified Parent' },
-                { name: 'Jennifer Park', role: 'Mother of Alex (13)', quote: 'Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!', result: '🏆 Became student council president, launched school app', initials: 'JP', color: 'from-emerald-400 to-teal-500', verified: 'Verified Parent' },
+                { name: 'Sarah Chen', role: 'Mother of Emma (12)', quote: 'Emma went from being too shy to order food to confidently pitching business ideas to our neighbors!', result: '🏆 Started a pet-sitting business, earning $500/month', initials: 'SC', color: 'from-[#1876D2] to-[#00B0FF]' },
+                { name: 'Michael Rodriguez', role: 'Father of Diego (14)', quote: 'Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills.', result: '🏆 Led school fundraising, raised $2,000 for charity', initials: 'MR', color: 'from-emerald-400 to-teal-500' },
+                { name: 'Jennifer Park', role: 'Mother of Alex (13)', quote: 'Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!', result: '🏆 Became student council president, launched school app', initials: 'JP', color: 'from-violet-500 to-purple-600' },
               ].map((t, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
-                  <div className="relative bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 border border-white/[0.06] hover:border-white/[0.14] hover:bg-white/[0.05] transition-all duration-500 h-full flex flex-col group">
-                    {/* Giant quote mark — decorative */}
-                    <div className="absolute top-5 right-6 text-6xl font-serif text-white/[0.04] select-none leading-none group-hover:text-white/[0.07] transition-colors">"</div>
-                    
-                    {/* Stars + verified */}
-                    <div className="flex items-center justify-between mb-5">
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-transparent hover:from-white/[0.14] transition-all duration-500"
+                >
+                  <div className="bg-[#080f1e] rounded-2xl p-7 h-full flex flex-col relative overflow-hidden">
+                    {/* Subtle glow top-right */}
+                    <div className={`absolute -top-10 -right-10 w-28 h-28 bg-gradient-to-br ${t.color} opacity-[0.07] rounded-full blur-2xl group-hover:opacity-[0.14] transition-opacity duration-500`} />
+
+                    {/* Stars + badge */}
+                    <div className="flex items-center justify-between mb-5 relative">
                       <div className="flex gap-1">
-                        {[...Array(5)].map((_, j) => <Star key={j} className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />)}
+                        {[...Array(5)].map((_, j) => <Star key={j} className="h-3 w-3 text-amber-400 fill-amber-400" />)}
                       </div>
-                      <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">{t.verified}</span>
+                      <span className="text-[10px] font-bold text-emerald-400 bg-emerald-400/[0.08] border border-emerald-400/20 px-2.5 py-1 rounded-full">
+                        ✓ Verified Parent
+                      </span>
                     </div>
-                    {/* Quote */}
-                    <p className="text-gray-300 mb-6 leading-relaxed flex-grow text-sm font-medium">"{t.quote}"</p>
-                    {/* Result tag */}
-                    <div className="bg-[#1876D2]/10 rounded-lg px-4 py-2.5 mb-6 border border-[#1876D2]/20">
-                      <p className="text-xs font-semibold text-[#00B0FF]">{t.result}</p>
+
+                    {/* Quote mark */}
+                    <div className="text-5xl font-serif text-white/[0.06] leading-none mb-2 select-none relative">"</div>
+
+                    {/* Quote text */}
+                    <p className="text-gray-300 leading-relaxed flex-grow text-sm mb-5 relative">{t.quote}</p>
+
+                    {/* Result pill */}
+                    <div className="bg-[#1876D2]/[0.08] border border-[#1876D2]/20 rounded-xl px-4 py-2.5 mb-5">
+                      <p className="text-xs font-semibold text-[#60a5fa]">{t.result}</p>
                     </div>
+
                     {/* Author */}
-                    <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-xs font-bold shadow-lg`}>{t.initials}</div>
+                    <div className="flex items-center gap-3 relative">
+                      <div className={`w-9 h-9 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white text-[11px] font-bold ring-2 ring-white/[0.06]`}>{t.initials}</div>
                       <div>
                         <div className="text-white text-sm font-bold">{t.name}</div>
-                        <div className="text-gray-500 text-xs">{t.role}</div>
+                        <div className="text-gray-600 text-[11px]">{t.role}</div>
                       </div>
                     </div>
                   </div>
                 </motion.div>
               ))}
-                  </div>
+            </div>
 
-            {/* Trust bar — animated counters */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {/* Stats strip — animated glass counters */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
-                { value: '2,500+', label: 'Happy Families' },
-                { value: '98%', label: 'Parent Satisfaction' },
-                { value: '35+', label: 'Countries' },
-                { value: 'Forbes', label: 'Featured' },
+                { value: '2,500+', label: 'Happy Families', icon: '👨‍👩‍👧' },
+                { value: '98%', label: 'Parent Satisfaction', icon: '💚' },
+                { value: '35+', label: 'Countries', icon: '🌍' },
+                { value: 'Forbes', label: 'Featured In', icon: '📰' },
               ].map((s, i) => (
-                <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 text-center hover:bg-white/[0.05] transition-all duration-500">
-                  <AnimatedCounter value={s.value} className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF] mb-1" duration={2} />
-                  <div className="text-gray-500 text-xs">{s.label}</div>
-                  </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5 text-center hover:bg-white/[0.05] hover:border-white/[0.10] transition-all duration-400 group"
+                >
+                  <div className="text-2xl mb-2">{s.icon}</div>
+                  <AnimatedCounter value={s.value} className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] to-[#00B0FF] block" duration={2} />
+                  <div className="text-gray-600 text-xs mt-1">{s.label}</div>
+                </motion.div>
               ))}
-                </div>
-              </div>
+            </div>
+          </div>
         </section>
 
         {/* ═══ COMPLETE LEARNING ECOSYSTEM — White with Glass Cards ═══ */}
