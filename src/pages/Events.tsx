@@ -86,6 +86,7 @@ const Events: React.FC = () => {
         title="Events | Young CEO Program"
         description="Join our upcoming events, workshops, and competitions designed for young entrepreneurs."
         keywords={["entrepreneurship events", "business workshops", "startup competitions", "networking events"]}
+        url="https://www.orbitstudent.com/events"
       />
       
       <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">

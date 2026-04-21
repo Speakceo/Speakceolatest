@@ -123,6 +123,8 @@ const CookiePolicy: React.FC = () => {
         title="Cookie Policy | Young CEO Program"
         description="Learn about how we use cookies to improve your experience on our platform."
         keywords={["cookie policy", "website cookies", "privacy", "data tracking"]}
+        url="https://www.orbitstudent.com/cookies"
+        noIndex={true}
       />
       
       <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">

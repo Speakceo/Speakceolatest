@@ -99,6 +99,7 @@ export default function SpeakCEOLogin() {
         <meta name="twitter:title" content="Orbit Student Login | Student Portal" />
         <meta name="twitter:description" content="Login to Orbit Student portal. Access AI learning dashboard, courses, and 100+ AI tools for kids 8-18." />
         <link rel="canonical" href="https://www.orbitstudent.com/login" />
+        <meta name="robots" content="noindex, nofollow" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

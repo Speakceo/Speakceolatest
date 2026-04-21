@@ -36,6 +36,7 @@ const About = () => {
         title="About Orbit Student | Our Mission to Transform Kids into Future Leaders"
         description="Orbit Student: AI-powered edtech platform for kids 8-18. Learn about our mission, team, and why 2,500+ families trust Orbit Student for entrepreneurship & AI education."
         keywords={['about Orbit Student', 'Orbit Student mission', 'Orbit Student team', 'Orbit Student story', 'who is Orbit Student', 'Orbit Student founder', 'Orbit Student review', 'AI edtech for kids', 'best edtech platform for kids', 'Orbit Student about us']}
+        url="https://www.orbitstudent.com/about"
       />
 
       <div className="min-h-screen bg-white">

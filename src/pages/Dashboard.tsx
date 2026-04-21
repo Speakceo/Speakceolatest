@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { 
   BookOpen, 
@@ -233,6 +234,13 @@ const Dashboard = () => {
   ];
 
   return (
+    <>
+      <SEO
+        title="Student Dashboard | Orbit Student"
+        description="Access your Orbit Student learning dashboard, courses, AI tools, and progress tracker."
+        url="https://www.orbitstudent.com/dashboard"
+        noIndex={true}
+      />
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Hero Section */}
       <motion.div 
@@ -528,6 +536,7 @@ const Dashboard = () => {
         </motion.div>
       </div>
     </div>
+    </>
   );
 };
 

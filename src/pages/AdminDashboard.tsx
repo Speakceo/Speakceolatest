@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 import { 
   Users, 
   BookOpen, 
@@ -386,6 +387,13 @@ export default function AdminDashboard() {
   }
 
   return (
+    <>
+      <SEO
+        title="Admin Dashboard | Orbit Student"
+        description="Orbit Student admin dashboard."
+        url="https://www.orbitstudent.com/admin"
+        noIndex={true}
+      />
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <header className="bg-white shadow">
@@ -463,5 +471,6 @@ export default function AdminDashboard() {
         </div>
       </div>
     </div>
+    </>
   );
 }

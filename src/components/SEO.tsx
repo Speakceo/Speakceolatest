@@ -15,6 +15,7 @@ interface SEOProps {
   modifiedTime?: string;
   structuredData?: any;
   showFAQ?: boolean;
+  noIndex?: boolean;
   courseData?: {
     name: string;
     provider: string;
@@ -162,6 +163,7 @@ export default function SEO({
   modifiedTime,
   structuredData,
   showFAQ = false,
+  noIndex = false,
   courseData
 }: SEOProps) {
   // Avoid "Brand — Title | Brand" duplication
@@ -520,8 +522,14 @@ export default function SEO({
       <meta name="twitter:image" content={image} />
       <meta name="twitter:creator" content="@orbitstudent" />
 
-      {/* Additional Meta Tags */}
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      {/* Robots — noindex for private/legal pages */}
+      <meta
+        name="robots"
+        content={noIndex
+          ? 'noindex, nofollow'
+          : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+        }
+      />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="canonical" href={url} />
 

@@ -91,6 +91,8 @@ const PrivacyPolicy: React.FC = () => {
         title="Privacy Policy | Young CEO Program"
         description="Learn about how we protect your privacy and handle your personal information."
         keywords={["privacy policy", "data protection", "personal information", "data security"]}
+        url="https://www.orbitstudent.com/privacy"
+        noIndex={true}
       />
       
       <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">

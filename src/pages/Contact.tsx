@@ -37,6 +37,7 @@ const Contact = () => {
         title="Contact Orbit Student | Get in Touch — Support & Inquiries"
         description="Contact Orbit Student for support, enrollment, or partnership inquiries. Email hello@orbitstudent.com. We reply within 24 hours."
         keywords={['contact Orbit Student', 'Orbit Student support', 'Orbit Student email', 'Orbit Student phone', 'Orbit Student help', 'Orbit Student enrollment', 'reach Orbit Student', 'Orbit Student customer service']}
+        url="https://www.orbitstudent.com/contact"
       />
 
       <div className="min-h-screen bg-white">

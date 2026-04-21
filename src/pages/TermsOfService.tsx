@@ -91,6 +91,8 @@ const TermsOfService: React.FC = () => {
         title="Terms of Service | Young CEO Program"
         description="Read our terms of service and understand your rights and responsibilities when using our platform."
         keywords={["terms of service", "user agreement", "legal terms", "platform rules"]}
+        url="https://www.orbitstudent.com/terms"
+        noIndex={true}
       />
       
       <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">

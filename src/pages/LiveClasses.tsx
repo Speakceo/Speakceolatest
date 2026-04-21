@@ -210,6 +210,7 @@ export default function LiveClasses() {
         title="Live Classes | Young CEO Program"
         description="Join interactive live classes with expert mentors and learn entrepreneurship skills in real-time."
         keywords={["live classes", "online learning", "entrepreneurship", "mentorship"]}
+        url="https://www.orbitstudent.com/live-classes"
       />
       
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
