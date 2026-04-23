@@ -411,6 +411,77 @@ html, body {
   z-index: -1;
 }
 
+/* ═══ Apple-level Design System ═══ */
+
+/* Apple typography — tight tracking display text */
+.display-text {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.headline-text {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+/* Apple-style easing (what they call "standard easing") */
+.ease-apple {
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Apple muted text color */
+.text-muted-apple {
+  color: #6e6e73;
+}
+
+/* Section eyebrow label — small caps above headlines */
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1876D2;
+}
+
+/* Apple-level card — border only, no shadow */
+.card-apple {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 20px;
+  background: #ffffff;
+  transition: border-color 200ms cubic-bezier(0.25,0.1,0.25,1);
+}
+
+.card-apple:hover {
+  border-color: rgba(24,118,210,0.25);
+}
+
+.card-apple-dark {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.03);
+  transition: border-color 200ms cubic-bezier(0.25,0.1,0.25,1), background 200ms cubic-bezier(0.25,0.1,0.25,1);
+}
+
+.card-apple-dark:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Apple section spacing */
+.section-apple {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (min-width: 640px) {
+  .section-apple {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+}
+
 /* Modern utility styles */
 .text-balance {
   text-wrap: balance;

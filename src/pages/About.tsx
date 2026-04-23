@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Users, Award, Heart, Shield, Trophy, Zap, Globe2, CheckCircle,
@@ -40,40 +40,36 @@ const About = () => {
       />
 
       <div className="min-h-screen bg-white">
-        {/* ═══ HERO — Dark ═══ */}
-        <section className="pt-28 pb-24 bg-slate-950 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-          <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-[#1876D2]/8 rounded-full filter blur-[120px]" />
-          <div className="absolute bottom-[-10%] right-[-5%] w-[30%] h-[30%] bg-[#00B0FF]/6 rounded-full filter blur-[80px]" />
+        {/* ═══ HERO — Apple dark split ═══ */}
+        <section className="pt-28 pb-24 sm:pt-36 sm:pb-32 bg-[#050505] relative overflow-hidden">
+          {/* Single restrained glow */}
+          <div className="absolute inset-0 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse 60% 50% at 70% 50%, rgba(24,118,210,0.07) 0%, transparent 100%)' }} />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-16 items-center">
               {/* Left — Story */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-                  <Sparkles className="h-4 w-4 text-[#00B0FF]" />
-                  <span className="text-sm font-medium text-gray-400">The Story Behind Orbit</span>
-                </div>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.25,0.1,0.25,1] }}>
+                <p className="section-eyebrow text-[#1876D2] mb-6">The story behind Orbit</p>
 
-                <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
-                  From One Child's Question to{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">A Global Movement</span>
+                <h1 className="text-[clamp(2.4rem,5vw,4rem)] font-black text-white tracking-[-0.04em] leading-[0.95] mb-8">
+                  From one child's<br />question to a<br />
+                  <span className="text-[#1876D2]">global movement.</span>
                 </h1>
 
-                <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-7 border border-white/[0.06] mb-8">
-                  <Quote className="h-6 w-6 text-[#00B0FF] mb-4" />
-                  <p className="text-gray-300 italic mb-3">
-                    A curious 12-year-old named Aarav asked:
-                  </p>
-                  <p className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF] mb-4">
+                {/* Quote card — border-only, Apple dark */}
+                <div className="card-apple-dark rounded-2xl p-7 mb-8">
+                  <Quote className="h-5 w-5 text-[#1876D2] mb-4" />
+                  <p className="text-[#6e6e73] text-[14px] mb-3 italic">A curious 12-year-old named Aarav asked:</p>
+                  <p className="text-white text-[17px] font-semibold leading-snug mb-4">
                     "Why don't we learn how to speak like leaders or build real businesses in school?"
                   </p>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    That spark lit the idea behind Orbit — a platform built just for kids like Aarav. We believe every child is already a leader. All they need is the right space.
+                  <p className="text-[#6e6e73] text-[14px] leading-[1.7]">
+                    That question built Orbit — a platform for kids like Aarav. We believe every child is already a leader. They just need the right space.
                   </p>
                 </div>
 
-                {/* What we created */}
+                {/* Feature grid — 2×2 border-only cards */}
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     { icon: Mic, text: 'Public speaking through games' },
@@ -81,56 +77,57 @@ const About = () => {
                     { icon: Sparkles, text: 'AI & branding skills' },
                     { icon: Users, text: 'Real mentorship' },
                   ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2.5 bg-white/[0.03] border border-white/[0.06] rounded-xl p-3">
-                      <item.icon className="h-4 w-4 text-[#00B0FF] flex-shrink-0" />
-                      <span className="text-gray-400 text-xs">{item.text}</span>
+                    <div key={i} className="card-apple-dark rounded-xl p-4 flex items-center gap-3">
+                      <item.icon className="h-4 w-4 text-[#1876D2] flex-shrink-0" />
+                      <span className="text-[#a1a1a6] text-[13px] font-medium">{item.text}</span>
                     </div>
                   ))}
                 </div>
               </motion.div>
 
-              {/* Right — Image + floating badges */}
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="relative hidden lg:block">
-                <div className="relative rounded-2xl overflow-hidden border border-white/[0.06]">
+              {/* Right — Image */}
+              <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.15, duration: 0.65, ease: [0.25,0.1,0.25,1] }} className="relative hidden lg:block">
+                <div className="relative rounded-3xl overflow-hidden border border-white/[0.08]">
                   <img
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
-                    alt="Children learning together"
-                    className="w-full h-auto"
+                    src="/images/hero/orbit-kids-banner.jpg"
+                    alt="Children learning together at Orbit Student"
+                    className="w-full h-auto object-cover"
                     loading="lazy"
+                    onError={(e) => { (e.target as HTMLImageElement).src = '/images/hero/orbit-kids-laptop.jpg'; }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/50 via-transparent to-transparent" />
                 </div>
-                {/* Floating badges */}
-                <div className="absolute -bottom-4 -right-4 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] rounded-xl p-4 shadow-xl">
-                  <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">98%</div>
-                  <div className="text-gray-400 text-xs">Parent Satisfaction</div>
+                {/* Two small proof cards */}
+                <div className="absolute -bottom-5 -right-5 bg-[#0d0d0d] border border-white/[0.10] rounded-2xl px-4 py-3.5">
+                  <p className="text-[#1876D2] text-[20px] font-black leading-none">98%</p>
+                  <p className="text-[#6e6e73] text-[11px] mt-1">Parent satisfaction</p>
                 </div>
-                <div className="absolute -top-4 -left-4 bg-white/[0.05] backdrop-blur-sm border border-white/[0.1] rounded-xl p-3 shadow-xl flex items-center gap-2">
+                <div className="absolute -top-5 -left-5 bg-[#0d0d0d] border border-white/[0.10] rounded-2xl px-4 py-3.5 flex items-center gap-2.5">
                   <Trophy className="h-4 w-4 text-amber-400" />
-                  <span className="text-white text-xs font-semibold">Forbes Featured</span>
+                  <span className="text-white text-[13px] font-semibold">Forbes Featured</span>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* ═══ STATS — White ═══ */}
-        <section className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 tracking-tight">Trusted by Families Worldwide</h2>
-              <p className="text-gray-500">Real results that speak for themselves</p>
+        {/* ═══ STATS — Apple light section ═══ */}
+        <section className="section-apple bg-[#f5f5f7]">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+              <p className="section-eyebrow mb-4">By the numbers</p>
+              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-black text-[#1d1d1f] tracking-[-0.03em] leading-tight">Trusted by families worldwide.</h2>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
               {stats.map((s, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                  <div className="bg-gray-50 rounded-2xl p-6 text-center border border-gray-100 hover:shadow-xl hover:border-[#1876D2]/20 transition-all duration-500">
-                    <div className={`w-11 h-11 mx-auto bg-gradient-to-br ${s.gradient} rounded-xl flex items-center justify-center mb-3 shadow-md`}>
+                <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
+                  <div className="card-apple p-7 text-center">
+                    <div className={`w-10 h-10 mx-auto bg-gradient-to-br ${s.gradient} rounded-xl flex items-center justify-center mb-4`}>
                       <s.icon className="h-5 w-5 text-white" />
                     </div>
-                    <div className="text-2xl font-bold text-gray-900">{s.value}</div>
-                    <div className="text-gray-500 text-xs mt-1">{s.label}</div>
+                    <div className="text-[26px] font-black text-[#1d1d1f] tracking-[-0.02em]">{s.value}</div>
+                    <div className="text-[#6e6e73] text-[12px] mt-1 font-medium">{s.label}</div>
                   </div>
                 </motion.div>
               ))}

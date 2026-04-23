@@ -33,8 +33,6 @@ import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
 import AnimatedHero3D from '../components/ui/AnimatedHero3D';
 import AnimatedCounter from '../components/ui/AnimatedCounter';
-import Marquee from '../components/ui/Marquee';
-
 // Optimized animation variants for better performance
 const fadeIn = {
   hidden: { opacity: 0, y: 10 },
@@ -92,303 +90,207 @@ export default function Home() {
         ]}
       />
       
-      <div className="min-h-screen bg-white dark:bg-gray-900 font-[Poppins] overflow-x-hidden">
+      <div className="min-h-screen bg-white overflow-x-hidden" style={{ fontFamily: "'Poppins', -apple-system, BlinkMacSystemFont, sans-serif" }}>
 
-        {/* ═══ HERO — Centered Billboard (21st.dev style) ═══ */}
-        <section className="relative bg-[#020817] text-white overflow-hidden min-h-screen flex flex-col items-center justify-center pt-16">
+        {/* ═══ HERO — Apple split layout with real image ═══ */}
+        <section className="relative bg-[#050505] text-white overflow-hidden min-h-screen flex items-center">
 
-          {/* ── Layered backgrounds ────────────────────────────── */}
-          {/* Grid lines */}
-          <div className="absolute inset-0 opacity-[0.025]"
-            style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)', backgroundSize: '72px 72px' }} />
+          {/* Single, restrained radial glow — no orbs, no grain, no grid */}
+          <div className="absolute inset-0 pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse 70% 60% at 65% 50%, rgba(24,118,210,0.07) 0%, transparent 100%)' }} />
 
-          {/* Central spotlight beam from top */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-[40%] bg-gradient-to-b from-[#00B0FF]/60 to-transparent" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[500px] rounded-full opacity-30 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse at 50% 0%, #1876D2 0%, transparent 70%)' }} />
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-20 sm:pt-36 sm:pb-28 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-16 items-center">
 
-          {/* Side orbs */}
-          <div className="absolute top-1/3 left-[-10%] w-[40%] h-[40%] bg-[#1876D2]/15 rounded-full filter blur-[100px] animate-[float_10s_ease-in-out_infinite]" />
-          <div className="absolute top-1/3 right-[-10%] w-[35%] h-[35%] bg-[#00B0FF]/10 rounded-full filter blur-[100px] animate-[float_12s_ease-in-out_infinite_reverse]" />
-
-          {/* Grain texture */}
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: '180px 180px' }} />
-
-          {/* ── Content ─────────────────────────────────────────── */}
-          <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
-
-            {/* Announcement chip */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/[0.10] bg-white/[0.04] backdrop-blur-sm mb-8 cursor-default"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00B0FF]" />
-              </span>
-              <span className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#00B0FF]">New 2026</span>
-              <div className="w-[1px] h-3 bg-white/20" />
-              <span className="text-xs text-gray-400 font-medium">AI-powered learning platform for kids 8-18</span>
-              <ArrowRight className="w-3 h-3 text-gray-600" />
-            </motion.div>
-
-            {/* Headline — max impact */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[clamp(2.6rem,7vw,5.5rem)] font-black leading-[1.05] tracking-[-0.03em] mb-6"
-            >
-              <span className="text-white">Where Young Minds</span>
-              <br />
-              <span className="relative inline-block">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#60a5fa] via-[#00B0FF] to-[#38bdf8]">
-                  Become Leaders
-                </span>
-                {/* Underline glow */}
-                <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00B0FF]/60 to-transparent rounded-full" />
-              </span>
-            </motion.h1>
-
-            {/* Sub-headline */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-[1.05rem] sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
-            >
-              An AI-powered 180-day program that transforms kids into confident entrepreneurs — through games, real projects, live mentorship, and 100+ AI tools.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3 justify-center mb-8"
-            >
-              <button
-                onClick={() => setShowEnrollment(true)}
-                className="group relative overflow-hidden px-7 py-4 bg-white text-slate-900 font-bold text-[15px] rounded-2xl shadow-xl shadow-white/10 hover:shadow-white/20 transition-all duration-300 hover:scale-[1.02]"
+              {/* ── Left: Text content ─────────────────────────── */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-[#1876D2]/10 to-transparent" />
-                <span className="relative flex items-center justify-center gap-2">
-                  Start Free — Check Courses
-                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-              <button
-                onClick={() => setShowCareerGuide(true)}
-                className="group px-7 py-4 bg-white/[0.05] hover:bg-white/[0.09] text-white font-semibold text-[15px] rounded-2xl border border-white/[0.10] hover:border-white/[0.20] transition-all duration-300 backdrop-blur-sm"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  <PlayCircle className="h-4 w-4 text-[#00B0FF]" />
-                  Download Free Guide
-                </span>
-              </button>
-            </motion.div>
-
-            {/* Avatar stack + social proof */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
-            >
-              {/* Avatar circles */}
-              <div className="flex -space-x-2.5">
-                {[
-                  { bg: 'from-[#1876D2] to-[#00B0FF]', label: 'SC' },
-                  { bg: 'from-emerald-400 to-teal-500', label: 'MR' },
-                  { bg: 'from-violet-500 to-purple-600', label: 'JP' },
-                  { bg: 'from-amber-400 to-orange-500', label: 'AK' },
-                  { bg: 'from-rose-500 to-pink-600', label: 'LB' },
-                ].map((a, i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full bg-gradient-to-br ${a.bg} flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-[#020817]`}>
-                    {a.label}
-                  </div>
-                ))}
-                <div className="w-8 h-8 rounded-full bg-white/[0.08] border border-white/[0.12] flex items-center justify-center text-white text-[10px] font-bold ring-2 ring-[#020817]">
-                  +
+                {/* Live signal — minimal, no chip */}
+                <div className="flex items-center gap-2.5 mb-10">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00B0FF]" />
+                  </span>
+                  <span className="text-[13px] text-[#6e6e73] font-medium tracking-wide">AI-powered learning · Ages 8–18</span>
                 </div>
-              </div>
-              <div className="text-left">
-                <div className="text-white font-semibold text-sm">Joined by 2,500+ families</div>
-                <div className="flex items-center gap-1 mt-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3 h-3 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                    </svg>
-                  ))}
-                  <span className="text-gray-400 text-xs ml-1">4.9/5</span>
+
+                {/* Headline — Apple weight & tracking */}
+                <h1 className="text-[clamp(2.8rem,5.5vw,5rem)] font-black leading-[0.95] tracking-[-0.04em] mb-7">
+                  Where Young<br />Minds Become<br />
+                  <span className="text-[#1876D2]">Leaders.</span>
+                </h1>
+
+                {/* Body — Apple 17px, #6e6e73 */}
+                <p className="text-[17px] leading-[1.7] text-[#6e6e73] max-w-[440px] mb-10">
+                  The AI-powered 180-day program transforming kids into confident entrepreneurs — through real games, live projects, and expert mentorship.
+                </p>
+
+                {/* CTAs — one primary, one ghost. Verb-first labels. */}
+                <div className="flex flex-col sm:flex-row gap-3 mb-12">
+                  <button
+                    onClick={() => setShowEnrollment(true)}
+                    className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#1876D2] hover:bg-[#1464b8] text-white font-semibold text-[15px] rounded-2xl transition-colors duration-[200ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] min-h-[52px]"
+                  >
+                    Start Free Trial
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+                  </button>
+                  <button
+                    onClick={() => setShowCareerGuide(true)}
+                    className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/[0.06] hover:bg-white/[0.10] text-white font-semibold text-[15px] rounded-2xl border border-white/[0.10] hover:border-white/[0.18] transition-all duration-[200ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] min-h-[52px]"
+                  >
+                    <PlayCircle className="h-4 w-4 text-[#00B0FF]" />
+                    Watch Demo
+                  </button>
                 </div>
-              </div>
-              <div className="hidden sm:flex items-center gap-4 pl-4 border-l border-white/[0.08]">
-                {['✓ Free 7-day trial', '✓ No card needed'].map((t, i) => (
-                  <span key={i} className="text-[11px] text-gray-500">{t}</span>
-                ))}
-              </div>
-            </motion.div>
 
-            {/* ── Product Mockup Card ──────────────────────────── */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="relative mx-auto max-w-4xl"
-            >
-              {/* Glow behind card */}
-              <div className="absolute -inset-4 bg-gradient-to-b from-[#1876D2]/20 via-[#00B0FF]/10 to-transparent rounded-3xl filter blur-2xl pointer-events-none" />
-
-              {/* Card frame */}
-              <div className="relative rounded-2xl border border-white/[0.10] overflow-hidden shadow-2xl shadow-black/60">
-                {/* Window chrome bar */}
-                <div className="bg-[#0d1527] border-b border-white/[0.06] px-5 py-3 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500/70" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                    <div className="w-3 h-3 rounded-full bg-emerald-500/70" />
+                {/* Avatar stack — per skill: image → initials → icon fallback, ring separator */}
+                <div className="flex items-center gap-4">
+                  <div className="flex -space-x-2.5">
+                    {[
+                      { bg: 'from-[#1876D2] to-[#00B0FF]', label: 'SC' },
+                      { bg: 'from-emerald-500 to-teal-500', label: 'MR' },
+                      { bg: 'from-violet-500 to-purple-600', label: 'JP' },
+                      { bg: 'from-amber-500 to-orange-500', label: 'AK' },
+                      { bg: 'from-rose-500 to-pink-600', label: 'LB' },
+                    ].map((a, i) => (
+                      <div key={i} className={`w-9 h-9 rounded-full bg-gradient-to-br ${a.bg} flex items-center justify-center text-white text-[11px] font-bold ring-2 ring-[#050505]`}>
+                        {a.label}
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex-1 flex justify-center">
-                    <div className="bg-white/[0.06] border border-white/[0.08] rounded-lg px-4 py-1 text-[11px] text-gray-500 font-mono">
-                      orbitstudent.com/dashboard
+                  <div>
+                    <p className="text-white text-[14px] font-semibold">2,500+ families enrolled</p>
+                    <div className="flex items-center gap-1 mt-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} className="w-3 h-3 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                      ))}
+                      <span className="text-[#6e6e73] text-[12px] ml-1">4.9 / 5</span>
                     </div>
                   </div>
-                </div>
-
-                {/* Dashboard preview */}
-                <div className="bg-[#080f1e] p-4 sm:p-6">
-                  {/* Top stat strip */}
-                  <div className="grid grid-cols-3 gap-3 mb-4">
-                    {[
-                      { label: 'XP Points', value: '4,820', color: 'from-[#1876D2] to-[#00B0FF]', icon: '⚡' },
-                      { label: 'Streak', value: '14 days', color: 'from-emerald-500 to-teal-500', icon: '🔥' },
-                      { label: 'Rank', value: 'Level 7', color: 'from-amber-500 to-orange-500', icon: '🏆' },
-                    ].map((s, i) => (
-                      <div key={i} className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3 text-center">
-                        <div className="text-lg mb-1">{s.icon}</div>
-                        <div className={`text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r ${s.color}`}>{s.value}</div>
-                        <div className="text-[10px] text-gray-600 mt-0.5">{s.label}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Active modules */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {[
-                      { title: 'Startup Empire', sub: 'Stage 3: Branding your idea', prog: 62, color: 'from-violet-500 to-purple-600', icon: '👑' },
-                      { title: 'AI Pitch Simulator', sub: 'Practice investor pitch', prog: 40, color: 'from-[#1876D2] to-[#00B0FF]', icon: '🤖' },
-                    ].map((m, i) => (
-                      <div key={i} className="bg-white/[0.03] border border-white/[0.05] rounded-xl p-4 text-left">
-                        <div className="flex items-center gap-2.5 mb-3">
-                          <span className="text-xl">{m.icon}</span>
-                          <div>
-                            <div className="text-white text-xs font-bold">{m.title}</div>
-                            <div className="text-gray-600 text-[10px]">{m.sub}</div>
-                          </div>
-                        </div>
-                        <div className="h-1.5 bg-white/[0.06] rounded-full overflow-hidden">
-                          <motion.div
-                            className={`h-full rounded-full bg-gradient-to-r ${m.color}`}
-                            initial={{ width: 0 }}
-                            animate={{ width: `${m.prog}%` }}
-                            transition={{ duration: 1.2, delay: 1 + i * 0.2 }}
-                          />
-                        </div>
-                        <div className="text-[10px] text-gray-600 mt-1.5">{m.prog}% complete</div>
-                      </div>
-                    ))}
+                  <div className="hidden sm:flex items-center gap-1 pl-4 border-l border-white/[0.08]">
+                    <Shield className="w-3.5 h-3.5 text-[#6e6e73]" />
+                    <span className="text-[12px] text-[#6e6e73]">30-day guarantee</span>
                   </div>
                 </div>
+              </motion.div>
 
-                {/* Bottom gradient fade */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#020817] to-transparent pointer-events-none" />
+              {/* ── Right: Real hero image ─────────────────────── */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.97 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.75, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+                className="relative hidden lg:block"
+              >
+                {/* Image — rounded, subtle bottom fade */}
+                <div className="relative rounded-3xl overflow-hidden border border-white/[0.08]">
+                  <img
+                    src="/images/hero/orbit-kids-laptop.jpg"
+                    alt="Young student learning with Orbit Student on laptop"
+                    className="w-full h-auto object-cover"
+                    width="720"
+                    height="540"
+                    fetchPriority="high"
+                    decoding="async"
+                  />
+                  {/* Bottom vignette so image bleeds into background naturally */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/50 via-transparent to-transparent" />
+                </div>
+
+                {/* Single floating proof card — per skill: one accent, useful info */}
+                <motion.div
+                  animate={{ y: [-5, 5, -5] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -bottom-5 -left-8 bg-[#0d0d0d] border border-white/[0.10] rounded-2xl px-4 py-3.5 shadow-2xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-[#1876D2]/15 border border-[#1876D2]/20 rounded-xl flex items-center justify-center">
+                      <Trophy className="h-4 w-4 text-[#1876D2]" />
+                    </div>
+                    <div>
+                      <p className="text-white text-[13px] font-semibold">98% Success Rate</p>
+                      <p className="text-[#6e6e73] text-[11px] mt-0.5">Among enrolled families</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  animate={{ y: [5, -5, 5] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute -top-5 -right-6 bg-[#0d0d0d] border border-white/[0.10] rounded-2xl px-4 py-3.5 shadow-2xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-emerald-500/15 border border-emerald-500/20 rounded-xl flex items-center justify-center">
+                      <Zap className="h-4 w-4 text-emerald-400" />
+                    </div>
+                    <div>
+                      <p className="text-white text-[13px] font-semibold">Live classes daily</p>
+                      <p className="text-[#6e6e73] text-[11px] mt-0.5">Expert mentors · 52/year</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Mobile hero image */}
+              <div className="lg:hidden relative rounded-2xl overflow-hidden border border-white/[0.08]">
+                <img
+                  src="/images/hero/orbit-kids-laptop.jpg"
+                  alt="Young student learning with Orbit Student"
+                  className="w-full h-48 object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent" />
               </div>
-
-              {/* Floating notification cards */}
-              <motion.div
-                animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -right-4 sm:-right-8 top-20 bg-[#0d1527] backdrop-blur-xl border border-white/[0.10] rounded-xl p-3 shadow-2xl hidden sm:block"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center text-sm">🎉</div>
-                  <div>
-                    <div className="text-white text-[11px] font-bold">Achievement Unlocked!</div>
-                    <div className="text-emerald-400 text-[10px]">First Business Plan +200 XP</div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -left-4 sm:-left-8 bottom-20 bg-[#0d1527] backdrop-blur-xl border border-white/[0.10] rounded-xl p-3 shadow-2xl hidden sm:block"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-lg flex items-center justify-center text-sm">🚀</div>
-                  <div>
-                    <div className="text-white text-[11px] font-bold">Live Class in 10 min</div>
-                    <div className="text-[#00B0FF] text-[10px]">Pitching to Investors</div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
-
-          {/* Bottom fade to next section */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020817] to-transparent pointer-events-none" />
         </section>
 
-        {/* ═══ SCROLLING TRUST MARQUEE ═══ */}
-        <section className="py-4 bg-[#020817] border-y border-white/[0.05] relative overflow-hidden">
-          <Marquee speed={22} className="py-1">
-            <div className="flex items-center gap-10 px-4">
+        {/* ═══ TRUST BAR — Minimal stats strip (Apple style: no marquee, just facts) ═══ */}
+        <section className="bg-[#050505] border-y border-white/[0.05]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+            <div className="flex flex-wrap items-center justify-between gap-6">
               {[
-                { text: '🏆 Award-Winning Platform', highlight: false },
-                { text: '🌍 35+ Countries', highlight: false },
-                { text: '⭐ 4.9/5 Parent Rating', highlight: true },
-                { text: '🚀 2,500+ Students', highlight: false },
-                { text: '🎓 $2.9B+ Scholarships Mapped', highlight: true },
-                { text: '🤖 100+ AI Tools', highlight: false },
-                { text: '📺 500+ Expert Lessons', highlight: false },
-                { text: '🔒 30-Day Guarantee', highlight: true },
-                { text: '💡 180-Day Program', highlight: false },
-                { text: '👨‍🏫 Live Mentorship', highlight: false },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className={`text-[13px] font-medium whitespace-nowrap ${item.highlight ? 'text-[#00B0FF]' : 'text-gray-600'}`}>
-                    {item.text}
-                  </span>
-                  <span className="w-1 h-1 rounded-full bg-white/10 flex-shrink-0" />
+                { value: '2,500+', label: 'Families enrolled' },
+                { value: '35+', label: 'Countries' },
+                { value: '4.9/5', label: 'Parent rating' },
+                { value: '180', label: 'Day program' },
+                { value: '98%', label: 'Success rate' },
+              ].map((s, i) => (
+                <div key={i} className="flex items-center gap-3 min-w-0">
+                  {i > 0 && <div className="w-[1px] h-6 bg-white/[0.06] hidden sm:block flex-shrink-0" />}
+                  <div className="min-w-0">
+                    <p className="text-white font-bold text-[18px] tracking-[-0.02em]">{s.value}</p>
+                    <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.label}</p>
+                  </div>
                 </div>
               ))}
             </div>
-          </Marquee>
+          </div>
         </section>
 
-        {/* ═══ AS FEATURED IN — Premium Media Bar ═══ */}
-        <section className="py-10 sm:py-14 bg-[#020817] border-b border-white/[0.04]">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-[10px] font-bold tracking-[0.25em] uppercase text-gray-700 mb-8">As Seen In &amp; Trusted By</p>
+        {/* ═══ AS FEATURED IN — Restrained Apple-style media bar ═══ */}
+        <section className="bg-[#050505] border-b border-white/[0.05]">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8 py-10 sm:py-12">
+            <p className="text-center section-eyebrow text-[#6e6e73] mb-8">As seen in</p>
             <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
               {[
-                { name: 'Forbes', size: 'text-xl font-black' },
-                { name: 'TechCrunch', size: 'text-base font-bold' },
-                { name: 'EdTech Review', size: 'text-sm font-bold tracking-wide' },
-                { name: 'Times of India', size: 'text-sm font-semibold tracking-wide' },
-                { name: 'YourStory', size: 'text-base font-bold' },
+                { name: 'Forbes', cls: 'text-[19px] font-black' },
+                { name: 'TechCrunch', cls: 'text-[15px] font-bold' },
+                { name: 'EdTech Review', cls: 'text-[13px] font-semibold tracking-wide' },
+                { name: 'Times of India', cls: 'text-[13px] font-semibold' },
+                { name: 'YourStory', cls: 'text-[15px] font-bold' },
               ].map((pub, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className={`${pub.size} text-gray-600 hover:text-gray-300 transition-colors duration-300 cursor-default select-none`}
+                  transition={{ delay: i * 0.06, duration: 0.4 }}
+                  className={`${pub.cls} text-[#3d3d3f] hover:text-[#6e6e73] transition-colors duration-[200ms] cursor-default select-none`}
                 >
                   {pub.name}
                 </motion.span>
@@ -635,185 +537,112 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═══ WHAT YOUR CHILD GETS — Interactive Visual USP ═══ */}
-        <section className="py-16 sm:py-28 bg-white dark:bg-gray-950 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.4] dark:opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(circle, #e2e8f0 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] opacity-[0.04]"
-            style={{ background: 'radial-gradient(ellipse at 50% 0%, #1876D2 0%, transparent 70%)' }} />
-          
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E3F2FD] border border-[#1876D2]/10 mb-8">
-                <Sparkles className="h-4 w-4 text-[#1876D2]" />
-                <span className="text-sm font-medium text-[#1876D2]">The Orbit Difference</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-5 tracking-tight leading-tight">
-                Not Just Learning.{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Living It.</span>
-              </h2>
-              <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-                Other platforms give PDFs. We give your child a real experience — building companies, playing business games, pitching to AI investors, and mastering skills that schools don't teach.
-              </p>
-            </motion.div>
+        {/* ═══ WHAT YOUR CHILD GETS — Apple-level clean section ═══ */}
+        <section className="section-apple bg-[#f5f5f7]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
+            {/* Section header — no pill badges per Apple style */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mb-10 sm:mb-12 bg-white rounded-2xl border border-[#1876D2]/10 shadow-lg shadow-[#1876D2]/5 p-4 sm:p-6"
+              transition={{ duration: 0.5, ease: [0.25,0.1,0.25,1] }}
+              className="text-center mb-20"
             >
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-                {[
-                  { k: '01', t: 'Play', d: 'Gamified startup and finance missions' },
-                  { k: '02', t: 'Build', d: 'Websites, apps, decks with AI copilots' },
-                  { k: '03', t: 'Launch', d: 'Mentor feedback and real-world showcases' },
-                  { k: '04', t: 'Win', d: 'Portfolio + scholarship-ready profile' },
-                ].map((step) => (
-                  <div key={step.k} className="rounded-xl bg-[#f8fbff] border border-[#1876D2]/10 p-4">
-                    <div className="text-[10px] font-bold text-[#1876D2] tracking-widest mb-1">STEP {step.k}</div>
-                    <div className="text-sm font-bold text-gray-900 mb-1">{step.t}</div>
-                    <p className="text-xs text-gray-500">{step.d}</p>
-                  </div>
-                ))}
-              </div>
+              <p className="section-eyebrow mb-5">What your child gets</p>
+              <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-black text-[#1d1d1f] tracking-[-0.03em] leading-[1.05] mb-6">
+                Not just learning.<br />
+                <span className="text-[#1876D2]">Living it.</span>
+              </h2>
+              <p className="text-[17px] text-[#6e6e73] max-w-xl mx-auto leading-[1.7]">
+                Other platforms give PDFs. We give real experience — business games, AI tools, live projects, and mentorship schools don't offer.
+              </p>
             </motion.div>
 
-            {/* Interactive USP Cards — gradient border (21st.dev style) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+            {/* How it works — numbered steps, generous spacing */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+            >
               {[
-                {
-                  icon: '🎮',
-                  title: '10 Business Games',
-                  subtitle: 'Not watching. Playing.',
-                  desc: 'From running a lemonade stand to trading across planets — kids learn pricing, investing, budgeting & pitching through addictive mini-games.',
-                  stats: '10 games · 500+ XP',
-                  border: 'from-violet-500/40 via-purple-600/20 to-transparent',
-                  glow: 'group-hover:shadow-violet-500/10',
-                  accent: 'text-violet-400',
-                  link: '/demo',
-                },
-                {
-                  icon: '👑',
-                  title: 'Startup Empire',
-                  subtitle: 'Build a $10M company.',
-                  desc: 'A full roleplay game with 6 stages, 24 missions — from idea generation to IPO. Real decisions, real consequences.',
-                  stats: '6 stages · 24 missions',
-                  border: 'from-amber-500/40 via-orange-600/20 to-transparent',
-                  glow: 'group-hover:shadow-amber-500/10',
-                  accent: 'text-amber-400',
-                  link: '/demo',
-                },
-                {
-                  icon: '🤖',
-                  title: 'AI Superpowers',
-                  subtitle: '100+ AI tools. Zero limits.',
-                  desc: 'AI Website Builder, AI Presentation Maker, AI Business Plan Writer — your child learns to command AI like a CEO.',
-                  stats: '100+ tools · Unlimited',
-                  border: 'from-[#1876D2]/40 via-[#00B0FF]/20 to-transparent',
-                  glow: 'group-hover:shadow-[#1876D2]/10',
-                  accent: 'text-[#00B0FF]',
-                  link: '/demo',
-                },
-                {
-                  icon: '🎯',
-                  title: '180-Day Curriculum',
-                  subtitle: 'Structured. Not random.',
-                  desc: 'A proven path from beginner to confident young entrepreneur. Weekly tasks, live classes, mentorship — every day builds real skills.',
-                  stats: '180 days · 52 live classes',
-                  border: 'from-emerald-500/40 via-teal-600/20 to-transparent',
-                  glow: 'group-hover:shadow-emerald-500/10',
-                  accent: 'text-emerald-400',
-                  link: '/courses',
-                },
-                {
-                  icon: '🌍',
-                  title: 'Scholarship Database',
-                  subtitle: 'Start early. Win big.',
-                  desc: '500+ scholarships, competitions, and fellowships mapped for your child — most parents don\'t even know these exist.',
-                  stats: '500+ opportunities',
-                  border: 'from-indigo-500/40 via-blue-600/20 to-transparent',
-                  glow: 'group-hover:shadow-indigo-500/10',
-                  accent: 'text-indigo-400',
-                  link: '/resources',
-                },
-                {
-                  icon: '🏆',
-                  title: 'Real Portfolio',
-                  subtitle: 'Not certificates. Proof.',
-                  desc: 'Your child builds websites, games, pitch decks, and business plans they can actually show to schools and competitions.',
-                  stats: '10+ portfolio pieces',
-                  border: 'from-rose-500/40 via-pink-600/20 to-transparent',
-                  glow: 'group-hover:shadow-rose-500/10',
-                  accent: 'text-rose-400',
-                  link: '/about',
-                },
+                { n: '01', t: 'Play', d: 'Gamified missions & business simulations' },
+                { n: '02', t: 'Build', d: 'Real websites, apps & pitch decks with AI' },
+                { n: '03', t: 'Launch', d: 'Mentor feedback & real-world showcases' },
+                { n: '04', t: 'Win', d: 'Portfolio & scholarship-ready profile' },
+              ].map((s) => (
+                <div key={s.n} className="card-apple p-6">
+                  <p className="text-[11px] font-bold text-[#1876D2] tracking-[0.1em] uppercase mb-3">{s.n}</p>
+                  <p className="text-[16px] font-bold text-[#1d1d1f] mb-2">{s.t}</p>
+                  <p className="text-[13px] text-[#6e6e73] leading-relaxed">{s.d}</p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* USP Cards — border-only, Apple-style. Shadow OR border, not both. */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+              {[
+                { icon: '🎮', title: '10 Business Games', sub: '10 games · 500+ XP', desc: 'Kids learn pricing, investing, budgeting & pitching through immersive, story-driven mini-games.', link: '/demo' },
+                { icon: '👑', title: 'Startup Empire', sub: '6 stages · 24 missions', desc: 'A full roleplay journey from idea to IPO — real decisions, real consequences, real learning.', link: '/demo' },
+                { icon: '🤖', title: 'AI Superpowers', sub: '100+ tools · Unlimited', desc: 'AI Website Builder, Pitch Writer, Image Generator — your child commands AI like a CEO.', link: '/demo' },
+                { icon: '🎯', title: '180-Day Curriculum', sub: '180 days · 52 live classes', desc: 'Structured, mentor-guided path from beginner to confident young entrepreneur.', link: '/courses' },
+                { icon: '🌍', title: 'Scholarship Database', sub: '500+ opportunities', desc: 'Scholarships, competitions & fellowships mapped by age, country, and interest.', link: '/resources' },
+                { icon: '🏆', title: 'Real Portfolio', sub: '10+ portfolio pieces', desc: 'Websites, games, pitch decks — actual proof for schools and competitions.', link: '/about' },
               ].map((usp, i) => (
                 <motion.a
                   key={i}
                   href={usp.link}
-                  initial={{ opacity: 0, y: 25 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.07 }}
-                  className={`group relative rounded-2xl p-[1px] bg-gradient-to-br ${usp.border} hover:shadow-2xl ${usp.glow} transition-all duration-500 overflow-hidden`}
+                  transition={{ delay: i * 0.06, duration: 0.4, ease: [0.25,0.1,0.25,1] }}
+                  className="card-apple p-7 flex flex-col group"
                 >
-                  {/* Inner card */}
-                  <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 h-full flex flex-col">
-                    {/* Icon row */}
-                    <div className="flex items-start justify-between mb-5">
-                      <span className="text-3xl">{usp.icon}</span>
-                      <span className={`text-[10px] font-bold ${usp.accent} bg-current/5 border border-current/20 px-2.5 py-1 rounded-full opacity-70`}
-                        style={{ backgroundColor: 'transparent' }}
-                      >
-                        <span className={`${usp.accent}`}>{usp.stats}</span>
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{usp.title}</h3>
-                    <p className={`text-xs font-semibold ${usp.accent} mb-3 tracking-wide`}>{usp.subtitle}</p>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed flex-grow">{usp.desc}</p>
-
-                    {/* Hover CTA */}
-                    <div className={`mt-5 flex items-center gap-1.5 ${usp.accent} text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0`}>
-                      Explore <ArrowRight className="w-3.5 h-3.5" />
-                    </div>
+                  <span className="text-3xl mb-5 block">{usp.icon}</span>
+                  <p className="text-[17px] font-bold text-[#1d1d1f] mb-1">{usp.title}</p>
+                  <p className="text-[12px] font-semibold text-[#1876D2] tracking-wide mb-3">{usp.sub}</p>
+                  <p className="text-[14px] text-[#6e6e73] leading-relaxed flex-grow">{usp.desc}</p>
+                  <div className="mt-5 flex items-center gap-1 text-[#1876D2] text-[13px] font-semibold opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200">
+                    Explore <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </motion.a>
               ))}
             </div>
             
-            {/* Bottom comparison strip */}
+            {/* Comparison strip — Apple-style: dark card, clean table */}
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-10"
+              className="bg-[#1d1d1f] rounded-3xl p-8 sm:p-12"
             >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Other EdTech vs. Orbit Student</h3>
-                <p className="text-gray-400 text-sm">See why 2,500+ parents made the switch</p>
-                </div>
+              <div className="text-center mb-10">
+                <h3 className="text-[clamp(1.5rem,3vw,2rem)] font-bold text-white tracking-[-0.02em] mb-2">Other EdTech vs. Orbit Student</h3>
+                <p className="text-[#6e6e73] text-[15px]">See why 2,500+ parents made the switch</p>
+              </div>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
                 {[
                   { other: 'Watch pre-recorded videos', orbit: 'Build real projects & play business games' },
                   { other: 'Get a certificate PDF', orbit: 'Build a portfolio of websites, games & pitches' },
-                  { other: 'Learn theory from slides', orbit: 'Run a lemonade stand, trade stocks, pitch to AI investors' },
-                  { other: 'Generic content for all ages', orbit: 'Personalized AI-powered path for ages 8-18' },
+                  { other: 'Learn theory from slides', orbit: 'Run lemonade stands, trade stocks, pitch to AI' },
+                  { other: 'Generic content for all ages', orbit: 'Personalized AI-powered path for ages 8–18' },
                   { other: 'No scholarship guidance', orbit: '500+ scholarships & competition database' },
-                  { other: 'Learning stops at logout', orbit: 'Kids beg to come back and play more' },
+                  { other: 'Learning stops at logout', orbit: 'Kids beg to come back every day' },
                 ].map((row, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -10 : 10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-                    className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-4 flex gap-3">
+                  <motion.div key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+                    className="card-apple-dark rounded-2xl p-5 flex gap-3">
                     <div className="shrink-0 mt-0.5">
-                      <div className="w-5 h-5 rounded-full bg-red-500/20 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-red-500/15 flex items-center justify-center">
                         <X className="w-3 h-3 text-red-400" />
-                  </div>
-                  </div>
+                      </div>
+                    </div>
                     <div>
-                      <p className="text-gray-500 text-xs line-through mb-1">{row.other}</p>
+                      <p className="text-[#6e6e73] text-[12px] line-through mb-1.5">{row.other}</p>
                       <div className="flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                        <p className="text-white text-sm font-medium">{row.orbit}</p>
-                  </div>
-                </div>
+                        <p className="text-white text-[13px] font-medium leading-snug">{row.orbit}</p>
+                      </div>
+                    </div>
                   </motion.div>
                 ))}
               </div>
