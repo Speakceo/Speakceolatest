@@ -99,8 +99,8 @@ export default function Home() {
           <div className="absolute inset-0 pointer-events-none"
             style={{ background: 'radial-gradient(ellipse 70% 60% at 65% 50%, rgba(24,118,210,0.07) 0%, transparent 100%)' }} />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-20 sm:pt-36 sm:pb-28 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-16 items-center">
+          <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-24 pb-16 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-8 sm:gap-12 lg:gap-16 items-center">
 
               {/* ── Left: Text content ─────────────────────────── */}
               <motion.div
@@ -109,27 +109,27 @@ export default function Home() {
                 transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 {/* Live signal — minimal, no chip */}
-                <div className="flex items-center gap-2.5 mb-10">
+                <div className="flex items-center gap-2.5 mb-7 sm:mb-10">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00B0FF]" />
                   </span>
-                  <span className="text-[13px] text-[#6e6e73] font-medium tracking-wide">AI-powered learning · Ages 8–18</span>
+                  <span className="text-[12px] sm:text-[13px] text-[#6e6e73] font-medium tracking-wide">AI-powered learning · Ages 8–18</span>
                 </div>
 
                 {/* Headline — Apple weight & tracking */}
-                <h1 className="text-[clamp(2.8rem,5.5vw,5rem)] font-black leading-[0.95] tracking-[-0.04em] mb-7">
+                <h1 className="text-[clamp(2.2rem,8vw,5rem)] font-black leading-[1.0] tracking-[-0.03em] sm:tracking-[-0.04em] sm:leading-[0.95] mb-6 sm:mb-7">
                   Where Young<br />Minds Become<br />
                   <span className="text-[#1876D2]">Leaders.</span>
                 </h1>
 
                 {/* Body — Apple 17px, #6e6e73 */}
-                <p className="text-[17px] leading-[1.7] text-[#6e6e73] max-w-[440px] mb-10">
+                <p className="text-[15px] sm:text-[17px] leading-[1.65] sm:leading-[1.7] text-[#6e6e73] max-w-[440px] mb-8 sm:mb-10">
                   The AI-powered 180-day program transforming kids into confident entrepreneurs — through real games, live projects, and expert mentorship.
                 </p>
 
                 {/* CTAs — one primary, one ghost. Verb-first labels. */}
-                <div className="flex flex-col sm:flex-row gap-3 mb-12">
+                <div className="flex flex-col xs:flex-row sm:flex-row gap-3 mb-10 sm:mb-12">
                   <button
                     onClick={() => setShowEnrollment(true)}
                     className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#1876D2] hover:bg-[#1464b8] text-white font-semibold text-[15px] rounded-2xl transition-colors duration-[200ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] min-h-[52px]"
@@ -146,33 +146,32 @@ export default function Home() {
                   </button>
                 </div>
 
-                {/* Avatar stack — per skill: image → initials → icon fallback, ring separator */}
-                <div className="flex items-center gap-4">
-                  <div className="flex -space-x-2.5">
+                {/* Avatar stack — compact on mobile */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                  <div className="flex -space-x-2">
                     {[
                       { bg: 'from-[#1876D2] to-[#00B0FF]', label: 'SC' },
                       { bg: 'from-emerald-500 to-teal-500', label: 'MR' },
                       { bg: 'from-violet-500 to-purple-600', label: 'JP' },
                       { bg: 'from-amber-500 to-orange-500', label: 'AK' },
-                      { bg: 'from-rose-500 to-pink-600', label: 'LB' },
                     ].map((a, i) => (
-                      <div key={i} className={`w-9 h-9 rounded-full bg-gradient-to-br ${a.bg} flex items-center justify-center text-white text-[11px] font-bold ring-2 ring-[#050505]`}>
+                      <div key={i} className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br ${a.bg} flex items-center justify-center text-white text-[10px] sm:text-[11px] font-bold ring-2 ring-[#050505]`}>
                         {a.label}
                       </div>
                     ))}
                   </div>
                   <div>
-                    <p className="text-white text-[14px] font-semibold">2,500+ families enrolled</p>
-                    <div className="flex items-center gap-1 mt-0.5">
+                    <p className="text-white text-[13px] sm:text-[14px] font-semibold">2,500+ families</p>
+                    <div className="flex items-center gap-0.5 mt-0.5">
                       {[...Array(5)].map((_, i) => (
                         <svg key={i} className="w-3 h-3 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
                       ))}
-                      <span className="text-[#6e6e73] text-[12px] ml-1">4.9 / 5</span>
+                      <span className="text-[#6e6e73] text-[11px] ml-1">4.9/5</span>
                     </div>
                   </div>
-                  <div className="hidden sm:flex items-center gap-1 pl-4 border-l border-white/[0.08]">
+                  <div className="hidden sm:flex items-center gap-1.5 pl-3 border-l border-white/[0.08]">
                     <Shield className="w-3.5 h-3.5 text-[#6e6e73]" />
                     <span className="text-[12px] text-[#6e6e73]">30-day guarantee</span>
                   </div>
@@ -235,24 +234,24 @@ export default function Home() {
                 </motion.div>
               </motion.div>
 
-              {/* Mobile hero image */}
-              <div className="lg:hidden relative rounded-2xl overflow-hidden border border-white/[0.08]">
+              {/* Mobile hero image — aspect ratio, no fixed height clipping */}
+              <div className="lg:hidden relative rounded-2xl overflow-hidden border border-white/[0.08]" style={{ aspectRatio: '16/9' }}>
                 <img
                   src="/images/hero/orbit-kids-laptop.jpg"
                   alt="Young student learning with Orbit Student"
-                  className="w-full h-48 object-cover"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/50 via-transparent to-transparent" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══ TRUST BAR — Minimal stats strip (Apple style: no marquee, just facts) ═══ */}
+        {/* ═══ TRUST BAR — 2-col grid on mobile, 5-col on desktop ═══ */}
         <section className="bg-[#050505] border-y border-white/[0.05]">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-            <div className="flex flex-wrap items-center justify-between gap-6">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-5 sm:py-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
               {[
                 { value: '2,500+', label: 'Families enrolled' },
                 { value: '35+', label: 'Countries' },
@@ -260,12 +259,9 @@ export default function Home() {
                 { value: '180', label: 'Day program' },
                 { value: '98%', label: 'Success rate' },
               ].map((s, i) => (
-                <div key={i} className="flex items-center gap-3 min-w-0">
-                  {i > 0 && <div className="w-[1px] h-6 bg-white/[0.06] hidden sm:block flex-shrink-0" />}
-                  <div className="min-w-0">
-                    <p className="text-white font-bold text-[18px] tracking-[-0.02em]">{s.value}</p>
-                    <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.label}</p>
-                  </div>
+                <div key={i} className={`${i === 4 ? 'col-span-2 sm:col-span-1' : ''}`}>
+                  <p className="text-white font-bold text-[16px] sm:text-[18px] tracking-[-0.02em]">{s.value}</p>
+                  <p className="text-[#6e6e73] text-[11px] font-medium mt-0.5">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -274,9 +270,9 @@ export default function Home() {
 
         {/* ═══ AS FEATURED IN — Restrained Apple-style media bar ═══ */}
         <section className="bg-[#050505] border-b border-white/[0.05]">
-          <div className="max-w-5xl mx-auto px-6 lg:px-8 py-10 sm:py-12">
-            <p className="text-center section-eyebrow text-[#6e6e73] mb-8">As seen in</p>
-            <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16">
+          <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8 py-8 sm:py-12">
+            <p className="text-center section-eyebrow text-[#6e6e73] mb-6 sm:mb-8">As seen in</p>
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-16">
               {[
                 { name: 'Forbes', cls: 'text-[19px] font-black' },
                 { name: 'TechCrunch', cls: 'text-[15px] font-bold' },
@@ -565,7 +561,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+              className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-14 sm:mb-16"
             >
               {[
                 { n: '01', t: 'Play', d: 'Gamified missions & business simulations' },
@@ -573,7 +569,7 @@ export default function Home() {
                 { n: '03', t: 'Launch', d: 'Mentor feedback & real-world showcases' },
                 { n: '04', t: 'Win', d: 'Portfolio & scholarship-ready profile' },
               ].map((s) => (
-                <div key={s.n} className="card-apple p-6">
+                <div key={s.n} className="card-apple p-4 sm:p-6">
                   <p className="text-[11px] font-bold text-[#1876D2] tracking-[0.1em] uppercase mb-3">{s.n}</p>
                   <p className="text-[16px] font-bold text-[#1d1d1f] mb-2">{s.t}</p>
                   <p className="text-[13px] text-[#6e6e73] leading-relaxed">{s.d}</p>
