@@ -686,3 +686,356 @@ html, body {
 .bg-\[\#0c1222\] ::-webkit-scrollbar-thumb:hover {
   background: rgba(255,255,255,0.15);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   OPEN-DESIGN SYSTEM — Linear precision + Duolingo gamification
+   Derived from nexu-io/open-design design-systems/linear-app + duolingo
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Design Tokens ─────────────────────────────────────────────────────── */
+:root {
+  /* Linear-grade dark surfaces */
+  --od-bg-0:  #09090b;     /* deepest canvas — marketing pages */
+  --od-bg-1:  #0f1011;     /* panel / sidebar background */
+  --od-bg-2:  #18181b;     /* card / elevated surface */
+  --od-bg-3:  #27272a;     /* hover state surface */
+
+  /* Text hierarchy (Linear model) */
+  --od-text-0: #fafafa;    /* primary — near white */
+  --od-text-1: #a1a1aa;    /* secondary — muted zinc */
+  --od-text-2: #71717a;    /* tertiary — subdued */
+  --od-text-3: #52525b;    /* quaternary — disabled / timestamps */
+
+  /* Orbit brand accent (kept from brand) */
+  --od-accent:       #1876D2;
+  --od-accent-bright: #00B0FF;
+  --od-accent-hover: #1464b8;
+
+  /* Border scale (Linear semi-transparent white) */
+  --od-border-0: rgba(255,255,255,0.05);  /* ultra-subtle */
+  --od-border-1: rgba(255,255,255,0.08);  /* standard cards */
+  --od-border-2: rgba(255,255,255,0.12);  /* hover / focus */
+  --od-border-3: rgba(255,255,255,0.18);  /* prominent */
+
+  /* Duolingo gamification tokens */
+  --xp-green:      #58cc02;
+  --xp-green-deep: #58a700;
+  --xp-streak:     #ff9600;
+  --xp-gem:        #ce82ff;
+  --xp-eel-blue:   #1cb0f6;
+  --xp-red:        #ff4b4b;
+  --xp-gold:       #ffc800;
+
+  /* Easing — Linear's "spring" feel */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-apple:    cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ── Linear-grade dark cards ───────────────────────────────────────────── */
+.card-od {
+  background: var(--od-bg-2);
+  border: 1px solid var(--od-border-1);
+  border-radius: 16px;
+  transition: border-color 180ms var(--ease-apple),
+              background 180ms var(--ease-apple);
+}
+.card-od:hover {
+  border-color: var(--od-border-2);
+  background: #1c1c1f;
+}
+
+/* KPI card — tighter radius for density */
+.card-kpi {
+  background: var(--od-bg-2);
+  border: 1px solid var(--od-border-1);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 180ms var(--ease-apple);
+}
+.card-kpi:hover {
+  border-color: var(--od-border-2);
+}
+
+/* ── Gamification components (Duolingo-inspired) ───────────────────────── */
+
+/* XP progress bar */
+.xp-bar-track {
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.xp-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--xp-green);
+  box-shadow: 0 0 8px rgba(88, 204, 2, 0.4);
+  transition: width 600ms var(--ease-out-expo);
+}
+
+/* Streak badge */
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 150, 0, 0.12);
+  border: 1px solid rgba(255, 150, 0, 0.25);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--xp-streak);
+}
+
+/* Level ribbon — the full-width level indicator */
+.level-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--od-border-1);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+/* Quest tile — Duolingo-style task card */
+.quest-tile {
+  background: var(--od-bg-2);
+  border: 1.5px solid var(--od-border-1);
+  border-radius: 16px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 200ms var(--ease-apple);
+  position: relative;
+  overflow: hidden;
+}
+.quest-tile:hover {
+  border-color: var(--od-border-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+.quest-tile:active {
+  transform: translateY(0);
+}
+
+/* XP pill on quest tiles */
+.xp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(88, 204, 2, 0.12);
+  border: 1px solid rgba(88, 204, 2, 0.2);
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--xp-green);
+}
+
+/* ── Animated beam (open-design motion-frames pattern) ─────────────────── */
+@keyframes od-beam {
+  0%   { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+  30%  { opacity: 0.6; }
+  70%  { opacity: 0.4; }
+  100% { transform: translateX(300%) skewX(-15deg); opacity: 0; }
+}
+
+.od-beam {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.od-beam::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.06),
+    transparent
+  );
+  animation: od-beam 3.5s ease-in-out infinite;
+}
+
+/* ── Animated grid background ──────────────────────────────────────────── */
+.od-grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Linear-style sidebar nav item ────────────────────────────────────── */
+.nav-od {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--od-text-2);
+  cursor: pointer;
+  transition: background 150ms var(--ease-apple), color 150ms var(--ease-apple);
+  white-space: nowrap;
+}
+.nav-od:hover {
+  background: rgba(255,255,255,0.04);
+  color: var(--od-text-0);
+}
+.nav-od.active {
+  background: rgba(24,118,210,0.12);
+  color: #60a5fa;
+}
+.nav-od.active .nav-od-icon {
+  color: #60a5fa;
+}
+
+/* ── KPI delta indicators ───────────────────────────────────────────────── */
+.delta-up {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--xp-green);
+  background: rgba(88, 204, 2, 0.08);
+  border-radius: 9999px;
+  padding: 1px 7px;
+}
+.delta-down {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--xp-red);
+  background: rgba(255, 75, 75, 0.08);
+  border-radius: 9999px;
+  padding: 1px 7px;
+}
+
+/* ── Bento grid (open-design saas-landing bento variant) ───────────────── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: 1fr; }
+}
+
+.bento-card {
+  background: var(--od-bg-2);
+  border: 1px solid var(--od-border-1);
+  border-radius: 20px;
+  padding: 28px;
+  transition: border-color 200ms var(--ease-apple),
+              box-shadow 200ms var(--ease-apple);
+}
+.bento-card:hover {
+  border-color: var(--od-border-2);
+  box-shadow: 0 0 0 1px var(--od-border-1),
+              0 8px 32px rgba(0,0,0,0.2);
+}
+.bento-card-tall {
+  grid-row: span 2;
+}
+.bento-card-wide {
+  grid-column: span 2;
+}
+
+/* ── Duolingo-style "press" button ─────────────────────────────────────── */
+.btn-xp {
+  background: var(--xp-green);
+  color: #fff;
+  border-bottom: 4px solid var(--xp-green-deep);
+  border-radius: 14px;
+  padding: 13px 28px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 150ms, transform 80ms, border-bottom-width 80ms;
+}
+.btn-xp:hover  { background: #5fdb03; }
+.btn-xp:active { transform: translateY(3px); border-bottom-width: 1px; }
+
+/* ── Typography helpers (Linear weight 510 signature) ──────────────────── */
+.text-od-display {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+}
+.text-od-heading {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.text-od-body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--od-text-1);
+}
+
+/* ── Inline SVG chart bar (dashboard skill pattern) ────────────────────── */
+.chart-bar-fill {
+  fill: var(--od-accent);
+  opacity: 0.85;
+  transition: opacity 200ms;
+}
+.chart-bar-fill:hover { opacity: 1; }
+
+/* ── Mobile-safe touch targets (mobile-app skill, ≥44px) ───────────────── */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Bottom mobile nav (gamified-app bottom tab bar) ───────────────────── */
+.mobile-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(9, 9, 11, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--od-border-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+  z-index: 50;
+}
+.mobile-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 150ms var(--ease-apple);
+  min-width: 52px;
+}
+.mobile-tab-item.active {
+  color: var(--od-accent-bright);
+}
+
+/* ── Quest difficulty chip colors ──────────────────────────────────────── */
+.quest-easy   { background: rgba(88, 204, 2, 0.1);  color: var(--xp-green);  border-color: rgba(88, 204, 2, 0.2); }
+.quest-medium { background: rgba(255,150,0, 0.1);   color: var(--xp-streak); border-color: rgba(255,150,0, 0.2); }
+.quest-hard   { background: rgba(206, 130,255,0.1); color: var(--xp-gem);    border-color: rgba(206,130,255,0.2); }

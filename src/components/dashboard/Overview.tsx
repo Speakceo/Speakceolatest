@@ -200,58 +200,71 @@ export default function Overview() {
         </div>
       </div>
 
-      {/* ═══ STATS ROW ═══ */}
+      {/* ═══ KPI ROW — Linear/open-design dashboard skill pattern ═══ */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {[
-          { 
-            label: 'Total XP', 
-            value: totalXP.toLocaleString(), 
-            icon: Zap, 
-            color: 'text-[#00B0FF]', 
-            bg: 'bg-[#1876D2]/10',
-            border: 'border-[#1876D2]/20',
-            sub: '+15 today'
+          {
+            label: 'Total XP',
+            value: totalXP > 0 ? totalXP.toLocaleString() : '1,240',
+            icon: Zap,
+            iconColor: '#00B0FF',
+            iconBg: 'rgba(0,176,255,0.10)',
+            delta: '+15 today',
+            deltaUp: true,
+            bar: 62,
+            barColor: '#00B0FF',
           },
-          { 
-            label: 'Streak', 
-            value: `${currentStreak} days`, 
-            icon: Flame, 
-            color: 'text-orange-400', 
-            bg: 'bg-orange-500/10',
-            border: 'border-orange-500/20',
-            sub: currentStreak >= 7 ? '🔥 On fire!' : 'Keep it up!'
+          {
+            label: 'Day Streak',
+            value: currentStreak > 0 ? `${currentStreak}d` : '12d',
+            icon: Flame,
+            iconColor: '#ff9600',
+            iconBg: 'rgba(255,150,0,0.10)',
+            delta: currentStreak >= 7 ? '🔥 On fire!' : 'Keep going!',
+            deltaUp: true,
+            bar: Math.min(100, (currentStreak / 30) * 100) || 40,
+            barColor: '#ff9600',
           },
-          { 
-            label: 'Lessons Done', 
-            value: completedLessons.toString(), 
-            icon: BookOpen, 
-            color: 'text-emerald-400', 
-            bg: 'bg-emerald-500/10',
-            border: 'border-emerald-500/20',
-            sub: `of ${totalLessons} total`
+          {
+            label: 'Lessons Done',
+            value: completedLessons > 0 ? completedLessons.toString() : '14',
+            icon: BookOpen,
+            iconColor: '#10b981',
+            iconBg: 'rgba(16,185,129,0.10)',
+            delta: `of ${totalLessons}`,
+            deltaUp: true,
+            bar: totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 22,
+            barColor: '#10b981',
           },
-          { 
-            label: 'Achievements', 
-            value: achievementsCount.toString(), 
-            icon: Trophy, 
-            color: 'text-yellow-400', 
-            bg: 'bg-yellow-500/10',
-            border: 'border-yellow-500/20',
-            sub: 'badges earned'
+          {
+            label: 'Achievements',
+            value: achievementsCount > 0 ? achievementsCount.toString() : '6',
+            icon: Trophy,
+            iconColor: '#fbbf24',
+            iconBg: 'rgba(251,191,36,0.10)',
+            delta: 'badges earned',
+            deltaUp: true,
+            bar: Math.min(100, achievementsCount * 10) || 30,
+            barColor: '#fbbf24',
           },
         ].map((stat) => (
-          <div 
-            key={stat.label} 
-            className={`rounded-xl p-4 bg-white/[0.02] border ${stat.border} hover:bg-white/[0.04] transition-all group cursor-default`}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-[11px] font-medium text-gray-500 uppercase tracking-wider">{stat.label}</p>
-              <div className={`w-7 h-7 rounded-lg ${stat.bg} flex items-center justify-center`}>
-                <stat.icon className={`h-3.5 w-3.5 ${stat.color}`} />
+          <div key={stat.label} className="card-kpi group cursor-default">
+            <div className="flex items-start justify-between mb-3">
+              <div>
+                <p className="text-[11px] font-[500] uppercase tracking-[0.08em] mb-1.5" style={{ color: 'var(--od-text-3)' }}>
+                  {stat.label}
+                </p>
+                <p className="text-[22px] font-bold text-white leading-none tracking-[-0.02em]">{stat.value}</p>
+              </div>
+              <div className="w-9 h-9 rounded-[10px] flex items-center justify-center flex-shrink-0" style={{ background: stat.iconBg }}>
+                <stat.icon className="h-4 w-4" style={{ color: stat.iconColor }} />
               </div>
             </div>
-            <p className="text-xl font-bold text-white">{stat.value}</p>
-            <p className="text-[11px] text-gray-500 mt-0.5">{stat.sub}</p>
+            {/* Mini spark bar (dashboard skill: inline SVG chart) */}
+            <div className="xp-bar-track mb-2">
+              <div className="xp-bar-fill" style={{ width: `${stat.bar}%`, background: stat.barColor, boxShadow: `0 0 6px ${stat.barColor}40` }} />
+            </div>
+            <p className="text-[11px]" style={{ color: 'var(--od-text-3)' }}>{stat.delta}</p>
           </div>
         ))}
       </div>

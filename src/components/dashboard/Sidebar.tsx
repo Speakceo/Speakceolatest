@@ -89,34 +89,39 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
     return (
       <button
         onClick={() => { navigate(item.href); if (isMobile) setIsMobileOpen(false); }}
-        className={`group relative flex items-center w-full ${collapsed ? 'justify-center' : ''} px-3 py-2.5 rounded-xl transition-all duration-200 ${
+        className={`group relative flex items-center w-full rounded-[8px] transition-all duration-150 ${
+          collapsed ? 'justify-center p-2.5' : 'px-2.5 py-2'
+        } ${
           active
-            ? 'bg-gradient-to-r from-[#1876D2]/20 to-[#00B0FF]/10 text-white'
-            : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
+            ? 'bg-[rgba(24,118,210,0.14)] text-[#93c5fd]'
+            : 'text-[#71717a] hover:bg-[rgba(255,255,255,0.04)] hover:text-[#e4e4e7]'
         }`}
         title={collapsed ? item.name : ''}
+        style={{ minHeight: 36 }}
       >
-        {/* Active indicator */}
-        {active && (
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 rounded-full bg-gradient-to-b from-[#1876D2] to-[#00B0FF]" />
+        {/* Active left accent bar */}
+        {active && !collapsed && (
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full bg-[#60a5fa]" />
         )}
-        
-        <item.icon className={`h-[18px] w-[18px] flex-shrink-0 ${
-          active ? 'text-[#00B0FF]' : 'text-gray-500 group-hover:text-gray-300'
-        } ${collapsed ? '' : 'mr-3'}`} />
-        
+
+        <item.icon className={`flex-shrink-0 transition-colors ${
+          collapsed ? 'h-[18px] w-[18px]' : 'h-4 w-4 mr-2.5'
+        } ${active ? 'text-[#60a5fa]' : 'text-current'}`} />
+
         {!collapsed && (
-          <span className={`text-[13px] font-medium flex-1 text-left ${active ? 'text-white' : ''}`}>
+          <span className="text-[13px] font-[500] flex-1 text-left leading-none truncate">
             {item.name}
           </span>
         )}
-        
+
         {/* Badges */}
         {!collapsed && item.badge && (
-          <span className={`ml-auto text-[10px] font-bold px-1.5 py-0.5 rounded-md ${
-            item.badge === 'LIVE' ? 'bg-red-500/20 text-red-400 animate-pulse' :
-            item.badge === 'NEW' ? 'bg-[#00B0FF]/15 text-[#00B0FF]' :
-            'bg-white/[0.06] text-gray-400'
+          <span className={`ml-auto text-[10px] font-bold px-1.5 py-[2px] rounded-[4px] flex-shrink-0 ${
+            item.badge === 'LIVE' ? 'bg-red-500/15 text-red-400 animate-pulse' :
+            item.badge === 'NEW' ? 'bg-[#00B0FF]/12 text-[#00B0FF]' :
+            item.badge === '🔥' ? 'text-[13px] leading-none' :
+            item.badge === '🎮' ? 'text-[13px] leading-none' :
+            'bg-[rgba(255,255,255,0.06)] text-[#71717a]'
           }`}>
             {item.badge}
           </span>
@@ -146,33 +151,52 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
   );
 
   const UserSection = ({ collapsed = false }: { collapsed?: boolean }) => (
-    <div className={`border-t border-white/[0.04] ${collapsed ? 'p-2' : 'p-3'}`}>
+    <div className={`border-t border-[rgba(255,255,255,0.05)] ${collapsed ? 'p-2 space-y-1.5' : 'p-3 space-y-2'}`}>
+      {/* XP level card — gamified-app skill pattern */}
       {!collapsed && (
-        <div className="flex items-center px-3 py-2 rounded-xl mb-2 bg-white/[0.02]">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-[#1876D2]/30 to-[#00B0FF]/30 flex items-center justify-center mr-3 border border-white/[0.06]">
-            {user?.avatar ? (
-              <img src={user.avatar} alt={user?.name || 'User'} className="h-8 w-8 rounded-lg object-cover" />
-            ) : (
-              <span className="text-[#00B0FF] font-semibold text-xs">{user?.name?.charAt(0) || 'U'}</span>
-            )}
+        <div className="rounded-[10px] p-3 mb-1" style={{ background: 'rgba(24,118,210,0.07)', border: '1px solid rgba(24,118,210,0.12)' }}>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#1876D2] to-[#00B0FF] flex items-center justify-center flex-shrink-0">
+              <Zap className="h-3.5 w-3.5 text-white" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[11px] font-bold text-white leading-none">LV 7 · 1,240 XP</p>
+              <p className="text-[10px] text-[#71717a] mt-0.5">760 XP to Level 8</p>
+            </div>
+            <span className="text-[10px] font-bold text-[#ff9600] bg-[rgba(255,150,0,0.1)] border border-[rgba(255,150,0,0.2)] rounded-full px-1.5 py-0.5 flex-shrink-0">🔥 12d</span>
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="font-medium text-white text-xs truncate">{user?.name || 'User'}</p>
-            <p className="text-[10px] text-gray-500 truncate">{user?.email || 'user@example.com'}</p>
+          {/* XP bar */}
+          <div className="h-1.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+            <div className="h-full rounded-full" style={{ width: '62%', background: '#58cc02', boxShadow: '0 0 6px rgba(88,204,2,0.35)' }} />
           </div>
         </div>
       )}
-      
-      <button
-        onClick={handleLogout}
-        className={`w-full flex items-center ${
-          collapsed ? 'justify-center' : 'justify-center'
-        } px-3 py-2 rounded-xl text-gray-500 hover:text-red-400 hover:bg-red-500/5 transition-colors text-xs`}
-        title={collapsed ? 'Sign Out' : ''}
-      >
-        <LogOut className={`h-4 w-4 ${collapsed ? '' : 'mr-2'}`} />
-        {!collapsed && <span>Sign Out</span>}
-      </button>
+
+      {/* User info */}
+      {!collapsed ? (
+        <div className="flex items-center gap-2.5 px-2 py-1.5">
+          <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-[#1876D2]/40 to-[#00B0FF]/40 flex items-center justify-center flex-shrink-0 border border-[rgba(255,255,255,0.06)]">
+            {user?.avatar ? (
+              <img src={user.avatar} alt={user?.name || 'User'} className="h-7 w-7 rounded-lg object-cover" />
+            ) : (
+              <span className="text-[#00B0FF] font-bold text-[10px]">{user?.name?.charAt(0) || 'U'}</span>
+            )}
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="font-semibold text-[#e4e4e7] text-[12px] truncate leading-none">{user?.name || 'Student'}</p>
+            <p className="text-[10px] text-[#52525b] truncate mt-0.5">{user?.email || ''}</p>
+          </div>
+          <button onClick={handleLogout} className="p-1.5 rounded-lg text-[#52525b] hover:text-red-400 hover:bg-[rgba(239,68,68,0.06)] transition-colors flex-shrink-0" title="Sign Out">
+            <LogOut className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      ) : (
+        <button onClick={handleLogout}
+          className="w-full flex justify-center p-2 rounded-lg text-[#52525b] hover:text-red-400 hover:bg-[rgba(239,68,68,0.06)] transition-colors"
+          title="Sign Out">
+          <LogOut className="h-4 w-4" />
+        </button>
+      )}
     </div>
   );
 
@@ -194,9 +218,9 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
           />
         )}
         
-        <aside className={`fixed top-0 left-0 z-50 h-full w-[260px] bg-[#0a0f1e]/95 backdrop-blur-xl border-r border-white/[0.04] transform transition-transform duration-300 ease-out ${
+        <aside className={`fixed top-0 left-0 z-50 h-full w-[260px] backdrop-blur-xl transform transition-transform duration-300 ease-out ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}>
+        }`} style={{ background: 'var(--od-bg-1)', borderRight: '1px solid var(--od-border-0)' }}>
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between px-4 py-4">
               <LogoSection />
@@ -218,34 +242,41 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
     );
   }
 
-  // ═══ DESKTOP SIDEBAR ═══
+  // ═══ DESKTOP SIDEBAR — Linear dark precision ═══
   return (
-    <aside className={`fixed top-0 left-0 h-screen bg-[#0a0f1e]/95 backdrop-blur-xl border-r border-white/[0.04] transition-all duration-300 ${
-      isCollapsed ? 'w-20' : 'w-[260px]'
-    } flex flex-col z-10`}>
-      {/* Logo */}
-      <div className="flex items-center justify-between border-b border-white/[0.04]">
+    <aside className={`fixed top-0 left-0 h-screen flex flex-col z-10 transition-all duration-300 ease-out ${
+      isCollapsed ? 'w-[60px]' : 'w-[240px]'
+    }`} style={{ background: 'var(--od-bg-1)', borderRight: '1px solid var(--od-border-0)' }}>
+      {/* Logo row */}
+      <div className="flex items-center justify-between" style={{ borderBottom: '1px solid var(--od-border-0)', minHeight: 56 }}>
         <LogoSection collapsed={isCollapsed} />
-        <button 
-          onClick={handleCollapse}
-          className={`p-1.5 rounded-lg hover:bg-white/[0.04] transition-colors ${isCollapsed ? 'mx-auto' : 'mr-3'}`}
-        >
-          <ChevronLeft className={`h-4 w-4 text-gray-500 transition-transform duration-300 ${
-            isCollapsed ? 'rotate-180' : ''
-          }`} />
-        </button>
+        {!isCollapsed && (
+          <button
+            onClick={handleCollapse}
+            className="p-1.5 rounded-lg mr-3 text-[#52525b] hover:text-[#a1a1aa] hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+          >
+            <ChevronLeft className="h-3.5 w-3.5" />
+          </button>
+        )}
+        {isCollapsed && (
+          <button
+            onClick={handleCollapse}
+            className="p-1.5 rounded-lg mx-auto text-[#52525b] hover:text-[#a1a1aa] hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+          >
+            <ChevronLeft className="h-3.5 w-3.5 rotate-180" />
+          </button>
+        )}
       </div>
-      
+
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-4 px-3">
-        <div className="space-y-0.5">
-          {navigation.map((item) => (
-            <NavItem key={item.href} item={item} collapsed={isCollapsed} />
-          ))}
-        </div>
+      <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-[2px]"
+        style={{ scrollbarWidth: 'none' }}>
+        {navigation.map((item) => (
+          <NavItem key={item.href} item={item} collapsed={isCollapsed} />
+        ))}
       </nav>
-      
-      {/* User */}
+
+      {/* User + XP */}
       <UserSection collapsed={isCollapsed} />
     </aside>
   );

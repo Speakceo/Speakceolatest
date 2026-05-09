@@ -23,7 +23,9 @@ import {
   Clock,
   GraduationCap,
   Heart,
-  BarChart3
+  BarChart3,
+  Gamepad2,
+  Crown
 } from 'lucide-react';
 import EnrollmentPopup from '../components/EnrollmentPopup';
 import CareerGuidePopup from '../components/career/CareerGuidePopup';
@@ -31,7 +33,6 @@ import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
-import AnimatedHero3D from '../components/ui/AnimatedHero3D';
 import AnimatedCounter from '../components/ui/AnimatedCounter';
 // Optimized animation variants for better performance
 const fadeIn = {
@@ -295,37 +296,100 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Interactive 3D Experience Section — Lightweight CSS 3D */}
-        <section className="py-14 sm:py-20 bg-slate-950 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-12"
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-                <Sparkles className="h-4 w-4 text-[#00B0FF]" />
-                <span className="text-sm text-gray-300 font-medium">Interactive Experience</span>
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-white tracking-tight">
-                Experience the Future of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Learning</span>
+        {/* ═══ GAMIFICATION PREVIEW — open-design gamified-app skill pattern ═══ */}
+        <section className="py-16 sm:py-24 relative overflow-hidden" style={{ background: 'var(--od-bg-0)' }}>
+          {/* Subtle grid bg from od-grid-bg */}
+          <div className="absolute inset-0 od-grid-bg opacity-100" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+            style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(24,118,210,0.1) 0%, transparent 70%)' }} />
+
+          <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}
+              className="text-center mb-12 sm:mb-16">
+              <p className="section-eyebrow mb-4" style={{ color: 'var(--od-accent-bright)' }}>Live inside the platform</p>
+              <h2 className="text-[clamp(1.9rem,4vw,3.2rem)] font-black text-white tracking-[-0.03em] leading-[1.05] mb-4">
+                Learning That Feels Like a Game
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                Immerse yourself in our cutting-edge learning environment where education meets innovation
+              <p className="text-[15px] sm:text-[17px] leading-relaxed max-w-xl mx-auto" style={{ color: 'var(--od-text-1)' }}>
+                XP points, quests, level-ups, and streak rewards — kids don't want to stop.
               </p>
             </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <AnimatedHero3D />
+
+            {/* ── Level ribbon (gamified-app skill: level indicator) ── */}
+            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
+              className="max-w-2xl mx-auto mb-8">
+              <div className="level-ribbon">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1876D2] to-[#00B0FF] flex items-center justify-center flex-shrink-0">
+                  <Trophy className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-white text-[13px] font-bold">LV 7 · Young Entrepreneur</span>
+                    <span className="text-[11px] font-semibold" style={{ color: 'var(--od-text-2)' }}>1,240 / 2,000 XP</span>
+                  </div>
+                  <div className="xp-bar-track">
+                    <div className="xp-bar-fill" style={{ width: '62%' }} />
+                  </div>
+                  <p className="text-[11px] mt-1" style={{ color: 'var(--od-text-2)' }}>5 quests to reach Level 8</p>
+                </div>
+                <div className="streak-badge flex-shrink-0">🔥 12d</div>
+              </div>
             </motion.div>
+
+            {/* ── Quest tile grid (gamified-app skill: 3×2) ── */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-10">
+              {[
+                { emoji: '🏪', title: 'Launch a Pop-up Shop', diff: 'easy', xp: '+120 XP', tag: 'Business', done: true,
+                  desc: 'Price products, manage inventory, sell to 10 customers' },
+                { emoji: '🤖', title: 'Build Your AI Website', diff: 'medium', xp: '+200 XP', tag: 'AI Tools', done: false,
+                  desc: 'Use Orbit AI Builder to launch a personal website' },
+                { emoji: '📊', title: 'Pitch to the Board', diff: 'hard', xp: '+350 XP', tag: 'Leadership', done: false,
+                  desc: 'Present your startup idea in a 3-minute live pitch' },
+                { emoji: '💰', title: 'Stock Market Simulator', diff: 'medium', xp: '+180 XP', tag: 'Finance', done: false,
+                  desc: 'Invest $1,000 virtual dollars and beat the market' },
+                { emoji: '🌍', title: 'Find Your Scholarship', diff: 'easy', xp: '+90 XP', tag: 'Resources', done: true,
+                  desc: 'Match with 3 scholarships from our global database' },
+                { emoji: '🎤', title: 'Public Speaking Quest', diff: 'hard', xp: '+280 XP', tag: 'Confidence', done: false,
+                  desc: 'Record and submit a 2-minute persuasive speech' },
+              ].map((q, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                  transition={{ delay: i * 0.06, duration: 0.35 }}
+                  className="quest-tile od-beam">
+                  <div className="flex items-start justify-between mb-3">
+                    <span className="text-2xl">{q.emoji}</span>
+                    <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${
+                      q.diff === 'easy' ? 'quest-easy' : q.diff === 'medium' ? 'quest-medium' : 'quest-hard'
+                    }`}>{q.diff.toUpperCase()}</span>
+                  </div>
+                  <p className="text-white text-[14px] font-bold mb-1">{q.title}</p>
+                  <p className="text-[12px] leading-relaxed mb-3" style={{ color: 'var(--od-text-2)' }}>{q.desc}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full" style={{
+                      background: 'rgba(255,255,255,0.05)', color: 'var(--od-text-1)'
+                    }}>{q.tag}</span>
+                    {q.done ? (
+                      <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-400">
+                        <CheckCircle className="w-3 h-3" /> Done
+                      </span>
+                    ) : (
+                      <span className="xp-pill">{q.xp}</span>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
+
+            {/* CTA row */}
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
+              className="text-center">
+              <button onClick={() => setShowEnrollment(true)}
+                className="btn-xp inline-flex items-center gap-2.5">
+                <Zap className="w-4 h-4" />
+                Start Earning XP Today
+              </button>
+              <p className="mt-3 text-[12px]" style={{ color: 'var(--od-text-3)' }}>Free trial · No credit card · 180-day program</p>
+            </motion.div>
+          </div>
         </section>
 
         {/* Founder Mindset Section - High Converting */}
@@ -534,7 +598,7 @@ export default function Home() {
         </section>
 
         {/* ═══ WHAT YOUR CHILD GETS — Apple-level clean section ═══ */}
-        <section className="section-apple bg-[#f5f5f7]">
+        <section className="section-apple" style={{ background: 'var(--od-bg-0)' }}>
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
             {/* Section header — no pill badges per Apple style */}
@@ -545,12 +609,12 @@ export default function Home() {
               transition={{ duration: 0.5, ease: [0.25,0.1,0.25,1] }}
               className="text-center mb-20"
             >
-              <p className="section-eyebrow mb-5">What your child gets</p>
-              <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-black text-[#1d1d1f] tracking-[-0.03em] leading-[1.05] mb-6">
+              <p className="section-eyebrow mb-5" style={{ color: 'var(--od-accent-bright)' }}>What your child gets</p>
+              <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-black text-white tracking-[-0.03em] leading-[1.05] mb-6">
                 Not just learning.<br />
-                <span className="text-[#1876D2]">Living it.</span>
+                <span style={{ color: 'var(--od-accent-bright)' }}>Living it.</span>
               </h2>
-              <p className="text-[17px] text-[#6e6e73] max-w-xl mx-auto leading-[1.7]">
+              <p className="text-[17px] max-w-xl mx-auto leading-[1.7]" style={{ color: 'var(--od-text-1)' }}>
                 Other platforms give PDFs. We give real experience — business games, AI tools, live projects, and mentorship schools don't offer.
               </p>
             </motion.div>
@@ -569,23 +633,23 @@ export default function Home() {
                 { n: '03', t: 'Launch', d: 'Mentor feedback & real-world showcases' },
                 { n: '04', t: 'Win', d: 'Portfolio & scholarship-ready profile' },
               ].map((s) => (
-                <div key={s.n} className="card-apple p-4 sm:p-6">
-                  <p className="text-[11px] font-bold text-[#1876D2] tracking-[0.1em] uppercase mb-3">{s.n}</p>
-                  <p className="text-[16px] font-bold text-[#1d1d1f] mb-2">{s.t}</p>
-                  <p className="text-[13px] text-[#6e6e73] leading-relaxed">{s.d}</p>
+                <div key={s.n} className="card-od p-4 sm:p-6">
+                  <p className="text-[11px] font-bold tracking-[0.1em] uppercase mb-3" style={{ color: 'var(--od-accent-bright)' }}>{s.n}</p>
+                  <p className="text-[16px] font-bold text-white mb-2">{s.t}</p>
+                  <p className="text-[13px] leading-relaxed" style={{ color: 'var(--od-text-2)' }}>{s.d}</p>
                 </div>
               ))}
             </motion.div>
 
-            {/* USP Cards — border-only, Apple-style. Shadow OR border, not both. */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+            {/* USP Bento Grid — Linear dark precision (open-design bento pattern) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-16">
               {[
-                { icon: '🎮', title: '10 Business Games', sub: '10 games · 500+ XP', desc: 'Kids learn pricing, investing, budgeting & pitching through immersive, story-driven mini-games.', link: '/demo' },
-                { icon: '👑', title: 'Startup Empire', sub: '6 stages · 24 missions', desc: 'A full roleplay journey from idea to IPO — real decisions, real consequences, real learning.', link: '/demo' },
-                { icon: '🤖', title: 'AI Superpowers', sub: '100+ tools · Unlimited', desc: 'AI Website Builder, Pitch Writer, Image Generator — your child commands AI like a CEO.', link: '/demo' },
-                { icon: '🎯', title: '180-Day Curriculum', sub: '180 days · 52 live classes', desc: 'Structured, mentor-guided path from beginner to confident young entrepreneur.', link: '/courses' },
-                { icon: '🌍', title: 'Scholarship Database', sub: '500+ opportunities', desc: 'Scholarships, competitions & fellowships mapped by age, country, and interest.', link: '/resources' },
-                { icon: '🏆', title: 'Real Portfolio', sub: '10+ portfolio pieces', desc: 'Websites, games, pitch decks — actual proof for schools and competitions.', link: '/about' },
+                { icon: Gamepad2, color: '#1876D2', bg: 'rgba(24,118,210,0.10)', title: '10 Business Games', sub: '500+ XP per level', desc: 'Pricing battles, stock markets, lemonade stands — real entrepreneurship mechanics in story-driven games.', link: '/demo' },
+                { icon: Crown, color: '#a855f7', bg: 'rgba(168,85,247,0.10)', title: 'Startup Empire', sub: '6 stages · 24 missions', desc: 'A full roleplay from idea to IPO. Real decisions, real consequences, real transformation.', link: '/demo' },
+                { icon: Brain, color: '#00B0FF', bg: 'rgba(0,176,255,0.10)', title: 'AI Superpowers', sub: '100+ tools · Unlimited use', desc: 'Website Builder, Pitch Writer, Image Generator — your child commands AI like a CEO from day one.', link: '/demo' },
+                { icon: Target, color: '#10b981', bg: 'rgba(16,185,129,0.10)', title: '180-Day Curriculum', sub: '180 days · 52 live classes', desc: 'Structured, mentor-guided path from beginner to confident entrepreneur with weekly checkpoints.', link: '/courses' },
+                { icon: GraduationCap, color: '#f59e0b', bg: 'rgba(245,158,11,0.10)', title: 'Scholarship Database', sub: '500+ opportunities', desc: 'Scholarships, competitions & fellowships mapped by age, country, and interest area.', link: '/resources' },
+                { icon: Award, color: '#ef4444', bg: 'rgba(239,68,68,0.10)', title: 'Real Portfolio', sub: '10+ verified pieces', desc: 'Websites, games, pitch decks, certificates — actual proof for colleges and competitions.', link: '/about' },
               ].map((usp, i) => (
                 <motion.a
                   key={i}
@@ -594,13 +658,17 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06, duration: 0.4, ease: [0.25,0.1,0.25,1] }}
-                  className="card-apple p-7 flex flex-col group"
+                  className="bento-card group flex flex-col od-beam"
                 >
-                  <span className="text-3xl mb-5 block">{usp.icon}</span>
-                  <p className="text-[17px] font-bold text-[#1d1d1f] mb-1">{usp.title}</p>
-                  <p className="text-[12px] font-semibold text-[#1876D2] tracking-wide mb-3">{usp.sub}</p>
-                  <p className="text-[14px] text-[#6e6e73] leading-relaxed flex-grow">{usp.desc}</p>
-                  <div className="mt-5 flex items-center gap-1 text-[#1876D2] text-[13px] font-semibold opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200">
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 flex-shrink-0"
+                    style={{ background: usp.bg }}>
+                    <usp.icon className="w-5 h-5" style={{ color: usp.color }} />
+                  </div>
+                  <p className="text-[16px] font-bold text-white mb-1 tracking-[-0.01em]">{usp.title}</p>
+                  <p className="text-[11px] font-semibold tracking-wide mb-3" style={{ color: usp.color }}>{usp.sub}</p>
+                  <p className="text-[13px] leading-relaxed flex-grow" style={{ color: 'var(--od-text-1)' }}>{usp.desc}</p>
+                  <div className="mt-5 flex items-center gap-1 text-[13px] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    style={{ color: usp.color }}>
                     Explore <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </motion.a>

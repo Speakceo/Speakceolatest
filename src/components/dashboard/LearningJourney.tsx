@@ -137,105 +137,127 @@ export default function LearningJourney() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm">
-        <div className="flex items-center justify-between mb-6">
+      {/* ── Header + XP Ribbon — gamified-app skill pattern ── */}
+      <div className="rounded-2xl p-5 sm:p-6" style={{ background: 'var(--od-bg-2)', border: '1px solid var(--od-border-1)' }}>
+        {/* Title row */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">180-Day CEO Journey</h2>
-            <p className="text-gray-500 mt-1">Your path to entrepreneurial success</p>
+            <h2 className="text-xl font-bold text-white tracking-[-0.02em]">180-Day CEO Journey</h2>
+            <p className="text-[13px] mt-0.5" style={{ color: 'var(--od-text-2)' }}>Your path to entrepreneurial success</p>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-4 flex-shrink-0">
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#1876D2]">{overallProgress}%</p>
-              <p className="text-sm text-gray-500">Overall Progress</p>
+              <p className="text-2xl font-bold text-white leading-none">{overallProgress}%</p>
+              <p className="text-[11px] mt-1" style={{ color: 'var(--od-text-3)' }}>Progress</p>
             </div>
+            <div className="w-px h-8" style={{ background: 'var(--od-border-1)' }} />
             <div className="text-center">
-              <p className="text-3xl font-bold text-[#1876D2]">Day {Math.floor(overallProgress * 0.9)}</p>
-              <p className="text-sm text-gray-500">of 180</p>
+              <p className="text-2xl font-bold text-white leading-none">Day {Math.floor(overallProgress * 1.8)}</p>
+              <p className="text-[11px] mt-1" style={{ color: 'var(--od-text-3)' }}>of 180</p>
             </div>
           </div>
+        </div>
+
+        {/* XP ribbon — gamified-app level indicator */}
+        <div className="level-ribbon mb-5">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ background: 'linear-gradient(135deg, #1876D2, #00B0FF)' }}>
+            <Trophy className="w-4 h-4 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-white text-[13px] font-bold">LV {Math.max(1, Math.floor(overallProgress / 15))} · {overallProgress < 30 ? 'Starter' : overallProgress < 60 ? 'Builder' : 'Launcher'}</span>
+              <span className="text-[11px] font-semibold" style={{ color: 'var(--od-text-2)' }}>{overallProgress * 12} / 1,800 XP</span>
+            </div>
+            <div className="xp-bar-track">
+              <div className="xp-bar-fill" style={{ width: `${overallProgress}%` }} />
+            </div>
+          </div>
+          <span className="streak-badge flex-shrink-0">🔥 {getLearningStreak()}d</span>
         </div>
 
         {/* My Startup Section */}
         <MyStartup />
 
         {/* Module Timeline */}
-        <div className="mt-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">Learning Path</h3>
+        <div className="mt-6">
+          <h3 className="text-[14px] font-semibold text-white mb-4">Learning Path</h3>
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gray-200" />
-            <div className="space-y-8">
-              {modules.map((module, index) => (
+            {/* Track line */}
+            <div className="absolute left-5 top-0 bottom-0 w-px" style={{ background: 'var(--od-border-1)' }} />
+            <div className="space-y-3">
+              {modules.map((module, index) => {
+                const prog = getModuleProgress(module.id);
+                const isDone = prog >= 100;
+                const isActive = prog > 0 && prog < 100;
+                return (
                 <div
                   key={module.id}
-                  className="relative flex items-start space-x-4 cursor-pointer"
+                  className="relative flex items-start gap-4 cursor-pointer"
                   onClick={() => setSelectedModule(selectedModule === module.id ? null : module.id)}
                   onMouseEnter={() => setHoveredSection(module.id)}
                   onMouseLeave={() => setHoveredSection(null)}
                 >
-                  <div className={`
-                    flex-shrink-0 h-16 w-16 rounded-full flex items-center justify-center
-                    ${getModuleProgress(module.id) >= 100 ? 'bg-green-100' : 
-                      getModuleProgress(module.id) > 0 ? 'bg-blue-100' : 'bg-gray-100'}
-                  `}>
-                    {getModuleProgress(module.id) >= 100 ? (
-                      <CheckCircle className="h-8 w-8 text-green-500" />
-                    ) : getModuleProgress(module.id) === 0 && index > 0 ? (
-                      <Lock className="h-8 w-8 text-gray-400" />
+                  {/* Node dot */}
+                  <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center z-10 ${
+                    isDone ? 'bg-[rgba(16,185,129,0.15)] border border-emerald-500/30' :
+                    isActive ? 'bg-[rgba(24,118,210,0.15)] border border-[#1876D2]/30' :
+                    'border'
+                  }`} style={{ border: isDone || isActive ? undefined : '1px solid var(--od-border-1)', background: isDone || isActive ? undefined : 'var(--od-bg-3)' }}>
+                    {isDone ? (
+                      <CheckCircle className="h-4 w-4 text-emerald-400" />
+                    ) : prog === 0 && index > 0 ? (
+                      <Lock className="h-4 w-4" style={{ color: 'var(--od-text-3)' }} />
                     ) : (
-                      <Target className={`h-8 w-8 ${
-                        getModuleProgress(module.id) > 0 ? 'text-blue-500' : 'text-gray-500'
-                      }`} />
+                      <Target className={`h-4 w-4 ${isActive ? 'text-[#00B0FF]' : ''}`} style={{ color: isActive ? undefined : 'var(--od-text-3)' }} />
                     )}
                   </div>
 
-                  <div className="flex-1 bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-gray-900">{module.title}</h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        getModuleProgress(module.id) >= 100 ? 'bg-green-100 text-green-800' :
-                        getModuleProgress(module.id) > 0 ? 'bg-blue-100 text-blue-800' :
-                        'bg-gray-100 text-gray-800'
-                      }`}>
-                        {getModuleProgress(module.id) >= 100 ? 'Completed' :
-                         getModuleProgress(module.id) > 0 ? 'In Progress' :
-                         'Not Started'}
+                  <div className="flex-1 rounded-[14px] p-4 mb-1 transition-all duration-150" style={{
+                    background: isActive ? 'rgba(24,118,210,0.06)' : 'var(--od-bg-3)',
+                    border: `1px solid ${isActive ? 'rgba(24,118,210,0.2)' : 'var(--od-border-0)'}`,
+                  }}>
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="text-[14px] font-semibold text-white leading-tight">{module.title}</h3>
+                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ${
+                        isDone ? 'bg-[rgba(16,185,129,0.12)] text-emerald-400' :
+                        isActive ? 'bg-[rgba(24,118,210,0.12)] text-[#60a5fa]' :
+                        ''
+                      }`} style={{ background: isDone || isActive ? undefined : 'rgba(255,255,255,0.05)', color: isDone || isActive ? undefined : 'var(--od-text-3)' }}>
+                        {isDone ? 'Done' : isActive ? 'Active' : 'Locked'}
                       </span>
                     </div>
-                    <p className="mt-2 text-sm text-gray-500">{module.description}</p>
-                    
-                    <div className="mt-4 flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center text-gray-500 text-sm">
-                          <Calendar className="h-4 w-4 mr-1" />
-                          Week {index + 1}
-                        </div>
-                        <div className="flex items-center text-gray-500 text-sm">
-                          <Target className="h-4 w-4 mr-1" />
-                          {module.lessons?.length || 0} lessons
-                        </div>
+                    <p className="mt-1 text-[12px] leading-relaxed" style={{ color: 'var(--od-text-2)' }}>{module.description}</p>
+
+                    <div className="mt-3 flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--od-text-3)' }}>
+                        <span className="flex items-center gap-1"><Calendar className="h-3 w-3" />Wk {index + 1}</span>
+                        <span className="flex items-center gap-1"><Target className="h-3 w-3" />{module.lessons?.length || 0} lessons</span>
                       </div>
-                      <div className="flex items-center">
-                        <div className="w-32">
-                          <ProgressBar 
-                            progress={getModuleProgress(module.id)} 
-                            size="sm"
-                            showLabel={false}
-                            color={getModuleProgress(module.id) >= 100 ? 'green' : 'blue'}
-                          />
+                      <div className="flex items-center gap-2 flex-shrink-0">
+                        <div className="w-20 xp-bar-track">
+                          <div className="xp-bar-fill" style={{
+                            width: `${prog}%`,
+                            background: isDone ? '#10b981' : '#1876D2',
+                            boxShadow: isDone ? '0 0 6px rgba(16,185,129,0.35)' : '0 0 6px rgba(24,118,210,0.35)'
+                          }} />
                         </div>
+                        <span className="text-[10px] font-semibold w-7 text-right" style={{ color: isDone ? '#10b981' : 'var(--od-text-2)' }}>{prog}%</span>
                       </div>
                     </div>
 
                     {/* Lessons Details */}
                     {(hoveredSection === module.id || selectedModule === module.id) && module.lessons && (
-                      <div className="mt-6 pt-6 border-t border-gray-200">
-                        <h4 className="text-sm font-medium text-gray-900 mb-3">Lessons</h4>
-                        <div className="space-y-3">
+                      <div className="mt-4 pt-4" style={{ borderTop: '1px solid var(--od-border-0)' }}>
+                        <h4 className="text-[12px] font-semibold text-white mb-2.5">Lessons</h4>
+                        <div className="space-y-1.5">
                           {module.lessons.map((lesson) => (
                             <div
                               key={lesson.id}
-                              className="flex items-center justify-between p-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer"
+                              className="flex items-center justify-between p-2.5 rounded-[10px] cursor-pointer transition-all duration-150"
+                              style={{ background: 'var(--od-bg-2)', border: '1px solid var(--od-border-0)' }}
+                              onMouseEnter={e => (e.currentTarget.style.background = 'var(--od-bg-3)')}
+                              onMouseLeave={e => (e.currentTarget.style.background = 'var(--od-bg-2)')}
                               onClick={(e) => {
                                 e.stopPropagation();
                                 // Navigate to lesson content
@@ -249,27 +271,27 @@ export default function LearningJourney() {
                                 });
                               }}
                             >
-                              <div className="flex items-center space-x-3">
-                                <div className="rounded-lg p-2 bg-[#E3F2FD]">
-                                  {lesson.type === 'video' && <Video className="h-4 w-4 text-[#1876D2]" />}
-                                  {lesson.type === 'document' && <FileText className="h-4 w-4 text-[#1876D2]" />}
-                                  {lesson.type === 'quiz' && <BrainCircuit className="h-4 w-4 text-[#1876D2]" />}
-                                  {lesson.type === 'assignment' && <FileText className="h-4 w-4 text-[#1876D2]" />}
-                                  {lesson.type === 'ppt' && <Presentation className="h-4 w-4 text-[#1876D2]" />}
+                              <div className="flex items-center gap-2.5">
+                                <div className="rounded-lg p-1.5 flex-shrink-0" style={{ background: 'rgba(24,118,210,0.1)' }}>
+                                  {lesson.type === 'video' && <Video className="h-3.5 w-3.5 text-[#1876D2]" />}
+                                  {lesson.type === 'document' && <FileText className="h-3.5 w-3.5 text-[#1876D2]" />}
+                                  {lesson.type === 'quiz' && <BrainCircuit className="h-3.5 w-3.5 text-[#1876D2]" />}
+                                  {lesson.type === 'assignment' && <FileText className="h-3.5 w-3.5 text-[#1876D2]" />}
+                                  {lesson.type === 'ppt' && <Presentation className="h-3.5 w-3.5 text-[#1876D2]" />}
                                 </div>
                                 <div>
-                                  <p className="text-sm font-medium text-gray-900">{lesson.title}</p>
-                                  <div className="flex items-center text-xs text-gray-500">
+                                  <p className="text-[13px] font-medium text-white leading-tight">{lesson.title}</p>
+                                  <div className="flex items-center text-[11px] mt-0.5" style={{ color: 'var(--od-text-3)' }}>
                                     <Clock className="h-3 w-3 mr-1" />
                                     {lesson.duration}
                                   </div>
                                 </div>
                               </div>
-                              <div className="flex items-center">
+                              <div className="flex items-center flex-shrink-0">
                                 {userProgress.completedLessons[lesson.id] ? (
-                                  <CheckCircle className="h-5 w-5 text-green-500" />
+                                  <CheckCircle className="h-4 w-4 text-emerald-400" />
                                 ) : (
-                                  <ArrowRight className="h-5 w-5 text-[#00B0FF]" />
+                                  <ArrowRight className="h-4 w-4" style={{ color: 'var(--od-accent-bright)' }} />
                                 )}
                               </div>
                             </div>
@@ -279,69 +301,63 @@ export default function LearningJourney() {
                     )}
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Skills and Progress */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">Today's Schedule</h3>
+      {/* ── Skills and Progress ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2 rounded-2xl p-5" style={{ background: 'var(--od-bg-2)', border: '1px solid var(--od-border-1)' }}>
+          <h3 className="text-[14px] font-semibold text-white mb-4">Next Up</h3>
           {nextLesson ? (
-            <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-gray-50 to-white border border-gray-100">
-              <div className="flex items-center space-x-4">
-                <div className="rounded-xl bg-green-500 p-3">
-                  <Video className="h-6 w-6 text-white" />
+            <div className="flex items-center justify-between p-3.5 rounded-[12px] gap-4" style={{ background: 'rgba(24,118,210,0.07)', border: '1px solid rgba(24,118,210,0.15)' }}>
+              <div className="flex items-center gap-3">
+                <div className="rounded-xl p-2.5 flex-shrink-0" style={{ background: 'rgba(16,185,129,0.15)' }}>
+                  <Video className="h-5 w-5 text-emerald-400" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900">{nextLesson.title}</h4>
-                  <div className="flex items-center text-sm text-gray-500 mt-1">
-                    <Clock className="h-4 w-4 mr-1" />
+                  <h4 className="font-medium text-white text-[14px] leading-tight">{nextLesson.title}</h4>
+                  <div className="flex items-center text-[11px] mt-0.5" style={{ color: 'var(--od-text-2)' }}>
+                    <Clock className="h-3 w-3 mr-1" />
                     Next in your journey
                   </div>
                 </div>
               </div>
-              <button 
-                className="flex items-center space-x-2 px-4 py-2 bg-[#1876D2] text-white rounded-lg hover:bg-[#1565C0] transition-colors"
+              <button
+                className="flex items-center gap-1.5 px-4 py-2 text-white text-[13px] font-semibold rounded-[10px] flex-shrink-0 transition-all"
+                style={{ background: '#1876D2' }}
+                onMouseEnter={e => (e.currentTarget.style.background = '#1464b8')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#1876D2')}
                 onClick={() => {
-                  // Find the module that contains this lesson
                   for (const module of modules) {
                     for (const lesson of module.lessons || []) {
                       if (lesson.id === nextLesson.lessonId) {
-                        // Get lesson content
                         setActiveLessonTitle(lesson.title);
-                        // Navigate to the lesson
-                        navigate('/dashboard/journey', { 
-                          state: { 
-                            moduleData: {
-                              ...lesson,
-                              sectionTitle: module.title
-                            }
-                          }
-                        });
+                        navigate('/dashboard/journey', { state: { moduleData: { ...lesson, sectionTitle: module.title } } });
                         return;
                       }
                     }
                   }
                 }}
               >
-                <Play className="h-4 w-4" />
-                <span>Start Now</span>
+                <Play className="h-3.5 w-3.5" />
+                Start Now
               </button>
             </div>
           ) : (
-            <div className="text-center py-8 text-gray-500">
-              You've completed all available lessons! Check back soon for new content.
+            <div className="text-center py-8 text-[13px]" style={{ color: 'var(--od-text-2)' }}>
+              All lessons complete! More content coming soon.
             </div>
           )}
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* Skill Radar */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Skill Progress</h3>
+          <div className="rounded-2xl p-5" style={{ background: 'var(--od-bg-2)', border: '1px solid var(--od-border-1)' }}>
+            <h3 className="text-[14px] font-semibold text-white mb-4">Skill Progress</h3>
             <Chart
               options={chartOptions}
               series={series}
@@ -350,20 +366,23 @@ export default function LearningJourney() {
             />
           </div>
 
-          {/* AI Coach */}
-          <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-2xl p-6 text-white">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="h-10 w-10 bg-white/20 rounded-xl flex items-center justify-center">
-                <Sparkles className="h-6 w-6" />
+          {/* AI Coach — dark card */}
+          <div className="rounded-2xl p-5" style={{ background: 'rgba(24,118,210,0.08)', border: '1px solid rgba(24,118,210,0.18)' }}>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="h-9 w-9 rounded-xl flex items-center justify-center" style={{ background: 'rgba(0,176,255,0.15)' }}>
+                <Sparkles className="h-4 w-4 text-[#00B0FF]" />
               </div>
-              <h3 className="text-lg font-semibold">AI Learning Coach</h3>
+              <h3 className="text-[14px] font-semibold text-white">AI Learning Coach</h3>
             </div>
-            <p className="text-gray-300 mb-4">
-              Need help with your journey? Get personalized guidance and tips from your AI coach.
+            <p className="text-[12px] leading-relaxed mb-4" style={{ color: 'var(--od-text-2)' }}>
+              Get personalized guidance and tips from your AI coach.
             </p>
-            <button 
+            <button
               onClick={() => setShowAICoach(true)}
-              className="w-full bg-white text-[#1876D2] px-4 py-2 rounded-lg font-medium hover:bg-[#E3F2FD] transition-colors"
+              className="w-full py-2.5 rounded-[10px] text-[13px] font-semibold text-white transition-all"
+              style={{ background: '#1876D2' }}
+              onMouseEnter={e => (e.currentTarget.style.background = '#1464b8')}
+              onMouseLeave={e => (e.currentTarget.style.background = '#1876D2')}
             >
               Chat with Coach
             </button>
