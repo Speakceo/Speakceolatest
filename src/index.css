@@ -1039,3 +1039,236 @@ html, body {
 .quest-easy   { background: rgba(88, 204, 2, 0.1);  color: var(--xp-green);  border-color: rgba(88, 204, 2, 0.2); }
 .quest-medium { background: rgba(255,150,0, 0.1);   color: var(--xp-streak); border-color: rgba(255,150,0, 0.2); }
 .quest-hard   { background: rgba(206, 130,255,0.1); color: var(--xp-gem);    border-color: rgba(206,130,255,0.2); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DUOLINGO+ LIGHT SYSTEM — bright, gamified, premium
+   Mood: confident, friendly, tactile. Borrow Duolingo's chunky 4px bottom
+   shadow on cards/buttons, 2px solid borders, 16-20px radii, and big type.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Surfaces */
+  --duo-snow:    #ffffff;
+  --duo-cream:   #fefcf6;
+  --duo-eel:     #f7f7f7;
+  --duo-swan:    #e5e5e5;
+  --duo-hare:    #afafaf;
+  --duo-wolf:    #777777;
+  --duo-eel-dk:  #3c3c3c;
+
+  /* Brand-color-replacing-Duolingo-green */
+  --duo-primary:       #1876D2;       /* Orbit blue (used in place of #58cc02) */
+  --duo-primary-deep:  #1464b8;       /* the chunky shadow under primary */
+  --duo-primary-pale:  #E3F2FD;       /* soft surface */
+
+  /* Workflow / status */
+  --duo-success:       #58cc02;
+  --duo-success-deep:  #58a700;
+  --duo-streak:        #ff9600;
+  --duo-streak-deep:   #cc7a00;
+  --duo-gem:           #ce82ff;
+  --duo-gem-deep:      #a855f7;
+  --duo-info:          #1cb0f6;
+  --duo-info-deep:     #0e95d4;
+  --duo-warn:          #ffc800;
+  --duo-error:         #ff4b4b;
+}
+
+/* ── Card: chunky Duolingo tile (2px border + 4px bottom shadow) ─────── */
+.card-duo {
+  background: var(--duo-snow);
+  border: 2px solid var(--duo-swan);
+  border-bottom: 4px solid var(--duo-swan);
+  border-radius: 18px;
+  padding: 20px;
+  transition: transform 120ms ease, border-color 150ms ease;
+}
+.card-duo:hover {
+  border-color: var(--duo-hare);
+  transform: translateY(-1px);
+}
+
+/* Coloured accent variants — keeps card white but tints borders */
+.card-duo-blue   { border-color: #bbdefb; border-bottom-color: #1876D2; }
+.card-duo-green  { border-color: #d4f5b9; border-bottom-color: #58a700; }
+.card-duo-orange { border-color: #ffd9a8; border-bottom-color: #cc7a00; }
+.card-duo-pink   { border-color: #f3d6ff; border-bottom-color: #a855f7; }
+.card-duo-cyan   { border-color: #b3e5fc; border-bottom-color: #0e95d4; }
+.card-duo-yellow { border-color: #fff2b3; border-bottom-color: #e0aa00; }
+
+/* ── Buttons: the iconic Duolingo press-button ────────────────────── */
+.btn-duo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: filter 120ms ease, transform 60ms ease, border-bottom-width 60ms ease;
+  position: relative;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn-duo-primary {
+  background: var(--duo-primary);
+  color: #fff;
+  border-bottom: 4px solid var(--duo-primary-deep);
+}
+.btn-duo-primary:hover  { filter: brightness(1.06); }
+.btn-duo-primary:active { transform: translateY(3px); border-bottom-width: 1px; }
+
+.btn-duo-secondary {
+  background: var(--duo-snow);
+  color: var(--duo-eel-dk);
+  border: 2px solid var(--duo-swan);
+  border-bottom: 4px solid var(--duo-swan);
+}
+.btn-duo-secondary:hover  { border-color: var(--duo-hare); border-bottom-color: var(--duo-hare); color: #1d1d1f; }
+.btn-duo-secondary:active { transform: translateY(3px); border-bottom-width: 1px; }
+
+.btn-duo-success {
+  background: var(--duo-success);
+  color: #fff;
+  border-bottom: 4px solid var(--duo-success-deep);
+}
+.btn-duo-success:hover  { filter: brightness(1.06); }
+.btn-duo-success:active { transform: translateY(3px); border-bottom-width: 1px; }
+
+.btn-duo-streak {
+  background: var(--duo-streak);
+  color: #fff;
+  border-bottom: 4px solid var(--duo-streak-deep);
+}
+.btn-duo-streak:hover  { filter: brightness(1.06); }
+.btn-duo-streak:active { transform: translateY(3px); border-bottom-width: 1px; }
+
+/* ── Pills / Chips (Duolingo signature 9999px) ─────────────────────── */
+.chip-duo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.chip-duo-blue   { background: #E3F2FD; color: #1876D2; }
+.chip-duo-green  { background: #dbf8c5; color: #4a8a02; }
+.chip-duo-orange { background: #ffe8cc; color: #b86b00; }
+.chip-duo-pink   { background: #f3e0ff; color: #8a3ed3; }
+.chip-duo-yellow { background: #fff5cc; color: #b88500; }
+.chip-duo-red    { background: #ffe1e1; color: #cc1f1f; }
+
+/* ── Quest tile (light variant) ─────────────────────────────────────── */
+.quest-tile-light {
+  background: var(--duo-snow);
+  border: 2px solid var(--duo-swan);
+  border-bottom: 4px solid var(--duo-swan);
+  border-radius: 18px;
+  padding: 18px;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 150ms ease;
+}
+.quest-tile-light:hover {
+  border-color: var(--duo-hare);
+  transform: translateY(-2px);
+}
+
+/* ── XP bar (light variant for white sections) ─────────────────────── */
+.xp-bar-track-light {
+  height: 10px;
+  background: var(--duo-eel);
+  border: 2px solid var(--duo-swan);
+  border-radius: 9999px;
+  overflow: hidden;
+  padding: 1px;
+}
+.xp-bar-fill-light {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--duo-success);
+  border-bottom: 2px solid var(--duo-success-deep);
+  transition: width 600ms var(--ease-out-expo);
+}
+
+/* ── Level ribbon — light variant ─────────────────────────────────── */
+.level-ribbon-light {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--duo-snow);
+  border: 2px solid var(--duo-swan);
+  border-bottom: 4px solid var(--duo-swan);
+  border-radius: 18px;
+  padding: 14px 18px;
+}
+
+/* ── Streak badge (warmer chunkier) ─────────────────────────────── */
+.streak-badge-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--duo-streak);
+  color: #fff;
+  border-bottom: 3px solid var(--duo-streak-deep);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+/* ── Section eyebrow — Duolingo-style uppercase mono-ish ───────── */
+.duo-eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--duo-primary);
+}
+
+/* ── Display heading — big confident Duolingo type ───────────── */
+.duo-display {
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  color: var(--duo-eel-dk);
+}
+
+/* ── Soft section tints ──────────────────────────────────────── */
+.bg-duo-cream  { background: var(--duo-cream); }
+.bg-duo-eel    { background: var(--duo-eel); }
+.bg-duo-blue-tint   { background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%); }
+.bg-duo-green-tint  { background: linear-gradient(180deg, #f3fbe8 0%, #ffffff 100%); }
+.bg-duo-yellow-tint { background: linear-gradient(180deg, #fffbeb 0%, #ffffff 100%); }
+.bg-duo-pink-tint   { background: linear-gradient(180deg, #fdf4ff 0%, #ffffff 100%); }
+
+/* ── Dot grid for hero (Duolingo uses a soft repeating dot) ──── */
+.duo-dots {
+  background-image: radial-gradient(circle, rgba(60,60,60,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Mascot float animation (subtle, not bouncy) ──────────── */
+@keyframes duo-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%      { transform: translateY(-6px) rotate(-1deg); }
+}
+.duo-float {
+  animation: duo-float 4.5s ease-in-out infinite;
+}
+
+/* ── Section dividers — subtle but visible (no harsh lines) ─── */
+.duo-section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--duo-swan), transparent);
+}
