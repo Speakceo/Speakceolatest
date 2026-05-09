@@ -43,121 +43,129 @@ export default function Home() {
         {/* ════════════════════════════════════════════════════════════════
             01 · HERO — clean Linear dark with single hero image
         ════════════════════════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-32">
+        <section className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24">
           {/* Subtle radial accent glow */}
           <div className="absolute inset-x-0 top-0 h-[700px] glow-o opacity-90" />
           {/* Subtle dot grid */}
           <div className="absolute inset-0 grid-o opacity-50 pointer-events-none" />
 
           <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            {/* Tiny mono masthead */}
-            <div className="flex justify-center mb-12 sm:mb-16">
-              <div className="chip-o">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00B0FF]" />
-                </span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-1">Cohort 12 enrolling now · Ages 8–18</span>
-              </div>
-            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
+              {/* Copy column */}
+              <div className="lg:col-span-6 xl:col-span-6">
+                <div className="flex justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-8">
+                  <div className="chip-o">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00B0FF]" />
+                    </span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-1">Cohort 12 enrolling now · Ages 8–18</span>
+                  </div>
+                </div>
 
-            {/* Centered editorial — the Linear way */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease }}
-              className="max-w-4xl mx-auto text-center"
-            >
-              <h1
-                className="font-display mb-7"
-                style={{ fontSize: 'clamp(2.6rem, 7.5vw, 5.6rem)', lineHeight: 1.0 }}
-              >
-                <span className="text-o-0">Where young minds </span>
-                <span style={{ color: '#00B0FF' }}>become leaders.</span>
-              </h1>
-
-              <p className="text-[17px] sm:text-[19px] leading-[1.55] text-o-1 max-w-[640px] mx-auto mb-10 sm:mb-12">
-                A 180-day AI-powered programme in entrepreneurship, leadership and real-world skills.
-                Mentor-guided, project-led, and built for kids who want to build, not just watch.
-              </p>
-
-              <div className="flex flex-col xs:flex-row sm:flex-row items-center justify-center gap-3 mb-14">
-                <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg">
-                  Start free trial <ArrowRight className="h-4 w-4" />
-                </button>
-                <button onClick={() => setShowCareerGuide(true)} className="btn-o btn-o-ghost btn-o-lg">
-                  <PlayCircle className="h-4 w-4 text-[#00B0FF]" />
-                  Watch demo
-                </button>
-              </div>
-
-              {/* Tiny inline trust */}
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12.5px] text-o-2">
-                <span className="inline-flex items-center gap-1.5">
-                  <Shield className="h-3.5 w-3.5 text-[#00B0FF]" /> 30-day refund
-                </span>
-                <span className="font-mono">·</span>
-                <span>2,500+ families</span>
-                <span className="font-mono">·</span>
-                <span>4.9/5 rating</span>
-                <span className="font-mono">·</span>
-                <span>35+ countries</span>
-              </div>
-            </motion.div>
-
-            {/* THE hero image — single, framed, real */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.15, ease }}
-              className="relative max-w-5xl mx-auto mt-16 sm:mt-20"
-            >
-              <div className="frame-o relative">
-                {/* The single approved hero image */}
-                <img
-                  src="/images/hero/orbit-kids-laptop.jpg"
-                  alt="An Orbit student building a project on a laptop"
-                  className="w-full h-auto block"
-                  fetchPriority="high"
-                  decoding="async"
-                />
-
-                {/* Floating XP overlay — bottom-left, Linear product feel */}
                 <motion.div
-                  animate={{ y: [-2, 2, -2] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="hidden sm:block absolute -bottom-5 -left-5 lg:-left-8"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease }}
+                  className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
                 >
-                  <div className="card-o flex items-center gap-3 min-w-[220px]" style={{ padding: '12px 14px' }}>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'linear-gradient(135deg,#1876D2,#00B0FF)' }}>
-                      <Rocket className="w-4 h-4 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[11px] font-mono uppercase tracking-[0.1em] text-o-3 mb-0.5">Lv 7 · Young CEO</p>
-                      <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-[12px] text-o-0 font-medium">1,240 XP</span>
-                        <span className="text-[11px] text-o-2">62%</span>
-                      </div>
-                      <div className="h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
-                        <div className="h-full rounded-full" style={{ width: '62%', background: '#00B0FF' }} />
-                      </div>
-                    </div>
+                  <h1
+                    className="font-display mb-6 sm:mb-7"
+                    style={{ fontSize: 'clamp(2.35rem, 6vw, 4.25rem)', lineHeight: 1.02 }}
+                  >
+                    <span className="text-o-0">Where young minds </span>
+                    <span style={{ color: '#00B0FF' }}>become leaders.</span>
+                  </h1>
+
+                  <p className="text-[17px] sm:text-[18px] leading-[1.55] text-o-1 mb-8 sm:mb-10">
+                    A 180-day AI-powered programme in entrepreneurship, leadership and real-world skills.
+                    Mentor-guided, project-led, and built for kids who want to build, not just watch.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row items-center lg:items-start lg:justify-start justify-center gap-3 mb-10">
+                    <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg w-full sm:w-auto">
+                      Start free trial <ArrowRight className="h-4 w-4" />
+                    </button>
+                    <button onClick={() => setShowCareerGuide(true)} className="btn-o btn-o-ghost btn-o-lg w-full sm:w-auto">
+                      <PlayCircle className="h-4 w-4 text-[#00B0FF]" />
+                      Watch demo
+                    </button>
+                  </div>
+
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 sm:gap-x-6 gap-y-2 text-[12.5px] text-o-2">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Shield className="h-3.5 w-3.5 text-[#00B0FF]" /> 30-day refund
+                    </span>
+                    <span className="font-mono hidden sm:inline">·</span>
+                    <span>2,500+ families</span>
+                    <span className="font-mono hidden sm:inline">·</span>
+                    <span>4.9/5 rating</span>
+                    <span className="font-mono hidden sm:inline">·</span>
+                    <span>35+ countries</span>
                   </div>
                 </motion.div>
-
-                {/* Floating streak — top-right */}
-                <motion.div
-                  animate={{ y: [2, -2, 2] }}
-                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="hidden md:flex absolute -top-3 -right-3 lg:-right-6 chip-o items-center"
-                  style={{ background: 'rgba(13,14,16,0.92)', backdropFilter: 'blur(8px)' }}
-                >
-                  <Flame className="w-3.5 h-3.5 text-[#ff9600]" />
-                  <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-1">12-day streak</span>
-                </motion.div>
               </div>
-            </motion.div>
+
+              {/* Image column — aspect tracks width so it always fits the hero rhythm */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.1, ease }}
+                className="lg:col-span-6 xl:col-span-6 relative w-full max-w-xl mx-auto lg:max-w-none"
+              >
+                {/* Wrapper: floats sit outside the clipped image so chips are not cut off */}
+                <div className="relative pb-14 sm:pb-12 lg:pb-10">
+                  <div className="frame-o relative bg-o-2">
+                    {/* Width-driven aspect: scales with column, no vh fight; object-cover keeps frame full */}
+                    <div className="relative w-full aspect-[10/11] sm:aspect-[5/6] lg:aspect-[4/5] xl:aspect-[5/6] overflow-hidden">
+                      <img
+                        src="/images/hero/orbit-kids-laptop.jpg"
+                        alt="An Orbit student building a project on a laptop"
+                        className="absolute inset-0 w-full h-full object-cover object-[50%_30%] sm:object-[52%_26%] lg:object-[48%_24%]"
+                        fetchPriority="high"
+                        decoding="async"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                      />
+                    </div>
+                  </div>
+
+                  <motion.div
+                    animate={{ y: [-2, 2, -2] }}
+                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                    className="hidden sm:block absolute bottom-0 left-0 sm:left-2 lg:left-0 z-10"
+                  >
+                    <div className="card-o flex items-center gap-3 min-w-[220px]" style={{ padding: '12px 14px' }}>
+                      <div
+                        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{ background: 'linear-gradient(135deg,#1876D2,#00B0FF)' }}
+                      >
+                        <Rocket className="w-4 h-4 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[11px] font-mono uppercase tracking-[0.1em] text-o-3 mb-0.5">Lv 7 · Young CEO</p>
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-[12px] text-o-0 font-medium">1,240 XP</span>
+                          <span className="text-[11px] text-o-2">62%</span>
+                        </div>
+                        <div className="h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                          <div className="h-full rounded-full" style={{ width: '62%', background: '#00B0FF' }} />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    animate={{ y: [2, -2, 2] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+                    className="hidden md:flex absolute top-3 right-2 lg:right-0 z-10 chip-o items-center"
+                    style={{ background: 'rgba(13,14,16,0.92)', backdropFilter: 'blur(8px)' }}
+                  >
+                    <Flame className="w-3.5 h-3.5 text-[#ff9600]" />
+                    <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-1">12-day streak</span>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
