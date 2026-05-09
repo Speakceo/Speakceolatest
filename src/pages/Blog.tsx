@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, User, ArrowRight, Search, Filter, Tag } from 'lucide-react';
 import SEO from '../components/SEO';
+import PageHero from '../components/common/PageHero';
 import { publishedBlogPosts, blogCategories, getFeaturedPosts } from '../data/blogPosts';
 
 const Blog: React.FC = () => {
@@ -93,28 +94,22 @@ const Blog: React.FC = () => {
         }}
       />
 
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#1876D2] to-[#00B0FF] text-white py-20">
-          <div className="max-w-7xl mx-auto px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Orbit Student Blog
-              </h1>
-              <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-                Expert insights on entrepreneurship education, youth leadership, and building the next generation of innovators
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span className="bg-white/20 px-4 py-2 rounded-full">20+ Expert Articles</span>
-                <span className="bg-white/20 px-4 py-2 rounded-full">10+ Categories</span>
-                <span className="bg-white/20 px-4 py-2 rounded-full">Weekly Updates</span>
-              </div>
-            </motion.div>
+      <div className="min-h-screen bg-o-0 text-o-0">
+        <PageHero
+          eyebrow="§ Blog · Weekly essays"
+          title="Insights from"
+          italic="the studio."
+          subtitle="Essays on entrepreneurship education, youth leadership and building the next generation of innovators."
+          align="center"
+          size="sm"
+        />
+        <section className="border-o-t bg-o-0">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-6">
+            <div className="flex flex-wrap justify-center gap-2">
+              <span className="chip-o">20+ expert articles</span>
+              <span className="chip-o">10+ categories</span>
+              <span className="chip-o">Weekly updates</span>
+            </div>
           </div>
         </section>
 

@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import EnrollmentPopup from '../components/EnrollmentPopup';
+import PageHero from '../components/common/PageHero';
 
 /* ── DATA ── */
 const scholarshipJourney = [
@@ -115,148 +116,24 @@ const Resources: React.FC = () => {
         url="https://www.orbitstudent.com/resources"
       />
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-o-0 text-o-0">
+        {/* Unified hero */}
+        <PageHero
+          eyebrow="§ Resources · Scholarship & opportunity hub"
+          title="The earlier you start,"
+          italic="the further you go."
+          subtitle="Most students discover scholarships in 11th grade. Our students start in 5th. 500+ scholarships mapped, $2.9B+ in funding available."
+          actions={[
+            { label: "Start your child's journey", onClick: () => setShowEnrollment(true), primary: true },
+            { label: 'Explore scholarships', href: '#scholarship-map' },
+          ]}
+          align="center"
+          size="md"
+        />
 
-        {/* ╔══════════════════════════════════════════════════════════╗
-            ║  HERO — IMMERSIVE DARK SCHOLARSHIP DISCOVERY           ║
-            ╚══════════════════════════════════════════════════════════╝ */}
-        <section ref={heroRef} className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#050a18]">
-          {/* Animated gradient mesh */}
-          <div className="absolute inset-0">
-            <motion.div
-              className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(24,118,210,0.15) 0%, transparent 70%)' }}
-              animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            />
-            <motion.div
-              className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(0,176,255,0.12) 0%, transparent 70%)' }}
-              animate={{ x: [0, -25, 0], y: [0, 20, 0] }}
-              transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-            />
-            <motion.div
-              className="absolute top-[40%] left-[50%] w-[30%] h-[30%] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(0,191,165,0.08) 0%, transparent 70%)' }}
-              animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-            />
-          </div>
-
-          {/* Dot grid */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-
-          <ParticleField />
-
-          {/* Content */}
-          <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
-            <div className="text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-sm mb-8"
-              >
-                <div className="w-2 h-2 rounded-full bg-[#00B0FF] animate-pulse" />
-                <span className="text-sm font-medium text-gray-400 tracking-wide">Scholarship & Opportunity Hub</span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-[1.1]"
-              >
-                The Earlier You Start,
-                <br />
-                <span className="relative">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#00BFA5]">
-                    The Further You Go
-                  </span>
-                  <motion.div
-                    className="absolute -bottom-2 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#00BFA5] rounded-full"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
-                  />
-                </span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-gray-400 max-w-2xl mx-auto text-lg sm:text-xl mb-12 leading-relaxed"
-              >
-                Most students discover scholarships in 11th grade.{' '}
-                <span className="text-white font-medium">Our students start in 5th.</span>{' '}
-                That's the Orbit advantage.
-              </motion.p>
-
-              {/* Stat pills */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-wrap justify-center gap-4 mb-16"
-              >
-                {[
-                  { label: 'Scholarships Mapped', value: '500+' },
-                  { label: 'In Funding Available', value: '$2.9B+' },
-                  { label: 'Student Age Range', value: '8-18' },
-                ].map((s, i) => (
-                  <div key={i} className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.06] backdrop-blur-sm">
-                    <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">{s.value}</span>
-                    <span className="text-gray-500 text-sm">{s.label}</span>
-                  </div>
-                ))}
-              </motion.div>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-              >
-                <button
-                  onClick={() => setShowEnrollment(true)}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold rounded-2xl shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/30 transition-all duration-500 hover:scale-[1.02]"
-                >
-                  Start Your Child's Journey
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <a
-                  href="#scholarship-map"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-white/[0.04] text-white font-semibold rounded-2xl border border-white/[0.08] hover:bg-white/[0.08] transition-all duration-300 backdrop-blur-sm"
-                >
-                  <Search className="h-5 w-5 text-[#00B0FF]" />
-                  Explore Scholarships
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Scroll indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-              className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-            >
-              <span className="text-gray-600 text-xs tracking-widest uppercase">Scroll</span>
-              <motion.div
-                className="w-5 h-8 border border-white/10 rounded-full flex items-start justify-center p-1"
-                animate={{ borderColor: ['rgba(255,255,255,0.1)', 'rgba(255,255,255,0.2)', 'rgba(255,255,255,0.1)'] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <motion.div
-                  className="w-1.5 h-1.5 bg-[#00B0FF] rounded-full"
-                  animate={{ y: [0, 12, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-              </motion.div>
-            </motion.div>
-          </motion.div>
+        {/* keep dummy ref for scroll behaviour (heroY/heroOpacity bindings) */}
+        <section ref={heroRef} className="hidden" aria-hidden="true">
+          <motion.div style={{ y: heroY, opacity: heroOpacity }} />
         </section>
 
         {/* ╔══════════════════════════════════════════════════════════╗

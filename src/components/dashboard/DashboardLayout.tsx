@@ -175,7 +175,7 @@ export default function DashboardLayout() {
   return (
     <ErrorBoundary>
       <Suspense fallback={<LoadingSpinner message="Loading content..." />}>
-        <div className="min-h-screen bg-[#0c1222] flex flex-col">
+        <div className="od-dashboard-shell min-h-screen bg-o-0 flex flex-col">
           <Sidebar onCollapseChange={handleSidebarStateChange} />
           <div className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${!isMobile ? (isSidebarCollapsed ? 'ml-20' : 'ml-[260px]') : ''}`}>
             <TopBar />

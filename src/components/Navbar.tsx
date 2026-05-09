@@ -50,50 +50,46 @@ export default function Navbar() {
 
   return (
     <div className="w-full relative z-40">
-      {/* ── Floating Pill Navbar ────────────────────────────────────────── */}
-      <div className={`fixed z-50 top-0 left-0 right-0 flex justify-center transition-all duration-500 ${scrolled ? 'pt-3' : 'pt-0'}`}>
-        <nav className={`w-full transition-all duration-500 ${
-          scrolled
-            ? 'max-w-[calc(100%-2rem)] mx-4 rounded-2xl bg-slate-950/80 backdrop-blur-2xl border border-white/[0.08] shadow-2xl shadow-black/40'
-            : 'max-w-full bg-slate-950/90 backdrop-blur-xl border-b border-white/[0.05]'
-        }`}>
-          {/* Animated gradient accent line */}
-          {scrolled && (
-            <div className="absolute top-0 left-0 right-0 h-[1px] rounded-t-2xl overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-transparent via-[#00B0FF]/50 to-transparent" />
-            </div>
-          )}
-
+      {/* ── Linear-grade dark Navbar ─────────────────────────────────────── */}
+      <div className="fixed z-50 top-0 left-0 right-0">
+        <nav
+          className={`w-full transition-all duration-300 ${
+            scrolled
+              ? 'bg-[rgba(8,9,10,0.85)] backdrop-blur-xl border-b border-[var(--o-border-1)]'
+              : 'bg-[rgba(8,9,10,0.65)] backdrop-blur-md border-b border-[var(--o-border-0)]'
+          }`}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-[60px]">
+            <div className="flex justify-between items-center h-[56px]">
 
               {/* Logo */}
-              <button onClick={handleLogoClick} className="relative flex items-center group flex-shrink-0">
-                <div className="absolute -inset-2 bg-[#00B0FF]/0 group-hover:bg-[#00B0FF]/8 rounded-xl transition-all duration-500 blur-md" />
+              <button onClick={handleLogoClick} className="flex items-center flex-shrink-0">
                 <img
                   src="/images/hero/orbit-logo.png"
                   alt="Orbit Student"
-                  className="relative h-8 w-auto opacity-90 group-hover:opacity-100 transition-all duration-300 group-hover:scale-105"
-                  style={{ filter: 'brightness(0) invert(1) drop-shadow(0 0 6px rgba(0,176,255,0.25))' }}
+                  className="h-7 w-auto opacity-90 hover:opacity-100 transition-opacity duration-200"
+                  style={{ filter: 'brightness(0) invert(1)' }}
                 />
               </button>
 
               {/* Desktop Nav */}
-              <div className="hidden md:flex items-center gap-0.5">
+              <div className="hidden md:flex items-center gap-1">
                 {menuItems.map((item) => (
                   <Link
                     key={item.title}
                     to={item.href}
-                    className={`relative px-3.5 py-2 rounded-xl text-[13px] font-medium tracking-wide transition-all duration-200 ${
+                    className={`relative px-3 py-1.5 rounded-md text-[13.5px] font-medium transition-colors duration-150 ${
                       isActive(item.href)
-                        ? 'text-white'
-                        : 'text-gray-500 hover:text-gray-200'
+                        ? 'text-o-0'
+                        : 'text-o-2 hover:text-o-0'
                     }`}
+                    style={{ letterSpacing: '-0.005em' }}
                   >
                     {isActive(item.href) && (
                       <motion.div
                         layoutId="nav-active-pill"
-                        className="absolute inset-0 bg-white/[0.08] rounded-xl border border-white/[0.1]"
+                        className="absolute inset-0 rounded-md"
+                        style={{ background: 'rgba(255,255,255,0.06)' }}
                         transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                       />
                     )}
@@ -101,10 +97,10 @@ export default function Navbar() {
                   </Link>
                 ))}
 
-                {/* Career Guide */}
                 <button
                   onClick={() => setShowCareerGuide(true)}
-                  className="relative px-3.5 py-2 rounded-xl text-[13px] font-medium text-gray-500 hover:text-gray-200 transition-colors duration-200 flex items-center gap-1.5 ml-1"
+                  className="relative px-3 py-1.5 rounded-md text-[13.5px] font-medium text-o-2 hover:text-o-0 transition-colors duration-150 flex items-center gap-1.5 ml-0.5"
+                  style={{ letterSpacing: '-0.005em' }}
                 >
                   <Sparkles className="w-3 h-3 text-[#00B0FF]" />
                   Career Guide
@@ -116,37 +112,29 @@ export default function Navbar() {
                 <LanguageToggle />
                 <ThemeToggle size="sm" />
 
-                <div className="w-[1px] h-4 bg-white/[0.1] mx-1" />
+                <div className="w-px h-4 mx-1" style={{ background: 'var(--o-border-1)' }} />
 
                 {isInitialized && (
                   user ? (
-                    <button
-                      onClick={handleDashboardClick}
-                      className="relative px-4 py-2 rounded-xl text-[13px] font-semibold text-white overflow-hidden group"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#00B0FF] to-[#1876D2] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-                      <span className="relative">{user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}</span>
+                    <button onClick={handleDashboardClick} className="btn-o btn-o-primary" style={{ height: 32, padding: '0 12px', fontSize: 13 }}>
+                      {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
                     </button>
                   ) : (
                     <div className="flex items-center gap-1.5">
                       <button
                         onClick={() => navigate('/login')}
-                        className="px-3.5 py-2 rounded-xl text-[13px] font-medium text-gray-400 hover:text-white hover:bg-white/[0.05] transition-all duration-200"
+                        className="btn-o btn-o-link"
+                        style={{ height: 32, fontSize: 13 }}
                       >
-                        Login
+                        Sign in
                       </button>
                       <button
                         onClick={() => setShowEnrollment(true)}
-                        className="group relative px-4 py-2 rounded-xl text-[13px] font-semibold text-white overflow-hidden"
+                        className="btn-o btn-o-primary"
+                        style={{ height: 32, padding: '0 14px', fontSize: 13 }}
                       >
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-xl" />
-                        {/* shimmer */}
-                        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent rounded-xl" />
-                        <span className="relative flex items-center gap-1.5">
-                          Get Started
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                        </span>
+                        Get started
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   )
@@ -158,7 +146,7 @@ export default function Navbar() {
                 <ThemeToggle size="sm" />
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/[0.08] transition-all duration-200"
+                  className="p-2 rounded-md text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.04)] transition-colors duration-150"
                 >
                   {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
@@ -172,60 +160,59 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden fixed w-[calc(100%-2rem)] mx-4 top-[72px] z-40 bg-slate-950/95 backdrop-blur-2xl rounded-2xl border border-white/[0.08] shadow-2xl overflow-hidden"
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18 }}
+            className="md:hidden fixed left-0 right-0 top-[56px] z-40 bg-[rgba(8,9,10,0.95)] backdrop-blur-xl border-b border-[var(--o-border-1)]"
           >
-            <div className="px-4 py-4 space-y-1">
+            <div className="px-4 py-3 space-y-0.5">
               {menuItems.map((item) => (
                 <Link
                   key={item.title}
                   to={item.href}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-md text-[14px] font-medium transition-colors duration-150 ${
                     isActive(item.href)
-                      ? 'text-white bg-white/[0.08] border border-white/[0.08]'
-                      : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
+                      ? 'text-o-0 bg-[rgba(255,255,255,0.06)]'
+                      : 'text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.03)]'
                   }`}
                   onClick={() => setIsOpen(false)}
+                  style={{ letterSpacing: '-0.005em' }}
                 >
-                  {isActive(item.href) && <span className="w-1 h-4 bg-[#00B0FF] rounded-full flex-shrink-0" />}
+                  {isActive(item.href) && <span className="w-1 h-3.5 bg-[#00B0FF] rounded-full flex-shrink-0" />}
                   {t(item.title)}
                 </Link>
               ))}
 
               <button
                 onClick={() => { setShowCareerGuide(true); setIsOpen(false); }}
-                className="flex items-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-medium text-gray-400 hover:text-white hover:bg-white/[0.04] transition-all duration-200"
+                className="flex items-center gap-2 w-full px-3 py-2.5 rounded-md text-[14px] font-medium text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.03)] transition-colors duration-150"
               >
-                <Sparkles className="w-4 h-4 text-[#00B0FF]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#00B0FF]" />
                 Career Guide
               </button>
 
-              <div className="h-[1px] bg-white/[0.06] my-2" />
+              <div className="h-px my-3" style={{ background: 'var(--o-border-0)' }} />
 
               {isInitialized && (
                 user ? (
-                  <button
-                    onClick={handleDashboardClick}
-                    className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-4 py-3.5 rounded-xl text-sm font-semibold shadow-lg shadow-[#1876D2]/20"
-                  >
+                  <button onClick={handleDashboardClick} className="btn-o btn-o-primary w-full">
                     {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
                   </button>
                 ) : (
                   <div className="space-y-2">
                     <button
                       onClick={() => { navigate('/login'); setIsOpen(false); }}
-                      className="w-full px-4 py-3 rounded-xl text-sm font-medium text-gray-400 hover:text-white border border-white/[0.08] hover:bg-white/[0.04] transition-all"
+                      className="btn-o btn-o-ghost w-full"
                     >
-                      Login
+                      Sign in
                     </button>
                     <button
                       onClick={() => { setShowEnrollment(true); setIsOpen(false); }}
-                      className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white px-4 py-3.5 rounded-xl text-sm font-semibold shadow-lg shadow-[#1876D2]/20"
+                      className="btn-o btn-o-primary w-full"
                     >
-                      Get Started →
+                      Get started
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 )

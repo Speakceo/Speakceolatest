@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Search, MessageCircle, Phone, Mail, Star, Trophy, Target, Shield, Clock, Users } from 'lucide-react';
 import SEO from '../components/SEO';
+import PageHero from '../components/common/PageHero';
 
 interface FAQItem {
   id: number;
@@ -159,37 +160,32 @@ const FAQ: React.FC = () => {
         showFAQ={true}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <div className="flex justify-center mb-6">
-              <div className="flex items-center space-x-2 bg-white/20 rounded-full px-6 py-2">
-                <Star className="h-5 w-5 text-yellow-300" />
-                <span className="text-sm font-semibold">Trusted by 10,000+ Parents</span>
-                <Star className="h-5 w-5 text-yellow-300" />
-              </div>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Your Questions Answered
-            </h1>
-            <p className="text-xl text-gray-400 mb-8">
-              Everything you need to know about transforming your child into a confident young entrepreneur
-            </p>
-            
-            {/* Search Bar */}
-            <div className="relative max-w-md mx-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+      <div className="min-h-screen bg-o-0 text-o-0">
+        {/* Unified hero */}
+        <PageHero
+          eyebrow="§ FAQ · Trusted by 10,000+ parents"
+          title="Your questions"
+          italic="answered."
+          subtitle="Everything you need to know about transforming your child into a confident young entrepreneur."
+          align="center"
+          size="sm"
+        />
+
+        {/* Search bar */}
+        <section className="border-o-t bg-o-0">
+          <div className="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div className="relative">
+              <Search className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-o-3 h-4 w-4" />
               <input
                 type="text"
                 placeholder="Search your concerns..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-[#1876D2]/30 focus:outline-none"
+                className="w-full h-11 pl-10 pr-4 bg-o-2 border border-[var(--o-border-1)] hover:border-[var(--o-border-2)] focus:border-[#1876D2] focus:outline-none rounded-lg text-o-0 placeholder:text-o-3 text-[14px] transition-colors"
               />
             </div>
           </div>
-        </div>
+        </section>
 
         <div className="max-w-4xl mx-auto px-4 py-12">
           {/* Trust Indicators */}

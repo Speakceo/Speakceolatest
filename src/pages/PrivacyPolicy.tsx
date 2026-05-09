@@ -1,6 +1,7 @@
 import React from 'react';
 import { Shield, Lock, Eye, UserCheck, Database, Globe, Mail } from 'lucide-react';
 import SEO from '../components/SEO';
+import PageHero from '../components/common/PageHero';
 
 interface PolicySection {
   id: number;
@@ -95,21 +96,15 @@ const PrivacyPolicy: React.FC = () => {
         noIndex={true}
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Privacy Policy
-            </h1>
-            <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-              We take your privacy seriously. Learn how we protect and handle your personal information.
-            </p>
-            <p className="text-indigo-200">
-              Last updated: March 1, 2024
-            </p>
-          </div>
-        </div>
+      <PageHero
+        eyebrow="§ Legal · Last updated March 1, 2024"
+        title="Privacy"
+        italic="policy."
+        subtitle="We take your privacy seriously. Here's how we collect, use and safeguard your data — in plain language."
+        align="center"
+        size="sm"
+      />
+      <div className="min-h-screen bg-o-0 text-o-0">
 
         <div className="max-w-7xl mx-auto px-4 py-12">
           {/* Introduction */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star, Quote, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
+import PageHero from '../components/common/PageHero';
 
 interface Testimonial {
   id: number;
@@ -92,28 +93,28 @@ const Testimonials: React.FC = () => {
         url="https://www.orbitstudent.com/testimonials"
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Success Stories
-            </h1>
-            <p className="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
-              Meet our young entrepreneurs and discover their inspiring journeys
-            </p>
-            
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <PageHero
+        eyebrow="§ Voices · Field reports"
+        title="Success"
+        italic="stories."
+        subtitle="Meet our young entrepreneurs and discover their inspiring journeys — pitched ideas, launched stores, first profits."
+        align="center"
+        size="sm"
+      />
+      <div className="min-h-screen bg-o-0 text-o-0">
+        {/* Stats */}
+        <section className="border-o-t bg-o-0">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold mb-2">{stat.value}</div>
-                  <div className="text-indigo-200">{stat.label}</div>
+                <div key={index}>
+                  <p className="font-display text-[clamp(2.2rem,4vw,3rem)] text-o-0 mb-2" style={{ letterSpacing: '-0.04em' }}>{stat.value}</p>
+                  <p className="eyebrow-o">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
         <div className="max-w-7xl mx-auto px-4 py-12">
           {/* Featured Stories */}

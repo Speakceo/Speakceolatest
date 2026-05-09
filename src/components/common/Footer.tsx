@@ -1,99 +1,148 @@
-import React from 'react';
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Footer — Linear-grade dark.
+ * Single design language with the rest of the site.
+ *   • bg uses --o-bg-0 (deepest), divider hairlines via --o-border-0
+ *   • Inter Variable, weight 510 for emphasis
+ *   • mono uppercase section labels (eyebrow-o)
+ *   • single Orbit blue accent on hover and the subscribe button
+ */
+
+const linkCls =
+  'block text-[14px] text-o-2 hover:text-o-0 transition-colors duration-150 leading-[2]';
+
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-gray-300 relative">
-      {/* Top gradient line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-[#1876D2] to-transparent"></div>
-      
-      <div className="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Company Information */}
-          <div className="col-span-1 md:col-span-1">
-            <img 
-              src="/images/hero/orbit-logo.png" 
-              alt="Orbit Logo" 
-              className="h-10 w-auto mb-6 brightness-0 invert"
-            />
-            <p className="text-gray-400 mb-6 leading-relaxed text-sm">
-              Empowering the next generation of entrepreneurs with the skills they need to succeed in business and life.
+    <footer className="relative bg-o-0">
+      {/* Hairline top divider */}
+      <div className="h-px" style={{ background: 'var(--o-border-0)' }} />
+
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-10">
+        {/* Big mast — Linear-style restrained statement */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 sm:mb-20 items-end">
+          <div className="lg:col-span-7">
+            <p className="eyebrow-o mb-5">§ Orbit Student · 2026</p>
+            <h2
+              className="font-display text-[clamp(2.2rem,5vw,4rem)] text-o-0"
+              style={{ letterSpacing: '-0.045em', lineHeight: 1.02 }}
+            >
+              Where young minds <span style={{ color: '#00B0FF' }}>become leaders.</span>
+            </h2>
+          </div>
+
+          {/* Subscribe — minimal hairline form */}
+          <div className="lg:col-span-5">
+            <p className="eyebrow-o mb-3">Subscribe</p>
+            <p className="text-[14px] text-o-2 leading-[1.6] mb-6 max-w-[44ch]">
+              One Sunday email. New essays, scholarship deadlines, and projects our students are
+              shipping. No filler.
             </p>
-            <div className="flex space-x-3">
-              <a href="#" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:bg-[#1876D2] hover:text-white transition-all duration-300">
-                <Facebook size={16} />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:bg-[#1876D2] hover:text-white transition-all duration-300">
-                <Twitter size={16} />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:bg-[#1876D2] hover:text-white transition-all duration-300">
-                <Instagram size={16} />
-              </a>
-              <a href="#" className="p-2 rounded-lg bg-white/5 text-gray-400 hover:bg-[#1876D2] hover:text-white transition-all duration-300">
-                <Youtube size={16} />
-              </a>
-            </div>
-          </div>
-          
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">About Us</Link></li>
-              <li><Link to="/courses" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Our Courses</Link></li>
-              <li><Link to="/events" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Upcoming Events</Link></li>
-              <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Blog</Link></li>
-              <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Contact Us</Link></li>
-            </ul>
-          </div>
-          
-          {/* Resources */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">Resources</h3>
-            <ul className="space-y-3">
-              <li><Link to="/faq" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">FAQs</Link></li>
-              <li><Link to="/testimonials" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Success Stories</Link></li>
-              <li><Link to="/resources" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Free Resources</Link></li>
-              <li><Link to="/partnerships" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Partnerships</Link></li>
-              <li><Link to="/demo" className="text-gray-400 hover:text-white transition-colors duration-200 text-sm">Interactive Demo</Link></li>
-            </ul>
-          </div>
-          
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">Stay Updated</h3>
-            <p className="text-gray-400 mb-4 leading-relaxed text-sm">
-              Subscribe to our newsletter for tips, updates, and special offers.
-            </p>
-            <div className="flex">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-l-lg focus:outline-none focus:border-[#1876D2] text-white placeholder-gray-500 text-sm transition-colors"
+            <form className="flex items-center gap-2">
+              <input
+                type="email"
+                placeholder="your@email.com"
+                aria-label="Email address"
+                className="flex-1 bg-o-2 border border-[var(--o-border-1)] hover:border-[var(--o-border-2)] focus:border-[#1876D2] focus:outline-none rounded-lg px-3.5 h-10 text-[14px] text-o-0 placeholder:text-o-3 transition-colors"
               />
-              <button className="bg-[#1876D2] hover:bg-[#00B0FF] text-white px-4 py-2.5 rounded-r-lg transition-colors duration-200">
+              <button
+                type="submit"
+                aria-label="Subscribe"
+                className="btn-o btn-o-primary"
+                style={{ height: 40 }}
+              >
                 <ArrowRight size={16} />
               </button>
-            </div>
-            <p className="text-gray-500 text-xs mt-3">
-              We respect your privacy and never share your information.
+            </form>
+            <p className="meta-line mt-3">
+              We respect your inbox. Unsubscribe anytime.
             </p>
           </div>
         </div>
-        
-        <hr className="border-white/10 my-8" />
-        
-        {/* Bottom section */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs">
-          <div className="mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Orbit Student. All rights reserved.
+
+        {/* Hairline */}
+        <div className="h-px mb-12 sm:mb-16" style={{ background: 'var(--o-border-0)' }} />
+
+        {/* Link columns */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-10">
+          {/* Brand column */}
+          <div className="col-span-2 sm:col-span-4 lg:col-span-1">
+            <Link to="/" className="inline-block mb-5">
+              <img
+                src="/images/hero/orbit-logo.png"
+                alt="Orbit Student"
+                className="h-8 w-auto"
+                style={{ filter: 'brightness(0) invert(1) opacity(0.92)' }}
+              />
+            </Link>
+            <div className="flex gap-1.5">
+              {[
+                { Icon: Facebook, href: '#', label: 'Facebook' },
+                { Icon: Twitter, href: '#', label: 'Twitter' },
+                { Icon: Instagram, href: '#', label: 'Instagram' },
+                { Icon: Youtube, href: '#', label: 'YouTube' },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="w-9 h-9 inline-flex items-center justify-center rounded-lg text-o-2 hover:text-o-0 hover:border-[var(--o-border-2)] transition-all duration-200 border border-[var(--o-border-1)]"
+                >
+                  <Icon size={14} />
+                </a>
+              ))}
+            </div>
           </div>
-          <div className="flex space-x-6">
-            <Link to="/privacy" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-white transition-colors duration-200">Terms of Service</Link>
-            <Link to="/cookies" className="hover:text-white transition-colors duration-200">Cookie Policy</Link>
+
+          <div>
+            <p className="eyebrow-o mb-5">Programme</p>
+            <Link to="/courses" className={linkCls}>Courses</Link>
+            <Link to="/demo" className={linkCls}>Live Demo</Link>
+            <Link to="/live-classes" className={linkCls}>Live Classes</Link>
+            <Link to="/events" className={linkCls}>Events</Link>
+            <Link to="/community" className={linkCls}>Community</Link>
           </div>
+
+          <div>
+            <p className="eyebrow-o mb-5">Library</p>
+            <Link to="/blog" className={linkCls}>Blog</Link>
+            <Link to="/resources" className={linkCls}>Resources</Link>
+            <Link to="/testimonials" className={linkCls}>Stories</Link>
+            <Link to="/faq" className={linkCls}>FAQ</Link>
+            <Link to="/tools" className={linkCls}>AI Tools</Link>
+          </div>
+
+          <div>
+            <p className="eyebrow-o mb-5">Studio</p>
+            <Link to="/about" className={linkCls}>About</Link>
+            <Link to="/partnerships" className={linkCls}>Partnerships</Link>
+            <Link to="/contact" className={linkCls}>Contact</Link>
+            <a href="mailto:contact@orbitstudent.com" className={linkCls}>Press</a>
+            <a href="mailto:careers@orbitstudent.com" className={linkCls}>Careers</a>
+          </div>
+
+          <div>
+            <p className="eyebrow-o mb-5">Account</p>
+            <Link to="/login" className={linkCls}>Sign in</Link>
+            <Link to="/dashboard" className={linkCls}>Dashboard</Link>
+            <Link to="/privacy" className={linkCls}>Privacy</Link>
+            <Link to="/terms" className={linkCls}>Terms</Link>
+            <Link to="/cookies" className={linkCls}>Cookies</Link>
+          </div>
+        </div>
+
+        {/* Hairline */}
+        <div className="h-px mt-14 mb-6" style={{ background: 'var(--o-border-0)' }} />
+
+        {/* Bottom bar */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <p className="meta-line">
+            &copy; {new Date().getFullYear()} Orbit Student. Made with care for young minds.
+          </p>
+          <p className="meta-line">
+            Cohort 12 · 2026 · Mumbai · Remote
+          </p>
         </div>
       </div>
     </footer>

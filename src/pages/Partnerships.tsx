@@ -1,6 +1,7 @@
 import React from 'react';
 import { Handshake, Users, Building, Award, ArrowRight, Mail } from 'lucide-react';
 import SEO from '../components/SEO';
+import PageHero from '../components/common/PageHero';
 
 interface Partner {
   id: number;
@@ -79,18 +80,15 @@ const Partnerships: React.FC = () => {
         url="https://www.orbitstudent.com/partnerships"
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-[#F5F9FC] via-white to-[#E3F2FD]">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-20">
-          <div className="max-w-6xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Our Partnerships
-            </h1>
-            <p className="text-xl text-gray-400 mb-8">
-              Collaborating with leading organizations to empower young entrepreneurs
-            </p>
-          </div>
-        </div>
+      <PageHero
+        eyebrow="§ Partnerships"
+        title="Building Orbit"
+        italic="together."
+        subtitle="Collaborating with leading organisations to empower young entrepreneurs — funding, mentorship, opportunities."
+        align="center"
+        size="sm"
+      />
+      <div className="min-h-screen bg-o-0 text-o-0">
 
         <div className="max-w-6xl mx-auto px-4 py-12">
           {/* Partnership Benefits */}

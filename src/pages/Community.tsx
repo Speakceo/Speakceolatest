@@ -1,5 +1,21 @@
 import React from 'react';
+import { Users, MessageSquare, Globe, Trophy } from 'lucide-react';
 import SEO from '../components/SEO';
+import PageHero from '../components/common/PageHero';
+
+const stats = [
+  { value: '2,500+', label: 'enrolled families' },
+  { value: '35+', label: 'countries' },
+  { value: '94%', label: 'active monthly' },
+  { value: '4.9/5', label: 'community rating' },
+];
+
+const features = [
+  { icon: Users, title: 'Cohort circles', desc: '18-student groups that meet every week throughout the programme.' },
+  { icon: MessageSquare, title: 'Founder office hours', desc: 'Sundays. Open mic with mentors who have shipped real products.' },
+  { icon: Globe, title: 'Global builds', desc: 'Cross-cohort projects with kids from 35+ countries.' },
+  { icon: Trophy, title: 'Showcase nights', desc: 'Monthly. Live pitches. Real audiences. Real outcomes.' },
+];
 
 const Community = () => {
   return (
@@ -10,16 +26,40 @@ const Community = () => {
         keywords={['Orbit Student community', 'young entrepreneurs network', 'kids entrepreneur community', 'student community', 'Orbit Student peers']}
         url="https://www.orbitstudent.com/community"
       />
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-pink-50 to-mint-50 relative overflow-hidden py-16">
-      <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-tr from-pink-200 via-yellow-100 to-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-40"></div>
-      <div className="absolute bottom-10 right-10 w-56 h-56 bg-gradient-to-tr from-mint-200 via-purple-100 to-pink-200 rounded-full mix-blend-multiply filter blur-2xl opacity-40"></div>
-      <div className="container mx-auto px-4 py-8 relative z-10">
-        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-pink-500 to-mint-500 mb-6 drop-shadow-lg">Community</h1>
-        <div className="bg-white/80 rounded-2xl shadow-xl p-8 max-w-2xl mx-auto">
-          <p className="text-lg text-gray-700">Connect with our community.</p>
-        </div>
+
+      <PageHero
+        eyebrow="§ Community · Cohort 12"
+        title="2,500 young builders, "
+        italic="building together."
+        subtitle="Cohort circles, founder office hours and monthly showcase nights. Your child is never building alone."
+        align="center"
+        size="sm"
+      />
+
+      <div className="min-h-screen bg-o-0 text-o-0">
+        <section className="border-o-t bg-o-0">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 mb-16">
+              {stats.map((s, i) => (
+                <div key={i}>
+                  <p className="font-display text-[clamp(2.2rem,4.2vw,3rem)] text-o-0 mb-2" style={{ letterSpacing: '-0.04em' }}>{s.value}</p>
+                  <p className="eyebrow-o">{s.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-10 border-o-t">
+              {features.map((f, i) => (
+                <div key={i} className="card-o">
+                  <f.icon className="h-4 w-4 text-[#00B0FF] mb-5" />
+                  <p className="text-[16px] font-medium text-o-0 mb-2" style={{ letterSpacing: '-0.005em' }}>{f.title}</p>
+                  <p className="text-[14px] text-o-2 leading-[1.55]">{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
     </>
   );
 };

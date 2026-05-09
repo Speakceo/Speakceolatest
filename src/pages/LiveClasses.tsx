@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PageHero from '../components/common/PageHero';
 import { 
   Calendar, 
   Video, 
@@ -213,28 +214,27 @@ export default function LiveClasses() {
         url="https://www.orbitstudent.com/live-classes"
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Live Interactive Classes
-            </h1>
-            <p className="text-xl text-indigo-100 mb-8 max-w-3xl mx-auto">
-              Learn directly from industry experts and successful entrepreneurs through interactive live sessions.
-            </p>
-            <div className="flex justify-center space-x-8">
+      <PageHero
+        eyebrow="§ Live classes · Mentor-led"
+        title="Real mentors, "
+        italic="not recordings."
+        subtitle="Two live sessions per week with founders, designers and operators who have done it. Cohorts capped at 18 students."
+        align="center"
+        size="sm"
+      />
+      <div className="min-h-screen bg-o-0 text-o-0">
+        <section className="border-o-t bg-o-0">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {features.map((feature) => (
-                <div key={feature.title} className="text-center">
-                  <div className="bg-white/10 p-3 rounded-lg inline-block mb-2">
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <p className="text-sm font-medium">{feature.title}</p>
+                <div key={feature.title} className="card-o">
+                  <feature.icon className="h-4 w-4 text-[#00B0FF] mb-5" />
+                  <p className="text-[14.5px] font-medium text-o-0" style={{ letterSpacing: '-0.005em' }}>{feature.title}</p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 py-12">
