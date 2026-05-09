@@ -6,7 +6,33 @@
   NODE_VERSION = "18"
   SECRETS_SCAN_ENABLED = "false"
 
-# SPA redirect - but exclude static files
+# ─── Canonical domain enforcer ──────────────────────────────────────────────
+# These MUST come before the SPA catch-all.
+# Forces ALL traffic to https://www.orbitstudent.com (canonical).
+# Prevents "Page with redirect" GSC issues caused by non-www / HTTP duplicates.
+
+# 1. HTTP non-www → HTTPS www
+[[redirects]]
+  from = "http://orbitstudent.com/*"
+  to = "https://www.orbitstudent.com/:splat"
+  status = 301
+  force = true
+
+# 2. HTTP www → HTTPS www
+[[redirects]]
+  from = "http://www.orbitstudent.com/*"
+  to = "https://www.orbitstudent.com/:splat"
+  status = 301
+  force = true
+
+# 3. HTTPS non-www → HTTPS www  (most common GSC "redirect" trigger)
+[[redirects]]
+  from = "https://orbitstudent.com/*"
+  to = "https://www.orbitstudent.com/:splat"
+  status = 301
+  force = true
+
+# ─── SPA redirect — exclude static assets ───────────────────────────────────
 [[redirects]]
   from = "/*"
   to = "/index.html"

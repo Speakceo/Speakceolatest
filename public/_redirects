@@ -1,1 +1,15 @@
+# ─── Canonical domain enforcer ────────────────────────────────────────────────
+# Forces all traffic to https://www.orbitstudent.com (canonical).
+# Must come before the SPA catch-all rule.
+
+# HTTP non-www → HTTPS www
+http://orbitstudent.com/*       https://www.orbitstudent.com/:splat     301!
+
+# HTTP www → HTTPS www
+http://www.orbitstudent.com/*   https://www.orbitstudent.com/:splat     301!
+
+# HTTPS non-www → HTTPS www
+https://orbitstudent.com/*      https://www.orbitstudent.com/:splat     301!
+
+# ─── SPA routing — serve index.html for all non-asset paths ──────────────────
 /*    /index.html   200

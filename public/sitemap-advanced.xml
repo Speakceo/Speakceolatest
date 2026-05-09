@@ -2,118 +2,197 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  
-  <!-- Homepage with images -->
+
+  <!-- NOTE: /login /dashboard /privacy /terms /cookies are noindex — excluded -->
+
+  <!-- ── Homepage with image metadata ───────────────────────────────────── -->
   <url>
     <loc>https://www.orbitstudent.com/</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://www.orbitstudent.com/images/hero/main-hero.jpg</image:loc>
-      <image:title>Orbit Student - AI Learning Platform for Young Entrepreneurs</image:title>
-      <image:caption>Transform your child into a future leader with Orbit Student AI tools and courses</image:caption>
+      <image:loc>https://www.orbitstudent.com/images/hero/orbit-kids-laptop.jpg</image:loc>
+      <image:title>Orbit Student — AI Learning Platform for Young Entrepreneurs</image:title>
+      <image:caption>Transform your child into a confident leader with Orbit Student AI tools and courses</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.orbitstudent.com/og-image.jpg</image:loc>
-      <image:title>Orbit Student - AI Learning Portal</image:title>
-      <image:caption>Orbit Student: #1 AI edtech platform for kids ages 8-18</image:caption>
+      <image:title>Orbit Student — #1 AI Learning Portal for Kids</image:title>
+      <image:caption>Orbit Student: AI-powered edtech platform for kids ages 8–18</image:caption>
     </image:image>
   </url>
 
-  <!-- Login / Student Portal -->
-  <url>
-    <loc>https://www.orbitstudent.com/login</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Student Dashboard -->
-  <url>
-    <loc>https://www.orbitstudent.com/dashboard</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Demo Page -->
-  <url>
-    <loc>https://www.orbitstudent.com/demo</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- About Page -->
-  <url>
-    <loc>https://www.orbitstudent.com/about</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Courses Page -->
+  <!-- ── Core Pages ─────────────────────────────────────────────────────── -->
   <url>
     <loc>https://www.orbitstudent.com/courses</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Resources / Scholarships -->
+  <url>
+    <loc>https://www.orbitstudent.com/about</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.orbitstudent.com/images/hero/orbit-kids-banner.jpg</image:loc>
+      <image:title>About Orbit Student — Our Mission</image:title>
+      <image:caption>The story behind Orbit Student and our mission to transform kids into future leaders</image:caption>
+    </image:image>
+  </url>
+
   <url>
     <loc>https://www.orbitstudent.com/resources</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Tools Page -->
-  <url>
-    <loc>https://www.orbitstudent.com/tools</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Community Page -->
-  <url>
-    <loc>https://www.orbitstudent.com/community</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Live Classes Page -->
   <url>
     <loc>https://www.orbitstudent.com/live-classes</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- SEO Keywords Landing Page -->
   <url>
-    <loc>https://www.orbitstudent.com/seo-keywords.html</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://www.orbitstudent.com/demo</loc>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Blog Index -->
+  <url>
+    <loc>https://www.orbitstudent.com/tools</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/community</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/faq</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/testimonials</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/contact</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/partnerships</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/events</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ── Blog Hub ───────────────────────────────────────────────────────── -->
   <url>
     <loc>https://www.orbitstudent.com/blog</loc>
-    <lastmod>2026-02-13</lastmod>
+    <lastmod>2026-05-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Blog Posts -->
+  <!-- ── Blog Posts with News Schema ───────────────────────────────────── -->
+  <url>
+    <loc>https://www.orbitstudent.com/blog/kids-entrepreneurship-roadmap-90-day-action-plan</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Orbit Student Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-04-21</news:publication_date>
+      <news:title>Kids Entrepreneurship Roadmap: 90-Day Action Plan</news:title>
+    </news:news>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/blog/orbit-ai-tools-for-students-2026-checklist</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Orbit Student Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-04-21</news:publication_date>
+      <news:title>Orbit AI Tools for Students 2026: Complete Checklist</news:title>
+    </news:news>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/blog/ai-learning-for-kids-complete-guide-2026</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Orbit Student Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-03</news:publication_date>
+      <news:title>AI Learning for Kids: Complete Guide 2026</news:title>
+    </news:news>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/blog/how-kids-can-build-a-scholarship-profile-from-age-10</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Orbit Student Blog</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-03</news:publication_date>
+      <news:title>How Kids Can Build a Scholarship Profile from Age 10</news:title>
+    </news:news>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/blog/kids-new-age-learning-play-build-launch</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <url>
     <loc>https://www.orbitstudent.com/blog/why-entrepreneurship-education-matters-for-kids</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <news:news>
       <news:publication>
@@ -127,98 +206,72 @@
 
   <url>
     <loc>https://www.orbitstudent.com/blog/building-confidence-in-young-entrepreneurs</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.orbitstudent.com/blog/communication-skills-for-young-leaders</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.orbitstudent.com/blog/financial-literacy-for-kids-complete-guide</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.orbitstudent.com/blog/success-story-12-year-old-ceo</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.orbitstudent.com/blog/ai-learning-for-kids-complete-guide-2026</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitstudent.com/blog/how-kids-can-build-a-scholarship-profile-from-age-10</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitstudent.com/blog/kids-new-age-learning-play-build-launch</loc>
-    <lastmod>2026-03-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
-  <!-- Contact and Legal Pages -->
   <url>
-    <loc>https://www.orbitstudent.com/contact</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://www.orbitstudent.com/blog/parenting-tips-raising-entrepreneurial-kids</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.orbitstudent.com/faq</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.orbitstudent.com/testimonials</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.orbitstudent.com/partnerships</loc>
-    <lastmod>2026-02-13</lastmod>
+    <loc>https://www.orbitstudent.com/blog/technology-and-young-entrepreneurs</loc>
+    <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.orbitstudent.com/events</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.orbitstudent.com/blog/leadership-skills-development-children</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.orbitstudent.com/privacy</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.orbitstudent.com/blog/public-speaking-confidence-kids</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.orbitstudent.com/terms</loc>
-    <lastmod>2026-02-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.orbitstudent.com/blog/stem-entrepreneurship-future-careers</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.orbitstudent.com/blog/future-ready-skills-young-entrepreneurs</loc>
+    <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
