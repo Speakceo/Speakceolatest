@@ -53,172 +53,174 @@ export default function Home() {
         ]}
       />
 
-      <div className="min-h-screen bg-white text-[#3c3c3c]"
-        style={{ fontFamily: "'Inter Variable','Inter','Poppins',-apple-system,BlinkMacSystemFont,sans-serif" }}>
+      <div className="min-h-screen text-ed-fg bg-ed-canvas"
+        style={{ fontFamily: "'Inter','Inter Variable','Poppins',-apple-system,BlinkMacSystemFont,sans-serif" }}>
 
         {/* ════════════════════════════════════════════════════════════════
-            1 ◆ HERO — bright Duolingo-cream with live quest preview card
+            1 ◆ HERO — Editorial asymmetric layout with REAL hero photo
+                       (taste-editorial skill: serif left + photo right)
         ════════════════════════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden bg-duo-cream pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32">
-          {/* Soft dot grid */}
-          <div className="absolute inset-0 duo-dots opacity-60 pointer-events-none" />
-          {/* Subtle blue wash bottom-right */}
-          <div className="absolute bottom-0 right-0 w-[600px] h-[600px] pointer-events-none rounded-full"
-            style={{ background: 'radial-gradient(circle, rgba(24,118,210,0.06) 0%, transparent 70%)' }} />
+        <section className="relative overflow-hidden bg-ed-canvas pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-28">
+          {/* Magazine masthead */}
+          <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 mb-10 sm:mb-14">
+            <div className="ed-divider">
+              <span className="ed-divider-label">Issue 03 · Volume 2026 · Orbit Student</span>
+            </div>
+          </div>
 
           <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-[55%_45%] gap-10 sm:gap-14 lg:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start lg:items-end">
 
-              {/* ── Left: copy ── */}
+              {/* ── Left 7/12: editorial copy ── */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="lg:col-span-7"
               >
-                {/* Live signal chip */}
-                <div className="inline-flex items-center gap-2 mb-7 chip-duo chip-duo-blue">
+                {/* Eyebrow — mono uppercase */}
+                <div className="flex items-center gap-3 mb-6">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1876D2] opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#1876D2]" />
                   </span>
-                  AI-powered · Ages 8–18
+                  <span className="eyebrow-ed">Live Cohort · Ages 8–18 · AI-powered</span>
                 </div>
 
-                <h1 className="duo-display text-[clamp(2.4rem,7vw,5.2rem)] mb-6">
-                  Where Young<br />Minds Become<br />
-                  <span style={{ color: '#1876D2' }}>Leaders.</span>
+                {/* Mixed serif + sans display headline — taste-editorial signature */}
+                <h1 className="hero-ed-h1 mb-7"
+                  style={{ fontSize: 'clamp(2.6rem,7.5vw,5.8rem)', lineHeight: 1.0, letterSpacing: '-0.025em' }}>
+                  <span className="font-display-serif" style={{ color: '#1c1b1a', fontWeight: 400 }}>Where young minds </span>
+                  <span className="font-display-serif-italic" style={{ color: '#1876D2' }}>become leaders.</span>
                 </h1>
 
-                <p className="text-[16px] sm:text-[18px] leading-[1.65] text-[#777] max-w-[480px] mb-8 sm:mb-10">
-                  The AI-powered 180-day program transforming kids into confident entrepreneurs — through real games, live projects, and expert mentorship.
+                {/* Lede paragraph — max 52ch, muted ink */}
+                <p className="hero-ed-lede text-[16px] sm:text-[18px] leading-[1.6] text-ed-muted mb-9 sm:mb-10">
+                  A 180-day program in entrepreneurship, AI literacy and real-world leadership — taught through
+                  live mentorship, business simulations and the kind of projects schools simply don't offer.
                 </p>
 
-                {/* CTAs — chunky Duolingo press buttons */}
+                {/* CTAs */}
                 <div className="flex flex-col xs:flex-row sm:flex-row gap-3 mb-10 sm:mb-12">
                   <button onClick={() => setShowEnrollment(true)} className="btn-duo btn-duo-primary">
-                    Start Free Trial
-                    <ArrowRight className="h-4 w-4" />
+                    Start free trial <ArrowRight className="h-4 w-4" />
                   </button>
                   <button onClick={() => setShowCareerGuide(true)} className="btn-duo btn-duo-secondary">
                     <PlayCircle className="h-4 w-4 text-[#1876D2]" />
-                    Watch Demo
+                    Watch the demo
                   </button>
                 </div>
 
-                {/* Avatar stack + rating */}
+                {/* Real student avatars + rating */}
                 <div className="flex flex-wrap items-center gap-4">
-                  <div className="flex -space-x-2">
-                    {[
-                      { bg: '#1876D2', label: 'SC' },
-                      { bg: '#10b981', label: 'MR' },
-                      { bg: '#a855f7', label: 'JP' },
-                      { bg: '#f59e0b', label: 'AK' },
-                    ].map((a, i) => (
-                      <div key={i} className="w-9 h-9 rounded-full flex items-center justify-center text-white text-[11px] font-bold ring-[3px] ring-white"
-                        style={{ background: a.bg }}>
-                        {a.label}
-                      </div>
+                  <div className="flex -space-x-2.5">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <img
+                        key={n}
+                        src={`/images/avatars/student-${n}.jpg`}
+                        alt={`Orbit Student ${n}`}
+                        loading="lazy"
+                        className="w-10 h-10 rounded-full object-cover ring-[3px] ring-[#FBFBFA] border border-[#e6e4e0]"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
                     ))}
                   </div>
                   <div>
-                    <p className="text-[#3c3c3c] text-[14px] font-bold leading-tight">2,500+ families</p>
-                    <div className="flex items-center gap-0.5 mt-0.5">
+                    <p className="text-ed-fg text-[14px] font-semibold leading-tight">2,500+ enrolled families</p>
+                    <div className="flex items-center gap-1 mt-1">
                       {[...Array(5)].map((_, i) => (
-                        <svg key={i} className="w-3.5 h-3.5 text-[#ffc800] fill-[#ffc800]" viewBox="0 0 20 20">
+                        <svg key={i} className="w-3.5 h-3.5 text-[#1876D2] fill-[#1876D2]" viewBox="0 0 20 20">
                           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                       ))}
-                      <span className="text-[#777] text-[12px] font-semibold ml-1.5">4.9/5</span>
+                      <span className="text-ed-muted text-[12.5px] font-medium ml-1.5">4.9 · 612 reviews</span>
                     </div>
-                  </div>
-                  <div className="hidden sm:flex items-center gap-1.5 pl-4 border-l-2 border-[#e5e5e5]">
-                    <Shield className="w-3.5 h-3.5 text-[#58cc02]" />
-                    <span className="text-[12px] text-[#777] font-semibold">30-day guarantee</span>
                   </div>
                 </div>
               </motion.div>
 
-              {/* ── Right: Live quest preview card (Duolingo's signature) ── */}
+              {/* ── Right 5/12: REAL hero photo + floating proofs ── */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="relative"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                className="lg:col-span-5 relative"
               >
-                {/* Floating badge — top right */}
-                <motion.div
-                  animate={{ y: [-4, 4, -4] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                  className="hidden sm:flex absolute -top-3 -right-3 z-10 chip-duo chip-duo-orange items-center gap-1.5 shadow-md"
-                >
-                  <Flame className="w-3.5 h-3.5" /> 12-day streak
-                </motion.div>
+                {/* Photo frame — editorial hairline, no shadow */}
+                <div className="frame-ed relative">
+                  <img
+                    src="/images/hero/orbit-kids-laptop.jpg"
+                    alt="A young Orbit Student building a project on a laptop"
+                    className="w-full h-auto block"
+                    width={720}
+                    height={780}
+                    fetchPriority="high"
+                    decoding="async"
+                  />
 
-                {/* The card */}
-                <div className="card-duo card-duo-blue p-5 sm:p-6 max-w-[520px] mx-auto">
-                  {/* Header */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                  {/* Live activity chip — floating top-right inside frame */}
+                  <motion.div
+                    animate={{ y: [-3, 3, -3] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-sm border border-[#e6e4e0] flex items-center gap-1.5 shadow-sm"
+                  >
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#58cc02] opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#58cc02]" />
+                    </span>
+                    <span className="text-[10.5px] font-mono-meta font-medium text-ed-fg">live · 1,243 building</span>
+                  </motion.div>
+                </div>
+
+                {/* Italic caption under photo (editorial signature) */}
+                <p className="caption-ed mt-3 max-w-[420px]">
+                  Aarav, 13 — building his second e-commerce site in Module 4.
+                </p>
+
+                {/* Floating XP card — overlapping bottom-left */}
+                <motion.div
+                  animate={{ y: [3, -3, 3] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="hidden sm:block absolute -bottom-6 -left-4 lg:-left-10 max-w-[280px]"
+                >
+                  <div className="card-duo card-duo-blue p-3.5">
+                    <div className="flex items-center gap-2.5 mb-3">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                         style={{ background: 'linear-gradient(135deg,#1876D2,#00B0FF)' }}>
                         <Rocket className="w-4 h-4 text-white" />
                       </div>
-                      <div>
-                        <p className="text-[13px] font-bold text-[#3c3c3c] leading-none">Today's Quests</p>
-                        <p className="text-[11px] text-[#777] mt-0.5">Earn 430 XP · 5 missions</p>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[12px] font-extrabold text-ed-fg leading-none">Today's quests</p>
+                        <p className="text-[10.5px] text-ed-muted mt-0.5">5 missions · 430 XP</p>
                       </div>
+                      <span className="streak-badge-light flex-shrink-0" style={{ padding: '2px 8px', fontSize: 10 }}>
+                        <Flame className="w-2.5 h-2.5" /> 12d
+                      </span>
                     </div>
-                    <span className="streak-badge-light"><Flame className="w-3 h-3" /> 12d</span>
-                  </div>
 
-                  {/* Level ribbon */}
-                  <div className="bg-[#fefcf6] border-2 border-[#e5e5e5] rounded-2xl p-3 mb-4">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[12px] font-bold text-[#3c3c3c]">LV 7 · Young Entrepreneur</span>
-                      <span className="text-[11px] font-bold text-[#777]">1,240 / 2,000 XP</span>
+                    {/* Level mini-ribbon */}
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-bold text-ed-fg">LV 7 · Young CEO</span>
+                      <span className="text-[10px] font-bold text-ed-muted">62%</span>
                     </div>
-                    <div className="xp-bar-track-light">
+                    <div className="xp-bar-track-light" style={{ height: 8 }}>
                       <div className="xp-bar-fill-light" style={{ width: '62%' }} />
                     </div>
                   </div>
+                </motion.div>
 
-                  {/* Quest tiles — 3 in a row */}
-                  <div className="grid grid-cols-3 gap-2.5">
-                    {[
-                      { emoji: '🏪', xp: '+120', color: 'card-duo-green', done: true },
-                      { emoji: '🤖', xp: '+200', color: 'card-duo-blue', done: false },
-                      { emoji: '📊', xp: '+350', color: 'card-duo-pink', done: false },
-                    ].map((q, i) => (
-                      <div key={i} className={`card-duo ${q.color} p-3 text-center`} style={{ paddingTop: 14, paddingBottom: 10 }}>
-                        <span className="text-2xl block mb-1.5">{q.emoji}</span>
-                        {q.done ? (
-                          <CheckCircle className="w-4 h-4 text-[#58cc02] mx-auto" />
-                        ) : (
-                          <span className="text-[10px] font-bold text-[#1876D2]">{q.xp} XP</span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA inside card */}
-                  <button onClick={() => setShowEnrollment(true)} className="btn-duo btn-duo-primary w-full mt-4" style={{ padding: '12px 20px', fontSize: 13 }}>
-                    Continue Learning →
-                  </button>
-                </div>
-
-                {/* Floating proof — bottom left */}
+                {/* Floating success badge — top-left overlap */}
                 <motion.div
-                  animate={{ y: [4, -4, 4] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="hidden sm:flex absolute -bottom-4 -left-4 z-10 card-duo card-duo-green items-center gap-2.5 px-3.5 py-2.5"
-                  style={{ padding: '10px 14px' }}
+                  animate={{ y: [-3, 3, -3] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                  className="hidden md:flex absolute -top-5 -left-5 lg:-left-8 items-center gap-2 px-3 py-2 bg-white border border-[#e6e4e0] rounded-xl shadow-sm"
                 >
-                  <div className="w-8 h-8 bg-[#dbf8c5] rounded-lg flex items-center justify-center">
-                    <Trophy className="w-4 h-4 text-[#58a700]" />
-                  </div>
+                  <Trophy className="w-4 h-4 text-[#1876D2]" />
                   <div>
-                    <p className="text-[12px] font-extrabold text-[#3c3c3c] leading-tight">98% Success</p>
-                    <p className="text-[10px] text-[#777]">Among enrolled</p>
+                    <p className="text-[11px] font-extrabold text-ed-fg leading-none">98%</p>
+                    <p className="text-[9.5px] text-ed-muted mt-0.5">success rate</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -227,61 +229,81 @@ export default function Home() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════════
-            2 ◆ TRUST BAR — clean white with chunky number cards
+            2 ◆ EDITORIAL STATS — huge serif numbers (magazine moment)
         ════════════════════════════════════════════════════════════════ */}
-        <section className="bg-white border-y-2 border-[#e5e5e5]">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-8 sm:py-10">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 text-center">
+        <section className="bg-ed-canvas-2 border-y border-[#e6e4e0]">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+            <div className="ed-divider mb-10 sm:mb-14">
+              <span className="ed-divider-label">By the numbers · 2026</span>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-12">
               {[
-                { value: '2,500+', label: 'Families enrolled' },
-                { value: '35+', label: 'Countries' },
-                { value: '4.9/5', label: 'Parent rating' },
-                { value: '180', label: 'Day program' },
-                { value: '98%', label: 'Success rate' },
+                { num: '2,500', sub: '+', label: 'enrolled families across 35 countries' },
+                { num: '180', sub: ' days', label: 'guided curriculum, weekly mentor checkpoints' },
+                { num: '98', sub: '%', label: 'finish their first business by Module 4' },
+                { num: '4.9', sub: '/5', label: 'parent rating, sustained over 612 reviews' },
               ].map((s, i) => (
-                <div key={i} className={i === 4 ? 'col-span-2 sm:col-span-1' : ''}>
-                  <p className="text-[#3c3c3c] text-[22px] sm:text-[26px] font-extrabold leading-none tracking-[-0.02em]">{s.value}</p>
-                  <p className="text-[#777] text-[11px] sm:text-[12px] font-semibold mt-1.5">{s.label}</p>
-                </div>
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                >
+                  <p className="bignum-ed">
+                    {s.num}<span className="text-[40%] text-ed-muted">{s.sub}</span>
+                  </p>
+                  <p className="caption-ed mt-3 max-w-[28ch] text-ed-muted" style={{ fontSize: 13 }}>
+                    {s.label}
+                  </p>
+                </motion.div>
               ))}
             </div>
 
-            {/* Press logos row */}
-            <div className="border-t-2 border-[#e5e5e5] mt-8 pt-7">
-              <p className="text-center duo-eyebrow mb-5" style={{ color: '#777', letterSpacing: '0.18em' }}>As featured in</p>
-              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14">
-                {[
-                  { name: 'Forbes', cls: 'text-[19px] font-black' },
-                  { name: 'TechCrunch', cls: 'text-[15px] font-extrabold' },
-                  { name: 'EdTech Review', cls: 'text-[13px] font-bold tracking-wide' },
-                  { name: 'Times of India', cls: 'text-[13px] font-bold' },
-                  { name: 'YourStory', cls: 'text-[15px] font-extrabold' },
-                ].map((pub, i) => (
-                  <span key={i} className={`${pub.cls} text-[#afafaf] hover:text-[#3c3c3c] transition-colors duration-200 cursor-default`}>
-                    {pub.name}
-                  </span>
-                ))}
+            {/* Press strip */}
+            <div className="mt-14 sm:mt-20 pt-8 border-t border-[#e6e4e0]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-8">
+                <p className="eyebrow-ed">Featured in</p>
+                <div className="flex flex-wrap items-center gap-x-7 sm:gap-x-10 gap-y-3">
+                  {[
+                    { name: 'Forbes', cls: 'text-[18px] font-black' },
+                    { name: 'TechCrunch', cls: 'text-[14px] font-extrabold tracking-tight' },
+                    { name: 'EdTech Review', cls: 'text-[13px] font-bold' },
+                    { name: 'Times of India', cls: 'text-[13px] font-bold' },
+                    { name: 'YourStory', cls: 'text-[14px] font-extrabold' },
+                  ].map((pub, i) => (
+                    <span key={i} className={`${pub.cls} text-ed-quiet hover:text-ed-fg transition-colors duration-200 cursor-default`}>
+                      {pub.name}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* ════════════════════════════════════════════════════════════════
-            3 ◆ HOW IT WORKS — 4 chunky cards Play / Build / Launch / Win
+            3 ◆ HOW IT WORKS — left-aligned editorial header + 4 chunky cards
         ════════════════════════════════════════════════════════════════ */}
-        <section className="py-16 sm:py-24 bg-duo-blue-tint">
+        <section className="py-16 sm:py-24 bg-white">
           <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="text-center mb-12 sm:mb-16"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 sm:mb-16"
             >
-              <p className="duo-eyebrow mb-4">How it works</p>
-              <h2 className="duo-display text-[clamp(2rem,4.5vw,3.4rem)] mb-4">
-                Four steps from kid to <span style={{ color: '#1876D2' }}>young CEO</span>.
-              </h2>
-              <p className="text-[16px] sm:text-[17px] text-[#777] max-w-2xl mx-auto leading-relaxed">
-                Real experience, not pre-recorded videos. Your child builds, launches and wins — all in 180 days.
-              </p>
+              <div className="lg:col-span-5">
+                <p className="eyebrow-ed mb-4">§ 01 · How it works</p>
+                <h2 className="font-display-serif text-[clamp(2rem,4.2vw,3.2rem)]" style={{ lineHeight: 1.05 }}>
+                  Four steps from kid to <span className="font-display-serif-italic" style={{ color: '#1876D2' }}>young CEO</span>.
+                </h2>
+              </div>
+              <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+                <p className="text-[16px] sm:text-[17px] text-ed-muted leading-[1.65] max-w-[52ch]">
+                  No videos to passively watch. Your child plays, builds, launches and wins — guided by mentors,
+                  paced over 180 days, with weekly checkpoints that parents can actually see.
+                </p>
+              </div>
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
@@ -306,6 +328,79 @@ export default function Home() {
                   <p className="text-[18px] font-extrabold text-[#3c3c3c] mb-1.5">{s.t}</p>
                   <p className="text-[13px] text-[#777] leading-relaxed">{s.d}</p>
                 </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════
+            3.5 ◆ FEATURED COURSES — editorial photo grid with real imagery
+                  (taste-editorial: asymmetric magazine spread)
+        ════════════════════════════════════════════════════════════════ */}
+        <section className="py-16 sm:py-24 bg-ed-canvas">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 sm:mb-16"
+            >
+              <div className="lg:col-span-6">
+                <p className="eyebrow-ed mb-4">§ 02 · Featured curriculum</p>
+                <h2 className="font-display-serif text-[clamp(2rem,4.4vw,3.4rem)]" style={{ lineHeight: 1.05 }}>
+                  Four pillars of <span className="font-display-serif-italic" style={{ color: '#1876D2' }}>founder fluency</span>.
+                </h2>
+              </div>
+              <div className="lg:col-span-5 lg:col-start-8 flex items-end">
+                <p className="text-[15.5px] sm:text-[16.5px] text-ed-muted leading-[1.65]">
+                  Each pillar is a 30–45 day arc with mentor checkpoints, build-along projects and a
+                  capstone showcase. Together they form the 180-day journey.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Asymmetric 12-col grid — feature card is wider */}
+            <div className="grid-asymmetric">
+              {[
+                { img: '/images/courses/startup-fundamentals.jpg', tag: 'Foundations', dur: 'Days 1–45', title: 'Startup Fundamentals', sub: 'How real businesses get born', span: 'span-7', highlight: true },
+                { img: '/images/courses/business-planning.jpg', tag: 'Strategy', dur: 'Days 46–90', title: 'Business Planning', sub: 'From notebook idea to board pitch', span: 'span-5', highlight: false },
+                { img: '/images/courses/marketing-sales.jpg', tag: 'Growth', dur: 'Days 91–135', title: 'Marketing & Sales', sub: 'Find, win and keep your first 100 customers', span: 'span-5', highlight: false },
+                { img: '/images/courses/financial-management.jpg', tag: 'Money', dur: 'Days 136–180', title: 'Financial Management', sub: 'Cash, runway and the math of growing up', span: 'span-7', highlight: false },
+              ].map((c, i) => (
+                <motion.a
+                  key={i}
+                  href="/courses"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                  className={`${c.span} group block`}
+                >
+                  <div className="frame-ed mb-4 aspect-[16/10] relative">
+                    <img
+                      src={c.img}
+                      alt={c.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                    {c.highlight && (
+                      <span className="absolute top-3 left-3 chip-duo chip-duo-yellow font-mono-meta" style={{ fontSize: 10, padding: '3px 9px' }}>
+                        ★ Most popular
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-baseline justify-between gap-3 mb-1.5">
+                    <p className="eyebrow-ed">{c.tag}</p>
+                    <p className="meta-line">{c.dur}</p>
+                  </div>
+                  <h3 className="font-display-serif text-[24px] sm:text-[28px] text-ed-fg leading-tight mb-1.5">
+                    {c.title}
+                  </h3>
+                  <p className="text-[14px] sm:text-[15px] text-ed-muted leading-[1.55]">
+                    {c.sub}
+                  </p>
+                  <div className="flex items-center gap-1.5 mt-3 text-[13px] font-semibold text-[#1876D2] group-hover:gap-2.5 transition-all">
+                    Read syllabus <ArrowRight className="w-3.5 h-3.5" />
+                  </div>
+                </motion.a>
               ))}
             </div>
           </div>
@@ -456,39 +551,86 @@ export default function Home() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════════
-            7 ◆ TESTIMONIALS — chunky bordered story cards
+            7 ◆ TESTIMONIALS — editorial pull-quote + real student avatars
+                  (taste-editorial: hero quote + supporting cards)
         ════════════════════════════════════════════════════════════════ */}
-        <section className="py-16 sm:py-24 bg-white">
+        <section className="py-16 sm:py-24 bg-ed-canvas">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            {/* Section header — left-aligned editorial */}
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="text-center mb-12 sm:mb-16"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-14 sm:mb-20"
             >
-              <p className="duo-eyebrow mb-4">Real parent stories</p>
-              <h2 className="duo-display text-[clamp(2rem,4.5vw,3.4rem)] mb-4">
-                "My child is a <span style={{ color: '#a855f7' }}>different person</span>"
-              </h2>
-              <p className="text-[16px] sm:text-[17px] text-[#777] max-w-2xl mx-auto leading-relaxed">
-                See the transformations that make parents proud.
-              </p>
+              <div className="lg:col-span-6">
+                <p className="eyebrow-ed mb-4">§ 04 · Voices</p>
+                <h2 className="font-display-serif text-[clamp(2rem,4.4vw,3.4rem)]" style={{ lineHeight: 1.05 }}>
+                  Children change. <span className="font-display-serif-italic" style={{ color: '#1876D2' }}>So do their parents.</span>
+                </h2>
+              </div>
+              <div className="lg:col-span-5 lg:col-start-8 flex items-end">
+                <p className="text-[15.5px] sm:text-[16.5px] text-ed-muted leading-[1.65]">
+                  We collected six months of progress — pitched ideas, launched stores, first profits.
+                  Below: the quiet revolution parents notice at the dinner table.
+                </p>
+              </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {/* Hero pull-quote — magazine moment */}
+            <motion.figure
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 mb-16 sm:mb-20 items-center"
+            >
+              <div className="lg:col-span-4 lg:col-start-1">
+                <div className="frame-ed aspect-[4/5] max-w-[360px] mx-auto lg:mx-0">
+                  <img
+                    src="/images/avatars/student-1.jpg"
+                    alt="Emma, Orbit Student"
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <figcaption className="caption-ed mt-3 max-w-[300px]">
+                  Emma, 12 — six months in.
+                </figcaption>
+              </div>
+
+              <blockquote className="lg:col-span-7 lg:col-start-6">
+                <span className="eyebrow-ed mb-5 block">Pull quote · Sarah C., parent</span>
+                <p className="pull-quote">
+                  "She used to be too shy to order food. Last weekend she pitched her pet-sitting
+                  business to four neighbours. <span className="font-display-serif-italic">She's not the same child.</span>"
+                </p>
+                <div className="flex items-center gap-3 mt-7 pt-7 border-t border-[#e6e4e0]">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="h-3.5 w-3.5 text-[#1876D2] fill-[#1876D2]" />
+                    ))}
+                  </div>
+                  <span className="meta-line">Verified parent · Module 4 graduate · $500/mo business</span>
+                </div>
+              </blockquote>
+            </motion.figure>
+
+            {/* Three supporting story cards — hairline editorial cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
-                  name: 'Sarah Chen', role: 'Mother of Emma (12)', initials: 'SC', avatar: '#1876D2', card: 'card-duo-blue', chip: 'chip-duo-blue',
-                  quote: 'Emma went from being too shy to order food to confidently pitching business ideas to our neighbors!',
-                  result: 'Started a pet-sitting business · $500/mo'
+                  name: 'Michael Rodriguez', child: 'Diego, 14', img: '/images/avatars/student-2.jpg',
+                  quote: 'Diego now thinks like an entrepreneur. He sees opportunities everywhere — even in the school cafeteria queue.',
+                  result: 'Led school fundraising · $2,000 raised',
                 },
                 {
-                  name: 'Michael Rodriguez', role: 'Father of Diego (14)', initials: 'MR', avatar: '#10b981', card: 'card-duo-green', chip: 'chip-duo-green',
-                  quote: 'Diego now thinks like an entrepreneur. He sees opportunities everywhere and has developed incredible leadership skills.',
-                  result: 'Led school fundraising · $2,000 raised'
+                  name: 'Jennifer Park', child: 'Alex, 13', img: '/images/avatars/student-3.jpg',
+                  quote: 'Best investment we ever made. Alex is now mentoring younger kids and speaking at school events without notes.',
+                  result: 'Student Council President · launched school app',
                 },
                 {
-                  name: 'Jennifer Park', role: 'Mother of Alex (13)', initials: 'JP', avatar: '#a855f7', card: 'card-duo-pink', chip: 'chip-duo-pink',
-                  quote: 'Best investment we ever made. Alex is now mentoring other kids and speaking at school events with confidence!',
-                  result: 'Student Council President · launched school app'
+                  name: 'Priya Sharma', child: 'Aanya, 11', img: '/images/avatars/student-4.jpg',
+                  quote: 'I expected a course. We got a community. Her mentor texts her on Sundays to check on the project.',
+                  result: 'Built her own bakery brand · 40 customers',
                 },
               ].map((t, i) => (
                 <motion.div
@@ -496,35 +638,105 @@ export default function Home() {
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.4 }}
-                  className={`card-duo ${t.card} flex flex-col`}
+                  transition={{ delay: i * 0.1, duration: 0.45 }}
+                  className="card-ed flex flex-col"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex gap-0.5">
-                      {[...Array(5)].map((_, j) => (
-                        <Star key={j} className="h-3.5 w-3.5 text-[#ffc800] fill-[#ffc800]" />
-                      ))}
-                    </div>
-                    <span className="chip-duo chip-duo-green" style={{ fontSize: 10, padding: '3px 9px' }}>✓ Verified</span>
-                  </div>
-
-                  <p className="text-[15px] text-[#3c3c3c] leading-relaxed flex-grow mb-5 font-medium">"{t.quote}"</p>
-
-                  <div className={`bg-[#fefcf6] border-2 border-[#e5e5e5] rounded-xl px-3.5 py-2.5 mb-5`}>
-                    <p className="text-[12px] font-extrabold text-[#3c3c3c]"><Trophy className="w-3.5 h-3.5 inline mr-1.5 text-[#ffc800]" />{t.result}</p>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-[12px] flex-shrink-0"
-                      style={{ background: t.avatar }}>{t.initials}</div>
+                  <div className="flex items-center gap-3 mb-5">
+                    <img
+                      src={t.img}
+                      alt={t.child}
+                      loading="lazy"
+                      className="w-12 h-12 rounded-full object-cover border border-[#e6e4e0]"
+                    />
                     <div>
-                      <p className="text-[13.5px] font-extrabold text-[#3c3c3c] leading-tight">{t.name}</p>
-                      <p className="text-[11.5px] text-[#777]">{t.role}</p>
+                      <p className="text-[14px] font-semibold text-ed-fg leading-tight">{t.name}</p>
+                      <p className="meta-line mt-0.5">Parent of {t.child}</p>
                     </div>
+                  </div>
+
+                  <p className="font-display-serif text-[20px] leading-[1.32] text-ed-fg flex-grow mb-5">
+                    "{t.quote}"
+                  </p>
+
+                  <div className="flex items-center gap-2 pt-4 border-t border-[#e6e4e0]">
+                    <Trophy className="w-3.5 h-3.5 text-[#1876D2] flex-shrink-0" />
+                    <p className="meta-line text-ed-muted">{t.result}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════
+            7.5 ◆ SUCCESS STORY BANNER — editorial photo + serif headline
+                    Real photography, magazine-grade composition
+        ════════════════════════════════════════════════════════════════ */}
+        <section className="bg-white border-t border-b border-[#e6e4e0]">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-0">
+            {/* Left: real success-story image, full bleed */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-6 relative min-h-[360px] lg:min-h-[560px] overflow-hidden"
+            >
+              <img
+                src="/images/hero/success-story.jpg"
+                alt="Orbit Student success story"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Tiny mono caption overlay */}
+              <span className="absolute bottom-4 left-4 font-mono-meta text-[10.5px] uppercase tracking-[0.14em] text-white/90 bg-black/35 backdrop-blur-sm px-2.5 py-1 rounded">
+                Cohort 07 · Mumbai · April 2026
+              </span>
+            </motion.div>
+
+            {/* Right: editorial story */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="lg:col-span-6 px-5 sm:px-10 lg:px-14 py-12 sm:py-16 lg:py-20 flex flex-col justify-center"
+            >
+              <p className="eyebrow-ed mb-5">§ 05 · Field report</p>
+
+              <h2 className="font-display-serif text-[clamp(2rem,3.8vw,3rem)] mb-6" style={{ lineHeight: 1.08 }}>
+                In 90 days, Aarav went from <span className="font-display-serif-italic">curious</span> to <span style={{ color: '#1876D2' }}>shipping</span>.
+              </h2>
+
+              <p className="text-[15.5px] sm:text-[16px] text-ed-muted leading-[1.7] mb-6 max-w-[52ch]">
+                Day 1: a notebook idea about reselling stationery. Day 90: a working e-commerce site,
+                three paying customers, ₹4,200 in revenue, and a pitch deck that made his Module 4
+                mentor reach for the camera. We didn't teach him this — we just got out of his way.
+              </p>
+
+              {/* Stat row */}
+              <div className="grid grid-cols-3 gap-5 sm:gap-8 py-6 border-t border-b border-[#e6e4e0] mb-7">
+                {[
+                  { n: '90', s: 'days' },
+                  { n: '3', s: 'paying customers' },
+                  { n: '₹4.2k', s: 'first revenue' },
+                ].map((s, i) => (
+                  <div key={i}>
+                    <p className="font-display-serif text-[28px] sm:text-[36px] text-ed-fg leading-none">{s.n}</p>
+                    <p className="meta-line mt-2">{s.s}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <button onClick={() => setShowEnrollment(true)} className="btn-duo btn-duo-primary">
+                  Read the full story <ArrowRight className="h-4 w-4" />
+                </button>
+                <a href="/blog" className="text-[14px] font-semibold text-ed-fg hover:text-[#1876D2] transition-colors">
+                  More success stories →
+                </a>
+              </div>
+            </motion.div>
           </div>
         </section>
 
