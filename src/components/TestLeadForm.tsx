@@ -72,7 +72,7 @@ ${allLeads.slice(0, 3).map(lead => `- ${lead.formData.name || 'No name'} (${lead
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6">🧪 Lead Capture Test</h2>
+      <h1 className="text-2xl font-bold mb-6">Lead capture test</h1>
       
       <div className="space-y-4 mb-6">
         <div>

@@ -23,7 +23,7 @@ export default function Footer() {
         {/* Big mast — Linear-style restrained statement */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 sm:mb-20 items-end">
           <div className="lg:col-span-7">
-            <p className="eyebrow-o mb-5">§ Orbit Student · 2026</p>
+            <p className="eyebrow-o mb-5">Orbit Student · 2026</p>
             <h2
               className="font-display text-[clamp(2.2rem,5vw,4rem)] text-o-0"
               style={{ letterSpacing: '-0.045em', lineHeight: 1.02 }}
@@ -118,6 +118,7 @@ export default function Footer() {
             <Link to="/about" className={linkCls}>About</Link>
             <Link to="/partnerships" className={linkCls}>Partnerships</Link>
             <Link to="/contact" className={linkCls}>Contact</Link>
+            <a href="/llms.txt" className={linkCls}>LLMs.txt</a>
             <a href="mailto:contact@orbitstudent.com" className={linkCls}>Press</a>
             <a href="mailto:careers@orbitstudent.com" className={linkCls}>Careers</a>
           </div>

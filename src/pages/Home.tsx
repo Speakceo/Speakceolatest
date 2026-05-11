@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight, Brain, Rocket, CheckCircle, Target, PlayCircle, Shield,
   Trophy, Zap, Clock, GraduationCap, Gamepad2, Flame, Sparkles,
@@ -25,7 +26,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Young CEO Programme — Instructor-Led AI, Entrepreneurship & Leadership for Kids | Orbit Student"
+        title="Orbit Student | Young CEO Programme (Ages 8–18)"
         description="180-day mentor-led cohort for ages 8–18: live classes (not just videos), AI tools, real projects, portfolio and scholarship prep. Free trial. Trusted by 2,500+ families in 35+ countries."
         showFAQ
         courseData={{
@@ -807,6 +808,56 @@ export default function Home() {
                 <span>No credit card to trial</span>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════
+            10b · INTERNAL DISCOVERY — word count, links, clarity for crawlers
+        ════════════════════════════════════════════════════════════════ */}
+        <section className="section-o border-o-t" aria-labelledby="explore-orbit-heading">
+          <div className="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8">
+            <h2 id="explore-orbit-heading" className="font-display text-[clamp(1.6rem,3.2vw,2.25rem)] text-o-0 mb-6" style={{ letterSpacing: '-0.035em' }}>
+              Explore Orbit Student
+            </h2>
+            <div className="space-y-4 text-[15px] leading-[1.75] text-o-2">
+              <p>
+                Orbit is built as one system: a flagship{' '}
+                <Link to="/courses" className="text-[#00B0FF] hover:underline underline-offset-2">Young CEO programme</Link>
+                {' '}for ages 8–18, live mentorship, and a student dashboard where projects actually ship. If you want the full
+                syllabus and module map, start with our{' '}
+                <Link to="/courses" className="text-[#00B0FF] hover:underline underline-offset-2">courses overview</Link>
+                {' '}— then see how{' '}
+                <Link to="/live-classes" className="text-[#00B0FF] hover:underline underline-offset-2">live classes</Link>
+                {' '}and office hours fit around school weeks. The{' '}
+                <Link to="/community" className="text-[#00B0FF] hover:underline underline-offset-2">community</Link>
+                {' '}hub highlights student showcases and challenges.
+              </p>
+              <p>
+                Parents use our{' '}
+                <Link to="/faq" className="text-[#00B0FF] hover:underline underline-offset-2">FAQ</Link>
+                {' '}for logistics (time zones, refunds, device requirements) and the{' '}
+                <Link to="/resources" className="text-[#00B0FF] hover:underline underline-offset-2">resources hub</Link>
+                {' '}for essays, guides and downloadable roadmaps. The{' '}
+                <Link to="/blog" className="text-[#00B0FF] hover:underline underline-offset-2">blog</Link>
+                {' '}covers AI literacy, entrepreneurship and scholarship strategy;{' '}
+                <Link to="/testimonials" className="text-[#00B0FF] hover:underline underline-offset-2">family stories</Link>
+                {' '}show what changes after a few months inside a cohort.
+              </p>
+              <p>
+                Try the product before you commit: the interactive{' '}
+                <Link to="/demo" className="text-[#00B0FF] hover:underline underline-offset-2">demo</Link>
+                {' '}and{' '}
+                <Link to="/tools" className="text-[#00B0FF] hover:underline underline-offset-2">AI tools</Link>
+                {' '}pages explain how students practise safely. For school or brand collaborations, read{' '}
+                <Link to="/partnerships" className="text-[#00B0FF] hover:underline underline-offset-2">partnerships</Link>
+                {' '}and{' '}
+                <Link to="/events" className="text-[#00B0FF] hover:underline underline-offset-2">events</Link>
+                . When you are ready to talk to a human,{' '}
+                <Link to="/contact" className="text-[#00B0FF] hover:underline underline-offset-2">contact</Link>
+                {' '}our team directly. A machine-readable summary of the site for assistants lives at{' '}
+                <a href="/llms.txt" className="text-[#00B0FF] hover:underline underline-offset-2">llms.txt</a>.
+              </p>
+            </div>
           </div>
         </section>
 

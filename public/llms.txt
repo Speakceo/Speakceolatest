@@ -1,0 +1,25 @@
+# Orbit Student
+
+> Mentor-led AI literacy, entrepreneurship and leadership for ages 8–18. Live cohort classes, student dashboard, portfolio projects and scholarship preparation.
+
+## Main pages
+
+- [Home](https://www.orbitstudent.com/): Flagship Young CEO programme overview and cohort details
+- [Courses](https://www.orbitstudent.com/courses): Curriculum and programme structure
+- [Live classes](https://www.orbitstudent.com/live-classes): Schedule, format and mentorship
+- [Interactive demo](https://www.orbitstudent.com/demo): Product walkthrough for families
+- [AI tools](https://www.orbitstudent.com/tools): Tools available to students
+- [FAQ](https://www.orbitstudent.com/faq): Policies, time zones and common questions
+- [Resources](https://www.orbitstudent.com/resources): Guides and downloads
+- [Blog](https://www.orbitstudent.com/blog): Articles on AI, entrepreneurship and scholarships
+- [Contact](https://www.orbitstudent.com/contact): Reach the team
+
+## Account
+
+- [Sign in](https://www.orbitstudent.com/login): Orbit Student portal login
+
+## Legal
+
+- [Privacy](https://www.orbitstudent.com/privacy): Privacy policy
+- [Terms](https://www.orbitstudent.com/terms): Terms of service
+- [Cookies](https://www.orbitstudent.com/cookies): Cookie policy
