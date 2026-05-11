@@ -126,8 +126,10 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
               <ArrowRight className="h-5 w-5 relative group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
-            <p className={`text-xs mt-4 ${variant === 'secondary' ? 'text-gray-400' : 'text-gray-500'}`}>
-              No credit card required • Free consultation included
+            <p className={`text-xs mt-4 max-w-lg mx-auto leading-relaxed ${
+              variant === 'secondary' ? 'text-gray-400' : 'text-gray-500'
+            }`}>
+              No payment required to book • We confirm cohort seats within 24 hours • Free consultation included
             </p>
           </div>
         </motion.div>

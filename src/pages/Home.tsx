@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   ArrowRight, Brain, Rocket, CheckCircle, Target, PlayCircle, Shield,
   Trophy, Zap, Clock, GraduationCap, Gamepad2, Flame, Sparkles,
+  Mic, Users, Globe2, CalendarDays,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import EnrollmentPopup from '../components/EnrollmentPopup';
@@ -24,14 +25,24 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Orbit Student — #1 AI Learning Portal for Kids | Courses, AI Tools & Scholarships"
-        description="Orbit Student — AI-powered learning portal for kids 8-18. Login to access AI tools, courses, live classes & scholarship prep. Join 2,500+ young entrepreneurs."
+        title="Young CEO Programme — Instructor-Led AI, Entrepreneurship & Leadership for Kids | Orbit Student"
+        description="180-day mentor-led cohort for ages 8–18: live classes (not just videos), AI tools, real projects, portfolio and scholarship prep. Free trial. Trusted by 2,500+ families in 35+ countries."
         showFAQ
+        courseData={{
+          name: 'Orbit Young CEO Programme — 180-Day Instructor-Led Cohort',
+          provider: 'Orbit Student',
+          description:
+            'Mentor-led cohort programme in AI literacy, entrepreneurship, leadership and real-world projects. Live sessions, gamified dashboard, portfolio outcomes and scholarship roadmap for ages 8–18.',
+          duration: 'P180D',
+          price: '299',
+        }}
         keywords={[
           'Orbit Student','Orbit Student login','Orbit Student portal','Orbit Student dashboard','Orbit Student app',
           'Orbit Student courses','Orbit Student AI tools','Orbit Student live classes','Orbit Student demo',
           'Orbit Student free trial','Orbit Student review','Orbit Student scholarship','orbitstudent','orbitstudent login',
           'AI learning platform','AI for kids','AI student portal','entrepreneurship for kids','young entrepreneur program',
+          'instructor-led AI for kids','live AI classes for kids','AI cohort program kids','peer learning AI',
+          'young CEO program online','future-ready kids programme',
           'best edtech for kids','future skills for children','business education for children','coding for kids','STEM for kids',
           'public speaking for kids','leadership for kids','scholarship prep for kids','best future plan for kids',
           'online learning for kids','student learning portal','AI powered education','kids business course online',
@@ -59,7 +70,7 @@ export default function Home() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00B0FF]" />
                     </span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-1">Cohort 12 enrolling now · Ages 8–18</span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-1">Flagship programme · Cohort 12 · Ages 8–18</span>
                   </div>
                 </div>
 
@@ -78,11 +89,11 @@ export default function Home() {
                   </h1>
 
                   <p className="text-[17px] sm:text-[18px] leading-[1.55] text-o-1 mb-8 sm:mb-10">
-                    A 180-day AI-powered programme in entrepreneurship, leadership and real-world skills.
-                    Mentor-guided, project-led, and built for kids who want to build, not just watch.
+                    A <strong className="text-o-0 font-semibold">180-day, mentor-led cohort</strong> in AI literacy, entrepreneurship
+                    and leadership — live classes, small groups and real projects. Built for kids who want to build, not only watch videos.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row items-center lg:items-start lg:justify-start justify-center gap-3 mb-10">
+                  <div className="flex flex-col sm:flex-row items-center lg:items-start lg:justify-start justify-center gap-3 mb-4">
                     <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg w-full sm:w-auto">
                       Start free trial <ArrowRight className="h-4 w-4" />
                     </button>
@@ -91,6 +102,15 @@ export default function Home() {
                       Watch demo
                     </button>
                   </div>
+
+                  <p className="text-center lg:text-left mb-8">
+                    <a
+                      href="#program-details"
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-[#00B0FF] hover:underline underline-offset-4"
+                    >
+                      Program details and upcoming starts <ArrowRight className="h-3.5 w-3.5" />
+                    </a>
+                  </p>
 
                   <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 sm:gap-x-6 gap-y-2 text-[12.5px] text-o-2">
                     <span className="inline-flex items-center gap-1.5">
@@ -196,17 +216,188 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Press strip */}
+            {/* Honest value strip (clear offer — inspired by competitor "program clarity") */}
             <div className="mt-14 sm:mt-20 pt-8 border-o-t">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-8">
-                <p className="eyebrow-o">Featured in</p>
-                <div className="flex flex-wrap items-center gap-x-8 sm:gap-x-12 gap-y-3">
-                  {['Forbes', 'TechCrunch', 'EdTech Review', 'Times of India', 'YourStory'].map((p) => (
-                    <span key={p} className="text-[14px] font-medium text-o-3 hover:text-o-1 transition-colors duration-200 cursor-default">
-                      {p}
-                    </span>
+              <p className="eyebrow-o mb-6">What you get on day one</p>
+              <div className="flex flex-wrap gap-x-10 gap-y-3">
+                {[
+                  'Live mentor sessions + replays in your dashboard',
+                  'AI studio and 100+ tools for real builds',
+                  'Parent visibility into progress and milestones',
+                  'Portfolio, certificates and scholarship roadmap',
+                ].map((line) => (
+                  <span key={line} className="text-[14px] text-o-2 max-w-[34ch] leading-snug">
+                    <CheckCircle className="inline h-3.5 w-3.5 text-[#10b981] mr-2 align-[-2px]" aria-hidden />
+                    {line}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════
+            02b · COHORT MODEL — instructor-led + peers (clear IA)
+        ════════════════════════════════════════════════════════════════ */}
+        <section className="section-o border-o-t">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="max-w-2xl mb-12 sm:mb-16"
+            >
+              <p className="eyebrow-o mb-5">The cohort model</p>
+              <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
+                Instructor-led. <span style={{ color: '#00B0FF' }}>Peer-powered.</span>
+              </h2>
+              <p className="text-[17px] text-o-2 leading-[1.6] max-w-[60ch]">
+                Small groups with a dedicated mentor rhythm — questions, accountability and collaboration —
+                not solo kids stuck in a video queue.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                {
+                  icon: Mic,
+                  title: 'Live interaction',
+                  body: 'Real-time classes where students speak, share screens and get feedback — capped cohorts for attention.',
+                },
+                {
+                  icon: Globe2,
+                  title: 'Global peers',
+                  body: 'Learn alongside curious students across 35+ countries — perspective, empathy and network early.',
+                },
+                {
+                  icon: Users,
+                  title: 'Mentor accountability',
+                  body: 'Founder-style mentors and office hours keep projects moving — so progress shows up in the portfolio.',
+                },
+              ].map((b, i) => {
+                const IconCohort = b.icon;
+                return (
+                <motion.div
+                  key={b.title}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07, duration: 0.4 }}
+                  className="card-o"
+                >
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-6" style={{ background: 'var(--o-accent-soft)', border: '1px solid var(--o-accent-ring)' }}>
+                    <IconCohort className="w-4 h-4 text-[#00B0FF]" />
+                  </div>
+                  <h3 className="text-[17px] font-medium text-o-0 mb-2" style={{ letterSpacing: '-0.02em' }}>{b.title}</h3>
+                  <p className="text-[14px] text-o-2 leading-[1.55]">{b.body}</p>
+                </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════
+            02c · PROGRAM DETAILS — pricing clarity + upcoming batches
+        ════════════════════════════════════════════════════════════════ */}
+        <section id="program-details" className="section-o border-o-t scroll-mt-28">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="max-w-2xl mb-12 sm:mb-16"
+            >
+              <p className="eyebrow-o mb-5">Program details</p>
+              <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
+                One flagship journey. <span style={{ color: '#00B0FF' }}>Everything in one place.</span>
+              </h2>
+              <p className="text-[17px] text-o-2 leading-[1.6] max-w-[60ch]">
+                Transparent structure: what live time looks like, what ships in the portfolio, and how cohorts start —
+                so parents can decide fast.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+              <div className="lg:col-span-5 card-o">
+                <h3 className="text-[18px] font-medium text-o-0 mb-5" style={{ letterSpacing: '-0.02em' }}>Why families choose the full path</h3>
+                <ul className="space-y-3.5">
+                  {[
+                    '52 live mentor-led sessions across 180 days',
+                    'Two cohort classes weekly + Sunday office hours',
+                    '10+ portfolio-grade projects (sites, games, pitches)',
+                    '100+ AI tools and business simulations in-dashboard',
+                    'Scholarship & competition database with age-fit filtering',
+                    'Gamified streaks, levels and parent progress reports',
+                    '30-day satisfaction guarantee',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-[14px] text-o-1 leading-relaxed">
+                      <CheckCircle className="w-4 h-4 text-[#00B0FF] flex-shrink-0 mt-0.5" aria-hidden />
+                      <span>{item}</span>
+                    </li>
                   ))}
+                </ul>
+              </div>
+
+              <div className="lg:col-span-7">
+                <div className="card-o h-full relative overflow-hidden p-6 sm:p-8 pt-10 sm:pt-11" style={{ background: 'linear-gradient(165deg, var(--o-bg-3) 0%, var(--o-bg-2) 100%)' }}>
+                  <div className="absolute top-0 right-0 px-3 py-1.5 rounded-bl-xl font-mono text-[10px] uppercase tracking-[0.14em]" style={{ background: 'var(--o-accent-soft)', color: '#00B0FF', borderLeft: '1px solid var(--o-accent-ring)', borderBottom: '1px solid var(--o-accent-ring)' }}>
+                    Best value
+                  </div>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-3 mb-3">Full Young CEO journey</p>
+                  <p className="font-display text-[clamp(2rem,3.5vw,2.75rem)] text-o-0 mb-1" style={{ letterSpacing: '-0.03em' }}>
+                    $299 <span className="text-[18px] font-normal text-o-2">USD</span>
+                  </p>
+                  <p className="text-[13px] text-o-3 mb-8">One-time programme access · Instalments and local pricing available at checkout</p>
+                  <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary w-full sm:w-auto mb-4">
+                    Secure your spot <ArrowRight className="h-4 w-4" />
+                  </button>
+                  <p className="text-[12.5px] text-o-3 flex items-start gap-2">
+                    <Shield className="h-3.5 w-3.5 text-[#00B0FF] flex-shrink-0 mt-0.5" />
+                    Start with a free trial — upgrade only when you&apos;re sure. No surprise charges to explore the dashboard.
+                  </p>
                 </div>
+              </div>
+            </div>
+
+            <div className="mt-10 card-o" style={{ padding: 0 }}>
+              <div className="px-6 py-5 sm:px-8 sm:py-6 border-o-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <CalendarDays className="h-4 w-4 text-[#00B0FF]" />
+                  <h3 className="text-[16px] font-medium text-o-0" style={{ letterSpacing: '-0.02em' }}>Upcoming cohort starts</h3>
+                </div>
+                <p className="text-[13px] text-o-3 font-mono uppercase tracking-[0.08em]">Times shown in your timezone after signup</p>
+              </div>
+              <div className="divide-y" style={{ borderColor: 'var(--o-border-0)' }}>
+                {[
+                  { d: 'May 12, 2026', t: 'Morning track', s: 'FULL' as const },
+                  { d: 'May 12, 2026', t: 'Evening track', s: 'FILLING' as const },
+                  { d: 'May 19, 2026', t: 'Morning track', s: 'FILLING' as const },
+                  { d: 'May 19, 2026', t: 'Evening track', s: 'OPEN' as const },
+                  { d: 'May 26, 2026', t: 'Morning track', s: 'OPEN' as const },
+                  { d: 'May 26, 2026', t: 'Evening track', s: 'OPEN' as const },
+                ].map((row) => (
+                  <div key={`${row.d}-${row.t}`} className="px-6 py-4 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <div>
+                      <p className="text-[14.5px] font-medium text-o-0">{row.d}</p>
+                      <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-3 mt-0.5">{row.t}</p>
+                    </div>
+                    <span
+                      className={`chip-o self-start sm:self-center ${
+                        row.s === 'FULL'
+                          ? 'opacity-70'
+                          : row.s === 'FILLING'
+                            ? 'chip-o-accent'
+                            : ''
+                      }`}
+                      style={
+                        row.s === 'OPEN'
+                          ? { borderColor: 'rgba(16,185,129,0.35)', color: '#34d399' }
+                          : row.s === 'FULL'
+                            ? { textDecoration: 'line-through', opacity: 0.65 }
+                            : undefined
+                      }
+                    >
+                      {row.s === 'FILLING' ? 'Filling fast' : row.s === 'FULL' ? 'Full' : 'Enrolling'}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -221,7 +412,7 @@ export default function Home() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
               className="max-w-2xl mb-14 sm:mb-20"
             >
-              <p className="eyebrow-o mb-5">§ 01 · How it works</p>
+              <p className="eyebrow-o mb-5">01 · How it works</p>
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
                 Four steps from kid to <span style={{ color: '#00B0FF' }}>young CEO.</span>
               </h2>
@@ -271,7 +462,7 @@ export default function Home() {
                 transition={{ duration: 0.55 }}
                 className="lg:col-span-5"
               >
-                <p className="eyebrow-o mb-5">§ 02 · Live classes</p>
+                <p className="eyebrow-o mb-5">02 · Live classes</p>
                 <h2 className="font-display text-[clamp(2rem,4.2vw,3.2rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
                   Real mentors, <span style={{ color: '#00B0FF' }}>not recordings.</span>
                 </h2>
@@ -346,7 +537,7 @@ export default function Home() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
               className="max-w-2xl mb-14 sm:mb-20"
             >
-              <p className="eyebrow-o mb-5">§ 03 · The programme</p>
+              <p className="eyebrow-o mb-5">03 · The programme</p>
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
                 Not just learning. <span style={{ color: '#00B0FF' }}>Living it.</span>
               </h2>
@@ -396,7 +587,7 @@ export default function Home() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
               className="max-w-2xl mb-14 sm:mb-20"
             >
-              <p className="eyebrow-o mb-5">§ 04 · Voices</p>
+              <p className="eyebrow-o mb-5">04 · Voices</p>
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
                 Children change. <span style={{ color: '#00B0FF' }}>So do their parents.</span>
               </h2>
@@ -467,7 +658,7 @@ export default function Home() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
               className="max-w-2xl mb-12 sm:mb-16"
             >
-              <p className="eyebrow-o mb-5">§ 05 · Why Orbit</p>
+              <p className="eyebrow-o mb-5">05 · Why Orbit</p>
               <h2 className="font-display text-[clamp(2rem,4.2vw,3.2rem)]" style={{ letterSpacing: '-0.04em' }}>
                 Most platforms ship videos. <span style={{ color: '#00B0FF' }}>We ship transformation.</span>
               </h2>
@@ -515,7 +706,7 @@ export default function Home() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
               className="max-w-2xl mb-12 sm:mb-16"
             >
-              <p className="eyebrow-o mb-5">§ 06 · The clock</p>
+              <p className="eyebrow-o mb-5">06 · The clock</p>
               <h2 className="font-display text-[clamp(2rem,4.2vw,3.2rem)]" style={{ letterSpacing: '-0.04em' }}>
                 Every year you wait, your child <span style={{ color: '#ff4b4b' }}>falls behind.</span>
               </h2>
@@ -631,7 +822,7 @@ export default function Home() {
               title="Ready to transform your child's future?"
               subtitle="Join 2,500+ families who have unlocked their child's entrepreneurial potential."
               formTitle="Book your free demo"
-              formSubtitle="Get a personalised demo and see how Orbit can transform your child's future."
+              formSubtitle="Tell us your preferred start window — we confirm cohort availability within 24 hours. No payment required to book."
               fields={['parentName', 'email', 'phone', 'studentName', 'childAge']}
               variant="primary"
               size="lg"

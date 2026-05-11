@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
@@ -252,22 +251,24 @@ export default function SEO({
     timeRequired: courseData.duration,
     educationalLevel: 'Beginner to Intermediate',
     teaches: [
+      'Artificial Intelligence Literacy',
       'Entrepreneurship',
       'Business Planning',
       'Leadership Skills',
       'Financial Literacy',
       'Marketing and Sales',
-      'Public Speaking'
+      'Public Speaking',
+      'Digital Citizenship and Safety'
     ],
     audience: {
       '@type': 'EducationalAudience',
       educationalRole: 'student',
-      audienceType: 'Children and Teenagers aged 8-16'
+      audienceType: 'Children and Teenagers aged 8-18'
     },
     offers: courseData.price ? {
       '@type': 'Offer',
       price: courseData.price,
-      priceCurrency: 'INR',
+      priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       validFrom: new Date().toISOString()
     } : undefined
@@ -348,6 +349,30 @@ export default function SEO({
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Yes! Visit orbitstudent.com/demo for a free interactive demo, or sign up for a free trial at orbitstudent.com/login to explore the student dashboard, AI tools, and sample courses.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Is Orbit Student instructor-led or only pre-recorded videos?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Orbit Student is built around live, mentor-led cohort classes (two sessions per week) plus office hours — not passive video libraries. Students learn in small groups with real-time feedback, replays available in the dashboard.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What is included in the Young CEO programme?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The flagship programme includes a 180-day structured path, 52 live mentor-led sessions, 100+ AI tools and business simulations, a verified project portfolio, scholarship and competition roadmap, parent progress visibility, gamified XP and streaks, and a 30-day satisfaction guarantee.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How fast can we join the next cohort?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Cohorts start on rolling dates. Book a demo or start a free trial and our team confirms seat availability for your timezone — typically within one business day — before any payment is required.'
         }
       }
     ]
