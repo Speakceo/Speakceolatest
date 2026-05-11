@@ -27,7 +27,7 @@ export default function Home() {
     <>
       <SEO
         title="Orbit Student | Young CEO Programme (Ages 8–18)"
-        description="180-day mentor-led cohort for ages 8–18: live classes (not just videos), AI tools, real projects, portfolio and scholarship prep. Free trial. Trusted by 2,500+ families in 35+ countries."
+        description="Mentor-led cohort for ages 8–18: live classes, AI tools, portfolio and scholarships. Free trial. 2,500+ families worldwide."
         showFAQ
         courseData={{
           name: 'Orbit Young CEO Programme — 180-Day Instructor-Led Cohort',

@@ -78,14 +78,16 @@ export default function Footer() {
             </Link>
             <div className="flex gap-1.5">
               {[
-                { Icon: Facebook, href: '#', label: 'Facebook' },
-                { Icon: Twitter, href: '#', label: 'Twitter' },
-                { Icon: Instagram, href: '#', label: 'Instagram' },
-                { Icon: Youtube, href: '#', label: 'YouTube' },
+                { Icon: Facebook, href: 'https://facebook.com/orbitstudent', label: 'Facebook' },
+                { Icon: Twitter, href: 'https://twitter.com/orbitstudent', label: 'Twitter' },
+                { Icon: Instagram, href: 'https://instagram.com/orbitstudent', label: 'Instagram' },
+                { Icon: Youtube, href: 'https://www.youtube.com/@orbitstudent', label: 'YouTube' },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
+                  rel="noopener noreferrer"
+                  target="_blank"
                   aria-label={label}
                   className="w-9 h-9 inline-flex items-center justify-center rounded-lg text-o-2 hover:text-o-0 hover:border-[var(--o-border-2)] transition-all duration-200 border border-[var(--o-border-1)]"
                 >

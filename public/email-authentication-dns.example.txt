@@ -1,0 +1,12 @@
+# Email authentication (add at your DNS host)
+# Replace domain and mail server values with your real provider (Google Workspace, Zoho, etc.)
+
+# SPF — sender policy (one TXT record at root @)
+# Example when sending mail via Google Workspace:
+# v=spf1 include:_spf.google.com ~all
+
+# DMARC — policy for spoofed mail (TXT at _dmarc.yourdomain)
+# Start with p=none to collect reports, then tighten to quarantine/reject
+# v=DMARC1; p=none; rua=mailto:dmarc@orbitstudent.com; fo=1
+
+# DKIM — provided by your email host (CNAME or TXT records, copy from their admin UI)

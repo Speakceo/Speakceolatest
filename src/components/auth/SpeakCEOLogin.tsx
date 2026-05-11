@@ -89,15 +89,15 @@ export default function SpeakCEOLogin() {
   return (
     <>
       <Helmet>
-        <title>Orbit Student Login | Student Portal — Access AI Learning Dashboard</title>
-        <meta name="description" content="Login to the Orbit Student portal. Access your AI learning dashboard, courses, AI tools, live classes, and scholarship prep. Join 2,500+ students building their future." />
+        <title>Orbit Student Login | Portal</title>
+        <meta name="description" content="Sign in to your dashboard: courses, AI tools, live classes and scholarship prep for ages 8–18." />
         <meta name="keywords" content="Orbit Student login, Orbit Student portal, Orbit Student sign in, Orbit Student dashboard, orbitstudent login, student portal login, AI student login, Orbit Student account, Orbit Student app" />
-        <meta property="og:title" content="Orbit Student Login | Student Portal & AI Dashboard" />
-        <meta property="og:description" content="Login to your Orbit Student portal. Access AI tools, courses, live classes & scholarship prep. 2,500+ students already building their future." />
+        <meta property="og:title" content="Orbit Student Login" />
+        <meta property="og:description" content="Access your student dashboard, courses and AI tools." />
         <meta property="og:url" content="https://www.orbitstudent.com/login" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:title" content="Orbit Student Login | Student Portal" />
-        <meta name="twitter:description" content="Login to Orbit Student portal. Access AI learning dashboard, courses, and 100+ AI tools for kids 8-18." />
+        <meta name="twitter:title" content="Orbit Student Login" />
+        <meta name="twitter:description" content="Student portal: dashboard, courses, AI tools and live classes." />
         <link rel="canonical" href="https://www.orbitstudent.com/login" />
         <meta name="robots" content="noindex, nofollow" />
         <script type="application/ld+json">

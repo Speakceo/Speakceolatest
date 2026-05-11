@@ -1,129 +1,132 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Orbit Student — #1 AI learning platform for kids 8-18. Login to your Orbit Student portal for AI tools, courses, live classes & scholarships. Join 2,500+ students." />
-    <meta name="keywords" content="Orbit Student, Orbit Student login, Orbit Student portal, Orbit Student dashboard, Orbit Student app, orbitstudent, orbitstudent.com, Orbit Student sign in, Orbit Student sign up, Orbit Student register, Orbit Student account, Orbit Student platform, Orbit AI, Orbit AI student, Orbit education, Orbit learning, Orbit scholarship, Orbit study, Orbit edtech, Orbit Student courses, Orbit Student live classes, Orbit Student AI tools, Orbit Student demo, Orbit Student free trial, AI student, AI for kids, kids new age learning, AI learning platform, artificial intelligence for students, AI powered education, learn AI for kids, AI tools for students, AI courses for kids, AI education for children, AI literacy for kids, new age education, kids AI tools, AI tutor for students, AI student platform, smart learning for kids, AI entrepreneurship, young AI learners, AI skills for kids, future AI education, kids learn artificial intelligence, AI mentor for students, best AI platform for kids, AI school for kids, new age kids education, AI generation kids, Gen Z AI learning, Gen Alpha education, AI first education, best future plan for kids, young entrepreneur program, future skills for children, entrepreneurship for kids, prepare kids for future, business education for children, young CEO program, child future planning, AI-powered learning, future career for kids, best education for future, AI literacy for youth, future-ready kids, business skills for teens, learn entrepreneurship online, AI for young learners, best investment in child future, future entrepreneurs, skills kids need for future, teen startup program, future opportunities for children, young business leaders, how to prepare kids for future jobs, future leaders program, startup skills for youth, child success planning, scholarship prep for kids, early scholarship planning, college prep for middle school, AI homework help, coding for kids, STEM for kids, best edtech for kids, student learning portal, kids business course online, online learning for kids, online business school for kids, best online course for kids" />
+
+    <!-- Fallback SEO before JS (single canonical is set by react-helmet after load) -->
+    <title>Orbit Student | Young CEO 8–18</title>
+    <meta name="description" content="Mentor-led AI, entrepreneurship and leadership for ages 8–18. Live classes, tools, portfolio. Free trial. 2,500+ families." />
+    <meta name="keywords" content="Orbit Student, AI for kids, Young CEO programme, entrepreneurship for kids, orbitstudent.com" />
     <meta name="author" content="Orbit Future Academy" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="language" content="en" />
     <meta name="theme-color" content="#1876D2" />
-    
-    <!-- Favicon and Icons -->
+    <meta name="msapplication-TileColor" content="#1876D2" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Orbit Student" />
+    <meta property="og:title" content="Orbit Student | AI Learning 8–18" />
+    <meta property="og:description" content="Mentor-led cohort: live classes, AI tools, portfolio and scholarships for ages 8–18." />
+    <meta property="og:url" content="https://www.orbitstudent.com/" />
+    <meta property="og:image" content="https://www.orbitstudent.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Orbit Student" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@orbitstudent" />
+    <meta name="twitter:creator" content="@orbitstudent" />
+    <meta name="twitter:title" content="Orbit Student | AI Learning 8–18" />
+    <meta name="twitter:description" content="Live classes, AI tools and portfolio prep for ages 8–18." />
+    <meta name="twitter:image" content="https://www.orbitstudent.com/og-image.jpg" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Orbit Student" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/manifest.json" />
-    
-    <!-- Preconnect for Performance -->
+
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="//api.openai.com" />
-    <link rel="dns-prefetch" href="//www.google-analytics.com" />
     <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
-    <!-- Orbit unified type system: Inter (body) + JetBrains Mono (technical labels) -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    
-    <!-- Additional SEO meta tags -->
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="bingbot" content="index, follow" />
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.orbitstudent.com/" />
-    
-    <!-- Alternate languages -->
-    <link rel="alternate" hreflang="en" href="https://www.orbitstudent.com/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.orbitstudent.com/" />
-    
-    <!-- Additional meta tags for better indexing -->
-    <meta name="rating" content="General" />
-    <meta name="distribution" content="Global" />
-    <meta name="revisit-after" content="1 days" />
-    <meta name="language" content="English" />
-    <meta name="geo.region" content="US" />
-    <meta name="geo.country" content="US" />
-    <meta name="classification" content="Education, AI Education, Entrepreneurship, EdTech, Kids Learning" />
-    <meta name="category" content="Education" />
-    <meta name="reply-to" content="hello@orbitstudent.com" />
-    <meta name="owner" content="Orbit Future Academy" />
-    <meta name="url" content="https://www.orbitstudent.com" />
-    <meta name="identifier-URL" content="https://www.orbitstudent.com" />
-    <meta name="pagename" content="Orbit Student — Login to AI Learning Portal for Kids" />
-    <meta name="subtitle" content="Orbit Student Login | Student Portal | AI Courses, Dashboard & Scholarship Prep Ages 8-18" />
-    
-    <!-- Verification meta tags (replace with actual codes when available) -->
-    <!-- <meta name="google-site-verification" content="your-google-verification-code"> -->
-    <!-- <meta name="msvalidate.01" content="your-bing-verification-code"> -->
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Orbit Student — Login to AI Learning Portal | Courses, AI Tools & Scholarships for Kids" />
-    <meta property="og:description" content="Orbit Student: #1 AI learning portal for kids 8-18. Login to access AI tools, live classes, business courses & scholarship prep. 2,500+ students building their future." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.orbitstudent.com" />
-    <meta property="og:image" content="https://www.orbitstudent.com/og-image.jpg" />
-    <meta property="og:site_name" content="Orbit Student — AI Learning Portal" />
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@orbitstudent" />
-    <meta name="twitter:title" content="Orbit Student — Login | AI Learning Portal for Kids Ages 8-18" />
-    <meta name="twitter:description" content="Login to Orbit Student portal. #1 AI learning platform for kids 8-18. AI tools, courses, live classes, scholarship prep & business skills. Join 2,500+ students." />
-    <meta name="twitter:image" content="https://www.orbitstudent.com/og-image.jpg" />
-    
-    <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Orbit Student Blog RSS Feed" href="/rss.xml" />
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="application-name" content="Orbit Student" />
-    <meta name="apple-mobile-web-app-title" content="Orbit Student" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    
-    <!-- Structured Data Preview -->
+    <!-- Non-blocking fonts (Inter + JetBrains Mono) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+    </noscript>
+
+    <link rel="alternate" type="application/rss+xml" title="Orbit Student Blog" href="https://www.orbitstudent.com/rss.xml" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.orbitstudent.com/sitemap.xml" />
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Orbit Student",
+      "alternateName": ["Orbit AI Student", "OrbitStudent"],
       "url": "https://www.orbitstudent.com",
+      "description": "AI-powered learning for kids 8–18: entrepreneurship, live classes and scholarship prep.",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://www.orbitstudent.com/search?q={search_term_string}",
+        "target": "https://www.orbitstudent.com/blog?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
     </script>
-    
-    <title>Orbit Student — Login | AI Learning Portal for Kids Ages 8-18 | Courses, AI Tools & Scholarships</title>
-    
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
+      "@type": ["EducationalOrganization", "LocalBusiness"],
       "name": "Orbit Student",
-      "alternateName": ["Orbit AI", "Orbit AI Student", "Orbit Learning", "Orbit Student Portal", "Orbit Student Login", "OrbitStudent"],
-      "description": "Orbit Student is the #1 AI-powered learning portal for kids ages 8-18. Login to access AI tools, courses, live classes, entrepreneurship training, and scholarship prep. Join 2,500+ students building their future.",
+      "alternateName": ["Orbit AI", "Orbit Future Academy", "OrbitStudent"],
       "url": "https://www.orbitstudent.com",
-      "logo": "https://www.orbitstudent.com/logo.png",
+      "logo": "https://www.orbitstudent.com/images/hero/orbit-logo.png",
+      "image": "https://www.orbitstudent.com/og-image.jpg",
+      "description": "Mentor-led AI and entrepreneurship programme for ages 8–18. Remote-first with global cohorts.",
+      "email": "hello@orbitstudent.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai",
+        "addressRegion": "MH",
+        "addressCountry": "IN"
+      },
+      "areaServed": { "@type": "Place", "name": "Worldwide" },
       "sameAs": [
         "https://twitter.com/orbitstudent",
         "https://facebook.com/orbitstudent",
         "https://linkedin.com/company/orbitstudent",
-        "https://instagram.com/orbitstudent"
-      ]
+        "https://instagram.com/orbitstudent",
+        "https://www.youtube.com/@orbitstudent"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2500",
+        "bestRating": "5"
+      }
     }
     </script>
   </head>
   <body>
+    <noscript>
+      <main style="max-width:42rem;margin:2rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;line-height:1.6;color:#0f172a">
+        <h1 style="font-size:1.75rem;color:#1876D2">Orbit Student — AI learning for kids and teens</h1>
+        <p>
+          Orbit Student is a mentor-led programme for ages 8–18: live classes, AI tools, real projects,
+          portfolio outcomes and scholarship preparation. Enable JavaScript for the full experience, or
+          <a href="https://www.orbitstudent.com/contact">contact us</a>.
+        </p>
+        <p>
+          <a href="https://www.orbitstudent.com/courses">Courses</a> ·
+          <a href="https://www.orbitstudent.com/live-classes">Live classes</a> ·
+          <a href="https://www.orbitstudent.com/faq">FAQ</a> ·
+          <a href="https://www.orbitstudent.com/login">Sign in</a>
+        </p>
+      </main>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

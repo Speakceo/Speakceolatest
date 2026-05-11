@@ -25,8 +25,9 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'Orbit Student — AI Learning Portal for Kids',
-  description: 'Orbit Student — #1 AI learning portal for kids 8-18. Login to access AI tools, courses, live classes & scholarship prep. Join 2,500+ students building their future.',
+  title: 'Orbit Student | AI Learning for Kids',
+  description:
+    'AI tools, courses, live classes and scholarship prep for ages 8–18. Join 2,500+ students — start a free trial at orbitstudent.com.',
   keywords: [
     // Brand + Action keywords (highest priority)
     'Orbit Student',
@@ -170,9 +171,19 @@ export default function SEO({
     ? title
     : `${title} | Orbit Student`;
 
+  /** ~155–158 chars for meta description (SERP best practice) */
+  const metaDescription =
+    description.length <= 158 ? description : `${description.slice(0, 155).trimEnd()}…`;
+
+  const orgPhone =
+    typeof import.meta.env.VITE_ORG_TELEPHONE === 'string' &&
+    import.meta.env.VITE_ORG_TELEPHONE.trim().length >= 8
+      ? import.meta.env.VITE_ORG_TELEPHONE.trim()
+      : undefined;
+
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
+    '@type': ['EducationalOrganization', 'LocalBusiness'],
     name: 'Orbit Student',
     alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'OrbitStudent', 'Orbit Student Portal', 'Orbit Student Login', 'Orbit Student Dashboard'],
     description: defaultSEO.description,
@@ -189,16 +200,18 @@ export default function SEO({
       'https://facebook.com/orbitstudent',
       'https://linkedin.com/company/orbitstudent',
       'https://instagram.com/orbitstudent',
-      'https://youtube.com/@orbitstudent'
+      'https://www.youtube.com/@orbitstudent'
     ],
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'IN',
-      addressRegion: 'Global'
+      addressLocality: 'Mumbai',
+      addressRegion: 'Maharashtra',
+      addressCountry: 'IN'
     },
+    areaServed: { '@type': 'Place', name: 'Worldwide' },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-800-ORBIT',
+      ...(orgPhone ? { telephone: orgPhone } : {}),
       contactType: 'Customer Service',
       email: 'hello@orbitstudent.com',
       availableLanguage: ['English']
@@ -518,7 +531,7 @@ export default function SEO({
     <Helmet>
       {/* Basic Meta Tags */}
       <title>{siteTitle}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={metaDescription} />
       <meta name="keywords" content={keywords.join(', ')} />
       <meta name="author" content={author} />
       <meta name="language" content="en" />
@@ -526,7 +539,7 @@ export default function SEO({
 
       {/* Open Graph Meta Tags */}
       <meta property="og:title" content={siteTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
@@ -543,7 +556,7 @@ export default function SEO({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@orbitstudent" />
       <meta name="twitter:title" content={siteTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={image} />
       <meta name="twitter:creator" content="@orbitstudent" />
 
@@ -555,7 +568,6 @@ export default function SEO({
           : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
         }
       />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="canonical" href={url} />
 
       {/* DNS Prefetch & Preconnect for Performance */}
