@@ -23,7 +23,7 @@ const Tools = () => {
       />
 
       <PageHero
-        eyebrow="§ AI tools · 100+ toolkit"
+        eyebrow="AI tools · 100+ toolkit"
         title="An AI toolkit "
         italic="kids actually use."
         subtitle="Website builders, pitch writers, image generators, study coaches. Unlimited usage. Built for ages 8-18."

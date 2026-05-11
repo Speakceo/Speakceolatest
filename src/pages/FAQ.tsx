@@ -163,7 +163,7 @@ const FAQ: React.FC = () => {
       <div className="min-h-screen bg-o-0 text-o-0">
         {/* Unified hero */}
         <PageHero
-          eyebrow="§ FAQ · Trusted by 10,000+ parents"
+          eyebrow="FAQ · Trusted by 10,000+ parents"
           title="Your questions"
           italic="answered."
           subtitle="Everything you need to know about transforming your child into a confident young entrepreneur."

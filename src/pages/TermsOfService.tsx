@@ -97,7 +97,7 @@ const TermsOfService: React.FC = () => {
       />
       
       <PageHero
-        eyebrow="§ Legal · Last updated March 1, 2024"
+        eyebrow="Legal · Last updated March 1, 2024"
         title="Terms of"
         italic="service."
         subtitle="The agreement between you and us when you use Orbit Student. Please read carefully."

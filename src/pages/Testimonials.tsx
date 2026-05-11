@@ -94,7 +94,7 @@ const Testimonials: React.FC = () => {
       />
       
       <PageHero
-        eyebrow="§ Voices · Field reports"
+        eyebrow="Voices · Field reports"
         title="Success"
         italic="stories."
         subtitle="Meet our young entrepreneurs and discover their inspiring journeys — pitched ideas, launched stores, first profits."

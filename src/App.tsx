@@ -179,14 +179,24 @@ function ScrollToTop() {
 }
 
 function AppContent() {
-  const { initializeAuth, isInitialized } = useUserStore()
+  const location = useLocation();
+  const { initializeAuth, isInitialized } = useUserStore();
 
   useEffect(() => {
-    initializeAuth()
-  }, [initializeAuth])
+    initializeAuth();
+  }, [initializeAuth]);
 
-  // Show loading while initializing
-  if (!isInitialized) {
+  /**
+   * Do not block marketing/legal routes on auth bootstrap.
+   * A global gate meant every URL returned the same loading shell first — crawlers
+   * then saw duplicate titles, duplicate meta, and no route H1 across ~40 URLs.
+   * Dashboard/admin still wait until initializeAuth finishes.
+   */
+  const path = location.pathname;
+  const waitForAuthBootstrap =
+    path.startsWith('/dashboard') || path.startsWith('/admin');
+
+  if (waitForAuthBootstrap && !isInitialized) {
     return <LoadingFallback />;
   }
 

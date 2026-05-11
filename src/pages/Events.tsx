@@ -91,7 +91,7 @@ const Events: React.FC = () => {
       />
       
       <PageHero
-        eyebrow="§ Events · Calendar"
+        eyebrow="Events · Calendar"
         title="Upcoming"
         italic="events."
         subtitle="Workshops, competitions, networking. Every month, new chances for your child to ship and showcase their work."

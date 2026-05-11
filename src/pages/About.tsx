@@ -43,7 +43,7 @@ const About = () => {
       <div className="min-h-screen bg-o-0 text-o-0">
         {/* ═══ HERO — Unified Linear dark ═══ */}
         <PageHero
-          eyebrow="§ About · Our story"
+          eyebrow="About · Our story"
           title="From one child's question to a"
           italic="global movement."
           subtitle="A curious 12-year-old named Aarav asked: why don't we learn how to speak like leaders or build real businesses in school? That question built Orbit — a programme for kids like Aarav."
@@ -130,7 +130,7 @@ const About = () => {
         <section id="mission" className="section-o border-o-t bg-o-0">
           <div className="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              <p className="eyebrow-o mb-6">§ Manifesto</p>
+              <p className="eyebrow-o mb-6">Manifesto</p>
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-6" style={{ letterSpacing: '-0.045em', lineHeight: 1.05 }}>
                 Orbit isn't a class. <span style={{ color: '#00B0FF' }}>It's an adventure in confidence.</span>
               </h2>
@@ -154,7 +154,7 @@ const About = () => {
         <section className="section-o border-o-t bg-o-0">
           <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-14 sm:mb-20">
-              <p className="eyebrow-o mb-5">§ Parent concerns</p>
+              <p className="eyebrow-o mb-5">Parent concerns</p>
               <h2 className="font-display text-[clamp(2rem,4.2vw,3.2rem)]" style={{ letterSpacing: '-0.04em' }}>
                 We understand <span style={{ color: '#00B0FF' }}>what worries you.</span>
               </h2>
@@ -186,7 +186,7 @@ const About = () => {
           <div className="absolute inset-0 glow-o opacity-80" />
           <div className="relative max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <p className="eyebrow-o mb-6">§ Join us</p>
+              <p className="eyebrow-o mb-6">Join us</p>
               <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] mb-6" style={{ letterSpacing: '-0.045em', lineHeight: 1.0 }}>
                 Ready to transform your child's <span style={{ color: '#00B0FF' }}>future?</span>
               </h2>

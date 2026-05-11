@@ -119,7 +119,7 @@ const Resources: React.FC = () => {
       <div className="min-h-screen bg-o-0 text-o-0">
         {/* Unified hero */}
         <PageHero
-          eyebrow="§ Resources · Scholarship & opportunity hub"
+          eyebrow="Resources · Scholarship & opportunity hub"
           title="The earlier you start,"
           italic="the further you go."
           subtitle="Most students discover scholarships in 11th grade. Our students start in 5th. 500+ scholarships mapped, $2.9B+ in funding available."

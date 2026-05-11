@@ -51,7 +51,7 @@ const BlogPost: React.FC = () => {
   const formattedContent = useMemo(() => {
     let html = post.content
       .replace(/\n/g, '<br>')
-      .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">$1</h1>')
+      .replace(/^# (.+)$/gm, '<h2 class="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">$1</h2>')
       .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold mt-6 mb-3 text-gray-900 dark:text-white">$1</h2>')
       .replace(/^### (.+)$/gm, '<h3 class="text-xl font-semibold mt-4 mb-2 text-gray-900 dark:text-white">$1</h3>')
       .replace(/^\*\*(.+)\*\*$/gm, '<p class="font-semibold text-gray-900 dark:text-white mt-4 mb-2">$1</p>')

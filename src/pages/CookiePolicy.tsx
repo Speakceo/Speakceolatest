@@ -129,7 +129,7 @@ const CookiePolicy: React.FC = () => {
       />
       
       <PageHero
-        eyebrow="§ Legal · Last updated March 1, 2024"
+        eyebrow="Legal · Last updated March 1, 2024"
         title="Cookie"
         italic="policy."
         subtitle="What cookies we use, why we use them, and how you can opt out — in plain language."

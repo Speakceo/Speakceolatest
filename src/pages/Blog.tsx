@@ -96,7 +96,7 @@ const Blog: React.FC = () => {
 
       <div className="min-h-screen bg-o-0 text-o-0">
         <PageHero
-          eyebrow="§ Blog · Weekly essays"
+          eyebrow="Blog · Weekly essays"
           title="Insights from"
           italic="the studio."
           subtitle="Essays on entrepreneurship education, youth leadership and building the next generation of innovators."

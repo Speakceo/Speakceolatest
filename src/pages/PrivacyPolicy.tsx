@@ -97,7 +97,7 @@ const PrivacyPolicy: React.FC = () => {
       />
       
       <PageHero
-        eyebrow="§ Legal · Last updated March 1, 2024"
+        eyebrow="Legal · Last updated March 1, 2024"
         title="Privacy"
         italic="policy."
         subtitle="We take your privacy seriously. Here's how we collect, use and safeguard your data — in plain language."

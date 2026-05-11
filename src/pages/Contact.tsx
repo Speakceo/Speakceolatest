@@ -44,7 +44,7 @@ const Contact = () => {
       <div className="min-h-screen bg-o-0 text-o-0">
         {/* ═══ HERO — unified Linear dark ═══ */}
         <PageHero
-          eyebrow="§ Contact · Get in touch"
+          eyebrow="Contact · Get in touch"
           title="Let's"
           italic="talk."
           subtitle="Have questions about Orbit Student? We reply within 24 hours, Monday–Saturday, 9am–6pm IST."
@@ -81,7 +81,7 @@ const Contact = () => {
           <div className="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8">
             <motion.div initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <div className="card-o" style={{ padding: '32px 32px 36px' }}>
-                <p className="eyebrow-o mb-3">§ Send a message</p>
+                <p className="eyebrow-o mb-3">Send a message</p>
                 <h2 className="font-display text-[clamp(1.6rem,3vw,2.2rem)] text-o-0 mb-2" style={{ letterSpacing: '-0.025em' }}>
                   We'll respond within 24 hours.
                 </h2>

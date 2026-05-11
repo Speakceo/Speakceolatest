@@ -215,7 +215,7 @@ export default function LiveClasses() {
       />
       
       <PageHero
-        eyebrow="§ Live classes · Mentor-led"
+        eyebrow="Live classes · Mentor-led"
         title="Real mentors, "
         italic="not recordings."
         subtitle="Two live sessions per week with founders, designers and operators who have done it. Cohorts capped at 18 students."

@@ -81,7 +81,7 @@ const Partnerships: React.FC = () => {
       />
       
       <PageHero
-        eyebrow="§ Partnerships"
+        eyebrow="Partnerships"
         title="Building Orbit"
         italic="together."
         subtitle="Collaborating with leading organisations to empower young entrepreneurs — funding, mentorship, opportunities."

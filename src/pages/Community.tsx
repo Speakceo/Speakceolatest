@@ -28,7 +28,7 @@ const Community = () => {
       />
 
       <PageHero
-        eyebrow="§ Community · Cohort 12"
+        eyebrow="Community · Cohort 12"
         title="2,500 young builders, "
         italic="building together."
         subtitle="Cohort circles, founder office hours and monthly showcase nights. Your child is never building alone."
