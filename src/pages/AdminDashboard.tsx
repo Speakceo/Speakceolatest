@@ -56,7 +56,7 @@ interface DashboardStats {
 export default function AdminDashboard() {
   const { user, logout } = useUserStore();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('leads');
   const [isLoading, setIsLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const [searchTerm, setSearchTerm] = useState('');

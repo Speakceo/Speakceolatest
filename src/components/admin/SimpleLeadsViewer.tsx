@@ -34,10 +34,12 @@ const SimpleLeadsViewer: React.FC = () => {
   const [filter, setFilter] = useState('all');
   const [cloudStatus, setCloudStatus] = useState<'synced' | 'syncing' | 'offline'>('offline');
   const [lastSync, setLastSync] = useState<Date | null>(null);
+  const [fetchError, setFetchError] = useState<string | null>(null);
 
   const loadLeads = useCallback(async () => {
     const local = getAllLeads();
     setCloudStatus('syncing');
+    setFetchError(null);
     try {
       const rows = await getLeads();
       const cloud = rows.map(crmRowToLead);
@@ -47,7 +49,9 @@ const SimpleLeadsViewer: React.FC = () => {
       setLeads(merged);
       setCloudStatus('synced');
       setLastSync(new Date());
-    } catch {
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : 'Could not load leads from Supabase';
+      setFetchError(msg);
       setLeads(local);
       setCloudStatus('offline');
     }
@@ -106,6 +110,18 @@ const SimpleLeadsViewer: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
+      {fetchError && (
+        <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          <p className="font-medium">Could not load cloud leads</p>
+          <p className="mt-1 text-amber-800/90">{fetchError}</p>
+          <p className="mt-2 text-amber-800/80">
+            If this mentions RLS or permission, run in Supabase SQL Editor: open{' '}
+            <code className="rounded bg-amber-100/80 px-1">Allow read leads for anon and authenticated</code>{' '}
+            policy (see migration <code className="rounded bg-amber-100/80 px-1">20260509120000_leads_marketing_capture.sql</code>{' '}
+            tail or <code className="rounded bg-amber-100/80 px-1">20260513140000_leads_select_for_key_gated_admin.sql</code>).
+          </p>
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
         <div>

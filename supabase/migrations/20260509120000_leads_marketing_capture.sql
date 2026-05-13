@@ -124,13 +124,11 @@ CREATE POLICY "Allow public insert for marketing leads"
   );
 
 DROP POLICY IF EXISTS "Admins can select all leads" ON public.leads;
-CREATE POLICY "Admins can select all leads"
+DROP POLICY IF EXISTS "Allow read leads for anon and authenticated" ON public.leads;
+
+-- Readable with anon/publishable key (used by /admin after shared key unlock)
+CREATE POLICY "Allow read leads for anon and authenticated"
   ON public.leads
   FOR SELECT
-  TO authenticated
-  USING (
-    EXISTS (
-      SELECT 1 FROM public.profiles p
-      WHERE p.id = auth.uid() AND p.role = 'admin'
-    )
-  );
+  TO anon, authenticated
+  USING (true);
