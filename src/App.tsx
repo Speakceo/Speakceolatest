@@ -190,11 +190,10 @@ function AppContent() {
    * Do not block marketing/legal routes on auth bootstrap.
    * A global gate meant every URL returned the same loading shell first — crawlers
    * then saw duplicate titles, duplicate meta, and no route H1 across ~40 URLs.
-   * Dashboard/admin still wait until initializeAuth finishes.
+   * Dashboard still waits until initializeAuth finishes.
    */
   const path = location.pathname;
-  const waitForAuthBootstrap =
-    path.startsWith('/dashboard') || path.startsWith('/admin');
+  const waitForAuthBootstrap = path.startsWith('/dashboard');
 
   if (waitForAuthBootstrap && !isInitialized) {
     return <LoadingFallback />;

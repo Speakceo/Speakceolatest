@@ -1,60 +1,41 @@
-import React, { useEffect } from 'react';
-import { 
-  Users, 
-  BookOpen, 
-  CheckSquare, 
-  Video, 
+import React, { useEffect, useState } from 'react';
+import {
+  Users,
+  BookOpen,
+  CheckSquare,
+  Video,
   BarChart3,
-  Upload,
   LogOut,
-  Bell,
-  FileText,
   Settings,
-  Shield
 } from 'lucide-react';
 import { useUserStore } from '../../lib/store';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
+const ADMIN_SESSION_KEY = 'admin_authenticated';
+
+function isAdminKeySession(): boolean {
+  if (typeof window === 'undefined') return false;
+  return sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true';
+}
+
 export default function AdminLayout() {
-  const { user, logout, isInitialized } = useUserStore();
+  const { user, logout } = useUserStore();
   const location = useLocation();
   const navigate = useNavigate();
+  const [keyOk, setKeyOk] = useState(isAdminKeySession);
 
-  // Check if user is admin and redirect if not
   useEffect(() => {
-    if (isInitialized && (!user || user.role !== 'admin')) {
-      console.log('Unauthorized access to admin panel, redirecting...');
-      navigate('/login');
+    const ok = isAdminKeySession();
+    setKeyOk(ok);
+    if (!ok) {
+      navigate('/admin', { replace: true });
     }
-  }, [user, isInitialized, navigate]);
+  }, [navigate, location.pathname]);
 
-  // Show loading while checking authentication
-  if (!isInitialized) {
+  if (!keyOk) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1876D2] mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading admin panel...</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Show unauthorized message if not admin
-  if (!user || user.role !== 'admin') {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <Shield className="h-16 w-16 text-red-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Access Denied</h1>
-          <p className="text-gray-600 mb-4">You need admin privileges to access this area.</p>
-          <button
-            onClick={() => navigate('/login')}
-            className="bg-[#1876D2] text-white px-4 py-2 rounded-lg hover:bg-[#1565C0]"
-          >
-            Go to Login
-          </button>
-        </div>
+        <p className="text-gray-600 text-sm">Unlock admin from /admin with your access key…</p>
       </div>
     );
   }
@@ -69,38 +50,42 @@ export default function AdminLayout() {
     { id: 'settings', label: 'Settings', icon: Settings, path: '/admin/settings' },
   ];
 
-  const isActiveTab = (path: string) => {
-    if (path === '/admin') {
+  const isActiveTab = (tabPath: string) => {
+    if (tabPath === '/admin') {
       return location.pathname === '/admin';
     }
-    return location.pathname.startsWith(path);
+    return location.pathname.startsWith(tabPath);
+  };
+
+  const leaveAdmin = () => {
+    sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    logout();
+    navigate('/admin', { replace: true });
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <h1 className="text-2xl font-bold text-gray-900">Admin Panel</h1>
-              <div className="ml-4 text-sm text-gray-500">
-                Manage your startup school platform
-              </div>
+              <div className="ml-4 text-sm text-gray-500">Manage your startup school platform</div>
             </div>
             <div className="flex items-center space-x-4">
               <div className="text-sm text-gray-700">
-                Welcome, <span className="font-medium">{user?.name || 'Admin'}</span>
-                <span className="ml-2 px-2 py-1 text-xs bg-red-100 text-red-800 rounded-full">
-                  {user?.role?.toUpperCase()}
+                <span className="font-medium">{user?.name || 'Admin'}</span>
+                <span className="ml-2 px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full">
+                  Key session
                 </span>
               </div>
               <button
-                onClick={logout}
+                type="button"
+                onClick={leaveAdmin}
                 className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <LogOut className="h-4 w-4" />
-                <span>Logout</span>
+                <span>Lock / exit</span>
               </button>
             </div>
           </div>
@@ -109,7 +94,6 @@ export default function AdminLayout() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex gap-8">
-          {/* Sidebar Navigation */}
           <aside className="w-64 flex-shrink-0">
             <nav className="bg-white rounded-lg shadow-sm p-4">
               <div className="space-y-2">
@@ -119,6 +103,7 @@ export default function AdminLayout() {
                   return (
                     <button
                       key={tab.id}
+                      type="button"
                       onClick={() => navigate(tab.path)}
                       className={`w-full flex items-center space-x-3 px-4 py-3 text-left rounded-lg transition-colors ${
                         isActive
@@ -134,7 +119,6 @@ export default function AdminLayout() {
               </div>
             </nav>
 
-            {/* Quick Stats */}
             <div className="mt-6 bg-white rounded-lg shadow-sm p-4">
               <h3 className="text-sm font-medium text-gray-900 mb-3">Quick Stats</h3>
               <div className="space-y-3">
@@ -158,7 +142,6 @@ export default function AdminLayout() {
             </div>
           </aside>
 
-          {/* Main Content */}
           <main className="flex-1">
             <div className="bg-white rounded-lg shadow-sm min-h-[600px]">
               <Outlet />
