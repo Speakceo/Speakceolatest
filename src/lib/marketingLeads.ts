@@ -1,6 +1,22 @@
 import { supabase } from './supabase';
 import { getUTMParams } from './leads';
 
+function formatPostgrestError(error: {
+  message?: string;
+  code?: string;
+  details?: string;
+  hint?: string;
+}): string {
+  const parts = [error.code, error.message, error.details, error.hint].filter(
+    (x): x is string => typeof x === 'string' && x.trim().length > 0
+  );
+  return parts.join(' — ') || 'Could not save lead';
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
 export const MARKETING_LEAD_SOURCES = [
   'contact_form',
   'career_guide',
@@ -44,25 +60,35 @@ export async function submitMarketingLeadToSupabase(
 
   const notes = [input.notes?.trim(), utmNote && `UTM: ${utmNote}`].filter(Boolean).join('\n\n') || null;
 
-  try {
-    const { data, error } = await supabase
-      .from('leads')
-      .insert({
-        name: input.name.trim() || 'Unknown',
-        email: input.email.trim(),
-        phone: input.phone?.trim() || null,
-        source,
-        status: 'new',
-        notes,
-      })
-      .select('id')
-      .single();
+  const row = {
+    name: input.name.trim() || 'Unknown',
+    email: input.email.trim(),
+    phone: input.phone?.trim() || null,
+    source,
+    status: 'new' as const,
+    notes,
+  };
 
-    if (error) return { ok: false, error: error.message };
-    if (!data?.id) return { ok: false, error: 'No lead id returned' };
-    return { ok: true, id: data.id };
-  } catch (e: unknown) {
-    const msg = e instanceof Error ? e.message : 'Unknown error';
-    return { ok: false, error: msg };
+  const tryInsert = async (): Promise<
+    { ok: true; id: string } | { ok: false; error: string }
+  > => {
+    try {
+      const { data, error } = await supabase.from('leads').insert(row).select('id').single();
+
+      if (error) return { ok: false, error: formatPostgrestError(error) };
+      if (!data?.id) return { ok: false, error: 'No lead id returned from server' };
+      return { ok: true, id: data.id };
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      return { ok: false, error: msg || 'Network error' };
+    }
+  };
+
+  let first = await tryInsert();
+  if (!first.ok) {
+    await sleep(450);
+    const second = await tryInsert();
+    return second;
   }
+  return first;
 }

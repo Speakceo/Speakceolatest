@@ -55,20 +55,23 @@ interface LeadCaptureResult {
 
 export const useLeadCapture = () => {
   const captureLead = useCallback(async (data: LeadCaptureData): Promise<LeadCaptureResult | null> => {
+    let leadId: string;
     try {
-      const leadId = addLead(data);
-      const sync = await syncLeadToSupabase(data);
-      if (!sync.ok) {
-        console.warn('[leads] Supabase sync failed:', sync.error);
-      }
-
-      console.log('🎯 Lead captured successfully:', leadId);
-
-      return { leadId, supabaseOk: sync.ok, supabaseError: sync.error };
+      leadId = addLead(data);
     } catch (error) {
-      console.error('Failed to capture lead:', error);
+      console.error('Failed to save lead locally:', error);
       return null;
     }
+
+    const sync = await syncLeadToSupabase(data);
+    if (!sync.ok) {
+      console.warn('[leads] Supabase sync failed:', sync.error);
+    } else {
+      console.log('🎯 Lead synced to Supabase');
+    }
+
+    console.log('🎯 Lead captured (local):', leadId);
+    return { leadId, supabaseOk: sync.ok, supabaseError: sync.error };
   }, []);
 
   const captureEmailSignup = useCallback((email: string, source: string = 'unknown') => {

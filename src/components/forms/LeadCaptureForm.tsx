@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, User, MessageSquare, Send, CheckCircle, Sparkles, ArrowRight, Shield, Star, Rocket, Gift } from 'lucide-react';
+import React, { useState, useMemo, memo } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Mail, Phone, User, MessageSquare, CheckCircle, Sparkles, ArrowRight, Shield, Star, Rocket, Gift } from 'lucide-react';
 import { useLeadCapture } from '../../hooks/useLeadCapture';
 
 interface LeadCaptureFormProps {
@@ -14,35 +14,53 @@ interface LeadCaptureFormProps {
   className?: string;
 }
 
-// Animated floating label input
-function FloatingInput({ 
-  icon: Icon, label, type = 'text', value, onChange, error, name 
-}: { 
-  icon: React.ComponentType<{className?: string}>; label: string; type?: string; value: string; onChange: (v: string) => void; error?: string; name: string 
+function formatSubmitErr(e: unknown): string {
+  if (e instanceof Error) return e.message;
+  if (e && typeof e === 'object' && 'message' in e && typeof (e as { message: unknown }).message === 'string') {
+    return (e as { message: string }).message;
+  }
+  return 'Something went wrong. Please try again.';
+}
+
+function isValidOptionalPhone(phone: string): boolean {
+  if (!phone.trim()) return true;
+  const digits = phone.replace(/\D/g, '');
+  return digits.length >= 8 && digits.length <= 15;
+}
+
+const FloatingInput = memo(function FloatingInput({
+  icon: Icon,
+  label,
+  type = 'text',
+  value,
+  onChange,
+  error,
+  name: _name,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  type?: string;
+  value: string;
+  onChange: (v: string) => void;
+  error?: string;
+  name: string;
 }) {
   const [focused, setFocused] = useState(false);
   const hasValue = value.length > 0;
-  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="relative group"
-    >
-      <div className={`relative rounded-2xl transition-all duration-300 ${
+    <div className="relative group">
+      <div className={`relative rounded-2xl transition-all duration-200 ${
         error ? 'ring-2 ring-red-500/50' : focused ? 'ring-2 ring-[#1876D2]/50' : ''
       }`}>
-        {/* Icon */}
-        <div className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-300 ${
+        <div className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors duration-200 ${
           focused ? 'text-[#1876D2]' : 'text-gray-400'
         }`}>
           <Icon className="h-4 w-4" />
         </div>
 
-        {/* Floating label */}
         <label
-          className={`absolute left-11 transition-all duration-300 pointer-events-none ${
+          className={`absolute left-11 transition-all duration-200 pointer-events-none ${
             focused || hasValue
               ? 'top-2 text-[10px] font-bold ' + (error ? 'text-red-400' : 'text-[#1876D2]')
               : 'top-1/2 -translate-y-1/2 text-sm text-gray-400'
@@ -51,69 +69,82 @@ function FloatingInput({
           {label}
         </label>
 
-        {/* Input */}
         <input
-          ref={inputRef}
           type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className={`w-full pl-11 pr-4 pt-6 pb-2 bg-white/[0.04] border rounded-2xl text-white text-sm font-medium focus:outline-none transition-all duration-300 ${
+          className={`w-full pl-11 pr-4 pt-6 pb-2 bg-white/[0.04] border rounded-2xl text-white text-sm font-medium focus:outline-none transition-colors duration-200 ${
             error ? 'border-red-500/50' : 'border-white/[0.08] hover:border-white/[0.15] focus:border-[#1876D2]/50'
           }`}
         />
 
-        {/* Bottom glow on focus */}
-        <motion.div
-          className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-full origin-center"
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: focused ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+        <div
+          className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] rounded-full origin-center transition-transform duration-200"
+          style={{ transform: focused ? 'scaleX(1)' : 'scaleX(0)' }}
         />
       </div>
 
-      {/* Error message */}
       <AnimatePresence>
         {error && (
-          <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -5 }}
-            className="text-red-400 text-xs mt-1.5 pl-1 font-medium">{error}</motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            className="text-red-400 text-xs mt-1.5 pl-1 font-medium"
+          >
+            {error}
+          </motion.p>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
-}
+});
 
-// Success confetti particles
-function SuccessParticles() {
+const SuccessParticles = memo(function SuccessParticles() {
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 12 }, (_, i) => ({
+        i,
+        left: `${(i * 17 + 9) % 86 + 7}%`,
+        top: `${(i * 23 + 13) % 70 + 8}%`,
+        y: -40 - (i % 5) * 12,
+        x: ((i % 4) - 1.5) * 28,
+        color: ['#1876D2', '#00B0FF', '#FBBF24', '#10B981', '#EC4899'][i % 5],
+        delay: i * 0.07,
+      })),
+    []
+  );
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {Array.from({ length: 20 }).map((_, i) => (
+      {particles.map((p) => (
         <motion.div
-          key={i}
+          key={p.i}
           className="absolute w-2 h-2 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            backgroundColor: ['#1876D2', '#00B0FF', '#FBBF24', '#10B981', '#EC4899'][i % 5],
+            left: p.left,
+            top: p.top,
+            backgroundColor: p.color,
           }}
-          initial={{ opacity: 0, scale: 0, y: 0 }}
+          initial={{ opacity: 0, scale: 0, y: 0, x: 0 }}
           animate={{
             opacity: [0, 1, 0],
             scale: [0, 1, 0],
-            y: [0, -(Math.random() * 100 + 50)],
-            x: [(Math.random() - 0.5) * 100],
+            y: [0, p.y],
+            x: [0, p.x],
           }}
           transition={{
-            duration: 1.5,
-            delay: i * 0.08,
+            duration: 1.4,
+            delay: p.delay,
             ease: 'easeOut',
           }}
         />
       ))}
     </div>
   );
-}
+});
 
 const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   source,
@@ -137,15 +168,10 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [currentStep, setCurrentStep] = useState(0);
-  const firstInputRef = useRef<HTMLInputElement>(null);
+  const [cloudSyncNote, setCloudSyncNote] = useState<string | null>(null);
 
   const { captureLead } = useLeadCapture();
-
-  // Auto-focus first input
-  useEffect(() => {
-    setTimeout(() => firstInputRef.current?.focus(), 300);
-  }, []);
+  const prefersReducedMotion = useReducedMotion();
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -158,8 +184,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     } else if (fields.includes('email') && formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
-    if (fields.includes('phone') && formData.phone && !/^[\+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ''))) {
-      newErrors.phone = 'Please enter a valid phone number';
+    if (fields.includes('phone') && formData.phone && !isValidOptionalPhone(formData.phone)) {
+      newErrors.phone = 'Please enter a valid phone number (or leave blank)';
     }
     if (fields.includes('parentName') && !formData.parentName.trim()) {
       newErrors.parentName = 'Parent name is required';
@@ -174,6 +200,8 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     if (!validateForm()) return;
 
     setIsSubmitting(true);
+    setErrors((prev) => ({ ...prev, _form: '' }));
+    setCloudSyncNote(null);
     try {
       const out = await captureLead({
         source,
@@ -189,16 +217,22 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         }
       });
 
-      if (out?.leadId && out.supabaseOk) {
-        setIsSubmitted(true);
-        if (onSuccess) onSuccess();
-      } else if (out?.leadId && !out.supabaseOk) {
-        setErrors({ _form: out.supabaseError || 'Could not save to server. Please try again.' });
-      } else {
-        setErrors({ _form: 'Something went wrong. Please try again.' });
+      if (!out?.leadId) {
+        setErrors({ _form: 'Could not save your enquiry. Please try again or email contact@orbitstudent.com.' });
+        return;
       }
+
+      setIsSubmitted(true);
+      setCloudSyncNote(
+        out.supabaseOk
+          ? null
+          : (out.supabaseError ||
+              'Saved on this device; the server did not confirm. If you need an immediate reply, email contact@orbitstudent.com.')
+      );
+      if (onSuccess) onSuccess();
     } catch (error) {
       console.error('Failed to submit form:', error);
+      setErrors({ _form: formatSubmitErr(error) });
     } finally {
       setIsSubmitting(false);
     }
@@ -237,9 +271,14 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
             <h3 className="text-2xl font-bold text-white mb-2">You're In! 🎉</h3>
-            <p className="text-gray-400 mb-6">
-              Our team will reach out within 24 hours to get {formData.studentName || formData.name || 'your child'} started on their journey.
+            <p className="text-gray-400 mb-4">
+              Our team will reach out within 24 hours to get {formData.studentName || formData.name || formData.parentName || 'your child'} started on their journey.
             </p>
+            {cloudSyncNote ? (
+              <p className="text-amber-200/95 text-[13px] mb-6 max-w-md mx-auto bg-amber-500/10 border border-amber-500/25 rounded-xl py-2.5 px-3 leading-snug">
+                {cloudSyncNote}
+              </p>
+            ) : null}
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
@@ -288,16 +327,11 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
       <div className="relative px-7 py-8">
         {/* Header */}
-        <div className="text-center mb-7">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: 'spring', bounce: 0.4, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4"
-          >
-            <Gift className="h-3.5 w-3.5 text-amber-400" />
-            <span className="text-xs font-bold text-amber-400">FREE Consultation Worth $200</span>
-          </motion.div>
+          <div className="text-center mb-7">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
+              <Gift className="h-3.5 w-3.5 text-amber-400" />
+              <span className="text-xs font-bold text-amber-400">FREE Consultation Worth $200</span>
+            </div>
           <h3 className="text-xl font-bold text-white mb-1.5">{title}</h3>
           <p className="text-gray-400 text-sm">{subtitle}</p>
         </div>
@@ -335,7 +369,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
           )}
 
           {fields.includes('childAge') && (
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+            <div>
               <label className="text-[10px] font-bold text-[#1876D2] mb-1 block pl-1">Child's Age</label>
               <div className="flex gap-2 flex-wrap">
                 {['6-8', '9-11', '12-14', '15-17', '18+'].map(age => (
@@ -350,11 +384,11 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                   </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {fields.includes('message') && (
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="relative">
+            <div className="relative">
               <div className="absolute left-4 top-4 text-gray-400">
                 <MessageSquare className="h-4 w-4" />
               </div>
@@ -363,35 +397,33 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 onChange={(e) => handleInputChange('message', e.target.value)}
                 rows={3}
                 placeholder="Tell us about your goals..."
-                className="w-full pl-11 pr-4 py-4 bg-white/[0.04] border border-white/[0.08] rounded-2xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#1876D2]/50 focus:ring-2 focus:ring-[#1876D2]/20 transition-all duration-300 resize-none"
+                className="w-full pl-11 pr-4 py-4 bg-white/[0.04] border border-white/[0.08] rounded-2xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[#1876D2]/50 focus:ring-2 focus:ring-[#1876D2]/20 transition-colors duration-200 resize-none"
               />
-            </motion.div>
+            </div>
           )}
 
           {/* Submit Button */}
           <motion.button
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={prefersReducedMotion ? undefined : { scale: 1.01 }}
+            whileTap={prefersReducedMotion ? undefined : { scale: 0.99 }}
             type="submit"
             disabled={isSubmitting}
-            className="relative w-full py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-2xl shadow-xl shadow-[#1876D2]/25 hover:shadow-2xl hover:shadow-[#1876D2]/40 transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group"
+            className="relative w-full py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-2xl shadow-xl shadow-[#1876D2]/25 hover:shadow-2xl hover:shadow-[#1876D2]/40 transition-shadow duration-300 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group"
           >
-            {/* Shimmer */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full"
-              animate={!isSubmitting ? { translateX: ['-100%', '200%'] } : {}}
-              transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 3 }}
-            />
-            
+            {!prefersReducedMotion && !isSubmitting ? (
+              <motion.div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/12 to-transparent"
+                initial={false}
+                animate={{ x: ['-120%', '120%'] }}
+                transition={{ duration: 3, repeat: Infinity, repeatDelay: 5, ease: 'linear' }}
+              />
+            ) : null}
+
             <span className="relative flex items-center justify-center gap-2">
               {isSubmitting ? (
                 <>
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                    className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
-                  />
-                  <span>Securing your spot...</span>
+                  <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin shrink-0" />
+                  <span>Sending…</span>
                 </>
               ) : (
                 <>

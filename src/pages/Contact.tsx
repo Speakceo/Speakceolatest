@@ -25,6 +25,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [syncNote, setSyncNote] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -35,6 +36,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
+    setSyncNote(null);
 
     try {
       const out = await captureContactForm(
@@ -48,12 +50,18 @@ const Contact = () => {
         'contact_form'
       );
 
-      if (!out?.leadId || !out.supabaseOk) {
+      if (!out?.leadId) {
         setSubmitStatus('error');
         return;
       }
 
       setSubmitStatus('success');
+      if (!out.supabaseOk) {
+        setSyncNote(
+          out.supabaseError ||
+            'We saved your message on this device, but the server did not confirm. For urgent matters email contact@orbitstudent.com.'
+        );
+      }
     } catch {
       setSubmitStatus('error');
     } finally {
@@ -156,6 +164,11 @@ const Contact = () => {
                       You’re all set.
                     </p>
                     <p className="text-[13px] sm:text-[14px] text-o-2">Check your inbox — we’ll follow up within 24 hours.</p>
+                    {syncNote ? (
+                      <p className="text-[12px] sm:text-[13px] text-amber-200/95 mt-4 max-w-md mx-auto bg-amber-500/10 border border-amber-500/25 rounded-xl py-2.5 px-3 leading-snug">
+                        {syncNote}
+                      </p>
+                    ) : null}
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
@@ -267,7 +280,9 @@ const Contact = () => {
                     </button>
 
                     {submitStatus === 'error' && (
-                      <p className="text-[#ff4b4b] text-[13px] text-center">Something went wrong. Please try again.</p>
+                      <p className="text-[#ff4b4b] text-[13px] text-center">
+                        Could not save your message. Check your connection and try again, or email contact@orbitstudent.com.
+                      </p>
                     )}
                   </form>
                 )}
