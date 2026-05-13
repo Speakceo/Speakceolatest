@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { addLead, type Lead } from '../lib/offline-auth';
+import type { Lead } from '../lib/offline-auth';
 import { submitMarketingLeadToSupabase, normalizeMarketingLeadSource } from '../lib/marketingLeads';
 
 interface LeadCaptureData {
@@ -25,7 +25,9 @@ function buildNotes(data: LeadCaptureData): string {
   return lines.join('\n');
 }
 
-async function syncLeadToSupabase(data: LeadCaptureData): Promise<{ ok: boolean; error?: string }> {
+async function syncLeadToSupabase(
+  data: LeadCaptureData
+): Promise<{ ok: true; id: string } | { ok: false; error: string }> {
   const fd = data.formData;
   const email = fd.email?.trim();
   if (!email) return { ok: false, error: 'Missing email' };
@@ -44,7 +46,7 @@ async function syncLeadToSupabase(data: LeadCaptureData): Promise<{ ok: boolean;
     notes: buildNotes(data),
   });
   if (!res.ok) return { ok: false, error: res.error };
-  return { ok: true };
+  return { ok: true, id: res.id };
 }
 
 interface LeadCaptureResult {
@@ -54,24 +56,15 @@ interface LeadCaptureResult {
 }
 
 export const useLeadCapture = () => {
-  const captureLead = useCallback(async (data: LeadCaptureData): Promise<LeadCaptureResult | null> => {
-    let leadId: string;
-    try {
-      leadId = addLead(data);
-    } catch (error) {
-      console.error('Failed to save lead locally:', error);
-      return null;
-    }
-
+  /** Saves the lead only to Supabase (no localStorage). */
+  const captureLead = useCallback(async (data: LeadCaptureData): Promise<LeadCaptureResult> => {
     const sync = await syncLeadToSupabase(data);
     if (!sync.ok) {
-      console.warn('[leads] Supabase sync failed:', sync.error);
-    } else {
-      console.log('🎯 Lead synced to Supabase');
+      console.warn('[leads] Supabase insert failed:', sync.error);
+      return { leadId: '', supabaseOk: false, supabaseError: sync.error };
     }
-
-    console.log('🎯 Lead captured (local):', leadId);
-    return { leadId, supabaseOk: sync.ok, supabaseError: sync.error };
+    console.log('🎯 Lead saved to Supabase:', sync.id);
+    return { leadId: `sb_${sync.id}`, supabaseOk: true };
   }, []);
 
   const captureEmailSignup = useCallback((email: string, source: string = 'unknown') => {

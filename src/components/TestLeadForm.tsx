@@ -27,22 +27,15 @@ const TestLeadForm: React.FC = () => {
         formData: testData
       });
 
-      if (out) {
-        setResult(`✅ Success! Lead ID: ${out.leadId}${out.supabaseOk ? ' · synced to Supabase' : ` · Supabase: ${out.supabaseError || 'failed'}`}`);
+      if (out.leadId) {
+        setResult(`✅ Success! Lead ID: ${out.leadId} (Supabase)${out.supabaseOk ? '' : ' — unexpected state'}`);
         
-        // Check if lead appears in storage
         const allLeads = getAllLeads();
-        const foundLead = allLeads.find(lead => lead.id === out.leadId);
-        
-        if (foundLead) {
-          setResult(prev => prev + `\n✅ Lead found in storage: ${JSON.stringify(foundLead, null, 2)}`);
-        } else {
-          setResult(prev => prev + `\n❌ Lead NOT found in storage`);
-        }
-        
-        setResult(prev => prev + `\n📊 Total leads in storage: ${allLeads.length}`);
+        setResult(prev => prev + `\n📊 Legacy local leads in storage (not used for capture): ${allLeads.length}`);
       } else {
-        setResult('❌ Failed to capture lead');
+        setResult(
+          `❌ Could not save to Supabase${out.supabaseError ? `: ${out.supabaseError}` : ''}`
+        );
       }
     } catch (error) {
       setResult(`❌ Error: ${error}`);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Eye, Mail, Phone, User, Calendar, MapPin, Cloud, CloudOff, RefreshCw } from 'lucide-react';
-import { getAllLeads, type Lead } from '../../lib/offline-auth';
+import type { Lead } from '../../lib/offline-auth';
 import { getLeads } from '../../lib/api/crm';
 import type { Lead as CrmLead } from '../../lib/types/crm';
 
@@ -53,22 +53,20 @@ const SimpleLeadsViewer: React.FC = () => {
   const [fetchError, setFetchError] = useState<string | null>(null);
 
   const loadLeads = useCallback(async () => {
-    const local = getAllLeads();
     setCloudStatus('syncing');
     setFetchError(null);
     try {
       const rows = await getLeads();
-      const cloud = rows.map(crmRowToLead);
-      const merged = [...cloud, ...local].sort(
+      const cloud = rows.map(crmRowToLead).sort(
         (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
       );
-      setLeads(merged);
+      setLeads(cloud);
       setCloudStatus('synced');
       setLastSync(new Date());
     } catch (e) {
       const msg = formatLeadLoadError(e);
       setFetchError(msg);
-      setLeads(local);
+      setLeads([]);
       setCloudStatus('offline');
     }
   }, []);
@@ -174,7 +172,7 @@ const SimpleLeadsViewer: React.FC = () => {
               {cloudStatus === 'offline' && (
                 <>
                   <CloudOff className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm text-gray-500">Local Only</span>
+                  <span className="text-sm text-gray-500">Cloud unavailable</span>
                 </>
               )}
               {lastSync && (

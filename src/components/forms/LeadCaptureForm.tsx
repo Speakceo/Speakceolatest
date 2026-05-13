@@ -168,7 +168,6 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [cloudSyncNote, setCloudSyncNote] = useState<string | null>(null);
 
   const { captureLead } = useLeadCapture();
   const prefersReducedMotion = useReducedMotion();
@@ -201,7 +200,6 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
     setIsSubmitting(true);
     setErrors((prev) => ({ ...prev, _form: '' }));
-    setCloudSyncNote(null);
     try {
       const out = await captureLead({
         source,
@@ -217,18 +215,16 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         }
       });
 
-      if (!out?.leadId) {
-        setErrors({ _form: 'Could not save your enquiry. Please try again or email contact@orbitstudent.com.' });
+      if (!out.leadId || !out.supabaseOk) {
+        setErrors({
+          _form:
+            out.supabaseError ||
+            'Could not save to our server. Check your connection and try again, or email contact@orbitstudent.com.',
+        });
         return;
       }
 
       setIsSubmitted(true);
-      setCloudSyncNote(
-        out.supabaseOk
-          ? null
-          : (out.supabaseError ||
-              'Saved on this device; the server did not confirm. If you need an immediate reply, email contact@orbitstudent.com.')
-      );
       if (onSuccess) onSuccess();
     } catch (error) {
       console.error('Failed to submit form:', error);
@@ -274,11 +270,6 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
             <p className="text-gray-400 mb-4">
               Our team will reach out within 24 hours to get {formData.studentName || formData.name || formData.parentName || 'your child'} started on their journey.
             </p>
-            {cloudSyncNote ? (
-              <p className="text-amber-200/95 text-[13px] mb-6 max-w-md mx-auto bg-amber-500/10 border border-amber-500/25 rounded-xl py-2.5 px-3 leading-snug">
-                {cloudSyncNote}
-              </p>
-            ) : null}
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
