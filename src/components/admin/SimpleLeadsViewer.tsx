@@ -12,6 +12,22 @@ function mapCrmStatus(s: string): Lead['status'] {
   return 'new';
 }
 
+function formatLeadLoadError(e: unknown): string {
+  if (e instanceof Error) return e.message;
+  if (e && typeof e === 'object' && 'message' in e) {
+    const o = e as { message?: string; code?: string; details?: string; hint?: string };
+    const parts = [o.code, o.message, o.details, o.hint].filter(
+      (x): x is string => typeof x === 'string' && x.length > 0
+    );
+    if (parts.length) return parts.join(' — ');
+  }
+  try {
+    return JSON.stringify(e);
+  } catch {
+    return String(e);
+  }
+}
+
 function crmRowToLead(row: CrmLead): Lead {
   return {
     id: `sb_${row.id}`,
@@ -50,7 +66,7 @@ const SimpleLeadsViewer: React.FC = () => {
       setCloudStatus('synced');
       setLastSync(new Date());
     } catch (e) {
-      const msg = e instanceof Error ? e.message : 'Could not load leads from Supabase';
+      const msg = formatLeadLoadError(e);
       setFetchError(msg);
       setLeads(local);
       setCloudStatus('offline');
@@ -115,10 +131,22 @@ const SimpleLeadsViewer: React.FC = () => {
           <p className="font-medium">Could not load cloud leads</p>
           <p className="mt-1 text-amber-800/90">{fetchError}</p>
           <p className="mt-2 text-amber-800/80">
-            If this mentions RLS or permission, run in Supabase SQL Editor: open{' '}
-            <code className="rounded bg-amber-100/80 px-1">Allow read leads for anon and authenticated</code>{' '}
-            policy (see migration <code className="rounded bg-amber-100/80 px-1">20260509120000_leads_marketing_capture.sql</code>{' '}
-            tail or <code className="rounded bg-amber-100/80 px-1">20260513140000_leads_select_for_key_gated_admin.sql</code>).
+            {/failed to fetch|networkerror|load failed|blocked by csp|content security policy/i.test(fetchError) ? (
+              <>
+                Requests to Supabase may be blocked by your site&apos;s{' '}
+                <strong className="font-medium">Content-Security-Policy</strong>
+                <code className="ml-1 rounded bg-amber-100/80 px-1">connect-src</code> — ensure{' '}
+                <code className="rounded bg-amber-100/80 px-1">https://*.supabase.co</code> is allowed, redeploy, then hard-refresh.
+              </>
+            ) : (
+              <>
+                If this mentions RLS, permission, or policy, run in Supabase SQL Editor the{' '}
+                <code className="rounded bg-amber-100/80 px-1">Allow read leads for anon and authenticated</code>{' '}
+                policy (see{' '}
+                <code className="rounded bg-amber-100/80 px-1">20260509120000_leads_marketing_capture.sql</code> tail or{' '}
+                <code className="rounded bg-amber-100/80 px-1">20260513140000_leads_select_for_key_gated_admin.sql</code>).
+              </>
+            )}
           </p>
         </div>
       )}
