@@ -9,11 +9,25 @@ function looksPlaceholder(url: string, key: string): boolean {
   return false;
 }
 
+/** Browser-safe key only: legacy JWT anon (`eyJ…`) or new publishable (`sb_publishable_…`). Never `sb_secret_`. */
+function isValidBrowserSupabaseKey(key: string): boolean {
+  if (key.startsWith('sb_secret_')) return false;
+  if (key.startsWith('sb_publishable_')) return key.length >= 20;
+  if (key.startsWith('eyJ')) return key.length >= 80;
+  return key.length >= 80;
+}
+
 export function isSupabaseConfigured(): boolean {
   if (!rawUrl || !rawKey) return false;
   if (looksPlaceholder(rawUrl, rawKey)) return false;
   if (!rawUrl.startsWith('https://')) return false;
-  if (rawKey.length < 80) return false;
+  if (rawKey.startsWith('sb_secret_')) {
+    console.error(
+      'Supabase: VITE_SUPABASE_ANON_KEY must be the publishable/anon key, not sb_secret_. Use sb_publishable_… or the JWT anon key from the dashboard.'
+    );
+    return false;
+  }
+  if (!isValidBrowserSupabaseKey(rawKey)) return false;
   return true;
 }
 

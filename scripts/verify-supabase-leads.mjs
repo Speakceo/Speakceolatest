@@ -38,8 +38,26 @@ if (!url || !key) {
   process.exit(1);
 }
 
-if (/your_supabase|placeholder/i.test(url) || key.length < 80) {
-  console.error('FAIL: Supabase env looks like a placeholder; set real project URL and anon key.');
+if (/your_supabase|placeholder|YOUR_PROJECT_REF/i.test(url)) {
+  console.error('FAIL: Supabase URL looks like a placeholder; set your real project URL.');
+  process.exit(1);
+}
+
+if (key.startsWith('sb_secret_')) {
+  console.error(
+    'FAIL: VITE_SUPABASE_ANON_KEY must be the publishable or anon key, not sb_secret_. Copy "publishable" / anon from Supabase → Settings → API.'
+  );
+  process.exit(1);
+}
+
+const keyOk =
+  (key.startsWith('eyJ') && key.length >= 80) ||
+  (key.startsWith('sb_publishable_') && key.length >= 20);
+
+if (!keyOk) {
+  console.error(
+    'FAIL: Unrecognised key format. Use legacy anon JWT (eyJ…) or new publishable key (sb_publishable_…).'
+  );
   process.exit(1);
 }
 
