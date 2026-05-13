@@ -6,20 +6,36 @@ interface AdminKeyAuthProps {
   onAuthenticated: () => void;
 }
 
-/** Env overrides default; empty / placeholder keeps default `arpitadmin`. */
-function expectedAdminKey(): string {
+const DEFAULT_ADMIN_KEY = 'arpitadmin';
+
+function normalizeKeyInput(s: string): string {
+  return s
+    .normalize('NFKC')
+    .replace(/[\u200B-\u200D\uFEFF]/g, '')
+    .trim()
+    .toLowerCase();
+}
+
+/** Optional extra key from env (never shown in error copy). */
+function customExtraAdminKey(): string | null {
   const raw = import.meta.env.VITE_ADMIN_ACCESS_KEY;
-  if (raw === undefined || raw === null) return 'arpitadmin';
+  if (raw === undefined || raw === null) return null;
   let t = String(raw).trim();
-  if (t === '' || /^your_|^changeme|^placeholder/i.test(t)) return 'arpitadmin';
+  if (t === '' || /^your_|^changeme|^placeholder/i.test(t)) return null;
   if ((t.startsWith('"') && t.endsWith('"')) || (t.startsWith("'") && t.endsWith("'"))) {
     t = t.slice(1, -1).trim();
   }
-  return t || 'arpitadmin';
+  if (!t) return null;
+  if (normalizeKeyInput(t) === normalizeKeyInput(DEFAULT_ADMIN_KEY)) return null;
+  return t;
 }
 
-function normalizeKeyInput(s: string): string {
-  return s.trim().toLowerCase();
+function adminKeyMatches(input: string): boolean {
+  const n = normalizeKeyInput(input);
+  if (n === normalizeKeyInput(DEFAULT_ADMIN_KEY)) return true;
+  const extra = customExtraAdminKey();
+  if (extra && n === normalizeKeyInput(extra)) return true;
+  return false;
 }
 
 const AdminKeyAuth: React.FC<AdminKeyAuthProps> = ({ onAuthenticated }) => {
@@ -38,8 +54,7 @@ const AdminKeyAuth: React.FC<AdminKeyAuthProps> = ({ onAuthenticated }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const expected = expectedAdminKey();
-    if (normalizeKeyInput(secretKey) === normalizeKeyInput(expected)) {
+    if (adminKeyMatches(secretKey)) {
       sessionStorage.setItem('admin_authenticated', 'true');
       setError('');
       onAuthenticated();
@@ -52,7 +67,7 @@ const AdminKeyAuth: React.FC<AdminKeyAuthProps> = ({ onAuthenticated }) => {
         setTimeout(() => window.location.reload(), 3000);
       } else {
         setError(
-          'Invalid access key. If you set VITE_ADMIN_ACCESS_KEY on your host, use that exact value (or remove it to use the default: arpitadmin).'
+          'That key is not valid. Check for spaces or typos. If your team set a custom admin key in hosting env, use that value instead.'
         );
       }
     }
