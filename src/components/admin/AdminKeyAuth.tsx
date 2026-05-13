@@ -6,8 +6,21 @@ interface AdminKeyAuthProps {
   onAuthenticated: () => void;
 }
 
-const ADMIN_SECRET_KEY =
-  (import.meta.env.VITE_ADMIN_ACCESS_KEY as string | undefined)?.trim() || 'arpitadmin';
+/** Env overrides default; empty / placeholder keeps default `arpitadmin`. */
+function expectedAdminKey(): string {
+  const raw = import.meta.env.VITE_ADMIN_ACCESS_KEY;
+  if (raw === undefined || raw === null) return 'arpitadmin';
+  let t = String(raw).trim();
+  if (t === '' || /^your_|^changeme|^placeholder/i.test(t)) return 'arpitadmin';
+  if ((t.startsWith('"') && t.endsWith('"')) || (t.startsWith("'") && t.endsWith("'"))) {
+    t = t.slice(1, -1).trim();
+  }
+  return t || 'arpitadmin';
+}
+
+function normalizeKeyInput(s: string): string {
+  return s.trim().toLowerCase();
+}
 
 const AdminKeyAuth: React.FC<AdminKeyAuthProps> = ({ onAuthenticated }) => {
   const [secretKey, setSecretKey] = useState('');
@@ -25,20 +38,22 @@ const AdminKeyAuth: React.FC<AdminKeyAuthProps> = ({ onAuthenticated }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (secretKey.trim() === ADMIN_SECRET_KEY) {
+    const expected = expectedAdminKey();
+    if (normalizeKeyInput(secretKey) === normalizeKeyInput(expected)) {
       sessionStorage.setItem('admin_authenticated', 'true');
       setError('');
       onAuthenticated();
     } else {
-      setAttempts((prev) => prev + 1);
-      setError('Invalid access key.');
+      const next = attempts + 1;
+      setAttempts(next);
       setSecretKey('');
-
-      if (attempts >= 2) {
+      if (next >= 3) {
         setError('Too many failed attempts. Refresh the page to try again.');
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
+        setTimeout(() => window.location.reload(), 3000);
+      } else {
+        setError(
+          'Invalid access key. If you set VITE_ADMIN_ACCESS_KEY on your host, use that exact value (or remove it to use the default: arpitadmin).'
+        );
       }
     }
   };
