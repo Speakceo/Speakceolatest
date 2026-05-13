@@ -21,18 +21,18 @@ const TestLeadForm: React.FC = () => {
     try {
       console.log('🧪 Testing lead submission...');
       
-      const leadId = await captureLead({
+      const out = await captureLead({
         source: 'test-form',
         ctaType: 'test',
         formData: testData
       });
 
-      if (leadId) {
-        setResult(`✅ Success! Lead ID: ${leadId}`);
+      if (out) {
+        setResult(`✅ Success! Lead ID: ${out.leadId}${out.supabaseOk ? ' · synced to Supabase' : ` · Supabase: ${out.supabaseError || 'failed'}`}`);
         
         // Check if lead appears in storage
         const allLeads = getAllLeads();
-        const foundLead = allLeads.find(lead => lead.id === leadId);
+        const foundLead = allLeads.find(lead => lead.id === out.leadId);
         
         if (foundLead) {
           setResult(prev => prev + `\n✅ Lead found in storage: ${JSON.stringify(foundLead, null, 2)}`);

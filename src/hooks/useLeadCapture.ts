@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { addLead, type Lead } from '../lib/offline-auth';
-import { submitLeadToGoogleSheets } from '../lib/googleSheets';
+import { submitMarketingLeadToSupabase, normalizeMarketingLeadSource } from '../lib/marketingLeads';
 
 interface LeadCaptureData {
   source: string;
@@ -8,22 +8,63 @@ interface LeadCaptureData {
   formData: Lead['formData'];
 }
 
+function buildNotes(data: LeadCaptureData): string {
+  const fd = data.formData;
+  const lines = [
+    data.ctaType && `CTA: ${data.ctaType}`,
+    fd.studentName && `Student: ${fd.studentName}`,
+    fd.childAge && `Child age: ${fd.childAge}`,
+    fd.grade && `Grade: ${fd.grade}`,
+    fd.goals?.length && `Goals: ${fd.goals.join(', ')}`,
+    fd.timeline && `Timeline: ${fd.timeline}`,
+    fd.budget && `Budget: ${fd.budget}`,
+    fd.message && `Message: ${fd.message}`,
+    fd.experience && `Experience: ${fd.experience}`,
+    fd.referralSource && `Referral: ${fd.referralSource}`,
+  ].filter(Boolean) as string[];
+  return lines.join('\n');
+}
+
+async function syncLeadToSupabase(data: LeadCaptureData): Promise<{ ok: boolean; error?: string }> {
+  const fd = data.formData;
+  const email = fd.email?.trim();
+  if (!email) return { ok: false, error: 'Missing email' };
+
+  const name =
+    fd.name?.trim() ||
+    fd.parentName?.trim() ||
+    (fd.studentName ? `Parent of ${fd.studentName}` : '') ||
+    'Website visitor';
+
+  const res = await submitMarketingLeadToSupabase({
+    name,
+    email,
+    phone: fd.phone?.trim(),
+    source: normalizeMarketingLeadSource(data.source),
+    notes: buildNotes(data),
+  });
+  if (!res.ok) return { ok: false, error: res.error };
+  return { ok: true };
+}
+
+interface LeadCaptureResult {
+  leadId: string;
+  supabaseOk: boolean;
+  supabaseError?: string;
+}
+
 export const useLeadCapture = () => {
-  const captureLead = useCallback(async (data: LeadCaptureData) => {
+  const captureLead = useCallback(async (data: LeadCaptureData): Promise<LeadCaptureResult | null> => {
     try {
-      // Store lead locally in our offline system
       const leadId = addLead(data);
-      
-      // Show success notification
-      console.log('🎯 Lead captured successfully:', leadId);
-      console.log('📊 Lead stored in admin panel - accessible via /admin');
-      
-      // Optional: Show user feedback
-      if (typeof window !== 'undefined') {
-        console.log('Thank you! We\'ll be in touch soon.');
+      const sync = await syncLeadToSupabase(data);
+      if (!sync.ok) {
+        console.warn('[leads] Supabase sync failed:', sync.error);
       }
-      
-      return leadId;
+
+      console.log('🎯 Lead captured successfully:', leadId);
+
+      return { leadId, supabaseOk: sync.ok, supabaseError: sync.error };
     } catch (error) {
       console.error('Failed to capture lead:', error);
       return null;
@@ -43,11 +84,19 @@ export const useLeadCapture = () => {
     email: string;
     phone?: string;
     message?: string;
+    subject?: string;
   }, source: string = 'contact_form') => {
+    const { subject, ...rest } = formData;
+    const message = [subject && `Subject: ${subject}`, rest.message].filter(Boolean).join('\n\n');
     return captureLead({
       source,
       ctaType: 'contact',
-      formData
+      formData: {
+        name: rest.name,
+        email: rest.email,
+        phone: rest.phone,
+        message: message || undefined,
+      },
     });
   }, [captureLead]);
 
@@ -88,5 +137,7 @@ export const useLeadCapture = () => {
     captureTrialSignup
   };
 };
+
+export type { LeadCaptureResult };
 
 export default useLeadCapture;

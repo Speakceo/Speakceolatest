@@ -1,7 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Eye, Mail, Phone, User, Calendar, MapPin, Cloud, CloudOff, RefreshCw } from 'lucide-react';
 import { getAllLeads, type Lead } from '../../lib/offline-auth';
+import { getLeads } from '../../lib/api/crm';
+import type { Lead as CrmLead } from '../../lib/types/crm';
+
+function mapCrmStatus(s: string): Lead['status'] {
+  if (s === 'won') return 'converted';
+  if (s === 'proposal' || s === 'negotiation') return 'qualified';
+  if (s === 'new' || s === 'contacted' || s === 'qualified' || s === 'lost') return s;
+  return 'new';
+}
+
+function crmRowToLead(row: CrmLead): Lead {
+  return {
+    id: `sb_${row.id}`,
+    timestamp: row.created_at,
+    source: row.source,
+    ctaType: 'supabase',
+    formData: {
+      name: row.name,
+      email: row.email || undefined,
+      phone: row.phone || undefined,
+      message: row.notes || undefined,
+    },
+    status: mapCrmStatus(row.status),
+    priority: row.phone ? 'high' : 'medium',
+  };
+}
 
 const SimpleLeadsViewer: React.FC = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -9,14 +35,27 @@ const SimpleLeadsViewer: React.FC = () => {
   const [cloudStatus, setCloudStatus] = useState<'synced' | 'syncing' | 'offline'>('offline');
   const [lastSync, setLastSync] = useState<Date | null>(null);
 
-  useEffect(() => {
-    loadLeads();
+  const loadLeads = useCallback(async () => {
+    const local = getAllLeads();
+    setCloudStatus('syncing');
+    try {
+      const rows = await getLeads();
+      const cloud = rows.map(crmRowToLead);
+      const merged = [...cloud, ...local].sort(
+        (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+      );
+      setLeads(merged);
+      setCloudStatus('synced');
+      setLastSync(new Date());
+    } catch {
+      setLeads(local);
+      setCloudStatus('offline');
+    }
   }, []);
 
-  const loadLeads = () => {
-    const allLeads = getAllLeads();
-    setLeads(allLeads);
-  };
+  useEffect(() => {
+    void loadLeads();
+  }, [loadLeads]);
 
   const filteredLeads = leads.filter(lead => {
     if (filter === 'all') return true;
@@ -68,7 +107,7 @@ const SimpleLeadsViewer: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">All Leads</h1>
           <div className="flex items-center space-x-4 mt-2">
@@ -102,6 +141,15 @@ const SimpleLeadsViewer: React.FC = () => {
             </div>
           </div>
         </div>
+        <div className="flex flex-wrap gap-2 items-center">
+        <button
+          type="button"
+          onClick={() => void loadLeads()}
+          className="flex items-center space-x-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 border border-gray-200"
+        >
+          <RefreshCw className={`h-4 w-4 ${cloudStatus === 'syncing' ? 'animate-spin' : ''}`} />
+          <span>Refresh</span>
+        </button>
         <button
           onClick={exportToCSV}
           className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
@@ -109,6 +157,7 @@ const SimpleLeadsViewer: React.FC = () => {
           <Download className="h-4 w-4" />
           <span>Export CSV</span>
         </button>
+        </div>
       </div>
 
       {/* Quick Stats */}
@@ -174,27 +223,34 @@ const SimpleLeadsViewer: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow"
             >
-              <div className="flex justify-between items-start mb-4">
-                <div className="flex items-center space-x-4">
+              <div className="flex justify-between items-start gap-3 mb-4">
+                <div className="flex items-center space-x-4 min-w-0">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">
                       {lead.formData.name || lead.formData.parentName || 'Anonymous'}
                     </h3>
-                    <div className="flex items-center space-x-4 text-sm text-gray-600 mt-1">
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600 mt-1">
                       <span className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-1" />
+                        <Calendar className="h-4 w-4 mr-1 shrink-0" />
                         {formatDate(lead.timestamp)}
                       </span>
-                      <span className="flex items-center">
-                        <MapPin className="h-4 w-4 mr-1" />
-                        {lead.source} → {lead.ctaType}
+                      <span className="flex items-center min-w-0">
+                        <MapPin className="h-4 w-4 mr-1 shrink-0" />
+                        <span className="truncate">{lead.source} → {lead.ctaType}</span>
                       </span>
                     </div>
                   </div>
                 </div>
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${getPriorityColor(lead.priority)}`}>
-                  {lead.priority} priority
-                </span>
+                <div className="flex flex-col items-end gap-2 shrink-0">
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${getPriorityColor(lead.priority)}`}>
+                    {lead.priority} priority
+                  </span>
+                  {lead.id.startsWith('sb_') && (
+                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+                      Supabase
+                    </span>
+                  )}
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">

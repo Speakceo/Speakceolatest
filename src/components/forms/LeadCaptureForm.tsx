@@ -175,7 +175,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
     setIsSubmitting(true);
     try {
-      const leadId = await captureLead({
+      const out = await captureLead({
         source,
         ctaType,
         formData: {
@@ -189,9 +189,13 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         }
       });
 
-      if (leadId) {
+      if (out?.leadId && out.supabaseOk) {
         setIsSubmitted(true);
         if (onSuccess) onSuccess();
+      } else if (out?.leadId && !out.supabaseOk) {
+        setErrors({ _form: out.supabaseError || 'Could not save to server. Please try again.' });
+      } else {
+        setErrors({ _form: 'Something went wrong. Please try again.' });
       }
     } catch (error) {
       console.error('Failed to submit form:', error);
@@ -300,6 +304,11 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
+          {errors._form && (
+            <p className="text-sm text-red-400 text-center bg-red-500/10 border border-red-500/20 rounded-xl py-3 px-4">
+              {errors._form}
+            </p>
+          )}
           {fields.includes('parentName') && (
             <FloatingInput icon={User} label="Parent / Guardian Name *" value={formData.parentName}
               onChange={(v) => handleInputChange('parentName', v)} error={errors.parentName} name="parentName" />
