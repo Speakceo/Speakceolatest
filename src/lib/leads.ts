@@ -56,6 +56,71 @@ export interface LeadFormData {
   notes?: string;
 }
 
+/** Matches RLS policy on public.leads (marketing migration). */
+const RLS_ALLOWED_LEAD_SOURCES = new Set([
+  'contact_form',
+  'career_guide',
+  'website',
+  'enrollment_popup',
+  'newsletter',
+  'demo_request',
+  'trial_signup',
+  'social_media',
+  'paid_ads',
+  'organic_search',
+  'referral',
+]);
+
+function normalizeSourceForRls(source: LeadSource | string): string {
+  const s = String(source).toLowerCase().replace(/\s+/g, '_');
+  return RLS_ALLOWED_LEAD_SOURCES.has(s) ? s : 'website';
+}
+
+/**
+ * Cloud `public.leads` (marketing schema) columns: name, email, phone, source, status, notes, …
+ * Do not send child_name / utm_* / tags — PostgREST rejects unknown columns.
+ */
+function toLeadsTableInsertRow(leadData: LeadFormData): {
+  name: string;
+  email: string;
+  phone: string | null;
+  source: string;
+  status: LeadStatus;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+} {
+  const utmNote = [
+    leadData.utm_source && `utm_source=${leadData.utm_source}`,
+    leadData.utm_medium && `utm_medium=${leadData.utm_medium}`,
+    leadData.utm_campaign && `utm_campaign=${leadData.utm_campaign}`,
+  ]
+    .filter(Boolean)
+    .join(' · ');
+
+  const structuredExtra = [
+    leadData.child_name && `Child: ${leadData.child_name}`,
+    leadData.child_age != null && !Number.isNaN(leadData.child_age) && `Child age: ${leadData.child_age}`,
+    utmNote && `UTM: ${utmNote}`,
+  ].filter(Boolean) as string[];
+
+  const notes =
+    [leadData.notes?.trim(), structuredExtra.length ? structuredExtra.join('\n') : '']
+      .filter(Boolean)
+      .join('\n\n') || null;
+
+  return {
+    name: leadData.name?.trim() || 'Unknown',
+    email: leadData.email.trim(),
+    phone: leadData.phone?.trim() || null,
+    source: normalizeSourceForRls(leadData.source),
+    status: LeadStatus.NEW,
+    notes,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+}
+
 // Database Setup
 export async function setupLeadsDatabase() {
   try {
@@ -104,21 +169,14 @@ export async function setupLeadsDatabase() {
 // Lead Management Functions
 export async function createLead(leadData: LeadFormData): Promise<Lead> {
   try {
-    const { data, error } = await supabase
-      .from('leads')
-      .insert([{
-        ...leadData,
-        status: LeadStatus.NEW,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
-      }])
-      .select()
-      .single();
+    const row = toLeadsTableInsertRow(leadData);
+    const { data, error } = await supabase.from('leads').insert(row).select().single();
 
     if (error) throw error;
-    return data;
+    return data as Lead;
   } catch (error) {
-    console.error('Error creating lead:', error);
+    const err = error as { message?: string; code?: string; details?: string };
+    console.error('Error creating lead:', err?.message || err?.code || error);
     throw error;
   }
 }
@@ -150,7 +208,7 @@ export async function updateLeadStatus(leadId: string, status: LeadStatus, notes
     }
 
     if (status === LeadStatus.CONTACTED) {
-      updateData.last_contacted_at = new Date().toISOString();
+      updateData.last_contacted = new Date().toISOString();
     }
 
     const { error } = await supabase
