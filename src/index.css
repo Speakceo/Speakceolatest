@@ -1352,10 +1352,20 @@ html, body {
 .bg-o-1       { background: var(--o-bg-1); }
 .bg-o-2       { background: var(--o-bg-2); }
 .bg-o-3       { background: var(--o-bg-3); }
+.bg-o-4       { background: var(--o-bg-4); }
 .text-o-0     { color: var(--o-text-0); }
 .text-o-1     { color: var(--o-text-1); }
 .text-o-2     { color: var(--o-text-2); }
 .text-o-3     { color: var(--o-text-3); }
+
+/* Dark marketing fields: autofill must not paint a white box + light text */
+input.orbit-field-dark:-webkit-autofill,
+input.orbit-field-dark:-webkit-autofill:hover,
+input.orbit-field-dark:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--o-text-0);
+  box-shadow: 0 0 0 1000px var(--o-bg-3) inset;
+  transition: background-color 99999s ease-out;
+}
 
 /* ── Hairline border utilities ──────────────────────────────────────── */
 .border-o      { border: 1px solid var(--o-border-1); }

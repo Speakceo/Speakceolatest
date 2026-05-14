@@ -2341,7 +2341,7 @@ export default function Demo() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative overflow-hidden border border-slate-200"
+              className="bg-o-2 rounded-3xl max-w-md w-full p-8 relative overflow-hidden border border-o"
             >
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#1876D2]/20 to-[#00B0FF]/20 rounded-full filter blur-3xl"></div>
@@ -2353,10 +2353,10 @@ export default function Demo() {
                     src="/animations/welcome.json"
                     className="w-24 h-24 mx-auto mb-2"
                   />
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-2xl font-bold text-o-0 mb-2">
                     Welcome to Orbit Demo
                   </h2>
-                  <p className="text-gray-500">
+                  <p className="text-o-2">
                     What's the student's name?
                   </p>
                 </div>
@@ -2368,7 +2368,7 @@ export default function Demo() {
                     onChange={(e) => setTempName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleNameSubmit()}
                     placeholder="Enter student name..."
-                    className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-[#1876D2] focus:ring-4 focus:ring-[#1876D2]/10 transition-all text-lg text-center font-semibold text-gray-800 placeholder-gray-400"
+                    className="orbit-field-dark w-full px-6 py-4 rounded-xl border-2 border-o transition-all text-lg text-center font-semibold bg-o-3 text-o-0 placeholder:text-o-2 caret-[#00B0FF] focus:border-[#1876D2] focus:ring-4 focus:ring-[#1876D2]/20 outline-none"
                     autoFocus
                   />
                   
@@ -2377,17 +2377,17 @@ export default function Demo() {
                     whileTap={{ scale: 0.98 }}
                     onClick={handleNameSubmit}
                     disabled={!tempName.trim()}
-                    className={`w-full py-4 rounded-xl font-bold text-lg shadow-lg transition-all ${
+                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${
                       tempName.trim()
-                        ? 'bg-gradient-to-r from-[#1876D2] via-[#1E88E5] to-[#00B0FF] text-white hover:shadow-xl'
-                        : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                        ? 'bg-gradient-to-r from-[#1876D2] via-[#1E88E5] to-[#00B0FF] text-white hover:opacity-95 shadow-lg shadow-black/20'
+                        : 'bg-o-4 text-o-3 cursor-not-allowed border border-o opacity-75'
                     }`}
                   >
                     Start Building
                   </motion.button>
                 </div>
 
-                <div className="mt-6 text-center text-sm text-gray-500">
+                <div className="mt-6 text-center text-sm text-o-2">
                   Tip: All previews will show “Made by {tempName || '[Name]'}”
                 </div>
               </div>
@@ -2481,9 +2481,9 @@ export default function Demo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="mb-8 bg-white rounded-xl p-6 shadow-lg"
+          className="mb-8 bg-o-2 rounded-xl p-6 border border-o"
         >
-          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+          <h3 className="text-lg font-semibold text-o-0 mb-4 flex items-center">
             <Zap className="h-5 w-5 mr-2 text-[#00B0FF]" />
             Or Describe Your Own Website
           </h3>
@@ -2493,7 +2493,7 @@ export default function Demo() {
               value={customPrompt}
               onChange={(e) => setCustomPrompt(e.target.value)}
               placeholder="e.g., 'Create a website for my dog walking business...'"
-              className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-[#1876D2] focus:ring-2 focus:ring-[#1876D2]/10 outline-none text-base bg-gray-50/50"
+              className="orbit-field-dark flex-1 px-4 py-3 border-2 border-o rounded-xl focus:border-[#1876D2] focus:ring-2 focus:ring-[#1876D2]/20 outline-none text-base bg-o-3 text-o-0 placeholder:text-o-2 caret-[#00B0FF]"
               onKeyPress={(e) => e.key === 'Enter' && handleCustomGenerate()}
             />
             <motion.button
