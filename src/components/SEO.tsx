@@ -1,4 +1,26 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+
+const SITE_ORIGIN = 'https://www.orbitstudent.com';
+
+/** Preferred public URL: www, HTTPS, no trailing slash on the homepage. */
+export function normalizeCanonicalUrl(href: string): string {
+  let s = href.trim();
+  if (s === `${SITE_ORIGIN}/` || s === 'http://www.orbitstudent.com/' || s === 'http://www.orbitstudent.com') {
+    return SITE_ORIGIN;
+  }
+  if (s.startsWith(SITE_ORIGIN) && s.length > SITE_ORIGIN.length && s.endsWith('/')) {
+    return s.replace(/\/+$/, '');
+  }
+  return s;
+}
+
+function canonicalFromPathname(pathname: string): string {
+  const path = pathname.split('?')[0].split('#')[0] || '/';
+  if (path === '/' || path === '') return SITE_ORIGIN;
+  const base = path.replace(/\/+$/, '') || '/';
+  return `${SITE_ORIGIN}${base}`;
+}
 
 interface SEOProps {
   title?: string;
@@ -143,8 +165,8 @@ const defaultSEO = {
     'public speaking for kids',
     'leadership for kids'
   ],
-  image: 'https://www.orbitstudent.com/og-image.jpg',
-  url: 'https://www.orbitstudent.com',
+  image: `${SITE_ORIGIN}/og-image.jpg`,
+  url: SITE_ORIGIN,
   type: 'website' as const,
   author: 'Orbit Future Academy'
 };
@@ -166,6 +188,11 @@ export default function SEO({
   noIndex = false,
   courseData
 }: SEOProps) {
+  const location = useLocation();
+  const resolvedCanonical = normalizeCanonicalUrl(
+    url && url.trim().length > 0 ? url.trim() : canonicalFromPathname(location.pathname)
+  );
+
   // Avoid "Brand — Title | Brand" duplication
   const siteTitle = title.toLowerCase().includes('orbit student')
     ? title
@@ -187,7 +214,7 @@ export default function SEO({
     name: 'Orbit Student',
     alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'OrbitStudent', 'Orbit Student Portal', 'Orbit Student Login', 'Orbit Student Dashboard'],
     description: defaultSEO.description,
-    url: defaultSEO.url,
+    url: SITE_ORIGIN,
     logo: {
       '@type': 'ImageObject',
       url: 'https://www.orbitstudent.com/logo.png',
@@ -243,10 +270,10 @@ export default function SEO({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Orbit Student',
-    url: defaultSEO.url,
+    url: SITE_ORIGIN,
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${defaultSEO.url}/search?q={search_term_string}`,
+      target: `${SITE_ORIGIN}/blog?q={search_term_string}`,
       'query-input': 'required name=search_term_string'
     }
   };
@@ -259,7 +286,7 @@ export default function SEO({
     provider: {
       '@type': 'Organization',
       name: courseData.provider,
-      sameAs: defaultSEO.url
+      sameAs: SITE_ORIGIN
     },
     timeRequired: courseData.duration,
     educationalLevel: 'Beginner to Intermediate',
@@ -434,32 +461,6 @@ export default function SEO({
     ]
   };
 
-  // Add BreadcrumbList Schema
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: 'https://www.orbitstudent.com'
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Courses',
-        item: 'https://www.orbitstudent.com/courses'
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'Resources',
-        item: 'https://www.orbitstudent.com/resources'
-      }
-    ]
-  };
-
   // Add Service Schema
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -541,7 +542,7 @@ export default function SEO({
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={resolvedCanonical} />
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content={String(imageWidth)} />
       <meta property="og:image:height" content={String(imageHeight)} />
@@ -568,7 +569,7 @@ export default function SEO({
           : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
         }
       />
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={resolvedCanonical} />
 
       {/* DNS Prefetch & Preconnect for Performance */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -623,9 +624,6 @@ export default function SEO({
           {JSON.stringify(howToSchema)}
         </script>
       )}
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
-      </script>
       {structuredData && (
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
