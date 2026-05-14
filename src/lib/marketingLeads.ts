@@ -1,4 +1,4 @@
-import { supabase } from './supabase';
+import { supabase, isSupabaseConfigured } from './supabase';
 import { getUTMParams } from './leads';
 
 function formatPostgrestError(error: {
@@ -51,6 +51,14 @@ export interface SubmitMarketingLeadInput {
 export async function submitMarketingLeadToSupabase(
   input: SubmitMarketingLeadInput
 ): Promise<{ ok: true; id: string } | { ok: false; error: string }> {
+  if (!isSupabaseConfigured()) {
+    return {
+      ok: false,
+      error:
+        'Server storage is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY (publishable/anon key, not the secret), then redeploy.',
+    };
+  }
+
   const source = normalizeMarketingLeadSource(input.source);
   const utm = getUTMParams();
   const utmNote =
@@ -73,11 +81,12 @@ export async function submitMarketingLeadToSupabase(
     { ok: true; id: string } | { ok: false; error: string }
   > => {
     try {
-      const { data, error } = await supabase.from('leads').insert(row).select('id').single();
+      const { data, error } = await supabase.from('leads').insert(row).select('id');
 
       if (error) return { ok: false, error: formatPostgrestError(error) };
-      if (!data?.id) return { ok: false, error: 'No lead id returned from server' };
-      return { ok: true, id: data.id };
+      const id = Array.isArray(data) ? data[0]?.id : (data as { id?: string } | null)?.id;
+      if (!id) return { ok: false, error: 'No lead id returned from server' };
+      return { ok: true, id };
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
       return { ok: false, error: msg || 'Network error' };
