@@ -59,7 +59,10 @@ Allow: /
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /dashboard
 Disallow: /dashboard/admin
+Disallow: /login
+Disallow: /seo-keywords.html
 Disallow: /api/admin
 Disallow: /api/private
 Crawl-delay: 2

@@ -207,10 +207,10 @@ export default function LiveClasses() {
 
   return (
     <>
-      <SEO 
-        title="Live Classes | Young CEO Program"
-        description="Join interactive live classes with expert mentors and learn entrepreneurship skills in real-time."
-        keywords={["live classes", "online learning", "entrepreneurship", "mentorship"]}
+      <SEO
+        title="Live Online Classes for Kids | AI & Entrepreneurship | Orbit Student"
+        description="Live 1:1 and small-group online classes for kids in AI, entrepreneurship, coding and leadership. Expert mentors, flexible time zones."
+        keywords={['live online classes for kids', 'live AI classes kids', '1:1 classes kids India', 'entrepreneurship classes online', 'mentor led learning kids', 'Orbit Student live classes']}
         url="https://www.orbitstudent.com/live-classes"
       />
       

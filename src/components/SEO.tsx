@@ -51,119 +51,19 @@ const defaultSEO = {
   description:
     'AI tools, courses, live classes and scholarship prep for ages 8–18. Join 2,500+ students — start a free trial at orbitstudent.com.',
   keywords: [
-    // Brand + Action keywords (highest priority)
     'Orbit Student',
-    'Orbit Student login',
-    'Orbit Student portal',
-    'Orbit Student dashboard',
-    'Orbit Student app',
-    'Orbit Student sign in',
-    'Orbit Student sign up',
-    'Orbit Student register',
-    'Orbit Student account',
-    'Orbit Student platform',
-    'Orbit Student courses',
-    'Orbit Student live classes',
-    'Orbit Student AI tools',
-    'Orbit Student demo',
-    'Orbit Student free trial',
-    'Orbit Student review',
-    'Orbit Student pricing',
-    'Orbit Student scholarship',
-    'Orbit Student for parents',
-    'orbitstudent',
-    'orbitstudent.com',
-    'orbitstudent login',
-    'orbitstudent portal',
-    // Brand variants
-    'Orbit AI',
-    'Orbit AI student',
-    'Orbit education',
-    'Orbit learning',
-    'Orbit AI learning',
-    'Orbit student AI',
-    'Orbit study',
-    'Orbit edtech',
-    'Orbit new age',
-    // AI keywords
-    'AI student',
-    'AI for kids',
-    'AI learning platform',
-    'AI education for children',
-    'AI powered education',
-    'AI tools for students',
-    'AI courses for kids',
-    'AI literacy for kids',
-    'AI tutor for students',
-    'AI student platform',
-    'AI student portal',
-    'AI student login',
-    'AI student dashboard',
-    'AI mentor for students',
-    'best AI platform for kids',
-    'AI school for kids',
-    'AI generation kids',
-    'AI first education',
-    'AI skills for kids',
-    'AI homework help',
-    'AI for young learners',
-    'artificial intelligence for students',
-    'learn AI for kids',
-    'kids AI tools',
-    'kids learn artificial intelligence',
-    'future AI education',
-    'AI entrepreneurship',
-    'young AI learners',
-    // New age / Gen keywords
-    'kids new age learning',
-    'new age education',
-    'Gen Z AI learning',
-    'Gen Alpha education',
-    'smart learning for kids',
-    // Parent-focused keywords
-    'best future plan for kids',
-    'best education for future',
-    'best investment in child future',
-    'prepare kids for future',
-    'child future planning',
-    'future career for kids',
-    'future-ready kids',
-    'how to prepare kids for future jobs',
-    'future opportunities for children',
-    'child success planning',
-    // Education keywords
-    'young entrepreneur program',
-    'future skills for children',
+    'AI learning for kids',
     'entrepreneurship for kids',
-    'business education for children',
-    'young CEO program',
-    'AI-powered learning',
-    'AI literacy for youth',
-    'business skills for teens',
-    'learn entrepreneurship online',
-    'future entrepreneurs',
-    'skills kids need for future',
-    'teen startup program',
-    'young business leaders',
-    'future leaders program',
-    'startup skills for youth',
-    'scholarship prep for kids',
-    'early scholarship planning',
-    'college prep for middle school',
+    'online classes for kids',
     'coding for kids',
-    'STEM for kids',
-    'best edtech for kids',
-    'student learning portal',
-    'kids business course online',
-    'online learning for kids',
-    'online business school for kids',
-    'best online course for kids',
-    'kids learning dashboard',
-    'student portal for kids',
-    'gamified learning for kids',
-    'interactive learning platform',
+    'young CEO program',
+    'live classes kids India',
+    'AI courses for kids',
+    'STEM education kids',
     'public speaking for kids',
-    'leadership for kids'
+    'scholarship prep kids',
+    'edtech India',
+    'orbitstudent.com',
   ],
   image: `${SITE_ORIGIN}/og-image.jpg`,
   url: SITE_ORIGIN,
@@ -210,9 +110,9 @@ export default function SEO({
 
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': ['EducationalOrganization', 'LocalBusiness'],
+    '@type': 'EducationalOrganization',
     name: 'Orbit Student',
-    alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'OrbitStudent', 'Orbit Student Portal', 'Orbit Student Login', 'Orbit Student Dashboard'],
+    alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'OrbitStudent'],
     description: defaultSEO.description,
     url: SITE_ORIGIN,
     logo: {
@@ -243,27 +143,7 @@ export default function SEO({
       email: 'hello@orbitstudent.com',
       availableLanguage: ['English']
     },
-    foundingDate: '2024',
-    numberOfEmployees: {
-      '@type': 'QuantitativeValue',
-      value: '10-50'
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '2500',
-      bestRating: '5',
-      worstRating: '1'
-    },
-    offers: {
-      '@type': 'Offer',
-      name: '180-Day Young CEO Program',
-      description: 'Comprehensive entrepreneurship education for young minds',
-      price: '299',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      validFrom: '2024-01-01'
-    }
+    foundingDate: '2024'
   };
 
   const websiteSchema = {
@@ -508,25 +388,6 @@ export default function SEO({
     }
   };
 
-  // Add Review Schema
-  const reviewSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Review',
-    itemReviewed: {
-      '@type': 'EducationalOrganization',
-      name: 'Orbit Student'
-    },
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: '5',
-      bestRating: '5'
-    },
-    author: {
-      '@type': 'Person',
-      name: 'Parent Community'
-    },
-    reviewBody: 'Orbit Student has transformed our children into confident young leaders. The program is comprehensive, engaging, and delivers real results.'
-  };
 
   return (
     <Helmet>
@@ -570,6 +431,9 @@ export default function SEO({
         }
       />
       <link rel="canonical" href={resolvedCanonical} />
+      <link rel="alternate" hrefLang="en-in" href={resolvedCanonical} />
+      <link rel="alternate" hrefLang="en" href={resolvedCanonical} />
+      <link rel="alternate" hrefLang="x-default" href={SITE_ORIGIN} />
 
       {/* DNS Prefetch & Preconnect for Performance */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -596,19 +460,22 @@ export default function SEO({
       <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
       <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(organizationSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(websiteSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(serviceSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(reviewSchema)}
-      </script>
+      {/* Structured Data — homepage / key landing pages only to avoid duplicate graph noise */}
+      {showFAQ && (
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+      )}
+      {showFAQ && (
+        <script type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
+        </script>
+      )}
+      {showFAQ && (
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
+      )}
       {courseSchema && (
         <script type="application/ld+json">
           {JSON.stringify(courseSchema)}

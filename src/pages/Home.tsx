@@ -26,8 +26,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Orbit Student | Young CEO Programme (Ages 8–18)"
-        description="Mentor-led cohort for ages 8–18: live classes, AI tools, portfolio and scholarships. Free trial. 2,500+ families worldwide."
+        title="Orbit Student | Live AI & Entrepreneurship Classes for Kids 8–18"
+        description="Live 1:1 & cohort classes in AI, entrepreneurship, coding and leadership for ages 8–18. Mentor-led, portfolio outcomes. Free trial — join 2,500+ families."
         showFAQ
         courseData={{
           name: 'Orbit Young CEO Programme — 180-Day Instructor-Led Cohort',
@@ -38,15 +38,13 @@ export default function Home() {
           price: '299',
         }}
         keywords={[
-          'Orbit Student','Orbit Student login','Orbit Student portal','Orbit Student dashboard','Orbit Student app',
-          'Orbit Student courses','Orbit Student AI tools','Orbit Student live classes','Orbit Student demo',
-          'Orbit Student free trial','Orbit Student review','Orbit Student scholarship','orbitstudent','orbitstudent login',
-          'AI learning platform','AI for kids','AI student portal','entrepreneurship for kids','young entrepreneur program',
-          'instructor-led AI for kids','live AI classes for kids','AI cohort program kids','peer learning AI',
-          'young CEO program online','future-ready kids programme',
-          'best edtech for kids','future skills for children','business education for children','coding for kids','STEM for kids',
-          'public speaking for kids','leadership for kids','scholarship prep for kids','best future plan for kids',
-          'online learning for kids','student learning portal','AI powered education','kids business course online',
+          'AI learning for kids',
+          'entrepreneurship for kids',
+          'online classes for kids',
+          'coding for kids',
+          'young CEO program',
+          'live classes kids India',
+          'Orbit Student',
         ]}
       />
 
