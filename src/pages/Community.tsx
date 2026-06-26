@@ -2,6 +2,7 @@ import React from 'react';
 import { Users, MessageSquare, Globe, Trophy } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHero from '../components/common/PageHero';
+import { getActiveCohortLabel } from '../utils/cohortDates';
 
 const stats = [
   { value: '2,500+', label: 'enrolled families' },
@@ -18,6 +19,8 @@ const features = [
 ];
 
 const Community = () => {
+  const cohortLabel = getActiveCohortLabel();
+
   return (
     <>
       <SEO
@@ -28,7 +31,7 @@ const Community = () => {
       />
 
       <PageHero
-        eyebrow="Community · Cohort 12"
+        eyebrow={`Community · ${cohortLabel}`}
         title="2,500 young builders, "
         italic="building together."
         subtitle="Cohort circles, founder office hours and monthly showcase nights. Your child is never building alone."

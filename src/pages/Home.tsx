@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Brain, Rocket, CheckCircle, Target, PlayCircle, Shield,
@@ -11,6 +11,12 @@ import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
+import {
+  getActiveCohortLabel,
+  getSpotsRemainingCopy,
+  getUpcomingCohortBatches,
+  batchStatusLabel,
+} from '../utils/cohortDates';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 14 },
@@ -22,6 +28,9 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export default function Home() {
   const [showEnrollment, setShowEnrollment] = useState(false);
   const [showCareerGuide, setShowCareerGuide] = useState(false);
+  const cohortLabel = useMemo(() => getActiveCohortLabel(), []);
+  const upcomingBatches = useMemo(() => getUpcomingCohortBatches(), []);
+  const spotsCopy = useMemo(() => getSpotsRemainingCopy(30), []);
 
   return (
     <>
@@ -69,7 +78,7 @@ export default function Home() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00B0FF]" />
                     </span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-1">Flagship programme · Cohort 12 · Ages 8–18</span>
+                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-1">Flagship programme · {cohortLabel} · Ages 8–18</span>
                   </div>
                 </div>
 
@@ -364,36 +373,29 @@ export default function Home() {
                 <p className="text-[13px] text-o-3 font-mono uppercase tracking-[0.08em]">Times shown in your timezone after signup</p>
               </div>
               <div className="divide-y" style={{ borderColor: 'var(--o-border-0)' }}>
-                {[
-                  { d: 'May 12, 2026', t: 'Morning track', s: 'FULL' as const },
-                  { d: 'May 12, 2026', t: 'Evening track', s: 'FILLING' as const },
-                  { d: 'May 19, 2026', t: 'Morning track', s: 'FILLING' as const },
-                  { d: 'May 19, 2026', t: 'Evening track', s: 'OPEN' as const },
-                  { d: 'May 26, 2026', t: 'Morning track', s: 'OPEN' as const },
-                  { d: 'May 26, 2026', t: 'Evening track', s: 'OPEN' as const },
-                ].map((row) => (
-                  <div key={`${row.d}-${row.t}`} className="px-6 py-4 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                {upcomingBatches.map((row) => (
+                  <div key={`${row.dateLabel}-${row.track}`} className="px-6 py-4 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                     <div>
-                      <p className="text-[14.5px] font-medium text-o-0">{row.d}</p>
-                      <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-3 mt-0.5">{row.t}</p>
+                      <p className="text-[14.5px] font-medium text-o-0">{row.dateLabel}</p>
+                      <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-3 mt-0.5">{row.track}</p>
                     </div>
                     <span
                       className={`chip-o self-start sm:self-center ${
-                        row.s === 'FULL'
+                        row.status === 'FULL'
                           ? 'opacity-70'
-                          : row.s === 'FILLING'
+                          : row.status === 'FILLING'
                             ? 'chip-o-accent'
                             : ''
                       }`}
                       style={
-                        row.s === 'OPEN'
+                        row.status === 'OPEN'
                           ? { borderColor: 'rgba(16,185,129,0.35)', color: '#34d399' }
-                          : row.s === 'FULL'
+                          : row.status === 'FULL'
                             ? { textDecoration: 'line-through', opacity: 0.65 }
                             : undefined
                       }
                     >
-                      {row.s === 'FILLING' ? 'Filling fast' : row.s === 'FULL' ? 'Full' : 'Enrolling'}
+                      {batchStatusLabel(row.status)}
                     </span>
                   </div>
                 ))}
@@ -513,7 +515,7 @@ export default function Home() {
                       <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-0">Live · 1,243 watching</span>
                     </span>
                     <span className="chip-o" style={{ background: 'rgba(13,14,16,0.85)', backdropFilter: 'blur(8px)' }}>
-                      <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-1">Cohort 12</span>
+                      <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-1">{cohortLabel}</span>
                     </span>
                   </div>
                 </div>
@@ -773,7 +775,7 @@ export default function Home() {
           <div className="relative max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <span className="chip-o chip-o-accent mb-7">
-                <Zap className="w-3.5 h-3.5" /> Cohort 12 · 30 spots remaining
+                <Zap className="w-3.5 h-3.5" /> {spotsCopy}
               </span>
 
               <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] mb-6" style={{ letterSpacing: '-0.045em', lineHeight: 1.0 }}>

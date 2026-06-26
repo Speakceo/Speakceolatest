@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Calendar, Clock, MapPin, Users, Tag, ExternalLink, Filter } from 'lucide-react';
+import { format } from 'date-fns';
 import SEO from '../components/SEO';
 import PageHero from '../components/common/PageHero';
+import { getRollingEventDates } from '../utils/cohortDates';
 
 interface Event {
   id: number;
@@ -23,64 +25,73 @@ interface Event {
   image: string;
 }
 
-const events: Event[] = [
-  {
-    id: 1,
-    title: "Young Entrepreneurs Pitch Competition",
-    description: "Showcase your business idea and get feedback from successful entrepreneurs and investors. Top ideas will receive funding and mentorship.",
-    date: "2024-03-15",
-    time: "14:00 - 17:00",
-    location: "Virtual Event",
-    type: "competition",
-    category: "Pitching",
-    capacity: 50,
-    spotsLeft: 15,
-    price: "Free",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=400&fit=crop"
-  },
-  {
-    id: 2,
-    title: "Building Your First Business Plan Workshop",
-    description: "Learn how to create a comprehensive business plan that will help you launch your startup successfully.",
-    date: "2024-03-20",
-    time: "16:00 - 18:00",
-    location: "Virtual Event",
-    type: "workshop",
-    category: "Planning",
-    capacity: 30,
-    spotsLeft: 8,
-    speaker: {
-      name: "Sarah Johnson",
-      role: "Business Strategy Consultant",
-      company: "StartupMentor Inc."
-    },
-    price: 25,
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=400&fit=crop"
-  },
-  {
-    id: 3,
-    title: "Digital Marketing Masterclass",
-    description: "Master the fundamentals of digital marketing and learn how to promote your business online effectively.",
-    date: "2024-03-25",
-    time: "15:00 - 17:00",
-    location: "Virtual Event",
-    type: "webinar",
-    category: "Marketing",
-    capacity: 100,
-    spotsLeft: 45,
-    speaker: {
-      name: "Michael Chen",
-      role: "Digital Marketing Director",
-      company: "GrowthLab Digital"
-    },
-    price: 35,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop"
-  }
-];
+function buildEvents(): Event[] {
+  const [pitchDate, workshopDate, marketingDate] = getRollingEventDates(new Date(), 3);
 
-const categories = ["All Events", "Workshops", "Webinars", "Competitions", "Networking"];
+  return [
+    {
+      id: 1,
+      title: 'Young Entrepreneurs Pitch Competition',
+      description:
+        'Showcase your business idea and get feedback from successful entrepreneurs and investors. Top ideas will receive funding and mentorship.',
+      date: format(pitchDate, 'yyyy-MM-dd'),
+      time: '14:00 - 17:00',
+      location: 'Virtual Event',
+      type: 'competition',
+      category: 'Pitching',
+      capacity: 50,
+      spotsLeft: 15,
+      price: 'Free',
+      image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=400&fit=crop',
+    },
+    {
+      id: 2,
+      title: 'Building Your First Business Plan Workshop',
+      description:
+        'Learn how to create a comprehensive business plan that will help you launch your startup successfully.',
+      date: format(workshopDate, 'yyyy-MM-dd'),
+      time: '16:00 - 18:00',
+      location: 'Virtual Event',
+      type: 'workshop',
+      category: 'Planning',
+      capacity: 30,
+      spotsLeft: 8,
+      speaker: {
+        name: 'Sarah Johnson',
+        role: 'Business Strategy Consultant',
+        company: 'StartupMentor Inc.',
+      },
+      price: 25,
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=400&fit=crop',
+    },
+    {
+      id: 3,
+      title: 'Digital Marketing Masterclass',
+      description:
+        'Master the fundamentals of digital marketing and learn how to promote your business online effectively.',
+      date: format(marketingDate, 'yyyy-MM-dd'),
+      time: '15:00 - 17:00',
+      location: 'Virtual Event',
+      type: 'webinar',
+      category: 'Marketing',
+      capacity: 100,
+      spotsLeft: 45,
+      speaker: {
+        name: 'Michael Chen',
+        role: 'Digital Marketing Director',
+        company: 'GrowthLab Digital',
+      },
+      price: 35,
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop',
+    },
+  ];
+}
+
+const categories = ['All Events', 'Workshops', 'Webinars', 'Competitions', 'Networking'];
 
 const Events: React.FC = () => {
+  const events = useMemo(() => buildEvents(), []);
+
   return (
     <>
       <SEO 
@@ -260,4 +271,4 @@ const Events: React.FC = () => {
   );
 };
 
-export default Events; 
+export default Events;

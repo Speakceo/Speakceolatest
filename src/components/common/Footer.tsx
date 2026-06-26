@@ -1,5 +1,6 @@
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getActiveCohortLabel } from '../../utils/cohortDates';
 
 /**
  * Footer — Linear-grade dark.
@@ -14,6 +15,9 @@ const linkCls =
   'block text-[14px] text-o-2 hover:text-o-0 transition-colors duration-150 leading-[2]';
 
 export default function Footer() {
+  const cohortLabel = getActiveCohortLabel();
+  const year = new Date().getFullYear();
+
   return (
     <footer className="relative bg-o-0">
       {/* Hairline top divider */}
@@ -23,7 +27,7 @@ export default function Footer() {
         {/* Big mast — Linear-style restrained statement */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16 sm:mb-20 items-end">
           <div className="lg:col-span-7">
-            <p className="eyebrow-o mb-5">Orbit Student · 2026</p>
+            <p className="eyebrow-o mb-5">Orbit Student · {year}</p>
             <h2
               className="font-display text-[clamp(2.2rem,5vw,4rem)] text-o-0"
               style={{ letterSpacing: '-0.045em', lineHeight: 1.02 }}
@@ -144,7 +148,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Orbit Student. Made with care for young minds.
           </p>
           <p className="meta-line">
-            Cohort 12 · 2026 · Mumbai · Remote
+            {cohortLabel} · {year} · Mumbai · Remote
           </p>
         </div>
       </div>

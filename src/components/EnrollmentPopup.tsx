@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { createLead, LeadSource, getUTMParams } from '../lib/leads';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getNextBatchStartLabel } from '../utils/cohortDates';
 
 interface EnrollmentPopupProps {
   isOpen: boolean;
@@ -85,8 +86,10 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
     { id: 'games', label: 'Business Games', emoji: '🎮', color: 'from-green-400 to-emerald-500' },
   ];
 
+  const nextBatchLabel = getNextBatchStartLabel();
+
   const urgencyOptions = [
-    { id: 'immediate', label: '🔥 Start This Week', subtext: 'Jump right in — spots are limited', tag: 'BEST VALUE', tagColor: 'bg-emerald-500' },
+    { id: 'immediate', label: '🔥 Start This Week', subtext: `Next intake ${nextBatchLabel} — spots are limited`, tag: 'BEST VALUE', tagColor: 'bg-emerald-500' },
     { id: 'month', label: '📅 Within a Month', subtext: 'Planning and preparing to begin', tag: 'POPULAR', tagColor: 'bg-[#1876D2]' },
     { id: 'quarter', label: '⏰ Next 3 Months', subtext: 'Exploring options carefully' },
     { id: 'explore', label: '🔍 Just Exploring', subtext: 'Gathering information for now' },

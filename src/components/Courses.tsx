@@ -35,6 +35,7 @@ import { useUserStore } from '../lib/store';
 import EnrollmentPopup from './EnrollmentPopup';
 import { motion } from 'framer-motion';
 import AnimatedCounter from './ui/AnimatedCounter';
+import { getSpotsRemainingCopy } from '../utils/cohortDates';
 
 const parentTestimonials = [
   {
@@ -210,6 +211,7 @@ export default function Courses() {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const { user } = useUserStore();
+  const spotsCopy = getSpotsRemainingCopy(30);
 
   return (
     <div className="min-h-screen font-[Poppins] overflow-x-hidden">
@@ -252,7 +254,7 @@ export default function Courses() {
               </button>
               <div className="flex items-center gap-2 text-gray-400 text-sm">
                 <Clock className="h-4 w-4 text-amber-400" />
-                <span>Only 30 spots left this month</span>
+                <span>{spotsCopy}</span>
               </div>
             </div>
 
