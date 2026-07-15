@@ -31,4 +31,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
   </StrictMode>
-); 
+);
+
+// Remove crawlable SEO bootstrap HTML after React mounts (keeps Google happy, avoids double UI).
+requestAnimationFrame(() => {
+  document.querySelectorAll('[data-seo-static]').forEach((el) => el.remove());
+}); 

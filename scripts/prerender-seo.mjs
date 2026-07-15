@@ -45,6 +45,10 @@ function injectMeta(html, meta) {
 
   let out = html;
 
+  // When re-run on an already-prerendered file, strip prior crawlable blocks first.
+  out = out.replace(/<main[^>]*data-seo-static[^>]*>[\s\S]*?<\/main>\s*/gi, '');
+  out = out.replace(/<noscript>\s*<main[^>]*data-seo-static[\s\S]*?<\/noscript>\s*/gi, '');
+
   // Non-home shells inherit homepage Organization/WebSite JSON-LD from index.html —
   // that makes Google treat every URL as an alternate of the homepage. Strip them.
   if (stripSitewideJsonLd) {
@@ -106,27 +110,57 @@ function injectMeta(html, meta) {
     out = out.replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="en" href="${canonical}" />`);
   }
 
-  const linkHtml = links
-    .map((l) => `<a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a>`)
-    .join(' · ');
+  const linkHtml = (links || [])
+    .map((l) => {
+      const href = l.href.startsWith('http')
+        ? l.href
+        : l.href === '/'
+          ? SITE
+          : `${SITE}${l.href.startsWith('/') ? l.href : `/${l.href}`}`.replace(/([^:]\/)\/+/g, '$1');
+      const withSlash =
+        href === SITE ? href : href.endsWith('/') ? href : `${href}/`;
+      return `<li><a href="${escapeHtml(withSlash)}">${escapeHtml(l.label)}</a></li>`;
+    })
+    .join('');
 
-  const noscript = `<noscript>
-      <main style="max-width:42rem;margin:2rem auto;padding:0 1.25rem;font-family:system-ui,sans-serif;line-height:1.6;color:#0f172a">
-        <h1 style="font-size:1.75rem;color:#1876D2">${escapeHtml(h1)}</h1>
+  const paragraphs = Array.isArray(meta.paragraphs) ? meta.paragraphs : [];
+  const bullets = Array.isArray(meta.bullets) ? meta.bullets : [];
+  const sectionHeading = meta.sectionHeading || 'Key points';
+
+  const paragraphHtml = paragraphs
+    .map((p) => `<p>${escapeHtml(p)}</p>`)
+    .join('\n');
+  const bulletHtml = bullets.length
+    ? `<h2>${escapeHtml(sectionHeading)}</h2><ul>${bullets
+        .map((b) => `<li>${escapeHtml(b)}</li>`)
+        .join('')}</ul>`
+    : '';
+
+  /**
+   * VISIBLE crawlable body (not noscript-only). Googlebot sees empty #root on SPAs and
+   * often marks URLs "Crawled — currently not indexed". This block is removed after React mounts.
+   */
+  const seoStatic = `<main id="seo-static" data-seo-static style="max-width:42rem;margin:1.5rem auto;padding:0 1.25rem 2rem;font-family:system-ui,sans-serif;line-height:1.65;color:#0f172a">
+      <article>
+        <h1 style="font-size:1.75rem;color:#1876D2;line-height:1.25;margin:0 0 1rem">${escapeHtml(h1)}</h1>
         <p>${escapeHtml(intro)}</p>
-        ${linkHtml ? `<p>${linkHtml}</p>` : ''}
-        <p><a href="${canonical}">Orbit Student</a> — live AI &amp; entrepreneurship classes for kids 8–18.</p>
-      </main>
-    </noscript>`;
+        ${paragraphHtml}
+        ${bulletHtml}
+        ${linkHtml ? `<h2>Explore Orbit Student</h2><ul>${linkHtml}</ul>` : ''}
+        <p style="font-size:0.9rem;color:#64748b"><a href="${canonical}">${escapeHtml(canonical)}</a> — Orbit Student live AI &amp; entrepreneurship classes for kids 8–18.</p>
+      </article>
+    </main>`;
 
-  // Replace body crawlable shell only (head has a separate font noscript)
+  // Visible crawlable content BEFORE #root (Googlebot reads this without executing React).
+  // Do not also mirror inside <noscript> — that duplicates H1 in the raw HTML source.
   if (out.includes('<div id="root"></div>')) {
     out = out.replace(
-      /<noscript>\s*<main[\s\S]*?<\/noscript>(?=\s*<div id="root">)/,
-      noscript
+      /(<noscript>\s*<main[\s\S]*?<\/noscript>\s*)?(<div id="root"><\/div>)/,
+      `${seoStatic}\n    $2`
     );
-  } else {
-    out = out.replace(/<noscript>[\s\S]*?<\/noscript>/, noscript);
+    if (!out.includes('id="seo-static"')) {
+      out = out.replace('<div id="root"></div>', `${seoStatic}\n    <div id="root"></div>`);
+    }
   }
 
   return out;
@@ -194,13 +228,25 @@ function main() {
 
   for (const post of blogRoutes) {
     const routePath = `/blog/${post.slug}`;
+    const excerpt = post.excerpt || post.metaDescription || '';
     writeRouteHtml(baseHtml, routePath, {
       title: `${post.title} | Orbit Student Blog`,
       description: post.metaDescription,
       keywords: (post.seoKeywords || []).join(', '),
       h1: post.title,
-      intro: post.excerpt,
-      links: [{ href: '/blog', label: 'All articles' }, { href: '/courses', label: 'Courses' }],
+      intro: excerpt,
+      paragraphs: [
+        excerpt,
+        'Orbit Student publishes practical guides for parents and students on AI learning, entrepreneurship, scholarships and future-ready skills for ages 8–18.',
+        'After reading, explore live classes and the Young CEO programme, or book a free demo to see mentor-led cohorts in action.',
+      ],
+      bullets: (post.seoKeywords || []).slice(0, 5),
+      sectionHeading: 'Related topics',
+      links: [
+        { href: '/blog/', label: 'All articles' },
+        { href: '/courses/', label: 'Courses' },
+        { href: '/demo/', label: 'Free demo' },
+      ],
       type: 'article',
     });
     count += 1;
