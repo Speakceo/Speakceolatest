@@ -3,23 +3,40 @@ import { useLocation } from 'react-router-dom';
 
 const SITE_ORIGIN = 'https://www.orbitstudent.com';
 
-/** Preferred public URL: www, HTTPS, no trailing slash on the homepage. */
+/**
+ * Canonical policy (must match Netlify directory hosting):
+ * - Homepage: https://www.orbitstudent.com  (no trailing slash)
+ * - All other pages: trailing slash  e.g. /tools/
+ * Netlify 301s /tools → /tools/ when dist/tools/index.html exists.
+ * Canonicals WITHOUT a slash caused GSC "Alternative page with proper canonical tag".
+ */
 export function normalizeCanonicalUrl(href: string): string {
   let s = href.trim();
-  if (s === `${SITE_ORIGIN}/` || s === 'http://www.orbitstudent.com/' || s === 'http://www.orbitstudent.com') {
+  // Normalize protocol-host variants to www https
+  s = s.replace(/^https?:\/\/orbitstudent\.com/i, SITE_ORIGIN);
+  s = s.replace(/^https?:\/\/www\.orbitstudent\.com/i, SITE_ORIGIN);
+
+  if (s === SITE_ORIGIN || s === `${SITE_ORIGIN}/`) {
     return SITE_ORIGIN;
   }
-  if (s.startsWith(SITE_ORIGIN) && s.length > SITE_ORIGIN.length && s.endsWith('/')) {
-    return s.replace(/\/+$/, '');
+
+  try {
+    const u = new URL(s.startsWith('http') ? s : `${SITE_ORIGIN}${s.startsWith('/') ? s : `/${s}`}`);
+    if (u.origin !== SITE_ORIGIN) return s;
+    let p = u.pathname || '/';
+    if (p === '/') return SITE_ORIGIN;
+    p = p.replace(/\/+$/, '');
+    return `${SITE_ORIGIN}${p}/`;
+  } catch {
+    return s;
   }
-  return s;
 }
 
 function canonicalFromPathname(pathname: string): string {
   const path = pathname.split('?')[0].split('#')[0] || '/';
   if (path === '/' || path === '') return SITE_ORIGIN;
   const base = path.replace(/\/+$/, '') || '/';
-  return `${SITE_ORIGIN}${base}`;
+  return `${SITE_ORIGIN}${base}/`;
 }
 
 interface SEOProps {

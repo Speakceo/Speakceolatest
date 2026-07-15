@@ -27,7 +27,7 @@ const indexableRoutes = PRERENDER_ROUTES.filter((r) => !r.noindex);
 const urls: string[] = [];
 
 for (const route of indexableRoutes) {
-  const loc = route.path === '/' ? SITE : `${SITE}${route.path}`;
+  const loc = route.path === '/' ? SITE : `${SITE}${route.path.replace(/\/+$/, '')}/`;
   urls.push(`  <url>
     <loc>${loc}</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
@@ -39,7 +39,7 @@ for (const route of indexableRoutes) {
 for (const post of publishedBlogPosts) {
   const lastmod = (post.updatedAt || post.publishedAt || '').split('T')[0] || new Date().toISOString().split('T')[0];
   urls.push(`  <url>
-    <loc>${SITE}/blog/${post.slug}</loc>
+    <loc>${SITE}/blog/${post.slug}/</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

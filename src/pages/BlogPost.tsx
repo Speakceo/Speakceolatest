@@ -88,7 +88,7 @@ const BlogPost: React.FC = () => {
     });
   };
 
-  const shareUrl = `https://www.orbitstudent.com/blog/${post.slug}`;
+  const shareUrl = `https://www.orbitstudent.com/blog/${post.slug}/`;
   const shareText = `Check out this article: ${post.title}`;
 
   const handleShare = () => {
@@ -142,7 +142,7 @@ const BlogPost: React.FC = () => {
               "dateModified": post.updatedAt,
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": `https://www.orbitstudent.com/blog/${post.slug}`
+                "@id": `https://www.orbitstudent.com/blog/${post.slug}/`
               },
               "wordCount": post.content.split(' ').length,
               "timeRequired": `PT${post.readTime}M`,

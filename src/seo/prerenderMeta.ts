@@ -199,5 +199,6 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
 
 export function canonicalForPath(path: string): string {
   if (path === '/' || path === '') return SITE;
-  return `${SITE}${path.replace(/\/+$/, '')}`;
+  const clean = path.replace(/\/+$/, '');
+  return `${SITE}${clean}/`;
 }

@@ -36,6 +36,7 @@ function injectMeta(html, meta) {
     links = [],
     type = 'website',
     noindex = false,
+    stripSitewideJsonLd = false,
   } = meta;
 
   const robots = noindex
@@ -43,6 +44,12 @@ function injectMeta(html, meta) {
     : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
   let out = html;
+
+  // Non-home shells inherit homepage Organization/WebSite JSON-LD from index.html —
+  // that makes Google treat every URL as an alternate of the homepage. Strip them.
+  if (stripSitewideJsonLd) {
+    out = out.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
+  }
 
   out = out.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);
   out = out.replace(
@@ -87,14 +94,16 @@ function injectMeta(html, meta) {
     `<meta name="twitter:description" content="${escapeHtml(truncate(description, 158))}"`
   );
 
+  // hreflang must match the trailing-slash canonical (except x-default → homepage)
+  const hreflangBlock = `    <link rel="alternate" hreflang="en-in" href="${canonical}" />
+    <link rel="alternate" hreflang="en" href="${canonical}" />
+    <link rel="alternate" hreflang="x-default" href="${SITE}" />
+`;
   if (!out.includes('hreflang="en-in"')) {
-    out = out.replace(
-      '</head>',
-      `    <link rel="alternate" hreflang="en-in" href="${canonical}" />\n    <link rel="alternate" hreflang="en" href="${canonical}" />\n    <link rel="alternate" hreflang="x-default" href="${SITE}" />\n  </head>`
-    );
+    out = out.replace('</head>', `${hreflangBlock}  </head>`);
   } else {
-    out = out.replace(/<link rel="alternate" hreflang="en-in" href="[^"]*"/, `<link rel="alternate" hreflang="en-in" href="${canonical}"`);
-    out = out.replace(/<link rel="alternate" hreflang="en" href="[^"]*"/, `<link rel="alternate" hreflang="en" href="${canonical}"`);
+    out = out.replace(/<link rel="alternate" hreflang="en-in" href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="en-in" href="${canonical}" />`);
+    out = out.replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/?>/, `<link rel="alternate" hreflang="en" href="${canonical}" />`);
   }
 
   const linkHtml = links
@@ -138,18 +147,29 @@ function loadBlogRoutes() {
   return JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 }
 
+/** Canonical must end with / for folder-hosted pages (Netlify Pretty URLs). */
+function canonicalForRoute(routePath) {
+  if (routePath === '/' || routePath === '') return SITE;
+  const clean = routePath.replace(/\/+$/, '');
+  return `${SITE}${clean}/`;
+}
+
 function writeRouteHtml(baseHtml, routePath, meta) {
-  const canonical =
-    routePath === '/' ? SITE : `${SITE}${routePath.replace(/\/+$/, '')}`;
+  const canonical = canonicalForRoute(routePath);
+  const isHome = routePath === '/' || routePath === '';
 
-  const html = injectMeta(baseHtml, { ...meta, canonical });
+  const html = injectMeta(baseHtml, {
+    ...meta,
+    canonical,
+    stripSitewideJsonLd: !isHome,
+  });
 
-  if (routePath === '/') {
+  if (isHome) {
     fs.writeFileSync(path.join(DIST, 'index.html'), html, 'utf8');
     return;
   }
 
-  const dir = path.join(DIST, routePath.replace(/^\//, ''));
+  const dir = path.join(DIST, routePath.replace(/^\//, '').replace(/\/+$/, ''));
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
 }

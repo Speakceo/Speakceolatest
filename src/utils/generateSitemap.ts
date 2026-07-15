@@ -26,14 +26,17 @@ export function generateSitemap() {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${routes
-    .map(route => `
+    .map(route => {
+      const loc = route === '/' ? baseUrl : `${baseUrl}${route}/`;
+      return `
     <url>
-      <loc>${baseUrl}${route}</loc>
+      <loc>${loc}</loc>
       <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
       <changefreq>weekly</changefreq>
       <priority>${route === '/' ? '1.0' : '0.8'}</priority>
-    </url>
-  `).join('')}
+    </url>`;
+    })
+    .join('')}
 </urlset>`;
 
   fs.writeFileSync(resolve(process.cwd(), 'public/sitemap.xml'), sitemap);
