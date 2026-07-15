@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Brain, Rocket, CheckCircle, Target, PlayCircle, Shield,
-  Trophy, Zap, Clock, GraduationCap, Gamepad2, Flame, Sparkles,
+  Trophy, Zap, Clock, GraduationCap, Gamepad2, Sparkles,
   Mic, Users, Globe2, CalendarDays,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -60,140 +60,62 @@ export default function Home() {
       <div className="min-h-screen bg-o-0 text-o-0">
 
         {/* ════════════════════════════════════════════════════════════════
-            01 · HERO — clean Linear dark with single hero image
+            01 · HERO — brand-first, full-bleed visual, no overlays
         ════════════════════════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24">
-          {/* Subtle radial accent glow */}
-          <div className="absolute inset-x-0 top-0 h-[700px] glow-o opacity-90" />
-          {/* Subtle dot grid */}
-          <div className="absolute inset-0 grid-o opacity-50 pointer-events-none" />
+        <section className="relative overflow-hidden min-h-[100dvh] flex items-end sm:items-center pt-28 pb-16 sm:pt-32 sm:pb-24">
+          <div className="absolute inset-0">
+            <img
+              src="/images/hero/orbit-kids-laptop.jpg"
+              alt=""
+              aria-hidden
+              className="absolute inset-0 w-full h-full object-cover object-[50%_28%]"
+              fetchPriority="high"
+              decoding="async"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(105deg, rgba(7,8,10,0.94) 0%, rgba(7,8,10,0.82) 42%, rgba(7,8,10,0.45) 68%, rgba(7,8,10,0.55) 100%)',
+              }}
+            />
+            <div className="absolute inset-0 glow-o opacity-80" />
+          </div>
 
-          <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
-              {/* Copy column */}
-              <div className="lg:col-span-6 xl:col-span-6">
-                <div className="flex justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-8">
-                  <div className="chip-o">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B0FF] opacity-75" />
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00B0FF]" />
-                    </span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-1">Flagship programme · {cohortLabel} · Ages 8–18</span>
-                  </div>
-                </div>
+          <div className="relative w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, ease }}
+              className="max-w-2xl"
+            >
+              <p className="font-display text-[clamp(2.75rem,8vw,5.5rem)] text-o-0 mb-3 sm:mb-4 tracking-tight leading-[0.95]">
+                Orbit Student
+              </p>
+              <h1 className="font-display text-[clamp(1.35rem,3.2vw,2rem)] text-o-1 font-semibold mb-5 sm:mb-6 leading-snug max-w-xl">
+                Live AI &amp; entrepreneurship for ages 8–18.
+              </h1>
+              <p className="text-[16px] sm:text-[17px] leading-[1.6] text-o-2 mb-8 sm:mb-10 max-w-md">
+                Mentor-led cohorts. Real projects. Scholarship-ready portfolios — not another video library.
+              </p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, ease }}
-                  className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
-                >
-                  <h1
-                    className="font-display mb-6 sm:mb-7"
-                    style={{ fontSize: 'clamp(2.35rem, 6vw, 4.25rem)', lineHeight: 1.02 }}
-                  >
-                    <span className="text-o-0">Where young minds </span>
-                    <span style={{ color: '#00B0FF' }}>become leaders.</span>
-                  </h1>
-
-                  <p className="text-[17px] sm:text-[18px] leading-[1.55] text-o-1 mb-8 sm:mb-10">
-                    A <strong className="text-o-0 font-semibold">180-day, mentor-led cohort</strong> in AI literacy, entrepreneurship
-                    and leadership — live classes, small groups and real projects. Built for kids who want to build, not only watch videos.
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row items-center lg:items-start lg:justify-start justify-center gap-3 mb-4">
-                    <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg w-full sm:w-auto">
-                      Start free trial <ArrowRight className="h-4 w-4" />
-                    </button>
-                    <button onClick={() => setShowCareerGuide(true)} className="btn-o btn-o-ghost btn-o-lg w-full sm:w-auto">
-                      <PlayCircle className="h-4 w-4 text-[#00B0FF]" />
-                      Watch demo
-                    </button>
-                  </div>
-
-                  <p className="text-center lg:text-left mb-8">
-                    <a
-                      href="#program-details"
-                      className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-[#00B0FF] hover:underline underline-offset-4"
-                    >
-                      Program details and upcoming starts <ArrowRight className="h-3.5 w-3.5" />
-                    </a>
-                  </p>
-
-                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 sm:gap-x-6 gap-y-2 text-[12.5px] text-o-2">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Shield className="h-3.5 w-3.5 text-[#00B0FF]" /> 30-day refund
-                    </span>
-                    <span className="font-mono hidden sm:inline">·</span>
-                    <span>2,500+ families</span>
-                    <span className="font-mono hidden sm:inline">·</span>
-                    <span>4.9/5 rating</span>
-                    <span className="font-mono hidden sm:inline">·</span>
-                    <span>35+ countries</span>
-                  </div>
-                </motion.div>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg">
+                  Start free trial
+                  <span className="btn-o-icon">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </button>
+                <button onClick={() => setShowCareerGuide(true)} className="btn-o btn-o-ghost btn-o-lg">
+                  <PlayCircle className="h-4 w-4 text-[#00B0FF]" />
+                  Watch demo
+                </button>
               </div>
 
-              {/* Image column — aspect tracks width so it always fits the hero rhythm */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.75, delay: 0.1, ease }}
-                className="lg:col-span-6 xl:col-span-6 relative w-full max-w-xl mx-auto lg:max-w-none"
-              >
-                {/* Wrapper: floats sit outside the clipped image so chips are not cut off */}
-                <div className="relative pb-14 sm:pb-12 lg:pb-10">
-                  <div className="frame-o relative bg-o-2">
-                    {/* Width-driven aspect: scales with column, no vh fight; object-cover keeps frame full */}
-                    <div className="relative w-full aspect-[10/11] sm:aspect-[5/6] lg:aspect-[4/5] xl:aspect-[5/6] overflow-hidden">
-                      <img
-                        src="/images/hero/orbit-kids-laptop.jpg"
-                        alt="An Orbit student building a project on a laptop"
-                        className="absolute inset-0 w-full h-full object-cover object-[50%_30%] sm:object-[52%_26%] lg:object-[48%_24%]"
-                        fetchPriority="high"
-                        decoding="async"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
-                      />
-                    </div>
-                  </div>
-
-                  <motion.div
-                    animate={{ y: [-2, 2, -2] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="hidden sm:block absolute bottom-0 left-0 sm:left-2 lg:left-0 z-10"
-                  >
-                    <div className="card-o flex items-center gap-3 min-w-[220px]" style={{ padding: '12px 14px' }}>
-                      <div
-                        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                        style={{ background: 'linear-gradient(135deg,#1876D2,#00B0FF)' }}
-                      >
-                        <Rocket className="w-4 h-4 text-white" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[11px] font-mono uppercase tracking-[0.1em] text-o-3 mb-0.5">Lv 7 · Young CEO</p>
-                        <div className="flex items-center justify-between mb-1.5">
-                          <span className="text-[12px] text-o-0 font-medium">1,240 XP</span>
-                          <span className="text-[11px] text-o-2">62%</span>
-                        </div>
-                        <div className="h-1 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
-                          <div className="h-full rounded-full" style={{ width: '62%', background: '#00B0FF' }} />
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    animate={{ y: [2, -2, 2] }}
-                    transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                    className="hidden md:flex absolute top-3 right-2 lg:right-0 z-10 chip-o items-center"
-                    style={{ background: 'rgba(13,14,16,0.92)', backdropFilter: 'blur(8px)' }}
-                  >
-                    <Flame className="w-3.5 h-3.5 text-[#ff9600]" />
-                    <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-o-1">12-day streak</span>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </div>
+              <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.14em] text-o-3">
+                {cohortLabel} · 2,500+ families · 35+ countries
+              </p>
+            </motion.div>
           </div>
         </section>
 
@@ -214,17 +136,14 @@ export default function Home() {
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.06, duration: 0.4 }}
+                  transition={{ delay: i * 0.06, duration: 0.45, ease }}
                 >
-                  <p className="font-display text-[clamp(2.4rem,4.5vw,3.4rem)] text-o-0 mb-2" style={{ letterSpacing: '-0.04em' }}>
-                    {s.num}
-                  </p>
-                  <p className="eyebrow-o">{s.label}</p>
+                  <p className="font-display text-[clamp(1.75rem,3vw,2.5rem)] text-o-0 mb-1 tabular-nums">{s.num}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-3">{s.label}</p>
                 </motion.div>
               ))}
             </div>
 
-            {/* Honest value strip (clear offer — inspired by competitor "program clarity") */}
             <div className="mt-14 sm:mt-20 pt-8 border-o-t">
               <p className="eyebrow-o mb-6">What you get on day one</p>
               <div className="flex flex-wrap gap-x-10 gap-y-3">
@@ -354,7 +273,10 @@ export default function Home() {
                   </p>
                   <p className="text-[13px] text-o-3 mb-8">One-time programme access · Instalments and local pricing available at checkout</p>
                   <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary w-full sm:w-auto mb-4">
-                    Secure your spot <ArrowRight className="h-4 w-4" />
+                    Secure your spot
+                    <span className="btn-o-icon">
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
                   </button>
                   <p className="text-[12.5px] text-o-3 flex items-start gap-2">
                     <Shield className="h-3.5 w-3.5 text-[#00B0FF] flex-shrink-0 mt-0.5" />
@@ -487,7 +409,10 @@ export default function Home() {
                 </ul>
 
                 <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary">
-                  Reserve a seat <ArrowRight className="h-4 w-4" />
+                  Reserve a seat
+                  <span className="btn-o-icon">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
                 </button>
               </motion.div>
 
@@ -758,7 +683,10 @@ export default function Home() {
                   </ul>
                   {c.highlight && (
                     <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary w-full mt-7">
-                      Start now — it's free
+                      Start free trial
+                      <span className="btn-o-icon">
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </span>
                     </button>
                   )}
                 </motion.div>
@@ -779,17 +707,19 @@ export default function Home() {
               </span>
 
               <h2 className="font-display text-[clamp(2.2rem,5vw,4rem)] mb-6" style={{ letterSpacing: '-0.045em', lineHeight: 1.0 }}>
-                Don't let your child fall behind <span style={{ color: '#00B0FF' }}>while others get ahead.</span>
+                Build the year their peers will wish they started.
               </h2>
 
               <p className="text-[17px] text-o-2 mb-10 leading-[1.6] max-w-xl mx-auto">
-                While other kids watch YouTube, your child could be building businesses,
-                winning scholarships and mastering AI.
+                Live mentors. Real projects. A portfolio that opens doors — scholarships, competitions, and confidence.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
                 <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg">
-                  Secure your spot <ArrowRight className="h-4 w-4" />
+                  Secure your spot
+                  <span className="btn-o-icon">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
                 </button>
                 <button onClick={() => setShowCareerGuide(true)} className="btn-o btn-o-ghost btn-o-lg">
                   Download career guide

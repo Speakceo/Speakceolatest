@@ -43,54 +43,48 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <div className="w-full relative z-40">
-      {/* ── Linear-grade dark Navbar ─────────────────────────────────────── */}
-      <div className="fixed z-50 top-0 left-0 right-0">
-        <nav
-          className={`w-full transition-all duration-300 ${
-            scrolled
-              ? 'bg-[rgba(8,9,10,0.85)] backdrop-blur-xl border-b border-[var(--o-border-1)]'
-              : 'bg-[rgba(8,9,10,0.65)] backdrop-blur-md border-b border-[var(--o-border-0)]'
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-[56px]">
-
-              {/* Logo */}
-              <button onClick={handleLogoClick} className="flex items-center flex-shrink-0">
+      <div className="fixed z-50 top-0 left-0 right-0 pointer-events-none">
+        <div className={`px-3 sm:px-5 pt-3 sm:pt-4 transition-all duration-500 ${scrolled ? 'pt-2.5 sm:pt-3' : ''}`}>
+          <nav
+            className={`pointer-events-auto mx-auto max-w-5xl nav-island rounded-full transition-all duration-500 ${
+              scrolled ? 'shadow-[0_20px_50px_-30px_rgba(0,176,255,0.35)]' : ''
+            }`}
+          >
+            <div className="flex justify-between items-center h-[52px] px-3 sm:px-4">
+              <button onClick={handleLogoClick} className="flex items-center flex-shrink-0 gap-2.5 pl-1 group">
                 <img
                   src="/images/hero/orbit-logo.png"
                   alt="Orbit Student"
-                  className="h-7 w-auto opacity-90 hover:opacity-100 transition-opacity duration-200"
+                  className="h-6 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-200"
                   style={{ filter: 'brightness(0) invert(1)' }}
                 />
+                <span className="hidden sm:inline font-display text-[15px] tracking-tight text-o-0">
+                  Orbit
+                </span>
               </button>
 
-              {/* Desktop Nav */}
-              <div className="hidden md:flex items-center gap-1">
+              <div className="hidden md:flex items-center gap-0.5">
                 {menuItems.map((item) => (
                   <Link
                     key={item.title}
                     to={item.href}
-                    className={`relative px-3 py-1.5 rounded-md text-[13.5px] font-medium transition-colors duration-150 ${
-                      isActive(item.href)
-                        ? 'text-o-0'
-                        : 'text-o-2 hover:text-o-0'
+                    className={`relative px-3 py-1.5 rounded-full text-[13px] font-medium transition-colors duration-200 ${
+                      isActive(item.href) ? 'text-o-0' : 'text-o-2 hover:text-o-0'
                     }`}
-                    style={{ letterSpacing: '-0.005em' }}
                   >
                     {isActive(item.href) && (
                       <motion.div
                         layoutId="nav-active-pill"
-                        className="absolute inset-0 rounded-md"
-                        style={{ background: 'rgba(255,255,255,0.06)' }}
-                        transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                        className="absolute inset-0 rounded-full"
+                        style={{ background: 'rgba(255,255,255,0.07)' }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                       />
                     )}
                     <span className="relative">{t(item.title)}</span>
@@ -99,94 +93,96 @@ export default function Navbar() {
 
                 <button
                   onClick={() => setShowCareerGuide(true)}
-                  className="relative px-3 py-1.5 rounded-md text-[13.5px] font-medium text-o-2 hover:text-o-0 transition-colors duration-150 flex items-center gap-1.5 ml-0.5"
-                  style={{ letterSpacing: '-0.005em' }}
+                  className="relative px-3 py-1.5 rounded-full text-[13px] font-medium text-o-2 hover:text-o-0 transition-colors duration-200 flex items-center gap-1.5"
                 >
                   <Sparkles className="w-3 h-3 text-[#00B0FF]" />
-                  Career Guide
+                  Guide
                 </button>
               </div>
 
-              {/* Right actions */}
-              <div className="hidden md:flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-1.5">
                 <LanguageToggle />
                 <ThemeToggle size="sm" />
 
-                <div className="w-px h-4 mx-1" style={{ background: 'var(--o-border-1)' }} />
-
                 {isInitialized && (
                   user ? (
-                    <button onClick={handleDashboardClick} className="btn-o btn-o-primary" style={{ height: 32, padding: '0 12px', fontSize: 13 }}>
-                      {user.role === 'admin' ? 'Admin Panel' : t('nav.dashboard')}
+                    <button onClick={handleDashboardClick} className="btn-o btn-o-primary ml-1" style={{ height: 34, padding: '0 14px', fontSize: 13 }}>
+                      {user.role === 'admin' ? 'Admin' : t('nav.dashboard')}
                     </button>
                   ) : (
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1 ml-1">
                       <button
                         onClick={() => navigate('/login')}
                         className="btn-o btn-o-link"
-                        style={{ height: 32, fontSize: 13 }}
+                        style={{ height: 34, fontSize: 13 }}
                       >
                         Sign in
                       </button>
                       <button
                         onClick={() => setShowEnrollment(true)}
                         className="btn-o btn-o-primary"
-                        style={{ height: 32, padding: '0 14px', fontSize: 13 }}
+                        style={{ height: 34, padding: '0 12px 0 14px', fontSize: 13 }}
                       >
                         Get started
-                        <ArrowRight className="w-3.5 h-3.5" />
+                        <span className="btn-o-icon">
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
                       </button>
                     </div>
                   )
                 )}
               </div>
 
-              {/* Mobile button */}
-              <div className="md:hidden flex items-center gap-2">
+              <div className="md:hidden flex items-center gap-1.5">
                 <ThemeToggle size="sm" />
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="p-2 rounded-md text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.04)] transition-colors duration-150"
+                  className="p-2 rounded-full text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.06)] transition-colors"
+                  aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 >
                   {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </button>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
 
-      {/* ── Mobile Menu ─────────────────────────────────────────────────── */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18 }}
-            className="md:hidden fixed left-0 right-0 top-[56px] z-40 bg-[rgba(8,9,10,0.95)] backdrop-blur-xl border-b border-[var(--o-border-1)]"
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+            className="md:hidden fixed left-3 right-3 top-[72px] z-40 nav-island rounded-[1.25rem] overflow-hidden"
           >
-            <div className="px-4 py-3 space-y-0.5">
-              {menuItems.map((item) => (
-                <Link
+            <div className="px-3 py-3 space-y-0.5">
+              {menuItems.map((item, i) => (
+                <motion.div
                   key={item.title}
-                  to={item.href}
-                  className={`flex items-center gap-2 px-3 py-2.5 rounded-md text-[14px] font-medium transition-colors duration-150 ${
-                    isActive(item.href)
-                      ? 'text-o-0 bg-[rgba(255,255,255,0.06)]'
-                      : 'text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.03)]'
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                  style={{ letterSpacing: '-0.005em' }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.04 * i, duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
                 >
-                  {isActive(item.href) && <span className="w-1 h-3.5 bg-[#00B0FF] rounded-full flex-shrink-0" />}
-                  {t(item.title)}
-                </Link>
+                  <Link
+                    to={item.href}
+                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-[14px] font-medium transition-colors ${
+                      isActive(item.href)
+                        ? 'text-o-0 bg-[rgba(255,255,255,0.07)]'
+                        : 'text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.04)]'
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {isActive(item.href) && <span className="w-1 h-3.5 bg-[#00B0FF] rounded-full flex-shrink-0" />}
+                    {t(item.title)}
+                  </Link>
+                </motion.div>
               ))}
 
               <button
                 onClick={() => { setShowCareerGuide(true); setIsOpen(false); }}
-                className="flex items-center gap-2 w-full px-3 py-2.5 rounded-md text-[14px] font-medium text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.03)] transition-colors duration-150"
+                className="flex items-center gap-2 w-full px-3 py-2.5 rounded-xl text-[14px] font-medium text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.04)] transition-colors"
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#00B0FF]" />
                 Career Guide
@@ -212,7 +208,9 @@ export default function Navbar() {
                       className="btn-o btn-o-primary w-full"
                     >
                       Get started
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span className="btn-o-icon">
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
                     </button>
                   </div>
                 )
