@@ -496,12 +496,16 @@ export default function Courses() {
               className="relative hidden lg:block"
             >
               <div className="relative rounded-2xl overflow-hidden border border-gray-200 shadow-2xl">
-                <img
-                  src="/images/hero/journey-map.jpg"
-                  alt="Students collaborating with AI tools"
-                  className="w-full h-auto object-cover"
-                  loading="lazy"
-                />
+                <picture>
+                  <source srcSet="/images/orbit/workshop-build.webp" type="image/webp" />
+                  <img
+                    src="/images/orbit/workshop-build.jpg"
+                    alt="Orbit Accelerator workshop — students building and shipping ideas"
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
                 {/* Live badge */}
                 <div className="absolute top-4 left-4 flex items-center gap-2 bg-red-500/90 backdrop-blur-sm px-3 py-1.5 rounded-full">

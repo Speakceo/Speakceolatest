@@ -73,8 +73,8 @@ const About = () => {
               description: 'Confidence through real games, pitches and showcases — not theory.',
               demoLabel: 'Pitch night live',
               span: 'wide',
-              image: '/images/hero/orbit-kids-banner.jpg',
-              imageAlt: 'Students practicing public speaking live',
+              image: '/images/orbit/pitch-night.jpg',
+              imageAlt: 'Students presenting at Orbit Innovate Pitch Night',
               icon: <Mic className="w-4 h-4" />,
             },
             {
@@ -82,8 +82,8 @@ const About = () => {
               description: 'Build, ship and sell from day one with founder mentors.',
               demoLabel: 'Ship a product',
               span: 'lg',
-              image: '/images/courses/startup-fundamentals.jpg',
-              imageAlt: 'Students building startup projects',
+              image: '/images/orbit/workshop-build.jpg',
+              imageAlt: 'Orbit students building prototypes in the accelerator workshop',
               icon: <Lightbulb className="w-4 h-4" />,
             },
             {
@@ -100,8 +100,8 @@ const About = () => {
               description: 'Weekly access to founders who have actually shipped ventures.',
               demoLabel: '50+ founder mentors',
               span: 'md',
-              image: '/images/hero/success-story.jpg',
-              imageAlt: 'Mentor working with a young entrepreneur',
+              image: '/images/orbit/logistics-hub.jpg',
+              imageAlt: 'Students running a real Orbit logistics venture',
               icon: <Users className="w-4 h-4" />,
             },
           ]}
@@ -128,19 +128,19 @@ const About = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               {[
                 {
-                  src: '/images/hero/main-hero.jpg',
-                  alt: 'Orbit students collaborating in a live session',
-                  caption: 'Live cohort energy',
+                  src: '/images/orbit/workshop-build.jpg',
+                  alt: 'Orbit Accelerator workshop — students building a robotic prototype',
+                  caption: 'Ideate · Build · Launch',
                 },
                 {
-                  src: '/assets/kids-play-store.jpg',
-                  alt: 'A student project live on the app store',
-                  caption: 'Projects that ship',
+                  src: '/images/orbit/pitch-night.jpg',
+                  alt: 'Orbit Innovate Pitch Night on stage',
+                  caption: 'Innovate Pitch Night',
                 },
                 {
-                  src: '/images/courses/marketing-sales.jpg',
-                  alt: 'Marketing and storytelling practice',
-                  caption: 'Sell & tell drills',
+                  src: '/images/orbit/logistics-hub.jpg',
+                  alt: 'Orbit Logistics backyard shipping hub',
+                  caption: 'Ventures that ship',
                 },
               ].map((shot, i) => (
                 <motion.figure
@@ -151,13 +151,16 @@ const About = () => {
                   transition={{ delay: i * 0.06, duration: 0.45 }}
                   className="relative overflow-hidden rounded-2xl border border-[var(--o-border-1)] aspect-[4/5] sm:aspect-[3/4]"
                 >
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    className="absolute inset-0 h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <picture>
+                    <source srcSet={shot.src.replace(/\.jpg$/i, '.webp')} type="image/webp" />
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 to-transparent">
                     <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/90">
                       {shot.caption}

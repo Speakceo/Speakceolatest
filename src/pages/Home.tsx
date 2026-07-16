@@ -494,57 +494,60 @@ export default function Home() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
               {[
                 {
-                  src: '/images/hero/orbit-kids-banner.jpg',
-                  alt: 'Students in a live Orbit mentor session',
-                  caption: 'Live mentor sessions',
+                  src: '/images/orbit/workshop-build.jpg',
+                  alt: 'Orbit students building a prototype in the accelerator workshop',
+                  caption: 'Ideate · Build · Launch',
                   className: 'col-span-2 row-span-1 aspect-[16/10] lg:aspect-auto lg:min-h-[280px]',
                 },
                 {
-                  src: '/images/hero/success-story.jpg',
-                  alt: 'Student celebrating a project milestone',
-                  caption: 'Pitch & showcase nights',
+                  src: '/images/orbit/pitch-night.jpg',
+                  alt: 'Students presenting at Orbit Innovate Pitch Night',
+                  caption: 'Innovate Pitch Night',
                   className: 'aspect-[4/5] lg:aspect-auto lg:min-h-[280px]',
                 },
                 {
-                  src: '/assets/kids-play-store.jpg',
-                  alt: 'Student project published to the app store',
-                  caption: 'Shipped real projects',
+                  src: '/images/orbit/logistics-hub.jpg',
+                  alt: 'Kids running Orbit Logistics backyard shipping hub',
+                  caption: 'Real ventures ship',
                   className: 'aspect-[4/5] lg:aspect-auto lg:min-h-[280px]',
                 },
                 {
-                  src: '/images/courses/startup-fundamentals.jpg',
-                  alt: 'Startup fundamentals workshop',
-                  caption: 'Founder workshops',
-                  className: 'aspect-square lg:col-span-1 lg:min-h-[220px]',
+                  src: '/images/hero/orbit-kids-banner.jpg',
+                  alt: 'Students collaborating on AI in an Orbit session',
+                  caption: 'Live mentor sessions',
+                  className: 'col-span-2 sm:col-span-1 aspect-square lg:min-h-[220px]',
                 },
                 {
-                  src: '/images/courses/marketing-sales.jpg',
-                  alt: 'Marketing and sales practice',
-                  caption: 'Sell & tell practice',
-                  className: 'aspect-square lg:col-span-1 lg:min-h-[220px]',
+                  src: '/images/hero/orbit-kids-laptop.jpg',
+                  alt: 'Orbit students with laptop ready to build',
+                  caption: 'AI studio builds',
+                  className: 'col-span-2 sm:col-span-1 aspect-square lg:min-h-[220px]',
                 },
                 {
-                  src: '/images/hero/journey-map.jpg',
-                  alt: '180-day learning journey map',
-                  caption: '180-day journey map',
+                  src: '/images/orbit/logistics-hub.jpg',
+                  alt: 'Kids packing and shipping Eco-Pact orders for Orbit Logistics',
+                  caption: 'From build to customer',
                   className: 'col-span-2 aspect-[16/9] lg:min-h-[220px]',
                 },
               ].map((shot, i) => (
                 <motion.figure
-                  key={shot.src}
+                  key={`${shot.src}-${shot.caption}`}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ delay: i * 0.05, duration: 0.5, ease }}
                   className={`relative overflow-hidden rounded-2xl border border-[var(--o-border-1)] bg-o-2 ${shot.className}`}
                 >
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    className="absolute inset-0 h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <picture>
+                    <source srcSet={shot.src.replace(/\.jpg$/i, '.webp')} type="image/webp" />
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <figcaption className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/80 via-black/35 to-transparent">
                     <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-white/90">
                       {shot.caption}
@@ -579,8 +582,8 @@ export default function Home() {
               description: 'Pricing battles, stock markets, lemonade stands — story-driven business mechanics.',
               demoLabel: '10 live simulations',
               span: 'wide',
-              image: '/images/courses/business-planning.jpg',
-              imageAlt: 'Students playing business simulation games',
+              image: '/images/orbit/workshop-build.jpg',
+              imageAlt: 'Orbit students building a prototype in the accelerator workshop',
               icon: <Gamepad2 className="w-4 h-4" />,
             },
             {
@@ -597,8 +600,8 @@ export default function Home() {
               description: '52 live classes. Mentor-guided from beginner to confident young entrepreneur.',
               demoLabel: '52 mentor sessions',
               span: 'md',
-              image: '/images/hero/journey-map.jpg',
-              imageAlt: 'Orbit 180-day curriculum journey',
+              image: '/images/orbit/pitch-night.jpg',
+              imageAlt: 'Students presenting at Orbit Innovate Pitch Night',
               icon: <Target className="w-4 h-4" />,
             },
             {
@@ -606,8 +609,8 @@ export default function Home() {
               description: '500+ opportunities mapped by age, country and interest.',
               demoLabel: '500+ matches',
               span: 'md',
-              image: '/images/courses/financial-management.jpg',
-              imageAlt: 'Scholarship and finance planning session',
+              image: '/images/hero/orbit-kids-banner.jpg',
+              imageAlt: 'Orbit students collaborating on AI learning',
               icon: <GraduationCap className="w-4 h-4" />,
             },
             {
@@ -615,8 +618,8 @@ export default function Home() {
               description: 'Websites, games, pitch decks, certificates — proof for colleges & competitions.',
               demoLabel: '10+ verified pieces',
               span: 'md',
-              image: '/assets/kids-play-store.jpg',
-              imageAlt: 'Student portfolio project published online',
+              image: '/images/orbit/logistics-hub.jpg',
+              imageAlt: 'Kids running a real Orbit logistics shipping venture',
               icon: <Trophy className="w-4 h-4" />,
             },
             {
@@ -624,8 +627,8 @@ export default function Home() {
               description: 'Sunday office hours and 1:1 reviews with operators who have shipped ventures.',
               demoLabel: '50+ expert mentors',
               span: 'wide',
-              image: '/images/hero/success-story.jpg',
-              imageAlt: 'Mentor celebrating with a student',
+              image: '/images/orbit/pitch-night.jpg',
+              imageAlt: 'Orbit Accelerator pitch night with mentors and judges',
               icon: <Sparkles className="w-4 h-4" />,
             },
           ]}

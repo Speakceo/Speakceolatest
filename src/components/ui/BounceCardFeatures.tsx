@@ -44,6 +44,26 @@ const DEFAULT_GRADIENTS = [
   'from-[#1c1428] via-[#1a3060] to-[#00B0FF]',
 ];
 
+function webpFor(src: string) {
+  return src.replace(/\.(jpe?g|png)$/i, '.webp');
+}
+
+function CardPhoto({ src, alt }: { src: string; alt: string }) {
+  const webp = webpFor(src);
+  return (
+    <picture>
+      {webp !== src && <source srcSet={webp} type="image/webp" />}
+      <img
+        src={src}
+        alt={alt}
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  );
+}
+
 function BounceCard({
   feature,
   index,
@@ -77,13 +97,7 @@ function BounceCard({
       >
         {feature.image ? (
           <>
-            <img
-              src={feature.image}
-              alt={feature.imageAlt ?? ''}
-              className="absolute inset-0 h-full w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            <CardPhoto src={feature.image} alt={feature.imageAlt ?? ''} />
             <div
               className="pointer-events-none absolute inset-0"
               style={{
