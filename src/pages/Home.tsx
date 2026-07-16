@@ -491,47 +491,29 @@ export default function Home() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               {[
                 {
                   src: '/images/orbit/workshop-build.jpg',
                   alt: 'Orbit students building a prototype in the accelerator workshop',
                   caption: 'Ideate · Build · Launch',
-                  className: 'col-span-2 row-span-1 aspect-[16/10] lg:aspect-auto lg:min-h-[280px]',
+                  className: 'sm:col-span-1 aspect-[4/5] sm:aspect-[3/4] lg:min-h-[320px]',
                 },
                 {
                   src: '/images/orbit/pitch-night.jpg',
                   alt: 'Students presenting at Orbit Innovate Pitch Night',
                   caption: 'Innovate Pitch Night',
-                  className: 'aspect-[4/5] lg:aspect-auto lg:min-h-[280px]',
+                  className: 'sm:col-span-1 aspect-[4/5] sm:aspect-[3/4] lg:min-h-[320px]',
                 },
                 {
                   src: '/images/orbit/logistics-hub.jpg',
                   alt: 'Kids running Orbit Logistics backyard shipping hub',
                   caption: 'Real ventures ship',
-                  className: 'aspect-[4/5] lg:aspect-auto lg:min-h-[280px]',
-                },
-                {
-                  src: '/images/hero/orbit-kids-banner.jpg',
-                  alt: 'Students collaborating on AI in an Orbit session',
-                  caption: 'Live mentor sessions',
-                  className: 'col-span-2 sm:col-span-1 aspect-square lg:min-h-[220px]',
-                },
-                {
-                  src: '/images/hero/orbit-kids-laptop.jpg',
-                  alt: 'Orbit students with laptop ready to build',
-                  caption: 'AI studio builds',
-                  className: 'col-span-2 sm:col-span-1 aspect-square lg:min-h-[220px]',
-                },
-                {
-                  src: '/images/orbit/logistics-hub.jpg',
-                  alt: 'Kids packing and shipping Eco-Pact orders for Orbit Logistics',
-                  caption: 'From build to customer',
-                  className: 'col-span-2 aspect-[16/9] lg:min-h-[220px]',
+                  className: 'sm:col-span-1 aspect-[4/5] sm:aspect-[3/4] lg:min-h-[320px]',
                 },
               ].map((shot, i) => (
                 <motion.figure
-                  key={`${shot.src}-${shot.caption}`}
+                  key={shot.src}
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
@@ -582,8 +564,8 @@ export default function Home() {
               description: 'Pricing battles, stock markets, lemonade stands — story-driven business mechanics.',
               demoLabel: '10 live simulations',
               span: 'wide',
-              image: '/images/orbit/workshop-build.jpg',
-              imageAlt: 'Orbit students building a prototype in the accelerator workshop',
+              image: '/images/courses/business-planning.jpg',
+              imageAlt: 'Business planning and strategy workshop materials',
               icon: <Gamepad2 className="w-4 h-4" />,
             },
             {
@@ -591,8 +573,8 @@ export default function Home() {
               description: 'Website Builder, Pitch Writer, Image Generator. Kids command AI from day one.',
               demoLabel: '100+ AI tools',
               span: 'lg',
-              image: '/images/hero/orbit-kids-laptop.jpg',
-              imageAlt: 'Student using AI tools on a laptop',
+              image: '/images/courses/startup-fundamentals.jpg',
+              imageAlt: 'Startup fundamentals — MVP and product thinking',
               icon: <Brain className="w-4 h-4" />,
             },
             {
@@ -600,8 +582,8 @@ export default function Home() {
               description: '52 live classes. Mentor-guided from beginner to confident young entrepreneur.',
               demoLabel: '52 mentor sessions',
               span: 'md',
-              image: '/images/orbit/pitch-night.jpg',
-              imageAlt: 'Students presenting at Orbit Innovate Pitch Night',
+              image: '/images/hero/main-hero.jpg',
+              imageAlt: 'Students collaborating on a live project session',
               icon: <Target className="w-4 h-4" />,
             },
             {
@@ -609,8 +591,8 @@ export default function Home() {
               description: '500+ opportunities mapped by age, country and interest.',
               demoLabel: '500+ matches',
               span: 'md',
-              image: '/images/hero/orbit-kids-banner.jpg',
-              imageAlt: 'Orbit students collaborating on AI learning',
+              image: '/images/courses/financial-management.jpg',
+              imageAlt: 'Financial literacy and scholarship planning',
               icon: <GraduationCap className="w-4 h-4" />,
             },
             {
@@ -618,8 +600,8 @@ export default function Home() {
               description: 'Websites, games, pitch decks, certificates — proof for colleges & competitions.',
               demoLabel: '10+ verified pieces',
               span: 'md',
-              image: '/images/orbit/logistics-hub.jpg',
-              imageAlt: 'Kids running a real Orbit logistics shipping venture',
+              image: '/images/courses/marketing-sales.jpg',
+              imageAlt: 'Marketing and storytelling practice materials',
               icon: <Trophy className="w-4 h-4" />,
             },
             {
@@ -627,8 +609,7 @@ export default function Home() {
               description: 'Sunday office hours and 1:1 reviews with operators who have shipped ventures.',
               demoLabel: '50+ expert mentors',
               span: 'wide',
-              image: '/images/orbit/pitch-night.jpg',
-              imageAlt: 'Orbit Accelerator pitch night with mentors and judges',
+              // Gradient panel only — photos already used above on this page
               icon: <Sparkles className="w-4 h-4" />,
             },
           ]}
