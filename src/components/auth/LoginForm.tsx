@@ -72,12 +72,12 @@ export default function LoginForm() {
 
         <div className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1.5">
+            <label htmlFor="email" className="block text-sm font-medium text-o-1 mb-1.5">
               Email address
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                <Mail className="h-4 w-4 text-gray-500" />
+                <Mail className="h-4 w-4 text-o-3" />
               </div>
               <input
                 id="email"
@@ -85,19 +85,19 @@ export default function LoginForm() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-3 py-3 bg-white/[0.03] border border-white/[0.08] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#1876D2]/50 focus:ring-1 focus:ring-[#1876D2]/50 text-sm transition-all"
+                className="w-full pl-10 pr-3 py-3 bg-o-3 border border-[var(--o-border-1)] rounded-xl text-o-0 placeholder:text-o-3 focus:outline-none focus:border-[#1876D2]/50 focus:ring-1 focus:ring-[#1876D2]/50 text-sm transition-all"
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-1.5">
+            <label htmlFor="password" className="block text-sm font-medium text-o-1 mb-1.5">
               Password
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                <Lock className="h-4 w-4 text-gray-500" />
+                <Lock className="h-4 w-4 text-o-3" />
               </div>
               <input
                 id="password"
@@ -105,7 +105,7 @@ export default function LoginForm() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-3 py-3 bg-white/[0.03] border border-white/[0.08] rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#1876D2]/50 focus:ring-1 focus:ring-[#1876D2]/50 text-sm transition-all"
+                className="w-full pl-10 pr-3 py-3 bg-o-3 border border-[var(--o-border-1)] rounded-xl text-o-0 placeholder:text-o-3 focus:outline-none focus:border-[#1876D2]/50 focus:ring-1 focus:ring-[#1876D2]/50 text-sm transition-all"
                 placeholder="••••••••"
               />
             </div>
@@ -119,13 +119,13 @@ export default function LoginForm() {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="h-4 w-4 rounded border-white/20 bg-white/5 text-[#1876D2] focus:ring-[#1876D2]/50"
+              className="h-4 w-4 rounded border-[var(--o-border-1)] bg-o-3 text-[#1876D2] focus:ring-[#1876D2]/50"
             />
-            <label htmlFor="remember-me" className="ml-2 text-sm text-gray-400">
+            <label htmlFor="remember-me" className="ml-2 text-sm text-o-2">
               Remember me
             </label>
           </div>
-          <Link to="/forgot-password" className="text-sm font-medium text-[#00B0FF] hover:text-white transition-colors">
+          <Link to="/forgot-password" className="text-sm font-medium text-[#00B0FF] hover:text-o-0 transition-colors">
             Forgot password?
           </Link>
         </div>
@@ -143,13 +143,13 @@ export default function LoginForm() {
         </button>
 
         {/* Quick access */}
-        <div className="pt-4 border-t border-white/[0.06]">
-          <p className="text-xs text-gray-500 text-center mb-3">Quick access</p>
+        <div className="pt-4 border-t border-[var(--o-border-1)]">
+          <p className="text-xs text-o-3 text-center mb-3">Quick access</p>
           <div className="flex gap-2">
-            <button type="button" onClick={fillDemoCredentials} className="flex-1 py-2.5 text-xs font-medium text-gray-400 bg-white/[0.03] border border-white/[0.06] rounded-lg hover:bg-white/[0.06] hover:text-white transition-all">
+            <button type="button" onClick={fillDemoCredentials} className="flex-1 py-2.5 text-xs font-medium text-o-2 bg-o-3 border border-[var(--o-border-1)] rounded-lg hover:bg-[var(--o-ghost-hover)] hover:text-o-0 transition-all">
               Student Demo
             </button>
-            <button type="button" onClick={fillAdminCredentials} className="flex-1 py-2.5 text-xs font-medium text-gray-400 bg-white/[0.03] border border-white/[0.06] rounded-lg hover:bg-white/[0.06] hover:text-white transition-all">
+            <button type="button" onClick={fillAdminCredentials} className="flex-1 py-2.5 text-xs font-medium text-o-2 bg-o-3 border border-[var(--o-border-1)] rounded-lg hover:bg-[var(--o-ghost-hover)] hover:text-o-0 transition-all">
               Admin Demo
             </button>
           </div>

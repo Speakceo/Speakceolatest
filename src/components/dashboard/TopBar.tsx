@@ -16,6 +16,7 @@ import {
   Star
 } from 'lucide-react';
 import { useUserStore } from '../../lib/store';
+import ThemeToggle from '../ThemeToggle';
 
 export default function TopBar() {
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ export default function TopBar() {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-[#0c1222]/80 backdrop-blur-xl border-b border-white/[0.04]">
+    <header className="sticky top-0 z-30 bg-[color-mix(in_srgb,var(--o-bg-0)_88%,transparent)] backdrop-blur-xl border-b border-[var(--o-border-1)]">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between gap-4">
           {/* Left - Search */}
@@ -107,13 +108,13 @@ export default function TopBar() {
                 searchFocused ? 'ring-1 ring-[#1876D2]/40' : ''
               }`}>
                 <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                  <Search className={`h-4 w-4 transition-colors ${searchFocused ? 'text-[#00B0FF]' : 'text-gray-500'}`} />
+                  <Search className={`h-4 w-4 transition-colors ${searchFocused ? 'text-[#00B0FF]' : 'text-o-3'}`} />
                 </div>
                 <input
                   type="text"
                   name="search"
                   placeholder="Search courses, tools, tasks..."
-                  className="block w-full rounded-xl border-0 py-2 pl-9 pr-3 bg-white/[0.04] text-white text-sm placeholder:text-gray-500 focus:outline-none focus:bg-white/[0.06]"
+                  className="block w-full rounded-xl border border-[var(--o-border-1)] py-2 pl-9 pr-3 bg-o-2 text-o-0 text-sm placeholder:text-o-3 focus:outline-none focus:border-[var(--o-accent-ring)]"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => setSearchFocused(true)}
@@ -141,22 +142,22 @@ export default function TopBar() {
             <div className="relative">
               <button
                 type="button"
-                className="notifications-trigger relative p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/[0.04] transition-colors"
+                className="notifications-trigger relative p-2 rounded-xl text-o-2 hover:text-o-0 hover:bg-[var(--o-ghost-hover)] transition-colors"
                 onClick={() => setShowNotifications(!showNotifications)}
               >
                 <Bell className="h-[18px] w-[18px]" />
                 {hasNewNotifications && (
-                  <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-[#00B0FF] ring-2 ring-[#0c1222]" />
+                  <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-[#00B0FF] ring-2 ring-[var(--o-bg-0)]" />
                 )}
               </button>
               
               {showNotifications && (
                 <div 
                   ref={notificationsRef}
-                  className="absolute right-0 mt-2 w-80 origin-top-right rounded-2xl bg-[#111827]/95 backdrop-blur-xl py-1 shadow-2xl border border-white/[0.06]"
+                  className="absolute right-0 mt-2 w-80 origin-top-right rounded-2xl bg-o-2 backdrop-blur-xl py-1 shadow-2xl border border-[var(--o-border-1)]"
                 >
-                  <div className="flex items-center justify-between px-4 pt-3 pb-2 border-b border-white/[0.04]">
-                    <h3 className="text-sm font-semibold text-white">Notifications</h3>
+                  <div className="flex items-center justify-between px-4 pt-3 pb-2 border-b border-[var(--o-border-1)]">
+                    <h3 className="text-sm font-semibold text-o-0">Notifications</h3>
                     <button onClick={markAllNotificationsAsRead} className="text-[10px] text-[#00B0FF] hover:underline font-medium">
                       Mark all read
                     </button>
@@ -164,22 +165,22 @@ export default function TopBar() {
                   
                   <div className="max-h-64 overflow-y-auto py-1">
                     {notifications.map((n) => (
-                      <div key={n.id} className={`px-4 py-3 hover:bg-white/[0.02] transition-colors ${!n.read ? 'bg-[#1876D2]/5' : ''}`}>
+                      <div key={n.id} className={`px-4 py-3 hover:bg-[var(--o-ghost-bg)] transition-colors ${!n.read ? 'bg-[#1876D2]/5' : ''}`}>
                         <div className="flex gap-3">
                           <span className="text-lg">{n.emoji}</span>
                           <div className="flex-1 min-w-0">
                             <div className="flex justify-between items-start">
-                              <p className="text-xs font-medium text-white">{n.title}</p>
-                              <span className="text-[10px] text-gray-500 ml-2 flex-shrink-0">{n.time}</span>
+                              <p className="text-xs font-medium text-o-0">{n.title}</p>
+                              <span className="text-[10px] text-o-3 ml-2 flex-shrink-0">{n.time}</span>
                             </div>
-                            <p className="text-[11px] text-gray-400 mt-0.5">{n.description}</p>
+                            <p className="text-[11px] text-o-2 mt-0.5">{n.description}</p>
                           </div>
                         </div>
                       </div>
                     ))}
                   </div>
                   
-                  <div className="border-t border-white/[0.04] px-4 py-2">
+                  <div className="border-t border-[var(--o-border-1)] px-4 py-2">
                     <button className="text-[11px] text-[#00B0FF] hover:underline w-full text-center font-medium" onClick={() => navigate('/dashboard/notifications')}>
                       View all notifications
                     </button>
@@ -188,10 +189,12 @@ export default function TopBar() {
               )}
             </div>
             
+            <ThemeToggle size="sm" className="mr-0.5" />
+
             {/* Settings */}
             <button
               type="button"
-              className="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/[0.04] transition-colors"
+              className="p-2 rounded-xl text-o-2 hover:text-o-0 hover:bg-[var(--o-ghost-hover)] transition-colors"
               onClick={() => navigate('/dashboard/settings')}
             >
               <Settings className="h-[18px] w-[18px]" />
@@ -201,7 +204,7 @@ export default function TopBar() {
             <div className="relative ml-1">
               <button
                 type="button"
-                className="user-menu-trigger flex items-center gap-2 rounded-xl p-1.5 hover:bg-white/[0.04] transition-colors"
+                className="user-menu-trigger flex items-center gap-2 rounded-xl p-1.5 hover:bg-[var(--o-ghost-hover)] transition-colors"
                 onClick={() => setShowUserMenu(!showUserMenu)}
               >
                 <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-[#1876D2] to-[#00B0FF] flex items-center justify-center overflow-hidden">
@@ -215,7 +218,7 @@ export default function TopBar() {
                   <span className="text-xs font-medium text-gray-300 truncate max-w-[80px]">
                     {user?.name || 'User'}
                   </span>
-                  <ChevronDown className="ml-0.5 h-3 w-3 text-gray-500" />
+                  <ChevronDown className="ml-0.5 h-3 w-3 text-o-3" />
                 </div>
               </button>
               
@@ -224,9 +227,9 @@ export default function TopBar() {
                   ref={userMenuRef}
                   className="absolute right-0 mt-2 w-52 origin-top-right rounded-2xl bg-[#111827]/95 backdrop-blur-xl py-1 shadow-2xl border border-white/[0.06]"
                 >
-                  <div className="px-4 py-3 border-b border-white/[0.04]">
-                    <p className="text-sm font-medium text-white">{user?.name || 'User'}</p>
-                    <p className="text-[11px] text-gray-500 truncate">{user?.email || 'user@example.com'}</p>
+                  <div className="px-4 py-3 border-b border-[var(--o-border-1)]">
+                    <p className="text-sm font-medium text-o-0">{user?.name || 'User'}</p>
+                    <p className="text-[11px] text-o-3 truncate">{user?.email || 'user@example.com'}</p>
                     <div className="flex items-center gap-3 mt-2">
                       <div className="flex items-center gap-1">
                         <Zap className="h-3 w-3 text-[#00B0FF]" />
@@ -240,21 +243,21 @@ export default function TopBar() {
                   </div>
                   
                   <div className="py-1">
-                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-white/[0.04] transition-colors" onClick={() => navigate('/dashboard/profile')}>
-                      <User className="mr-2.5 h-3.5 w-3.5 text-gray-500" />
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/profile')}>
+                      <User className="mr-2.5 h-3.5 w-3.5 text-o-3" />
                       Your Profile
                     </button>
-                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-white/[0.04] transition-colors" onClick={() => navigate('/dashboard/achievements')}>
-                      <Trophy className="mr-2.5 h-3.5 w-3.5 text-gray-500" />
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/achievements')}>
+                      <Trophy className="mr-2.5 h-3.5 w-3.5 text-o-3" />
                       Achievements
                     </button>
-                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-white/[0.04] transition-colors" onClick={() => navigate('/dashboard/settings')}>
-                      <Settings className="mr-2.5 h-3.5 w-3.5 text-gray-500" />
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/settings')}>
+                      <Settings className="mr-2.5 h-3.5 w-3.5 text-o-3" />
                       Settings
                     </button>
                   </div>
                   
-                  <div className="border-t border-white/[0.04] pt-1 pb-1">
+                  <div className="border-t border-[var(--o-border-1)] pt-1 pb-1">
                     <button className="flex w-full items-center px-4 py-2 text-xs text-red-400 hover:bg-red-500/5 transition-colors" onClick={handleLogout}>
                       <LogOut className="mr-2.5 h-3.5 w-3.5" />
                       Sign out

@@ -27,13 +27,13 @@ class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-950">
-          <div className="text-center p-8 bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/[0.06] max-w-md">
+        <div className="min-h-screen flex items-center justify-center bg-o-0">
+          <div className="text-center p-8 bg-o-2 backdrop-blur-xl rounded-2xl border border-[var(--o-border-1)] max-w-md">
             <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-red-500/10 flex items-center justify-center">
               <span className="text-3xl">⚠️</span>
             </div>
-            <h2 className="text-xl font-bold text-white mb-3">Something went wrong</h2>
-            <p className="text-gray-400 mb-6 text-sm">
+            <h2 className="text-xl font-bold text-o-0 mb-3">Something went wrong</h2>
+            <p className="text-o-2 mb-6 text-sm">
               {this.state.error?.message || 'An unexpected error occurred'}
             </p>
             <button
@@ -56,16 +56,16 @@ class ErrorBoundary extends React.Component<
 
 // Premium Loading Component
 const LoadingSpinner = ({ message = "Loading dashboard..." }: { message?: string }) => (
-  <div className="min-h-screen flex items-center justify-center bg-slate-950">
+  <div className="min-h-screen flex items-center justify-center bg-o-0">
     <div className="text-center">
       <div className="relative w-16 h-16 mx-auto mb-6">
-        <div className="absolute inset-0 rounded-full border-2 border-white/[0.06]" />
+        <div className="absolute inset-0 rounded-full border-2 border-[var(--o-border-1)]" />
         <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-[#00B0FF] animate-spin" />
         <div className="absolute inset-2 rounded-full bg-gradient-to-br from-[#1876D2]/20 to-[#00B0FF]/20 flex items-center justify-center">
           <Rocket className="h-6 w-6 text-[#00B0FF]" />
         </div>
       </div>
-      <p className="text-gray-400 text-sm font-medium">{message}</p>
+      <p className="text-o-2 text-sm font-medium">{message}</p>
     </div>
   </div>
 );
@@ -146,10 +146,10 @@ export default function DashboardLayout() {
   // Show error state
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <div className="text-center p-8 bg-white/[0.03] backdrop-blur-xl rounded-2xl border border-white/[0.06]">
-          <h2 className="text-xl font-bold text-white mb-3">Connection Error</h2>
-          <p className="text-gray-400 mb-6 text-sm">{error}</p>
+      <div className="min-h-screen flex items-center justify-center bg-o-0">
+        <div className="text-center p-8 bg-o-2 backdrop-blur-xl rounded-2xl border border-[var(--o-border-1)]">
+          <h2 className="text-xl font-bold text-o-0 mb-3">Connection Error</h2>
+          <p className="text-o-2 mb-6 text-sm">{error}</p>
           <button
             onClick={() => {
               setError(null);

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Rocket, User, AlertCircle, CheckCircle, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { loginWithSpeakCEOId, updateStudentName } from '../../lib/offline-auth';
 import { useUserStore } from '../../lib/store';
+import ThemeToggle from '../ThemeToggle';
 
 export default function SpeakCEOLogin() {
   const [speakCeoId, setSpeakCeoId] = useState('');
@@ -38,7 +39,7 @@ export default function SpeakCEOLogin() {
       }
 
       const result = await loginWithSpeakCEOId(speakCeoId);
-      
+
       if (result.isFirstTime) {
         setShowNameEntry(true);
         setSuccess('Welcome to Orbit Student! Please enter your name to get started.');
@@ -69,7 +70,7 @@ export default function SpeakCEOLogin() {
       await updateStudentName(speakCeoId, studentName.trim());
       await initializeAuth();
       setSuccess(`Welcome to Orbit Student, ${studentName}!`);
-      
+
       setTimeout(() => {
         navigate('/dashboard');
       }, 1500);
@@ -80,85 +81,50 @@ export default function SpeakCEOLogin() {
     }
   };
 
-  const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
   return (
     <>
       <Helmet>
         <title>Orbit Student Login | Portal</title>
         <meta name="description" content="Sign in to your dashboard: courses, AI tools, live classes and scholarship prep for ages 8–18." />
-        <meta name="keywords" content="Orbit Student login, Orbit Student portal, Orbit Student sign in, Orbit Student dashboard, orbitstudent login, student portal login, AI student login, Orbit Student account, Orbit Student app" />
-        <meta property="og:title" content="Orbit Student Login" />
-        <meta property="og:description" content="Access your student dashboard, courses and AI tools." />
-        <meta property="og:url" content="https://www.orbitstudent.com/login" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:title" content="Orbit Student Login" />
-        <meta name="twitter:description" content="Student portal: dashboard, courses, AI tools and live classes." />
-        <link rel="canonical" href="https://www.orbitstudent.com/login" />
         <meta name="robots" content="noindex, nofollow" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Orbit Student Login",
-            "description": "Login to the Orbit Student portal. Access AI learning dashboard, courses, AI tools, live classes, and scholarship prep.",
-            "url": "https://www.orbitstudent.com/login",
-            "isPartOf": {
-              "@type": "WebSite",
-              "name": "Orbit Student",
-              "url": "https://www.orbitstudent.com"
-            },
-            "breadcrumb": {
-              "@type": "BreadcrumbList",
-              "itemListElement": [{
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://www.orbitstudent.com"
-              }, {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Login",
-                "item": "https://www.orbitstudent.com/login"
-              }]
-            }
-          })}
-        </script>
+        <link rel="canonical" href="https://www.orbitstudent.com/login" />
       </Helmet>
-      
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-gray-900 to-black flex items-center justify-center p-4">
-        <div className="absolute inset-0 opacity-20">
-          <div className="w-full h-full bg-gradient-to-br from-white/5 to-[#00B0FF]/10 backdrop-blur-3xl"></div>
+
+      <div className="min-h-screen bg-o-0 text-o-0 flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="absolute inset-0 glow-o opacity-70 pointer-events-none" />
+        <div className="absolute inset-0 grid-o opacity-40 pointer-events-none" />
+
+        <div className="absolute top-4 right-4 z-20">
+          <ThemeToggle size="sm" />
         </div>
-        
-        <motion.div 
-          variants={fadeIn}
-          initial="initial"
-          animate="animate"
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
           className="relative w-full max-w-md"
         >
-          <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20">
-            {/* Header */}
+          <div className="card-o p-8">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-2xl mb-6 relative">
-                <Rocket className="h-10 w-10 text-white" />
-                <Sparkles className="absolute -top-2 -right-2 h-6 w-6 text-yellow-300 animate-pulse" />
+              <Link to="/" className="inline-flex mb-6">
+                <img
+                  src="/images/hero/orbit-logo.png"
+                  alt="Orbit Student"
+                  className="orbit-logo-mark h-9 w-auto opacity-90"
+                />
+              </Link>
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-[#1876D2] to-[#00B0FF] rounded-2xl mb-5 relative">
+                <Rocket className="h-7 w-7 text-white" />
+                <Sparkles className="absolute -top-1.5 -right-1.5 h-4 w-4 text-[#f59e0b]" />
               </div>
-              <h1 className="text-3xl font-bold text-white mb-2">Orbit Student Login</h1>
-              <p className="text-gray-300">Enter your Student ID to access your portal</p>
+              <h1 className="font-display text-[1.75rem] text-o-0 mb-2 tracking-tight">Student login</h1>
+              <p className="text-[14px] text-o-2">Enter your Student ID to open your portal</p>
             </div>
 
             {!showNameEntry ? (
-              /* Login Form */
-              <form onSubmit={handleLogin} className="space-y-6">
+              <form onSubmit={handleLogin} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    Student ID
-                  </label>
+                  <label className="block text-[13px] font-medium text-o-1 mb-2">Student ID</label>
                   <div className="relative">
                     <input
                       type="text"
@@ -170,52 +136,43 @@ export default function SpeakCEOLogin() {
                         }
                         setSpeakCeoId(value);
                       }}
-                      placeholder="SpeakCEO001"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
+                      placeholder="Your Student ID"
+                      autoComplete="username"
+                      className="w-full px-4 py-3 pr-11 rounded-xl bg-o-3 border border-[var(--o-border-1)] text-o-0 placeholder:text-o-3 focus:outline-none focus:ring-2 focus:ring-[var(--o-accent-ring)] focus:border-[var(--o-accent)] transition-colors"
                       disabled={loading}
                     />
-                    <User className="absolute right-3 top-3 h-5 w-5 text-gray-400" />
+                    <User className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-o-3" />
                   </div>
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading || !speakCeoId}
-                  className="w-full bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#1876D2]/25 focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 transform hover:scale-105"
+                  className="btn-o btn-o-primary btn-o-lg w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {loading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Logging in...
-                    </div>
-                  ) : (
-                    'Login to Dashboard'
-                  )}
+                  {loading ? 'Logging in…' : 'Login to dashboard'}
                 </button>
               </form>
             ) : (
-              /* Name Entry Form */
-              <form onSubmit={handleNameSubmit} className="space-y-6">
+              <form onSubmit={handleNameSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
-                    What's your name?
-                  </label>
+                  <label className="block text-[13px] font-medium text-o-1 mb-2">What's your name?</label>
                   <input
                     type="text"
                     value={studentName}
                     onChange={(e) => setStudentName(e.target.value)}
                     placeholder="Enter your name"
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1876D2] focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-xl bg-o-3 border border-[var(--o-border-1)] text-o-0 placeholder:text-o-3 focus:outline-none focus:ring-2 focus:ring-[var(--o-accent-ring)] focus:border-[var(--o-accent)] transition-colors"
                     disabled={loading}
                     autoFocus
                   />
                 </div>
 
-                <div className="flex space-x-3">
+                <div className="flex gap-3">
                   <button
                     type="button"
                     onClick={() => setShowNameEntry(false)}
-                    className="flex-1 bg-white/10 text-white py-3 px-6 rounded-xl font-semibold hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300"
+                    className="btn-o btn-o-ghost flex-1"
                     disabled={loading}
                   >
                     Back
@@ -223,58 +180,35 @@ export default function SpeakCEOLogin() {
                   <button
                     type="submit"
                     disabled={loading || !studentName.trim()}
-                    className="flex-1 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white py-3 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#1876D2]/25 focus:outline-none focus:ring-2 focus:ring-[#1876D2] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="btn-o btn-o-primary flex-1 disabled:opacity-50"
                   >
-                    {loading ? (
-                      <div className="flex items-center justify-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Setting up...
-                      </div>
-                    ) : (
-                      'Continue'
-                    )}
+                    {loading ? 'Setting up…' : 'Continue'}
                   </button>
                 </div>
               </form>
             )}
 
-            {/* Messages */}
             {error && (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="mt-4 p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center"
+                className="mt-4 p-3.5 rounded-xl border border-[rgba(220,38,38,0.25)] bg-[rgba(220,38,38,0.08)] flex items-start gap-3"
               >
-                <AlertCircle className="h-5 w-5 text-red-400 mr-3 flex-shrink-0" />
-                <span className="text-red-200 text-sm">{error}</span>
+                <AlertCircle className="h-5 w-5 text-[var(--o-error)] flex-shrink-0 mt-0.5" />
+                <span className="text-[13px] text-[var(--o-error)]">{error}</span>
               </motion.div>
             )}
 
             {success && (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="mt-4 p-4 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center"
+                className="mt-4 p-3.5 rounded-xl border border-[rgba(5,150,105,0.25)] bg-[rgba(5,150,105,0.08)] flex items-start gap-3"
               >
-                <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                <span className="text-green-200 text-sm">{success}</span>
+                <CheckCircle className="h-5 w-5 text-[var(--o-success)] flex-shrink-0 mt-0.5" />
+                <span className="text-[13px] text-[var(--o-success)]">{success}</span>
               </motion.div>
             )}
-
-            {/* SEO-friendly hidden content for search engines */}
-            <div className="sr-only">
-              <h2>Orbit Student Portal Login</h2>
-              <p>Login to your Orbit Student account to access the AI learning dashboard, courses, AI tools, and live classes. Orbit Student is the #1 AI-powered learning portal for kids ages 8-18.</p>
-              <h3>What you get after Orbit Student login:</h3>
-              <ul>
-                <li>AI Learning Dashboard with XP tracking</li>
-                <li>100+ AI Tools — SpeakSmart, MathMentor, WriteRight</li>
-                <li>65+ Interactive Courses</li>
-                <li>Live Classes with Real Entrepreneurs</li>
-                <li>Scholarship Prep & Roadmap</li>
-                <li>Business Simulations & Projects</li>
-              </ul>
-            </div>
           </div>
         </motion.div>
       </div>

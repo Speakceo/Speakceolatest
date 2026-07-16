@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import ThemeToggle from '../ThemeToggle';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -8,20 +10,26 @@ interface AuthLayoutProps {
 
 export default function AuthLayout({ children, title, subtitle }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-      <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-[#1876D2]/8 rounded-full filter blur-[120px]" />
-      <div className="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-[#00B0FF]/6 rounded-full filter blur-[80px]" />
+    <div className="min-h-screen bg-o-0 text-o-0 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div className="absolute inset-0 glow-o opacity-70 pointer-events-none" />
+      <div className="absolute inset-0 grid-o opacity-40 pointer-events-none" />
+
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggle size="sm" />
+      </div>
 
       <div className="relative max-w-md w-full space-y-8">
-        <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl border border-white/[0.06] p-8 shadow-2xl">
+        <div className="card-o p-8">
           <div className="text-center mb-8">
-            <a href="/" className="inline-block mb-6">
-              <img src="/images/hero/orbit-logo.png" alt="Orbit Student" className="h-10 mx-auto brightness-0 invert opacity-90" style={{ filter: 'brightness(0) invert(1) drop-shadow(0 0 8px rgba(0, 176, 255, 0.25))' }} />
-            </a>
-            <h1 className="text-2xl font-bold text-white">{title}</h1>
-            <p className="mt-2 text-sm text-gray-400">{subtitle}</p>
+            <Link to="/" className="inline-block mb-6">
+              <img
+                src="/images/hero/orbit-logo.png"
+                alt="Orbit Student"
+                className="orbit-logo-mark h-10 mx-auto opacity-90"
+              />
+            </Link>
+            <h1 className="font-display text-[1.65rem] text-o-0 tracking-tight">{title}</h1>
+            <p className="mt-2 text-[14px] text-o-2">{subtitle}</p>
           </div>
           {children}
         </div>

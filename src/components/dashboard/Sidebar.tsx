@@ -93,20 +93,20 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
           collapsed ? 'justify-center p-2.5' : 'px-2.5 py-2'
         } ${
           active
-            ? 'bg-[rgba(24,118,210,0.14)] text-[#93c5fd]'
-            : 'text-[#71717a] hover:bg-[rgba(255,255,255,0.04)] hover:text-[#e4e4e7]'
+            ? 'bg-[var(--o-accent-soft)] text-[var(--o-accent-bright)]'
+            : 'text-o-2 hover:bg-[var(--o-ghost-hover)] hover:text-o-0'
         }`}
         title={collapsed ? item.name : ''}
         style={{ minHeight: 36 }}
       >
         {/* Active left accent bar */}
         {active && !collapsed && (
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full bg-[#60a5fa]" />
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 rounded-full bg-[var(--o-accent-bright)]" />
         )}
 
         <item.icon className={`flex-shrink-0 transition-colors ${
           collapsed ? 'h-[18px] w-[18px]' : 'h-4 w-4 mr-2.5'
-        } ${active ? 'text-[#60a5fa]' : 'text-current'}`} />
+        } ${active ? 'text-[var(--o-accent-bright)]' : 'text-current'}`} />
 
         {!collapsed && (
           <span className="text-[13px] font-[500] flex-1 text-left leading-none truncate">
@@ -121,7 +121,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
             item.badge === 'NEW' ? 'bg-[#00B0FF]/12 text-[#00B0FF]' :
             item.badge === '🔥' ? 'text-[13px] leading-none' :
             item.badge === '🎮' ? 'text-[13px] leading-none' :
-            'bg-[rgba(255,255,255,0.06)] text-[#71717a]'
+            'bg-[rgba(255,255,255,0.06)] text-o-2'
           }`}>
             {item.badge}
           </span>
@@ -142,8 +142,8 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
             <Rocket className="h-5 w-5 text-white" />
           </div>
           <div>
-            <h2 className="font-bold text-white text-sm tracking-tight">Orbit Student</h2>
-            <p className="text-[10px] text-gray-500 font-medium">AI Learning Hub</p>
+            <h2 className="font-bold text-o-0 text-sm tracking-tight">Orbit Student</h2>
+            <p className="text-[10px] text-o-3 font-medium">AI Learning Hub</p>
           </div>
         </div>
       )}
@@ -151,7 +151,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
   );
 
   const UserSection = ({ collapsed = false }: { collapsed?: boolean }) => (
-    <div className={`border-t border-[rgba(255,255,255,0.05)] ${collapsed ? 'p-2 space-y-1.5' : 'p-3 space-y-2'}`}>
+    <div className={`border-t border-[var(--o-border-0)] ${collapsed ? 'p-2 space-y-1.5' : 'p-3 space-y-2'}`}>
       {/* XP level card — gamified-app skill pattern */}
       {!collapsed && (
         <div className="rounded-[10px] p-3 mb-1" style={{ background: 'rgba(24,118,210,0.07)', border: '1px solid rgba(24,118,210,0.12)' }}>
@@ -160,8 +160,8 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
               <Zap className="h-3.5 w-3.5 text-white" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-[11px] font-bold text-white leading-none">LV 7 · 1,240 XP</p>
-              <p className="text-[10px] text-[#71717a] mt-0.5">760 XP to Level 8</p>
+              <p className="text-[11px] font-bold text-o-0 leading-none">LV 7 · 1,240 XP</p>
+              <p className="text-[10px] text-o-2 mt-0.5">760 XP to Level 8</p>
             </div>
             <span className="text-[10px] font-bold text-[#ff9600] bg-[rgba(255,150,0,0.1)] border border-[rgba(255,150,0,0.2)] rounded-full px-1.5 py-0.5 flex-shrink-0">🔥 12d</span>
           </div>
@@ -183,16 +183,16 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
             )}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-semibold text-[#e4e4e7] text-[12px] truncate leading-none">{user?.name || 'Student'}</p>
-            <p className="text-[10px] text-[#52525b] truncate mt-0.5">{user?.email || ''}</p>
+            <p className="font-semibold text-o-0 text-[12px] truncate leading-none">{user?.name || 'Student'}</p>
+            <p className="text-[10px] text-o-3 truncate mt-0.5">{user?.email || ''}</p>
           </div>
-          <button onClick={handleLogout} className="p-1.5 rounded-lg text-[#52525b] hover:text-red-400 hover:bg-[rgba(239,68,68,0.06)] transition-colors flex-shrink-0" title="Sign Out">
+          <button onClick={handleLogout} className="p-1.5 rounded-lg text-o-3 hover:text-red-400 hover:bg-[rgba(239,68,68,0.06)] transition-colors flex-shrink-0" title="Sign Out">
             <LogOut className="h-3.5 w-3.5" />
           </button>
         </div>
       ) : (
         <button onClick={handleLogout}
-          className="w-full flex justify-center p-2 rounded-lg text-[#52525b] hover:text-red-400 hover:bg-[rgba(239,68,68,0.06)] transition-colors"
+          className="w-full flex justify-center p-2 rounded-lg text-o-3 hover:text-red-400 hover:bg-[rgba(239,68,68,0.06)] transition-colors"
           title="Sign Out">
           <LogOut className="h-4 w-4" />
         </button>
@@ -206,9 +206,9 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
       <>
         <button 
           onClick={() => setIsMobileOpen(true)}
-          className="lg:hidden fixed top-4 left-4 z-30 p-2.5 rounded-xl bg-white/[0.04] backdrop-blur-xl border border-white/[0.06] shadow-xl"
+          className="lg:hidden fixed top-4 left-4 z-30 p-2.5 rounded-xl bg-[var(--o-ghost-bg)] backdrop-blur-xl border border-[var(--o-border-1)] shadow-xl"
         >
-          <Menu className="h-5 w-5 text-gray-300" />
+          <Menu className="h-5 w-5 text-o-1" />
         </button>
         
         {isMobileOpen && (
@@ -220,12 +220,12 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
         
         <aside className={`fixed top-0 left-0 z-50 h-full w-[260px] backdrop-blur-xl transform transition-transform duration-300 ease-out ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
-        }`} style={{ background: 'var(--od-bg-1)', borderRight: '1px solid var(--od-border-0)' }}>
+        }`} style={{ background: 'var(--o-bg-1)', borderRight: '1px solid var(--o-border-0)' }}>
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between px-4 py-4">
               <LogoSection />
-              <button onClick={() => setIsMobileOpen(false)} className="p-1.5 rounded-lg hover:bg-white/[0.04]">
-                <X className="h-4 w-4 text-gray-500" />
+              <button onClick={() => setIsMobileOpen(false)} className="p-1.5 rounded-lg hover:bg-[var(--o-ghost-hover)]">
+                <X className="h-4 w-4 text-o-3" />
               </button>
             </div>
             
@@ -246,14 +246,14 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
   return (
     <aside className={`fixed top-0 left-0 h-screen flex flex-col z-10 transition-all duration-300 ease-out ${
       isCollapsed ? 'w-[60px]' : 'w-[240px]'
-    }`} style={{ background: 'var(--od-bg-1)', borderRight: '1px solid var(--od-border-0)' }}>
+    }`} style={{ background: 'var(--o-bg-1)', borderRight: '1px solid var(--o-border-0)' }}>
       {/* Logo row */}
-      <div className="flex items-center justify-between" style={{ borderBottom: '1px solid var(--od-border-0)', minHeight: 56 }}>
+      <div className="flex items-center justify-between" style={{ borderBottom: '1px solid var(--o-border-0)', minHeight: 56 }}>
         <LogoSection collapsed={isCollapsed} />
         {!isCollapsed && (
           <button
             onClick={handleCollapse}
-            className="p-1.5 rounded-lg mr-3 text-[#52525b] hover:text-[#a1a1aa] hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+            className="p-1.5 rounded-lg mr-3 text-o-3 hover:text-o-1 hover:bg-[rgba(255,255,255,0.04)] transition-colors"
           >
             <ChevronLeft className="h-3.5 w-3.5" />
           </button>
@@ -261,7 +261,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
         {isCollapsed && (
           <button
             onClick={handleCollapse}
-            className="p-1.5 rounded-lg mx-auto text-[#52525b] hover:text-[#a1a1aa] hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+            className="p-1.5 rounded-lg mx-auto text-o-3 hover:text-o-1 hover:bg-[rgba(255,255,255,0.04)] transition-colors"
           >
             <ChevronLeft className="h-3.5 w-3.5 rotate-180" />
           </button>

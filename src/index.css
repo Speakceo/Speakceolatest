@@ -601,112 +601,112 @@ html, body {
    Automatically re-themes child pages rendered inside the dark dashboard shell.
    Target: anything inside the .bg-\[#0c1222\] layout wrapper.
 */
-.bg-\[\#0c1222\] .bg-white {
+html.dark .od-dashboard-shell .bg-white {
   background-color: rgba(255,255,255,0.025) !important;
   border-color: rgba(255,255,255,0.05) !important;
 }
 
-.bg-\[\#0c1222\] .bg-gray-50,
-.bg-\[\#0c1222\] .bg-gray-100 {
+html.dark .od-dashboard-shell .bg-gray-50,
+html.dark .od-dashboard-shell .bg-gray-100 {
   background-color: rgba(255,255,255,0.015) !important;
 }
 
-.bg-\[\#0c1222\] .border-gray-100,
-.bg-\[\#0c1222\] .border-gray-200,
-.bg-\[\#0c1222\] .border-gray-300 {
+html.dark .od-dashboard-shell .border-gray-100,
+html.dark .od-dashboard-shell .border-gray-200,
+html.dark .od-dashboard-shell .border-gray-300 {
   border-color: rgba(255,255,255,0.05) !important;
 }
 
-.bg-\[\#0c1222\] .text-gray-900 {
+html.dark .od-dashboard-shell .text-gray-900 {
   color: #f1f5f9 !important;
 }
 
-.bg-\[\#0c1222\] .text-gray-800 {
+html.dark .od-dashboard-shell .text-gray-800 {
   color: #e2e8f0 !important;
 }
 
-.bg-\[\#0c1222\] .text-gray-700 {
+html.dark .od-dashboard-shell .text-gray-700 {
   color: #cbd5e1 !important;
 }
 
-.bg-\[\#0c1222\] .text-gray-600 {
+html.dark .od-dashboard-shell .text-gray-600 {
   color: #94a3b8 !important;
 }
 
-.bg-\[\#0c1222\] .text-gray-500 {
+html.dark .od-dashboard-shell .text-gray-500 {
   color: #64748b !important;
 }
 
 /* Ring & focus overrides */
-.bg-\[\#0c1222\] .ring-gray-300,
-.bg-\[\#0c1222\] .ring-inset.ring-gray-300 {
+html.dark .od-dashboard-shell .ring-gray-300,
+html.dark .od-dashboard-shell .ring-inset.ring-gray-300 {
   --tw-ring-color: rgba(255,255,255,0.08) !important;
 }
 
-.bg-\[\#0c1222\] .focus\:ring-indigo-600:focus {
+html.dark .od-dashboard-shell .focus\:ring-indigo-600:focus {
   --tw-ring-color: #1876D2 !important;
 }
 
 /* Input fields inside dashboard */
-.bg-\[\#0c1222\] input,
-.bg-\[\#0c1222\] textarea,
-.bg-\[\#0c1222\] select {
+html.dark .od-dashboard-shell input,
+html.dark .od-dashboard-shell textarea,
+html.dark .od-dashboard-shell select {
   background-color: rgba(255,255,255,0.04) !important;
   color: #f1f5f9 !important;
   border-color: rgba(255,255,255,0.08) !important;
 }
 
-.bg-\[\#0c1222\] input::placeholder,
-.bg-\[\#0c1222\] textarea::placeholder {
+html.dark .od-dashboard-shell input::placeholder,
+html.dark .od-dashboard-shell textarea::placeholder {
   color: #64748b !important;
 }
 
 /* Dashboard gradient backgrounds → dark */
-.bg-\[\#0c1222\] .bg-gradient-to-br.from-indigo-50,
-.bg-\[\#0c1222\] .bg-gradient-to-br.from-blue-50,
-.bg-\[\#0c1222\] .bg-gradient-to-br.from-purple-50 {
+html.dark .od-dashboard-shell .bg-gradient-to-br.from-indigo-50,
+html.dark .od-dashboard-shell .bg-gradient-to-br.from-blue-50,
+html.dark .od-dashboard-shell .bg-gradient-to-br.from-purple-50 {
   background: transparent !important;
 }
 
-.bg-\[\#0c1222\] .min-h-screen.bg-gradient-to-br {
+html.dark .od-dashboard-shell .min-h-screen.bg-gradient-to-br {
   background: transparent !important;
 }
 
 /* Active sidebar item text */
-.bg-\[\#0c1222\] .text-indigo-700 {
+html.dark .od-dashboard-shell .text-indigo-700 {
   color: #00B0FF !important;
 }
 
-.bg-\[\#0c1222\] .bg-indigo-50,
-.bg-\[\#0c1222\] .bg-\[\#E3F2FD\] {
+html.dark .od-dashboard-shell .bg-indigo-50,
+html.dark .od-dashboard-shell .bg-\[\#E3F2FD\] {
   background-color: rgba(24,118,210,0.1) !important;
 }
 
 /* Hover overrides */
-.bg-\[\#0c1222\] .hover\:bg-gray-100:hover,
-.bg-\[\#0c1222\] .hover\:bg-gray-50:hover {
+html.dark .od-dashboard-shell .hover\:bg-gray-100:hover,
+html.dark .od-dashboard-shell .hover\:bg-gray-50:hover {
   background-color: rgba(255,255,255,0.04) !important;
 }
 
 /* Shadow overrides for dark */
-.bg-\[\#0c1222\] .shadow-lg,
-.bg-\[\#0c1222\] .shadow-xl,
-.bg-\[\#0c1222\] .shadow-md {
+html.dark .od-dashboard-shell .shadow-lg,
+html.dark .od-dashboard-shell .shadow-xl,
+html.dark .od-dashboard-shell .shadow-md {
   box-shadow: 0 4px 20px rgba(0,0,0,0.25) !important;
 }
 
 /* Dashboard scrollbar dark */
-.bg-\[\#0c1222\] ::-webkit-scrollbar {
+html.dark .od-dashboard-shell ::-webkit-scrollbar {
   width: 6px;
 }
-.bg-\[\#0c1222\] ::-webkit-scrollbar-track {
+html.dark .od-dashboard-shell ::-webkit-scrollbar-track {
   background: transparent;
 }
-.bg-\[\#0c1222\] ::-webkit-scrollbar-thumb {
+html.dark .od-dashboard-shell ::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.08);
   border-radius: 10px;
 }
-.bg-\[\#0c1222\] ::-webkit-scrollbar-thumb:hover {
+html.dark .od-dashboard-shell ::-webkit-scrollbar-thumb:hover {
   background: rgba(255,255,255,0.15);
 }
 
@@ -717,28 +717,25 @@ html, body {
 
 /* ── Design Tokens ─────────────────────────────────────────────────────── */
 :root {
-  /* Linear-grade dark surfaces */
-  --od-bg-0:  #09090b;     /* deepest canvas — marketing pages */
-  --od-bg-1:  #0f1011;     /* panel / sidebar background */
-  --od-bg-2:  #18181b;     /* card / elevated surface */
-  --od-bg-3:  #27272a;     /* hover state surface */
+  /* Dashboard surfaces — light by default, flipped in html.dark */
+  --od-bg-0:  #f6f7f9;
+  --od-bg-1:  #eef0f4;
+  --od-bg-2:  #ffffff;
+  --od-bg-3:  #e8ebf0;
 
-  /* Text hierarchy (Linear model) */
-  --od-text-0: #fafafa;    /* primary — near white */
-  --od-text-1: #a1a1aa;    /* secondary — muted zinc */
-  --od-text-2: #71717a;    /* tertiary — subdued */
-  --od-text-3: #52525b;    /* quaternary — disabled / timestamps */
+  --od-text-0: #0c0e12;
+  --od-text-1: #5a6270;
+  --od-text-2: #8b93a1;
+  --od-text-3: #a8b0bc;
 
-  /* Orbit brand accent (kept from brand) */
   --od-accent:       #1876D2;
-  --od-accent-bright: #00B0FF;
+  --od-accent-bright: #0090e0;
   --od-accent-hover: #1464b8;
 
-  /* Border scale (Linear semi-transparent white) */
-  --od-border-0: rgba(255,255,255,0.05);  /* ultra-subtle */
-  --od-border-1: rgba(255,255,255,0.08);  /* standard cards */
-  --od-border-2: rgba(255,255,255,0.12);  /* hover / focus */
-  --od-border-3: rgba(255,255,255,0.18);  /* prominent */
+  --od-border-0: rgba(12,14,18,0.06);
+  --od-border-1: rgba(12,14,18,0.09);
+  --od-border-2: rgba(12,14,18,0.14);
+  --od-border-3: rgba(12,14,18,0.2);
 
   /* Duolingo gamification tokens */
   --xp-green:      #58cc02;
@@ -753,6 +750,23 @@ html, body {
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-apple:    cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+
+html.dark {
+  --od-bg-0:  #07080a;
+  --od-bg-1:  #0c0d10;
+  --od-bg-2:  #12141a;
+  --od-bg-3:  #1a1c24;
+  --od-text-0: #fafafa;
+  --od-text-1: #a1a1aa;
+  --od-text-2: #71717a;
+  --od-text-3: #52525b;
+  --od-accent-bright: #00B0FF;
+  --od-border-0: rgba(255,255,255,0.05);
+  --od-border-1: rgba(255,255,255,0.08);
+  --od-border-2: rgba(255,255,255,0.12);
+  --od-border-3: rgba(255,255,255,0.18);
+}
+
 
 /* ── Linear-grade dark cards ───────────────────────────────────────────── */
 .card-od {
@@ -1412,7 +1426,7 @@ html, body, #root {
 /* Kill leftover always-dark marketing shells when light */
 html:not(.dark) .bg-slate-950,
 html:not(.dark) .bg-\[\#050a18\],
-html:not(.dark) .bg-\[\#0c1222\] {
+html:not(.dark) html.dark .od-dashboard-shell {
   background-color: var(--o-bg-0) !important;
   color: var(--o-text-0);
 }
