@@ -62,8 +62,7 @@ export default function Navbar() {
                 <img
                   src="/images/hero/orbit-logo.png"
                   alt="Orbit Student"
-                  className="h-6 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-200"
-                  style={{ filter: 'brightness(0) invert(1)' }}
+                  className="orbit-logo-mark h-6 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-200"
                 />
                 <span className="hidden sm:inline font-display text-[15px] tracking-tight text-o-0">
                   Orbit
@@ -83,7 +82,7 @@ export default function Navbar() {
                       <motion.div
                         layoutId="nav-active-pill"
                         className="absolute inset-0 rounded-full"
-                        style={{ background: 'rgba(255,255,255,0.07)' }}
+                        style={{ background: 'var(--o-ghost-hover)' }}
                         transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                       />
                     )}
@@ -137,7 +136,7 @@ export default function Navbar() {
                 <ThemeToggle size="sm" />
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="p-2 rounded-full text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.06)] transition-colors"
+                  className="p-2 rounded-full text-o-2 hover:text-o-0 hover:bg-[var(--o-ghost-hover)] transition-colors"
                   aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 >
                   {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -169,8 +168,8 @@ export default function Navbar() {
                     to={item.href}
                     className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-[14px] font-medium transition-colors ${
                       isActive(item.href)
-                        ? 'text-o-0 bg-[rgba(255,255,255,0.07)]'
-                        : 'text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.04)]'
+                        ? 'text-o-0 bg-[var(--o-ghost-hover)]'
+                        : 'text-o-2 hover:text-o-0 hover:bg-[var(--o-ghost-bg)]'
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -182,7 +181,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => { setShowCareerGuide(true); setIsOpen(false); }}
-                className="flex items-center gap-2 w-full px-3 py-2.5 rounded-xl text-[14px] font-medium text-o-2 hover:text-o-0 hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+                className="flex items-center gap-2 w-full px-3 py-2.5 rounded-xl text-[14px] font-medium text-o-2 hover:text-o-0 hover:bg-[var(--o-ghost-bg)] transition-colors"
               >
                 <Sparkles className="w-3.5 h-3.5 text-[#00B0FF]" />
                 Career Guide

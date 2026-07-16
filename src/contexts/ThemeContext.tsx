@@ -8,35 +8,42 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [isDark, setIsDark] = useState(() => {
-    // Check localStorage first, then system preference
+function readInitialDark(): boolean {
+  try {
     const saved = localStorage.getItem('speakceo-theme');
-    if (saved) {
-      return saved === 'dark';
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+    if (saved === 'dark' || saved === 'light') return saved === 'dark';
+  } catch {
+    /* ignore */
+  }
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [isDark, setIsDark] = useState(readInitialDark);
 
   useEffect(() => {
-    // Apply theme to document
+    const root = document.documentElement;
     if (isDark) {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
     }
-    
-    // Save to localStorage
-    localStorage.setItem('speakceo-theme', isDark ? 'dark' : 'light');
+    root.style.colorScheme = isDark ? 'dark' : 'light';
+
+    try {
+      localStorage.setItem('speakceo-theme', isDark ? 'dark' : 'light');
+    } catch {
+      /* ignore */
+    }
+
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      meta.setAttribute('content', isDark ? '#07080a' : '#f6f7f9');
+    }
   }, [isDark]);
 
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
-
-  const setTheme = (theme: 'light' | 'dark') => {
-    setIsDark(theme === 'dark');
-  };
+  const toggleTheme = () => setIsDark((prev) => !prev);
+  const setTheme = (theme: 'light' | 'dark') => setIsDark(theme === 'dark');
 
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme, setTheme }}>

@@ -59,8 +59,8 @@ function BounceCard({
       transition={{ delay: index * 0.06, duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       whileHover={{ scale: 0.985, rotate: index % 2 === 0 ? 1.2 : -1.2 }}
       className={cn(
-        'group relative overflow-hidden rounded-[1.35rem] border border-[rgba(255,255,255,0.08)] bg-[rgba(18,20,26,0.85)] p-4 sm:p-5',
-        'shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_24px_48px_-32px_rgba(0,0,0,0.7)]',
+        'group relative overflow-hidden rounded-[1.35rem] border border-[var(--o-border-1)] bg-[var(--o-bg-2)] p-4 sm:p-5',
+        'shadow-[var(--o-card-inset),var(--o-card-shadow)]',
         'cursor-default select-none',
         SPAN[span],
       )}

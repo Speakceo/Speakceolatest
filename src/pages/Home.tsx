@@ -64,7 +64,7 @@ export default function Home() {
         {/* ════════════════════════════════════════════════════════════════
             01 · HERO — brand-first, full-bleed visual, no overlays
         ════════════════════════════════════════════════════════════════ */}
-        <section className="relative overflow-hidden min-h-[100dvh] flex items-end sm:items-center pt-28 pb-16 sm:pt-32 sm:pb-24">
+        <section className="o-on-dark relative overflow-hidden min-h-[100dvh] flex items-end sm:items-center pt-28 pb-16 sm:pt-32 sm:pb-24">
           <div className="absolute inset-0">
             <img
               src="/images/hero/orbit-kids-laptop.jpg"

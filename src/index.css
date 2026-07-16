@@ -1274,24 +1274,66 @@ html, body {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   ORBIT UNIFIED DESIGN SYSTEM — taste upgrade
+   ORBIT UNIFIED DESIGN SYSTEM — taste upgrade + theme-aware tokens
    ─────────────────────────────────────────────────────────────────────────
-   Dark canvas preserved (brand). Type: Syne display + Outfit UI + Plex Mono.
-   Soft ambient depth, floating island nav, double-bezel frames, spring motion.
-   Accent: Orbit cyan only — no purple AI gradients.
+   Light (:root) and dark (html.dark) share one component system.
+   Type: Syne display + Outfit UI + Plex Mono. Accent: Orbit cyan only.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* Surfaces */
+  /* Light — cool paper, not cream / terracotta */
+  --o-bg-0:        #f6f7f9;
+  --o-bg-1:        #eef0f4;
+  --o-bg-2:        #ffffff;
+  --o-bg-3:        #e8ebf0;
+  --o-bg-4:        #dce1e8;
+
+  --o-light-0:     #ffffff;
+  --o-light-1:     #fafafa;
+  --o-light-2:     #f3f4f5;
+
+  --o-text-0:      #0c0e12;
+  --o-text-1:      #2a303c;
+  --o-text-2:      #5a6270;
+  --o-text-3:      #8b93a1;
+
+  --o-border-0:    rgba(12,14,18,0.05);
+  --o-border-1:    rgba(12,14,18,0.09);
+  --o-border-2:    rgba(12,14,18,0.16);
+
+  --o-accent:        #1876D2;
+  --o-accent-bright: #0090e0;
+  --o-accent-soft:   rgba(24,118,210,0.10);
+  --o-accent-ring:   rgba(24,118,210,0.28);
+
+  --o-success:     #059669;
+  --o-warn:        #d97706;
+  --o-error:       #dc2626;
+
+  --o-ease:        cubic-bezier(0.32, 0.72, 0, 1);
+  --o-radius-shell: 1.35rem;
+  --o-radius-core:  1.05rem;
+
+  --o-nav-bg:      rgba(255,255,255,0.78);
+  --o-nav-shadow:  0 16px 40px -24px rgba(15,23,42,0.18);
+  --o-grain-opacity: 0.028;
+  --o-card-inset:  inset 0 1px 0 rgba(255,255,255,0.9);
+  --o-card-shadow: 0 18px 40px -28px rgba(15,23,42,0.18);
+  --o-ghost-bg:    rgba(12,14,18,0.04);
+  --o-ghost-hover: rgba(12,14,18,0.07);
+  --o-chip-bg:     rgba(12,14,18,0.04);
+  --o-glow-a:      rgba(24,118,210,0.10);
+  --o-glow-b:      rgba(0,144,224,0.08);
+  --o-grid-dot:    rgba(12,14,18,0.06);
+  --o-shell-bg:    rgba(12,14,18,0.03);
+}
+
+html.dark {
   --o-bg-0:        #07080a;
   --o-bg-1:        #0c0d10;
   --o-bg-2:        #12141a;
   --o-bg-3:        #1a1c24;
   --o-bg-4:        #242730;
-
-  --o-light-0:     #ffffff;
-  --o-light-1:     #fafafa;
-  --o-light-2:     #f3f4f5;
 
   --o-text-0:      #f4f5f7;
   --o-text-1:      #c8cdd8;
@@ -1311,13 +1353,26 @@ html, body {
   --o-warn:        #f59e0b;
   --o-error:       #f87171;
 
-  --o-ease:        cubic-bezier(0.32, 0.72, 0, 1);
-  --o-radius-shell: 1.35rem;
-  --o-radius-core:  1.05rem;
+  --o-nav-bg:      rgba(10, 11, 14, 0.72);
+  --o-nav-shadow:  0 16px 40px -24px rgba(0,0,0,0.8);
+  --o-grain-opacity: 0.035;
+  --o-card-inset:  inset 0 1px 0 rgba(255,255,255,0.06);
+  --o-card-shadow: 0 18px 40px -28px rgba(0,0,0,0.65);
+  --o-ghost-bg:    rgba(255,255,255,0.04);
+  --o-ghost-hover: rgba(255,255,255,0.08);
+  --o-chip-bg:     rgba(255,255,255,0.04);
+  --o-glow-a:      rgba(0,176,255,0.16);
+  --o-glow-b:      rgba(24,118,210,0.14);
+  --o-grid-dot:    rgba(255,255,255,0.03);
+  --o-shell-bg:    rgba(255,255,255,0.03);
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
 }
 
 html, body {
@@ -1328,16 +1383,17 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-wrap: pretty;
+  transition: background-color 280ms var(--o-ease), color 280ms var(--o-ease);
 }
 
-/* Film grain — fixed, non-interactive (breaks flat digital look) */
+/* Film grain — fixed, non-interactive */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 80;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: var(--o-grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 180px 180px;
@@ -1392,15 +1448,12 @@ input.orbit-field-dark:-webkit-autofill:focus {
   color: var(--o-text-3);
 }
 
-/* Double-bezel card (machined frame) */
 .card-o {
   background: var(--o-bg-2);
   border: 1px solid var(--o-border-1);
   border-radius: var(--o-radius-core);
   padding: 24px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    0 18px 40px -28px rgba(0,0,0,0.65);
+  box-shadow: var(--o-card-inset), var(--o-card-shadow);
   transition: border-color 280ms var(--o-ease), transform 280ms var(--o-ease), background 280ms var(--o-ease);
 }
 .card-o:hover {
@@ -1424,15 +1477,14 @@ input.orbit-field-dark:-webkit-autofill:focus {
   overflow: hidden;
   background: var(--o-bg-2);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
+    var(--o-card-inset),
     0 30px 60px -40px rgba(0,176,255,0.25);
 }
 
-/* Nested shell for premium media */
 .shell-o {
   padding: 6px;
   border-radius: var(--o-radius-shell);
-  background: rgba(255,255,255,0.03);
+  background: var(--o-shell-bg);
   border: 1px solid var(--o-border-0);
 }
 
@@ -1460,22 +1512,22 @@ input.orbit-field-dark:-webkit-autofill:focus {
   border-color: rgba(255,255,255,0.12);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.22),
-    0 10px 28px -12px rgba(24,118,210,0.7);
+    0 10px 28px -12px rgba(24,118,210,0.55);
 }
 .btn-o-primary:hover {
   background: linear-gradient(180deg, #24a0ff 0%, var(--o-accent-bright) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.28),
-    0 14px 32px -10px rgba(0,176,255,0.55);
+    0 14px 32px -10px rgba(0,176,255,0.45);
 }
 
 .btn-o-ghost {
-  background: rgba(255,255,255,0.04);
+  background: var(--o-ghost-bg);
   color: var(--o-text-0);
   border-color: var(--o-border-1);
 }
 .btn-o-ghost:hover {
-  background: rgba(255,255,255,0.08);
+  background: var(--o-ghost-hover);
   border-color: var(--o-border-2);
 }
 
@@ -1514,7 +1566,7 @@ input.orbit-field-dark:-webkit-autofill:focus {
   border-radius: 9999px;
   font-size: 12px;
   font-weight: 500;
-  background: rgba(255,255,255,0.04);
+  background: var(--o-chip-bg);
   border: 1px solid var(--o-border-1);
   color: var(--o-text-1);
 }
@@ -1546,88 +1598,102 @@ input.orbit-field-dark:-webkit-autofill:focus {
   position: absolute;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 55% at 18% 0%, rgba(0,176,255,0.16) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 88% 12%, rgba(24,118,210,0.14) 0%, transparent 50%);
+    radial-gradient(ellipse 70% 55% at 18% 0%, var(--o-glow-a) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 88% 12%, var(--o-glow-b) 0%, transparent 50%);
   inset: 0;
 }
 
 .grid-o {
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+    radial-gradient(circle, var(--o-grid-dot) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
 }
 
-/* Floating island nav shell */
 .nav-island {
-  background: rgba(10, 11, 14, 0.72);
+  background: var(--o-nav-bg);
   border: 1px solid var(--o-border-1);
   backdrop-filter: blur(18px) saturate(1.2);
   -webkit-backdrop-filter: blur(18px) saturate(1.2);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    0 16px 40px -24px rgba(0,0,0,0.8);
+    var(--o-card-inset),
+    var(--o-nav-shadow);
+}
+
+/* Sections that stay dark (photo heroes) regardless of theme */
+.o-on-dark {
+  --o-text-0:      #f4f5f7;
+  --o-text-1:      #c8cdd8;
+  --o-text-2:      #8b92a1;
+  --o-text-3:      #5c6370;
+  --o-border-0:    rgba(255,255,255,0.045);
+  --o-border-1:    rgba(255,255,255,0.08);
+  --o-border-2:    rgba(255,255,255,0.14);
+  --o-ghost-bg:    rgba(255,255,255,0.08);
+  --o-ghost-hover: rgba(255,255,255,0.14);
+  --o-chip-bg:     rgba(255,255,255,0.08);
+  --o-accent-bright: #00B0FF;
+  color: var(--o-text-0);
+}
+
+/* Logo mark: dark ink on light, white on dark */
+.orbit-logo-mark {
+  filter: none;
+}
+html.dark .orbit-logo-mark {
+  filter: brightness(0) invert(1);
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   PUBLIC PAGE OVERRIDES
-   ─────────────────────────────────────────────────────────────────
-   Public pages have legacy gradient/light backgrounds. This layer
-   forces them into the unified dark canvas without rewriting every
-   inner section. Dashboard routes are NOT affected (they live under
-   .od-dashboard-shell).
+   PUBLIC PAGE OVERRIDES — dark mode only
+   Soft-map leftover light utility classes into Orbit dark tokens.
+   Light mode keeps native Tailwind / page styles + Orbit tokens.
+   Dashboard (.od-dashboard-shell) is excluded.
    ═══════════════════════════════════════════════════════════════════ */
 
-body:not(:has(.od-dashboard-shell)) main,
-body main:has(.bg-o-0) {
+html.dark body:not(:has(.od-dashboard-shell)) main,
+html.dark body main:has(.bg-o-0) {
   background: var(--o-bg-0);
 }
 
-/* When the body does NOT contain the dashboard shell (i.e. on every
-   public page) we force legacy light surface classes into the unified
-   dark palette. Dashboard pages are excluded so their cards keep their
-   own carefully-tuned styles. */
-body:not(:has(.od-dashboard-shell)) .bg-white,
-body:not(:has(.od-dashboard-shell)) .bg-gray-50,
-body:not(:has(.od-dashboard-shell)) .bg-gray-100,
-body:not(:has(.od-dashboard-shell)) .bg-\[\#f5f5f7\],
-body:not(:has(.od-dashboard-shell)) .bg-\[\#fafafa\] {
+html.dark body:not(:has(.od-dashboard-shell)) .bg-white,
+html.dark body:not(:has(.od-dashboard-shell)) .bg-gray-50,
+html.dark body:not(:has(.od-dashboard-shell)) .bg-gray-100,
+html.dark body:not(:has(.od-dashboard-shell)) .bg-\[\#f5f5f7\],
+html.dark body:not(:has(.od-dashboard-shell)) .bg-\[\#fafafa\] {
   background: var(--o-bg-2) !important;
 }
 
-body:not(:has(.od-dashboard-shell)) [class*="bg-gradient-to-r from-[#1876D2]"],
-body:not(:has(.od-dashboard-shell)) [class*="bg-gradient-to-br from-[#1876D2]"] {
+html.dark body:not(:has(.od-dashboard-shell)) [class*="bg-gradient-to-r from-[#1876D2]"],
+html.dark body:not(:has(.od-dashboard-shell)) [class*="bg-gradient-to-br from-[#1876D2]"] {
   background-image: none !important;
   background-color: transparent !important;
   color: inherit !important;
 }
 
-body:not(:has(.od-dashboard-shell)) .text-gray-900,
-body:not(:has(.od-dashboard-shell)) .text-gray-800 { color: var(--o-text-0) !important; }
-body:not(:has(.od-dashboard-shell)) .text-gray-700,
-body:not(:has(.od-dashboard-shell)) .text-gray-600 { color: var(--o-text-1) !important; }
-body:not(:has(.od-dashboard-shell)) .text-gray-500,
-body:not(:has(.od-dashboard-shell)) .text-gray-400 { color: var(--o-text-2) !important; }
+html.dark body:not(:has(.od-dashboard-shell)) .text-gray-900,
+html.dark body:not(:has(.od-dashboard-shell)) .text-gray-800 { color: var(--o-text-0) !important; }
+html.dark body:not(:has(.od-dashboard-shell)) .text-gray-700,
+html.dark body:not(:has(.od-dashboard-shell)) .text-gray-600 { color: var(--o-text-1) !important; }
+html.dark body:not(:has(.od-dashboard-shell)) .text-gray-500,
+html.dark body:not(:has(.od-dashboard-shell)) .text-gray-400 { color: var(--o-text-2) !important; }
 
-body:not(:has(.od-dashboard-shell)) .border-gray-100,
-body:not(:has(.od-dashboard-shell)) .border-gray-200,
-body:not(:has(.od-dashboard-shell)) .border-\[\#E3F2FD\] {
+html.dark body:not(:has(.od-dashboard-shell)) .border-gray-100,
+html.dark body:not(:has(.od-dashboard-shell)) .border-gray-200,
+html.dark body:not(:has(.od-dashboard-shell)) .border-\[\#E3F2FD\] {
   border-color: var(--o-border-1) !important;
 }
 
-body:not(:has(.od-dashboard-shell)) .shadow-sm,
-body:not(:has(.od-dashboard-shell)) .shadow,
-body:not(:has(.od-dashboard-shell)) .shadow-md,
-body:not(:has(.od-dashboard-shell)) .shadow-lg,
-body:not(:has(.od-dashboard-shell)) .shadow-xl,
-body:not(:has(.od-dashboard-shell)) .shadow-2xl {
+html.dark body:not(:has(.od-dashboard-shell)) .shadow-sm,
+html.dark body:not(:has(.od-dashboard-shell)) .shadow,
+html.dark body:not(:has(.od-dashboard-shell)) .shadow-md,
+html.dark body:not(:has(.od-dashboard-shell)) .shadow-lg,
+html.dark body:not(:has(.od-dashboard-shell)) .shadow-xl,
+html.dark body:not(:has(.od-dashboard-shell)) .shadow-2xl {
   box-shadow: none !important;
 }
 
-/* ── Compatibility shims for previous editorial classes ──────────────
-   Map old editorial classnames so any leftover usage becomes the new
-   dark linear style. Eventually to be removed.
-   ─────────────────────────────────────────────────────────────────── */
+/* Compatibility shims */
 .bg-ed-canvas    { background: var(--o-bg-0); }
 .bg-ed-canvas-2  { background: var(--o-bg-1); }
 .text-ed-fg      { color: var(--o-text-0); }
@@ -1643,7 +1709,7 @@ body:not(:has(.od-dashboard-shell)) .shadow-2xl {
   background: var(--o-bg-2);
 }
 .eyebrow-ed {
-  font-family: 'JetBrains Mono',ui-monospace,monospace;
+  font-family: 'IBM Plex Mono',ui-monospace,monospace;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -1652,12 +1718,11 @@ body:not(:has(.od-dashboard-shell)) .shadow-2xl {
 }
 .font-display-serif,
 .font-display-serif-italic {
-  font-family: 'Inter Variable','Inter',-apple-system,system-ui,sans-serif;
-  font-weight: 510;
+  font-family: 'Syne','Outfit',system-ui,sans-serif;
+  font-weight: 700;
   font-style: normal;
   letter-spacing: -0.045em;
   line-height: 1.0;
-  font-feature-settings: "cv01","ss03","ss01";
 }
 .ed-divider {
   display: flex;
@@ -1672,7 +1737,7 @@ body:not(:has(.od-dashboard-shell)) .shadow-2xl {
   background: var(--o-border-0);
 }
 .ed-divider-label {
-  font-family: 'JetBrains Mono',ui-monospace,monospace;
+  font-family: 'IBM Plex Mono',ui-monospace,monospace;
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
