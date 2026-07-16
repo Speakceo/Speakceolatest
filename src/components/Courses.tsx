@@ -35,6 +35,8 @@ import { useUserStore } from '../lib/store';
 import EnrollmentPopup from './EnrollmentPopup';
 import { motion } from 'framer-motion';
 import AnimatedCounter from './ui/AnimatedCounter';
+import Typewriter from './ui/Typewriter';
+import BounceCardFeatures from './ui/BounceCardFeatures';
 import { getSpotsRemainingCopy } from '../utils/cohortDates';
 
 const parentTestimonials = [
@@ -214,94 +216,123 @@ export default function Courses() {
   const spotsCopy = getSpotsRemainingCopy(30);
 
   return (
-    <div className="min-h-screen font-[Poppins] overflow-x-hidden">
-      {/* ═══ HERO — Dark Premium ═══ */}
-      <section className="relative bg-slate-950 text-white overflow-hidden pt-24 pb-20">
-        {/* Gradient mesh */}
-        <div className="absolute inset-0">
-          <div className="absolute top-[-25%] left-[-10%] w-[50%] h-[50%] bg-[#1876D2]/20 rounded-full filter blur-[120px] animate-[float_8s_ease-in-out_infinite]" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[45%] h-[45%] bg-[#00B0FF]/15 rounded-full filter blur-[100px] animate-[float_10s_ease-in-out_infinite_reverse]" />
-        </div>
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+    <div className="min-h-screen bg-o-0 text-o-0 overflow-x-hidden">
+      {/* ═══ HERO — Orbit dark + typewriter ═══ */}
+      <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
+        <div className="absolute inset-x-0 top-0 h-[600px] glow-o opacity-80" />
+        <div className="absolute inset-0 grid-o opacity-50 pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-sm text-gray-300 font-medium">Trusted by 2,500+ Parents Worldwide</span>
-            </div>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-[1.15] tracking-tight">
-              <span className="text-white">Watch Your Child Transform Into a</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#40C4FF]">
-                Confident Young Leader
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}>
+            <p className="eyebrow-o mb-6">Young CEO · 180 days</p>
+
+            <h1 className="font-display text-[clamp(2.4rem,6.4vw,4.6rem)] text-o-0 mb-5 leading-[1.0]" style={{ letterSpacing: '-0.045em' }}>
+              Watch your child become a{' '}
+              <span className="text-[#00B0FF]">
+                <Typewriter
+                  as="span"
+                  text={['confident leader', 'young founder', 'public speaker', 'AI-native maker']}
+                  speed={55}
+                  deleteSpeed={28}
+                  waitTime={1500}
+                  initialDelay={350}
+                  cursorChar="_"
+                />
               </span>
-        </h1>
-            
-            <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-              In just 180 days, see your child develop <strong className="text-white">confidence, communication skills, and entrepreneurial mindset</strong> that will set them apart for life.
+            </h1>
+
+            <p className="text-[17px] text-o-2 max-w-[58ch] mx-auto mb-10 leading-[1.6]">
+              In 180 days: confidence, communication and an entrepreneurial mindset — live mentors, real projects, scholarship-ready portfolios.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
-              <button
-                onClick={() => setShowEnrollment(true)}
-                className="group relative px-8 py-4 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold rounded-xl text-lg shadow-lg shadow-[#1876D2]/25 hover:shadow-xl hover:shadow-[#1876D2]/40 transition-all duration-300 hover:scale-[1.02]"
-              >
-                <span className="flex items-center gap-2">
-                  Start Your Child's Transformation
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-14">
+              <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg">
+                Start free trial
+                <span className="btn-o-icon">
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </button>
-              <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <Clock className="h-4 w-4 text-amber-400" />
-                <span>{spotsCopy}</span>
-              </div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-o-3 inline-flex items-center gap-2">
+                <Clock className="h-3.5 w-3.5 text-[#f59e0b]" />
+                {spotsCopy}
+              </p>
             </div>
 
-            {/* Transformation cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-5xl mx-auto">
               {transformationOutcomes.map((outcome, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
-                  className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5 backdrop-blur-sm hover:bg-white/[0.07] hover:border-white/[0.12] transition-all duration-500"
+                  transition={{ delay: 0.2 + index * 0.07 }}
+                  className="card-o text-left"
+                  style={{ padding: '18px' }}
                 >
-                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-r ${outcome.color} flex items-center justify-center mb-3 mx-auto`}>
-                    <outcome.icon className="h-5 w-5 text-white" />
+                  <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-4" style={{ background: 'var(--o-accent-soft)', border: '1px solid var(--o-accent-ring)' }}>
+                    <outcome.icon className="h-4 w-4 text-[#00B0FF]" />
                   </div>
-                  <p className="text-xs text-gray-500 mb-1.5 line-through">{outcome.before}</p>
-                  <div className="flex justify-center mb-1.5">
-                    <ArrowRight className="h-3 w-3 text-[#00B0FF]" />
-                  </div>
-                  <p className="text-sm font-semibold text-white">{outcome.after}</p>
+                  <p className="text-[11px] text-o-3 mb-1 line-through">{outcome.before}</p>
+                  <p className="text-[14px] font-medium text-o-0 leading-snug">{outcome.after}</p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-      </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
+        </div>
       </section>
 
-      {/* ═══ PARENT TESTIMONIALS — White ═══ */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+      <BounceCardFeatures
+        eyebrow="Curriculum highlights"
+        headline={
+          <>
+            Six modules. <span style={{ color: '#00B0FF' }}>One flagship journey.</span>
+          </>
+        }
+        subcopy="From first pitch to launched venture — games, AI tools, live mentorship and a portfolio that opens doors."
+        cta={{ label: 'Reserve a seat', onClick: () => setShowEnrollment(true) }}
+        features={[
+          {
+            title: 'Mindset & speaking',
+            description: 'Confidence, storytelling and stage presence through live games.',
+            demoLabel: 'Module 01–02',
+            span: 'wide',
+            icon: <Mic className="w-4 h-4" />,
+          },
+          {
+            title: 'AI + product',
+            description: 'Build websites, decks and brands with the Orbit AI studio.',
+            demoLabel: 'Module 03–04',
+            span: 'lg',
+            icon: <Brain className="w-4 h-4" />,
+          },
+          {
+            title: 'Business games',
+            description: 'Simulations that teach pricing, markets and decision-making.',
+            demoLabel: '10 simulations',
+            span: 'md',
+            icon: <Target className="w-4 h-4" />,
+          },
+          {
+            title: 'Launch & scale',
+            description: 'Pitch night, mentor review and a portfolio that travels with them.',
+            demoLabel: 'Module 05–06',
+            span: 'md',
+            icon: <Rocket className="w-4 h-4" />,
+          },
+        ]}
+      />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E3F2FD] border border-[#1876D2]/10 mb-6">
-              <Star className="h-4 w-4 text-amber-500" />
-              <span className="text-sm font-medium text-[#1876D2]">Real Stories</span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
-              What Parents <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Are Saying</span>
+      {/* ═══ PARENT TESTIMONIALS ═══ */}
+      <section className="section-o border-o-t relative overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mb-14">
+            <p className="eyebrow-o mb-5">Real stories</p>
+            <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-4" style={{ letterSpacing: '-0.04em' }}>
+              What parents <span style={{ color: '#00B0FF' }}>are saying</span>
             </h2>
-            <p className="text-gray-500 max-w-lg mx-auto">Real transformations from real families</p>
+            <p className="text-[17px] text-o-2">Real transformations from real families</p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {parentTestimonials.map((testimonial, index) => (
               <motion.div
               key={index}
@@ -309,17 +340,16 @@ export default function Courses() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gray-50/50 rounded-2xl p-7 border border-gray-100 hover:border-[#1876D2]/15 hover:shadow-xl transition-all duration-500 h-full flex flex-col"
+                className="card-o h-full flex flex-col"
               >
-                {/* Stars */}
                 <div className="flex gap-1 mb-5">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="h-4 w-4 text-amber-400 fill-amber-400" />)}
+                  {[...Array(5)].map((_, j) => <Star key={j} className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />)}
                 </div>
                 
-                <p className="text-gray-600 mb-6 leading-relaxed flex-grow italic">"{testimonial.quote}"</p>
+                <p className="text-o-1 mb-6 leading-relaxed flex-grow text-[14.5px]">"{testimonial.quote}"</p>
                 
-                <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl px-4 py-2.5 mb-6 border border-emerald-100/50">
-                  <p className="text-xs font-semibold text-emerald-700">🎯 {testimonial.outcome}</p>
+                <div className="bg-gradient-to-r from-[rgba(16,185,129,0.12)] to-[rgba(24,118,210,0.12)] rounded-xl px-4 py-2.5 mb-6 border border-[rgba(16,185,129,0.25)]">
+                  <p className="text-xs font-semibold text-[#34d399]">🎯 {testimonial.outcome}</p>
                 </div>
 
                 {/* Author — gradient initials instead of broken images */}
@@ -328,8 +358,8 @@ export default function Courses() {
                     {testimonial.initials}
                   </div>
                     <div>
-                    <h4 className="text-sm font-semibold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-gray-500 text-xs">{testimonial.role}</p>
+                    <h4 className="text-sm font-semibold text-o-0">{testimonial.name}</h4>
+                    <p className="text-o-3 text-xs">{testimonial.role}</p>
                   </div>
                 </div>
               </motion.div>
@@ -339,7 +369,7 @@ export default function Courses() {
       </section>
 
       {/* ═══ SUCCESS STORIES — Dark, no images (emoji icons instead) ═══ */}
-      <section className="py-24 bg-slate-950 relative overflow-hidden">
+      <section className="section-o border-o-t relative overflow-hidden">
         <div className="absolute top-[-15%] right-[-10%] w-[35%] h-[35%] bg-[#1876D2]/10 rounded-full filter blur-[120px]" />
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
@@ -347,12 +377,12 @@ export default function Courses() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
               <Trophy className="h-4 w-4 text-amber-400" />
-              <span className="text-sm font-medium text-gray-400">Student Success</span>
+              <span className="text-sm font-medium text-o-2">Student Success</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
               Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Success Stories</span>
             </h2>
-            <p className="text-gray-400 max-w-lg mx-auto">See what your child could achieve</p>
+            <p className="text-o-2 max-w-lg mx-auto">See what your child could achieve</p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -377,7 +407,7 @@ export default function Courses() {
                   </div>
                   
                   <h3 className="text-lg font-bold text-white mb-1">{story.name}</h3>
-                  <p className="text-gray-400 mb-4 text-sm">{story.story}</p>
+                  <p className="text-o-2 mb-4 text-sm">{story.story}</p>
                   
                   <div className="bg-white/[0.04] rounded-xl px-4 py-3 border border-white/[0.06]">
                     <p className="text-xs font-medium text-emerald-400">✨ {story.achievement}</p>
@@ -390,7 +420,7 @@ export default function Courses() {
       </section>
 
       {/* ═══ LEARNING ECOSYSTEM — White, image hidden on mobile ═══ */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="section-o border-o-t relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, #1876D2 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -402,14 +432,14 @@ export default function Courses() {
                 <span className="text-sm font-medium text-[#1876D2]">Complete Learning Ecosystem</span>
               </div>
               
-              <h2 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight text-gray-900">
+              <h2 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight tracking-tight text-o-0">
                 AI-Powered Learning
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">
                   Meets Real Mentorship
                 </span>
               </h2>
 
-              <p className="text-gray-500 text-lg mb-10 leading-relaxed">
+              <p className="text-o-3 text-lg mb-10 leading-relaxed">
                 The perfect blend of cutting-edge AI tools, live mentorship, and interactive simulators — giving your child every advantage.
               </p>
               
@@ -421,14 +451,14 @@ export default function Courses() {
                   { icon: TrendingUp, name: 'Business Simulators', desc: 'Risk-free virtual environments', gradient: 'from-[#00B0FF] to-[#40C4FF]' },
                   { icon: PlayCircle, name: 'Recorded Sessions', desc: '500+ expert-led lessons', gradient: 'from-amber-500 to-orange-500' },
                 ].map((m, i) => (
-                  <div key={i} className="group bg-gray-50 hover:bg-white rounded-xl p-4 border border-gray-100 hover:border-[#1876D2]/20 hover:shadow-lg transition-all duration-300">
+                  <div key={i} className="group bg-o-2 hover:bg-o-3 rounded-xl p-4 border border-[var(--o-border-1)] hover:border-[#1876D2]/20 hover:shadow-lg transition-all duration-300">
                     <div className="flex items-center gap-3 mb-2">
                       <div className={`w-9 h-9 bg-gradient-to-br ${m.gradient} rounded-lg flex items-center justify-center shadow-md`}>
                         <m.icon className="h-4 w-4 text-white" />
                       </div>
-                      <h3 className="text-sm font-bold text-gray-900">{m.name}</h3>
+                      <h3 className="text-sm font-bold text-o-0">{m.name}</h3>
                     </div>
-                    <p className="text-gray-500 text-xs pl-12">{m.desc}</p>
+                    <p className="text-o-3 text-xs pl-12">{m.desc}</p>
                   </div>
                 ))}
               </div>
@@ -438,7 +468,7 @@ export default function Courses() {
                 {[{ v: '100+', l: 'AI Tools' }, { v: '50+', l: 'Live Monthly' }, { v: '500+', l: 'Lessons' }].map((s, i) => (
                   <div key={i}>
                     <AnimatedCounter value={s.v} className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]" />
-                    <div className="text-gray-400 text-xs">{s.l}</div>
+                    <div className="text-o-2 text-xs">{s.l}</div>
                   </div>
                 ))}
               </div>
@@ -484,15 +514,15 @@ export default function Courses() {
               <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-xl border border-gray-100 p-3"
+                className="absolute -bottom-4 -left-4 bg-o-2 rounded-xl shadow-xl border border-[var(--o-border-1)] p-3"
               >
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-lg flex items-center justify-center">
                     <TrendingUp className="h-4 w-4 text-white" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-gray-900">Expert-Led</div>
-                    <div className="text-[10px] text-gray-400">AI-Powered</div>
+                    <div className="text-xs font-bold text-o-0">Expert-Led</div>
+                    <div className="text-[10px] text-o-2">AI-Powered</div>
                   </div>
                 </div>
               </motion.div>
@@ -502,7 +532,7 @@ export default function Courses() {
       </section>
 
       {/* ═══ 12-WEEK JOURNEY — Dark ═══ */}
-      <section className="py-24 bg-slate-950 relative overflow-hidden">
+      <section className="section-o border-o-t relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
         <div className="absolute top-[10%] left-[-5%] w-[30%] h-[30%] bg-[#1876D2]/8 rounded-full filter blur-[100px]" />
         <div className="absolute bottom-[10%] right-[-5%] w-[25%] h-[25%] bg-[#00B0FF]/6 rounded-full filter blur-[80px]" />
@@ -511,12 +541,12 @@ export default function Courses() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
               <Rocket className="h-4 w-4 text-[#00B0FF]" />
-              <span className="text-sm font-medium text-gray-400">Step-by-Step</span>
+              <span className="text-sm font-medium text-o-2">Step-by-Step</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
               12-Week <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Transformation Journey</span>
             </h2>
-            <p className="text-gray-400 max-w-xl mx-auto">Each week builds confidence and skills your child will use for life</p>
+            <p className="text-o-2 max-w-xl mx-auto">Each week builds confidence and skills your child will use for life</p>
           </motion.div>
 
           <div className="space-y-4">
@@ -543,7 +573,7 @@ export default function Courses() {
                     <div className="flex items-center justify-between mb-2">
                       <div>
                         <h3 className="text-lg lg:text-xl font-bold text-white">{path.title}</h3>
-                        <p className="text-gray-400 text-sm">{path.description}</p>
+                        <p className="text-o-2 text-sm">{path.description}</p>
                     </div>
                     <ChevronRight 
                         className={`h-5 w-5 text-[#00B0FF] transform transition-transform flex-shrink-0 ml-4 ${
@@ -573,7 +603,7 @@ export default function Courses() {
                               </div>
                               <div className="flex-1 min-w-0">
                                 <h4 className="font-semibold text-white text-sm truncate">{module.title}</h4>
-                                <div className="flex items-center gap-1 text-gray-500 text-xs">
+                                <div className="flex items-center gap-1 text-o-3 text-xs">
                                   <Clock className="h-3 w-3" />
                                   <span>{module.duration}</span>
                             </div>
@@ -596,7 +626,7 @@ export default function Courses() {
       </section>
 
       {/* ═══ URGENCY CTA — Deep Dark ═══ */}
-      <section className="py-28 bg-[#050a18] relative overflow-hidden">
+      <section className="section-o border-o-t relative overflow-hidden">
         <div className="absolute inset-0">
           <motion.div
             className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
@@ -618,7 +648,7 @@ export default function Courses() {
               Don't Let Your Child
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-red-400"> Fall Behind</span>
             </h2>
-            <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
+            <p className="text-o-2 mb-10 max-w-2xl mx-auto text-lg">
               While other kids are just playing games, your child could be building confidence, leadership skills, and an entrepreneurial mindset that lasts a lifetime.
             </p>
             
@@ -627,7 +657,7 @@ export default function Courses() {
               {[{ v: '30', l: 'Spots Left' }, { v: '7', l: 'Days Left' }, { v: '98%', l: 'Satisfaction' }].map((u, i) => (
                 <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
                   <AnimatedCounter value={u.v} className="text-2xl font-bold text-amber-400" />
-                  <div className="text-gray-500 text-[10px] uppercase tracking-wider mt-1">{u.l}</div>
+                  <div className="text-o-3 text-[10px] uppercase tracking-wider mt-1">{u.l}</div>
             </div>
           ))}
         </div>
@@ -644,7 +674,7 @@ export default function Courses() {
           </button>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-o-3">
               <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-emerald-400" /> 30-day money-back guarantee</span>
               <span className="flex items-center gap-2"><Star className="h-4 w-4 text-amber-400" /> 4.9/5 parent rating</span>
             </div>

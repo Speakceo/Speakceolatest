@@ -34,6 +34,8 @@ const Community = () => {
         eyebrow={`Community · ${cohortLabel}`}
         title="2,500 young builders, "
         italic="building together."
+        typewriterPrefix="A place to "
+        typewriterTexts={['showcase builds', 'meet peers', 'join challenges', 'find mentors']}
         subtitle="Cohort circles, founder office hours and monthly showcase nights. Your child is never building alone."
         align="center"
         size="sm"

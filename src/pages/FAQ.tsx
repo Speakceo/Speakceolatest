@@ -166,6 +166,8 @@ const FAQ: React.FC = () => {
           eyebrow="FAQ · Trusted by 10,000+ parents"
           title="Your questions"
           italic="answered."
+          typewriterPrefix="Parents ask about "
+          typewriterTexts={['pricing', 'time zones', 'refunds', 'age fit', 'devices']}
           subtitle="Everything you need to know about transforming your child into a confident young entrepreneur."
           align="center"
           size="sm"

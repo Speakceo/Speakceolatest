@@ -99,6 +99,8 @@ const Blog: React.FC = () => {
           eyebrow="Blog · Weekly essays"
           title="Insights from"
           italic="the studio."
+          typewriterPrefix="Guides on "
+          typewriterTexts={['AI literacy', 'scholarships', 'founding young', 'parenting builders']}
           subtitle="Essays on entrepreneurship education, youth leadership and building the next generation of innovators."
           align="center"
           size="sm"

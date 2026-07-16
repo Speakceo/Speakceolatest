@@ -7,6 +7,7 @@ import {
 import EnrollmentPopup from '../components/EnrollmentPopup';
 import SEO from '../components/SEO';
 import PageHero from '../components/common/PageHero';
+import BounceCardFeatures from '../components/ui/BounceCardFeatures';
 
 const About = () => {
   const [showEnrollment, setShowEnrollment] = useState(false);
@@ -46,6 +47,8 @@ const About = () => {
           eyebrow="About · Our story"
           title="From one child's question to a"
           italic="global movement."
+          typewriterPrefix="Built for kids who "
+          typewriterTexts={['ask why', 'want to lead', 'build things', 'speak up', 'dream big']}
           subtitle="A curious 12-year-old named Aarav asked: why don't we learn how to speak like leaders or build real businesses in school? That question built Orbit — a programme for kids like Aarav."
           actions={[
             { label: 'Start free trial', onClick: () => setShowEnrollment(true), primary: true },
@@ -55,34 +58,46 @@ const About = () => {
           size="md"
         />
 
-        {/* ═══ ABOUT FEATURE STRIP — hairline cards ═══ */}
-        <section className="border-o-t bg-o-0">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { icon: Mic, title: 'Public speaking', desc: 'Through real games, not theory.' },
-                { icon: Lightbulb, title: 'Entrepreneurship', desc: 'Build, ship, sell. From day one.' },
-                { icon: Sparkles, title: 'AI fluency', desc: 'Command tools, not be replaced by them.' },
-                { icon: Users, title: 'Mentorship', desc: 'Founders who have done it, weekly.' },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.06, duration: 0.4 }}
-                  className="card-o"
-                >
-                  <item.icon className="h-4 w-4 text-[#00B0FF] mb-7" />
-                  <p className="text-[16px] font-medium text-o-0 mb-1.5" style={{ letterSpacing: '-0.01em' }}>
-                    {item.title}
-                  </p>
-                  <p className="text-[13.5px] text-o-2 leading-[1.55]">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <BounceCardFeatures
+          eyebrow="What we stand for"
+          headline={
+            <>
+              Four muscles every <span style={{ color: '#00B0FF' }}>young leader trains.</span>
+            </>
+          }
+          subcopy="Public speaking, entrepreneurship, AI fluency and mentorship — practiced live, not watched."
+          cta={{ label: 'Start free trial', onClick: () => setShowEnrollment(true) }}
+          features={[
+            {
+              title: 'Public speaking',
+              description: 'Confidence through real games, pitches and showcases — not theory.',
+              demoLabel: 'Pitch night live',
+              span: 'wide',
+              icon: <Mic className="w-4 h-4" />,
+            },
+            {
+              title: 'Entrepreneurship',
+              description: 'Build, ship and sell from day one with founder mentors.',
+              demoLabel: 'Ship a product',
+              span: 'lg',
+              icon: <Lightbulb className="w-4 h-4" />,
+            },
+            {
+              title: 'AI fluency',
+              description: 'Command tools — so kids create with AI instead of competing with it.',
+              demoLabel: '100+ AI studio tools',
+              span: 'md',
+              icon: <Sparkles className="w-4 h-4" />,
+            },
+            {
+              title: 'Mentorship',
+              description: 'Weekly access to founders who have actually shipped ventures.',
+              demoLabel: '50+ founder mentors',
+              span: 'md',
+              icon: <Users className="w-4 h-4" />,
+            },
+          ]}
+        />
 
         {/* ═══ STATS — unified dark ═══ */}
         <section className="border-o-t bg-o-0">
@@ -194,7 +209,10 @@ const About = () => {
                 Join 2,500+ families who have already seen the transformation. Your child's journey starts here.
               </p>
               <button onClick={() => setShowEnrollment(true)} className="btn-o btn-o-primary btn-o-lg">
-                Start your child's transformation <ArrowRight className="h-4 w-4" />
+                Start your child's journey
+                <span className="btn-o-icon">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </button>
               <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-[12.5px] text-o-2">
                 <span className="inline-flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#10b981]" /> 30-day refund</span>

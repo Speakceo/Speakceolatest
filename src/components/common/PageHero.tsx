@@ -1,18 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import Typewriter from '../ui/Typewriter';
 
 /**
- * PageHero — shared Linear-grade dark hero primitive.
- *
- * One pattern. Used by every public page (About, Contact, Resources, FAQ,
- * Blog, Demo, Legal, …) so the entire site speaks one language.
- *
- *   • bg uses --o-bg-0 (deep linear black)
- *   • subtle radial accent glow + dot grid
- *   • Inter Variable display headline with optional accent {italic}
- *   • muted lede paragraph (max ~58ch)
- *   • optional CTAs using btn-o-primary / btn-o-ghost
+ * PageHero — shared marketing hero.
+ * Optional kinetic typewriter line (21st.dev inspired).
  */
 
 export type PageHeroAction = {
@@ -26,6 +19,9 @@ export interface PageHeroProps {
   eyebrow?: string;
   title: React.ReactNode;
   italic?: React.ReactNode;
+  /** Prefix before typewriter phrases — e.g. "Built for " */
+  typewriterPrefix?: string;
+  typewriterTexts?: string[];
   subtitle?: React.ReactNode;
   actions?: PageHeroAction[];
   align?: 'left' | 'center';
@@ -39,6 +35,8 @@ export default function PageHero({
   eyebrow,
   title,
   italic,
+  typewriterPrefix,
+  typewriterTexts,
   subtitle,
   actions,
   align = 'center',
@@ -51,21 +49,19 @@ export default function PageHero({
     size === 'sm'
       ? 'pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20'
       : size === 'lg'
-      ? 'pt-32 pb-24 sm:pt-40 sm:pb-32 lg:pt-48 lg:pb-36'
-      : 'pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-44 lg:pb-28';
+        ? 'pt-32 pb-24 sm:pt-40 sm:pb-32 lg:pt-48 lg:pb-36'
+        : 'pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-44 lg:pb-28';
 
   const titleSize =
     size === 'sm'
       ? 'clamp(2.2rem, 5vw, 3.6rem)'
       : size === 'lg'
-      ? 'clamp(2.8rem, 7.5vw, 5.6rem)'
-      : 'clamp(2.4rem, 6.4vw, 4.6rem)';
+        ? 'clamp(2.8rem, 7.5vw, 5.6rem)'
+        : 'clamp(2.4rem, 6.4vw, 4.6rem)';
 
   return (
     <section className={`relative overflow-hidden bg-o-0 ${padY} ${className}`}>
-      {/* Subtle radial accent glow */}
       <div className="absolute inset-x-0 top-0 h-[600px] glow-o opacity-80" />
-      {/* Subtle dot grid */}
       <div className="absolute inset-0 grid-o opacity-50 pointer-events-none" />
 
       <div
@@ -79,12 +75,10 @@ export default function PageHero({
           transition={{ duration: 0.65, ease }}
           className={isCenter ? 'max-w-4xl mx-auto' : 'max-w-4xl'}
         >
-          {eyebrow && (
-            <p className={`eyebrow-o mb-6 ${isCenter ? '' : ''}`}>{eyebrow}</p>
-          )}
+          {eyebrow && <p className="eyebrow-o mb-6">{eyebrow}</p>}
 
           <h1
-            className="font-display mb-6"
+            className="font-display mb-5"
             style={{
               fontSize: titleSize,
               lineHeight: 1.0,
@@ -101,6 +95,27 @@ export default function PageHero({
             )}
           </h1>
 
+          {typewriterTexts && typewriterTexts.length > 0 && (
+            <p
+              className={`font-display text-[clamp(1.15rem,2.4vw,1.65rem)] text-o-2 mb-6 leading-snug ${
+                isCenter ? 'mx-auto' : ''
+              }`}
+              style={{ maxWidth: '36ch', letterSpacing: '-0.02em' }}
+            >
+              {typewriterPrefix}
+              <Typewriter
+                as="span"
+                className="text-[#00B0FF]"
+                text={typewriterTexts}
+                speed={50}
+                deleteSpeed={28}
+                waitTime={1500}
+                initialDelay={300}
+                cursorChar="_"
+              />
+            </p>
+          )}
+
           {subtitle && (
             <p
               className="text-[16px] sm:text-[18px] leading-[1.6] text-o-2 mb-8 sm:mb-10"
@@ -116,24 +131,31 @@ export default function PageHero({
 
           {actions && actions.length > 0 && (
             <div
-              className={`flex flex-col xs:flex-row sm:flex-row gap-3 ${
+              className={`flex flex-col sm:flex-row gap-3 ${
                 isCenter ? 'justify-center' : ''
               }`}
             >
               {actions.map((a, i) => {
-                const cls = a.primary ? 'btn-o btn-o-primary btn-o-lg' : 'btn-o btn-o-ghost btn-o-lg';
+                const cls = a.primary
+                  ? 'btn-o btn-o-primary btn-o-lg'
+                  : 'btn-o btn-o-ghost btn-o-lg';
+                const icon = a.primary ? (
+                  <span className="btn-o-icon">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                ) : null;
                 if (a.href) {
                   return (
                     <a key={i} href={a.href} className={cls}>
                       {a.label}
-                      {a.primary && <ArrowRight className="h-4 w-4" />}
+                      {icon}
                     </a>
                   );
                 }
                 return (
                   <button key={i} type="button" onClick={a.onClick} className={cls}>
                     {a.label}
-                    {a.primary && <ArrowRight className="h-4 w-4" />}
+                    {icon}
                   </button>
                 );
               })}

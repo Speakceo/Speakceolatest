@@ -97,6 +97,8 @@ const Testimonials: React.FC = () => {
         eyebrow="Voices · Field reports"
         title="Success"
         italic="stories."
+        typewriterPrefix="Kids who "
+        typewriterTexts={['pitched ideas', 'launched stores', 'won awards', 'found their voice']}
         subtitle="Meet our young entrepreneurs and discover their inspiring journeys — pitched ideas, launched stores, first profits."
         align="center"
         size="sm"

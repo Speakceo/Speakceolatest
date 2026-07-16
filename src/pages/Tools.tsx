@@ -2,6 +2,7 @@ import React from 'react';
 import { Brain, Image, FileText, MessageSquare, Code, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHero from '../components/common/PageHero';
+import BounceCardFeatures from '../components/ui/BounceCardFeatures';
 
 const tools = [
   { icon: Code, title: 'AI Website Builder', desc: 'Generate working websites from a single prompt.' },
@@ -26,27 +27,26 @@ const Tools = () => {
         eyebrow="AI tools · 100+ toolkit"
         title="An AI toolkit "
         italic="kids actually use."
+        typewriterPrefix="Build with "
+        typewriterTexts={['Website Builder', 'Pitch Writer', 'Image Generator', 'Study Coach']}
         subtitle="Website builders, pitch writers, image generators, study coaches. Unlimited usage. Built for ages 8-18."
         align="center"
         size="sm"
       />
 
       <div className="min-h-screen bg-o-0 text-o-0">
-        <section className="border-o-t bg-o-0">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {tools.map((tool, i) => (
-                <div key={i} className="card-o">
-                  <tool.icon className="h-4 w-4 text-[#00B0FF] mb-7" />
-                  <p className="text-[16px] font-medium text-o-0 mb-1.5" style={{ letterSpacing: '-0.01em' }}>
-                    {tool.title}
-                  </p>
-                  <p className="text-[13.5px] text-o-2 leading-[1.55]">{tool.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <BounceCardFeatures
+          eyebrow="Toolkit"
+          headline={<>Tools kids ship with <span style={{ color: '#00B0FF' }}>every week.</span></>}
+          subcopy="Not toys — production-feeling builders for websites, pitches, brands and study systems."
+          features={tools.map((tool, i) => ({
+            title: tool.title,
+            description: tool.desc,
+            demoLabel: tool.title,
+            span: i === 0 ? 'wide' : i === 1 ? 'lg' : 'md',
+            icon: <tool.icon className="w-4 h-4" />,
+          }))}
+        />
       </div>
     </>
   );

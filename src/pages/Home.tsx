@@ -11,6 +11,8 @@ import CareerGuidePopup from '../components/career/CareerGuidePopup';
 import SEO from '../components/SEO';
 import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
+import Typewriter from '../components/ui/Typewriter';
+import BounceCardFeatures from '../components/ui/BounceCardFeatures';
 import {
   getActiveCohortLabel,
   getSpotsRemainingCopy,
@@ -92,11 +94,27 @@ export default function Home() {
               <p className="font-display text-[clamp(2.75rem,8vw,5.5rem)] text-o-0 mb-3 sm:mb-4 tracking-tight leading-[0.95]">
                 Orbit Student
               </p>
-              <h1 className="font-display text-[clamp(1.35rem,3.2vw,2rem)] text-o-1 font-semibold mb-5 sm:mb-6 leading-snug max-w-xl">
-                Live AI &amp; entrepreneurship for ages 8–18.
+              <h1 className="font-display text-[clamp(1.45rem,3.4vw,2.15rem)] text-o-1 font-semibold mb-5 sm:mb-6 leading-snug max-w-xl">
+                <span className="text-o-2">Kids who learn to </span>
+                <Typewriter
+                  as="span"
+                  className="text-[#00B0FF]"
+                  text={[
+                    'build companies',
+                    'command AI',
+                    'pitch with confidence',
+                    'win scholarships',
+                    'ship real projects',
+                  ]}
+                  speed={55}
+                  deleteSpeed={28}
+                  waitTime={1600}
+                  initialDelay={400}
+                  cursorChar="_"
+                />
               </h1>
               <p className="text-[16px] sm:text-[17px] leading-[1.6] text-o-2 mb-8 sm:mb-10 max-w-md">
-                Mentor-led cohorts. Real projects. Scholarship-ready portfolios — not another video library.
+                Live mentor-led cohorts for ages 8–18. Real projects. Scholarship-ready portfolios — not another video library.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -455,54 +473,62 @@ export default function Home() {
         <FounderMindsetSection />
 
         {/* ════════════════════════════════════════════════════════════════
-            06 · WHAT YOU GET — 6 hairline cards on dark
+            06 · WHAT YOU GET — bounce card features (21st.dev inspired)
         ════════════════════════════════════════════════════════════════ */}
-        <section className="section-o border-o-t">
-          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-            <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="max-w-2xl mb-14 sm:mb-20"
-            >
-              <p className="eyebrow-o mb-5">03 · The programme</p>
-              <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
-                Not just learning. <span style={{ color: '#00B0FF' }}>Living it.</span>
-              </h2>
-              <p className="text-[17px] text-o-2 leading-[1.6] max-w-[58ch]">
-                Other platforms ship videos. We ship transformation — real games, real AI tools,
-                real projects and real mentorship schools never offer.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                { icon: Gamepad2, title: 'Business games', sub: '10 simulations', desc: 'Pricing battles, stock markets, lemonade stands. Story-driven business mechanics.' },
-                { icon: Brain, title: 'AI superpowers', sub: '100+ tools', desc: 'Website Builder, Pitch Writer, Image Generator. Kids command AI from day one.' },
-                { icon: Target, title: '180-day path', sub: '52 live classes', desc: 'A structured, mentor-guided path from beginner to confident young entrepreneur.' },
-                { icon: GraduationCap, title: 'Scholarship database', sub: '500+ opportunities', desc: 'Scholarships, fellowships and competitions mapped by age, country and interest.' },
-                { icon: Trophy, title: 'Real portfolio', sub: '10+ verified pieces', desc: 'Websites, games, pitch decks, certificates — actual proof for colleges & competitions.' },
-                { icon: Sparkles, title: 'Founder mentors', sub: '50+ experts', desc: 'Sunday office hours and 1:1 reviews with operators who have shipped real ventures.' },
-              ].map((u, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05, duration: 0.4 }}
-                  className="card-o group"
-                >
-                  <div className="flex items-center justify-between mb-7">
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'var(--o-accent-soft)', border: '1px solid var(--o-accent-ring)' }}>
-                      <u.icon className="w-4 h-4 text-[#00B0FF]" />
-                    </div>
-                    <span className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-o-3">{u.sub}</span>
-                  </div>
-                  <p className="text-[18px] font-medium text-o-0 mb-2" style={{ letterSpacing: '-0.01em' }}>{u.title}</p>
-                  <p className="text-[14px] text-o-2 leading-[1.55]">{u.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <BounceCardFeatures
+          eyebrow="03 · The programme"
+          headline={
+            <>
+              Not just learning. <span style={{ color: '#00B0FF' }}>Living it.</span>
+            </>
+          }
+          subcopy="Other platforms ship videos. We ship transformation — real games, real AI tools, real projects and mentorship schools never offer."
+          cta={{ label: 'Explore the journey', href: '/courses' }}
+          features={[
+            {
+              title: 'Business games',
+              description: 'Pricing battles, stock markets, lemonade stands — story-driven business mechanics.',
+              demoLabel: '10 live simulations',
+              span: 'wide',
+              icon: <Gamepad2 className="w-4 h-4" />,
+            },
+            {
+              title: 'AI superpowers',
+              description: 'Website Builder, Pitch Writer, Image Generator. Kids command AI from day one.',
+              demoLabel: '100+ AI tools',
+              span: 'lg',
+              icon: <Brain className="w-4 h-4" />,
+            },
+            {
+              title: '180-day path',
+              description: '52 live classes. Mentor-guided from beginner to confident young entrepreneur.',
+              demoLabel: '52 mentor sessions',
+              span: 'md',
+              icon: <Target className="w-4 h-4" />,
+            },
+            {
+              title: 'Scholarship database',
+              description: '500+ opportunities mapped by age, country and interest.',
+              demoLabel: '500+ matches',
+              span: 'md',
+              icon: <GraduationCap className="w-4 h-4" />,
+            },
+            {
+              title: 'Real portfolio',
+              description: 'Websites, games, pitch decks, certificates — proof for colleges & competitions.',
+              demoLabel: '10+ verified pieces',
+              span: 'md',
+              icon: <Trophy className="w-4 h-4" />,
+            },
+            {
+              title: 'Founder mentors',
+              description: 'Sunday office hours and 1:1 reviews with operators who have shipped ventures.',
+              demoLabel: '50+ expert mentors',
+              span: 'wide',
+              icon: <Sparkles className="w-4 h-4" />,
+            },
+          ]}
+        />
 
         {/* ════════════════════════════════════════════════════════════════
             07 · TESTIMONIALS — text-only Linear cards (no avatars)

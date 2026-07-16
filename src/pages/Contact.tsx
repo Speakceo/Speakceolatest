@@ -108,6 +108,8 @@ const Contact = () => {
           eyebrow="Contact"
           title="Let's"
           italic="talk."
+          typewriterPrefix="Ask about "
+          typewriterTexts={['enrolment', 'cohorts', 'scholarships', 'partnerships']}
           subtitle="Questions about enrolment or the programme? We read every message."
           align="center"
           size="sm"

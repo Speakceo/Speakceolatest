@@ -84,6 +84,8 @@ const Partnerships: React.FC = () => {
         eyebrow="Partnerships"
         title="Building Orbit"
         italic="together."
+        typewriterPrefix="Partner on "
+        typewriterTexts={['schools', 'foundations', 'media', 'campus clubs']}
         subtitle="Collaborating with leading organisations to empower young entrepreneurs — funding, mentorship, opportunities."
         align="center"
         size="sm"

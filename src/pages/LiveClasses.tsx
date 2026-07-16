@@ -218,6 +218,8 @@ export default function LiveClasses() {
         eyebrow="Live classes · Mentor-led"
         title="Real mentors, "
         italic="not recordings."
+        typewriterPrefix="Learn live with "
+        typewriterTexts={['founders', 'designers', 'operators', 'builders']}
         subtitle="Two live sessions per week with founders, designers and operators who have done it. Cohorts capped at 18 students."
         align="center"
         size="sm"

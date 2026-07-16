@@ -122,6 +122,8 @@ const Resources: React.FC = () => {
           eyebrow="Resources · Scholarship & opportunity hub"
           title="The earlier you start,"
           italic="the further you go."
+          typewriterPrefix="Discover "
+          typewriterTexts={['scholarships', 'fellowships', 'competitions', 'summer programs']}
           subtitle="Most students discover scholarships in 11th grade. Our students start in 5th. 500+ scholarships mapped, $2.9B+ in funding available."
           actions={[
             { label: "Start your child's journey", onClick: () => setShowEnrollment(true), primary: true },
