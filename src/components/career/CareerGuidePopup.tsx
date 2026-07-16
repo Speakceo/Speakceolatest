@@ -348,23 +348,20 @@ export default function CareerGuidePopup({ isOpen, onClose }: CareerGuidePopupPr
     exit: { opacity: 0, x: -50, scale: 0.98 }
   };
 
-  // Floating input component
+  // Static label above field — floating labels + placeholders overlapped on mobile
   const FloatingInput = ({ id, label, type = 'text', value, onChange, error, placeholder }: any) => (
-    <div className="relative group">
+    <div>
+      <label htmlFor={id} className="block text-[11px] font-medium text-white/50 mb-1.5 uppercase tracking-wider">
+        {label}
+      </label>
       <input
         id={id}
         type={type}
         value={value}
         onChange={onChange}
-        placeholder={placeholder || ' '}
-        className={`w-full px-4 py-4 bg-white/[0.06] border ${error ? 'border-red-400/60' : 'border-white/[0.1]'} rounded-2xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all peer`}
+        placeholder={placeholder}
+        className={`w-full min-h-[48px] px-4 py-3 bg-white/[0.06] border ${error ? 'border-red-400/60' : 'border-white/[0.1]'} rounded-2xl text-white text-[16px] sm:text-sm placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all`}
       />
-      <label
-        htmlFor={id}
-        className="absolute left-4 top-4 text-white/40 text-sm transition-all pointer-events-none peer-focus:-translate-y-6 peer-focus:text-xs peer-focus:text-blue-400 peer-[:not(:placeholder-shown)]:-translate-y-6 peer-[:not(:placeholder-shown)]:text-xs"
-      >
-        {label}
-      </label>
       {error && <p className="mt-1 text-xs text-red-400 flex items-center gap-1"><span>⚠️</span>{error}</p>}
     </div>
   );

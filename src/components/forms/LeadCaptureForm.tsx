@@ -28,7 +28,7 @@ function isValidOptionalPhone(phone: string): boolean {
 }
 
 const inputClass =
-  'w-full min-h-[48px] px-3.5 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-xl text-white text-[15px] sm:text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#1876D2]/60 focus:ring-1 focus:ring-[#1876D2]/30';
+  'w-full min-h-[48px] px-3.5 py-2.5 bg-white/[0.04] border border-white/[0.1] rounded-xl text-white text-[16px] sm:text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#1876D2]/60 focus:ring-1 focus:ring-[#1876D2]/30';
 
 const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   source,

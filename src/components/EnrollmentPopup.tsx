@@ -285,28 +285,28 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Child's Name *</label>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1.5 block pl-1 uppercase tracking-wider">Child's Name *</label>
                           <input type="text" placeholder="e.g. Alex" value={formData.childName}
                             onChange={(e) => setFormData({ ...formData, childName: e.target.value })}
-                            className={`w-full px-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                            className={`w-full min-h-[48px] px-4 py-3 bg-white/[0.04] border rounded-xl text-white text-[16px] sm:text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 transition-all ${
                               errors.childName ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50'
                             }`}
                           />
                           {errors.childName && <p className="text-red-400 text-xs mt-1">{errors.childName}</p>}
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Age *</label>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1.5 block pl-1 uppercase tracking-wider">Age *</label>
                           <select value={formData.age}
                             onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                            className={`w-full px-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm focus:outline-none focus:ring-2 transition-all appearance-none ${
+                            className={`w-full min-h-[48px] px-4 py-3 bg-[#0f172a] border rounded-xl text-white text-[16px] sm:text-sm focus:outline-none focus:ring-2 transition-all appearance-none ${
                               errors.age ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50'
                             } ${!formData.age ? 'text-gray-500' : ''}`}
                           >
-                            <option value="">Select</option>
+                            <option value="" className="bg-slate-900 text-gray-400">Select age</option>
                             {Array.from({ length: 13 }, (_, i) => i + 6).map(age => (
-                              <option key={age} value={age}>{age} years</option>
+                              <option key={age} value={age} className="bg-slate-900 text-white">{age} years</option>
                             ))}
                           </select>
                           {errors.age && <p className="text-red-400 text-xs mt-1">{errors.age}</p>}
@@ -314,10 +314,10 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
                       </div>
 
                       <div>
-                        <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Your Name *</label>
+                        <label className="text-[10px] font-bold text-gray-400 mb-1.5 block pl-1 uppercase tracking-wider">Your Name *</label>
                         <input type="text" placeholder="Parent / Guardian name" value={formData.parentName}
                           onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                          className={`w-full px-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                          className={`w-full min-h-[48px] px-4 py-3 bg-white/[0.04] border rounded-xl text-white text-[16px] sm:text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 transition-all ${
                             errors.parentName ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50'
                           }`}
                         />
@@ -325,10 +325,10 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
                       </div>
 
                       <div>
-                        <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">City</label>
+                        <label className="text-[10px] font-bold text-gray-400 mb-1.5 block pl-1 uppercase tracking-wider">City</label>
                         <input type="text" placeholder="Your city" value={formData.city}
                           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                          className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50 transition-all"
+                          className="w-full min-h-[48px] px-4 py-3 bg-white/[0.04] border border-white/[0.08] rounded-xl text-white text-[16px] sm:text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1876D2]/30 focus:border-[#1876D2]/50 transition-all"
                         />
                       </div>
 
@@ -467,12 +467,12 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
                       {/* Contact fields */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Email *</label>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1.5 block pl-1 uppercase tracking-wider">Email *</label>
                           <div className="relative">
-                            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
                             <input type="email" placeholder="your@email.com" value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                              className={`w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                              className={`w-full min-h-[48px] pl-10 pr-4 py-3 bg-white/[0.04] border rounded-xl text-white text-[16px] sm:text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 transition-all ${
                                 errors.email ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-amber-500/30 focus:border-amber-500/50'
                               }`}
                             />
@@ -480,12 +480,12 @@ export default function EnrollmentPopup({ isOpen, onClose }: EnrollmentPopupProp
                           {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
                         </div>
                         <div>
-                          <label className="text-[10px] font-bold text-gray-400 mb-1 block pl-1 uppercase tracking-wider">Phone *</label>
+                          <label className="text-[10px] font-bold text-gray-400 mb-1.5 block pl-1 uppercase tracking-wider">Phone *</label>
                           <div className="relative">
-                            <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
-                            <input type="tel" placeholder="+1 (555) 123-4567" value={formData.phone}
+                            <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
+                            <input type="tel" placeholder="+91 98765 43210" value={formData.phone}
                               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                              className={`w-full pl-10 pr-4 py-3.5 bg-white/[0.04] border rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
+                              className={`w-full min-h-[48px] pl-10 pr-4 py-3 bg-white/[0.04] border rounded-xl text-white text-[16px] sm:text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 transition-all ${
                                 errors.phone ? 'border-red-500/50 focus:ring-red-500/30' : 'border-white/[0.08] focus:ring-amber-500/30 focus:border-amber-500/50'
                               }`}
                             />

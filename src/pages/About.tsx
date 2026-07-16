@@ -73,6 +73,8 @@ const About = () => {
               description: 'Confidence through real games, pitches and showcases — not theory.',
               demoLabel: 'Pitch night live',
               span: 'wide',
+              image: '/images/hero/orbit-kids-banner.jpg',
+              imageAlt: 'Students practicing public speaking live',
               icon: <Mic className="w-4 h-4" />,
             },
             {
@@ -80,6 +82,8 @@ const About = () => {
               description: 'Build, ship and sell from day one with founder mentors.',
               demoLabel: 'Ship a product',
               span: 'lg',
+              image: '/images/courses/startup-fundamentals.jpg',
+              imageAlt: 'Students building startup projects',
               icon: <Lightbulb className="w-4 h-4" />,
             },
             {
@@ -87,6 +91,8 @@ const About = () => {
               description: 'Command tools — so kids create with AI instead of competing with it.',
               demoLabel: '100+ AI studio tools',
               span: 'md',
+              image: '/images/hero/orbit-kids-laptop.jpg',
+              imageAlt: 'Student learning AI tools on a laptop',
               icon: <Sparkles className="w-4 h-4" />,
             },
             {
@@ -94,10 +100,74 @@ const About = () => {
               description: 'Weekly access to founders who have actually shipped ventures.',
               demoLabel: '50+ founder mentors',
               span: 'md',
+              image: '/images/hero/success-story.jpg',
+              imageAlt: 'Mentor working with a young entrepreneur',
               icon: <Users className="w-4 h-4" />,
             },
           ]}
         />
+
+        {/* ═══ IN THE ROOM — programme photography ═══ */}
+        <section className="section-o border-o-t bg-o-0">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-2xl mb-10 sm:mb-14"
+            >
+              <p className="eyebrow-o mb-5">In the room</p>
+              <h2 className="font-display text-[clamp(2rem,4.4vw,3.2rem)] mb-4" style={{ letterSpacing: '-0.04em' }}>
+                Classrooms that feel like <span style={{ color: '#00B0FF' }}>build studios.</span>
+              </h2>
+              <p className="text-[17px] text-o-2 leading-[1.6] max-w-[56ch]">
+                From pitch nights to product launches — this is what Orbit looks like when the cameras are on.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              {[
+                {
+                  src: '/images/hero/main-hero.jpg',
+                  alt: 'Orbit students collaborating in a live session',
+                  caption: 'Live cohort energy',
+                },
+                {
+                  src: '/assets/kids-play-store.jpg',
+                  alt: 'A student project live on the app store',
+                  caption: 'Projects that ship',
+                },
+                {
+                  src: '/images/courses/marketing-sales.jpg',
+                  alt: 'Marketing and storytelling practice',
+                  caption: 'Sell & tell drills',
+                },
+              ].map((shot, i) => (
+                <motion.figure
+                  key={shot.src}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06, duration: 0.45 }}
+                  className="relative overflow-hidden rounded-2xl border border-[var(--o-border-1)] aspect-[4/5] sm:aspect-[3/4]"
+                >
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 to-transparent">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-white/90">
+                      {shot.caption}
+                    </span>
+                  </figcaption>
+                </motion.figure>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* ═══ STATS — unified dark ═══ */}
         <section className="border-o-t bg-o-0">

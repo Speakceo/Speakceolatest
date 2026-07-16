@@ -473,6 +473,90 @@ export default function Home() {
         </section>
 
         {/* ════════════════════════════════════════════════════════════════
+            04b · INSIDE ORBIT — photo mosaic of what students actually do
+        ════════════════════════════════════════════════════════════════ */}
+        <section className="section-o border-o-t">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="max-w-2xl mb-10 sm:mb-14"
+            >
+              <p className="eyebrow-o mb-5">Inside Orbit</p>
+              <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
+                What a week <span style={{ color: '#00B0FF' }}>actually looks like.</span>
+              </h2>
+              <p className="text-[17px] text-o-2 leading-[1.6] max-w-[58ch]">
+                Live classes, builds on laptop, pitch nights and shipped projects — not another
+                stack of recorded lessons.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              {[
+                {
+                  src: '/images/hero/orbit-kids-banner.jpg',
+                  alt: 'Students in a live Orbit mentor session',
+                  caption: 'Live mentor sessions',
+                  className: 'col-span-2 row-span-1 aspect-[16/10] lg:aspect-auto lg:min-h-[280px]',
+                },
+                {
+                  src: '/images/hero/success-story.jpg',
+                  alt: 'Student celebrating a project milestone',
+                  caption: 'Pitch & showcase nights',
+                  className: 'aspect-[4/5] lg:aspect-auto lg:min-h-[280px]',
+                },
+                {
+                  src: '/assets/kids-play-store.jpg',
+                  alt: 'Student project published to the app store',
+                  caption: 'Shipped real projects',
+                  className: 'aspect-[4/5] lg:aspect-auto lg:min-h-[280px]',
+                },
+                {
+                  src: '/images/courses/startup-fundamentals.jpg',
+                  alt: 'Startup fundamentals workshop',
+                  caption: 'Founder workshops',
+                  className: 'aspect-square lg:col-span-1 lg:min-h-[220px]',
+                },
+                {
+                  src: '/images/courses/marketing-sales.jpg',
+                  alt: 'Marketing and sales practice',
+                  caption: 'Sell & tell practice',
+                  className: 'aspect-square lg:col-span-1 lg:min-h-[220px]',
+                },
+                {
+                  src: '/images/hero/journey-map.jpg',
+                  alt: '180-day learning journey map',
+                  caption: '180-day journey map',
+                  className: 'col-span-2 aspect-[16/9] lg:min-h-[220px]',
+                },
+              ].map((shot, i) => (
+                <motion.figure
+                  key={shot.src}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ delay: i * 0.05, duration: 0.5, ease }}
+                  className={`relative overflow-hidden rounded-2xl border border-[var(--o-border-1)] bg-o-2 ${shot.className}`}
+                >
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 p-3 sm:p-4 bg-gradient-to-t from-black/80 via-black/35 to-transparent">
+                    <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-white/90">
+                      {shot.caption}
+                    </span>
+                  </figcaption>
+                </motion.figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════════════════════════
             05 · FOUNDER MINDSET — kept (high converter)
         ════════════════════════════════════════════════════════════════ */}
         <FounderMindsetSection />
@@ -495,6 +579,8 @@ export default function Home() {
               description: 'Pricing battles, stock markets, lemonade stands — story-driven business mechanics.',
               demoLabel: '10 live simulations',
               span: 'wide',
+              image: '/images/courses/business-planning.jpg',
+              imageAlt: 'Students playing business simulation games',
               icon: <Gamepad2 className="w-4 h-4" />,
             },
             {
@@ -502,6 +588,8 @@ export default function Home() {
               description: 'Website Builder, Pitch Writer, Image Generator. Kids command AI from day one.',
               demoLabel: '100+ AI tools',
               span: 'lg',
+              image: '/images/hero/orbit-kids-laptop.jpg',
+              imageAlt: 'Student using AI tools on a laptop',
               icon: <Brain className="w-4 h-4" />,
             },
             {
@@ -509,6 +597,8 @@ export default function Home() {
               description: '52 live classes. Mentor-guided from beginner to confident young entrepreneur.',
               demoLabel: '52 mentor sessions',
               span: 'md',
+              image: '/images/hero/journey-map.jpg',
+              imageAlt: 'Orbit 180-day curriculum journey',
               icon: <Target className="w-4 h-4" />,
             },
             {
@@ -516,6 +606,8 @@ export default function Home() {
               description: '500+ opportunities mapped by age, country and interest.',
               demoLabel: '500+ matches',
               span: 'md',
+              image: '/images/courses/financial-management.jpg',
+              imageAlt: 'Scholarship and finance planning session',
               icon: <GraduationCap className="w-4 h-4" />,
             },
             {
@@ -523,6 +615,8 @@ export default function Home() {
               description: 'Websites, games, pitch decks, certificates — proof for colleges & competitions.',
               demoLabel: '10+ verified pieces',
               span: 'md',
+              image: '/assets/kids-play-store.jpg',
+              imageAlt: 'Student portfolio project published online',
               icon: <Trophy className="w-4 h-4" />,
             },
             {
@@ -530,6 +624,8 @@ export default function Home() {
               description: 'Sunday office hours and 1:1 reviews with operators who have shipped ventures.',
               demoLabel: '50+ expert mentors',
               span: 'wide',
+              image: '/images/hero/success-story.jpg',
+              imageAlt: 'Mentor celebrating with a student',
               icon: <Sparkles className="w-4 h-4" />,
             },
           ]}

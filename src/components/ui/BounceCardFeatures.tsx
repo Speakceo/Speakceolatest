@@ -11,6 +11,9 @@ export type BounceFeature = {
   demoLabel?: string;
   /** Tailwind / CSS gradient classes for the demo zone */
   gradient?: string;
+  /** Optional photo of the activity / programme moment */
+  image?: string;
+  imageAlt?: string;
   icon?: ReactNode;
   /** Grid span hints — asymmetric layout */
   span?: 'sm' | 'md' | 'lg' | 'wide';
@@ -69,16 +72,35 @@ function BounceCard({
       <div
         className={cn(
           'relative mb-5 flex h-36 sm:h-44 items-end overflow-hidden rounded-[1.05rem] bg-gradient-to-br p-4',
-          gradient,
+          !feature.image && gradient,
         )}
       >
-        <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 45%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.35), transparent 50%)',
-          }}
-        />
+        {feature.image ? (
+          <>
+            <img
+              src={feature.image}
+              alt={feature.imageAlt ?? ''}
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to top, rgba(7,8,10,0.88) 0%, rgba(7,8,10,0.35) 45%, rgba(7,8,10,0.15) 100%)',
+              }}
+            />
+          </>
+        ) : (
+          <div
+            className="pointer-events-none absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 45%), radial-gradient(circle at 80% 70%, rgba(0,0,0,0.35), transparent 50%)',
+            }}
+          />
+        )}
         <div
           className={cn(
             'relative z-[1] w-full rounded-2xl border border-white/15 bg-black/35 px-4 py-3 backdrop-blur-md',
