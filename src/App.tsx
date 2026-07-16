@@ -78,7 +78,6 @@ const SettingsPage = lazy(() => import('./components/admin/SettingsPage'))
 // Common Components
 import Navbar from './components/Navbar'
 import Footer from './components/common/Footer'
-import Breadcrumb from './components/Breadcrumb'
 import SEO from './components/SEO'
 import LoadingFallback from './components/common/LoadingFallback'
 
@@ -202,7 +201,6 @@ function AppContent() {
   return (
     <div className="flex flex-col min-h-screen bg-o-0">
       <ConditionalNavbar />
-      <Breadcrumb />
       <main className="flex-grow">
         <Suspense fallback={<LoadingFallback />}>
           <Routes>

@@ -58,15 +58,12 @@ export default function Navbar() {
             }`}
           >
             <div className="flex justify-between items-center h-[52px] px-3 sm:px-4">
-              <button onClick={handleLogoClick} className="flex items-center flex-shrink-0 gap-2.5 pl-1 group">
+              <button onClick={handleLogoClick} className="flex items-center flex-shrink-0 pl-1 group" aria-label="Orbit Student home">
                 <img
                   src="/images/hero/orbit-logo.png"
                   alt="Orbit Student"
-                  className="orbit-logo-mark h-6 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-200"
+                  className="orbit-logo-mark h-7 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-200"
                 />
-                <span className="hidden sm:inline font-display text-[15px] tracking-tight text-o-0">
-                  Orbit
-                </span>
               </button>
 
               <div className="hidden md:flex items-center gap-0.5">

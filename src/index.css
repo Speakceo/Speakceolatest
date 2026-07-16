@@ -118,26 +118,49 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Align with Orbit light canvas */
+    --background: 220 16% 97%;
+    --foreground: 220 15% 6%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 15% 6%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
+    --popover-foreground: 220 15% 6%;
+    --primary: 210 78% 46%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 220 15% 12%;
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 40%;
+    --accent: 210 78% 46%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 210 78% 46%;
     --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 220 14% 3%;
+    --foreground: 220 14% 96%;
+    --card: 220 12% 7%;
+    --card-foreground: 220 14% 96%;
+    --popover: 220 12% 7%;
+    --popover-foreground: 220 14% 96%;
+    --primary: 210 78% 46%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 10% 12%;
+    --secondary-foreground: 220 14% 96%;
+    --muted: 220 10% 12%;
+    --muted-foreground: 220 9% 60%;
+    --accent: 199 100% 50%;
+    --accent-foreground: 220 14% 3%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 10% 16%;
+    --input: 220 10% 16%;
+    --ring: 199 100% 50%;
   }
 }
 
@@ -1375,8 +1398,8 @@ html.dark {
   color-scheme: dark;
 }
 
-html, body {
-  background: var(--o-bg-0);
+html, body, #root {
+  background: var(--o-bg-0) !important;
   color: var(--o-text-0);
   font-family: 'Outfit', 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-feature-settings: "ss01", "kern";
@@ -1384,6 +1407,14 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-wrap: pretty;
   transition: background-color 280ms var(--o-ease), color 280ms var(--o-ease);
+}
+
+/* Kill leftover always-dark marketing shells when light */
+html:not(.dark) .bg-slate-950,
+html:not(.dark) .bg-\[\#050a18\],
+html:not(.dark) .bg-\[\#0c1222\] {
+  background-color: var(--o-bg-0) !important;
+  color: var(--o-text-0);
 }
 
 /* Film grain — fixed, non-interactive */

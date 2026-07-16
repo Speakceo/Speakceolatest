@@ -375,11 +375,11 @@ export default function Courses() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--o-ghost-bg)] border border-[var(--o-border-1)] mb-6">
               <Trophy className="h-4 w-4 text-amber-400" />
               <span className="text-sm font-medium text-o-2">Student Success</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-o-0 mb-3 tracking-tight">
               Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Success Stories</span>
             </h2>
             <p className="text-o-2 max-w-lg mx-auto">See what your child could achieve</p>
@@ -393,7 +393,7 @@ export default function Courses() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white/[0.03] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-white/[0.12] transition-all duration-500"
+                className="group bg-o-2 border border-[var(--o-border-1)] rounded-2xl overflow-hidden hover:border-[var(--o-border-2)] transition-all duration-500"
               >
                 {/* Top accent bar */}
                 <div className={`h-1.5 bg-gradient-to-r ${story.gradient}`} />
@@ -406,10 +406,10 @@ export default function Courses() {
                     <span className="text-[10px] font-bold text-[#00B0FF] bg-[#00B0FF]/10 px-2.5 py-1 rounded-full">{story.badge}</span>
                   </div>
                   
-                  <h3 className="text-lg font-bold text-white mb-1">{story.name}</h3>
+                  <h3 className="text-lg font-bold text-o-0 mb-1">{story.name}</h3>
                   <p className="text-o-2 mb-4 text-sm">{story.story}</p>
                   
-                  <div className="bg-white/[0.04] rounded-xl px-4 py-3 border border-white/[0.06]">
+                  <div className="bg-o-2 rounded-xl px-4 py-3 border border-[var(--o-border-1)]">
                     <p className="text-xs font-medium text-emerald-400">✨ {story.achievement}</p>
                   </div>
                 </div>
@@ -539,11 +539,11 @@ export default function Courses() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--o-ghost-bg)] border border-[var(--o-border-1)] mb-6">
               <Rocket className="h-4 w-4 text-[#00B0FF]" />
               <span className="text-sm font-medium text-o-2">Step-by-Step</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-3 tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-o-0 mb-3 tracking-tight">
               12-Week <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] to-[#00B0FF]">Transformation Journey</span>
             </h2>
             <p className="text-o-2 max-w-xl mx-auto">Each week builds confidence and skills your child will use for life</p>
@@ -557,8 +557,8 @@ export default function Courses() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                className={`bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 lg:p-8 cursor-pointer hover:bg-white/[0.05] hover:border-white/[0.1] transition-all duration-500 ${
-                  selectedModule === path.title ? 'ring-1 ring-[#00B0FF]/30 bg-white/[0.06]' : ''
+                className={`bg-o-2 border border-[var(--o-border-1)] rounded-2xl p-6 lg:p-8 cursor-pointer hover:bg-o-3 hover:border-[var(--o-border-2)] transition-all duration-500 ${
+                  selectedModule === path.title ? 'ring-1 ring-[#00B0FF]/30 bg-o-3' : ''
                 }`}
                 onClick={() => setSelectedModule(selectedModule === path.title ? null : path.title)}
               >
@@ -572,7 +572,7 @@ export default function Courses() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-2">
                       <div>
-                        <h3 className="text-lg lg:text-xl font-bold text-white">{path.title}</h3>
+                        <h3 className="text-lg lg:text-xl font-bold text-o-0">{path.title}</h3>
                         <p className="text-o-2 text-sm">{path.description}</p>
                     </div>
                     <ChevronRight 
@@ -595,14 +595,14 @@ export default function Courses() {
                       {path.modules.map((module, moduleIndex) => (
                         <div
                           key={moduleIndex}
-                            className="p-4 rounded-xl bg-white/[0.04] border border-white/[0.06] hover:border-white/[0.1] transition-all duration-300"
+                            className="p-4 rounded-xl bg-o-2 border border-[var(--o-border-1)] hover:border-[var(--o-border-2)] transition-all duration-300"
                           >
                             <div className="flex items-center gap-3 mb-2">
                               <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${path.color} flex items-center justify-center shadow`}>
                                 <module.icon className="h-4 w-4 text-white" />
                               </div>
                               <div className="flex-1 min-w-0">
-                                <h4 className="font-semibold text-white text-sm truncate">{module.title}</h4>
+                                <h4 className="font-semibold text-o-0 text-sm truncate">{module.title}</h4>
                                 <div className="flex items-center gap-1 text-o-3 text-xs">
                                   <Clock className="h-3 w-3" />
                                   <span>{module.duration}</span>
@@ -644,7 +644,7 @@ export default function Courses() {
               <span className="text-sm font-medium text-amber-400">Limited — Only 30 Spots Left</span>
             </div>
 
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-o-0 mb-6 leading-tight tracking-tight">
               Don't Let Your Child
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-red-400"> Fall Behind</span>
             </h2>
@@ -655,7 +655,7 @@ export default function Courses() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mb-12">
               {[{ v: '30', l: 'Spots Left' }, { v: '7', l: 'Days Left' }, { v: '98%', l: 'Satisfaction' }].map((u, i) => (
-                <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-5">
+                <div key={i} className="bg-o-2 border border-[var(--o-border-1)] rounded-2xl p-5">
                   <AnimatedCounter value={u.v} className="text-2xl font-bold text-amber-400" />
                   <div className="text-o-3 text-[10px] uppercase tracking-wider mt-1">{u.l}</div>
             </div>

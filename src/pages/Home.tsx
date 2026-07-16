@@ -13,6 +13,7 @@ import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
 import FounderMindsetSection from '../components/home/FounderMindsetSection';
 import Typewriter from '../components/ui/Typewriter';
 import BounceCardFeatures from '../components/ui/BounceCardFeatures';
+import { useTheme } from '../contexts/ThemeContext';
 import {
   getActiveCohortLabel,
   getSpotsRemainingCopy,
@@ -33,6 +34,7 @@ export default function Home() {
   const cohortLabel = useMemo(() => getActiveCohortLabel(), []);
   const upcomingBatches = useMemo(() => getUpcomingCohortBatches(), []);
   const spotsCopy = useMemo(() => getSpotsRemainingCopy(30), []);
+  const { isDark } = useTheme();
 
   return (
     <>
@@ -64,7 +66,9 @@ export default function Home() {
         {/* ════════════════════════════════════════════════════════════════
             01 · HERO — brand-first, full-bleed visual, no overlays
         ════════════════════════════════════════════════════════════════ */}
-        <section className="o-on-dark relative overflow-hidden min-h-[100dvh] flex items-end sm:items-center pt-28 pb-16 sm:pt-32 sm:pb-24">
+        <section
+          className={`${isDark ? 'o-on-dark' : ''} relative overflow-hidden min-h-[100dvh] flex items-end sm:items-center pt-28 pb-16 sm:pt-32 sm:pb-24`}
+        >
           <div className="absolute inset-0">
             <img
               src="/images/hero/orbit-kids-laptop.jpg"
@@ -77,11 +81,12 @@ export default function Home() {
             <div
               className="absolute inset-0"
               style={{
-                background:
-                  'linear-gradient(105deg, rgba(7,8,10,0.94) 0%, rgba(7,8,10,0.82) 42%, rgba(7,8,10,0.45) 68%, rgba(7,8,10,0.55) 100%)',
+                background: isDark
+                  ? 'linear-gradient(105deg, rgba(7,8,10,0.94) 0%, rgba(7,8,10,0.82) 42%, rgba(7,8,10,0.45) 68%, rgba(7,8,10,0.55) 100%)'
+                  : 'linear-gradient(105deg, rgba(246,247,249,0.97) 0%, rgba(246,247,249,0.92) 38%, rgba(246,247,249,0.55) 62%, rgba(246,247,249,0.35) 100%)',
               }}
             />
-            <div className="absolute inset-0 glow-o opacity-80" />
+            <div className={`absolute inset-0 glow-o ${isDark ? 'opacity-80' : 'opacity-50'}`} />
           </div>
 
           <div className="relative w-full max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
