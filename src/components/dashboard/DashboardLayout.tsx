@@ -180,7 +180,7 @@ export default function DashboardLayout() {
           <div className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${!isMobile ? (isSidebarCollapsed ? 'ml-20' : 'ml-[260px]') : ''}`}>
             <TopBar />
             <main className="flex-grow overflow-auto">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
                 <Outlet />
               </div>
             </main>

@@ -90,11 +90,11 @@ export default function SpeakCEOLogin() {
         <link rel="canonical" href="https://www.orbitstudent.com/login" />
       </Helmet>
 
-      <div className="min-h-screen bg-o-0 text-o-0 flex items-center justify-center p-4 relative overflow-hidden">
+      <div className="min-h-[100dvh] bg-o-0 text-o-0 flex items-center justify-center p-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] relative overflow-hidden">
         <div className="absolute inset-0 glow-o opacity-70 pointer-events-none" />
         <div className="absolute inset-0 grid-o opacity-40 pointer-events-none" />
 
-        <div className="absolute top-4 right-4 z-20">
+        <div className="absolute top-[max(1rem,env(safe-area-inset-top))] right-[max(1rem,env(safe-area-inset-right))] z-20">
           <ThemeToggle size="sm" />
         </div>
 
@@ -104,7 +104,7 @@ export default function SpeakCEOLogin() {
           transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
           className="relative w-full max-w-md"
         >
-          <div className="card-o p-8">
+          <div className="card-o p-5 sm:p-8 w-full">
             <div className="text-center mb-8">
               <Link to="/" className="inline-flex mb-6">
                 <img

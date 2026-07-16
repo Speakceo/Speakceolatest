@@ -1795,3 +1795,15 @@ html.dark body:not(:has(.od-dashboard-shell)) .shadow-2xl {
   letter-spacing: 0.02em;
   font-style: normal;
 }
+
+
+/* Mobile shell polish */
+html, body {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (max-width: 768px) {
+  .btn-o-lg { height: 48px; width: 100%; }
+  .section-o { padding-top: 64px; padding-bottom: 72px; }
+  .card-o { padding: 18px; }
+}

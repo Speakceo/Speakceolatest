@@ -74,6 +74,13 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
     if (onCollapseChange) onCollapseChange(isCollapsed);
   }, [isCollapsed, onCollapseChange]);
 
+  useEffect(() => {
+    if (!isMobile || !isMobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [isMobile, isMobileOpen]);
+
   const handleCollapse = () => setIsCollapsed(!isCollapsed);
 
   const handleLogout = async () => {
@@ -206,14 +213,14 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
       <>
         <button 
           onClick={() => setIsMobileOpen(true)}
-          className="lg:hidden fixed top-4 left-4 z-30 p-2.5 rounded-xl bg-[var(--o-ghost-bg)] backdrop-blur-xl border border-[var(--o-border-1)] shadow-xl"
+          className="lg:hidden fixed top-[calc(0.75rem+env(safe-area-inset-top))] left-3 z-[35] p-2.5 rounded-xl bg-o-2 backdrop-blur-xl border border-[var(--o-border-1)] shadow-xl min-w-[44px] min-h-[44px] flex items-center justify-center"
         >
           <Menu className="h-5 w-5 text-o-1" />
         </button>
         
         {isMobileOpen && (
           <div 
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
             onClick={() => setIsMobileOpen(false)}
           />
         )}
@@ -253,7 +260,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
         {!isCollapsed && (
           <button
             onClick={handleCollapse}
-            className="p-1.5 rounded-lg mr-3 text-o-3 hover:text-o-1 hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+            className="p-1.5 rounded-lg mr-3 text-o-3 hover:text-o-1 hover:bg-[var(--o-ghost-hover)] transition-colors"
           >
             <ChevronLeft className="h-3.5 w-3.5" />
           </button>
@@ -261,7 +268,7 @@ export default function Sidebar({ onCollapseChange }: SidebarProps) {
         {isCollapsed && (
           <button
             onClick={handleCollapse}
-            className="p-1.5 rounded-lg mx-auto text-o-3 hover:text-o-1 hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+            className="p-1.5 rounded-lg mx-auto text-o-3 hover:text-o-1 hover:bg-[var(--o-ghost-hover)] transition-colors"
           >
             <ChevronLeft className="h-3.5 w-3.5 rotate-180" />
           </button>

@@ -98,8 +98,8 @@ export default function TopBar() {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-[color-mix(in_srgb,var(--o-bg-0)_88%,transparent)] backdrop-blur-xl border-b border-[var(--o-border-1)]">
-      <div className="px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-30 bg-[color-mix(in_srgb,var(--o-bg-0)_88%,transparent)] backdrop-blur-xl border-b border-[var(--o-border-1)] pt-[env(safe-area-inset-top)]">
+      <div className="pl-14 pr-3 sm:px-6 lg:pl-8 lg:pr-8">
         <div className="flex h-14 items-center justify-between gap-4">
           {/* Left - Search */}
           <div className="flex-1 max-w-lg">
@@ -113,7 +113,7 @@ export default function TopBar() {
                 <input
                   type="text"
                   name="search"
-                  placeholder="Search courses, tools, tasks..."
+                  placeholder="Search..."
                   className="block w-full rounded-xl border border-[var(--o-border-1)] py-2 pl-9 pr-3 bg-o-2 text-o-0 text-sm placeholder:text-o-3 focus:outline-none focus:border-[var(--o-accent-ring)]"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -154,7 +154,7 @@ export default function TopBar() {
               {showNotifications && (
                 <div 
                   ref={notificationsRef}
-                  className="absolute right-0 mt-2 w-80 origin-top-right rounded-2xl bg-o-2 backdrop-blur-xl py-1 shadow-2xl border border-[var(--o-border-1)]"
+                  className="absolute right-0 mt-2 w-[min(20rem,calc(100vw-1.5rem))] origin-top-right rounded-2xl bg-o-2 backdrop-blur-xl py-1 shadow-2xl border border-[var(--o-border-1)]"
                 >
                   <div className="flex items-center justify-between px-4 pt-3 pb-2 border-b border-[var(--o-border-1)]">
                     <h3 className="text-sm font-semibold text-o-0">Notifications</h3>
@@ -191,10 +191,10 @@ export default function TopBar() {
             
             <ThemeToggle size="sm" className="mr-0.5" />
 
-            {/* Settings */}
+            {/* Settings — hide on very small screens */}
             <button
               type="button"
-              className="p-2 rounded-xl text-o-2 hover:text-o-0 hover:bg-[var(--o-ghost-hover)] transition-colors"
+              className="hidden sm:inline-flex p-2 rounded-xl text-o-2 hover:text-o-0 hover:bg-[var(--o-ghost-hover)] transition-colors"
               onClick={() => navigate('/dashboard/settings')}
             >
               <Settings className="h-[18px] w-[18px]" />
@@ -215,7 +215,7 @@ export default function TopBar() {
                   )}
                 </div>
                 <div className="hidden sm:flex sm:items-center">
-                  <span className="text-xs font-medium text-gray-300 truncate max-w-[80px]">
+                  <span className="text-xs font-medium text-o-1 truncate max-w-[80px]">
                     {user?.name || 'User'}
                   </span>
                   <ChevronDown className="ml-0.5 h-3 w-3 text-o-3" />
@@ -225,7 +225,7 @@ export default function TopBar() {
               {showUserMenu && (
                 <div 
                   ref={userMenuRef}
-                  className="absolute right-0 mt-2 w-52 origin-top-right rounded-2xl bg-[#111827]/95 backdrop-blur-xl py-1 shadow-2xl border border-white/[0.06]"
+                  className="absolute right-0 mt-2 w-52 origin-top-right rounded-2xl bg-o-2 backdrop-blur-xl py-1 shadow-2xl border border-[var(--o-border-1)]"
                 >
                   <div className="px-4 py-3 border-b border-[var(--o-border-1)]">
                     <p className="text-sm font-medium text-o-0">{user?.name || 'User'}</p>
@@ -243,15 +243,15 @@ export default function TopBar() {
                   </div>
                   
                   <div className="py-1">
-                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/profile')}>
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-o-1 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/profile')}>
                       <User className="mr-2.5 h-3.5 w-3.5 text-o-3" />
                       Your Profile
                     </button>
-                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/achievements')}>
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-o-1 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/achievements')}>
                       <Trophy className="mr-2.5 h-3.5 w-3.5 text-o-3" />
                       Achievements
                     </button>
-                    <button className="flex w-full items-center px-4 py-2 text-xs text-gray-300 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/settings')}>
+                    <button className="flex w-full items-center px-4 py-2 text-xs text-o-1 hover:bg-[var(--o-ghost-hover)] transition-colors" onClick={() => navigate('/dashboard/settings')}>
                       <Settings className="mr-2.5 h-3.5 w-3.5 text-o-3" />
                       Settings
                     </button>
