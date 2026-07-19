@@ -710,6 +710,138 @@ html.dark .od-dashboard-shell ::-webkit-scrollbar-thumb:hover {
   background: rgba(255,255,255,0.15);
 }
 
+/* ═══ DASHBOARD + SITE LIGHT THEME — fix dark-first white text ═══
+   Many dashboard/marketing surfaces hard-code text-white / glass borders
+   for dark mode. In light theme those become invisible on pale backgrounds.
+*/
+html:not(.dark) .od-dashboard-shell .text-white {
+  color: var(--od-text-0) !important;
+}
+html:not(.dark) .od-dashboard-shell .text-white\/60,
+html:not(.dark) .od-dashboard-shell .text-white\/50,
+html:not(.dark) .od-dashboard-shell .text-white\/40,
+html:not(.dark) .od-dashboard-shell .text-white\/70 {
+  color: rgba(12, 14, 18, 0.45) !important;
+}
+
+/* Keep white text on solid / gradient accent controls */
+html:not(.dark) .od-dashboard-shell [class*="bg-gradient"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-[#1876"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-blue"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-indigo"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-purple"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-emerald"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-green"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-red"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-amber"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-orange"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-rose"].text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-yellow"].text-white,
+html:not(.dark) .od-dashboard-shell .bg-\[\#1876D2\].text-white,
+html:not(.dark) .od-dashboard-shell .bg-\[\#1565C0\].text-white,
+html:not(.dark) .od-dashboard-shell .bg-\[\#00B0FF\].text-white,
+html:not(.dark) .od-dashboard-shell .bg-blue-600.text-white,
+html:not(.dark) .od-dashboard-shell .bg-indigo-600.text-white,
+html:not(.dark) .od-dashboard-shell .bg-green-500.text-white,
+html:not(.dark) .od-dashboard-shell .bg-green-600.text-white,
+html:not(.dark) .od-dashboard-shell .bg-emerald-500.text-white,
+html:not(.dark) .od-dashboard-shell .bg-red-500.text-white,
+html:not(.dark) .od-dashboard-shell .bg-amber-500.text-white,
+html:not(.dark) .od-dashboard-shell .bg-orange-500.text-white,
+html:not(.dark) .od-dashboard-shell .bg-purple-600.text-white,
+html:not(.dark) .od-dashboard-shell .bg-violet-600.text-white,
+html:not(.dark) .od-dashboard-shell [class*="bg-gradient"] .text-white,
+html:not(.dark) .od-dashboard-shell [class*="from-[#1876"] .text-white,
+html:not(.dark) .od-dashboard-shell .bg-\[\#1876D2\] .text-white,
+html:not(.dark) .od-dashboard-shell .bg-\[\#1565C0\] .text-white,
+html:not(.dark) .od-dashboard-shell .bg-green-500 .text-white,
+html:not(.dark) .od-dashboard-shell .bg-green-600 .text-white,
+html:not(.dark) .od-dashboard-shell .bg-emerald-500 .text-white,
+html:not(.dark) .od-dashboard-shell .bg-red-500 .text-white,
+html:not(.dark) .od-dashboard-shell .bg-blue-600 .text-white,
+html:not(.dark) .od-dashboard-shell .bg-indigo-600 .text-white,
+html:not(.dark) .od-dashboard-shell .bg-purple-600 .text-white {
+  color: #ffffff !important;
+}
+
+/* Soft gray text that was tuned for dark glass */
+html:not(.dark) .od-dashboard-shell .text-gray-300 {
+  color: var(--od-text-1) !important;
+}
+html:not(.dark) .od-dashboard-shell .text-gray-400 {
+  color: var(--od-text-2) !important;
+}
+html:not(.dark) .od-dashboard-shell .text-gray-500 {
+  color: var(--od-text-2) !important;
+}
+html:not(.dark) .od-dashboard-shell .hover\:text-white:hover,
+html:not(.dark) .od-dashboard-shell .group:hover .group-hover\:text-white {
+  color: var(--od-text-0) !important;
+}
+
+/* Glass cards → solid light cards */
+html:not(.dark) .od-dashboard-shell .bg-white\/\[0\.02\],
+html:not(.dark) .od-dashboard-shell .bg-white\/\[0\.03\],
+html:not(.dark) .od-dashboard-shell .bg-white\/\[0\.04\],
+html:not(.dark) .od-dashboard-shell .bg-white\/\[0\.05\],
+html:not(.dark) .od-dashboard-shell .bg-white\/\[0\.06\],
+html:not(.dark) .od-dashboard-shell .bg-white\/\[0\.08\],
+html:not(.dark) .od-dashboard-shell .bg-white\/\[0\.1\] {
+  background-color: var(--od-bg-2) !important;
+}
+html:not(.dark) .od-dashboard-shell .border-white\/\[0\.04\],
+html:not(.dark) .od-dashboard-shell .border-white\/\[0\.05\],
+html:not(.dark) .od-dashboard-shell .border-white\/\[0\.06\],
+html:not(.dark) .od-dashboard-shell .border-white\/\[0\.08\],
+html:not(.dark) .od-dashboard-shell .border-white\/\[0\.1\],
+html:not(.dark) .od-dashboard-shell .border-white\/\[0\.12\],
+html:not(.dark) .od-dashboard-shell .border-white\/10,
+html:not(.dark) .od-dashboard-shell .border-white\/20 {
+  border-color: var(--od-border-1) !important;
+}
+html:not(.dark) .od-dashboard-shell .hover\:bg-white\/\[0\.02\]:hover,
+html:not(.dark) .od-dashboard-shell .hover\:bg-white\/\[0\.04\]:hover,
+html:not(.dark) .od-dashboard-shell .hover\:bg-white\/\[0\.06\]:hover,
+html:not(.dark) .od-dashboard-shell .hover\:bg-white\/\[0\.08\]:hover {
+  background-color: var(--od-bg-1) !important;
+}
+html:not(.dark) .od-dashboard-shell .hover\:border-white\/\[0\.08\]:hover,
+html:not(.dark) .od-dashboard-shell .hover\:border-white\/\[0\.1\]:hover {
+  border-color: var(--od-border-2) !important;
+}
+
+/* Tint washes that look washed-out on light backgrounds */
+html:not(.dark) .od-dashboard-shell .bg-yellow-500\/10,
+html:not(.dark) .od-dashboard-shell .bg-yellow-500\/15 {
+  background-color: rgba(234, 179, 8, 0.12) !important;
+}
+html:not(.dark) .od-dashboard-shell .bg-emerald-500\/10 {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+}
+html:not(.dark) .od-dashboard-shell .bg-purple-500\/10 {
+  background-color: rgba(168, 85, 247, 0.12) !important;
+}
+html:not(.dark) .od-dashboard-shell .bg-\[\#1876D2\]\/10,
+html:not(.dark) .od-dashboard-shell .bg-\[\#1876D2\]\/15 {
+  background-color: rgba(24, 118, 210, 0.1) !important;
+}
+html:not(.dark) .od-dashboard-shell .bg-red-500\/15 {
+  background-color: rgba(239, 68, 68, 0.12) !important;
+}
+
+/* Stronger accent labels in light mode (pale *400 washes out) */
+html:not(.dark) .od-dashboard-shell .text-red-400 { color: #dc2626 !important; }
+html:not(.dark) .od-dashboard-shell .text-yellow-400 { color: #ca8a04 !important; }
+html:not(.dark) .od-dashboard-shell .text-purple-400 { color: #9333ea !important; }
+html:not(.dark) .od-dashboard-shell .text-emerald-400 { color: #059669 !important; }
+html:not(.dark) .od-dashboard-shell .text-\[\#00B0FF\] { color: #0284c7 !important; }
+
+/* Dark chip leftovers inside light dashboard */
+html:not(.dark) .od-dashboard-shell .bg-\[\#0c1222\],
+html:not(.dark) .od-dashboard-shell .bg-\[\#0f172a\] {
+  background-color: var(--od-bg-3) !important;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    OPEN-DESIGN SYSTEM — Linear precision + Duolingo gamification
    Derived from nexu-io/open-design design-systems/linear-app + duolingo
@@ -778,7 +910,7 @@ html.dark {
 }
 .card-od:hover {
   border-color: var(--od-border-2);
-  background: #1c1c1f;
+  background: var(--od-bg-3);
 }
 
 /* KPI card — tighter radius for density */
@@ -1425,10 +1557,41 @@ html, body, #root {
 
 /* Kill leftover always-dark marketing shells when light */
 html:not(.dark) .bg-slate-950,
-html:not(.dark) .bg-\[\#050a18\],
-html:not(.dark) html.dark .od-dashboard-shell {
+html:not(.dark) .bg-\[\#050a18\] {
   background-color: var(--o-bg-0) !important;
   color: var(--o-text-0);
+}
+
+/* Marketing leftovers that stay dark-styled in light theme */
+html:not(.dark) .bg-slate-950.text-white,
+html:not(.dark) .bg-\[\#050a18\].text-white,
+html:not(.dark) .bg-\[\#0f172a\].text-white,
+html:not(.dark) .bg-slate-950 .text-white,
+html:not(.dark) .bg-\[\#050a18\] .text-white,
+html:not(.dark) .bg-\[\#0f172a\] .text-white {
+  color: var(--o-text-0) !important;
+}
+html:not(.dark) .bg-slate-950 .text-gray-300,
+html:not(.dark) .bg-slate-950 .text-gray-400,
+html:not(.dark) .bg-\[\#050a18\] .text-gray-300,
+html:not(.dark) .bg-\[\#050a18\] .text-gray-400,
+html:not(.dark) .bg-\[\#0f172a\] .text-gray-300,
+html:not(.dark) .bg-\[\#0f172a\] .text-gray-400 {
+  color: var(--o-text-2) !important;
+}
+html:not(.dark) .bg-slate-950 .text-gray-500,
+html:not(.dark) .bg-\[\#050a18\] .text-gray-500 {
+  color: var(--o-text-3) !important;
+}
+
+/* Keep CTA / badge white text on accent gradients inside lightened shells */
+html:not(.dark) .bg-slate-950 [class*="bg-gradient"].text-white,
+html:not(.dark) .bg-slate-950 [class*="from-[#1876"].text-white,
+html:not(.dark) .bg-slate-950 .bg-\[\#1876D2\].text-white,
+html:not(.dark) .bg-slate-950 [class*="bg-gradient"] .text-white,
+html:not(.dark) .bg-\[\#050a18\] [class*="bg-gradient"].text-white,
+html:not(.dark) .bg-\[\#050a18\] [class*="bg-gradient"] .text-white {
+  color: #ffffff !important;
 }
 
 /* Film grain — fixed, non-interactive */
