@@ -49,6 +49,144 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
       { href: '/live-classes/', label: 'Live class schedule' },
       { href: '/demo/', label: 'Free demo' },
       { href: '/blog/', label: 'Parent blog' },
+      { href: '/compare/', label: 'Compare programmes' },
+      { href: '/compare/orbit-vs-planetspark/', label: 'Orbit vs PlanetSpark' },
+      { href: '/compare/orbit-vs-brightchamps/', label: 'Orbit vs BrightCHAMPS' },
+    ],
+  },
+  {
+    path: '/compare',
+    title: 'Compare Orbit Student | vs PlanetSpark, BrightCHAMPS & Alternatives',
+    description:
+      'Parent-facing comparisons: Orbit Student vs PlanetSpark, vs BrightCHAMPS, plus BrightCHAMPS and PlanetSpark alternatives. Book a free demo.',
+    keywords:
+      'Orbit Student vs PlanetSpark, Orbit vs BrightCHAMPS, BrightCHAMPS alternatives, PlanetSpark alternatives, AI entrepreneurship for kids',
+    h1: 'Compare Orbit Student with other kids’ skill platforms',
+    intro:
+      'Parents often compare PlanetSpark for speaking and BrightCHAMPS for STEM. Orbit Student is a mentor-led AI and entrepreneurship cohort with portfolio and scholarship outcomes.',
+    paragraphs: [
+      'Use our comparison pages for fair, updated feature tables — then book a free demo to map age, timezone and goals. We disclose that Orbit publishes these pages and cite public competitor marketing.',
+      'High-intent guides cover Orbit vs PlanetSpark, Orbit vs BrightCHAMPS, BrightCHAMPS alternatives and PlanetSpark alternatives so you can choose by outcome, not ads.',
+    ],
+    sectionHeading: 'Comparison guides',
+    bullets: [
+      'Orbit Student vs PlanetSpark — speaking vs young founders',
+      'Orbit Student vs BrightCHAMPS — STEM catalogue vs AI entrepreneurship',
+      'BrightCHAMPS alternatives — seven options by fit',
+      'PlanetSpark alternatives — when you need more than speaking',
+    ],
+    links: [
+      { href: '/compare/orbit-vs-planetspark/', label: 'Orbit vs PlanetSpark' },
+      { href: '/compare/orbit-vs-brightchamps/', label: 'Orbit vs BrightCHAMPS' },
+      { href: '/compare/brightchamps-alternatives/', label: 'BrightCHAMPS alternatives' },
+      { href: '/demo/', label: 'Book free demo' },
+    ],
+  },
+  {
+    path: '/compare/orbit-vs-planetspark',
+    title: 'Orbit Student vs PlanetSpark (2026): Which Fits Young Founders?',
+    description:
+      'Honest Orbit Student vs PlanetSpark comparison for parents. Speaking skills vs AI + entrepreneurship cohorts, portfolios and scholarships. Book a free Orbit demo.',
+    keywords:
+      'Orbit Student vs PlanetSpark, PlanetSpark alternative, entrepreneurship for kids, AI classes for kids, Young CEO programme',
+    h1: 'Orbit Student vs PlanetSpark',
+    intro:
+      'PlanetSpark is a strong choice when the goal is public speaking and communication. Orbit Student is built for families who want live AI literacy, entrepreneurship and a scholarship-ready portfolio.',
+    paragraphs: [
+      'PlanetSpark emphasises speaking, storytelling and AI-assisted practice. Orbit runs small Young CEO cohorts with AI tools, venture projects and pitch outcomes parents can share for school and scholarships.',
+      'Choose PlanetSpark for speaking-first goals. Choose Orbit when AI + entrepreneurship and portfolio storytelling matter more. Book a free Orbit demo — no payment required to enquire.',
+    ],
+    sectionHeading: 'At a glance',
+    bullets: [
+      'Orbit: AI + entrepreneurship + leadership portfolio',
+      'PlanetSpark: public speaking and communication depth',
+      'Both: live instruction and free trial / demo funnels',
+      'Orbit edge: scholarship roadmap and student AI studio',
+    ],
+    links: [
+      { href: '/compare/', label: 'All comparisons' },
+      { href: '/demo/', label: 'Free demo' },
+      { href: '/courses/', label: 'Courses' },
+    ],
+  },
+  {
+    path: '/compare/orbit-vs-brightchamps',
+    title: 'Orbit Student vs BrightCHAMPS (2026): AI Classes Compared',
+    description:
+      'Orbit Student vs BrightCHAMPS for parents. Compare Gen AI / coding stacks vs mentor-led AI entrepreneurship cohorts with portfolios. Free Orbit demo.',
+    keywords:
+      'Orbit Student vs BrightCHAMPS, BrightCHAMPS alternative, AI classes for kids, coding for kids vs entrepreneurship',
+    h1: 'Orbit Student vs BrightCHAMPS',
+    intro:
+      'BrightCHAMPS offers a large STEM and Gen AI catalogue. Orbit Student focuses on mentor-led cohorts that connect AI literacy to entrepreneurship, pitching and scholarship-ready work.',
+    paragraphs: [
+      'Families often compare the two when searching for AI classes for kids. BrightCHAMPS wins on course breadth and coding/robotics depth. Orbit wins when the outcome is a young founder journey with shipped projects.',
+      'Pricing on both sides is typically demo-led. Book an Orbit demo to compare hours, group size and goals against any BrightCHAMPS quote.',
+    ],
+    sectionHeading: 'At a glance',
+    bullets: [
+      'Orbit: AI + entrepreneurship cohort path',
+      'BrightCHAMPS: broad STEM / Gen AI catalogue',
+      'Orbit: capped cohorts and portfolio roadmap',
+      'BrightCHAMPS: scale and multi-subject packages',
+    ],
+    links: [
+      { href: '/compare/brightchamps-alternatives/', label: 'BrightCHAMPS alternatives' },
+      { href: '/demo/', label: 'Free demo' },
+      { href: '/live-classes/', label: 'Live classes' },
+    ],
+  },
+  {
+    path: '/compare/brightchamps-alternatives',
+    title: '7 Best BrightCHAMPS Alternatives (2026) for AI & Young Founders',
+    description:
+      'BrightCHAMPS alternatives for parents: Orbit Student, Codingal, PlanetSpark, TruPreneurs and more — compared by outcome. Book an Orbit free demo.',
+    keywords:
+      'BrightCHAMPS alternatives, alternatives to BrightCHAMPS, best BrightCHAMPS alternative 2026, AI classes for kids',
+    h1: 'Best BrightCHAMPS Alternatives in 2026',
+    intro:
+      'BrightCHAMPS works well for large STEM catalogues. Alternatives fit different goals — coding depth, public speaking, or full entrepreneurship cohorts such as Orbit Student.',
+    paragraphs: [
+      'This guide lists Orbit Student, Codingal, PlanetSpark, TruPreneurs.AI, Fuggae, Outschool camps and My Little Founders with clear best-for notes. Orbit publishes this page and discloses affiliation.',
+      'If you want mentor-led AI + entrepreneurship with a scholarship-ready portfolio, start with Orbit. If you need deep robotics or contest coding, stay with BrightCHAMPS or Codingal.',
+    ],
+    sectionHeading: 'Top alternatives',
+    bullets: [
+      'Orbit Student — AI + Young CEO cohorts',
+      'Codingal — live AI & coding globally',
+      'PlanetSpark — speaking-first alternative',
+      'TruPreneurs.AI — school / B2B entrepreneurship AI',
+    ],
+    links: [
+      { href: '/compare/orbit-vs-brightchamps/', label: 'Orbit vs BrightCHAMPS' },
+      { href: '/demo/', label: 'Book free demo' },
+    ],
+  },
+  {
+    path: '/compare/planetspark-alternatives',
+    title: '6 Best PlanetSpark Alternatives (2026) Beyond Public Speaking',
+    description:
+      'PlanetSpark alternatives for parents who want AI, entrepreneurship or broader life skills. Includes Orbit Student, Codingal, BrightCHAMPS and more.',
+    keywords:
+      'PlanetSpark alternatives, alternatives to PlanetSpark, PlanetSpark vs Orbit Student, entrepreneurship classes for kids',
+    h1: 'Best PlanetSpark Alternatives in 2026',
+    intro:
+      'PlanetSpark leads for speaking and communication. Parents search for alternatives when they also want AI, coding or entrepreneurship — including Orbit Student’s Young CEO path.',
+    paragraphs: [
+      'Shortlist: Orbit Student, Codingal, BrightCHAMPS, Fuggae, Outschool speaking classes and community debate programmes. Match the skill gap; some families run speaking coaching plus an Orbit cohort.',
+      'Stay with PlanetSpark for speaking-first goals. Switch to Orbit when AI + entrepreneurship and portfolio storytelling matter more.',
+    ],
+    sectionHeading: 'Top alternatives',
+    bullets: [
+      'Orbit Student — AI + entrepreneurship portfolios',
+      'Codingal — AI/coding with expanding speaking',
+      'BrightCHAMPS — STEM / Gen AI stacks',
+      'Fuggae — tiny-cohort AI and speaking',
+    ],
+    links: [
+      { href: '/compare/orbit-vs-planetspark/', label: 'Orbit vs PlanetSpark' },
+      { href: '/faq/', label: 'FAQ' },
+      { href: '/demo/', label: 'Free demo' },
     ],
   },
   {
@@ -235,6 +373,7 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
     links: [
       { href: '/contact/', label: 'Contact support' },
       { href: '/demo/', label: 'Book a demo' },
+      { href: '/compare/', label: 'Compare programmes' },
     ],
   },
   {

@@ -154,7 +154,7 @@ const Blog: React.FC = () => {
                         {post.category}
                       </span>
                       <Link
-                        to={`/blog/${post.slug}`}
+                        to={`/blog/${post.slug}/`}
                         className="text-[#1876D2] dark:text-[#00B0FF] hover:text-[#1876D2] dark:hover:text-[#00B0FF] font-medium flex items-center gap-1"
                       >
                         Read More <ArrowRight className="h-4 w-4" />
@@ -283,7 +283,7 @@ const Blog: React.FC = () => {
                       </div>
 
                       <Link
-                        to={`/blog/${post.slug}`}
+                        to={`/blog/${post.slug}/`}
                         className="inline-flex items-center gap-2 text-[#1876D2] dark:text-[#00B0FF] hover:text-[#1876D2] dark:hover:text-[#00B0FF] font-medium transition-colors"
                       >
                         Read Full Article <ArrowRight className="h-4 w-4" />

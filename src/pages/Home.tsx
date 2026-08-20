@@ -889,7 +889,9 @@ export default function Home() {
                 <Link to="/demo" className="text-[#00B0FF] hover:underline underline-offset-2">demo</Link>
                 {' '}and{' '}
                 <Link to="/tools" className="text-[#00B0FF] hover:underline underline-offset-2">AI tools</Link>
-                {' '}pages explain how students practise safely. For school or brand collaborations, read{' '}
+                {' '}pages explain how students practise safely. Comparing PlanetSpark or BrightCHAMPS?{' '}
+                <Link to="/compare" className="text-[#00B0FF] hover:underline underline-offset-2">Read our programme comparisons</Link>
+                . For school or brand collaborations, read{' '}
                 <Link to="/partnerships" className="text-[#00B0FF] hover:underline underline-offset-2">partnerships</Link>
                 {' '}and{' '}
                 <Link to="/events" className="text-[#00B0FF] hover:underline underline-offset-2">events</Link>
@@ -906,18 +908,18 @@ export default function Home() {
             11 · LEAD CAPTURE — kept (high converter)
         ════════════════════════════════════════════════════════════════ */}
         <section className="section-o border-o-t">
-          <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
+          <div className="max-w-lg mx-auto px-5 sm:px-6 lg:px-8">
             <CTAWithLeadCapture
               source="homepage"
               ctaType="demo"
-              buttonText="Book Free Demo"
-              title="Ready to transform your child's future?"
-              subtitle="Join 2,500+ families who have unlocked their child's entrepreneurial potential."
+              buttonText="Book free demo"
+              title="Ready for a free demo?"
+              subtitle="2,500+ families. We confirm seats within 24 hours."
               formTitle="Book your free demo"
-              formSubtitle="Tell us your preferred start window — we confirm cohort availability within 24 hours. No payment required to book."
-              fields={['parentName', 'email', 'phone', 'studentName', 'childAge']}
+              formSubtitle="Parent details only — no payment required."
+              fields={['parentName', 'email', 'phone', 'childAge']}
               variant="primary"
-              size="lg"
+              size="sm"
             />
           </div>
         </section>

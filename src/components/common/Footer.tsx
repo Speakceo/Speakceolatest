@@ -1,6 +1,8 @@
 import { Facebook, Twitter, Instagram, Youtube, ArrowRight } from 'lucide-react';
+import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getActiveCohortLabel } from '../../utils/cohortDates';
+import { submitMarketingLeadToSupabase } from '../../lib/marketingLeads';
 
 /**
  * Footer — Linear-grade dark.
@@ -17,6 +19,34 @@ const linkCls =
 export default function Footer() {
   const cohortLabel = getActiveCohortLabel();
   const year = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'ok' | 'err'>('idle');
+  const [subMsg, setSubMsg] = useState('');
+
+  const onSubscribe = async (e: FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setSubStatus('err');
+      setSubMsg('Enter a valid email.');
+      return;
+    }
+    setSubStatus('loading');
+    const out = await submitMarketingLeadToSupabase({
+      name: 'Newsletter',
+      email: trimmed,
+      source: 'newsletter',
+      notes: 'Footer Sunday email subscribe',
+    });
+    if (out.ok) {
+      setSubStatus('ok');
+      setSubMsg('You’re on the list — thanks.');
+      setEmail('');
+    } else {
+      setSubStatus('err');
+      setSubMsg(out.error || 'Could not subscribe. Try again.');
+    }
+  };
 
   return (
     <footer className="relative bg-o-0">
@@ -43,16 +73,20 @@ export default function Footer() {
               One Sunday email. New essays, scholarship deadlines, and projects our students are
               shipping. No filler.
             </p>
-            <form className="flex items-center gap-2">
+            <form className="flex items-center gap-2" onSubmit={onSubscribe}>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 aria-label="Email address"
+                required
                 className="flex-1 bg-o-2 border border-[var(--o-border-1)] hover:border-[var(--o-border-2)] focus:border-[#1876D2] focus:outline-none rounded-lg px-3.5 h-10 text-[14px] text-o-0 placeholder:text-o-3 transition-colors"
               />
               <button
                 type="submit"
                 aria-label="Subscribe"
+                disabled={subStatus === 'loading'}
                 className="btn-o btn-o-primary"
                 style={{ height: 40 }}
               >
@@ -60,7 +94,7 @@ export default function Footer() {
               </button>
             </form>
             <p className="meta-line mt-3">
-              We respect your inbox. Unsubscribe anytime.
+              {subStatus === 'ok' || subStatus === 'err' ? subMsg : 'We respect your inbox. Unsubscribe anytime.'}
             </p>
           </div>
         </div>
@@ -113,6 +147,7 @@ export default function Footer() {
           <div>
             <p className="eyebrow-o mb-5">Library</p>
             <Link to="/blog" className={linkCls}>Blog</Link>
+            <Link to="/compare" className={linkCls}>Compare programmes</Link>
             <Link to="/resources" className={linkCls}>Resources</Link>
             <Link to="/testimonials" className={linkCls}>Stories</Link>
             <Link to="/faq" className={linkCls}>FAQ</Link>

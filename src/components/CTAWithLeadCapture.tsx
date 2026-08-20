@@ -24,8 +24,8 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
   title = "Ready to Transform Your Child's Future?",
   subtitle = "Join thousands of parents who've unlocked their child's entrepreneurial potential",
   formTitle = 'Get Started Today',
-  formSubtitle = "Fill out the form below and we'll get back to you within 24 hours!",
-  fields = ['parentName', 'email', 'phone', 'studentName', 'childAge'],
+  formSubtitle = "We'll confirm cohort availability within 24 hours.",
+  fields = ['parentName', 'email', 'phone', 'childAge'],
   className = '',
   variant = 'primary',
   size: _size = 'md',
@@ -41,60 +41,56 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
     return () => window.removeEventListener('keydown', onKey);
   }, [showModal]);
 
+  const isSecondary = variant === 'secondary';
+
   return (
     <>
       <div className={`relative ${className}`}>
         <div
-          className="relative rounded-3xl overflow-hidden"
+          className="relative rounded-2xl overflow-hidden"
           style={{
-            background:
-              variant === 'secondary'
-                ? 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
-                : 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+            background: isSecondary
+              ? 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
+              : 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
           }}
         >
-          <div className="relative px-8 py-12 sm:px-12 sm:py-16 text-center">
+          <div className="relative px-5 py-7 sm:px-8 sm:py-9 text-center">
             <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-4"
               style={{
-                background: variant === 'secondary' ? 'rgba(24,118,210,0.08)' : 'rgba(255,255,255,0.06)',
-                border:
-                  variant === 'secondary' ? '1px solid rgba(24,118,210,0.15)' : '1px solid rgba(255,255,255,0.08)',
+                background: isSecondary ? 'rgba(24,118,210,0.08)' : 'rgba(255,255,255,0.06)',
+                border: isSecondary ? '1px solid rgba(24,118,210,0.15)' : '1px solid rgba(255,255,255,0.08)',
               }}
             >
-              <Sparkles className={`h-4 w-4 ${variant === 'secondary' ? 'text-[#1876D2]' : 'text-[#00B0FF]'}`} />
-              <span className={`text-sm font-medium ${variant === 'secondary' ? 'text-[#1876D2]' : 'text-gray-300'}`}>
-                Limited spots available
+              <Sparkles className={`h-3 w-3 ${isSecondary ? 'text-[#1876D2]' : 'text-[#00B0FF]'}`} />
+              <span className={`text-[11px] font-medium ${isSecondary ? 'text-[#1876D2]' : 'text-gray-300'}`}>
+                Free demo · Limited seats
               </span>
             </div>
 
             <h2
-              className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 tracking-tight leading-tight ${
-                variant === 'secondary' ? 'text-gray-900' : 'text-white'
+              className={`text-xl sm:text-2xl font-bold mb-2 tracking-tight leading-snug max-w-lg mx-auto ${
+                isSecondary ? 'text-gray-900' : 'text-white'
               }`}
             >
               {title}
             </h2>
 
-            <p
-              className={`max-w-2xl mx-auto text-lg mb-10 ${
-                variant === 'secondary' ? 'text-gray-500' : 'text-gray-400'
-              }`}
-            >
+            <p className={`max-w-md mx-auto text-sm mb-5 ${isSecondary ? 'text-gray-500' : 'text-gray-400'}`}>
               {subtitle}
             </p>
 
-            <div className="flex flex-wrap justify-center gap-6 mb-10">
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 mb-5">
               {[
                 { icon: Shield, label: '30-day guarantee', color: 'text-emerald-400' },
                 { icon: Users, label: '2,500+ families', color: 'text-[#00B0FF]' },
-                { icon: Star, label: '4.9/5 rating', color: 'text-amber-400' },
+                { icon: Star, label: '4.9/5', color: 'text-amber-400' },
               ].map((trust, i) => (
                 <div
                   key={i}
-                  className={`flex items-center gap-2 text-sm ${variant === 'secondary' ? 'text-gray-500' : 'text-gray-400'}`}
+                  className={`flex items-center gap-1.5 text-[11px] ${isSecondary ? 'text-gray-500' : 'text-gray-400'}`}
                 >
-                  <trust.icon className={`h-4 w-4 ${trust.color}`} />
+                  <trust.icon className={`h-3 w-3 ${trust.color}`} />
                   <span>{trust.label}</span>
                 </div>
               ))}
@@ -103,19 +99,15 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
             <button
               type="button"
               onClick={() => setShowModal(true)}
-              className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-bold text-lg rounded-2xl shadow-lg shadow-[#1876D2]/20 hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00B0FF]/50 transition-opacity"
+              className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-[#1876D2] to-[#00B0FF] text-white font-semibold text-sm rounded-xl shadow-md shadow-[#1876D2]/20 hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00B0FF]/50 transition-opacity"
             >
-              <Rocket className="h-5 w-5" />
+              <Rocket className="h-4 w-4" />
               <span>{buttonText}</span>
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
-            <p
-              className={`text-xs mt-4 max-w-lg mx-auto leading-relaxed ${
-                variant === 'secondary' ? 'text-gray-400' : 'text-gray-500'
-              }`}
-            >
-              No payment required to book · We confirm cohort seats within 24 hours · Free consultation included
+            <p className={`text-[10px] mt-3 ${isSecondary ? 'text-gray-400' : 'text-gray-500'}`}>
+              No payment to book · Reply within 24 hours
             </p>
           </div>
         </div>
@@ -123,20 +115,20 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
 
       {showModal ? (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/70"
           onClick={(e) => e.target === e.currentTarget && setShowModal(false)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="lead-modal-title"
         >
-          <div className="relative max-w-md w-full">
+          <div className="relative max-w-sm w-full max-h-[92vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl">
             <button
               type="button"
               onClick={() => setShowModal(false)}
-              className="absolute -top-2 -right-2 z-10 w-9 h-9 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white hover:bg-slate-700"
+              className="absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-slate-800/90 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white"
               aria-label="Close"
             >
-              <X className="h-4 w-4" />
+              <X className="h-3.5 w-3.5" />
             </button>
 
             <span id="lead-modal-title" className="sr-only">
@@ -145,8 +137,8 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
 
             <Suspense
               fallback={
-                <div className="rounded-2xl border border-white/10 bg-slate-900 px-8 py-16 text-center text-gray-400 text-sm">
-                  Loading form…
+                <div className="rounded-2xl border border-white/10 bg-slate-900 px-6 py-10 text-center text-gray-400 text-sm">
+                  Loading…
                 </div>
               }
             >
@@ -156,9 +148,10 @@ const CTAWithLeadCapture: React.FC<CTAWithLeadCaptureProps> = ({
                 title={formTitle}
                 subtitle={formSubtitle}
                 fields={fields}
-                buttonText="Submit"
+                buttonText="Book free demo"
                 onSuccess={() => {}}
                 className="w-full"
+                compact
               />
             </Suspense>
           </div>
