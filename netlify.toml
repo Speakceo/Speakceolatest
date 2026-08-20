@@ -40,6 +40,19 @@
   status = 301
   force = true
 
+# ─── Campaign hub → primary lander (avoid Soft 404 from SPA homepage shell) ─
+[[redirects]]
+  from = "/lp"
+  to = "/lp/free-demo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lp/"
+  to = "/lp/free-demo/"
+  status = 301
+  force = true
+
 # ─── SPA fallback — ONLY when no static file or folder index exists ─────────
 # Do NOT use force=true — prerendered dist/<page>/index.html must win.
 # Netlify serves those as /page/ automatically (Pretty URLs).
@@ -133,9 +146,30 @@
     # SEO and Analytics Headers
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://api.openai.com https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https: https://www.google-analytics.com https://www.facebook.com; media-src 'self' data: blob:; connect-src 'self' https://api.openai.com https://api.jsonbin.io https://prod.spline.design https://unpkg.com https://www.google-analytics.com https://analytics.google.com https://www.facebook.com https://connect.facebook.net https://*.supabase.co wss://*.supabase.co;"
     
-    # Additional SEO Headers
-    X-Robots-Tag = "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    # Do NOT set sitewide X-Robots-Tag: index here.
+    # SPA fallback URLs would inherit it and get Soft 404 when they serve homepage HTML.
+    # Per-page robots come from prerendered <meta name="robots"> / react-helmet.
     Link = "</rss.xml>; rel=alternate; type=application/rss+xml; title=Orbit Student Blog RSS Feed"
+
+[[headers]]
+  for = "/login"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/login/"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/dashboard/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
 # Compress assets
 [[headers]]

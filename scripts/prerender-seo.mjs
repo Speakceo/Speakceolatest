@@ -221,7 +221,9 @@ function main() {
   let count = 0;
 
   for (const route of staticRoutes) {
-    if (route.noindex) continue;
+    // Always write a shell — including noindex routes (e.g. /login).
+    // Skipping them made Netlify SPA-fallback serve homepage HTML at that URL
+    // (same title/canonical as /) → Google Search Console "Soft 404".
     writeRouteHtml(baseHtml, route.path, route);
     count += 1;
   }

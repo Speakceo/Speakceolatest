@@ -50,8 +50,8 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
       { href: '/demo/', label: 'Free demo' },
       { href: '/blog/', label: 'Parent blog' },
       { href: '/compare/', label: 'Compare programmes' },
-      { href: '/compare/orbit-vs-planetspark/', label: 'Orbit vs PlanetSpark' },
-      { href: '/compare/orbit-vs-brightchamps/', label: 'Orbit vs BrightCHAMPS' },
+      { href: '/guides/', label: 'Parent guides' },
+      { href: '/lp/free-demo/', label: 'Free demo lander' },
     ],
   },
   {

@@ -39,12 +39,12 @@
         "label": "Compare programmes"
       },
       {
-        "href": "/compare/orbit-vs-planetspark/",
-        "label": "Orbit vs PlanetSpark"
+        "href": "/guides/",
+        "label": "Parent guides"
       },
       {
-        "href": "/compare/orbit-vs-brightchamps/",
-        "label": "Orbit vs BrightCHAMPS"
+        "href": "/lp/free-demo/",
+        "label": "Free demo lander"
       }
     ]
   },
