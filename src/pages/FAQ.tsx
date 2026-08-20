@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Search, MessageCircle, Phone, Mail, Star, Trophy, Target, Shield, Clock, Users } from 'lucide-react';
+import { ChevronDown, ChevronUp, Search, Star, Trophy, Target, Shield, Clock, Users } from 'lucide-react';
 import SEO from '../components/SEO';
 import PageHero from '../components/common/PageHero';
+import CTAWithLeadCapture from '../components/CTAWithLeadCapture';
+import { Link } from 'react-router-dom';
 
 interface FAQItem {
   id: number;
@@ -55,6 +57,13 @@ const faqData: FAQItem[] = [
     category: "Investment & Value",
     question: "Is this program worth the investment compared to other activities?",
     answer: "Consider this: Piano lessons cost $200+/month and teach one skill. Sports can cost $300+/month for one season. Our program costs less than most single activities but teaches LIFE skills: leadership, financial literacy, critical thinking, communication, and entrepreneurship. These skills will benefit your child for their entire life and career.",
+    highlight: true
+  },
+  {
+    id: 71,
+    category: "Investment & Value",
+    question: "How does Orbit Student compare to PlanetSpark or BrightCHAMPS?",
+    answer: "PlanetSpark is strongest for public speaking and communication. BrightCHAMPS is strongest for broad STEM, coding and Gen AI catalogues. Orbit Student is built for mentor-led AI + entrepreneurship with portfolio and scholarship outcomes. See our comparisons for fair feature tables, then book a free demo to match your child’s goal.",
     highlight: true
   },
   {
@@ -351,49 +360,29 @@ const FAQ: React.FC = () => {
           </div>
 
           {/* Contact Section */}
-          <div className="mt-12 bg-white rounded-2xl p-8 shadow-lg">
-            <h2 className="text-2xl font-bold text-center mb-6">Still Have Questions?</h2>
-            <p className="text-gray-600 text-center mb-8">
-              Our parent success team is here to help you make the best decision for your child's future.
+          <div className="mt-12 max-w-lg mx-auto">
+            <CTAWithLeadCapture
+              source="organic_search"
+              ctaType="faq_page"
+              buttonText="Book free demo"
+              title="Still deciding?"
+              subtitle="Book a free demo — we answer pricing, timezone and fit questions within 24 hours."
+              formTitle="Book your free demo"
+              formSubtitle="Parent details only. No payment to book."
+              fields={['parentName', 'email', 'phone', 'childAge']}
+              variant="primary"
+              size="sm"
+            />
+            <p className="text-center text-sm text-gray-500 mt-6">
+              Comparing platforms?{' '}
+              <Link to="/compare" className="text-[#1876D2] hover:underline">
+                See Orbit vs PlanetSpark & BrightCHAMPS
+              </Link>
+              {' · '}
+              <a href="mailto:parents@orbitstudent.com" className="text-[#1876D2] hover:underline">
+                Email us
+              </a>
             </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <MessageCircle className="h-8 w-8 text-green-600" />
-                </div>
-                <h3 className="font-semibold mb-2">Live Chat</h3>
-                <p className="text-sm text-gray-600 mb-4">Get instant answers from our parent success team</p>
-                <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
-                  Chat Now
-                </button>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Mail className="h-8 w-8 text-blue-600" />
-                </div>
-                <h3 className="font-semibold mb-2">Email Support</h3>
-                <p className="text-sm text-gray-600 mb-4">Detailed questions answered within 2 hours</p>
-                <a 
-                  href="mailto:parents@orbitstudent.com"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors inline-block"
-                >
-                  Email Us
-                </a>
-              </div>
-              
-              <div className="text-center">
-                <div className="bg-[#E3F2FD] rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <Phone className="h-8 w-8 text-[#1876D2]" />
-                </div>
-                <h3 className="font-semibold mb-2">Phone Consultation</h3>
-                <p className="text-sm text-gray-600 mb-4">15-minute free consultation with our experts</p>
-                <button className="bg-[#1876D2] text-white px-4 py-2 rounded-lg hover:bg-[#1565C0] transition-colors">
-                  Schedule Call
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

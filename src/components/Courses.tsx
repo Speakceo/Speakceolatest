@@ -33,6 +33,7 @@ import {
 import { useLanguage } from '../lib/contexts/LanguageContext';
 import { useUserStore } from '../lib/store';
 import EnrollmentPopup from './EnrollmentPopup';
+import CTAWithLeadCapture from './CTAWithLeadCapture';
 import { motion } from 'framer-motion';
 import AnimatedCounter from './ui/AnimatedCounter';
 import Typewriter from './ui/Typewriter';
@@ -627,6 +628,23 @@ export default function Courses() {
           ))}
         </div>
       </div>
+      </section>
+
+      <section className="section-o border-o-t px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-lg mx-auto">
+          <CTAWithLeadCapture
+            source="demo_request"
+            ctaType="courses_page"
+            buttonText="Book free demo"
+            title="Ready to reserve a seat?"
+            subtitle="Parent details only — we confirm cohort fit within 24 hours."
+            formTitle="Book your free demo"
+            formSubtitle="No payment required to book."
+            fields={['parentName', 'email', 'phone', 'childAge']}
+            variant="primary"
+            size="sm"
+          />
+        </div>
       </section>
 
       {/* ═══ URGENCY CTA — Deep Dark ═══ */}

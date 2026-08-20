@@ -18,6 +18,7 @@ Orbit Student (orbitstudent.com) is an instructor-led online programme for kids 
 - [Courses](https://www.orbitstudent.com/courses/): 180-day curriculum and programme structure
 - [Live classes](https://www.orbitstudent.com/live-classes/): Schedule, format and mentorship
 - [Interactive demo](https://www.orbitstudent.com/demo/): Free product walkthrough for families
+- [Compare programmes](https://www.orbitstudent.com/compare/): Hub for Orbit vs peers
 - [AI tools](https://www.orbitstudent.com/tools/): Student AI studio tools
 - [FAQ](https://www.orbitstudent.com/faq/): Policies, time zones and enrolment questions
 - [Resources](https://www.orbitstudent.com/resources/): Guides and downloads
@@ -25,8 +26,16 @@ Orbit Student (orbitstudent.com) is an instructor-led online programme for kids 
 - [Blog](https://www.orbitstudent.com/blog/): AI learning, entrepreneurship and scholarships for kids
 - [Contact](https://www.orbitstudent.com/contact/): Book a demo or email hello@orbitstudent.com
 
+## Comparisons (high commercial intent)
+
+- [Orbit Student vs PlanetSpark](https://www.orbitstudent.com/compare/orbit-vs-planetspark/)
+- [Orbit Student vs BrightCHAMPS](https://www.orbitstudent.com/compare/orbit-vs-brightchamps/)
+- [BrightCHAMPS alternatives](https://www.orbitstudent.com/compare/brightchamps-alternatives/)
+- [PlanetSpark alternatives](https://www.orbitstudent.com/compare/planetspark-alternatives/)
+
 ## High-intent blog guides
 
+- [Orbit vs PlanetSpark vs BrightCHAMPS — parent guide](https://www.orbitstudent.com/blog/orbit-vs-planetspark-brightchamps-parents-guide-2026/)
 - [AI learning for kids — 2026 guide](https://www.orbitstudent.com/blog/ai-learning-for-kids-complete-guide-2026/)
 - [Scholarship profile from age 10](https://www.orbitstudent.com/blog/how-kids-can-build-a-scholarship-profile-from-age-10/)
 - [90-day kids entrepreneurship roadmap](https://www.orbitstudent.com/blog/kids-entrepreneurship-roadmap-90-day-action-plan/)

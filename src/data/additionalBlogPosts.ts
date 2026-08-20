@@ -3,6 +3,84 @@ import { BlogPost } from './blogPosts';
 
 export const moreBlogPosts: BlogPost[] = [
   {
+    id: 'seo-compare-2026',
+    slug: 'orbit-vs-planetspark-brightchamps-parents-guide-2026',
+    title: 'Orbit vs PlanetSpark vs BrightCHAMPS: Parent Guide (2026)',
+    excerpt:
+      'How to choose between speaking academies, STEM catalogues and Young CEO AI cohorts — with a clear decision framework and free demo next step.',
+    content: `
+# Orbit vs PlanetSpark vs BrightCHAMPS: Parent Guide (2026)
+
+Parents searching for **AI classes for kids**, public speaking, or entrepreneurship programmes usually land on three types of brands: speaking platforms like PlanetSpark, STEM catalogues like BrightCHAMPS, and founder-style cohorts like Orbit Student.
+
+This guide helps you choose by **outcome**, not by ad volume.
+
+## Start with the skill gap
+
+Ask one question: *What should my child be able to show in 6 months?*
+
+- A confident speech or debate → speaking-first programmes (PlanetSpark-style)
+- Apps, robots or coding depth → STEM catalogues (BrightCHAMPS / Codingal-style)
+- An idea, prototype, pitch and portfolio for school or scholarships → Orbit Student Young CEO path
+
+## Quick comparison
+
+| Goal | Best fit |
+|------|----------|
+| Public speaking & storytelling | PlanetSpark |
+| Broad coding / Gen AI / robotics | BrightCHAMPS |
+| AI + entrepreneurship + scholarship storytelling | Orbit Student |
+
+For full feature tables, see [Orbit vs PlanetSpark](/compare/orbit-vs-planetspark/) and [Orbit vs BrightCHAMPS](/compare/orbit-vs-brightchamps/).
+
+## Why average SEO rankings feel “stuck”
+
+Large platforms win brand searches and high-volume skill keywords. Specialist programmes win when they publish honest comparison pages, scholarship guides and answer-first articles parents actually share.
+
+## What Orbit includes
+
+- Live mentor-led cohorts (ages 8–18)
+- AI literacy tied to ventures and pitches
+- Student dashboard with AI tools
+- Portfolio and scholarship roadmap
+- Free demo with no payment to book
+
+## Next step
+
+Book a [free demo](/demo/), or browse [BrightCHAMPS alternatives](/compare/brightchamps-alternatives/) and [PlanetSpark alternatives](/compare/planetspark-alternatives/) if you are still mapping the market.
+`,
+    author: 'Orbit Student Team',
+    authorBio: 'Curriculum and parent success team at Orbit Student.',
+    authorImage: '/images/hero/orbit-logo.png',
+    publishedAt: '2026-08-20T10:00:00.000Z',
+    updatedAt: '2026-08-20T10:00:00.000Z',
+    readTime: 7,
+    category: 'Parenting Tips',
+    tags: ['PlanetSpark', 'BrightCHAMPS', 'AI classes', 'entrepreneurship', 'parents'],
+    featuredImage: '/images/hero/orbit-logo.png',
+    seoKeywords: [
+      'Orbit vs PlanetSpark',
+      'Orbit vs BrightCHAMPS',
+      'BrightCHAMPS alternatives',
+      'AI classes for kids',
+      'entrepreneurship for kids',
+    ],
+    metaDescription:
+      'Parent guide: Orbit Student vs PlanetSpark vs BrightCHAMPS — choose by speaking, STEM or Young CEO outcomes. Free demo.',
+    faq: [
+      {
+        question: 'Is Orbit Student better than PlanetSpark?',
+        answer:
+          'Neither is universally better. PlanetSpark wins for communication depth; Orbit wins for AI + entrepreneurship and portfolios.',
+      },
+      {
+        question: 'Is Orbit a BrightCHAMPS alternative?',
+        answer:
+          'Yes for families who want AI tied to ventures and pitches. Stay with BrightCHAMPS for deep robotics or multi-subject STEM packages.',
+      },
+    ],
+  },
+  {
     id: '9',
     slug: 'business-plan-basics-for-kids',
     title: 'Business Plan Basics: Teaching Kids to Think Like Entrepreneurs',

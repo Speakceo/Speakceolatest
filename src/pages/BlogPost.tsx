@@ -6,11 +6,13 @@ import SEO from '../components/SEO';
 import { getBlogPostBySlug, getRelatedPosts } from '../data/blogPosts';
 
 const INTERNAL_LINK_RULES: Array<{ phrase: string; href: string }> = [
-  { phrase: 'AI tools', href: '/tools' },
-  { phrase: 'scholarship', href: '/resources' },
-  { phrase: 'live classes', href: '/live-classes' },
-  { phrase: 'entrepreneurship', href: '/courses' },
-  { phrase: 'demo', href: '/demo' },
+  { phrase: 'AI tools', href: '/tools/' },
+  { phrase: 'scholarship', href: '/resources/' },
+  { phrase: 'live classes', href: '/live-classes/' },
+  { phrase: 'entrepreneurship', href: '/courses/' },
+  { phrase: 'PlanetSpark', href: '/compare/orbit-vs-planetspark/' },
+  { phrase: 'BrightCHAMPS', href: '/compare/orbit-vs-brightchamps/' },
+  { phrase: 'demo', href: '/demo/' },
 ];
 
 const BlogPost: React.FC = () => {
