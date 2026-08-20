@@ -90,7 +90,7 @@ const Testimonials: React.FC = () => {
         title="Success Stories | Young CEO Program"
         description="Read inspiring success stories from our young entrepreneurs and program graduates."
         keywords={["success stories", "young entrepreneurs", "student testimonials", "business achievements"]}
-        url="https://www.orbitstudent.com/testimonials"
+        url="https://www.orbitstudent.com/testimonials/"
       />
       
       <PageHero

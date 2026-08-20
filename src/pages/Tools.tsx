@@ -20,7 +20,7 @@ const Tools = () => {
         title="AI Tools for Kids | Orbit Student — 100+ AI Learning Tools"
         description="Access 100+ AI-powered learning tools for students aged 8-18. Orbit Student's AI toolkit includes business builders, pitch simulators, brand creators and more."
         keywords={['Orbit Student AI tools', 'AI tools for kids', 'AI learning tools', 'AI tools for students', 'kids AI platform', 'Orbit AI tools', 'student AI toolkit']}
-        url="https://www.orbitstudent.com/tools"
+        url="https://www.orbitstudent.com/tools/"
       />
 
       <PageHero

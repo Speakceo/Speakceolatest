@@ -11,5 +11,6 @@ http://www.orbitstudent.com/*   https://www.orbitstudent.com/:splat     301!
 # HTTPS non-www → HTTPS www
 https://orbitstudent.com/*      https://www.orbitstudent.com/:splat     301!
 
-# ─── SPA routing — serve index.html for all non-asset paths ──────────────────
+# ─── SPA routing — serve index.html only when no prerendered folder exists ────
+# Do NOT force — dist/<page>/index.html must win for trailing-slash Pretty URLs.
 /*    /index.html   200

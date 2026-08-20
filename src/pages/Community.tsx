@@ -27,7 +27,7 @@ const Community = () => {
         title="Student Community | Orbit Student — Young Entrepreneurs Network"
         description="Join the Orbit Student community of 2,500+ young entrepreneurs aged 8-18. Connect, collaborate, share ideas and grow together."
         keywords={['Orbit Student community', 'young entrepreneurs network', 'kids entrepreneur community', 'student community', 'Orbit Student peers']}
-        url="https://www.orbitstudent.com/community"
+        url="https://www.orbitstudent.com/community/"
       />
 
       <PageHero

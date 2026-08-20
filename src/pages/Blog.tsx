@@ -63,13 +63,13 @@ const Blog: React.FC = () => {
           "kids new age learning",
           "Orbit AI student"
         ]}
-        url="https://www.orbitstudent.com/blog"
+        url="https://www.orbitstudent.com/blog/"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "Blog",
           "name": "Orbit Student Blog",
           "description": "Expert insights on AI learning, scholarship strategy, and entrepreneurship development for kids",
-          "url": "https://www.orbitstudent.com/blog",
+          "url": "https://www.orbitstudent.com/blog/",
           "publisher": {
             "@type": "Organization",
             "name": "Orbit Student",

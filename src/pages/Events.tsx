@@ -98,7 +98,7 @@ const Events: React.FC = () => {
         title="Events | Young CEO Program"
         description="Join our upcoming events, workshops, and competitions designed for young entrepreneurs."
         keywords={["entrepreneurship events", "business workshops", "startup competitions", "networking events"]}
-        url="https://www.orbitstudent.com/events"
+        url="https://www.orbitstudent.com/events/"
       />
       
       <PageHero

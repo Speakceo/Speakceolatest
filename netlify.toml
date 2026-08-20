@@ -7,29 +7,33 @@
   SECRETS_SCAN_ENABLED = "false"
 
 # ─── Canonical domain enforcer ──────────────────────────────────────────────
-# These MUST come before the SPA catch-all.
-# Forces ALL traffic to https://www.orbitstudent.com (canonical).
-# Prevents "Page with redirect" GSC issues caused by non-www / HTTP duplicates.
+# Primary host is https://www.orbitstudent.com
+# Host-based rule catches BOTH http and https apex in one hop (avoids chains).
 #
 # Pretty URLs: Netlify serves dist/<route>/index.html as /<route>/ (trailing slash).
 # Sitemap + <link rel="canonical"> MUST use trailing slashes for those URLs or
-# GSC reports "Alternative page with proper canonical tag".
+# GSC reports "Page with redirect" / "Alternative page with proper canonical tag".
 
-# 1. HTTP non-www → HTTPS www
+[[redirects]]
+  from = "/*"
+  to = "https://www.orbitstudent.com/:splat"
+  status = 301
+  force = true
+  conditions = {Host = ["orbitstudent.com"]}
+
+# Legacy explicit rules (kept as backup if Host conditions are ignored)
 [[redirects]]
   from = "http://orbitstudent.com/*"
   to = "https://www.orbitstudent.com/:splat"
   status = 301
   force = true
 
-# 2. HTTP www → HTTPS www
 [[redirects]]
   from = "http://www.orbitstudent.com/*"
   to = "https://www.orbitstudent.com/:splat"
   status = 301
   force = true
 
-# 3. HTTPS non-www → HTTPS www  (most common GSC "redirect" trigger)
 [[redirects]]
   from = "https://orbitstudent.com/*"
   to = "https://www.orbitstudent.com/:splat"

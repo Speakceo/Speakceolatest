@@ -211,7 +211,7 @@ export default function LiveClasses() {
         title="Live Online Classes for Kids | AI & Entrepreneurship | Orbit Student"
         description="Live 1:1 and small-group online classes for kids in AI, entrepreneurship, coding and leadership. Expert mentors, flexible time zones."
         keywords={['live online classes for kids', 'live AI classes kids', '1:1 classes kids India', 'entrepreneurship classes online', 'mentor led learning kids', 'Orbit Student live classes']}
-        url="https://www.orbitstudent.com/live-classes"
+        url="https://www.orbitstudent.com/live-classes/"
       />
       
       <PageHero

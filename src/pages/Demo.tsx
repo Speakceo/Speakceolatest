@@ -2322,10 +2322,10 @@ export default function Demo() {
         <title>Orbit Demo | Interactive AI Builder</title>
         <meta name="description" content="Try Orbit free: build sample AI websites and games. See how students learn with our interactive builder." />
         <meta name="keywords" content="Orbit Student demo, Orbit Student free trial, Orbit Student AI builder, kids website builder, kids game maker, Orbit Student preview, try Orbit Student" />
-        <link rel="canonical" href="https://www.orbitstudent.com/demo" />
+        <link rel="canonical" href="https://www.orbitstudent.com/demo/" />
         <meta property="og:title" content="Orbit Demo | Free AI Builder for Kids" />
         <meta property="og:description" content="Interactive demo: build AI websites and games. No signup required to explore." />
-        <meta property="og:url" content="https://www.orbitstudent.com/demo" />
+        <meta property="og:url" content="https://www.orbitstudent.com/demo/" />
       </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-[#F7FAFF] via-white to-[#E3F2FD]">
       {/* Name Input Modal */}

@@ -90,7 +90,6 @@ User-agent: PerplexityBot
 Disallow: /
 
 # ── Sitemaps ──────────────────────────────────────────────────────────────────
-# Use ONE canonical sitemap (trailing-slash URLs). Do not list sitemap-advanced —
-# it still contains conflicting non-slash URLs that confuse Google.
+# Canonical URLs only (www + trailing slash for non-home pages).
+# Do not submit sitemap-advanced.xml separately — it must match the same policy.
 Sitemap: https://www.orbitstudent.com/sitemap.xml
-Sitemap: https://www.orbitstudent.com/rss.xml

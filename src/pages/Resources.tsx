@@ -113,7 +113,7 @@ const Resources: React.FC = () => {
         title="Orbit Student Resources | Scholarships, Competitions & Opportunities for Kids"
         description="Orbit Student resources: 500+ scholarships worth $2.9B+, competitions, and global opportunities for kids 8-18. Start scholarship prep early with Orbit Student."
         keywords={['Orbit Student resources', 'Orbit Student scholarships', 'scholarships for kids', 'youth competitions', 'student scholarships', 'early scholarship planning', 'global fellowships', 'young entrepreneurs', 'college prep for middle school', 'Orbit Student opportunities', 'best scholarship platform for kids', 'scholarship database for students']}
-        url="https://www.orbitstudent.com/resources"
+        url="https://www.orbitstudent.com/resources/"
       />
 
       <div className="min-h-screen bg-o-0 text-o-0">

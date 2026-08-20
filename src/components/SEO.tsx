@@ -170,7 +170,7 @@ export default function SEO({
     url: SITE_ORIGIN,
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${SITE_ORIGIN}/blog?q={search_term_string}`,
+      target: `${SITE_ORIGIN}/blog/?q={search_term_string}`,
       'query-input': 'required name=search_term_string'
     }
   };
@@ -332,7 +332,7 @@ export default function SEO({
         position: 1,
         name: 'Book a Free Demo',
         text: 'Visit orbitstudent.com and book a free personalised demo session to explore the platform.',
-        url: 'https://www.orbitstudent.com/demo'
+        url: 'https://www.orbitstudent.com/demo/'
       },
       {
         '@type': 'HowToStep',
@@ -346,14 +346,14 @@ export default function SEO({
         position: 3,
         name: 'Pick Your Learning Path',
         text: 'Choose from the Young CEO Program, AI Tools track, or Scholarship Prep curriculum based on your child\'s age and interest.',
-        url: 'https://www.orbitstudent.com/courses'
+        url: 'https://www.orbitstudent.com/courses/'
       },
       {
         '@type': 'HowToStep',
         position: 4,
         name: 'Start Building & Playing',
         text: 'Access 100+ AI tools, business simulations, live classes, and the scholarship database to begin your 180-day journey.',
-        url: 'https://www.orbitstudent.com/dashboard'
+        url: 'https://www.orbitstudent.com/live-classes/'
       }
     ]
   };

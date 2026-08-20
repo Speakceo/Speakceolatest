@@ -77,7 +77,7 @@ const Partnerships: React.FC = () => {
         title="Partnerships | Young CEO Program - Business Collaborations"
         description="Discover our partnerships with leading organizations supporting young entrepreneurs. Connect with mentors, access funding, and gain real-world experience."
         keywords={["business partnerships", "entrepreneurship mentors", "startup funding", "youth business support"]}
-        url="https://www.orbitstudent.com/partnerships"
+        url="https://www.orbitstudent.com/partnerships/"
       />
       
       <PageHero

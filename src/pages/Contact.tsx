@@ -100,7 +100,7 @@ const Contact = () => {
           'reach Orbit Student',
           'Orbit Student customer service',
         ]}
-        url="https://www.orbitstudent.com/contact"
+        url="https://www.orbitstudent.com/contact/"
       />
 
       <div className="min-h-screen bg-o-0 text-o-0">
