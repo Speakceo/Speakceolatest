@@ -79,7 +79,7 @@ const Blog: React.FC = () => {
             "@type": "BlogPosting",
             "headline": post.title,
             "description": post.excerpt,
-            "url": `https://www.orbitstudent.com/blog/${post.slug}`,
+            "url": `https://www.orbitstudent.com/blog/${post.slug}/`,
             "datePublished": post.publishedAt,
             "dateModified": post.updatedAt,
             "author": {
