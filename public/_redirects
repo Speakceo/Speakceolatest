@@ -11,6 +11,10 @@ http://www.orbitstudent.com/*   https://www.orbitstudent.com/:splat     301!
 # HTTPS non-www → HTTPS www
 https://orbitstudent.com/*      https://www.orbitstudent.com/:splat     301!
 
+# Campaign hub → primary lander (prevent Soft 404 homepage clone)
+/lp      /lp/free-demo/   301!
+/lp/     /lp/free-demo/   301!
+
 # ─── SPA routing — serve index.html only when no prerendered folder exists ────
 # Do NOT force — dist/<page>/index.html must win for trailing-slash Pretty URLs.
 /*    /index.html   200
