@@ -34,6 +34,14 @@ const CompareSlugPage = lazy(() => import('./pages/Compare'))
 const CompareHub = lazy(() =>
   import('./pages/Compare').then((m) => ({ default: m.CompareHub }))
 )
+const GuideSlugPage = lazy(() => import('./pages/Guides'))
+const GuidesHub = lazy(() =>
+  import('./pages/Guides').then((m) => ({ default: m.GuidesHub }))
+)
+const LandingSlugPage = lazy(() => import('./pages/Landing'))
+const LandingHub = lazy(() =>
+  import('./pages/Landing').then((m) => ({ default: m.LandingHub }))
+)
 
 // Legal Pages
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
@@ -214,6 +222,10 @@ function AppContent() {
             <Route path="/demo" element={<Demo />} />
             <Route path="/compare" element={<CompareHub />} />
             <Route path="/compare/:slug" element={<CompareSlugPage />} />
+            <Route path="/guides" element={<GuidesHub />} />
+            <Route path="/guides/:slug" element={<GuideSlugPage />} />
+            <Route path="/lp" element={<LandingHub />} />
+            <Route path="/lp/:slug" element={<LandingSlugPage />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/tools" element={<Tools />} />
             <Route path="/community" element={<Community />} />

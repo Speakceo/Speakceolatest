@@ -889,8 +889,10 @@ export default function Home() {
                 <Link to="/demo" className="text-[#00B0FF] hover:underline underline-offset-2">demo</Link>
                 {' '}and{' '}
                 <Link to="/tools" className="text-[#00B0FF] hover:underline underline-offset-2">AI tools</Link>
-                {' '}pages explain how students practise safely. Comparing PlanetSpark or BrightCHAMPS?{' '}
+                {' '}pages explain how students practise safely.                 Comparing PlanetSpark or BrightCHAMPS?{' '}
                 <Link to="/compare" className="text-[#00B0FF] hover:underline underline-offset-2">Read our programme comparisons</Link>
+                {' '}or{' '}
+                <Link to="/guides" className="text-[#00B0FF] hover:underline underline-offset-2">parent guides</Link>
                 . For school or brand collaborations, read{' '}
                 <Link to="/partnerships" className="text-[#00B0FF] hover:underline underline-offset-2">partnerships</Link>
                 {' '}and{' '}

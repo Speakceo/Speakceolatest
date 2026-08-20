@@ -10,9 +10,10 @@ const INTERNAL_LINK_RULES: Array<{ phrase: string; href: string }> = [
   { phrase: 'scholarship', href: '/resources/' },
   { phrase: 'live classes', href: '/live-classes/' },
   { phrase: 'entrepreneurship', href: '/courses/' },
+  { phrase: 'Young CEO', href: '/guides/young-ceo-programme-for-kids/' },
   { phrase: 'PlanetSpark', href: '/compare/orbit-vs-planetspark/' },
   { phrase: 'BrightCHAMPS', href: '/compare/orbit-vs-brightchamps/' },
-  { phrase: 'demo', href: '/demo/' },
+  { phrase: 'demo', href: '/lp/free-demo/' },
 ];
 
 const BlogPost: React.FC = () => {

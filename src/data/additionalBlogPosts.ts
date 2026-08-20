@@ -3,6 +3,98 @@ import { BlogPost } from './blogPosts';
 
 export const moreBlogPosts: BlogPost[] = [
   {
+    id: 'seo-live-ai-vs-apps-2026',
+    slug: 'live-ai-classes-vs-coding-apps-for-kids-2026',
+    title: 'Live AI Classes vs Coding Apps for Kids (2026)',
+    excerpt:
+      'When to pick live mentor AI classes over coding apps — accountability, projects and what Orbit Student parents should expect.',
+    content: `
+# Live AI Classes vs Coding Apps for Kids (2026)
+
+Parents comparing **AI classes for kids** usually choose between self-paced apps and live mentor cohorts. Both can work — for different goals.
+
+## Apps win on price and flexibility
+
+Self-paced coding or AI apps are easy to start. They struggle when kids need accountability, speaking practice, or a portfolio someone else will review.
+
+## Live classes win on outcomes you can show
+
+Live mentors create deadlines, peer energy and feedback. That matters for pitches, scholarships and finishing multi-week projects.
+
+## A simple rule
+
+- Habit exploration / low budget → try a reputable app first
+- Portfolio, pitching, entrepreneurship → prefer live cohorts like [Orbit Student](/guides/ai-classes-for-kids-online/)
+
+Book a [free demo](/lp/ai-for-kids/) if you want age and timezone fit checked by a human.
+`,
+    author: 'Orbit Student Team',
+    authorBio: 'Curriculum and parent success team at Orbit Student.',
+    authorImage: '/images/hero/orbit-logo.png',
+    publishedAt: '2026-08-20T12:00:00.000Z',
+    updatedAt: '2026-08-20T12:00:00.000Z',
+    readTime: 5,
+    category: 'Education',
+    tags: ['AI classes', 'coding apps', 'parents', 'live classes'],
+    featuredImage: '/images/hero/orbit-logo.png',
+    seoKeywords: [
+      'live AI classes for kids',
+      'AI classes vs coding apps',
+      'best AI learning for kids',
+    ],
+    metaDescription:
+      'Live AI classes vs coding apps for kids in 2026 — when mentors beat apps, and how to choose. Orbit free demo.',
+    faq: [
+      {
+        question: 'Are live AI classes worth it vs free apps?',
+        answer:
+          'If you need finished projects, pitching and accountability, live cohorts usually outperform free apps. Apps are fine for early exploration.',
+      },
+    ],
+  },
+  {
+    id: 'seo-india-online-2026',
+    slug: 'choose-online-classes-for-kids-india-2026',
+    title: 'How to Choose Online Classes for Kids in India (2026)',
+    excerpt:
+      'Timezone, boards, exams and AI/entrepreneurship — a practical checklist for Indian parents comparing live online programmes.',
+    content: `
+# How to Choose Online Classes for Kids in India (2026)
+
+Indian families balancing boards, tuitions and evenings need **online classes for kids** that fit the calendar and still produce visible work.
+
+## Checklist
+
+1. Live hours per week and replay policy
+2. Class size (can your child speak?)
+3. Exam-season flexibility
+4. Outcomes: projects, pitches, portfolios — not only certificates
+5. Clear demo before payment
+
+## AI & entrepreneurship options
+
+If the goal is future skills beyond one syllabus, see our [India guide](/guides/online-classes-for-kids-india/) and [Young CEO programme overview](/guides/young-ceo-programme-for-kids/).
+
+[Book a free demo](/lp/free-demo/) for India-friendly timezone matching.
+`,
+    author: 'Orbit Student Team',
+    authorBio: 'Curriculum and parent success team at Orbit Student.',
+    authorImage: '/images/hero/orbit-logo.png',
+    publishedAt: '2026-08-20T14:00:00.000Z',
+    updatedAt: '2026-08-20T14:00:00.000Z',
+    readTime: 5,
+    category: 'Parenting Tips',
+    tags: ['India', 'online classes', 'parents', 'AI'],
+    featuredImage: '/images/hero/orbit-logo.png',
+    seoKeywords: [
+      'online classes for kids India',
+      'AI classes for kids India',
+      'live online classes kids India',
+    ],
+    metaDescription:
+      'How Indian parents should choose online classes for kids in 2026 — timezone, exams, AI and entrepreneurship checklist.',
+  },
+  {
     id: 'seo-compare-2026',
     slug: 'orbit-vs-planetspark-brightchamps-parents-guide-2026',
     title: 'Orbit vs PlanetSpark vs BrightCHAMPS: Parent Guide (2026)',

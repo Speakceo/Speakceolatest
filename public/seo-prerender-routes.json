@@ -214,6 +214,325 @@
     ]
   },
   {
+    "path": "/guides",
+    "title": "Parent Guides | AI, Entrepreneurship & Young CEO | Orbit Student",
+    "description": "Long-form parent guides on AI classes for kids, entrepreneurship programmes, Young CEO paths and scholarship portfolios. Free Orbit demo.",
+    "keywords": "AI classes for kids, entrepreneurship classes for kids, Young CEO programme, scholarship portfolio kids, Orbit Student guides",
+    "h1": "Parent guides for choosing the right programme",
+    "intro": "Practical checklists for AI classes, entrepreneurship cohorts, Young CEO paths and scholarship portfolios — written for parents comparing live online options.",
+    "paragraphs": [
+      "Start with the skill gap: speaking, STEM depth, or young-founder AI. Each guide ends with a free Orbit demo if you want a human to map age and timezone.",
+      "Also see our comparison pages for PlanetSpark and BrightCHAMPS if you are deciding between brands."
+    ],
+    "sectionHeading": "Guide library",
+    "bullets": [
+      "AI classes for kids online",
+      "Entrepreneurship classes for kids",
+      "Young CEO programme for kids",
+      "Online classes for kids in India",
+      "Scholarship portfolio for kids"
+    ],
+    "links": [
+      {
+        "href": "/guides/ai-classes-for-kids-online/",
+        "label": "AI classes guide"
+      },
+      {
+        "href": "/guides/entrepreneurship-classes-for-kids/",
+        "label": "Entrepreneurship guide"
+      },
+      {
+        "href": "/lp/free-demo/",
+        "label": "Free demo lander"
+      },
+      {
+        "href": "/compare/",
+        "label": "Compare programmes"
+      }
+    ]
+  },
+  {
+    "path": "/guides/ai-classes-for-kids-online",
+    "title": "AI Classes for Kids Online (2026): Live Mentors vs Apps",
+    "description": "How to choose AI classes for kids online — live mentors, safety, projects and age bands. Orbit Student free demo for ages 8–18.",
+    "keywords": "AI classes for kids online, AI learning for kids, best AI classes for kids 2026, live AI classes kids",
+    "h1": "AI classes for kids online: what actually works",
+    "intro": "Most AI-for-kids products are chatbots, video courses or STEM catalogues. The difference that matters is whether your child ships something real with a human mentor.",
+    "paragraphs": [
+      "Look for age-appropriate tools, safety rules and visible projects — sites, games, pitch decks — not only certificates. Live feedback beats passive libraries for ages 8–14.",
+      "Orbit Student combines a live Young CEO path with an AI studio so tools support entrepreneurship, not random prompting practice."
+    ],
+    "sectionHeading": "Checklist",
+    "bullets": [
+      "Human mentor in the loop",
+      "Projects tied to real outcomes",
+      "Parent-visible progress and replays",
+      "Responsible AI use taught explicitly"
+    ],
+    "links": [
+      {
+        "href": "/lp/ai-for-kids/",
+        "label": "AI classes lander"
+      },
+      {
+        "href": "/compare/orbit-vs-brightchamps/",
+        "label": "vs BrightCHAMPS"
+      },
+      {
+        "href": "/demo/",
+        "label": "Book demo"
+      }
+    ]
+  },
+  {
+    "path": "/guides/entrepreneurship-classes-for-kids",
+    "title": "Entrepreneurship Classes for Kids (2026): What to Look For",
+    "description": "Parent guide to entrepreneurship classes for kids — camps vs year-long cohorts, pitching, AI tools and how Orbit Student works. Free demo.",
+    "keywords": "entrepreneurship classes for kids, entrepreneurship for kids online, kids business classes, Young CEO programme",
+    "h1": "Entrepreneurship classes for kids: a practical checklist",
+    "intro": "Short camps spark energy. Longer mentor-led cohorts build portfolios, pitch confidence and habits that survive a school term.",
+    "paragraphs": [
+      "Prefer clear milestones: idea, offer, prototype, pitch. AI should speed research and design — not replace the child’s judgment.",
+      "Orbit’s Young CEO path ties AI literacy to entrepreneurship and leadership for ages 8–18 with a scholarship roadmap."
+    ],
+    "sectionHeading": "What to demand",
+    "bullets": [
+      "Live presentation practice",
+      "Age-appropriate finance basics",
+      "Documented outcomes over time",
+      "Parent updates without daily nagging"
+    ],
+    "links": [
+      {
+        "href": "/lp/entrepreneurship-kids/",
+        "label": "Entrepreneurship lander"
+      },
+      {
+        "href": "/compare/orbit-vs-planetspark/",
+        "label": "vs PlanetSpark"
+      },
+      {
+        "href": "/courses/",
+        "label": "Courses"
+      }
+    ]
+  },
+  {
+    "path": "/guides/young-ceo-programme-for-kids",
+    "title": "Young CEO Programme for Kids 8–18 | Orbit Student Guide",
+    "description": "What a Young CEO programme for kids includes — live mentors, AI, pitching, portfolios and scholarships. Book an Orbit Student free demo.",
+    "keywords": "Young CEO programme, Young CEO for kids, CEO programme for children, Orbit Student Young CEO",
+    "h1": "Young CEO programme for kids: inside the Orbit path",
+    "intro": "Young CEO should mean a structured journey from curiosity to shipped work — not a fancy title on a certificate.",
+    "paragraphs": [
+      "Orbit’s 180-day path covers foundations, AI-assisted execution and showcase pitches, with two live sessions per week plus office hours.",
+      "Built for families comparing speaking-first or STEM-catalogue brands who specifically want entrepreneurship outcomes."
+    ],
+    "sectionHeading": "Includes",
+    "bullets": [
+      "52 live mentor-led sessions",
+      "Portfolio projects parents can share",
+      "Pitch practice with peers",
+      "Competition and scholarship roadmap"
+    ],
+    "links": [
+      {
+        "href": "/lp/young-ceo/",
+        "label": "Young CEO lander"
+      },
+      {
+        "href": "/courses/",
+        "label": "Courses"
+      },
+      {
+        "href": "/compare/",
+        "label": "Compare"
+      }
+    ]
+  },
+  {
+    "path": "/guides/online-classes-for-kids-india",
+    "title": "Online Classes for Kids in India (2026): AI & Entrepreneurship",
+    "description": "Choosing online classes for kids in India — timezones, live mentors, AI and entrepreneurship. Orbit Student serves India and global families.",
+    "keywords": "online classes for kids India, AI classes for kids India, entrepreneurship classes kids India, live online classes kids",
+    "h1": "Online classes for kids in India: AI & Young CEO options",
+    "intro": "Indian families juggle school boards, evenings and global programme times. The right class fits the calendar and still produces visible work.",
+    "paragraphs": [
+      "Prefer morning/evening tracks, replays and capped cohorts so kids speak — not only listen. Ask about exam-season flexibility.",
+      "AI literacy, pitching and portfolios travel across boards and overseas applications, not only one syllabus."
+    ],
+    "sectionHeading": "India-friendly signals",
+    "bullets": [
+      "Replay access for missed sessions",
+      "Timezone tracks for India evenings",
+      "Clear holiday / exam policies",
+      "Free demo before payment"
+    ],
+    "links": [
+      {
+        "href": "/live-classes/",
+        "label": "Live classes"
+      },
+      {
+        "href": "/lp/free-demo/",
+        "label": "Free demo"
+      },
+      {
+        "href": "/faq/",
+        "label": "FAQ"
+      }
+    ]
+  },
+  {
+    "path": "/guides/scholarship-portfolio-for-kids",
+    "title": "Scholarship Portfolio for Kids: Projects That Stand Out",
+    "description": "How kids build a scholarship-ready portfolio with projects, pitches and AI literacy. Orbit Student roadmap and free demo.",
+    "keywords": "scholarship portfolio for kids, scholarship profile kids, extracurricular portfolio children, Young CEO scholarship",
+    "h1": "Build a scholarship portfolio kids can show",
+    "intro": "Reviewers look for evidence: projects, leadership, communication. A Young CEO-style portfolio makes that evidence concrete.",
+    "paragraphs": [
+      "Three to five artefacts beat twenty certificates: a shipped project, pitch evidence, a short reflection and proof of iteration.",
+      "Orbit weaves portfolio milestones into the live cohort so artefacts accumulate across 180 days."
+    ],
+    "sectionHeading": "Portfolio checklist",
+    "bullets": [
+      "Problem in the child’s words",
+      "Prototype or public link",
+      "Pitch / presentation evidence",
+      "What they learned and changed"
+    ],
+    "links": [
+      {
+        "href": "/blog/how-kids-can-build-a-scholarship-profile-from-age-10/",
+        "label": "Scholarship blog"
+      },
+      {
+        "href": "/resources/",
+        "label": "Resources"
+      },
+      {
+        "href": "/lp/young-ceo/",
+        "label": "Book demo"
+      }
+    ]
+  },
+  {
+    "path": "/lp/free-demo",
+    "title": "Book a Free Orbit Student Demo | AI & Entrepreneurship for Kids",
+    "description": "Book a free Orbit Student demo for ages 8–18. Live AI + entrepreneurship cohorts, portfolio projects, no payment to enquire.",
+    "keywords": "free demo Orbit Student, AI classes for kids free trial, Young CEO demo",
+    "h1": "Book your free Orbit demo",
+    "intro": "See how mentor-led AI and entrepreneurship classes work for your child’s age and timezone. Reply within 24 hours — no payment to book.",
+    "paragraphs": [
+      "Orbit runs small live cohorts for ages 8–18 with AI tools, venture projects and a scholarship-ready portfolio roadmap.",
+      "Use this page from ads or shares to book a free demo with parent name, email, phone and child age only."
+    ],
+    "sectionHeading": "You get",
+    "bullets": [
+      "Live small cohorts",
+      "AI tools + pitching",
+      "Portfolio roadmap",
+      "30-day guarantee after enrolment"
+    ],
+    "links": [
+      {
+        "href": "/courses/",
+        "label": "Courses"
+      },
+      {
+        "href": "/compare/",
+        "label": "Compare"
+      }
+    ]
+  },
+  {
+    "path": "/lp/ai-for-kids",
+    "title": "AI Classes for Kids (Live Mentors) | Orbit Student Free Demo",
+    "description": "Live AI classes for kids 8–18 — not video libraries. Mentors, projects and Young CEO skills. Book a free Orbit Student demo.",
+    "keywords": "AI classes for kids, AI learning for kids online, live AI classes kids, Orbit Student",
+    "h1": "Live AI classes for kids who build",
+    "intro": "Your child learns AI as a builder’s toolkit — websites, games, pitches — with live mentors twice a week.",
+    "paragraphs": [
+      "Orbit’s AI studio includes 100+ student tools tied to entrepreneurship outcomes parents can share at school.",
+      "Flexible tracks for India and global timezones. Book a free demo to match age band."
+    ],
+    "sectionHeading": "Highlights",
+    "bullets": [
+      "AI studio access",
+      "Shareable projects",
+      "Entrepreneurship link",
+      "Free demo"
+    ],
+    "links": [
+      {
+        "href": "/guides/ai-classes-for-kids-online/",
+        "label": "AI guide"
+      },
+      {
+        "href": "/tools/",
+        "label": "AI tools"
+      }
+    ]
+  },
+  {
+    "path": "/lp/young-ceo",
+    "title": "Young CEO Programme for Kids 8–18 | Free Orbit Demo",
+    "description": "Orbit Young CEO programme: 180-day live path in AI, entrepreneurship and leadership. Book a free demo for your child.",
+    "keywords": "Young CEO programme, young entrepreneur course, entrepreneurship for kids, Orbit Student",
+    "h1": "Young CEO programme — live, mentor-led",
+    "intro": "From idea to pitch: AI literacy, business basics, leadership and a portfolio built for scholarships and competitions.",
+    "paragraphs": [
+      "Fifty-two live mentor sessions, capped class size, replays and parent updates across a 180-day journey.",
+      "Book a free demo — no payment required to enquire."
+    ],
+    "sectionHeading": "Includes",
+    "bullets": [
+      "52 live sessions",
+      "Shipped projects",
+      "Pitch practice",
+      "Scholarship roadmap"
+    ],
+    "links": [
+      {
+        "href": "/guides/young-ceo-programme-for-kids/",
+        "label": "Young CEO guide"
+      },
+      {
+        "href": "/courses/",
+        "label": "Courses"
+      }
+    ]
+  },
+  {
+    "path": "/lp/entrepreneurship-kids",
+    "title": "Entrepreneurship Classes for Kids Online | Orbit Free Demo",
+    "description": "Online entrepreneurship classes for kids 8–18 with live mentors, AI tools and pitch practice. Book a free Orbit Student demo.",
+    "keywords": "entrepreneurship classes for kids, entrepreneurship for kids online, kids business class, Orbit Student",
+    "h1": "Entrepreneurship classes kids actually finish",
+    "intro": "Market research, simple offers, AI-assisted building and live pitches — designed for school-age attention spans.",
+    "paragraphs": [
+      "Idea → prototype → pitch in one path, about two live sessions per week alongside school.",
+      "Book a free demo with parent details only."
+    ],
+    "sectionHeading": "Why parents book",
+    "bullets": [
+      "Live mentors",
+      "AI-assisted building",
+      "Small groups",
+      "30-day guarantee"
+    ],
+    "links": [
+      {
+        "href": "/guides/entrepreneurship-classes-for-kids/",
+        "label": "Entrepreneurship guide"
+      },
+      {
+        "href": "/compare/",
+        "label": "Compare"
+      }
+    ]
+  },
+  {
     "path": "/courses",
     "title": "AI & Entrepreneurship Courses for Kids | Orbit Student",
     "description": "180-day Young CEO programme: live mentor classes, AI tools, coding basics and business skills for kids 8–18. Enrol in India & worldwide.",

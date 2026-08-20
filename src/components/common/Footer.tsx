@@ -147,6 +147,7 @@ export default function Footer() {
           <div>
             <p className="eyebrow-o mb-5">Library</p>
             <Link to="/blog" className={linkCls}>Blog</Link>
+            <Link to="/guides" className={linkCls}>Parent guides</Link>
             <Link to="/compare" className={linkCls}>Compare programmes</Link>
             <Link to="/resources" className={linkCls}>Resources</Link>
             <Link to="/testimonials" className={linkCls}>Stories</Link>
