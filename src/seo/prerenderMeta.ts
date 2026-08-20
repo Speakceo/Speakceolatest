@@ -36,6 +36,8 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
     paragraphs: [
       'Parents comparing platforms like PlanetSpark and BrightCHAMPS look for live instructors, clear outcomes and skills that matter beyond exams. Orbit Student runs small cohorts with two live sessions each week, Sunday office hours, and a gamified dashboard with 100+ AI tools.',
       'Over 180 days students build websites, games, pitches and portfolios while following a scholarship and competition roadmap. Cohorts are capped for real attention, with replays in the student portal and a 30-day satisfaction guarantee.',
+      'Orbit Student is built for families who want mentor-led AI literacy and entrepreneurship together — not a passive video library and not speaking practice alone. Book a free demo to confirm age band, timezone and cohort seats before any payment.',
+      'Explore courses, live class schedules, parent guides and programme comparisons to see how the Young CEO path differs from coding-only or speaking-only platforms.',
     ],
     sectionHeading: 'What students get',
     bullets: [
@@ -43,6 +45,8 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
       'AI tools for writing, maths, speaking and pitch decks',
       'Portfolio projects parents can share for school and scholarships',
       'Flexible time zones for families in India and worldwide',
+      'Free demo with parent details only — no payment to book',
+      'Compare Orbit vs PlanetSpark and BrightCHAMPS on /compare/',
     ],
     links: [
       { href: '/courses/', label: 'View courses' },

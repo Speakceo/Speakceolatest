@@ -113,12 +113,25 @@ class ErrorBoundary extends React.Component<
 
   render() {
     if (this.state.hasError) {
+      // Soft-404 prevention: never let an error shell look like an indexable homepage.
+      if (typeof document !== 'undefined') {
+        let meta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.name = 'robots';
+          document.head.appendChild(meta);
+        }
+        meta.content = 'noindex, nofollow';
+      }
       return (
         <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
           <div className="max-w-md w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-8 text-center">
             <h1 className="text-2xl font-bold text-white mb-4">Oops! Something went wrong</h1>
             <p className="text-gray-400 mb-6">
-              We're sorry for the inconvenience. Please try refreshing the page or contact support if the problem persists.
+              We&apos;re sorry for the inconvenience. Please try refreshing the page or contact support if the problem persists.
+            </p>
+            <p className="text-xs text-gray-500 mb-4 font-mono break-all">
+              {this.state.error?.message || 'Unknown error'}
             </p>
             <button 
               onClick={() => window.location.reload()} 

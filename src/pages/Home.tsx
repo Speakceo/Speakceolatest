@@ -40,7 +40,8 @@ export default function Home() {
     <>
       <SEO
         title="Orbit Student | Live AI & Entrepreneurship Classes for Kids 8–18"
-        description="Live 1:1 & cohort classes in AI, entrepreneurship, coding and leadership for ages 8–18. Mentor-led, portfolio outcomes. Free trial — join 2,500+ families."
+        description="Live cohort classes in AI, entrepreneurship, coding and leadership for ages 8–18. Mentor-led portfolio outcomes. Free trial — join 2,500+ families."
+        url="https://www.orbitstudent.com"
         showFAQ
         courseData={{
           name: 'Orbit Young CEO Programme — 180-Day Instructor-Led Cohort',
@@ -100,10 +101,17 @@ export default function Home() {
                 Orbit Student
               </p>
               <h1 className="font-display text-[clamp(1.45rem,3.4vw,2.15rem)] text-o-1 font-semibold mb-5 sm:mb-6 leading-snug max-w-xl">
-                <span className="text-o-2">Kids who learn to </span>
+                <span className="sr-only">
+                  Live AI and entrepreneurship classes for kids ages 8 to 18 — build companies, command AI, pitch with
+                  confidence, and ship real projects.
+                </span>
+                <span className="text-o-2" aria-hidden="true">
+                  Kids who learn to{' '}
+                </span>
                 <Typewriter
                   as="span"
                   className="text-[#00B0FF]"
+                  aria-hidden
                   text={[
                     'build companies',
                     'command AI',
