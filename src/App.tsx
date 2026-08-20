@@ -30,6 +30,7 @@ const FAQ = lazy(() => import('./pages/FAQ'))
 const Testimonials = lazy(() => import('./pages/Testimonials'))
 const Resources = lazy(() => import('./pages/Resources'))
 const Partnerships = lazy(() => import('./pages/Partnerships'))
+const Demo = lazy(() => import('./pages/Demo'))
 const CompareSlugPage = lazy(() => import('./pages/Compare'))
 const CompareHub = lazy(() =>
   import('./pages/Compare').then((m) => ({ default: m.CompareHub }))
