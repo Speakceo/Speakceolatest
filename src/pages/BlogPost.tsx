@@ -71,7 +71,7 @@ const BlogPost: React.FC = () => {
       const relatedLinks = relatedPosts
         .map(
           (item) =>
-            `<li><a href="/blog/${item.slug}" class="text-[#1876D2] dark:text-[#00B0FF] font-medium hover:underline">${item.title}</a></li>`
+            `<li><a href="/blog/${item.slug}/" class="text-[#1876D2] dark:text-[#00B0FF] font-medium hover:underline">${item.title}</a></li>`
         )
         .join('');
       html += `<h3 class="text-xl font-semibold mt-8 mb-3 text-gray-900 dark:text-white">Continue Reading</h3><ul class="list-disc ml-6 mb-4 space-y-1">${relatedLinks}</ul>`;
@@ -328,7 +328,7 @@ const BlogPost: React.FC = () => {
                         {relatedPost.excerpt}
                       </p>
                       <Link
-                        to={`/blog/${relatedPost.slug}`}
+                        to={`/blog/${relatedPost.slug}/`}
                         className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 font-medium"
                       >
                         Read More →

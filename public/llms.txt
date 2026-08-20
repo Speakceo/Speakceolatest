@@ -1,25 +1,48 @@
 # Orbit Student
 
-> Mentor-led AI literacy, entrepreneurship and leadership for ages 8–18. Live cohort classes, student dashboard, portfolio projects and scholarship preparation.
+> Mentor-led AI literacy, entrepreneurship and leadership for ages 8–18. Live cohort classes, student dashboard, portfolio projects and scholarship preparation. Serving families in 35+ countries.
+
+## What Orbit Student is
+
+Orbit Student (orbitstudent.com) is an instructor-led online programme for kids and teens. Students learn AI tools, entrepreneurship, public speaking and leadership through live mentor sessions — not pre-recorded video libraries. Outcomes include shipped projects, pitch practice and a scholarship-ready portfolio.
+
+## Who it is for
+
+- Parents of children ages 8–18 seeking live AI and entrepreneurship classes
+- Students who want to build real projects, pitch ideas and prepare for scholarships
+- Families comparing PlanetSpark-style public speaking or BrightCHAMPS-style coding programmes who want mentor-led cohorts with portfolio outcomes
 
 ## Main pages
 
-- [Home](https://www.orbitstudent.com/): Flagship Young CEO programme overview and cohort details
-- [Courses](https://www.orbitstudent.com/courses): Curriculum and programme structure
-- [Live classes](https://www.orbitstudent.com/live-classes): Schedule, format and mentorship
-- [Interactive demo](https://www.orbitstudent.com/demo): Product walkthrough for families
-- [AI tools](https://www.orbitstudent.com/tools): Tools available to students
-- [FAQ](https://www.orbitstudent.com/faq): Policies, time zones and common questions
-- [Resources](https://www.orbitstudent.com/resources): Guides and downloads
-- [Blog](https://www.orbitstudent.com/blog): Articles on AI, entrepreneurship and scholarships
-- [Contact](https://www.orbitstudent.com/contact): Reach the team
+- [Home](https://www.orbitstudent.com/): Young CEO programme overview, cohort model and free demo
+- [Courses](https://www.orbitstudent.com/courses/): 180-day curriculum and programme structure
+- [Live classes](https://www.orbitstudent.com/live-classes/): Schedule, format and mentorship
+- [Interactive demo](https://www.orbitstudent.com/demo/): Free product walkthrough for families
+- [AI tools](https://www.orbitstudent.com/tools/): Student AI studio tools
+- [FAQ](https://www.orbitstudent.com/faq/): Policies, time zones and enrolment questions
+- [Resources](https://www.orbitstudent.com/resources/): Guides and downloads
+- [About](https://www.orbitstudent.com/about/): Mission and story
+- [Blog](https://www.orbitstudent.com/blog/): AI learning, entrepreneurship and scholarships for kids
+- [Contact](https://www.orbitstudent.com/contact/): Book a demo or email hello@orbitstudent.com
+
+## High-intent blog guides
+
+- [AI learning for kids — 2026 guide](https://www.orbitstudent.com/blog/ai-learning-for-kids-complete-guide-2026/)
+- [Scholarship profile from age 10](https://www.orbitstudent.com/blog/how-kids-can-build-a-scholarship-profile-from-age-10/)
+- [90-day kids entrepreneurship roadmap](https://www.orbitstudent.com/blog/kids-entrepreneurship-roadmap-90-day-action-plan/)
+- [Why entrepreneurship education matters](https://www.orbitstudent.com/blog/why-entrepreneurship-education-matters-for-kids/)
 
 ## Account
 
-- [Sign in](https://www.orbitstudent.com/login): Orbit Student portal login
+- [Sign in](https://www.orbitstudent.com/login): Student / parent portal
+
+## Contact
+
+- Email: hello@orbitstudent.com
+- Reply window: within 24 hours on business days
 
 ## Legal
 
-- [Privacy](https://www.orbitstudent.com/privacy): Privacy policy
-- [Terms](https://www.orbitstudent.com/terms): Terms of service
-- [Cookies](https://www.orbitstudent.com/cookies): Cookie policy
+- [Privacy](https://www.orbitstudent.com/privacy/)
+- [Terms](https://www.orbitstudent.com/terms/)
+- [Cookies](https://www.orbitstudent.com/cookies/)
