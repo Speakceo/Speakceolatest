@@ -640,7 +640,7 @@ export default function Courses() {
             subtitle="Parent details only — we confirm cohort fit within 24 hours."
             formTitle="Book your free demo"
             formSubtitle="No payment required to book."
-            fields={['parentName', 'email', 'phone', 'childAge']}
+            fields={['parentName', 'phone', 'email', 'childAge']}
             variant="primary"
             size="sm"
           />

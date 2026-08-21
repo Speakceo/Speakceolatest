@@ -369,7 +369,7 @@ const FAQ: React.FC = () => {
               subtitle="Book a free demo — we answer pricing, timezone and fit questions within 24 hours."
               formTitle="Book your free demo"
               formSubtitle="Parent details only. No payment to book."
-              fields={['parentName', 'email', 'phone', 'childAge']}
+              fields={['parentName', 'phone', 'email', 'childAge']}
               variant="primary"
               size="sm"
             />

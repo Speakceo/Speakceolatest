@@ -53,7 +53,7 @@ export const CompareHub: React.FC = () => (
           buttonText="Book free demo"
           title="Still deciding?"
           subtitle="Book a free Orbit demo — we map age, goals and timezone in one call."
-          fields={['parentName', 'email', 'phone', 'childAge']}
+          fields={['parentName', 'phone', 'email', 'childAge']}
           variant="primary"
           size="sm"
         />

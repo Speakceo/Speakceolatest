@@ -73,7 +73,7 @@ function LandingView({ data }: { data: LeadLandingData }) {
                 ctaType={data.ctaType}
                 title={data.formTitle}
                 subtitle={data.formSubtitle}
-                fields={['parentName', 'email', 'phone', 'childAge']}
+                fields={['parentName', 'phone', 'email', 'childAge']}
                 buttonText="Book free demo"
                 compact
                 className="w-full shadow-none"
@@ -112,7 +112,7 @@ export const LandingHub: React.FC = () => (
           ctaType="lp_hub"
           buttonText="Book free demo"
           title="Book a free demo"
-          fields={['parentName', 'email', 'phone', 'childAge']}
+          fields={['parentName', 'phone', 'email', 'childAge']}
           size="sm"
         />
       </div>

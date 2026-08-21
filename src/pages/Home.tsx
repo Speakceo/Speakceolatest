@@ -927,7 +927,7 @@ export default function Home() {
               subtitle="2,500+ families. We confirm seats within 24 hours."
               formTitle="Book your free demo"
               formSubtitle="Parent details only — no payment required."
-              fields={['parentName', 'email', 'phone', 'childAge']}
+              fields={['parentName', 'phone', 'email', 'childAge']}
               variant="primary"
               size="sm"
             />

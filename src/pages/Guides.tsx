@@ -93,7 +93,7 @@ function GuideView({ data }: { data: GuidePageData }) {
             buttonText="Book free demo"
             title="Ready to try a live cohort?"
             subtitle="Parent details only — we confirm seats within 24 hours."
-            fields={['parentName', 'email', 'phone', 'childAge']}
+            fields={['parentName', 'phone', 'email', 'childAge']}
             variant="primary"
             size="sm"
           />
@@ -147,7 +147,7 @@ export const GuidesHub: React.FC = () => (
           buttonText="Book free demo"
           title="Questions after reading?"
           subtitle="Book a free demo — we map age, goals and timezone."
-          fields={['parentName', 'email', 'phone', 'childAge']}
+          fields={['parentName', 'phone', 'email', 'childAge']}
           size="sm"
         />
       </div>

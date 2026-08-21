@@ -223,7 +223,7 @@ const ComparisonPageView: React.FC<Props> = ({ data }) => {
             subtitle="Parent details only. We confirm seats within 24 hours — no payment to book."
             formTitle="Book your free demo"
             formSubtitle="Tell us age and timezone — we reply within one business day."
-            fields={['parentName', 'email', 'phone', 'childAge']}
+            fields={['parentName', 'phone', 'email', 'childAge']}
             variant="primary"
             size="sm"
           />
