@@ -44,16 +44,16 @@ export const LANDING_PAGES: Record<string, LeadLandingData> = {
   'ai-for-kids': {
     slug: 'ai-for-kids',
     path: '/lp/ai-for-kids',
-    title: 'AI Classes for Kids (Live Mentors) | Orbit Student Free Demo',
+    title: 'AI Entrepreneurship for Kids | Free Live Mentor Demo',
     description:
-      'Live AI classes for kids 8–18 — not video libraries. Mentors, projects and Young CEO skills. Book a free Orbit Student demo.',
+      'Live AI entrepreneurship classes for kids 8–18 — mentors, projects and pitching. Not video apps. Book a free Orbit Student demo.',
     keywords: [
+      'AI entrepreneurship for kids',
       'AI classes for kids',
-      'AI learning for kids online',
       'live AI classes kids',
       'Orbit Student',
     ],
-    h1: 'Live AI classes for kids who build',
+    h1: 'AI entrepreneurship for kids who build',
     eyebrow: 'AI literacy · Ages 8–18',
     subhead:
       'Your child learns AI as a builder’s toolkit — websites, games, pitches — with live mentors twice a week.',
@@ -74,14 +74,14 @@ export const LANDING_PAGES: Record<string, LeadLandingData> = {
     path: '/lp/young-ceo',
     title: 'Young CEO Programme for Kids 8–18 | Free Orbit Demo',
     description:
-      'Orbit Young CEO programme: 180-day live path in AI, entrepreneurship and leadership. Book a free demo for your child.',
+      'Young CEO programme for kids: 180-day live path in AI, entrepreneurship and leadership. Book a free Orbit demo.',
     keywords: [
+      'Young CEO programme for kids',
       'Young CEO programme',
       'young entrepreneur course',
-      'entrepreneurship for kids',
       'Orbit Student',
     ],
-    h1: 'Young CEO programme — live, mentor-led',
+    h1: 'Young CEO programme for kids — live mentors',
     eyebrow: '180-day cohort · Ages 8–18',
     subhead:
       'From idea to pitch: AI literacy, business basics, leadership and a portfolio built for scholarships and competitions.',
@@ -100,16 +100,16 @@ export const LANDING_PAGES: Record<string, LeadLandingData> = {
   'entrepreneurship-kids': {
     slug: 'entrepreneurship-kids',
     path: '/lp/entrepreneurship-kids',
-    title: 'Entrepreneurship Classes for Kids Online | Orbit Free Demo',
+    title: 'Entrepreneurship Classes for Kids Online | Free Demo',
     description:
-      'Online entrepreneurship classes for kids 8–18 with live mentors, AI tools and pitch practice. Book a free Orbit Student demo.',
+      'Online entrepreneurship classes for kids 8–18 with live mentors, AI tools and pitch practice. Book a free Orbit demo.',
     keywords: [
+      'entrepreneurship classes for kids online',
       'entrepreneurship classes for kids',
-      'entrepreneurship for kids online',
       'kids business class',
       'Orbit Student',
     ],
-    h1: 'Entrepreneurship classes kids actually finish',
+    h1: 'Entrepreneurship classes for kids online',
     eyebrow: 'Live cohorts · Real ventures',
     subhead:
       'Market research, simple offers, AI-assisted building and live pitches — designed for school-age attention spans.',

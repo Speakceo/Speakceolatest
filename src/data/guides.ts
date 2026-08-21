@@ -17,19 +17,19 @@ export const GUIDE_PAGES: Record<string, GuidePageData> = {
   'ai-classes-for-kids-online': {
     slug: 'ai-classes-for-kids-online',
     path: '/guides/ai-classes-for-kids-online',
-    title: 'AI Classes for Kids Online (2026): Live Mentors vs Apps',
+    title: 'AI Entrepreneurship for Kids | Live Mentor Classes Online',
     description:
-      'How to choose AI classes for kids online — live mentors, safety, projects and age bands. Orbit Student free demo for ages 8–18.',
+      'AI classes for kids that build ventures — live mentors, projects and pitching. Not video apps. Orbit Student ages 8–18.',
     keywords: [
+      'AI entrepreneurship for kids',
       'AI classes for kids online',
-      'AI learning for kids',
-      'best AI classes for kids 2026',
-      'live AI classes kids',
+      'live AI classes for kids',
+      'AI learning for kids mentors',
     ],
-    h1: 'AI classes for kids online: what actually works',
+    h1: 'AI entrepreneurship for kids: live mentors, real projects',
     eyebrow: 'Parent guide · 2026',
     intro:
-      'Most “AI for kids” products are either chatbots, short video courses or live STEM catalogues. The difference that matters is whether your child ships something real with a human mentor — or only clicks through lessons.',
+      'AI entrepreneurship for kids means using AI to research, build and pitch real ventures — not only watching coding videos. Most “AI for kids” products are chatbots, short courses or STEM catalogues. The difference that matters is whether your child ships something real with a human mentor.',
     sections: [
       {
         heading: 'What good AI classes for kids include',
@@ -80,16 +80,16 @@ export const GUIDE_PAGES: Record<string, GuidePageData> = {
   'entrepreneurship-classes-for-kids': {
     slug: 'entrepreneurship-classes-for-kids',
     path: '/guides/entrepreneurship-classes-for-kids',
-    title: 'Entrepreneurship Classes for Kids (2026): What to Look For',
+    title: 'Entrepreneurship Classes for Kids Online (2026 Guide)',
     description:
-      'Parent guide to entrepreneurship classes for kids — camps vs year-long cohorts, pitching, AI tools and how Orbit Student works. Free demo.',
+      'How to choose online entrepreneurship classes for kids — camps vs cohorts, pitching, AI tools. Orbit free demo for ages 8–18.',
     keywords: [
+      'entrepreneurship classes for kids online',
       'entrepreneurship classes for kids',
-      'entrepreneurship for kids online',
-      'kids business classes',
+      'online entrepreneurship for kids',
       'Young CEO programme',
     ],
-    h1: 'Entrepreneurship classes for kids: a practical checklist',
+    h1: 'Entrepreneurship classes for kids online: checklist',
     eyebrow: 'Parent guide · 2026',
     intro:
       'Short camps are great for energy. Longer mentor-led cohorts are better when you want a portfolio, pitch confidence and habits that survive a school term.',
@@ -142,16 +142,17 @@ export const GUIDE_PAGES: Record<string, GuidePageData> = {
   'young-ceo-programme-for-kids': {
     slug: 'young-ceo-programme-for-kids',
     path: '/guides/young-ceo-programme-for-kids',
-    title: 'Young CEO Programme for Kids 8–18 | Orbit Student Guide',
+    title: 'Young CEO Programme for Kids 8–18 | Live Orbit Guide',
     description:
-      'What a Young CEO programme for kids includes — live mentors, AI, pitching, portfolios and scholarships. Book an Orbit Student free demo.',
+      'What a Young CEO programme includes: live mentors, AI, pitching, portfolios and scholarships. Orbit Student free demo.',
     keywords: [
+      'Young CEO programme for kids',
       'Young CEO programme',
       'Young CEO for kids',
       'CEO programme for children',
       'Orbit Student Young CEO',
     ],
-    h1: 'Young CEO programme for kids: inside the Orbit path',
+    h1: 'Young CEO programme for kids (ages 8–18)',
     eyebrow: 'Programme guide · Ages 8–18',
     intro:
       '“Young CEO” should mean a structured journey from curiosity to shipped work — not a fancy title on a certificate. Here is how Orbit designs that path.',
@@ -198,16 +199,16 @@ export const GUIDE_PAGES: Record<string, GuidePageData> = {
   'online-classes-for-kids-india': {
     slug: 'online-classes-for-kids-india',
     path: '/guides/online-classes-for-kids-india',
-    title: 'Online Classes for Kids in India (2026): AI & Entrepreneurship',
+    title: 'Online AI & Entrepreneurship Classes for Kids in India',
     description:
-      'Choosing online classes for kids in India — timezones, live mentors, AI and entrepreneurship. Orbit Student serves India and global families.',
+      'Live online classes for kids in India — AI literacy, Young CEO skills, India timezones. Orbit Student free demo.',
     keywords: [
+      'online classes for kids India AI entrepreneurship',
       'online classes for kids India',
       'AI classes for kids India',
       'entrepreneurship classes kids India',
-      'live online classes kids',
     ],
-    h1: 'Online classes for kids in India: AI & Young CEO options',
+    h1: 'Online AI & entrepreneurship classes for kids in India',
     eyebrow: 'India & global timezones',
     intro:
       'Indian families often juggle school boards, evening activities and global programme times. The right online class fits the calendar and still produces visible work.',
@@ -247,16 +248,16 @@ export const GUIDE_PAGES: Record<string, GuidePageData> = {
   'scholarship-portfolio-for-kids': {
     slug: 'scholarship-portfolio-for-kids',
     path: '/guides/scholarship-portfolio-for-kids',
-    title: 'Scholarship Portfolio for Kids: Projects That Stand Out',
+    title: 'Scholarship Portfolio for Kids | Projects That Rank',
     description:
-      'How kids build a scholarship-ready portfolio with projects, pitches and AI literacy. Orbit Student roadmap and free demo.',
+      'Build a scholarship-ready portfolio with projects, pitches and AI literacy. Orbit Student roadmap + free demo.',
     keywords: [
       'scholarship portfolio for kids',
       'scholarship profile kids',
       'extracurricular portfolio children',
       'Young CEO scholarship',
     ],
-    h1: 'Build a scholarship portfolio kids can show',
+    h1: 'Scholarship portfolio for kids: projects that stand out',
     eyebrow: 'Outcomes guide',
     intro:
       'Scholarship and selective programme reviewers look for evidence: projects, leadership, communication. A Young CEO-style portfolio makes that evidence concrete.',

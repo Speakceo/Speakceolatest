@@ -39,8 +39,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Orbit Student | Live AI & Entrepreneurship Classes for Kids 8–18"
-        description="Live cohort classes in AI, entrepreneurship, coding and leadership for ages 8–18. Mentor-led portfolio outcomes. Free trial — join 2,500+ families."
+        title="Orbit Student | Young CEO AI & Entrepreneurship for Kids 8–18"
+        description="Live mentor-led AI and entrepreneurship classes for ages 8–18. Portfolio projects, scholarships, free demo — 2,500+ families worldwide."
         url="https://www.orbitstudent.com"
         showFAQ
         courseData={{
@@ -924,9 +924,9 @@ export default function Home() {
               ctaType="demo"
               buttonText="Book free demo"
               title="Ready for a free demo?"
-              subtitle="2,500+ families. We confirm seats within 24 hours."
-              formTitle="Book your free demo"
-              formSubtitle="Parent details only — no payment required."
+              subtitle="Name + WhatsApp — we confirm seats in 24 hours."
+              formTitle="Book a free demo"
+              formSubtitle="We'll WhatsApp or call within 24 hours."
               fields={['parentName', 'phone', 'email', 'childAge']}
               variant="primary"
               size="sm"

@@ -162,8 +162,8 @@ const FAQ: React.FC = () => {
   return (
     <>
       <SEO 
-        title="FAQ - Young CEO Program | Transform Your Child Into A Confident Leader"
-        description="Get answers to all your questions about the Young CEO Program. See why thousands of parents choose us to develop their child's entrepreneurial skills, confidence, and future success."
+        title="FAQ | Young CEO Programme for Kids & AI Classes | Orbit"
+        description="Answers on Orbit’s Young CEO programme for kids 8–18 — pricing, schedule, AI classes, entrepreneurship and demos. Book free."
         keywords={["Young CEO Program FAQ", "entrepreneurship for kids", "business education children", "leadership development", "parent questions"]}
         url="https://www.orbitstudent.com/faq/"
         showFAQ={true}

@@ -25,11 +25,11 @@ const SITE = 'https://www.orbitstudent.com';
 export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   {
     path: '/',
-    title: 'Orbit Student | Live AI & Entrepreneurship Classes for Kids 8–18',
+    title: 'Orbit Student | Young CEO AI & Entrepreneurship for Kids 8–18',
     description:
-      'Live cohort classes in AI, entrepreneurship, coding and leadership for kids 8–18. Mentor-led portfolio outcomes. Free trial — join 2,500+ families.',
+      'Live mentor-led AI and entrepreneurship classes for ages 8–18. Portfolio projects, scholarships, free demo — 2,500+ families worldwide.',
     keywords:
-      'AI learning for kids, entrepreneurship for kids, online classes for kids, coding for kids, young CEO program, live classes kids, edtech India, Orbit Student',
+      'Orbit Student, Young CEO programme for kids, AI entrepreneurship for kids, entrepreneurship classes for kids online, live AI classes kids',
     h1: 'Live AI & Entrepreneurship Classes for Kids',
     intro:
       'Orbit Student is a mentor-led programme for ages 8–18 that teaches AI literacy, entrepreneurship, coding and leadership through live classes and real projects — not passive video libraries.',
@@ -88,12 +88,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/compare/orbit-vs-planetspark',
-    title: 'Orbit Student vs PlanetSpark (2026): Which Fits Young Founders?',
+    title: 'Orbit Student vs PlanetSpark (2026) | Young Founders vs Speaking',
     description:
-      'Honest Orbit Student vs PlanetSpark comparison for parents. Speaking skills vs AI + entrepreneurship cohorts, portfolios and scholarships. Book a free Orbit demo.',
+      'Side-by-side: PlanetSpark for public speaking vs Orbit Student for AI + entrepreneurship, portfolios and scholarships. Free demo.',
     keywords:
-      'Orbit Student vs PlanetSpark, PlanetSpark alternative, entrepreneurship for kids, AI classes for kids, Young CEO programme',
-    h1: 'Orbit Student vs PlanetSpark',
+      'Orbit Student vs PlanetSpark, PlanetSpark alternative, Orbit vs PlanetSpark, Young CEO programme',
+    h1: 'Orbit Student vs PlanetSpark (2026)',
     intro:
       'PlanetSpark is a strong choice when the goal is public speaking and communication. Orbit Student is built for families who want live AI literacy, entrepreneurship and a scholarship-ready portfolio.',
     paragraphs: [
@@ -115,12 +115,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/compare/orbit-vs-brightchamps',
-    title: 'Orbit Student vs BrightCHAMPS (2026): AI Classes Compared',
+    title: 'Orbit Student vs BrightCHAMPS (2026) | AI Founders vs STEM',
     description:
-      'Orbit Student vs BrightCHAMPS for parents. Compare Gen AI / coding stacks vs mentor-led AI entrepreneurship cohorts with portfolios. Free Orbit demo.',
+      'Compare BrightCHAMPS coding/STEM stacks with Orbit’s mentor-led AI entrepreneurship cohorts. Which fits your child? Free demo.',
     keywords:
-      'Orbit Student vs BrightCHAMPS, BrightCHAMPS alternative, AI classes for kids, coding for kids vs entrepreneurship',
-    h1: 'Orbit Student vs BrightCHAMPS',
+      'Orbit Student vs BrightCHAMPS, BrightCHAMPS alternative, Orbit vs BrightCHAMPS, AI entrepreneurship for kids',
+    h1: 'Orbit Student vs BrightCHAMPS (2026)',
     intro:
       'BrightCHAMPS offers a large STEM and Gen AI catalogue. Orbit Student focuses on mentor-led cohorts that connect AI literacy to entrepreneurship, pitching and scholarship-ready work.',
     paragraphs: [
@@ -142,12 +142,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/compare/brightchamps-alternatives',
-    title: '7 Best BrightCHAMPS Alternatives (2026) for AI & Young Founders',
+    title: 'Best BrightCHAMPS Alternatives 2026 | AI & Young Founders',
     description:
-      'BrightCHAMPS alternatives for parents: Orbit Student, Codingal, PlanetSpark, TruPreneurs and more — compared by outcome. Book an Orbit free demo.',
+      '7 BrightCHAMPS alternatives for parents — Orbit Student, Codingal, PlanetSpark and more. Ranked by outcome. Book a free Orbit demo.',
     keywords:
-      'BrightCHAMPS alternatives, alternatives to BrightCHAMPS, best BrightCHAMPS alternative 2026, AI classes for kids',
-    h1: 'Best BrightCHAMPS Alternatives in 2026',
+      'BrightCHAMPS alternatives, alternatives to BrightCHAMPS, best BrightCHAMPS alternative 2026, AI entrepreneurship for kids',
+    h1: 'Best BrightCHAMPS Alternatives (2026)',
     intro:
       'BrightCHAMPS works well for large STEM catalogues. Alternatives fit different goals — coding depth, public speaking, or full entrepreneurship cohorts such as Orbit Student.',
     paragraphs: [
@@ -168,12 +168,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/compare/planetspark-alternatives',
-    title: '6 Best PlanetSpark Alternatives (2026) Beyond Public Speaking',
+    title: 'Best PlanetSpark Alternatives 2026 | Beyond Public Speaking',
     description:
-      'PlanetSpark alternatives for parents who want AI, entrepreneurship or broader life skills. Includes Orbit Student, Codingal, BrightCHAMPS and more.',
+      'PlanetSpark alternatives when you want AI, entrepreneurship or broader skills. Includes Orbit Student Young CEO. Free demo.',
     keywords:
-      'PlanetSpark alternatives, alternatives to PlanetSpark, PlanetSpark vs Orbit Student, entrepreneurship classes for kids',
-    h1: 'Best PlanetSpark Alternatives in 2026',
+      'PlanetSpark alternatives, alternatives to PlanetSpark, PlanetSpark vs Orbit Student, entrepreneurship classes for kids online',
+    h1: 'Best PlanetSpark Alternatives (2026)',
     intro:
       'PlanetSpark leads for speaking and communication. Parents search for alternatives when they also want AI, coding or entrepreneurship — including Orbit Student’s Young CEO path.',
     paragraphs: [
@@ -224,12 +224,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/guides/ai-classes-for-kids-online',
-    title: 'AI Classes for Kids Online (2026): Live Mentors vs Apps',
+    title: 'AI Entrepreneurship for Kids | Live Mentor Classes Online',
     description:
-      'How to choose AI classes for kids online — live mentors, safety, projects and age bands. Orbit Student free demo for ages 8–18.',
+      'AI classes for kids that build ventures — live mentors, projects and pitching. Not video apps. Orbit Student ages 8–18.',
     keywords:
-      'AI classes for kids online, AI learning for kids, best AI classes for kids 2026, live AI classes kids',
-    h1: 'AI classes for kids online: what actually works',
+      'AI entrepreneurship for kids, AI classes for kids online, live AI classes for kids, AI learning for kids mentors',
+    h1: 'AI entrepreneurship for kids: live mentors, real projects',
     intro:
       'Most AI-for-kids products are chatbots, video courses or STEM catalogues. The difference that matters is whether your child ships something real with a human mentor.',
     paragraphs: [
@@ -251,12 +251,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/guides/entrepreneurship-classes-for-kids',
-    title: 'Entrepreneurship Classes for Kids (2026): What to Look For',
+    title: 'Entrepreneurship Classes for Kids Online (2026 Guide)',
     description:
-      'Parent guide to entrepreneurship classes for kids — camps vs year-long cohorts, pitching, AI tools and how Orbit Student works. Free demo.',
+      'How to choose online entrepreneurship classes for kids — camps vs cohorts, pitching, AI tools. Orbit free demo for ages 8–18.',
     keywords:
-      'entrepreneurship classes for kids, entrepreneurship for kids online, kids business classes, Young CEO programme',
-    h1: 'Entrepreneurship classes for kids: a practical checklist',
+      'entrepreneurship classes for kids online, entrepreneurship classes for kids, online entrepreneurship for kids, Young CEO programme',
+    h1: 'Entrepreneurship classes for kids online: checklist',
     intro:
       'Short camps spark energy. Longer mentor-led cohorts build portfolios, pitch confidence and habits that survive a school term.',
     paragraphs: [
@@ -278,12 +278,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/guides/young-ceo-programme-for-kids',
-    title: 'Young CEO Programme for Kids 8–18 | Orbit Student Guide',
+    title: 'Young CEO Programme for Kids 8–18 | Live Orbit Guide',
     description:
-      'What a Young CEO programme for kids includes — live mentors, AI, pitching, portfolios and scholarships. Book an Orbit Student free demo.',
+      'What a Young CEO programme includes: live mentors, AI, pitching, portfolios and scholarships. Orbit Student free demo.',
     keywords:
-      'Young CEO programme, Young CEO for kids, CEO programme for children, Orbit Student Young CEO',
-    h1: 'Young CEO programme for kids: inside the Orbit path',
+      'Young CEO programme for kids, Young CEO programme, Young CEO for kids, Orbit Student Young CEO',
+    h1: 'Young CEO programme for kids (ages 8–18)',
     intro:
       'Young CEO should mean a structured journey from curiosity to shipped work — not a fancy title on a certificate.',
     paragraphs: [
@@ -305,12 +305,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/guides/online-classes-for-kids-india',
-    title: 'Online Classes for Kids in India (2026): AI & Entrepreneurship',
+    title: 'Online AI & Entrepreneurship Classes for Kids in India',
     description:
-      'Choosing online classes for kids in India — timezones, live mentors, AI and entrepreneurship. Orbit Student serves India and global families.',
+      'Live online classes for kids in India — AI literacy, Young CEO skills, India timezones. Orbit Student free demo.',
     keywords:
-      'online classes for kids India, AI classes for kids India, entrepreneurship classes kids India, live online classes kids',
-    h1: 'Online classes for kids in India: AI & Young CEO options',
+      'online classes for kids India AI entrepreneurship, online classes for kids India, AI classes for kids India, entrepreneurship classes kids India',
+    h1: 'Online AI & entrepreneurship classes for kids in India',
     intro:
       'Indian families juggle school boards, evenings and global programme times. The right class fits the calendar and still produces visible work.',
     paragraphs: [
@@ -332,12 +332,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/guides/scholarship-portfolio-for-kids',
-    title: 'Scholarship Portfolio for Kids: Projects That Stand Out',
+    title: 'Scholarship Portfolio for Kids | Projects That Rank',
     description:
-      'How kids build a scholarship-ready portfolio with projects, pitches and AI literacy. Orbit Student roadmap and free demo.',
+      'Build a scholarship-ready portfolio with projects, pitches and AI literacy. Orbit Student roadmap + free demo.',
     keywords:
       'scholarship portfolio for kids, scholarship profile kids, extracurricular portfolio children, Young CEO scholarship',
-    h1: 'Build a scholarship portfolio kids can show',
+    h1: 'Scholarship portfolio for kids: projects that stand out',
     intro:
       'Reviewers look for evidence: projects, leadership, communication. A Young CEO-style portfolio makes that evidence concrete.',
     paragraphs: [
@@ -384,11 +384,11 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/lp/ai-for-kids',
-    title: 'AI Classes for Kids (Live Mentors) | Orbit Student Free Demo',
+    title: 'AI Entrepreneurship for Kids | Free Live Mentor Demo',
     description:
-      'Live AI classes for kids 8–18 — not video libraries. Mentors, projects and Young CEO skills. Book a free Orbit Student demo.',
-    keywords: 'AI classes for kids, AI learning for kids online, live AI classes kids, Orbit Student',
-    h1: 'Live AI classes for kids who build',
+      'Live AI entrepreneurship classes for kids 8–18 — mentors, projects and pitching. Not video apps. Book a free Orbit Student demo.',
+    keywords: 'AI entrepreneurship for kids, AI classes for kids, live AI classes kids, Orbit Student',
+    h1: 'AI entrepreneurship for kids who build',
     intro:
       'Your child learns AI as a builder’s toolkit — websites, games, pitches — with live mentors twice a week.',
     paragraphs: [
@@ -411,9 +411,9 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
     path: '/lp/young-ceo',
     title: 'Young CEO Programme for Kids 8–18 | Free Orbit Demo',
     description:
-      'Orbit Young CEO programme: 180-day live path in AI, entrepreneurship and leadership. Book a free demo for your child.',
-    keywords: 'Young CEO programme, young entrepreneur course, entrepreneurship for kids, Orbit Student',
-    h1: 'Young CEO programme — live, mentor-led',
+      'Young CEO programme for kids: 180-day live path in AI, entrepreneurship and leadership. Book a free Orbit demo.',
+    keywords: 'Young CEO programme for kids, Young CEO programme, young entrepreneur course, Orbit Student',
+    h1: 'Young CEO programme for kids — live mentors',
     intro:
       'From idea to pitch: AI literacy, business basics, leadership and a portfolio built for scholarships and competitions.',
     paragraphs: [
@@ -434,12 +434,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/lp/entrepreneurship-kids',
-    title: 'Entrepreneurship Classes for Kids Online | Orbit Free Demo',
+    title: 'Entrepreneurship Classes for Kids Online | Free Demo',
     description:
-      'Online entrepreneurship classes for kids 8–18 with live mentors, AI tools and pitch practice. Book a free Orbit Student demo.',
+      'Online entrepreneurship classes for kids 8–18 with live mentors, AI tools and pitch practice. Book a free Orbit demo.',
     keywords:
-      'entrepreneurship classes for kids, entrepreneurship for kids online, kids business class, Orbit Student',
-    h1: 'Entrepreneurship classes kids actually finish',
+      'entrepreneurship classes for kids online, entrepreneurship classes for kids, kids business class, Orbit Student',
+    h1: 'Entrepreneurship classes for kids online',
     intro:
       'Market research, simple offers, AI-assisted building and live pitches — designed for school-age attention spans.',
     paragraphs: [
@@ -460,11 +460,11 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/courses',
-    title: 'AI & Entrepreneurship Courses for Kids | Orbit Student',
+    title: 'Young CEO Programme & AI Courses for Kids 8–18 | Orbit',
     description:
-      '180-day Young CEO programme: live mentor classes, AI tools, coding basics and business skills for kids 8–18. Enrol in India & worldwide.',
+      '180-day Young CEO programme: live mentors, AI tools, entrepreneurship and scholarship prep for ages 8–18. Book a free demo.',
     keywords:
-      'AI courses for kids, entrepreneurship course for kids, coding classes kids, online course kids India, young CEO program, STEM courses kids',
+      'Young CEO programme for kids, AI entrepreneurship for kids, entrepreneurship classes for kids online, Orbit Student courses',
     h1: 'AI & Entrepreneurship Courses for Kids 8–18',
     intro:
       'The Orbit Young CEO programme is a structured 180-day course path covering AI tools, business planning, public speaking, leadership and STEM foundations for school-age builders.',
@@ -620,12 +620,12 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   },
   {
     path: '/faq',
-    title: 'FAQ | Young CEO Programme & AI Classes for Kids',
+    title: 'FAQ | Young CEO Programme for Kids & AI Classes | Orbit',
     description:
-      'Answers about Orbit Student live classes, pricing, ages 8–18, AI tools, scholarships and the 180-day Young CEO programme.',
+      'Answers on Orbit’s Young CEO programme for kids 8–18 — pricing, schedule, AI classes, entrepreneurship and demos. Book free.',
     keywords:
-      'Orbit Student FAQ, young CEO program questions, AI classes kids FAQ, online learning kids India',
-    h1: 'Frequently Asked Questions',
+      'Young CEO programme for kids FAQ, Orbit Student FAQ, AI entrepreneurship for kids, entrepreneurship classes for kids online',
+    h1: 'FAQ — Young CEO programme & AI classes',
     intro:
       'Clear answers for parents before enrolling in live AI and entrepreneurship classes at Orbit Student.',
     paragraphs: [
