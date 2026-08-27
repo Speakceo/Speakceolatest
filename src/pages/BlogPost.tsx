@@ -20,13 +20,13 @@ const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   
   if (!slug) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/blog/" replace />;
   }
 
   const post = getBlogPostBySlug(slug);
   
   if (!post) {
-    return <Navigate to="/blog" replace />;
+    return <Navigate to="/blog/" replace />;
   }
 
   const relatedPosts = getRelatedPosts(post, 3);
@@ -172,7 +172,7 @@ const BlogPost: React.FC = () => {
         <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-4xl mx-auto px-6 py-8">
             <Link
-              to="/blog"
+              to="/blog/"
               className="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 mb-6 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />

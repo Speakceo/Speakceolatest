@@ -6,6 +6,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { LanguageProvider } from './lib/contexts/LanguageContext'
 import { UserProgressProvider } from './contexts/UserProgressContext'
 import { ThemeProvider } from './contexts/ThemeContext'
+import TrailingSlashRedirect from './components/TrailingSlashRedirect'
 
 // Performance Monitoring
 import WebVitals from './components/common/WebVitals'
@@ -311,6 +312,7 @@ export default function App() {
           <LanguageProvider>
               <UserProgressProvider>
                 <WebVitals />
+                <TrailingSlashRedirect />
                 <ScrollToTop />
             <AppContent />
               </UserProgressProvider>

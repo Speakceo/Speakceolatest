@@ -871,42 +871,42 @@ export default function Home() {
             <div className="space-y-4 text-[15px] leading-[1.75] text-o-2">
               <p>
                 Orbit is built as one system: a flagship{' '}
-                <Link to="/courses" className="text-[#00B0FF] hover:underline underline-offset-2">Young CEO programme</Link>
+                <Link to="/courses/" className="text-[#00B0FF] hover:underline underline-offset-2">Young CEO programme</Link>
                 {' '}for ages 8–18, live mentorship, and a student dashboard where projects actually ship. If you want the full
                 syllabus and module map, start with our{' '}
-                <Link to="/courses" className="text-[#00B0FF] hover:underline underline-offset-2">courses overview</Link>
+                <Link to="/courses/" className="text-[#00B0FF] hover:underline underline-offset-2">courses overview</Link>
                 {' '}— then see how{' '}
-                <Link to="/live-classes" className="text-[#00B0FF] hover:underline underline-offset-2">live classes</Link>
+                <Link to="/live-classes/" className="text-[#00B0FF] hover:underline underline-offset-2">live classes</Link>
                 {' '}and office hours fit around school weeks. The{' '}
-                <Link to="/community" className="text-[#00B0FF] hover:underline underline-offset-2">community</Link>
+                <Link to="/community/" className="text-[#00B0FF] hover:underline underline-offset-2">community</Link>
                 {' '}hub highlights student showcases and challenges.
               </p>
               <p>
                 Parents use our{' '}
-                <Link to="/faq" className="text-[#00B0FF] hover:underline underline-offset-2">FAQ</Link>
+                <Link to="/faq/" className="text-[#00B0FF] hover:underline underline-offset-2">FAQ</Link>
                 {' '}for logistics (time zones, refunds, device requirements) and the{' '}
-                <Link to="/resources" className="text-[#00B0FF] hover:underline underline-offset-2">resources hub</Link>
+                <Link to="/resources/" className="text-[#00B0FF] hover:underline underline-offset-2">resources hub</Link>
                 {' '}for essays, guides and downloadable roadmaps. The{' '}
-                <Link to="/blog" className="text-[#00B0FF] hover:underline underline-offset-2">blog</Link>
+                <Link to="/blog/" className="text-[#00B0FF] hover:underline underline-offset-2">blog</Link>
                 {' '}covers AI literacy, entrepreneurship and scholarship strategy;{' '}
-                <Link to="/testimonials" className="text-[#00B0FF] hover:underline underline-offset-2">family stories</Link>
+                <Link to="/testimonials/" className="text-[#00B0FF] hover:underline underline-offset-2">family stories</Link>
                 {' '}show what changes after a few months inside a cohort.
               </p>
               <p>
                 Try the product before you commit: the interactive{' '}
-                <Link to="/demo" className="text-[#00B0FF] hover:underline underline-offset-2">demo</Link>
+                <Link to="/demo/" className="text-[#00B0FF] hover:underline underline-offset-2">demo</Link>
                 {' '}and{' '}
-                <Link to="/tools" className="text-[#00B0FF] hover:underline underline-offset-2">AI tools</Link>
+                <Link to="/tools/" className="text-[#00B0FF] hover:underline underline-offset-2">AI tools</Link>
                 {' '}pages explain how students practise safely.                 Comparing PlanetSpark or BrightCHAMPS?{' '}
-                <Link to="/compare" className="text-[#00B0FF] hover:underline underline-offset-2">Read our programme comparisons</Link>
+                <Link to="/compare/" className="text-[#00B0FF] hover:underline underline-offset-2">Read our programme comparisons</Link>
                 {' '}or{' '}
-                <Link to="/guides" className="text-[#00B0FF] hover:underline underline-offset-2">parent guides</Link>
+                <Link to="/guides/" className="text-[#00B0FF] hover:underline underline-offset-2">parent guides</Link>
                 . For school or brand collaborations, read{' '}
-                <Link to="/partnerships" className="text-[#00B0FF] hover:underline underline-offset-2">partnerships</Link>
+                <Link to="/partnerships/" className="text-[#00B0FF] hover:underline underline-offset-2">partnerships</Link>
                 {' '}and{' '}
-                <Link to="/events" className="text-[#00B0FF] hover:underline underline-offset-2">events</Link>
+                <Link to="/events/" className="text-[#00B0FF] hover:underline underline-offset-2">events</Link>
                 . When you are ready to talk to a human,{' '}
-                <Link to="/contact" className="text-[#00B0FF] hover:underline underline-offset-2">contact</Link>
+                <Link to="/contact/" className="text-[#00B0FF] hover:underline underline-offset-2">contact</Link>
                 {' '}our team directly. A machine-readable summary of the site for assistants lives at{' '}
                 <a href="/llms.txt" className="text-[#00B0FF] hover:underline underline-offset-2">llms.txt</a>.
               </p>

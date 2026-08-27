@@ -137,29 +137,29 @@ export default function Footer() {
 
           <div>
             <p className="eyebrow-o mb-5">Programme</p>
-            <Link to="/courses" className={linkCls}>Courses</Link>
-            <Link to="/demo" className={linkCls}>Live Demo</Link>
-            <Link to="/live-classes" className={linkCls}>Live Classes</Link>
-            <Link to="/events" className={linkCls}>Events</Link>
-            <Link to="/community" className={linkCls}>Community</Link>
+            <Link to="/courses/" className={linkCls}>Courses</Link>
+            <Link to="/demo/" className={linkCls}>Live Demo</Link>
+            <Link to="/live-classes/" className={linkCls}>Live Classes</Link>
+            <Link to="/events/" className={linkCls}>Events</Link>
+            <Link to="/community/" className={linkCls}>Community</Link>
           </div>
 
           <div>
             <p className="eyebrow-o mb-5">Library</p>
-            <Link to="/blog" className={linkCls}>Blog</Link>
-            <Link to="/guides" className={linkCls}>Parent guides</Link>
-            <Link to="/compare" className={linkCls}>Compare programmes</Link>
-            <Link to="/resources" className={linkCls}>Resources</Link>
-            <Link to="/testimonials" className={linkCls}>Stories</Link>
-            <Link to="/faq" className={linkCls}>FAQ</Link>
-            <Link to="/tools" className={linkCls}>AI Tools</Link>
+            <Link to="/blog/" className={linkCls}>Blog</Link>
+            <Link to="/guides/" className={linkCls}>Parent guides</Link>
+            <Link to="/compare/" className={linkCls}>Compare programmes</Link>
+            <Link to="/resources/" className={linkCls}>Resources</Link>
+            <Link to="/testimonials/" className={linkCls}>Stories</Link>
+            <Link to="/faq/" className={linkCls}>FAQ</Link>
+            <Link to="/tools/" className={linkCls}>AI Tools</Link>
           </div>
 
           <div>
             <p className="eyebrow-o mb-5">Studio</p>
-            <Link to="/about" className={linkCls}>About</Link>
-            <Link to="/partnerships" className={linkCls}>Partnerships</Link>
-            <Link to="/contact" className={linkCls}>Contact</Link>
+            <Link to="/about/" className={linkCls}>About</Link>
+            <Link to="/partnerships/" className={linkCls}>Partnerships</Link>
+            <Link to="/contact/" className={linkCls}>Contact</Link>
             <a href="/llms.txt" className={linkCls}>LLMs.txt</a>
             <a href="mailto:contact@orbitstudent.com" className={linkCls}>Press</a>
             <a href="mailto:careers@orbitstudent.com" className={linkCls}>Careers</a>
@@ -169,9 +169,9 @@ export default function Footer() {
             <p className="eyebrow-o mb-5">Account</p>
             <Link to="/login" className={linkCls}>Sign in</Link>
             <Link to="/dashboard" className={linkCls}>Dashboard</Link>
-            <Link to="/privacy" className={linkCls}>Privacy</Link>
-            <Link to="/terms" className={linkCls}>Terms</Link>
-            <Link to="/cookies" className={linkCls}>Cookies</Link>
+            <Link to="/privacy/" className={linkCls}>Privacy</Link>
+            <Link to="/terms/" className={linkCls}>Terms</Link>
+            <Link to="/cookies/" className={linkCls}>Cookies</Link>
           </div>
         </div>
 

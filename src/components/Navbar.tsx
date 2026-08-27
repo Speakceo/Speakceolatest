@@ -11,10 +11,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const menuItems = [
   { title: 'nav.home', href: '/' },
-  { title: 'nav.courses', href: '/courses' },
-  { title: 'nav.resources', href: '/resources' },
-  { title: 'nav.about', href: '/about' },
-  { title: 'nav.contact', href: '/contact' },
+  { title: 'nav.courses', href: '/courses/' },
+  { title: 'nav.resources', href: '/resources/' },
+  { title: 'nav.about', href: '/about/' },
+  { title: 'nav.contact', href: '/contact/' },
 ];
 
 export default function Navbar() {

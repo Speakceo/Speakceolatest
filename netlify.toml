@@ -53,6 +53,13 @@
   status = 301
   force = true
 
+# Legacy PDF URL (was crawled but served SPA homepage — Soft 404)
+[[redirects]]
+  from = "/downloads/marketing-guide.pdf"
+  to = "/resources/"
+  status = 301
+  force = true
+
 # ─── SPA fallback — ONLY when no static file or folder index exists ─────────
 # Do NOT use force=true — prerendered dist/<page>/index.html must win.
 # Netlify serves those as /page/ automatically (Pretty URLs).

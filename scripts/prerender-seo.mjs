@@ -37,6 +37,7 @@ function injectMeta(html, meta) {
     type = 'website',
     noindex = false,
     stripSitewideJsonLd = false,
+    articleJsonLd = null,
   } = meta;
 
   const robots = noindex
@@ -53,6 +54,11 @@ function injectMeta(html, meta) {
   // that makes Google treat every URL as an alternate of the homepage. Strip them.
   if (stripSitewideJsonLd) {
     out = out.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/g, '');
+  }
+
+  if (articleJsonLd) {
+    const ld = `<script type="application/ld+json">${JSON.stringify(articleJsonLd)}</script>\n  `;
+    out = out.replace('</head>', `${ld}</head>`);
   }
 
   out = out.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);
@@ -231,25 +237,47 @@ function main() {
   for (const post of blogRoutes) {
     const routePath = `/blog/${post.slug}`;
     const excerpt = post.excerpt || post.metaDescription || '';
+    const canonical = canonicalForRoute(routePath);
+    const preview =
+      Array.isArray(post.contentPreview) && post.contentPreview.length > 0
+        ? post.contentPreview
+        : [excerpt];
+    const tagBullets = (post.tags || []).slice(0, 5);
+    const keywordBullets = (post.seoKeywords || []).slice(0, 3);
+    const bullets = tagBullets.length ? tagBullets : keywordBullets;
+
     writeRouteHtml(baseHtml, routePath, {
       title: `${post.title} | Orbit Student Blog`,
       description: post.metaDescription,
       keywords: (post.seoKeywords || []).join(', '),
       h1: post.title,
       intro: excerpt,
-      paragraphs: [
-        excerpt,
-        'Orbit Student publishes practical guides for parents and students on AI learning, entrepreneurship, scholarships and future-ready skills for ages 8–18.',
-        'After reading, explore live classes and the Young CEO programme, or book a free demo to see mentor-led cohorts in action.',
-      ],
-      bullets: (post.seoKeywords || []).slice(0, 5),
-      sectionHeading: 'Related topics',
+      paragraphs: preview,
+      bullets,
+      sectionHeading: post.category ? `Topics: ${post.category}` : 'Related topics',
       links: [
         { href: '/blog/', label: 'All articles' },
         { href: '/courses/', label: 'Courses' },
         { href: '/demo/', label: 'Free demo' },
+        { href: '/resources/', label: 'Scholarship resources' },
       ],
       type: 'article',
+      articleJsonLd: {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.metaDescription || excerpt,
+        author: { '@type': 'Person', name: post.author || 'Orbit Student' },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Orbit Student',
+          url: SITE,
+        },
+        datePublished: post.publishedAt,
+        dateModified: post.updatedAt || post.publishedAt,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+        url: canonical,
+      },
     });
     count += 1;
   }
