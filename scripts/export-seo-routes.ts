@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { PRERENDER_ROUTES } from '../src/seo/prerenderMeta.ts';
 import { publishedBlogPosts } from '../src/data/blogPosts.ts';
+import { PROGRAM_PAGES } from '../src/data/programs.ts';
 
 const ROOT = process.cwd();
 const PUBLIC = path.join(ROOT, 'public');
@@ -68,6 +69,16 @@ for (const post of publishedBlogPosts) {
   </url>`);
 }
 
+for (const prog of Object.values(PROGRAM_PAGES)) {
+  const lastmod = new Date().toISOString().split('T')[0];
+  urls.push(`  <url>
+    <loc>${SITE}${prog.path}/</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>`);
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.join('\n')}
@@ -86,6 +97,10 @@ function prerenderRewriteLines(): string[] {
   }
   for (const post of publishedBlogPosts) {
     paths.add(`/blog/${post.slug}`);
+  }
+  paths.add('/programs');
+  for (const prog of Object.values(PROGRAM_PAGES)) {
+    paths.add(prog.path.replace(/\/+$/, ''));
   }
 
   const lines: string[] = [];
@@ -118,6 +133,9 @@ https://orbitstudent.com/*      https://www.orbitstudent.com/:splat     301!
 
 # Legacy asset — avoid Soft 404 (homepage HTML at .pdf URL)
 /downloads/marketing-guide.pdf   /resources/   301!
+
+# Sandbox SEO file — stop leaking test HTML into index
+/seo-keywords.html    /    301!
 
 # ─── Prerender shells: no 301 for missing trailing slash (GSC "Page with redirect") ─
 ${rewriteLines.join('\n')}

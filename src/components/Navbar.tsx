@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Sparkles, ArrowRight } from 'lucide-react';
+import { Menu, X, Sparkles, ArrowRight, LogIn } from 'lucide-react';
 import { useUserStore } from '../lib/store';
 import { useLanguage } from '../lib/contexts/LanguageContext';
 import LanguageToggle from './LanguageToggle';
@@ -137,13 +137,14 @@ export default function Navbar() {
                     </button>
                   ) : (
                     <div className="flex items-center gap-1 ml-1">
-                      <button
-                        onClick={() => navigate('/login')}
-                        className="btn-o btn-o-link"
-                        style={{ height: 34, fontSize: 13 }}
+                      <Link
+                        to="/login"
+                        className="btn-o btn-o-ghost inline-flex items-center gap-1.5"
+                        style={{ height: 34, fontSize: 13, padding: '0 12px' }}
                       >
-                        Sign in
-                      </button>
+                        <LogIn className="w-3.5 h-3.5" />
+                        Student Portal
+                      </Link>
                       <button
                         onClick={() => setShowEnrollment(true)}
                         className="btn-o btn-o-primary"
@@ -242,15 +243,14 @@ export default function Navbar() {
                     </button>
                   ) : (
                     <div className="space-y-2 pb-1">
-                      <button
-                        onClick={() => {
-                          navigate('/login');
-                          setIsOpen(false);
-                        }}
-                        className="btn-o btn-o-ghost w-full min-h-[48px]"
+                      <Link
+                        to="/login"
+                        onClick={() => setIsOpen(false)}
+                        className="btn-o btn-o-ghost w-full min-h-[48px] inline-flex items-center justify-center gap-2"
                       >
-                        Sign in
-                      </button>
+                        <LogIn className="w-4 h-4" />
+                        Student Portal / Login
+                      </Link>
                       <button
                         onClick={() => {
                           setShowEnrollment(true);

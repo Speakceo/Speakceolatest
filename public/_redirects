@@ -18,6 +18,9 @@ https://orbitstudent.com/*      https://www.orbitstudent.com/:splat     301!
 # Legacy asset — avoid Soft 404 (homepage HTML at .pdf URL)
 /downloads/marketing-guide.pdf   /resources/   301!
 
+# Sandbox SEO file — stop leaking test HTML into index
+/seo-keywords.html    /    301!
+
 # ─── Prerender shells: no 301 for missing trailing slash (GSC "Page with redirect") ─
 /about    /about/index.html    200
 /about/    /about/index.html    200
@@ -127,6 +130,18 @@ https://orbitstudent.com/*      https://www.orbitstudent.com/:splat     301!
 /lp/young-ceo/    /lp/young-ceo/index.html    200
 /partnerships    /partnerships/index.html    200
 /partnerships/    /partnerships/index.html    200
+/programs    /programs/index.html    200
+/programs/    /programs/index.html    200
+/programs/ai-entrepreneurship-for-kids    /programs/ai-entrepreneurship-for-kids/index.html    200
+/programs/ai-entrepreneurship-for-kids/    /programs/ai-entrepreneurship-for-kids/index.html    200
+/programs/ai-for-kids    /programs/ai-for-kids/index.html    200
+/programs/ai-for-kids/    /programs/ai-for-kids/index.html    200
+/programs/coding-and-robotics    /programs/coding-and-robotics/index.html    200
+/programs/coding-and-robotics/    /programs/coding-and-robotics/index.html    200
+/programs/stem-entrepreneurship    /programs/stem-entrepreneurship/index.html    200
+/programs/stem-entrepreneurship/    /programs/stem-entrepreneurship/index.html    200
+/programs/teen-founders    /programs/teen-founders/index.html    200
+/programs/teen-founders/    /programs/teen-founders/index.html    200
 /resources    /resources/index.html    200
 /resources/    /resources/index.html    200
 /testimonials    /testimonials/index.html    200

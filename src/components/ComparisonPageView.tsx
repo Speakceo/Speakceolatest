@@ -140,6 +140,43 @@ const ComparisonPageView: React.FC<Props> = ({ data }) => {
           </div>
         )}
 
+        {isAlternatives && data.headToHeadRows && data.headToHeadRows.length > 0 && (
+          <div className="mb-14 overflow-x-auto">
+            <h2 className="text-xl font-semibold text-o-0 mb-4">
+              Orbit Student vs {data.competitorName}
+            </h2>
+            <table className="w-full text-left text-sm border-collapse min-w-[640px]">
+              <thead>
+                <tr className="border-b border-[var(--o-border-1)]">
+                  <th className="py-3 pr-4 font-semibold text-o-0">Metric</th>
+                  <th className="py-3 pr-4 font-semibold text-[#1876D2]">Orbit Student</th>
+                  <th className="py-3 font-semibold text-o-0">{data.competitorName}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.headToHeadRows.map((row) => (
+                  <tr key={row.factor} className="border-b border-[var(--o-border-0)]">
+                    <td className="py-3.5 pr-4 font-medium text-o-0 align-top">{row.factor}</td>
+                    <td className="py-3.5 pr-4 text-o-1 align-top">{row.orbit}</td>
+                    <td className="py-3.5 text-o-1 align-top">{row.other}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {data.seoSections?.map((section) => (
+          <section key={section.heading} className="mb-12">
+            <h2 className="text-xl font-semibold text-o-0 mb-3">{section.heading}</h2>
+            {section.paragraphs.map((p) => (
+              <p key={p.slice(0, 48)} className="text-o-1 leading-relaxed mb-3">
+                {p}
+              </p>
+            ))}
+          </section>
+        ))}
+
         {isAlternatives && (
           <div className="mb-14 space-y-6">
             <h2 className="text-xl font-semibold text-o-0">Alternatives ranked by fit</h2>

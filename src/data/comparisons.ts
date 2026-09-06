@@ -32,6 +32,10 @@ export type ComparisonPageData = {
   related: Array<{ label: string; href: string }>;
   /** When set, page renders alternatives list instead of vs table */
   alternatives?: AlternativeCard[];
+  /** Orbit vs named competitor — shown on alternatives pages when parents compare head-to-head */
+  headToHeadRows?: CompareRow[];
+  /** Extra H2 sections for high-intent SEO copy */
+  seoSections?: Array<{ heading: string; paragraphs: string[] }>;
   ctaType: string;
 };
 
@@ -367,6 +371,49 @@ export const COMPARISONS: Record<string, ComparisonPageData> = {
       'You want 1:1 communication coaches at PlanetSpark’s specialty',
     ],
     rows: [],
+    headToHeadRows: [
+      {
+        factor: 'Live mentor ratio',
+        orbit: 'Small cohorts (~18 max), 2 live sessions/week + office hours',
+        other: '1:1 or small-group speaking coaches; less venture/AI depth',
+      },
+      {
+        factor: 'AI Studio tools',
+        orbit: '100+ mentor-supervised AI tools (writing, decks, sites, maths)',
+        other: 'AI-assisted speaking practice; not a full founder AI studio',
+      },
+      {
+        factor: 'Pitch labs & portfolios',
+        orbit: 'Fortnightly pitch reviews, shipped sites/games, scholarship roadmap',
+        other: 'Stage speaking & communication certificates; lighter product builds',
+      },
+      {
+        factor: 'Cohort size & accountability',
+        orbit: 'Named cohorts, parent progress reports, capped seats',
+        other: 'Flexible 1:1 scheduling; less group venture accountability',
+      },
+      {
+        factor: 'Pricing & guarantee',
+        orbit: 'From $299 USD programme · 30-day satisfaction guarantee',
+        other: 'Demo-led pricing · speaking-focused packages vary by plan',
+      },
+    ],
+    seoSections: [
+      {
+        heading: 'Why Parents are Moving from PlanetSpark to Orbit\'s Active AI Studio',
+        paragraphs: [
+          'PlanetSpark excels when the only goal is fluency, debate or creative writing. Parents searching PlanetSpark alternatives usually want something PlanetSpark was not built to optimise: live AI literacy, startup mechanics and proof parents can show schools.',
+          'Orbit Student keeps humans in the loop — mentors review prompts, debug builds and run pitch labs — while students command 100+ AI Studio tools. That combination targets queries like "interactive alternatives to speaking-only classes" without asking families to abandon communication skills entirely; many keep a light speaking practice elsewhere.',
+        ],
+      },
+      {
+        heading: 'Interactive cohorts vs passive speaking drills',
+        paragraphs: [
+          'Passive video queues struggle to hold attention for ages 8–14. Orbit\'s twice-weekly live cohorts require students to present work aloud, share screens and iterate on real projects — the same behaviours admissions teams and scholarship panels reward.',
+          'If your child already speaks confidently but needs AI, coding and entrepreneurship outcomes, Orbit is the specialist track. If speaking anxiety is the blocker, PlanetSpark may still be the right first step — book an Orbit demo only when you are ready to add founder skills on top.',
+        ],
+      },
+    ],
     alternatives: [
       {
         name: 'Orbit Student',
@@ -428,6 +475,73 @@ export const COMPARISONS: Record<string, ComparisonPageData> = {
       { label: 'FAQ', href: '/faq/' },
     ],
     ctaType: 'compare_planetspark_alternatives',
+  },
+  'orbit-vs-traditional': {
+    slug: 'orbit-vs-traditional',
+    path: '/compare/orbit-vs-traditional',
+    title: 'Orbit vs Traditional Online Coding | Live Mentors vs Passive Video',
+    description:
+      'Alternatives to passive online coding: Orbit Student live mentor cohorts, AI Studio and pitch labs vs pre-recorded video libraries. For parents ages 8–18.',
+    keywords: [
+      'alternatives to passive online coding',
+      'live coding classes for kids',
+      'Orbit vs pre-recorded courses',
+      'interactive online classes kids',
+    ],
+    h1: 'Orbit Student vs traditional passive online coding',
+    eyebrow: 'Comparison · Live vs passive · 2026',
+    intro:
+      'Most “online coding for kids” products are video libraries with optional chat support. Orbit Student is built for families who want live mentor cohorts, accountable project deadlines and an AI Studio dashboard — not another queue of recordings.',
+    competitorName: 'Typical pre-recorded coding platforms',
+    competitorUrl: 'https://www.orbitstudent.com/courses/',
+    updatedLabel: 'September 2026',
+    verdict:
+      'Choose passive video catalogues when budget is minimal and your child self-directs well. Choose Orbit when you want live feedback, shipped portfolios and entrepreneurship outcomes alongside AI literacy.',
+    chooseOrbitIf: [
+      'Your child needs live accountability and mentor feedback',
+      'You want AI tools + pitching + ventures, not syntax alone',
+      'Portfolio and scholarship storytelling matter',
+    ],
+    chooseOtherIf: [
+      'You only need cheap, self-paced intro coding videos',
+      'Your child already has a dedicated live tutor elsewhere',
+      'You are not ready for twice-weekly live sessions',
+    ],
+    rows: [
+      {
+        factor: 'Instruction model',
+        orbit: 'Live small cohorts + office hours',
+        other: 'Pre-recorded videos, optional async help',
+      },
+      {
+        factor: 'Accountability',
+        orbit: 'Capped cohorts, fortnightly reviews',
+        other: 'Self-paced progress bars',
+      },
+      {
+        factor: 'Outcomes',
+        orbit: 'Websites, games, pitches, portfolios',
+        other: 'Certificates and module completion',
+      },
+      {
+        factor: 'AI integration',
+        orbit: '100+ AI Studio tools with mentor oversight',
+        other: 'Varies; often bolt-on chatbots',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How does Orbit differ from pre-recorded coding courses?',
+        answer:
+          'Orbit features live mentor-led classes, real-world project builds, pitch labs and an interactive AI Studio dashboard — eliminating passive video queues as the primary learning mode.',
+      },
+    ],
+    related: [
+      { label: 'AI for kids programme', href: '/programs/ai-for-kids/' },
+      { label: 'Coding & robotics track', href: '/programs/coding-and-robotics/' },
+      { label: 'Book free demo', href: '/lp/free-demo/' },
+    ],
+    ctaType: 'compare_orbit_vs_traditional',
   },
 };
 

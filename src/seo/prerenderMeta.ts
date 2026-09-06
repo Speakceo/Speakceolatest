@@ -25,19 +25,19 @@ const SITE = 'https://www.orbitstudent.com';
 export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
   {
     path: '/',
-    title: 'Orbit Student | Young CEO AI & Entrepreneurship for Kids 8–18',
+    title: 'Orbit Student | AI, Coding & Entrepreneurship for Kids (8-18)',
     description:
-      'Live mentor-led AI and entrepreneurship classes for ages 8–18. Portfolio projects, scholarships, free demo — 2,500+ families worldwide.',
+      'Live mentor-led AI, startup & coding cohorts for ages 8–18. Build real apps, pitch ideas & master 100+ AI tools. Book a risk-free trial today!',
     keywords:
-      'Orbit Student, Young CEO programme for kids, AI entrepreneurship for kids, entrepreneurship classes for kids online, live AI classes kids',
-    h1: 'Live AI & Entrepreneurship Classes for Kids',
+      'Orbit Student, AI entrepreneurship for kids, coding for kids, young CEO programme, live AI classes kids, not foreign student portal',
+    h1: 'Building the Next Generation of AI Creators & Young Founders',
     intro:
-      'Orbit Student is a mentor-led programme for ages 8–18 that teaches AI literacy, entrepreneurship, coding and leadership through live classes and real projects — not passive video libraries.',
+      'Orbit Student is a mentor-led AI, coding and entrepreneurship programme for ages 8–18 — not a foreign student visa portal or university LMS login. Live cohorts, pitch labs and 100+ AI Studio tools.',
     paragraphs: [
-      'Parents comparing platforms like PlanetSpark and BrightCHAMPS look for live instructors, clear outcomes and skills that matter beyond exams. Orbit Student runs small cohorts with two live sessions each week, Sunday office hours, and a gamified dashboard with 100+ AI tools.',
-      'Over 180 days students build websites, games, pitches and portfolios while following a scholarship and competition roadmap. Cohorts are capped for real attention, with replays in the student portal and a 30-day satisfaction guarantee.',
-      'Orbit Student is built for families who want mentor-led AI literacy and entrepreneurship together — not a passive video library and not speaking practice alone. Book a free demo to confirm age band, timezone and cohort seats before any payment.',
-      'Explore courses, live class schedules, parent guides and programme comparisons to see how the Young CEO path differs from coding-only or speaking-only platforms.',
+      'Parents comparing PlanetSpark, BrightCHAMPS and passive coding apps want live instructors, portfolio outcomes and AI literacy together. Orbit runs small cohorts with two live sessions each week, Sunday office hours, and a gamified dashboard.',
+      'Over 180 days students build websites, games, pitches and portfolios while following a scholarship roadmap. Cohorts are capped, with replays in the student portal and a 30-day satisfaction guarantee.',
+      'Searching "student orbit" or "orbit student portal login"? You are in the right place for Orbit Student edtech — use orbitstudent.com/login for the dashboard, not international student visa portals.',
+      'Explore programme pages for AI entrepreneurship, STEM ventures, courses, comparisons and parent guides.',
     ],
     sectionHeading: 'What students get',
     bullets: [
@@ -55,6 +55,8 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
       { href: '/blog/', label: 'Parent blog' },
       { href: '/compare/', label: 'Compare programmes' },
       { href: '/guides/', label: 'Parent guides' },
+      { href: '/programs/ai-entrepreneurship-for-kids/', label: 'AI entrepreneur programs for kids' },
+      { href: '/programs/stem-entrepreneurship/', label: 'STEM entrepreneurship' },
       { href: '/lp/free-demo/', label: 'Free demo lander' },
     ],
   },
@@ -799,6 +801,84 @@ export const PRERENDER_ROUTES: PrerenderRouteMeta[] = [
     links: [
       { href: '/contact/', label: 'Partner with us' },
       { href: '/about/', label: 'About Orbit' },
+    ],
+  },
+  {
+    path: '/programs',
+    title: 'Orbit Programmes | AI, Teen Founders & Coding for Kids 8–18',
+    description:
+      'Programme landing pages: AI entrepreneur tracks, STEM ventures, teen founders and coding — live mentor cohorts for ages 8–18.',
+    keywords:
+      'AI entrepreneur programs for kids, STEM entrepreneurship, teen startup bootcamp, coding for kids',
+    h1: 'Live cohorts by age and outcome',
+    intro:
+      'Dedicated programme pages capture high-intent searches without changing core URLs — each track links to the same mentor-led Young CEO journey and trial signup.',
+    paragraphs: [
+      'Choose AI entrepreneurship for kids, STEM social ventures, teen founder bootcamps or hands-on coding based on age and goals.',
+      'Every programme includes live mentors, portfolio deliverables and access to the AI Studio dashboard — not passive video libraries.',
+    ],
+    sectionHeading: 'Programme tracks',
+    bullets: [
+      'AI entrepreneur programs for kids — venture builds & pitch labs',
+      'STEM entrepreneurship — science fair to social impact ventures',
+      'Teen founders bootcamp — startup mechanics for 13–18',
+      'Coding & robotics — maker projects with mentor review',
+    ],
+    links: [
+      { href: '/programs/ai-entrepreneurship-for-kids/', label: 'AI entrepreneurship for kids' },
+      { href: '/programs/stem-entrepreneurship/', label: 'STEM entrepreneurship' },
+      { href: '/demo/', label: 'Book free demo' },
+    ],
+  },
+  {
+    path: '/programs/ai-entrepreneurship-for-kids',
+    title: 'AI Entrepreneur Programs for Kids | Orbit Student',
+    description:
+      'AI entrepreneur programs for kids ages 8–18: live mentors, venture projects, pitch labs & 100+ AI tools. Not passive coding videos. Book a risk-free trial.',
+    keywords:
+      'ai entrepreneur programs for kids, 12 year old entrepreneur, young entrepreneur program',
+    h1: 'AI entrepreneur programs for kids who ship real ventures',
+    intro:
+      'Live mentor cohorts where students aged 8–18 validate ideas, build with AI Studio tools and pitch to founder mentors — targeting high-intent parent searches.',
+    paragraphs: [
+      'Weeks 1–4 cover AI literacy and idea validation; weeks 5–12 add MVP builds and pricing; weeks 13–18 polish portfolios for scholarships and demo day.',
+      'Book a risk-free trial — parent details only, cohort seats confirmed within one business day.',
+    ],
+    sectionHeading: 'What families get',
+    bullets: [
+      'Twice-weekly live mentor sessions',
+      '100+ supervised AI tools',
+      'Pitch labs and parent-visible portfolios',
+      '30-day satisfaction guarantee',
+    ],
+    links: [
+      { href: '/programs/stem-entrepreneurship/', label: 'STEM entrepreneurship' },
+      { href: '/compare/planetspark-alternatives/', label: 'PlanetSpark alternatives' },
+    ],
+  },
+  {
+    path: '/programs/stem-entrepreneurship',
+    title: 'STEM Entrepreneurship for Kids | Young Social Entrepreneurs',
+    description:
+      'STEM entrepreneurship for kids: science fair ventures, social impact projects & coding builds with live mentors. Ages 8–18. Portfolio outcomes for scholarships.',
+    keywords:
+      'stem entrepreneurship, young social entrepreneurs, STEM entrepreneurship for kids',
+    h1: 'STEM entrepreneurship & young social innovators',
+    intro:
+      'Connect science fair rigour with founder mindset — prototypes, social impact framing and competition-ready portfolios for ages 8–18.',
+    paragraphs: [
+      'Students design experiments, build with code or AI tools and present impact stories mentors refine for scholarships.',
+      'Outcome metrics include 10+ portfolio projects, 500+ scholarships mapped and 52 live mentor sessions across the journey.',
+    ],
+    sectionHeading: 'Portfolio showcase examples',
+    bullets: [
+      'Eco-tracker apps with AI-assisted research',
+      'Community pitch nights tying STEM to venture narratives',
+      'Scholarship portfolio packs for counsellors',
+    ],
+    links: [
+      { href: '/programs/ai-entrepreneurship-for-kids/', label: 'AI entrepreneurship for kids' },
+      { href: '/resources/', label: 'Parent resources' },
     ],
   },
   {

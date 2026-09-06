@@ -66,10 +66,10 @@ export default function FounderMindsetSection() {
           </div>
 
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight">
-            <span className="text-o-0">Where Students Become </span>
+            <span className="text-o-0">Why Traditional Screen-Time </span>
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1876D2] via-[#00B0FF] to-[#40C4FF]">
-              Founders — Not Just Learners
+              Fails Young Innovators
             </span>
           </h2>
 

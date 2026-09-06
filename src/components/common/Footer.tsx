@@ -167,7 +167,9 @@ export default function Footer() {
 
           <div>
             <p className="eyebrow-o mb-5">Account</p>
-            <Link to="/login" className={linkCls}>Sign in</Link>
+            <Link to="/login" className={`${linkCls} font-medium text-[#1876D2]`}>
+              Student Portal / Login
+            </Link>
             <Link to="/dashboard" className={linkCls}>Dashboard</Link>
             <Link to="/privacy/" className={linkCls}>Privacy</Link>
             <Link to="/terms/" className={linkCls}>Terms</Link>

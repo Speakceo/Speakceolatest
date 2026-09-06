@@ -39,25 +39,26 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Orbit Student | Young CEO AI & Entrepreneurship for Kids 8–18"
-        description="Live mentor-led AI and entrepreneurship classes for ages 8–18. Portfolio projects, scholarships, free demo — 2,500+ families worldwide."
+        title="Orbit Student | AI, Coding & Entrepreneurship for Kids (8-18)"
+        description="Live mentor-led AI, startup & coding cohorts for ages 8–18. Build real apps, pitch ideas & master 100+ AI tools. Book a risk-free trial today!"
         url="https://www.orbitstudent.com"
         showFAQ
+        consolidatedSchemaGraph
         courseData={{
-          name: 'Orbit Young CEO Programme — 180-Day Instructor-Led Cohort',
+          name: 'Young CEO AI & Entrepreneurship Program',
           provider: 'Orbit Student',
           description:
-            'Mentor-led cohort programme in AI literacy, entrepreneurship, leadership and real-world projects. Live sessions, gamified dashboard, portfolio outcomes and scholarship roadmap for ages 8–18.',
+            'Hands-on program where students aged 8–18 learn prompt engineering, app building, public speaking and pitch startups to founder mentors.',
           duration: 'P180D',
           price: '299',
         }}
         keywords={[
-          'AI learning for kids',
-          'entrepreneurship for kids',
-          'online classes for kids',
+          'AI classes for kids',
           'coding for kids',
-          'young CEO program',
-          'live classes kids India',
+          'entrepreneurship for kids',
+          'best AI classes for kids aged 8-14',
+          'startup bootcamps for high schoolers',
+          'live mentor classes kids',
           'Orbit Student',
         ]}
       />
@@ -73,8 +74,7 @@ export default function Home() {
           <div className="absolute inset-0">
             <img
               src="/images/hero/orbit-kids-laptop.jpg"
-              alt=""
-              aria-hidden
+              alt="Student presenting an AI pitch project at Orbit Student live mentor lab"
               className="absolute inset-0 w-full h-full object-cover object-[50%_28%]"
               fetchPriority="high"
               decoding="async"
@@ -100,18 +100,14 @@ export default function Home() {
               <p className="font-display text-[clamp(2.75rem,8vw,5.5rem)] text-o-0 mb-3 sm:mb-4 tracking-tight leading-[0.95]">
                 Orbit Student
               </p>
-              <h1 className="font-display text-[clamp(1.45rem,3.4vw,2.15rem)] text-o-1 font-semibold mb-5 sm:mb-6 leading-snug max-w-xl">
-                <span className="sr-only">
-                  Live AI and entrepreneurship classes for kids ages 8 to 18 — build companies, command AI, pitch with
-                  confidence, and ship real projects.
-                </span>
-                <span className="text-o-2" aria-hidden="true">
-                  Kids who learn to{' '}
-                </span>
+              <h1 className="font-display text-[clamp(1.35rem,3.1vw,2rem)] text-o-0 font-semibold mb-4 sm:mb-5 leading-snug max-w-xl">
+                Building the Next Generation of AI Creators &amp; Young Founders
+              </h1>
+              <p className="font-display text-[clamp(1.45rem,3.4vw,2.15rem)] text-o-1 font-semibold mb-5 sm:mb-6 leading-snug max-w-xl">
+                <span className="text-o-2">Kids who learn to </span>
                 <Typewriter
                   as="span"
                   className="text-[#00B0FF]"
-                  aria-hidden
                   text={[
                     'build companies',
                     'command AI',
@@ -125,7 +121,7 @@ export default function Home() {
                   initialDelay={400}
                   cursorChar="_"
                 />
-              </h1>
+              </p>
               <p className="text-[16px] sm:text-[17px] leading-[1.6] text-o-2 mb-8 sm:mb-10 max-w-md">
                 Live mentor-led cohorts for ages 8–18. Real projects. Scholarship-ready portfolios — not another video library.
               </p>
@@ -264,7 +260,7 @@ export default function Home() {
             >
               <p className="eyebrow-o mb-5">Program details</p>
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
-                One flagship journey. <span style={{ color: '#00B0FF' }}>Everything in one place.</span>
+                Explore Cohorts &amp; Pathways by Age Group <span style={{ color: '#00B0FF' }}>(Ages 8–18)</span>
               </h2>
               <p className="text-[17px] text-o-2 leading-[1.6] max-w-[60ch]">
                 Transparent structure: what live time looks like, what ships in the portfolio, and how cohorts start —
@@ -368,7 +364,7 @@ export default function Home() {
             >
               <p className="eyebrow-o mb-5">01 · How it works</p>
               <h2 className="font-display text-[clamp(2rem,4.4vw,3.4rem)] mb-5" style={{ letterSpacing: '-0.04em' }}>
-                Four steps from kid to <span style={{ color: '#00B0FF' }}>young CEO.</span>
+                The 4 Pillars: <span style={{ color: '#00B0FF' }}>AI Literacy, Pitching, Coding &amp; Mentorship</span>
               </h2>
               <p className="text-[17px] text-o-2 leading-[1.6] max-w-[58ch]">
                 No videos to passively watch. Your child plays, builds, launches and wins —
@@ -561,11 +557,11 @@ export default function Home() {
           eyebrow="03 · The programme"
           headline={
             <>
-              Not just learning. <span style={{ color: '#00B0FF' }}>Living it.</span>
+              Inside the Orbit Student <span style={{ color: '#00B0FF' }}>AI Studio Dashboard</span>
             </>
           }
           subcopy="Other platforms ship videos. We ship transformation — real games, real AI tools, real projects and mentorship schools never offer."
-          cta={{ label: 'Explore the journey', href: '/courses' }}
+          cta={{ label: 'Join the next AI cohort', href: '/lp/free-demo/' }}
           features={[
             {
               title: 'Business games',

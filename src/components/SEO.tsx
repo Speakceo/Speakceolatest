@@ -54,6 +54,8 @@ interface SEOProps {
   structuredData?: any;
   showFAQ?: boolean;
   noIndex?: boolean;
+  /** Homepage: single @graph with EducationalOrganization + Course + FAQPage (avoids duplicate nodes) */
+  consolidatedSchemaGraph?: boolean;
   courseData?: {
     name: string;
     provider: string;
@@ -103,6 +105,7 @@ export default function SEO({
   structuredData,
   showFAQ = false,
   noIndex = false,
+  consolidatedSchemaGraph = false,
   courseData
 }: SEOProps) {
   const location = useLocation();
@@ -128,9 +131,11 @@ export default function SEO({
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
+    '@id': `${SITE_ORIGIN}/#organization`,
     name: 'Orbit Student',
     alternateName: ['Orbit AI', 'Orbit AI Student', 'Orbit Learning', 'OrbitStudent'],
-    description: defaultSEO.description,
+    description:
+      'Orbit Student is a live mentor-led AI, coding and entrepreneurship programme for kids ages 8–18 — not a foreign student visa portal or university LMS login site.',
     url: SITE_ORIGIN,
     logo: {
       '@type': 'ImageObject',
@@ -178,6 +183,7 @@ export default function SEO({
   const courseSchema = courseData ? {
     '@context': 'https://schema.org',
     '@type': 'Course',
+    '@id': `${SITE_ORIGIN}/#course`,
     name: courseData.name,
     description: courseData.description,
     provider: {
@@ -207,15 +213,49 @@ export default function SEO({
       price: courseData.price,
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
-      validFrom: new Date().toISOString()
-    } : undefined
+      validFrom: new Date().toISOString(),
+      category: 'Paid',
+    } : undefined,
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'online',
+      instructor: {
+        '@type': 'Person',
+        name: 'Founder & Industry Mentors',
+      },
+    },
   } : null;
 
   // Add FAQ Schema for better SEO
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    '@id': `${SITE_ORIGIN}/#faq`,
     mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How is Orbit different from passive coding platforms?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Orbit Student runs live mentor-led cohorts with pitch labs, portfolio builds and 100+ supervised AI Studio tools — not passive video queues. Students present work aloud, iterate with founders and ship real projects every fortnight.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Is Orbit Student a foreign student portal or LMS login?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No. Orbit Student (orbitstudent.com) is an edtech programme for kids ages 8–18 learning AI, coding and entrepreneurship. It is not a university international-student portal or visa LMS — use orbitstudent.com/login for the Orbit student dashboard only.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How does Orbit Student differ from pre-recorded coding courses?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Orbit Student features live mentor-led classes, real-world project builds, pitch labs and access to an interactive AI Studio dashboard — not passive video queues as the primary learning mode.'
+        }
+      },
       {
         '@type': 'Question',
         name: 'What age group is Orbit Student designed for?',
@@ -314,6 +354,22 @@ export default function SEO({
       }
     ]
   };
+
+  const homepageGraphSchema =
+    consolidatedSchemaGraph && showFAQ && courseSchema
+      ? {
+          '@context': 'https://schema.org',
+          '@graph': [
+            { ...organizationSchema, '@context': undefined },
+            { ...courseSchema, '@context': undefined },
+            {
+              '@type': 'FAQPage',
+              '@id': `${SITE_ORIGIN}/#faq`,
+              mainEntity: faqSchema.mainEntity.slice(0, 6),
+            },
+          ],
+        }
+      : null;
 
   // HowTo Schema — unlocks rich "How to" SERP feature
   const howToSchema = {
@@ -478,7 +534,12 @@ export default function SEO({
       <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
       {/* Structured Data — homepage / key landing pages only to avoid duplicate graph noise */}
-      {showFAQ && (
+      {homepageGraphSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(homepageGraphSchema)}
+        </script>
+      )}
+      {showFAQ && !consolidatedSchemaGraph && (
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
         </script>
@@ -493,12 +554,12 @@ export default function SEO({
           {JSON.stringify(serviceSchema)}
         </script>
       )}
-      {courseSchema && (
+      {courseSchema && !consolidatedSchemaGraph && (
         <script type="application/ld+json">
           {JSON.stringify(courseSchema)}
         </script>
       )}
-      {showFAQ && (
+      {showFAQ && !consolidatedSchemaGraph && (
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>
